@@ -22,6 +22,10 @@ To install Node, follow the instructions at https://nodejs.org/en/download/packa
 
 If using the development dependencies from the repository branches, you will also need to delete the `node_modules\encender\node_modules` folder to prevent encender from using the packed version of cql-worker.    
 
+If using VSAC terminology, set the UMLS_API_KEY environment variable to your UMLS profile API key to access the VSAC API in the testing framework.
+
+    $ export UMLS_API_KEY=<value>
+
 ### Test
 
     $ npm run cql-to-elm

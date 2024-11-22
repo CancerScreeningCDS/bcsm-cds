@@ -25,7 +25,9 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm run test-cql-reporter     
+        run: npm run test-cql-reporter
+        env:
+          UMLS_API_KEY: ${{ secrets.UMLS_API_KEY }}           
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
