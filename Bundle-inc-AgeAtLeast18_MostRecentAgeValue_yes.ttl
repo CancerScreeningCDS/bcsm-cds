@@ -1,0 +1,58 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/inc-AgeAtLeast18_MostRecentAgeValue_yes> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "inc-AgeAtLeast18_MostRecentAgeValue_yes"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient 7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6</b></p><a name=\"7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6\"> </a><a name=\"hc7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6\"> </a><a name=\"7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Joanne Smith  Female, DoB Unknown</p><hr/></div>"
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Smith" ] ;
+         fhir:given ( [ fhir:v "Joanne" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:Observation ;
+       fhir:id [ fhir:v "cc9b57b1-1a4f-4a08-abe3-ad29a3340107" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_cc9b57b1-1a4f-4a08-abe3-ad29a3340107\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation cc9b57b1-1a4f-4a08-abe3-ad29a3340107</b></p><a name=\"cc9b57b1-1a4f-4a08-abe3-ad29a3340107\"> </a><a name=\"hccc9b57b1-1a4f-4a08-abe3-ad29a3340107\"> </a><a name=\"cc9b57b1-1a4f-4a08-abe3-ad29a3340107-en-US\"> </a><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 30525-0}\">Age</span></p><p><b>subject</b>: <a href=\"Bundle-inc-AgeAtLeast18_MostRecentAgeValue_yes.html#Patient_7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6\">Bundle: type = collection</a></p><p><b>effective</b>: 2023-12-10 00:00:00+0000</p><p><b>value</b>: 18 years</p></div>"
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:30525-0 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "30525-0" ] ;
+           fhir:display [ fhir:v "Age" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6> ;
+         fhir:reference [ fhir:v "Patient/7b3ea1dd-203b-4bc5-b01c-ba71f2649bb6" ]
+       ] ;
+       fhir:effective [ fhir:v "2023-12-10T00:00:00.0Z"^^xsd:dateTime ] ;
+       fhir:value [
+         a fhir:Quantity ;
+         fhir:value [ fhir:v "18"^^xsd:decimal ] ;
+         fhir:unit [ fhir:v "years" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,1374 @@
+<html><head><title>Terminology Server Log</title></head><body><h2>Terminology Server Log</h2><pre>
+
+</pre><hr/>
+<a name="l1"> </a><h3>1</h3>
+<pre>
+Request: 
+
+GET http://tx.fhir.org/r4/metadata?_summary=true HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+User-Agent: fhir/publisher
+
+
+Response (00:00:00.42): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:2125
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:35 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466105
+
+{"resourceType" : "CapabilityStatement","id" : "FhirServer","meta" : {"tag" : [{"system" : "http://hl7.org/fhir/v3/ObservationValue","code" : "SUBSETTED","display" : "Subsetted"}]},"url" : "http://tx.fhir.org/r4/CapabilityStatement/tx","version" : "4.0.1-3.4.30","name" : "FHIRReferenceServer","title" : "FHIR Reference Server Conformance Statement","status" : "active","date" : "2024-11-27T18:51:35.659Z","contact" : [{"telecom" : [{"system" : "other","value" : "http://healthintersections.com.au/"}]}],"kind" : "instance","instantiates" : ["http://hl7.org/fhir/CapabilityStatement/terminology-server","http://hl7.org/fhir/CapabilityStatement/terminology-server"],"software" : {"name" : "Reference Server","version" : "3.4.30","releaseDate" : "2024-11-24T13:26:34.903Z"},"implementation" : {"description" : "FHIR Server running at http://tx.fhir.org/r4","url" : "http://tx.fhir.org/r4"},"fhirVersion" : "4.0.1","format" : ["application/fhir+xml","application/fhir+json"],"rest" : [{"mode" : "server","security" : {"cors" : true},"resource" : [{"type" : "CodeSystem","operation" : [{"name" : "validate-code","definition" : "http://hl7.org/fhir/OperationDefinition/CodeSystem-validate-code"},{"name" : "lookup","definition" : "http://hl7.org/fhir/OperationDefinition/CodeSystem-lookup"}]},{"type" : "ValueSet","operation" : [{"name" : "validate-code","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-validate-code"},{"name" : "expand","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"}]}],"operation" : [{"name" : "expand","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"},{"name" : "lookup","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-lookup"},{"name" : "validate-code","definition" : "http://hl7.org/fhir/OperationDefinition/Resource-validate"},{"name" : "translate","definition" : "http://hl7.org/fhir/OperationDefinition/ConceptMap-translate"},{"name" : "closure","definition" : "http://hl7.org/fhir/OperationDefinition/ConceptMap-closure"},{"name" : "versions","definition" : "http://tx.fhir.org/r4/OperationDefinition/fso-versions"}]}]}
+
+</pre><hr/>
+<a name="l2"> </a><h3>2</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://hl7.org/fhir/fhir-types","code":"ImplementationGuide"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.29): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1451
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466152
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://hl7.org/fhir/fhir-types"},{"name" : "x-caused-by-unknown-system","valueCanonical" : "http://hl7.org/fhir/fhir-types"},{"name" : "code","valueCode" : "ImplementationGuide"},{"name" : "message","valueString" : "A definition for CodeSystem 'http://hl7.org/fhir/fhir-types' could not be found, so the code cannot be validated"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "not-found","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "not-found"}],"text" : "A definition for CodeSystem 'http://hl7.org/fhir/fhir-types' could not be found, so the code cannot be validated"},"location" : ["Coding.system"],"expression" : ["Coding.system"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://hl7.org/fhir/fhir-types#ImplementationGuide (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://hl7.org/fhir/fhir-types#ImplementationGuide\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Didn't find CodeSystem \"http://hl7.org/fhir/fhir-types\"\r\n"}]}
+
+</pre><hr/>
+<a name="l3"> </a><h3>3</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://unitsofmeasure.org","code":"[a]"}},{"name":"displayLanguage","valueString":"en, en-US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.29): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1558
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466155
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://unitsofmeasure.org"},{"name" : "code","valueCode" : "[a]"},{"name" : "message","valueString" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},"location" : ["Coding.code"],"expression" : ["Coding.code"]},{"severity" : "information","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Error processing Unit: '[a]': The unit \"[a]\" is unknown at character 1"},"location" : ["Coding.code"],"expression" : ["Coding.code"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n16 16: tx-op\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, default-to-latest\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://unitsofmeasure.org#[a] (\"\")]\"\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://unitsofmeasure.org#[a]\"\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://unitsofmeasure.org|2.2\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l4"> </a><h3>4</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0"}},{"name":"displayLanguage","valueString":"en, en-US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.48): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:785
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466159
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l5"> </a><h3>5</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"428529004"}},{"name":"displayLanguage","valueString":"en, en-US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.40): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:963
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466162
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "428529004"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "History of bilateral mastectomy (situation)"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#428529004 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#428529004\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l6"> </a><h3>6</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"urn:ietf:bcp:13","code":"text/cql"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.30): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:748
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466164
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "text/cql"},{"name" : "display","valueString" : "text/cql"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[urn:ietf:bcp:13#text/cql (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"urn:ietf:bcp:13#text/cql\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"urn:ietf:bcp:13|\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l7"> </a><h3>7</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"urn:ietf:bcp:13","code":"application/elm+xml"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.33): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:792
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466165
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+xml"},{"name" : "display","valueString" : "application/elm+xml"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[urn:ietf:bcp:13#application/elm+xml (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"urn:ietf:bcp:13#application/elm+xml\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"urn:ietf:bcp:13|\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l8"> </a><h3>8</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"urn:ietf:bcp:13","code":"application/elm+json"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.40): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:796
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466166
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+json"},{"name" : "display","valueString" : "application/elm+json"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[urn:ietf:bcp:13#application/elm+json (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"urn:ietf:bcp:13#application/elm+json\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"urn:ietf:bcp:13|\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l9"> </a><h3>9</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"text/cql"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","url":"urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940","status":"active","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.28): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1079
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466171
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "text/cql"},{"name" : "display","valueString" : "text/cql"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Analysing\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Validate \"[#text/cql (\"\")]\" and infer system\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Check \"#text/cql\"\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Code \"text/cql\" found in urn:ietf:bcp:13|\r\n"}]}
+
+</pre><hr/>
+<a name="l10"> </a><h3>10</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"text/cql"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","id":"mimetypes","meta":{"lastUpdated":"2019-11-01T09:29:23.356+11:00","profile":["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]},"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg","valueCode":"fhir"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status","valueCode":"normative"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version","valueCode":"4.0.0"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm","valueInteger":5}],"url":"http://hl7.org/fhir/ValueSet/mimetypes","identifier":[{"system":"urn:ietf:rfc:3986","value":"urn:oid:2.16.840.1.113883.4.642.3.1024"}],"version":"4.0.1","name":"Mime Types","title":"MimeType","status":"active","experimental":false,"date":"2019-11-01T09:29:23+11:00","publisher":"HL7 International - FHIR-Infrastructure","contact":[{"telecom":[{"system":"url","value":"http://hl7.org/fhir"}]}],"description":"This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.32): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1071
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466172
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "text/cql"},{"name" : "display","valueString" : "text/cql"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[#text/cql (\"\")]\" and infer system\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"#text/cql\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"text/cql\" found in urn:ietf:bcp:13|\r\n"}]}
+
+</pre><hr/>
+<a name="l11"> </a><h3>11</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+xml"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","url":"urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc","status":"active","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.28): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1134
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466173
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+xml"},{"name" : "display","valueString" : "application/elm+xml"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Analysing\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Validate \"[#application/elm+xml (\"\")]\" and infer system\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Check \"#application/elm+xml\"\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Code \"application/elm+xml\" found in urn:ietf:bcp:13|\r\n"}]}
+
+</pre><hr/>
+<a name="l12"> </a><h3>12</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+xml"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","id":"mimetypes","meta":{"lastUpdated":"2019-11-01T09:29:23.356+11:00","profile":["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]},"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg","valueCode":"fhir"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status","valueCode":"normative"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version","valueCode":"4.0.0"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm","valueInteger":5}],"url":"http://hl7.org/fhir/ValueSet/mimetypes","identifier":[{"system":"urn:ietf:rfc:3986","value":"urn:oid:2.16.840.1.113883.4.642.3.1024"}],"version":"4.0.1","name":"Mime Types","title":"MimeType","status":"active","experimental":false,"date":"2019-11-01T09:29:23+11:00","publisher":"HL7 International - FHIR-Infrastructure","contact":[{"telecom":[{"system":"url","value":"http://hl7.org/fhir"}]}],"description":"This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.38): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1126
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466174
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+xml"},{"name" : "display","valueString" : "application/elm+xml"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[#application/elm+xml (\"\")]\" and infer system\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"#application/elm+xml\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/elm+xml\" found in urn:ietf:bcp:13|\r\n"}]}
+
+</pre><hr/>
+<a name="l13"> </a><h3>13</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+json"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","url":"urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8","status":"active","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.43): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1139
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466175
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+json"},{"name" : "display","valueString" : "application/elm+json"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Analysing\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Validate \"[#application/elm+json (\"\")]\" and infer system\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Check \"#application/elm+json\"\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Code \"application/elm+json\" found in urn:ietf:bcp:13|\r\n"}]}
+
+</pre><hr/>
+<a name="l14"> </a><h3>14</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+json"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","id":"mimetypes","meta":{"lastUpdated":"2019-11-01T09:29:23.356+11:00","profile":["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]},"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg","valueCode":"fhir"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status","valueCode":"normative"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version","valueCode":"4.0.0"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm","valueInteger":5}],"url":"http://hl7.org/fhir/ValueSet/mimetypes","identifier":[{"system":"urn:ietf:rfc:3986","value":"urn:oid:2.16.840.1.113883.4.642.3.1024"}],"version":"4.0.1","name":"Mime Types","title":"MimeType","status":"active","experimental":false,"date":"2019-11-01T09:29:23+11:00","publisher":"HL7 International - FHIR-Infrastructure","contact":[{"telecom":[{"system":"url","value":"http://hl7.org/fhir"}]}],"description":"This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.28): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1131
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466176
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+json"},{"name" : "display","valueString" : "application/elm+json"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[#application/elm+json (\"\")]\" and infer system\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"#application/elm+json\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/elm+json\" found in urn:ietf:bcp:13|\r\n"}]}
+
+</pre><hr/>
+<a name="l15"> </a><h3>15</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"76691-5","display":"Gender identity"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.38): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:805
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466178
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "76691-5"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Gender identity"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#76691-5 (\"Gender identity\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#76691-5\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l16"> </a><h3>16</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0","display":"Age"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.47): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:781
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466180
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"Age\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l17"> </a><h3>17</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://unitsofmeasure.org","code":"[a]"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.44): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1544
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466182
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://unitsofmeasure.org"},{"name" : "code","valueCode" : "[a]"},{"name" : "message","valueString" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},"location" : ["Coding.code"],"expression" : ["Coding.code"]},{"severity" : "information","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Error processing Unit: '[a]': The unit \"[a]\" is unknown at character 1"},"location" : ["Coding.code"],"expression" : ["Coding.code"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://unitsofmeasure.org#[a] (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://unitsofmeasure.org#[a]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://unitsofmeasure.org|2.2\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l18"> </a><h3>18</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.34): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:778
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466185
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l19"> </a><h3>19</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://example.org/CodeSystem/plan-definition-action-reason-code-system","code":"missingageorbirthdate"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.41): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1730
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466191
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system"},{"name" : "x-caused-by-unknown-system","valueCanonical" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system"},{"name" : "code","valueCode" : "missingageorbirthdate"},{"name" : "message","valueString" : "A definition for CodeSystem 'http://example.org/CodeSystem/plan-definition-action-reason-code-system' could not be found, so the code cannot be validated"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "not-found","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "not-found"}],"text" : "A definition for CodeSystem 'http://example.org/CodeSystem/plan-definition-action-reason-code-system' could not be found, so the code cannot be validated"},"location" : ["Coding.system"],"expression" : ["Coding.system"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://example.org/CodeSystem/plan-definition-action-reason-code-system#missingageorbirthdate (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://example.org/CodeSystem/plan-definition-action-reason-code-system#missingageorbirthdate\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Didn't find CodeSystem \"http://example.org/CodeSystem/plan-definition-action-reason-code-system\"\r\n"}]}
+
+</pre><hr/>
+<a name="l20"> </a><h3>20</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"428529004"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.44): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:956
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466192
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "428529004"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "History of bilateral mastectomy (situation)"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#428529004 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#428529004\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l21"> </a><h3>21</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"254837009","display":"Invasive breast cancer"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.32): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1958
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466193
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "254837009"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "Malignant tumor of breast"},{"name" : "message","valueString" : "Wrong Display Name 'Invasive breast cancer' for http://snomed.info/sct#254837009. Valid display is one of 6 choices: 'Malignant tumor of breast', 'Breast cancer', 'CA - Breast cancer', 'Malignant tumour of breast', 'Malignant neoplasm of breast (disorder)' or 'Malignant neoplasm of breast' (for the language(s) 'en')"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-display"}],"text" : "Wrong Display Name 'Invasive breast cancer' for http://snomed.info/sct#254837009. Valid display is one of 6 choices: 'Malignant tumor of breast', 'Breast cancer', 'CA - Breast cancer', 'Malignant tumour of breast', 'Malignant neoplasm of breast (disorder)' or 'Malignant neoplasm of breast' (for the language(s) 'en')"},"location" : ["Coding.display"],"expression" : ["Coding.display"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#254837009 (\"Invasive breast cancer\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#254837009\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l22"> </a><h3>22</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0","display":"Age"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.33): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:781
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466194
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"Age\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+</pre><hr/>
+<a name="l23"> </a><h3>23</h3>
+<pre>
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"407376001"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.41): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:949
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466196
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "407376001"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "Male-to-female transsexual (finding)"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#407376001 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#407376001\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+
+--- 1 -----------------
+Request: 
+
+GET http://tx.fhir.org/r4/metadata?_summary=true HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+User-Agent: fhir/publisher
+
+
+Response (00:00:00.42): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:2125
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:35 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466105
+
+{"resourceType" : "CapabilityStatement","id" : "FhirServer","meta" : {"tag" : [{"system" : "http://hl7.org/fhir/v3/ObservationValue","code" : "SUBSETTED","display" : "Subsetted"}]},"url" : "http://tx.fhir.org/r4/CapabilityStatement/tx","version" : "4.0.1-3.4.30","name" : "FHIRReferenceServer","title" : "FHIR Reference Server Conformance Statement","status" : "active","date" : "2024-11-27T18:51:35.659Z","contact" : [{"telecom" : [{"system" : "other","value" : "http://healthintersections.com.au/"}]}],"kind" : "instance","instantiates" : ["http://hl7.org/fhir/CapabilityStatement/terminology-server","http://hl7.org/fhir/CapabilityStatement/terminology-server"],"software" : {"name" : "Reference Server","version" : "3.4.30","releaseDate" : "2024-11-24T13:26:34.903Z"},"implementation" : {"description" : "FHIR Server running at http://tx.fhir.org/r4","url" : "http://tx.fhir.org/r4"},"fhirVersion" : "4.0.1","format" : ["application/fhir+xml","application/fhir+json"],"rest" : [{"mode" : "server","security" : {"cors" : true},"resource" : [{"type" : "CodeSystem","operation" : [{"name" : "validate-code","definition" : "http://hl7.org/fhir/OperationDefinition/CodeSystem-validate-code"},{"name" : "lookup","definition" : "http://hl7.org/fhir/OperationDefinition/CodeSystem-lookup"}]},{"type" : "ValueSet","operation" : [{"name" : "validate-code","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-validate-code"},{"name" : "expand","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"}]}],"operation" : [{"name" : "expand","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-expand"},{"name" : "lookup","definition" : "http://hl7.org/fhir/OperationDefinition/ValueSet-lookup"},{"name" : "validate-code","definition" : "http://hl7.org/fhir/OperationDefinition/Resource-validate"},{"name" : "translate","definition" : "http://hl7.org/fhir/OperationDefinition/ConceptMap-translate"},{"name" : "closure","definition" : "http://hl7.org/fhir/OperationDefinition/ConceptMap-closure"},{"name" : "versions","definition" : "http://tx.fhir.org/r4/OperationDefinition/fso-versions"}]}]}
+
+--- 2 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://hl7.org/fhir/fhir-types","code":"ImplementationGuide"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.29): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1451
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466152
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://hl7.org/fhir/fhir-types"},{"name" : "x-caused-by-unknown-system","valueCanonical" : "http://hl7.org/fhir/fhir-types"},{"name" : "code","valueCode" : "ImplementationGuide"},{"name" : "message","valueString" : "A definition for CodeSystem 'http://hl7.org/fhir/fhir-types' could not be found, so the code cannot be validated"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "not-found","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "not-found"}],"text" : "A definition for CodeSystem 'http://hl7.org/fhir/fhir-types' could not be found, so the code cannot be validated"},"location" : ["Coding.system"],"expression" : ["Coding.system"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://hl7.org/fhir/fhir-types#ImplementationGuide (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://hl7.org/fhir/fhir-types#ImplementationGuide\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Didn't find CodeSystem \"http://hl7.org/fhir/fhir-types\"\r\n"}]}
+
+--- 3 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://unitsofmeasure.org","code":"[a]"}},{"name":"displayLanguage","valueString":"en, en-US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.29): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1558
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466155
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://unitsofmeasure.org"},{"name" : "code","valueCode" : "[a]"},{"name" : "message","valueString" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},"location" : ["Coding.code"],"expression" : ["Coding.code"]},{"severity" : "information","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Error processing Unit: '[a]': The unit \"[a]\" is unknown at character 1"},"location" : ["Coding.code"],"expression" : ["Coding.code"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n16 16: tx-op\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, default-to-latest\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://unitsofmeasure.org#[a] (\"\")]\"\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://unitsofmeasure.org#[a]\"\r\n16 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://unitsofmeasure.org|2.2\" (content = complete)\r\n"}]}
+
+--- 4 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0"}},{"name":"displayLanguage","valueString":"en, en-US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.48): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:785
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466159
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+--- 5 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"428529004"}},{"name":"displayLanguage","valueString":"en, en-US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.40): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:963
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466162
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "428529004"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "History of bilateral mastectomy (situation)"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#428529004 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#428529004\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+
+--- 6 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"urn:ietf:bcp:13","code":"text/cql"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.30): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:748
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466164
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "text/cql"},{"name" : "display","valueString" : "text/cql"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[urn:ietf:bcp:13#text/cql (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"urn:ietf:bcp:13#text/cql\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"urn:ietf:bcp:13|\" (content = complete)\r\n"}]}
+
+--- 7 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"urn:ietf:bcp:13","code":"application/elm+xml"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.33): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:792
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466165
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+xml"},{"name" : "display","valueString" : "application/elm+xml"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[urn:ietf:bcp:13#application/elm+xml (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"urn:ietf:bcp:13#application/elm+xml\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"urn:ietf:bcp:13|\" (content = complete)\r\n"}]}
+
+--- 8 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"urn:ietf:bcp:13","code":"application/elm+json"}},{"name":"displayLanguage","valueString":"en, en-US, en_US"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.40): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:796
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:53 GMT
+last-modified:Wed, 27 Nov 2024 18:51:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466166
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+json"},{"name" : "display","valueString" : "application/elm+json"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, en-US, en_US, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[urn:ietf:bcp:13#application/elm+json (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"urn:ietf:bcp:13#application/elm+json\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"urn:ietf:bcp:13|\" (content = complete)\r\n"}]}
+
+--- 9 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"text/cql"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","url":"urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940","status":"active","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.28): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1079
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466171
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "text/cql"},{"name" : "display","valueString" : "text/cql"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Analysing\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Validate \"[#text/cql (\"\")]\" and infer system\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Check \"#text/cql\"\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms urn:uuid:ce4918c4-3fab-4291-9fd4-896077fb1940: Code \"text/cql\" found in urn:ietf:bcp:13|\r\n"}]}
+
+--- 10 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"text/cql"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","id":"mimetypes","meta":{"lastUpdated":"2019-11-01T09:29:23.356+11:00","profile":["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]},"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg","valueCode":"fhir"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status","valueCode":"normative"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version","valueCode":"4.0.0"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm","valueInteger":5}],"url":"http://hl7.org/fhir/ValueSet/mimetypes","identifier":[{"system":"urn:ietf:rfc:3986","value":"urn:oid:2.16.840.1.113883.4.642.3.1024"}],"version":"4.0.1","name":"Mime Types","title":"MimeType","status":"active","experimental":false,"date":"2019-11-01T09:29:23+11:00","publisher":"HL7 International - FHIR-Infrastructure","contact":[{"telecom":[{"system":"url","value":"http://hl7.org/fhir"}]}],"description":"This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.32): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1071
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466172
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "text/cql"},{"name" : "display","valueString" : "text/cql"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[#text/cql (\"\")]\" and infer system\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"#text/cql\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"text/cql\" found in urn:ietf:bcp:13|\r\n"}]}
+
+--- 11 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+xml"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","url":"urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc","status":"active","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.28): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1134
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466173
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+xml"},{"name" : "display","valueString" : "application/elm+xml"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Analysing\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Validate \"[#application/elm+xml (\"\")]\" and infer system\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Check \"#application/elm+xml\"\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms urn:uuid:29862d84-1248-4ddb-abe2-778b3e84b5cc: Code \"application/elm+xml\" found in urn:ietf:bcp:13|\r\n"}]}
+
+--- 12 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+xml"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","id":"mimetypes","meta":{"lastUpdated":"2019-11-01T09:29:23.356+11:00","profile":["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]},"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg","valueCode":"fhir"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status","valueCode":"normative"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version","valueCode":"4.0.0"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm","valueInteger":5}],"url":"http://hl7.org/fhir/ValueSet/mimetypes","identifier":[{"system":"urn:ietf:rfc:3986","value":"urn:oid:2.16.840.1.113883.4.642.3.1024"}],"version":"4.0.1","name":"Mime Types","title":"MimeType","status":"active","experimental":false,"date":"2019-11-01T09:29:23+11:00","publisher":"HL7 International - FHIR-Infrastructure","contact":[{"telecom":[{"system":"url","value":"http://hl7.org/fhir"}]}],"description":"This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.38): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1126
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466174
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+xml"},{"name" : "display","valueString" : "application/elm+xml"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[#application/elm+xml (\"\")]\" and infer system\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"#application/elm+xml\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/elm+xml\" found in urn:ietf:bcp:13|\r\n"}]}
+
+--- 13 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+json"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","url":"urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8","status":"active","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.43): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1139
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466175
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+json"},{"name" : "display","valueString" : "application/elm+json"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Analysing\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Validate \"[#application/elm+json (\"\")]\" and infer system\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Check \"#application/elm+json\"\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms urn:uuid:4abeb44a-4cd3-4243-b950-0af725a028d8: Code \"application/elm+json\" found in urn:ietf:bcp:13|\r\n"}]}
+
+--- 14 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/ValueSet/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"inferSystem","valueBoolean":true},{"name":"code","valueCode":"application/elm+json"},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"valueSet","resource":{"resourceType":"ValueSet","id":"mimetypes","meta":{"lastUpdated":"2019-11-01T09:29:23.356+11:00","profile":["http://hl7.org/fhir/StructureDefinition/shareablevalueset"]},"extension":[{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-wg","valueCode":"fhir"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status","valueCode":"normative"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-normative-version","valueCode":"4.0.0"},{"url":"http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm","valueInteger":5}],"url":"http://hl7.org/fhir/ValueSet/mimetypes","identifier":[{"system":"urn:ietf:rfc:3986","value":"urn:oid:2.16.840.1.113883.4.642.3.1024"}],"version":"4.0.1","name":"Mime Types","title":"MimeType","status":"active","experimental":false,"date":"2019-11-01T09:29:23+11:00","publisher":"HL7 International - FHIR-Infrastructure","contact":[{"telecom":[{"system":"url","value":"http://hl7.org/fhir"}]}],"description":"This value set includes all possible codes from BCP-13 (http://tools.ietf.org/html/bcp13)","compose":{"include":[{"system":"urn:ietf:bcp:13"}]}}},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.28): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1131
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:55 GMT
+last-modified:Wed, 27 Nov 2024 18:51:55 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466176
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "urn:ietf:bcp:13"},{"name" : "code","valueCode" : "application/elm+json"},{"name" : "display","valueString" : "application/elm+json"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: \"urn:ietf:bcp:13|\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Validate \"[#application/elm+json (\"\")]\" and infer system\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Check \"#application/elm+json\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Inferred CodeSystem = \"urn:ietf:bcp:13\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: CodeSystem found: urn:ietf:bcp:13| for urn:ietf:bcp:13\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/mimetypes|4.0.1: Code \"application/elm+json\" found in urn:ietf:bcp:13|\r\n"}]}
+
+--- 15 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"76691-5","display":"Gender identity"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.38): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:805
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466178
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "76691-5"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Gender identity"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#76691-5 (\"Gender identity\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#76691-5\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+--- 16 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0","display":"Age"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.47): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:781
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466180
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"Age\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+--- 17 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://unitsofmeasure.org","code":"[a]"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.44): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1544
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466182
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://unitsofmeasure.org"},{"name" : "code","valueCode" : "[a]"},{"name" : "message","valueString" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Unknown code '[a]' in the CodeSystem 'http://unitsofmeasure.org' version '2.2'"},"location" : ["Coding.code"],"expression" : ["Coding.code"]},{"severity" : "information","code" : "code-invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-code"}],"text" : "Error processing Unit: '[a]': The unit \"[a]\" is unknown at character 1"},"location" : ["Coding.code"],"expression" : ["Coding.code"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://unitsofmeasure.org#[a] (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://unitsofmeasure.org#[a]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://unitsofmeasure.org|2.2\" (content = complete)\r\n"}]}
+
+--- 18 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.34): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:778
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:56 GMT
+last-modified:Wed, 27 Nov 2024 18:51:56 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466185
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+--- 19 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://example.org/CodeSystem/plan-definition-action-reason-code-system","code":"missingageorbirthdate"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.41): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1730
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466191
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system"},{"name" : "x-caused-by-unknown-system","valueCanonical" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system"},{"name" : "code","valueCode" : "missingageorbirthdate"},{"name" : "message","valueString" : "A definition for CodeSystem 'http://example.org/CodeSystem/plan-definition-action-reason-code-system' could not be found, so the code cannot be validated"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "not-found","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "not-found"}],"text" : "A definition for CodeSystem 'http://example.org/CodeSystem/plan-definition-action-reason-code-system' could not be found, so the code cannot be validated"},"location" : ["Coding.system"],"expression" : ["Coding.system"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://example.org/CodeSystem/plan-definition-action-reason-code-system#missingageorbirthdate (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://example.org/CodeSystem/plan-definition-action-reason-code-system#missingageorbirthdate\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Didn't find CodeSystem \"http://example.org/CodeSystem/plan-definition-action-reason-code-system\"\r\n"}]}
+
+--- 20 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"428529004"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.44): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:956
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466192
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "428529004"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "History of bilateral mastectomy (situation)"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#428529004 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#428529004\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+
+--- 21 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"254837009","display":"Invasive breast cancer"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.32): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1958
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466193
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : false},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "254837009"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "Malignant tumor of breast"},{"name" : "message","valueString" : "Wrong Display Name 'Invasive breast cancer' for http://snomed.info/sct#254837009. Valid display is one of 6 choices: 'Malignant tumor of breast', 'Breast cancer', 'CA - Breast cancer', 'Malignant tumour of breast', 'Malignant neoplasm of breast (disorder)' or 'Malignant neoplasm of breast' (for the language(s) 'en')"},{"name" : "issues","resource" : {"resourceType" : "OperationOutcome","issue" : [{"severity" : "error","code" : "invalid","details" : {"coding" : [{"system" : "http://hl7.org/fhir/tools/CodeSystem/tx-issue-type","code" : "invalid-display"}],"text" : "Wrong Display Name 'Invasive breast cancer' for http://snomed.info/sct#254837009. Valid display is one of 6 choices: 'Malignant tumor of breast', 'Breast cancer', 'CA - Breast cancer', 'Malignant tumour of breast', 'Malignant neoplasm of breast (disorder)' or 'Malignant neoplasm of breast' (for the language(s) 'en')"},"location" : ["Coding.display"],"expression" : ["Coding.display"]}]}},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#254837009 (\"Invasive breast cancer\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#254837009\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+
+--- 22 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://loinc.org","code":"30525-0","display":"Age"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.33): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:781
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466194
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://loinc.org"},{"name" : "code","valueCode" : "30525-0"},{"name" : "version","valueString" : "2.78"},{"name" : "display","valueString" : "Age"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://loinc.org#30525-0 (\"Age\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://loinc.org#30525-0\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://loinc.org|2.78\" (content = complete)\r\n"}]}
+
+--- 23 -----------------
+Request: 
+
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+Accept: application/fhir+json; fhirVersion=4.0
+Content-Type: application/fhir+json; fhirVersion=4.0;charset=UTF-8
+User-Agent: fhir/publisher
+
+{"resourceType":"Parameters","parameter":[{"name":"coding","valueCoding":{"system":"http://snomed.info/sct","code":"407376001"}},{"name":"displayLanguage","valueString":"en"},{"name":"default-to-latest-version","valueBoolean":true},{"name":"cache-id","valueId":"7a1ce35d-5c02-48f5-a434-b151e841a3d6"},{"name":"x-system-cache-id","valueString":"dc8fd4bc-091a-424a-8a3b-6198ef146891"},{"name":"diagnostics","valueBoolean":true}]}
+
+
+Response (00:00:00.41): 
+
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:949
+content-type:application/fhir+json
+date:Wed, 27 Nov 2024 18:51:57 GMT
+last-modified:Wed, 27 Nov 2024 18:51:57 GMT
+pragma:no-cache
+server:nginx
+x-request-id:173-466196
+
+{"resourceType" : "Parameters","parameter" : [{"name" : "result","valueBoolean" : true},{"name" : "system","valueUri" : "http://snomed.info/sct"},{"name" : "code","valueCode" : "407376001"},{"name" : "version","valueString" : "http://snomed.info/sct/900000000000207008/version/20240801"},{"name" : "display","valueString" : "Male-to-female transsexual (finding)"},{"name" : "diagnostics","valueString" : "0 0 : start\r\n0 0: tx-op\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Analysing\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Parameters: disp-lang=en, default-to-latest\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Validate \"[http://snomed.info/sct#407376001 (\"\")]\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Check \"http://snomed.info/sct#407376001\"\r\n0 0: 0ms http://hl7.org/fhir/ValueSet/@all: Using CodeSystem \"http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240801\" (content = complete)\r\n"}]}
+</pre></head></html>

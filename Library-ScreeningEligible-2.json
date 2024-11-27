@@ -1,0 +1,2281 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "t" : [ {
+            "name" : "author",
+            "value" : "The Health FFRDC, operated by The MITRE Corporation, in support of the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention."
+         }, {
+            "name" : "description",
+            "value" : "Screening eligible criteria"
+         } ],
+         "s" : {
+            "r" : "230",
+            "s" : [ {
+               "value" : [ "/*\n@author: The Health FFRDC, operated by The MITRE Corporation, in support of the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention.\n@description: Screening eligible criteria\n*/\n","library ScreeningEligible version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "ScreeningEligible",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "7:1-7:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "8:1-8:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "10:1-10:61",
+            "localIdentifier" : "Events",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/ScreeningEligibleEvents",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "ScreeningEligibleEvents" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","Events" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "209",
+            "locator" : "11:1-11:63",
+            "localIdentifier" : "Actions",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/ScreeningEligibleActions",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "ScreeningEligibleActions" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","Actions" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "210",
+            "locator" : "12:1-12:56",
+            "localIdentifier" : "DataElements",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/DataElements",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "DataElements" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","DataElements" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "211",
+            "locator" : "18:1-18:38",
+            "name" : "LOINC",
+            "id" : "http://loinc.org",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "211",
+                  "s" : [ {
+                     "value" : [ "//------------------------------------------------------------------------------\n// CODE SYSTEMS, VALUE SETS, AND CODES\n//------------------------------------------------------------------------------\n\n","codesystem ","\"LOINC\"",": ","'http://loinc.org'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "212",
+            "locator" : "20:1-20:88",
+            "name" : "ActCode",
+            "id" : "http://example.org/CodeSystem/plan-definition-action-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "212",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ActCode\"",": ","'http://example.org/CodeSystem/plan-definition-action-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "213",
+            "locator" : "21:1-21:98",
+            "name" : "ReasonCode",
+            "id" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "213",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ReasonCode\"",": ","'http://example.org/CodeSystem/plan-definition-action-reason-code-system'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "214",
+            "locator" : "24:1-24:36",
+            "name" : "Error",
+            "id" : "error",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "214",
+                  "s" : [ {
+                     "value" : [ "// Act Codes\n","code ","\"Error\"",": ","'error'"," from " ]
+                  }, {
+                     "r" : "215",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "215",
+               "locator" : "24:28-24:36",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "216",
+            "locator" : "26:1-26:75",
+            "name" : "Missing age or birth date",
+            "id" : "missingageorbirthdate",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "216",
+                  "s" : [ {
+                     "value" : [ "// Reason Codes\n","code ","\"Missing age or birth date\"",": ","'missingageorbirthdate'"," from " ]
+                  }, {
+                     "r" : "217",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "217",
+               "locator" : "26:64-26:75",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "218",
+            "locator" : "29:1-29:48",
+            "name" : "Age",
+            "id" : "30525-0",
+            "display" : "Age",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "218",
+                  "s" : [ {
+                     "value" : [ "// Standard codes\n","code ","\"Age\"",": ","'30525-0'"," from " ]
+                  }, {
+                     "r" : "219",
+                     "s" : [ {
+                        "value" : [ "\"LOINC\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Age'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "219",
+               "locator" : "29:28-29:34",
+               "name" : "LOINC"
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "223",
+            "locator" : "36:1-36:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "221",
+            "locator" : "36:1-36:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "222",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "220",
+                  "locator" : "36:1-36:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "243",
+            "locator" : "56:1-61:21",
+            "name" : "MostRecentAgeValue",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "243",
+                  "s" : [ {
+                     "value" : [ "","define ","MostRecentAgeValue",":\n  " ]
+                  }, {
+                     "r" : "303",
+                     "s" : [ {
+                        "r" : "302",
+                        "s" : [ {
+                           "r" : "301",
+                           "s" : [ {
+                              "r" : "300",
+                              "s" : [ {
+                                 "value" : [ "First","(\n    " ]
+                              }, {
+                                 "r" : "297",
+                                 "s" : [ {
+                                    "s" : [ {
+                                       "r" : "244",
+                                       "s" : [ {
+                                          "r" : "247",
+                                          "s" : [ {
+                                             "r" : "247",
+                                             "s" : [ {
+                                                "value" : [ "[","Observation",": " ]
+                                             }, {
+                                                "s" : [ {
+                                                   "value" : [ "\"Age\"" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "]" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","O" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n      " ]
+                                 }, {
+                                    "r" : "256",
+                                    "s" : [ {
+                                       "value" : [ "where " ]
+                                    }, {
+                                       "r" : "256",
+                                       "s" : [ {
+                                          "r" : "259",
+                                          "s" : [ {
+                                             "r" : "258",
+                                             "s" : [ {
+                                                "r" : "257",
+                                                "s" : [ {
+                                                   "value" : [ "O" ]
+                                                } ]
+                                             }, {
+                                                "value" : [ "." ]
+                                             }, {
+                                                "r" : "258",
+                                                "s" : [ {
+                                                   "value" : [ "value" ]
+                                                } ]
+                                             } ]
+                                          }, {
+                                             "value" : [ "." ]
+                                          }, {
+                                             "r" : "259",
+                                             "s" : [ {
+                                                "value" : [ "unit" ]
+                                             } ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " ","="," " ]
+                                       }, {
+                                          "r" : "260",
+                                          "s" : [ {
+                                             "value" : [ "'years'" ]
+                                          } ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n      " ]
+                                 }, {
+                                    "r" : "267",
+                                    "s" : [ {
+                                       "value" : [ "sort by " ]
+                                    }, {
+                                       "r" : "266",
+                                       "s" : [ {
+                                          "r" : "265",
+                                          "s" : [ {
+                                             "value" : [ "effective" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ " desc" ]
+                                       } ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n  )" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "301",
+                              "s" : [ {
+                                 "value" : [ "value" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "302",
+                           "s" : [ {
+                              "value" : [ "value" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "303",
+                        "s" : [ {
+                           "value" : [ "value" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "303",
+               "locator" : "57:3-61:21",
+               "path" : "value",
+               "type" : "Property",
+               "source" : {
+                  "localId" : "302",
+                  "locator" : "57:3-61:15",
+                  "path" : "value",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "301",
+                     "locator" : "57:3-61:9",
+                     "path" : "value",
+                     "type" : "Property",
+                     "source" : {
+                        "localId" : "300",
+                        "locator" : "57:3-61:3",
+                        "type" : "First",
+                        "signature" : [ ],
+                        "source" : {
+                           "localId" : "297",
+                           "locator" : "58:5-60:28",
+                           "type" : "Query",
+                           "source" : [ {
+                              "localId" : "244",
+                              "locator" : "58:5-58:26",
+                              "alias" : "O",
+                              "expression" : {
+                                 "localId" : "247",
+                                 "locator" : "58:5-58:24",
+                                 "dataType" : "{http://hl7.org/fhir}Observation",
+                                 "templateId" : "http://hl7.org/fhir/StructureDefinition/Observation",
+                                 "codeProperty" : "code",
+                                 "codeComparator" : "~",
+                                 "type" : "Retrieve",
+                                 "codes" : {
+                                    "localId" : "255",
+                                    "type" : "ToList",
+                                    "signature" : [ ],
+                                    "operand" : {
+                                       "localId" : "246",
+                                       "locator" : "58:19-58:23",
+                                       "name" : "Age",
+                                       "type" : "CodeRef"
+                                    }
+                                 },
+                                 "include" : [ ],
+                                 "codeFilter" : [ ],
+                                 "dateFilter" : [ ],
+                                 "otherFilter" : [ ]
+                              }
+                           } ],
+                           "let" : [ ],
+                           "relationship" : [ ],
+                           "where" : {
+                              "localId" : "256",
+                              "locator" : "59:7-59:34",
+                              "type" : "Equal",
+                              "signature" : [ {
+                                 "localId" : "263",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }, {
+                                 "localId" : "264",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              } ],
+                              "operand" : [ {
+                                 "localId" : "261",
+                                 "name" : "ToString",
+                                 "libraryName" : "FHIRHelpers",
+                                 "type" : "FunctionRef",
+                                 "signature" : [ {
+                                    "localId" : "262",
+                                    "name" : "{http://hl7.org/fhir}string",
+                                    "type" : "NamedTypeSpecifier"
+                                 } ],
+                                 "operand" : [ {
+                                    "localId" : "259",
+                                    "locator" : "59:13-59:24",
+                                    "path" : "unit",
+                                    "type" : "Property",
+                                    "source" : {
+                                       "localId" : "258",
+                                       "locator" : "59:13-59:19",
+                                       "path" : "value",
+                                       "scope" : "O",
+                                       "type" : "Property"
+                                    }
+                                 } ]
+                              }, {
+                                 "localId" : "260",
+                                 "locator" : "59:28-59:34",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "years",
+                                 "type" : "Literal"
+                              } ]
+                           },
+                           "sort" : {
+                              "localId" : "267",
+                              "locator" : "60:7-60:28",
+                              "by" : [ {
+                                 "localId" : "266",
+                                 "locator" : "60:15-60:28",
+                                 "direction" : "desc",
+                                 "path" : "effective",
+                                 "type" : "ByColumn"
+                              } ]
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "233",
+            "locator" : "104:1-105:53",
+            "name" : "MissingAgeOrBirthdate",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "233",
+                  "s" : [ {
+                     "value" : [ "","define ","MissingAgeOrBirthdate",":\n  " ]
+                  }, {
+                     "r" : "234",
+                     "s" : [ {
+                        "r" : "241",
+                        "s" : [ {
+                           "r" : "239",
+                           "s" : [ {
+                              "value" : [ "AgeInYears","()" ]
+                           } ]
+                        }, {
+                           "value" : [ " is null" ]
+                        } ]
+                     }, {
+                        "value" : [ " and " ]
+                     }, {
+                        "r" : "305",
+                        "s" : [ {
+                           "r" : "304",
+                           "s" : [ {
+                              "value" : [ "MostRecentAgeValue" ]
+                           } ]
+                        }, {
+                           "value" : [ " is null" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "234",
+               "locator" : "105:3-105:53",
+               "type" : "And",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "241",
+                  "locator" : "105:3-105:22",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "239",
+                     "locator" : "105:3-105:14",
+                     "precision" : "Year",
+                     "type" : "CalculateAge",
+                     "signature" : [ {
+                        "localId" : "240",
+                        "name" : "{urn:hl7-org:elm-types:r1}Date",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : {
+                        "localId" : "238",
+                        "path" : "birthDate.value",
+                        "type" : "Property",
+                        "source" : {
+                           "localId" : "237",
+                           "name" : "Patient",
+                           "type" : "ExpressionRef"
+                        }
+                     }
+                  }
+               }, {
+                  "localId" : "305",
+                  "locator" : "105:28-105:53",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "304",
+                     "locator" : "105:28-105:45",
+                     "name" : "MostRecentAgeValue",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "230",
+            "locator" : "107:1-113:12",
+            "name" : "ErrorMissingAgeOrBirthdate",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "230",
+                  "s" : [ {
+                     "value" : [ "","define ","ErrorMissingAgeOrBirthdate",":\n  " ]
+                  }, {
+                     "r" : "231",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "306",
+                        "s" : [ {
+                           "value" : [ "MissingAgeOrBirthdate" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "314",
+                        "s" : [ {
+                           "r" : "307",
+                           "value" : [ "Message","(","true",", ","true",",\n    " ]
+                        }, {
+                           "r" : "309",
+                           "s" : [ {
+                              "value" : [ "'http://example.org/CodeSystem/plan-definition-action-reason-code-system/missingageorbirthdate'" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "310",
+                           "s" : [ {
+                              "value" : [ "'Warning'" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "311",
+                           "s" : [ {
+                              "value" : [ "'Missing age or birth date'" ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     }, {
+                        "r" : "315",
+                        "value" : [ "\n  else ","false" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "231",
+               "locator" : "108:3-113:12",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "306",
+                  "locator" : "108:6-108:26",
+                  "name" : "MissingAgeOrBirthdate",
+                  "type" : "ExpressionRef"
+               },
+               "then" : {
+                  "localId" : "314",
+                  "locator" : "109:8-112:32",
+                  "type" : "Message",
+                  "signature" : [ ],
+                  "source" : {
+                     "localId" : "307",
+                     "locator" : "109:16-109:19",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "true",
+                     "type" : "Literal"
+                  },
+                  "condition" : {
+                     "localId" : "308",
+                     "locator" : "109:22-109:25",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "true",
+                     "type" : "Literal"
+                  },
+                  "code" : {
+                     "localId" : "309",
+                     "locator" : "110:5-110:99",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system/missingageorbirthdate",
+                     "type" : "Literal"
+                  },
+                  "severity" : {
+                     "localId" : "310",
+                     "locator" : "111:5-111:13",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Warning",
+                     "type" : "Literal"
+                  },
+                  "message" : {
+                     "localId" : "311",
+                     "locator" : "112:5-112:31",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                     "value" : "Missing age or birth date",
+                     "type" : "Literal"
+                  }
+               },
+               "else" : {
+                  "localId" : "315",
+                  "locator" : "113:8-113:12",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "value" : "false",
+                  "type" : "Literal"
+               }
+            }
+         }, {
+            "localId" : "228",
+            "locator" : "101:1-102:28",
+            "name" : "IsIncludedAndNotExcludedErrorsHaveOccurred",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "228",
+                  "s" : [ {
+                     "value" : [ "//------------------------------------------------------------------------------\n// ERRORS\n//------------------------------------------------------------------------------\n\n","define ","IsIncludedAndNotExcludedErrorsHaveOccurred",":\n  " ]
+                  }, {
+                     "r" : "316",
+                     "s" : [ {
+                        "value" : [ "ErrorMissingAgeOrBirthdate" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "316",
+               "locator" : "102:3-102:28",
+               "name" : "ErrorMissingAgeOrBirthdate",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "327",
+            "locator" : "53:1-54:106",
+            "name" : "inc-AgeAtLeast18",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "327",
+                  "s" : [ {
+                     "value" : [ "// Age 18 years and older, only use MostRecentAgeValue if no birthdate  \n","define ","\"inc-AgeAtLeast18\"",":\n  " ]
+                  }, {
+                     "r" : "328",
+                     "s" : [ {
+                        "r" : "329",
+                        "s" : [ {
+                           "value" : [ "(" ]
+                        }, {
+                           "r" : "329",
+                           "s" : [ {
+                              "r" : "337",
+                              "s" : [ {
+                                 "r" : "334",
+                                 "s" : [ {
+                                    "value" : [ "AgeInYears","()" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " is not null" ]
+                              } ]
+                           }, {
+                              "value" : [ " and " ]
+                           }, {
+                              "r" : "338",
+                              "s" : [ {
+                                 "r" : "343",
+                                 "s" : [ {
+                                    "value" : [ "AgeInYears","()" ]
+                                 } ]
+                              }, {
+                                 "r" : "345",
+                                 "value" : [ " ",">="," ","18" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     }, {
+                        "value" : [ " or " ]
+                     }, {
+                        "r" : "348",
+                        "s" : [ {
+                           "value" : [ "(" ]
+                        }, {
+                           "r" : "348",
+                           "s" : [ {
+                              "r" : "355",
+                              "s" : [ {
+                                 "r" : "353",
+                                 "s" : [ {
+                                    "value" : [ "AgeInYears","()" ]
+                                 } ]
+                              }, {
+                                 "value" : [ " is null" ]
+                              } ]
+                           }, {
+                              "value" : [ " and " ]
+                           }, {
+                              "r" : "356",
+                              "s" : [ {
+                                 "r" : "357",
+                                 "s" : [ {
+                                    "value" : [ "MostRecentAgeValue" ]
+                                 } ]
+                              }, {
+                                 "r" : "358",
+                                 "value" : [ " ",">="," ","18" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "328",
+               "locator" : "54:3-54:106",
+               "type" : "Or",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "329",
+                  "locator" : "54:3-54:51",
+                  "type" : "And",
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "localId" : "337",
+                     "locator" : "54:4-54:27",
+                     "type" : "Not",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "336",
+                        "locator" : "54:4-54:27",
+                        "type" : "IsNull",
+                        "signature" : [ ],
+                        "operand" : {
+                           "localId" : "334",
+                           "locator" : "54:4-54:15",
+                           "precision" : "Year",
+                           "type" : "CalculateAge",
+                           "signature" : [ {
+                              "localId" : "335",
+                              "name" : "{urn:hl7-org:elm-types:r1}Date",
+                              "type" : "NamedTypeSpecifier"
+                           } ],
+                           "operand" : {
+                              "localId" : "333",
+                              "path" : "birthDate.value",
+                              "type" : "Property",
+                              "source" : {
+                                 "localId" : "332",
+                                 "name" : "Patient",
+                                 "type" : "ExpressionRef"
+                              }
+                           }
+                        }
+                     }
+                  }, {
+                     "localId" : "338",
+                     "locator" : "54:33-54:50",
+                     "type" : "GreaterOrEqual",
+                     "signature" : [ {
+                        "localId" : "346",
+                        "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "type" : "NamedTypeSpecifier"
+                     }, {
+                        "localId" : "347",
+                        "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : [ {
+                        "localId" : "343",
+                        "locator" : "54:33-54:44",
+                        "precision" : "Year",
+                        "type" : "CalculateAge",
+                        "signature" : [ {
+                           "localId" : "344",
+                           "name" : "{urn:hl7-org:elm-types:r1}Date",
+                           "type" : "NamedTypeSpecifier"
+                        } ],
+                        "operand" : {
+                           "localId" : "342",
+                           "path" : "birthDate.value",
+                           "type" : "Property",
+                           "source" : {
+                              "localId" : "341",
+                              "name" : "Patient",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     }, {
+                        "localId" : "345",
+                        "locator" : "54:49-54:50",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                        "value" : "18",
+                        "type" : "Literal"
+                     } ]
+                  } ]
+               }, {
+                  "localId" : "348",
+                  "locator" : "54:56-54:106",
+                  "type" : "And",
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "localId" : "355",
+                     "locator" : "54:57-54:76",
+                     "type" : "IsNull",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "353",
+                        "locator" : "54:57-54:68",
+                        "precision" : "Year",
+                        "type" : "CalculateAge",
+                        "signature" : [ {
+                           "localId" : "354",
+                           "name" : "{urn:hl7-org:elm-types:r1}Date",
+                           "type" : "NamedTypeSpecifier"
+                        } ],
+                        "operand" : {
+                           "localId" : "352",
+                           "path" : "birthDate.value",
+                           "type" : "Property",
+                           "source" : {
+                              "localId" : "351",
+                              "name" : "Patient",
+                              "type" : "ExpressionRef"
+                           }
+                        }
+                     }
+                  }, {
+                     "localId" : "356",
+                     "locator" : "54:82-54:105",
+                     "type" : "GreaterOrEqual",
+                     "signature" : [ {
+                        "localId" : "362",
+                        "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                        "type" : "NamedTypeSpecifier"
+                     }, {
+                        "localId" : "363",
+                        "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : [ {
+                        "localId" : "357",
+                        "locator" : "54:82-54:99",
+                        "name" : "MostRecentAgeValue",
+                        "type" : "ExpressionRef"
+                     }, {
+                        "localId" : "360",
+                        "type" : "ToDecimal",
+                        "signature" : [ {
+                           "localId" : "361",
+                           "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "type" : "NamedTypeSpecifier"
+                        } ],
+                        "operand" : {
+                           "localId" : "358",
+                           "locator" : "54:104-54:105",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "18",
+                           "type" : "Literal"
+                        }
+                     } ]
+                  } ]
+               } ]
+            }
+         }, {
+            "localId" : "366",
+            "locator" : "63:1-64:57",
+            "name" : "inc-femaleortransmale",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "366",
+                  "s" : [ {
+                     "value" : [ "","define ","\"inc-femaleortransmale\"",":\n  " ]
+                  }, {
+                     "r" : "367",
+                     "s" : [ {
+                        "r" : "369",
+                        "s" : [ {
+                           "r" : "368",
+                           "s" : [ {
+                              "value" : [ "Events" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "369",
+                           "s" : [ {
+                              "value" : [ "\"eve-female\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " or " ]
+                     }, {
+                        "r" : "371",
+                        "s" : [ {
+                           "r" : "370",
+                           "s" : [ {
+                              "value" : [ "DataElements" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "371",
+                           "s" : [ {
+                              "value" : [ "\"TransgenderFemale\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "367",
+               "locator" : "64:3-64:57",
+               "type" : "Or",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "369",
+                  "locator" : "64:3-64:21",
+                  "name" : "eve-female",
+                  "libraryName" : "Events",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "371",
+                  "locator" : "64:26-64:57",
+                  "name" : "TransgenderFemale",
+                  "libraryName" : "DataElements",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "localId" : "324",
+            "locator" : "49:1-50:48",
+            "name" : "IsIncluded",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "324",
+                  "s" : [ {
+                     "value" : [ "// INCLUSIONS\n","define ","IsIncluded",":\n  " ]
+                  }, {
+                     "r" : "325",
+                     "s" : [ {
+                        "r" : "364",
+                        "s" : [ {
+                           "value" : [ "\"inc-AgeAtLeast18\"" ]
+                        } ]
+                     }, {
+                        "value" : [ " and " ]
+                     }, {
+                        "r" : "372",
+                        "s" : [ {
+                           "value" : [ "\"inc-femaleortransmale\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "325",
+               "locator" : "50:3-50:48",
+               "type" : "And",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "364",
+                  "locator" : "50:3-50:20",
+                  "name" : "inc-AgeAtLeast18",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "372",
+                  "locator" : "50:26-50:48",
+                  "name" : "inc-femaleortransmale",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "localId" : "376",
+            "locator" : "67:1-68:7",
+            "name" : "Excluded",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "376",
+                  "s" : [ {
+                     "r" : "377",
+                     "value" : [ "// EXCLUSIONS\n","define ","Excluded",":\n  ","false" ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "377",
+               "locator" : "68:3-68:7",
+               "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "value" : "false",
+               "type" : "Literal"
+            }
+         }, {
+            "localId" : "321",
+            "locator" : "45:1-46:29",
+            "name" : "IsIncludedAndNotExcluded",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "321",
+                  "s" : [ {
+                     "value" : [ "","define ","IsIncludedAndNotExcluded",":\n  " ]
+                  }, {
+                     "r" : "322",
+                     "s" : [ {
+                        "r" : "373",
+                        "s" : [ {
+                           "value" : [ "IsIncluded" ]
+                        } ]
+                     }, {
+                        "value" : [ " and " ]
+                     }, {
+                        "r" : "374",
+                        "s" : [ {
+                           "value" : [ "not " ]
+                        }, {
+                           "r" : "378",
+                           "s" : [ {
+                              "value" : [ "Excluded" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "322",
+               "locator" : "46:3-46:29",
+               "type" : "And",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "373",
+                  "locator" : "46:3-46:12",
+                  "name" : "IsIncluded",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "374",
+                  "locator" : "46:18-46:29",
+                  "type" : "Not",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "378",
+                     "locator" : "46:22-46:29",
+                     "name" : "Excluded",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "225",
+            "locator" : "42:1-43:85",
+            "name" : "CheckIsIncludedAndNotExcluded",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "225",
+                  "s" : [ {
+                     "value" : [ "//------------------------------------------------------------------------------\n// CDS Logic\n//------------------------------------------------------------------------------\n\n","define ","CheckIsIncludedAndNotExcluded",":\n  " ]
+                  }, {
+                     "r" : "226",
+                     "s" : [ {
+                        "r" : "319",
+                        "s" : [ {
+                           "r" : "317",
+                           "s" : [ {
+                              "value" : [ "IsIncludedAndNotExcludedErrorsHaveOccurred" ]
+                           } ]
+                        }, {
+                           "value" : [ " is not true" ]
+                        } ]
+                     }, {
+                        "value" : [ " and " ]
+                     }, {
+                        "r" : "379",
+                        "s" : [ {
+                           "value" : [ "IsIncludedAndNotExcluded" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "226",
+               "locator" : "43:3-43:85",
+               "type" : "And",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "319",
+                  "locator" : "43:3-43:56",
+                  "type" : "Not",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "318",
+                     "locator" : "43:3-43:56",
+                     "type" : "IsTrue",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "317",
+                        "locator" : "43:3-43:44",
+                        "name" : "IsIncludedAndNotExcludedErrorsHaveOccurred",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               }, {
+                  "localId" : "379",
+                  "locator" : "43:62-43:85",
+                  "name" : "IsIncludedAndNotExcluded",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         }, {
+            "localId" : "381",
+            "locator" : "74:1-83:78",
+            "name" : "flow-ScreeningEligible",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "381",
+                  "s" : [ {
+                     "value" : [ "//------------------------------------------------------------------------------\n// RECOMMENDATIONS\n//------------------------------------------------------------------------------\n\n","define ","\"flow-ScreeningEligible\"",":\n  " ]
+                  }, {
+                     "r" : "382",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "386",
+                        "s" : [ {
+                           "r" : "384",
+                           "s" : [ {
+                              "r" : "383",
+                              "s" : [ {
+                                 "value" : [ "Events" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "384",
+                              "s" : [ {
+                                 "value" : [ "\"eve-female\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is not true" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "387",
+                        "s" : [ {
+                           "r" : "389",
+                           "s" : [ {
+                              "r" : "388",
+                              "s" : [ {
+                                 "value" : [ "Actions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "389",
+                              "s" : [ {
+                                 "value" : [ "\"end-noteligible-notassignedfemaleatbirth\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " as " ]
+                        }, {
+                           "r" : "390",
+                           "s" : [ {
+                              "value" : [ "Tuple{" ]
+                           }, {
+                              "r" : "391",
+                              "s" : [ {
+                                 "value" : [ "result"," " ]
+                              }, {
+                                 "r" : "392",
+                                 "s" : [ {
+                                    "value" : [ "Boolean" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ", " ]
+                           }, {
+                              "r" : "393",
+                              "s" : [ {
+                                 "value" : [ "code"," " ]
+                              }, {
+                                 "r" : "394",
+                                 "s" : [ {
+                                    "value" : [ "Code" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ", " ]
+                           }, {
+                              "r" : "395",
+                              "s" : [ {
+                                 "value" : [ "reason"," " ]
+                              }, {
+                                 "r" : "396",
+                                 "s" : [ {
+                                    "value" : [ "Code" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  else " ]
+                     }, {
+                        "r" : "397",
+                        "s" : [ {
+                           "value" : [ "if " ]
+                        }, {
+                           "r" : "400",
+                           "s" : [ {
+                              "r" : "399",
+                              "s" : [ {
+                                 "r" : "398",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "399",
+                                 "s" : [ {
+                                    "value" : [ "\"eve-breastca\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " is true" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n  then " ]
+                        }, {
+                           "r" : "401",
+                           "s" : [ {
+                              "r" : "403",
+                              "s" : [ {
+                                 "r" : "402",
+                                 "s" : [ {
+                                    "value" : [ "Actions" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "403",
+                                 "s" : [ {
+                                    "value" : [ "\"end-noteligible-currentbreastcancer\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " as " ]
+                           }, {
+                              "r" : "404",
+                              "s" : [ {
+                                 "value" : [ "Tuple{" ]
+                              }, {
+                                 "r" : "405",
+                                 "s" : [ {
+                                    "value" : [ "result"," " ]
+                                 }, {
+                                    "r" : "406",
+                                    "s" : [ {
+                                       "value" : [ "Boolean" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ", " ]
+                              }, {
+                                 "r" : "407",
+                                 "s" : [ {
+                                    "value" : [ "code"," " ]
+                                 }, {
+                                    "r" : "408",
+                                    "s" : [ {
+                                       "value" : [ "Code" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ", " ]
+                              }, {
+                                 "r" : "409",
+                                 "s" : [ {
+                                    "value" : [ "reason"," " ]
+                                 }, {
+                                    "r" : "410",
+                                    "s" : [ {
+                                       "value" : [ "Code" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "}" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ "\n  else " ]
+                        }, {
+                           "r" : "411",
+                           "s" : [ {
+                              "value" : [ "if " ]
+                           }, {
+                              "r" : "414",
+                              "s" : [ {
+                                 "r" : "413",
+                                 "s" : [ {
+                                    "r" : "412",
+                                    "s" : [ {
+                                       "value" : [ "Events" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "413",
+                                    "s" : [ {
+                                       "value" : [ "\"eve-mastectomy\"" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " is true" ]
+                              } ]
+                           }, {
+                              "value" : [ "\n  then " ]
+                           }, {
+                              "r" : "415",
+                              "s" : [ {
+                                 "r" : "417",
+                                 "s" : [ {
+                                    "r" : "416",
+                                    "s" : [ {
+                                       "value" : [ "Actions" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "417",
+                                    "s" : [ {
+                                       "value" : [ "\"end-noteligible-bilatmastectomy\"" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " as " ]
+                              }, {
+                                 "r" : "418",
+                                 "s" : [ {
+                                    "value" : [ "Tuple{" ]
+                                 }, {
+                                    "r" : "419",
+                                    "s" : [ {
+                                       "value" : [ "result"," " ]
+                                    }, {
+                                       "r" : "420",
+                                       "s" : [ {
+                                          "value" : [ "Boolean" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ", " ]
+                                 }, {
+                                    "r" : "421",
+                                    "s" : [ {
+                                       "value" : [ "code"," " ]
+                                    }, {
+                                       "r" : "422",
+                                       "s" : [ {
+                                          "value" : [ "Code" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ", " ]
+                                 }, {
+                                    "r" : "423",
+                                    "s" : [ {
+                                       "value" : [ "reason"," " ]
+                                    }, {
+                                       "r" : "424",
+                                       "s" : [ {
+                                          "value" : [ "Code" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "}" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "  \n  else " ]
+                           }, {
+                              "r" : "425",
+                              "s" : [ {
+                                 "value" : [ "if " ]
+                              }, {
+                                 "r" : "426",
+                                 "s" : [ {
+                                    "r" : "429",
+                                    "s" : [ {
+                                       "r" : "428",
+                                       "s" : [ {
+                                          "r" : "427",
+                                          "s" : [ {
+                                             "value" : [ "Events" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "428",
+                                          "s" : [ {
+                                             "value" : [ "\"eve-breastsymptoms\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " is true" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " or " ]
+                                 }, {
+                                    "r" : "432",
+                                    "s" : [ {
+                                       "r" : "431",
+                                       "s" : [ {
+                                          "r" : "430",
+                                          "s" : [ {
+                                             "value" : [ "Events" ]
+                                          } ]
+                                       }, {
+                                          "value" : [ "." ]
+                                       }, {
+                                          "r" : "431",
+                                          "s" : [ {
+                                             "value" : [ "\"eve-breastfindings\"" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ " is true" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "\n  then " ]
+                              }, {
+                                 "r" : "433",
+                                 "s" : [ {
+                                    "r" : "435",
+                                    "s" : [ {
+                                       "r" : "434",
+                                       "s" : [ {
+                                          "value" : [ "Actions" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "435",
+                                       "s" : [ {
+                                          "value" : [ "\"act-dxtesting\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " as " ]
+                                 }, {
+                                    "r" : "436",
+                                    "s" : [ {
+                                       "value" : [ "Tuple{" ]
+                                    }, {
+                                       "r" : "437",
+                                       "s" : [ {
+                                          "value" : [ "result"," " ]
+                                       }, {
+                                          "r" : "438",
+                                          "s" : [ {
+                                             "value" : [ "Boolean" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ ", " ]
+                                    }, {
+                                       "r" : "439",
+                                       "s" : [ {
+                                          "value" : [ "code"," " ]
+                                       }, {
+                                          "r" : "440",
+                                          "s" : [ {
+                                             "value" : [ "Code" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ ", " ]
+                                    }, {
+                                       "r" : "441",
+                                       "s" : [ {
+                                          "value" : [ "reason"," " ]
+                                       }, {
+                                          "r" : "442",
+                                          "s" : [ {
+                                             "value" : [ "Code" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "}" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ "    \n  else " ]
+                              }, {
+                                 "r" : "443",
+                                 "s" : [ {
+                                    "r" : "445",
+                                    "s" : [ {
+                                       "r" : "444",
+                                       "s" : [ {
+                                          "value" : [ "Actions" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "445",
+                                       "s" : [ {
+                                          "value" : [ "\"act-eligible\"" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ " as " ]
+                                 }, {
+                                    "r" : "446",
+                                    "s" : [ {
+                                       "value" : [ "Tuple{" ]
+                                    }, {
+                                       "r" : "447",
+                                       "s" : [ {
+                                          "value" : [ "result"," " ]
+                                       }, {
+                                          "r" : "448",
+                                          "s" : [ {
+                                             "value" : [ "Boolean" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ ", " ]
+                                    }, {
+                                       "r" : "449",
+                                       "s" : [ {
+                                          "value" : [ "code"," " ]
+                                       }, {
+                                          "r" : "450",
+                                          "s" : [ {
+                                             "value" : [ "Code" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ ", " ]
+                                    }, {
+                                       "r" : "451",
+                                       "s" : [ {
+                                          "value" : [ "reason"," " ]
+                                       }, {
+                                          "r" : "452",
+                                          "s" : [ {
+                                             "value" : [ "Code" ]
+                                          } ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "}" ]
+                                    } ]
+                                 } ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "382",
+               "locator" : "75:3-83:78",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "386",
+                  "locator" : "75:6-75:36",
+                  "type" : "Not",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "385",
+                     "locator" : "75:6-75:36",
+                     "type" : "IsTrue",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "384",
+                        "locator" : "75:6-75:24",
+                        "name" : "eve-female",
+                        "libraryName" : "Events",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               },
+               "then" : {
+                  "localId" : "387",
+                  "locator" : "76:8-76:106",
+                  "strict" : false,
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "389",
+                     "locator" : "76:8-76:57",
+                     "name" : "end-noteligible-notassignedfemaleatbirth",
+                     "libraryName" : "Actions",
+                     "type" : "ExpressionRef"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "390",
+                     "locator" : "76:62-76:106",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "391",
+                        "locator" : "76:68-76:81",
+                        "name" : "result",
+                        "elementType" : {
+                           "localId" : "392",
+                           "locator" : "76:75-76:81",
+                           "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "393",
+                        "locator" : "76:84-76:92",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "394",
+                           "locator" : "76:89-76:92",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "395",
+                        "locator" : "76:95-76:105",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "396",
+                           "locator" : "76:102-76:105",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }
+               },
+               "else" : {
+                  "localId" : "397",
+                  "locator" : "77:8-83:78",
+                  "type" : "If",
+                  "condition" : {
+                     "localId" : "400",
+                     "locator" : "77:11-77:39",
+                     "type" : "IsTrue",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "399",
+                        "locator" : "77:11-77:31",
+                        "name" : "eve-breastca",
+                        "libraryName" : "Events",
+                        "type" : "ExpressionRef"
+                     }
+                  },
+                  "then" : {
+                     "localId" : "401",
+                     "locator" : "78:8-78:101",
+                     "strict" : false,
+                     "type" : "As",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "403",
+                        "locator" : "78:8-78:52",
+                        "name" : "end-noteligible-currentbreastcancer",
+                        "libraryName" : "Actions",
+                        "type" : "ExpressionRef"
+                     },
+                     "asTypeSpecifier" : {
+                        "localId" : "404",
+                        "locator" : "78:57-78:101",
+                        "type" : "TupleTypeSpecifier",
+                        "element" : [ {
+                           "localId" : "405",
+                           "locator" : "78:63-78:76",
+                           "name" : "result",
+                           "elementType" : {
+                              "localId" : "406",
+                              "locator" : "78:70-78:76",
+                              "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }, {
+                           "localId" : "407",
+                           "locator" : "78:79-78:87",
+                           "name" : "code",
+                           "elementType" : {
+                              "localId" : "408",
+                              "locator" : "78:84-78:87",
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        }, {
+                           "localId" : "409",
+                           "locator" : "78:90-78:100",
+                           "name" : "reason",
+                           "elementType" : {
+                              "localId" : "410",
+                              "locator" : "78:97-78:100",
+                              "name" : "{urn:hl7-org:elm-types:r1}Code",
+                              "type" : "NamedTypeSpecifier"
+                           }
+                        } ]
+                     }
+                  },
+                  "else" : {
+                     "localId" : "411",
+                     "locator" : "79:8-83:78",
+                     "type" : "If",
+                     "condition" : {
+                        "localId" : "414",
+                        "locator" : "79:11-79:41",
+                        "type" : "IsTrue",
+                        "signature" : [ ],
+                        "operand" : {
+                           "localId" : "413",
+                           "locator" : "79:11-79:33",
+                           "name" : "eve-mastectomy",
+                           "libraryName" : "Events",
+                           "type" : "ExpressionRef"
+                        }
+                     },
+                     "then" : {
+                        "localId" : "415",
+                        "locator" : "80:8-80:97",
+                        "strict" : false,
+                        "type" : "As",
+                        "signature" : [ ],
+                        "operand" : {
+                           "localId" : "417",
+                           "locator" : "80:8-80:48",
+                           "name" : "end-noteligible-bilatmastectomy",
+                           "libraryName" : "Actions",
+                           "type" : "ExpressionRef"
+                        },
+                        "asTypeSpecifier" : {
+                           "localId" : "418",
+                           "locator" : "80:53-80:97",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "419",
+                              "locator" : "80:59-80:72",
+                              "name" : "result",
+                              "elementType" : {
+                                 "localId" : "420",
+                                 "locator" : "80:66-80:72",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "421",
+                              "locator" : "80:75-80:83",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "422",
+                                 "locator" : "80:80-80:83",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "423",
+                              "locator" : "80:86-80:96",
+                              "name" : "reason",
+                              "elementType" : {
+                                 "localId" : "424",
+                                 "locator" : "80:93-80:96",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     },
+                     "else" : {
+                        "localId" : "425",
+                        "locator" : "81:8-83:78",
+                        "type" : "If",
+                        "condition" : {
+                           "localId" : "426",
+                           "locator" : "81:11-81:84",
+                           "type" : "Or",
+                           "signature" : [ ],
+                           "operand" : [ {
+                              "localId" : "429",
+                              "locator" : "81:11-81:45",
+                              "type" : "IsTrue",
+                              "signature" : [ ],
+                              "operand" : {
+                                 "localId" : "428",
+                                 "locator" : "81:11-81:37",
+                                 "name" : "eve-breastsymptoms",
+                                 "libraryName" : "Events",
+                                 "type" : "ExpressionRef"
+                              }
+                           }, {
+                              "localId" : "432",
+                              "locator" : "81:50-81:84",
+                              "type" : "IsTrue",
+                              "signature" : [ ],
+                              "operand" : {
+                                 "localId" : "431",
+                                 "locator" : "81:50-81:76",
+                                 "name" : "eve-breastfindings",
+                                 "libraryName" : "Events",
+                                 "type" : "ExpressionRef"
+                              }
+                           } ]
+                        },
+                        "then" : {
+                           "localId" : "433",
+                           "locator" : "82:8-82:79",
+                           "strict" : false,
+                           "type" : "As",
+                           "signature" : [ ],
+                           "operand" : {
+                              "localId" : "435",
+                              "locator" : "82:8-82:30",
+                              "name" : "act-dxtesting",
+                              "libraryName" : "Actions",
+                              "type" : "ExpressionRef"
+                           },
+                           "asTypeSpecifier" : {
+                              "localId" : "436",
+                              "locator" : "82:35-82:79",
+                              "type" : "TupleTypeSpecifier",
+                              "element" : [ {
+                                 "localId" : "437",
+                                 "locator" : "82:41-82:54",
+                                 "name" : "result",
+                                 "elementType" : {
+                                    "localId" : "438",
+                                    "locator" : "82:48-82:54",
+                                    "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }, {
+                                 "localId" : "439",
+                                 "locator" : "82:57-82:65",
+                                 "name" : "code",
+                                 "elementType" : {
+                                    "localId" : "440",
+                                    "locator" : "82:62-82:65",
+                                    "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }, {
+                                 "localId" : "441",
+                                 "locator" : "82:68-82:78",
+                                 "name" : "reason",
+                                 "elementType" : {
+                                    "localId" : "442",
+                                    "locator" : "82:75-82:78",
+                                    "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              } ]
+                           }
+                        },
+                        "else" : {
+                           "localId" : "443",
+                           "locator" : "83:8-83:78",
+                           "strict" : false,
+                           "type" : "As",
+                           "signature" : [ ],
+                           "operand" : {
+                              "localId" : "445",
+                              "locator" : "83:8-83:29",
+                              "name" : "act-eligible",
+                              "libraryName" : "Actions",
+                              "type" : "ExpressionRef"
+                           },
+                           "asTypeSpecifier" : {
+                              "localId" : "446",
+                              "locator" : "83:34-83:78",
+                              "type" : "TupleTypeSpecifier",
+                              "element" : [ {
+                                 "localId" : "447",
+                                 "locator" : "83:40-83:53",
+                                 "name" : "result",
+                                 "elementType" : {
+                                    "localId" : "448",
+                                    "locator" : "83:47-83:53",
+                                    "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }, {
+                                 "localId" : "449",
+                                 "locator" : "83:56-83:64",
+                                 "name" : "code",
+                                 "elementType" : {
+                                    "localId" : "450",
+                                    "locator" : "83:61-83:64",
+                                    "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }, {
+                                 "localId" : "451",
+                                 "locator" : "83:67-83:77",
+                                 "name" : "reason",
+                                 "elementType" : {
+                                    "localId" : "452",
+                                    "locator" : "83:74-83:77",
+                                    "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              } ]
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "454",
+            "locator" : "85:1-86:41",
+            "name" : "IsScreeningEligible",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "454",
+                  "s" : [ {
+                     "value" : [ "","define ","IsScreeningEligible",":\n  " ]
+                  }, {
+                     "r" : "457",
+                     "s" : [ {
+                        "r" : "456",
+                        "s" : [ {
+                           "r" : "455",
+                           "s" : [ {
+                              "value" : [ "\"flow-ScreeningEligible\"" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "456",
+                           "s" : [ {
+                              "value" : [ "result" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " is true" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "457",
+               "locator" : "86:3-86:41",
+               "type" : "IsTrue",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "456",
+                  "locator" : "86:3-86:33",
+                  "path" : "result",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "455",
+                     "locator" : "86:3-86:26",
+                     "name" : "flow-ScreeningEligible",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "459",
+            "locator" : "88:1-89:42",
+            "name" : "IsNotScreeningEligible",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "459",
+                  "s" : [ {
+                     "value" : [ "","define ","IsNotScreeningEligible",":\n  " ]
+                  }, {
+                     "r" : "462",
+                     "s" : [ {
+                        "r" : "461",
+                        "s" : [ {
+                           "r" : "460",
+                           "s" : [ {
+                              "value" : [ "\"flow-ScreeningEligible\"" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "461",
+                           "s" : [ {
+                              "value" : [ "result" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " is false" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "462",
+               "locator" : "89:3-89:42",
+               "type" : "IsFalse",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "461",
+                  "locator" : "89:3-89:33",
+                  "path" : "result",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "460",
+                     "locator" : "89:3-89:26",
+                     "name" : "flow-ScreeningEligible",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "464",
+            "locator" : "91:1-92:31",
+            "name" : "ScreeningEligibleCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "464",
+                  "s" : [ {
+                     "value" : [ "","define ","ScreeningEligibleCode",":\n  " ]
+                  }, {
+                     "r" : "466",
+                     "s" : [ {
+                        "r" : "465",
+                        "s" : [ {
+                           "value" : [ "\"flow-ScreeningEligible\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "466",
+                        "s" : [ {
+                           "value" : [ "code" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "466",
+               "locator" : "92:3-92:31",
+               "path" : "code",
+               "type" : "Property",
+               "source" : {
+                  "localId" : "465",
+                  "locator" : "92:3-92:26",
+                  "name" : "flow-ScreeningEligible",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "468",
+            "locator" : "94:1-95:33",
+            "name" : "ScreeningEligibleReason",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "468",
+                  "s" : [ {
+                     "value" : [ "","define ","ScreeningEligibleReason",":\n  " ]
+                  }, {
+                     "r" : "470",
+                     "s" : [ {
+                        "r" : "469",
+                        "s" : [ {
+                           "value" : [ "\"flow-ScreeningEligible\"" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "470",
+                        "s" : [ {
+                           "value" : [ "reason" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "470",
+               "locator" : "95:3-95:33",
+               "path" : "reason",
+               "type" : "Property",
+               "source" : {
+                  "localId" : "469",
+                  "locator" : "95:3-95:26",
+                  "name" : "flow-ScreeningEligible",
+                  "type" : "ExpressionRef"
+               }
+            }
+         } ]
+      }
+   }
+}

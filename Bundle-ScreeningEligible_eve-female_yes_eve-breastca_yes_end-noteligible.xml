@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="ScreeningEligible_eve-female_yes_eve-breastca_yes_end-noteligible"/>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/44"/>
+    <resource>
+      <RequestGroup>
+        <id value="44"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="RequestGroup_44"> </a><p class="res-header-id"><b>Generated Narrative: RequestGroup 44</b></p><a name="44"> </a><a name="hc44"> </a><a name="44-en-US"> </a><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Bundle-eve-female_yes_eve-breastca_yes_end-noteligible.html#Patient_e3f72993-baa6-4e4d-a54c-38d4d985e92a">Joanne Smith</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>45</blockquote><p><b>title</b>: Screening Eligible Actions</p><p><b>description</b>: Top level action that defines trigger and criteria for inclusion and exclusion.</p><h3>Documentations</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td></tr><tr><td style="display: none">*</td><td>Documentation</td><td>Inclusions</td><td>Appropriate for individuals &gt;= age 18 years</td></tr></table><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>Not Screening Eligible</blockquote><p><b>title</b>: Not Screening Eligible</p><p><b>description</b>: Patient is not eligible for screening</p><p><b>resource</b>: <a href="Bundle-ScreeningEligible_eve-female_yes_eve-breastca_yes_end-noteligible.html#CommunicationRequest_47">Bundle: type = collection</a></p></blockquote></blockquote></div>
+        </text>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/e3f72993-baa6-4e4d-a54c-38d4d985e92a"/>
+          <display value="Joanne Smith"/>
+        </subject>
+        <action id="45">
+          <title value="Screening Eligible Actions"/>
+          <description value="Top level action that defines trigger and criteria for inclusion and exclusion."/>
+          <documentation>
+            <type value="documentation"/>
+            <label value="Inclusions"/>
+            <display value="Appropriate for individuals &gt;= age 18 years"/>
+          </documentation>
+          <action id="Not Screening Eligible">
+            <title value="Not Screening Eligible"/>
+            <description value="Patient is not eligible for screening"/>
+            <resource>
+              <reference value="CommunicationRequest/47"/>
+            </resource>
+          </action>
+        </action>
+      </RequestGroup>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/47"/>
+    <resource>
+      <CommunicationRequest>
+        <id value="47"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CommunicationRequest_47"> </a><p class="res-header-id"><b>Generated Narrative: CommunicationRequest 47</b></p><a name="47"> </a><a name="hc47"> </a><a name="47-en-US"> </a><p><b>basedOn</b>: <a href="ActivityDefinition-CommunicateNotEligible.html">Communicate Not Eligible</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href="Bundle-eve-female_yes_eve-breastca_yes_end-noteligible.html#Patient_e3f72993-baa6-4e4d-a54c-38d4d985e92a">Joanne Smith</a></p><h3>Payloads</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Content[x]</b></td></tr><tr><td style="display: none">*</td><td>Not eligible for screening</td></tr></table><p><b>reasonCode</b>: <span title="Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system currentbreastcancer}">Current breast cancer</span></p></div>
+        </text>
+        <basedOn>
+          <reference value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateNotEligible"/>
+        </basedOn>
+        <status value="option"/>
+        <subject>
+          <reference value="Patient/e3f72993-baa6-4e4d-a54c-38d4d985e92a"/>
+          <display value="Joanne Smith"/>
+        </subject>
+        <payload>
+          <contentString value="Not eligible for screening"/>
+        </payload>
+        <reasonCode>
+          <coding>
+            <system value="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"/>
+            <code value="currentbreastcancer"/>
+            <display value="Current breast cancer"/>
+          </coding>
+        </reasonCode>
+      </CommunicationRequest>
+    </resource>
+  </entry>
+</Bundle>
