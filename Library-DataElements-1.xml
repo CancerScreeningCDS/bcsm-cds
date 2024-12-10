@@ -1,0 +1,3542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="1190">
+         <a:s>library DataElements version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="DataElements" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="3:1-3:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="5:1-5:63" localIdentifier="C3F" path="http://cancerscreeningcds.github.io/bcsm-cds/CDSConnectCommonsforFHIRv401" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>CDSConnectCommonsforFHIRv401</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called C3F</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="6:1-6:56" localIdentifier="Common" path="http://cancerscreeningcds.github.io/bcsm-cds/CSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>CSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Common</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="7:1-7:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <parameters>
+      <def localId="259" locator="60:1-60:51" name="ObservationLookbackPeriod" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="259">
+               <a:s>//------------------------------------------------------------------------------
+// PARAMETERS
+//------------------------------------------------------------------------------
+
+parameter ObservationLookbackPeriod default </a:s>
+               <a:s r="260">
+                  <a:s>14 days</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <default localId="260" locator="60:45-60:51" value="14" unit="days" xsi:type="Quantity"/>
+      </def>
+      <def localId="261" locator="61:1-61:45" name="SymptomaticLookBack" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="261">
+               <a:s>parameter SymptomaticLookBack default </a:s>
+               <a:s r="262">
+                  <a:s>14 days</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <default localId="262" locator="61:39-61:45" value="14" unit="days" xsi:type="Quantity"/>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="210" locator="13:1-13:38" name="LOINC" id="http://loinc.org" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>//------------------------------------------------------------------------------
+// CODE SYSTEMS, VALUE SETS, AND CODES
+//------------------------------------------------------------------------------
+
+codesystem &quot;LOINC&quot;: 'http://loinc.org'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="211" locator="14:1-14:48" name="SNOMED-CT" id="http://snomed.info/sct" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>codesystem &quot;SNOMED-CT&quot;: 'http://snomed.info/sct'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="212" locator="15:1-15:66" name="RXNORM" id="http://www.nlm.nih.gov/research/umls/rxnorm" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>codesystem &quot;RXNORM&quot;: 'http://www.nlm.nih.gov/research/umls/rxnorm'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="213" locator="16:1-16:54" name="ICD-9" id="http://hl7.org/fhir/sid/icd-9-cm" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>codesystem &quot;ICD-9&quot;: 'http://hl7.org/fhir/sid/icd-9-cm'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="214" locator="17:1-17:56" name="ICD-10" id="http://hl7.org/fhir/sid/icd-10-cm" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="214">
+               <a:s>codesystem &quot;ICD-10&quot;: 'http://hl7.org/fhir/sid/icd-10-cm'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="215" locator="18:1-18:67" name="GENDER-IDENTITY" id="http://hl7.org/fhir/gender-identity" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="215">
+               <a:s>codesystem &quot;GENDER-IDENTITY&quot;: 'http://hl7.org/fhir/gender-identity'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="216" locator="19:1-19:87" name="CONDCLINSTATUS" id="http://terminology.hl7.org/CodeSystem/condition-clinical" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="216">
+               <a:s>codesystem &quot;CONDCLINSTATUS&quot;: 'http://terminology.hl7.org/CodeSystem/condition-clinical'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="217" locator="20:1-20:111" name="LOCAL" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="217">
+               <a:s>codesystem &quot;LOCAL&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <valueSets>
+      <def localId="230" locator="31:1-31:104" name="INVASIVE BREAST CANCER" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="230">
+               <a:s>// Breast diagnoses, procedures, and observations
+valueset &quot;INVASIVE BREAST CANCER&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="231" locator="33:1-33:116" name="NON-INVASIVE BREAST CANCER" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="231">
+               <a:s>// TODO: replace placeholder value set OID
+valueset &quot;NON-INVASIVE BREAST CANCER&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="232" locator="34:1-34:112" name="BILATERAL MASTECTOMY" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1068" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="232">
+               <a:s>valueset &quot;BILATERAL MASTECTOMY&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1068'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="233" locator="35:1-35:118" name="LEFT UNILATERAL MASTECTOMY" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1069" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="233">
+               <a:s>valueset &quot;LEFT UNILATERAL MASTECTOMY&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1069'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="234" locator="36:1-36:119" name="RIGHT UNILATERAL MASTECTOMY" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1070" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="234">
+               <a:s>valueset &quot;RIGHT UNILATERAL MASTECTOMY&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1070'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="235" locator="37:1-37:113" name="UNILATERAL MASTECTOMY" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1071" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="235">
+               <a:s>valueset &quot;UNILATERAL MASTECTOMY&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1071'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="236" locator="38:1-38:122" name="BILATERAL MASTECTOMY PROCEDURE" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1005" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="236">
+               <a:s>valueset &quot;BILATERAL MASTECTOMY PROCEDURE&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1005'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="237" locator="39:1-39:128" name="LEFT UNILATERAL MASTECTOMY PROCEDURE" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1133" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="237">
+               <a:s>valueset &quot;LEFT UNILATERAL MASTECTOMY PROCEDURE&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1133'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="238" locator="40:1-40:129" name="RIGHT UNILATERAL MASTECTOMY PROCEDURE" id="http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1134" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="238">
+               <a:s>valueset &quot;RIGHT UNILATERAL MASTECTOMY PROCEDURE&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1134'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </valueSets>
+   <codes>
+      <def localId="218" locator="22:1-22:83" name="Condition inactive code" id="inactive" display="Inactive" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="218">
+               <a:s>code &quot;Condition inactive code&quot;: 'inactive' from </a:s>
+               <a:s r="219">
+                  <a:s>&quot;CONDCLINSTATUS&quot;</a:s>
+               </a:s>
+               <a:s> display 'Inactive'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="219" locator="22:49-22:64" name="CONDCLINSTATUS"/>
+      </def>
+      <def localId="220" locator="23:1-23:86" name="Condition remission code" id="remission" display="Remission" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="220">
+               <a:s>code &quot;Condition remission code&quot;: 'remission' from </a:s>
+               <a:s r="221">
+                  <a:s>&quot;CONDCLINSTATUS&quot;</a:s>
+               </a:s>
+               <a:s> display 'Remission'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="221" locator="23:51-23:66" name="CONDCLINSTATUS"/>
+      </def>
+      <def localId="222" locator="24:1-24:83" name="Condition resolved code" id="resolved" display="Resolved" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="222">
+               <a:s>code &quot;Condition resolved code&quot;: 'resolved' from </a:s>
+               <a:s r="223">
+                  <a:s>&quot;CONDCLINSTATUS&quot;</a:s>
+               </a:s>
+               <a:s> display 'Resolved'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="223" locator="24:49-24:64" name="CONDCLINSTATUS"/>
+      </def>
+      <def localId="239" locator="43:1-43:72" name="Gender Identity" id="76691-5" display="Gender identity" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="239">
+               <a:s>// Standard codes
+code &quot;Gender Identity&quot;: '76691-5' from </a:s>
+               <a:s r="240">
+                  <a:s>&quot;LOINC&quot;</a:s>
+               </a:s>
+               <a:s> display 'Gender identity'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="240" locator="43:40-43:46" name="LOINC"/>
+      </def>
+      <def localId="241" locator="44:1-44:98" name="Transgender Male Code" id="transgender-male" display="transgender male" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="241">
+               <a:s>code &quot;Transgender Male Code&quot;: 'transgender-male' from </a:s>
+               <a:s r="242">
+                  <a:s>&quot;GENDER-IDENTITY&quot;</a:s>
+               </a:s>
+               <a:s> display 'transgender male'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="242" locator="44:55-44:71" name="GENDER-IDENTITY"/>
+      </def>
+      <def localId="243" locator="45:1-45:104" name="Transgender Female Code" id="transgender-female" display="transgender female" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="243">
+               <a:s>code &quot;Transgender Female Code&quot;: 'transgender-female' from </a:s>
+               <a:s r="244">
+                  <a:s>&quot;GENDER-IDENTITY&quot;</a:s>
+               </a:s>
+               <a:s> display 'transgender female'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="244" locator="45:59-45:75" name="GENDER-IDENTITY"/>
+      </def>
+      <def localId="245" locator="46:1-46:110" name="Female-to-male Transsexual" id="407377005" display="Female-to-male transsexual (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="245">
+               <a:s>code &quot;Female-to-male Transsexual&quot;: '407377005' from </a:s>
+               <a:s r="246">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Female-to-male transsexual (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="246" locator="46:53-46:63" name="SNOMED-CT"/>
+      </def>
+      <def localId="247" locator="47:1-47:110" name="Male-to-female Transsexual" id="407376001" display="Male-to-female transsexual (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="247">
+               <a:s>code &quot;Male-to-female Transsexual&quot;: '407376001' from </a:s>
+               <a:s r="248">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Male-to-female transsexual (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="248" locator="47:53-47:63" name="SNOMED-CT"/>
+      </def>
+      <def localId="249" locator="48:1-48:90" name="Left (qualifier value)" id="7771000" display="Left (qualifier value)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="249">
+               <a:s>code &quot;Left (qualifier value)&quot;: '7771000' from </a:s>
+               <a:s r="250">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Left (qualifier value)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="250" locator="48:47-48:57" name="SNOMED-CT"/>
+      </def>
+      <def localId="251" locator="49:1-49:93" name="Right (qualifier value)" id="24028007" display="Right (qualifier value)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="251">
+               <a:s>code &quot;Right (qualifier value)&quot;: '24028007' from </a:s>
+               <a:s r="252">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Right (qualifier value)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="252" locator="49:49-49:59" name="SNOMED-CT"/>
+      </def>
+      <def localId="253" locator="52:1-52:113" name="New or worsening breast symptoms" id="BreastSymptoms" display="New or worsening breast symptoms" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="253">
+               <a:s>// Non-standard or &quot;local&quot; codes
+code &quot;New or worsening breast symptoms&quot;: 'BreastSymptoms' from </a:s>
+               <a:s r="254">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'New or worsening breast symptoms'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="254" locator="52:64-52:70" name="LOCAL"/>
+      </def>
+      <def localId="255" locator="53:1-53:123" name="New or worsening breast exam findings" id="BreastFindings" display="New or worsening breast exam findings" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="255">
+               <a:s>code &quot;New or worsening breast exam findings&quot;: 'BreastFindings' from </a:s>
+               <a:s r="256">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'New or worsening breast exam findings'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="256" locator="53:69-53:75" name="LOCAL"/>
+      </def>
+      <def localId="257" locator="54:1-54:131" name="Reduced life expectancy indicator" id="ReducedLifeExpectancyIndicator" display="Reduced life expectancy indicator" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="257">
+               <a:s>code &quot;Reduced life expectancy indicator&quot;: 'ReducedLifeExpectancyIndicator' from </a:s>
+               <a:s r="258">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'Reduced life expectancy indicator'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="258" locator="54:81-54:87" name="LOCAL"/>
+      </def>
+   </codes>
+   <concepts>
+      <def localId="224" locator="26:1-26:78" name="Condition inactive" display="Inactive" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="224">
+               <a:s>concept &quot;Condition inactive&quot;: { </a:s>
+               <a:s r="225">
+                  <a:s>&quot;Condition inactive code&quot;</a:s>
+               </a:s>
+               <a:s> } display 'Inactive'</a:s>
+            </a:s>
+         </annotation>
+         <code localId="225" locator="26:33-26:57" name="Condition inactive code"/>
+      </def>
+      <def localId="226" locator="27:1-27:81" name="Condition remission" display="Remission" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="226">
+               <a:s>concept &quot;Condition remission&quot;: { </a:s>
+               <a:s r="227">
+                  <a:s>&quot;Condition remission code&quot;</a:s>
+               </a:s>
+               <a:s> } display 'Remission'</a:s>
+            </a:s>
+         </annotation>
+         <code localId="227" locator="27:34-27:59" name="Condition remission code"/>
+      </def>
+      <def localId="228" locator="28:1-28:78" name="Condition resolved" display="Resolved" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="228">
+               <a:s>concept &quot;Condition resolved&quot;: { </a:s>
+               <a:s r="229">
+                  <a:s>&quot;Condition resolved code&quot;</a:s>
+               </a:s>
+               <a:s> } display 'Resolved'</a:s>
+            </a:s>
+         </annotation>
+         <code localId="229" locator="28:33-28:57" name="Condition resolved code"/>
+      </def>
+   </concepts>
+   <contexts>
+      <def localId="266" locator="65:1-65:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="264" locator="65:1-65:15" name="Patient" context="Patient">
+         <expression localId="265" xsi:type="SingletonFrom">
+            <operand localId="263" locator="65:1-65:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="277" locator="74:1-76:84" name="BirthSex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="277">
+               <a:s>define BirthSex:
+  </a:s>
+               <a:s r="289">
+                  <a:s>
+                     <a:s r="278">
+                        <a:s r="280">
+                           <a:s>(</a:s>
+                           <a:s r="280">
+                              <a:s r="279">
+                                 <a:s>Patient</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="280">
+                                 <a:s>extension</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> E</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="281">
+                     <a:s>where </a:s>
+                     <a:s r="281">
+                        <a:s r="283">
+                           <a:s r="282">
+                              <a:s>E</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="283">
+                              <a:s>url</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> = </a:s>
+                        <a:s r="284">
+                           <a:s>'http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="289" locator="75:3-76:84" xsi:type="Query">
+            <source localId="278" locator="75:3-75:23" alias="E">
+               <expression localId="280" locator="75:3-75:21" path="extension" xsi:type="Property">
+                  <source localId="279" locator="75:4-75:10" name="Patient" xsi:type="ExpressionRef"/>
+               </expression>
+            </source>
+            <where localId="281" locator="76:5-76:84" xsi:type="Equal">
+               <signature localId="287" name="t:String" xsi:type="NamedTypeSpecifier"/>
+               <signature localId="288" name="t:String" xsi:type="NamedTypeSpecifier"/>
+               <operand localId="285" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                  <signature localId="286" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="283" locator="76:11-76:15" path="url" scope="E" xsi:type="Property"/>
+               </operand>
+               <operand localId="284" locator="76:19-76:84" valueType="t:String" value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex" xsi:type="Literal"/>
+            </where>
+         </expression>
+      </def>
+      <def localId="274" locator="81:1-85:3" name="FemaleBirthSex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="274">
+               <a:s>define FemaleBirthSex:
+  </a:s>
+               <a:s r="352">
+                  <a:s>Exists(
+    </a:s>
+                  <a:s r="349">
+                     <a:s>
+                        <a:s r="275">
+                           <a:s r="290">
+                              <a:s>(</a:s>
+                              <a:s r="290">
+                                 <a:s>BirthSex</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                           <a:s> E</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+      </a:s>
+                     <a:s r="291">
+                        <a:s>where </a:s>
+                        <a:s r="291">
+                           <a:s r="293">
+                              <a:s r="292">
+                                 <a:s>E</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="293">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> = </a:s>
+                           <a:s r="294">
+                              <a:s>'F'</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  )</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="352" locator="82:3-85:3" xsi:type="Exists">
+            <operand localId="349" locator="83:5-84:25" xsi:type="Query">
+               <source localId="275" locator="83:5-83:16" alias="E">
+                  <expression localId="290" locator="83:5-83:14" name="BirthSex" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="291" locator="84:7-84:25" xsi:type="Equal">
+                  <signature localId="347" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="348" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="298" xsi:type="Case">
+                     <caseItem localId="299">
+                        <when localId="300" isType="fhir:base64Binary" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="296" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="297" name="fhir:base64Binary" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="295" asType="fhir:base64Binary" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="301">
+                        <when localId="302" isType="fhir:uri" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="304" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="305" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="303" asType="fhir:uri" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="306">
+                        <when localId="307" isType="fhir:string" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="309" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="310" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="308" asType="fhir:string" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="311">
+                        <when localId="312" isType="fhir:string" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="314" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="315" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="313" asType="fhir:string" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="316">
+                        <when localId="317" isType="fhir:string" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="319" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="320" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="318" asType="fhir:string" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="321">
+                        <when localId="322" isType="fhir:uri" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="324" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="325" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="323" asType="fhir:uri" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="326">
+                        <when localId="327" isType="fhir:string" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="329" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="330" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="328" asType="fhir:string" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="331">
+                        <when localId="332" isType="fhir:uri" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="334" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="335" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="333" asType="fhir:uri" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="336">
+                        <when localId="337" isType="fhir:uri" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="339" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="340" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="338" asType="fhir:uri" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <caseItem localId="341">
+                        <when localId="342" isType="fhir:uri" xsi:type="Is">
+                           <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                        </when>
+                        <then localId="344" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <signature localId="345" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="343" asType="fhir:uri" xsi:type="As">
+                              <operand localId="293" locator="84:13-84:19" path="value" scope="E" xsi:type="Property"/>
+                           </operand>
+                        </then>
+                     </caseItem>
+                     <else localId="346" xsi:type="Null"/>
+                  </operand>
+                  <operand localId="294" locator="84:23-84:25" valueType="t:String" value="F" xsi:type="Literal"/>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="360" locator="78:1-79:18" name="BirthSexPresent" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="360">
+               <a:s>define BirthSexPresent:
+  </a:s>
+               <a:s r="364">
+                  <a:s>Exists(</a:s>
+                  <a:s r="361">
+                     <a:s>BirthSex</a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="364" locator="79:3-79:18" xsi:type="Exists">
+            <operand localId="361" locator="79:10-79:17" name="BirthSex" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="367" locator="87:1-95:3" name="UnknownBirthSex" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="367">
+               <a:s>define UnknownBirthSex:
+  </a:s>
+               <a:s r="368">
+                  <a:s>exists</a:s>
+                  <a:s r="547">
+                     <a:s>(
+    </a:s>
+                     <a:s r="547">
+                        <a:s>
+                           <a:s r="369">
+                              <a:s r="370">
+                                 <a:s>(</a:s>
+                                 <a:s r="370">
+                                    <a:s>BirthSex</a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                              <a:s> E</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      </a:s>
+                        <a:s r="371">
+                           <a:s>where </a:s>
+                           <a:s r="371">
+                              <a:s>(
+        </a:s>
+                              <a:s r="371">
+                                 <a:s r="372">
+                                    <a:s r="373">
+                                       <a:s r="375">
+                                          <a:s r="374">
+                                             <a:s>E</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="375">
+                                             <a:s>value</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> = </a:s>
+                                       <a:s r="376">
+                                          <a:s>'ASKU'</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> or
+        </a:s>
+                                    <a:s r="431">
+                                       <a:s r="433">
+                                          <a:s r="432">
+                                             <a:s>E</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="433">
+                                             <a:s>value</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> = </a:s>
+                                       <a:s r="434">
+                                          <a:s>'OTH'</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> or
+        </a:s>
+                                 <a:s r="489">
+                                    <a:s r="491">
+                                       <a:s r="490">
+                                          <a:s>E</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="491">
+                                          <a:s>value</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> = </a:s>
+                                    <a:s r="492">
+                                       <a:s>'UNK'</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      )</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="368" locator="88:3-95:3" xsi:type="Exists">
+            <operand localId="547" locator="88:9-95:3" xsi:type="Query">
+               <source localId="369" locator="89:5-89:16" alias="E">
+                  <expression localId="370" locator="89:5-89:14" name="BirthSex" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="371" locator="90:7-94:7" xsi:type="Or">
+                  <operand localId="372" locator="91:9-92:23" xsi:type="Or">
+                     <operand localId="373" locator="91:9-91:24" xsi:type="Equal">
+                        <signature localId="429" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        <signature localId="430" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="380" xsi:type="Case">
+                           <caseItem localId="381">
+                              <when localId="382" isType="fhir:base64Binary" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="378" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="379" name="fhir:base64Binary" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="377" asType="fhir:base64Binary" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="383">
+                              <when localId="384" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="386" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="387" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="385" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="388">
+                              <when localId="389" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="391" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="392" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="390" asType="fhir:string" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="393">
+                              <when localId="394" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="396" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="397" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="395" asType="fhir:string" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="398">
+                              <when localId="399" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="401" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="402" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="400" asType="fhir:string" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="403">
+                              <when localId="404" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="406" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="407" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="405" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="408">
+                              <when localId="409" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="411" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="412" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="410" asType="fhir:string" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="413">
+                              <when localId="414" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="416" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="417" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="415" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="418">
+                              <when localId="419" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="421" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="422" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="420" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="423">
+                              <when localId="424" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="426" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="427" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="425" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="375" locator="91:9-91:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <else localId="428" xsi:type="Null"/>
+                        </operand>
+                        <operand localId="376" locator="91:19-91:24" valueType="t:String" value="ASKU" xsi:type="Literal"/>
+                     </operand>
+                     <operand localId="431" locator="92:9-92:23" xsi:type="Equal">
+                        <signature localId="487" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        <signature localId="488" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="438" xsi:type="Case">
+                           <caseItem localId="439">
+                              <when localId="440" isType="fhir:base64Binary" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="436" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="437" name="fhir:base64Binary" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="435" asType="fhir:base64Binary" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="441">
+                              <when localId="442" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="444" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="445" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="443" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="446">
+                              <when localId="447" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="449" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="450" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="448" asType="fhir:string" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="451">
+                              <when localId="452" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="454" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="455" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="453" asType="fhir:string" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="456">
+                              <when localId="457" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="459" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="460" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="458" asType="fhir:string" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="461">
+                              <when localId="462" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="464" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="465" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="463" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="466">
+                              <when localId="467" isType="fhir:string" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="469" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="470" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="468" asType="fhir:string" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="471">
+                              <when localId="472" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="474" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="475" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="473" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="476">
+                              <when localId="477" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="479" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="480" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="478" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <caseItem localId="481">
+                              <when localId="482" isType="fhir:uri" xsi:type="Is">
+                                 <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                              </when>
+                              <then localId="484" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <signature localId="485" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="483" asType="fhir:uri" xsi:type="As">
+                                    <operand localId="433" locator="92:9-92:15" path="value" scope="E" xsi:type="Property"/>
+                                 </operand>
+                              </then>
+                           </caseItem>
+                           <else localId="486" xsi:type="Null"/>
+                        </operand>
+                        <operand localId="434" locator="92:19-92:23" valueType="t:String" value="OTH" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="489" locator="93:9-93:23" xsi:type="Equal">
+                     <signature localId="545" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     <signature localId="546" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="496" xsi:type="Case">
+                        <caseItem localId="497">
+                           <when localId="498" isType="fhir:base64Binary" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="494" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="495" name="fhir:base64Binary" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="493" asType="fhir:base64Binary" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="499">
+                           <when localId="500" isType="fhir:uri" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="502" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="503" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="501" asType="fhir:uri" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="504">
+                           <when localId="505" isType="fhir:string" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="507" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="508" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="506" asType="fhir:string" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="509">
+                           <when localId="510" isType="fhir:string" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="512" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="513" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="511" asType="fhir:string" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="514">
+                           <when localId="515" isType="fhir:string" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="517" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="518" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="516" asType="fhir:string" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="519">
+                           <when localId="520" isType="fhir:uri" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="522" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="523" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="521" asType="fhir:uri" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="524">
+                           <when localId="525" isType="fhir:string" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="527" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="528" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="526" asType="fhir:string" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="529">
+                           <when localId="530" isType="fhir:uri" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="532" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="533" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="531" asType="fhir:uri" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="534">
+                           <when localId="535" isType="fhir:uri" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="537" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="538" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="536" asType="fhir:uri" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <caseItem localId="539">
+                           <when localId="540" isType="fhir:uri" xsi:type="Is">
+                              <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                           </when>
+                           <then localId="542" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="543" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="541" asType="fhir:uri" xsi:type="As">
+                                 <operand localId="491" locator="93:9-93:15" path="value" scope="E" xsi:type="Property"/>
+                              </operand>
+                           </then>
+                        </caseItem>
+                        <else localId="544" xsi:type="Null"/>
+                     </operand>
+                     <operand localId="492" locator="93:19-93:23" valueType="t:String" value="UNK" xsi:type="Literal"/>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="356" locator="97:1-99:17" name="BirthSexMissingOrUnknown" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="356">
+               <a:s>define BirthSexMissingOrUnknown:
+  </a:s>
+               <a:s r="357">
+                  <a:s r="358">
+                     <a:s>not </a:s>
+                     <a:s r="365">
+                        <a:s>BirthSexPresent</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> or
+  </a:s>
+                  <a:s r="548">
+                     <a:s>UnknownBirthSex</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="357" locator="98:3-99:17" xsi:type="Or">
+            <operand localId="358" locator="98:3-98:21" xsi:type="Not">
+               <operand localId="365" locator="98:7-98:21" name="BirthSexPresent" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="548" locator="99:3-99:17" name="UnknownBirthSex" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="551" locator="110:1-111:33" name="FemaleGender" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="551">
+               <a:s>define FemaleGender:
+  </a:s>
+               <a:s r="552">
+                  <a:s r="555">
+                     <a:s r="554">
+                        <a:s r="553">
+                           <a:s>Patient</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="554">
+                           <a:s>gender</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="555">
+                        <a:s>value</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> = </a:s>
+                  <a:s r="556">
+                     <a:s>'female'</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="552" locator="111:3-111:33" xsi:type="Equal">
+            <signature localId="557" name="t:String" xsi:type="NamedTypeSpecifier"/>
+            <signature localId="558" name="t:String" xsi:type="NamedTypeSpecifier"/>
+            <operand localId="555" locator="111:3-111:22" path="value" xsi:type="Property">
+               <source localId="554" locator="111:3-111:16" path="gender" xsi:type="Property">
+                  <source localId="553" locator="111:3-111:9" name="Patient" xsi:type="ExpressionRef"/>
+               </source>
+            </operand>
+            <operand localId="556" locator="111:26-111:33" valueType="t:String" value="female" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="271" locator="113:1-115:45" name="Female" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="271">
+               <a:s>define Female:
+  </a:s>
+               <a:s r="272">
+                  <a:s r="353">
+                     <a:s>FemaleBirthSex</a:s>
+                  </a:s>
+                  <a:s> or
+  </a:s>
+                  <a:s r="354">
+                     <a:s>(</a:s>
+                     <a:s r="354">
+                        <a:s r="549">
+                           <a:s>BirthSexMissingOrUnknown</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="559">
+                           <a:s>FemaleGender</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="272" locator="114:3-115:45" xsi:type="Or">
+            <operand localId="353" locator="114:3-114:16" name="FemaleBirthSex" xsi:type="ExpressionRef"/>
+            <operand localId="354" locator="115:3-115:45" xsi:type="And">
+               <operand localId="549" locator="115:4-115:27" name="BirthSexMissingOrUnknown" xsi:type="ExpressionRef"/>
+               <operand localId="559" locator="115:33-115:44" name="FemaleGender" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="568" locator="117:1-121:86" name="GenderIdentityExtension" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="568">
+               <a:s>define GenderIdentityExtension:
+  </a:s>
+               <a:s r="589">
+                  <a:s>
+                     <a:s r="569">
+                        <a:s r="571">
+                           <a:s>(</a:s>
+                           <a:s r="571">
+                              <a:s r="570">
+                                 <a:s>Patient</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="571">
+                                 <a:s>extension</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> E</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="572">
+                     <a:s>where
+      </a:s>
+                     <a:s r="572">
+                        <a:s r="573">
+                           <a:s r="575">
+                              <a:s r="574">
+                                 <a:s>E</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="575">
+                                 <a:s>url</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> = </a:s>
+                           <a:s r="576">
+                              <a:s>'http://hl7.org/fhir/StructureDefinition/patient-genderIdentity'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> or
+      </a:s>
+                        <a:s r="581">
+                           <a:s r="583">
+                              <a:s r="582">
+                                 <a:s>E</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="583">
+                                 <a:s>url</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> = </a:s>
+                           <a:s r="584">
+                              <a:s>'http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity'</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="589" locator="118:3-121:86" xsi:type="Query">
+            <source localId="569" locator="118:3-118:23" alias="E">
+               <expression localId="571" locator="118:3-118:21" path="extension" xsi:type="Property">
+                  <source localId="570" locator="118:4-118:10" name="Patient" xsi:type="ExpressionRef"/>
+               </expression>
+            </source>
+            <where localId="572" locator="119:5-121:86" xsi:type="Or">
+               <operand localId="573" locator="120:7-120:78" xsi:type="Equal">
+                  <signature localId="579" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="580" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="577" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <signature localId="578" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="575" locator="120:7-120:11" path="url" scope="E" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="576" locator="120:15-120:78" valueType="t:String" value="http://hl7.org/fhir/StructureDefinition/patient-genderIdentity" xsi:type="Literal"/>
+               </operand>
+               <operand localId="581" locator="121:7-121:86" xsi:type="Equal">
+                  <signature localId="587" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="588" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="585" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <signature localId="586" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="583" locator="121:7-121:11" path="url" scope="E" xsi:type="Property"/>
+                  </operand>
+                  <operand localId="584" locator="121:15-121:86" valueType="t:String" value="http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity" xsi:type="Literal"/>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="565" locator="123:1-127:68" name="TransgenderMaleExtension" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="565">
+               <a:s>define TransgenderMaleExtension:
+  </a:s>
+               <a:s r="616">
+                  <a:s>
+                     <a:s r="566">
+                        <a:s r="590">
+                           <a:s>(</a:s>
+                           <a:s r="590">
+                              <a:s>GenderIdentityExtension</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> E</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="591">
+                     <a:s>where
+      </a:s>
+                     <a:s r="591">
+                        <a:s r="592">
+                           <a:s r="593">
+                              <a:s r="595">
+                                 <a:s r="594">
+                                    <a:s>E</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="595">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="596">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="597">
+                              <a:s>&quot;Transgender Male Code&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> or
+      </a:s>
+                        <a:s r="604">
+                           <a:s r="605">
+                              <a:s r="607">
+                                 <a:s r="606">
+                                    <a:s>E</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="607">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="608">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="609">
+                              <a:s>&quot;Female-to-male Transsexual&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="616" locator="124:3-127:68" xsi:type="Query">
+            <source localId="566" locator="124:3-124:29" alias="E">
+               <expression localId="590" locator="124:3-124:27" name="GenderIdentityExtension" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="591" locator="125:5-127:68" xsi:type="Or">
+               <operand localId="592" locator="126:7-126:63" xsi:type="Equivalent">
+                  <signature localId="602" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="603" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="598" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="593" locator="126:7-126:37" strict="false" xsi:type="As">
+                        <operand localId="595" locator="126:7-126:13" path="value" scope="E" xsi:type="Property"/>
+                        <asTypeSpecifier localId="596" locator="126:18-126:37" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="600" xsi:type="ToConcept">
+                     <signature localId="601" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="597" locator="126:41-126:63" name="Transgender Male Code" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+               <operand localId="604" locator="127:7-127:68" xsi:type="Equivalent">
+                  <signature localId="614" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="615" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="610" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="605" locator="127:7-127:37" strict="false" xsi:type="As">
+                        <operand localId="607" locator="127:7-127:13" path="value" scope="E" xsi:type="Property"/>
+                        <asTypeSpecifier localId="608" locator="127:18-127:37" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="612" xsi:type="ToConcept">
+                     <signature localId="613" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="609" locator="127:41-127:68" name="Female-to-male Transsexual" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="625" locator="135:1-136:34" name="GenderIdentityObservation" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="625">
+               <a:s>define GenderIdentityObservation:
+  </a:s>
+               <a:s r="628">
+                  <a:s>[Observation: </a:s>
+                  <a:s>
+                     <a:s>&quot;Gender Identity&quot;</a:s>
+                  </a:s>
+                  <a:s>]</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="628" locator="136:3-136:34" dataType="fhir:Observation" templateId="http://hl7.org/fhir/StructureDefinition/Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+            <codes localId="636" xsi:type="ToList">
+               <operand localId="627" locator="136:17-136:33" name="Gender Identity" xsi:type="CodeRef"/>
+            </codes>
+         </expression>
+      </def>
+      <def localId="622" locator="138:1-141:67" name="TransgenderMaleObservation" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="622">
+               <a:s>define TransgenderMaleObservation:
+  </a:s>
+               <a:s r="663">
+                  <a:s>
+                     <a:s r="623">
+                        <a:s r="637">
+                           <a:s>(</a:s>
+                           <a:s r="637">
+                              <a:s>GenderIdentityObservation</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> O</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  </a:s>
+                  <a:s r="638">
+                     <a:s>where </a:s>
+                     <a:s r="638">
+                        <a:s r="639">
+                           <a:s r="640">
+                              <a:s r="642">
+                                 <a:s r="641">
+                                    <a:s>O</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="642">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="643">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="644">
+                              <a:s>&quot;Transgender Male Code&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+  or </a:s>
+                        <a:s r="651">
+                           <a:s r="652">
+                              <a:s r="654">
+                                 <a:s r="653">
+                                    <a:s>O</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="654">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="655">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="656">
+                              <a:s>&quot;Female-to-male Transsexual&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="663" locator="139:3-141:67" xsi:type="Query">
+            <source localId="623" locator="139:3-139:31" alias="O">
+               <expression localId="637" locator="139:3-139:29" name="GenderIdentityObservation" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="638" locator="140:3-141:67" xsi:type="Or">
+               <operand localId="639" locator="140:9-140:65" xsi:type="Equivalent">
+                  <signature localId="649" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="650" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="645" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="640" locator="140:9-140:39" strict="false" xsi:type="As">
+                        <operand localId="642" locator="140:9-140:15" path="value" scope="O" xsi:type="Property"/>
+                        <asTypeSpecifier localId="643" locator="140:20-140:39" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="647" xsi:type="ToConcept">
+                     <signature localId="648" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="644" locator="140:43-140:65" name="Transgender Male Code" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+               <operand localId="651" locator="141:6-141:67" xsi:type="Equivalent">
+                  <signature localId="661" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="662" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="657" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="652" locator="141:6-141:36" strict="false" xsi:type="As">
+                        <operand localId="654" locator="141:6-141:12" path="value" scope="O" xsi:type="Property"/>
+                        <asTypeSpecifier localId="655" locator="141:17-141:36" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="659" xsi:type="ToConcept">
+                     <signature localId="660" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="656" locator="141:40-141:67" name="Female-to-male Transsexual" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="562" locator="148:1-149:72" name="TransgenderMale" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="562">
+               <a:s>define TransgenderMale:
+  </a:s>
+               <a:s r="563">
+                  <a:s r="620">
+                     <a:s>Exists(</a:s>
+                     <a:s r="617">
+                        <a:s>TransgenderMaleExtension</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="669">
+                     <a:s>Exists(</a:s>
+                     <a:s r="664">
+                        <a:s>TransgenderMaleObservation</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="563" locator="149:3-149:72" xsi:type="Or">
+            <operand localId="620" locator="149:3-149:34" xsi:type="Exists">
+               <operand localId="617" locator="149:10-149:33" name="TransgenderMaleExtension" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="669" locator="149:39-149:72" xsi:type="Exists">
+               <signature localId="670" xsi:type="ListTypeSpecifier">
+                  <elementType localId="671" name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="664" locator="149:46-149:71" name="TransgenderMaleObservation" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="268" locator="71:1-72:27" name="de-female" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="268">
+               <a:s>//------------------------------------------------------------------------------
+// Assigned female at birth
+//------------------------------------------------------------------------------
+
+define &quot;de-female&quot;:
+  </a:s>
+               <a:s r="269">
+                  <a:s r="560">
+                     <a:s>Female</a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="672">
+                     <a:s>TransgenderMale</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="269" locator="72:3-72:27" xsi:type="Or">
+            <operand localId="560" locator="72:3-72:8" name="Female" xsi:type="ExpressionRef"/>
+            <operand localId="672" locator="72:13-72:27" name="TransgenderMale" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="674" locator="101:1-103:37" name="BirthSexCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="674">
+               <a:s>define BirthSexCode:
+  </a:s>
+               <a:s r="675">
+                  <a:s>if </a:s>
+                  <a:s r="676">
+                     <a:s>BirthSexMissingOrUnknown</a:s>
+                  </a:s>
+                  <a:s> then </a:s>
+                  <a:s r="677">
+                     <a:s>'Unknown'</a:s>
+                  </a:s>
+                  <a:s>
+  else </a:s>
+                  <a:s r="699">
+                     <a:s>Coalesce(</a:s>
+                     <a:s r="695">
+                        <a:s r="686">
+                           <a:s r="678">
+                              <a:s>BirthSex</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="686">
+                              <a:s>value</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="695">
+                           <a:s>value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="675" locator="102:3-103:37" xsi:type="If">
+            <condition localId="676" locator="102:6-102:29" name="BirthSexMissingOrUnknown" xsi:type="ExpressionRef"/>
+            <then localId="677" locator="102:36-102:44" valueType="t:String" value="Unknown" xsi:type="Literal"/>
+            <else localId="700" asType="t:String" xsi:type="As">
+               <operand localId="699" locator="103:8-103:37" xsi:type="Coalesce">
+                  <operand localId="695" locator="103:17-103:36" xsi:type="Query">
+                     <source localId="694" alias="$this">
+                        <expression localId="686" locator="103:17-103:30" xsi:type="Query">
+                           <source localId="685" alias="$this">
+                              <expression localId="678" locator="103:17-103:24" name="BirthSex" xsi:type="ExpressionRef"/>
+                           </source>
+                           <where localId="682" xsi:type="Not">
+                              <operand localId="681" xsi:type="IsNull">
+                                 <operand localId="680" path="value" xsi:type="Property">
+                                    <source localId="679" name="$this" xsi:type="AliasRef"/>
+                                 </operand>
+                              </operand>
+                           </where>
+                           <return localId="687" distinct="false">
+                              <expression localId="684" path="value" xsi:type="Property">
+                                 <source localId="683" name="$this" xsi:type="AliasRef"/>
+                              </expression>
+                           </return>
+                        </expression>
+                     </source>
+                     <where localId="691" xsi:type="Not">
+                        <operand localId="690" xsi:type="IsNull">
+                           <operand localId="689" path="value" xsi:type="Property">
+                              <source localId="688" name="$this" xsi:type="AliasRef"/>
+                           </operand>
+                        </operand>
+                     </where>
+                     <return localId="696" distinct="false">
+                        <expression localId="693" path="value" xsi:type="Property">
+                           <source localId="692" name="$this" xsi:type="AliasRef"/>
+                        </expression>
+                     </return>
+                  </operand>
+               </operand>
+            </else>
+         </expression>
+      </def>
+      <def localId="702" locator="105:1-108:16" name="BirthSexText" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="702">
+               <a:s>define BirthSexText:
+  </a:s>
+               <a:s r="703">
+                  <a:s>if </a:s>
+                  <a:s r="704">
+                     <a:s r="705">
+                        <a:s>BirthSexCode</a:s>
+                     </a:s>
+                     <a:s> = </a:s>
+                     <a:s r="706">
+                        <a:s>'F'</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> then </a:s>
+                  <a:s r="709">
+                     <a:s>'Female'</a:s>
+                  </a:s>
+                  <a:s>
+  else </a:s>
+                  <a:s r="710">
+                     <a:s>if </a:s>
+                     <a:s r="711">
+                        <a:s r="712">
+                           <a:s>BirthSexCode</a:s>
+                        </a:s>
+                        <a:s> = </a:s>
+                        <a:s r="713">
+                           <a:s>'M'</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> then </a:s>
+                     <a:s r="716">
+                        <a:s>'Male'</a:s>
+                     </a:s>
+                     <a:s>
+  else </a:s>
+                     <a:s r="717">
+                        <a:s>'Unknown'</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="703" locator="106:3-108:16" xsi:type="If">
+            <condition localId="704" locator="106:6-106:23" xsi:type="Equal">
+               <signature localId="707" name="t:String" xsi:type="NamedTypeSpecifier"/>
+               <signature localId="708" name="t:String" xsi:type="NamedTypeSpecifier"/>
+               <operand localId="705" locator="106:6-106:17" name="BirthSexCode" xsi:type="ExpressionRef"/>
+               <operand localId="706" locator="106:21-106:23" valueType="t:String" value="F" xsi:type="Literal"/>
+            </condition>
+            <then localId="709" locator="106:30-106:37" valueType="t:String" value="Female" xsi:type="Literal"/>
+            <else localId="710" locator="107:8-108:16" xsi:type="If">
+               <condition localId="711" locator="107:11-107:28" xsi:type="Equal">
+                  <signature localId="714" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="715" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="712" locator="107:11-107:22" name="BirthSexCode" xsi:type="ExpressionRef"/>
+                  <operand localId="713" locator="107:26-107:28" valueType="t:String" value="M" xsi:type="Literal"/>
+               </condition>
+               <then localId="716" locator="107:35-107:40" valueType="t:String" value="Male" xsi:type="Literal"/>
+               <else localId="717" locator="108:8-108:16" valueType="t:String" value="Unknown" xsi:type="Literal"/>
+            </else>
+         </expression>
+      </def>
+      <def localId="719" locator="129:1-133:68" name="TransgenderFemaleExtension" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="719">
+               <a:s>define TransgenderFemaleExtension:
+  </a:s>
+               <a:s r="747">
+                  <a:s>
+                     <a:s r="720">
+                        <a:s r="721">
+                           <a:s>(</a:s>
+                           <a:s r="721">
+                              <a:s>GenderIdentityExtension</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> E</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="722">
+                     <a:s>where
+      </a:s>
+                     <a:s r="722">
+                        <a:s r="723">
+                           <a:s r="724">
+                              <a:s r="726">
+                                 <a:s r="725">
+                                    <a:s>E</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="726">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="727">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="728">
+                              <a:s>&quot;Transgender Female Code&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> or
+      </a:s>
+                        <a:s r="735">
+                           <a:s r="736">
+                              <a:s r="738">
+                                 <a:s r="737">
+                                    <a:s>E</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="738">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="739">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="740">
+                              <a:s>&quot;Male-to-female Transsexual&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="747" locator="130:3-133:68" xsi:type="Query">
+            <source localId="720" locator="130:3-130:29" alias="E">
+               <expression localId="721" locator="130:3-130:27" name="GenderIdentityExtension" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="722" locator="131:5-133:68" xsi:type="Or">
+               <operand localId="723" locator="132:7-132:65" xsi:type="Equivalent">
+                  <signature localId="733" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="734" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="729" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="724" locator="132:7-132:37" strict="false" xsi:type="As">
+                        <operand localId="726" locator="132:7-132:13" path="value" scope="E" xsi:type="Property"/>
+                        <asTypeSpecifier localId="727" locator="132:18-132:37" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="731" xsi:type="ToConcept">
+                     <signature localId="732" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="728" locator="132:41-132:65" name="Transgender Female Code" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+               <operand localId="735" locator="133:7-133:68" xsi:type="Equivalent">
+                  <signature localId="745" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="746" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="741" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="736" locator="133:7-133:37" strict="false" xsi:type="As">
+                        <operand localId="738" locator="133:7-133:13" path="value" scope="E" xsi:type="Property"/>
+                        <asTypeSpecifier localId="739" locator="133:18-133:37" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="743" xsi:type="ToConcept">
+                     <signature localId="744" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="740" locator="133:41-133:68" name="Male-to-female Transsexual" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="749" locator="143:1-146:69" name="TransgenderFemaleObservation" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="749">
+               <a:s>define TransgenderFemaleObservation:
+  </a:s>
+               <a:s r="777">
+                  <a:s>
+                     <a:s r="750">
+                        <a:s r="751">
+                           <a:s>(</a:s>
+                           <a:s r="751">
+                              <a:s>GenderIdentityObservation</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s> O</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="752">
+                     <a:s>where </a:s>
+                     <a:s r="752">
+                        <a:s r="753">
+                           <a:s r="754">
+                              <a:s r="756">
+                                 <a:s r="755">
+                                    <a:s>O</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="756">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="757">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="758">
+                              <a:s>&quot;Transgender Female Code&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    or </a:s>
+                        <a:s r="765">
+                           <a:s r="766">
+                              <a:s r="768">
+                                 <a:s r="767">
+                                    <a:s>O</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="768">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> as </a:s>
+                              <a:s r="769">
+                                 <a:s>FHIR.CodeableConcept</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="770">
+                              <a:s>&quot;Male-to-female Transsexual&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="777" locator="144:3-146:69" xsi:type="Query">
+            <source localId="750" locator="144:3-144:31" alias="O">
+               <expression localId="751" locator="144:3-144:29" name="GenderIdentityObservation" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="752" locator="145:5-146:69" xsi:type="Or">
+               <operand localId="753" locator="145:11-145:69" xsi:type="Equivalent">
+                  <signature localId="763" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="764" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="759" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="754" locator="145:11-145:41" strict="false" xsi:type="As">
+                        <operand localId="756" locator="145:11-145:17" path="value" scope="O" xsi:type="Property"/>
+                        <asTypeSpecifier localId="757" locator="145:22-145:41" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="761" xsi:type="ToConcept">
+                     <signature localId="762" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="758" locator="145:45-145:69" name="Transgender Female Code" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+               <operand localId="765" locator="146:8-146:69" xsi:type="Equivalent">
+                  <signature localId="775" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="776" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="771" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                     <operand localId="766" locator="146:8-146:38" strict="false" xsi:type="As">
+                        <operand localId="768" locator="146:8-146:14" path="value" scope="O" xsi:type="Property"/>
+                        <asTypeSpecifier localId="769" locator="146:19-146:38" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </operand>
+                  </operand>
+                  <operand localId="773" xsi:type="ToConcept">
+                     <signature localId="774" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="770" locator="146:42-146:69" name="Male-to-female Transsexual" xsi:type="CodeRef"/>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="779" locator="151:1-152:76" name="TransgenderFemale" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="779">
+               <a:s>define TransgenderFemale:
+  </a:s>
+               <a:s r="780">
+                  <a:s r="786">
+                     <a:s>Exists(</a:s>
+                     <a:s r="781">
+                        <a:s>TransgenderFemaleExtension</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="794">
+                     <a:s>Exists(</a:s>
+                     <a:s r="789">
+                        <a:s>TransgenderFemaleObservation</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="780" locator="152:3-152:76" xsi:type="Or">
+            <operand localId="786" locator="152:3-152:36" xsi:type="Exists">
+               <signature localId="787" xsi:type="ListTypeSpecifier">
+                  <elementType localId="788" name="fhir:Extension" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="781" locator="152:10-152:35" name="TransgenderFemaleExtension" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="794" locator="152:41-152:76" xsi:type="Exists">
+               <signature localId="795" xsi:type="ListTypeSpecifier">
+                  <elementType localId="796" name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="789" locator="152:48-152:75" name="TransgenderFemaleObservation" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="798" locator="154:1-155:27" name="FemaleorTransgenderMale" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="798">
+               <a:s>define FemaleorTransgenderMale:
+  </a:s>
+               <a:s r="799">
+                  <a:s r="800">
+                     <a:s>Female</a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="801">
+                     <a:s>TransgenderMale</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="799" locator="155:3-155:27" xsi:type="Or">
+            <operand localId="800" locator="155:3-155:8" name="Female" xsi:type="ExpressionRef"/>
+            <operand localId="801" locator="155:13-155:27" name="TransgenderMale" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="803" locator="157:1-159:27" name="GenderText" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="803">
+               <a:s>define GenderText:
+  </a:s>
+               <a:s r="804">
+                  <a:s>if </a:s>
+                  <a:s r="810">
+                     <a:s>Exists(</a:s>
+                     <a:s r="805">
+                        <a:s>GenderIdentityExtension</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> then </a:s>
+                  <a:s r="827">
+                     <a:s r="826">
+                        <a:s r="813">
+                           <a:s r="821">
+                              <a:s r="820">
+                                 <a:s r="814">
+                                    <a:s r="815">
+                                       <a:s>GenderIdentityExtension</a:s>
+                                    </a:s>
+                                    <a:s r="816">[0]</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="820">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="821">
+                                 <a:s>coding</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s r="822">[0]</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="826">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="827">
+                        <a:s>value</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  else </a:s>
+                  <a:s r="830">
+                     <a:s r="829">
+                        <a:s r="828">
+                           <a:s>Patient</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="829">
+                           <a:s>gender</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="830">
+                        <a:s>value</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="804" locator="158:3-159:27" xsi:type="If">
+            <condition localId="810" locator="158:6-158:36" xsi:type="Exists">
+               <signature localId="811" xsi:type="ListTypeSpecifier">
+                  <elementType localId="812" name="fhir:Extension" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="805" locator="158:13-158:35" name="GenderIdentityExtension" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="827" locator="158:43-158:95" path="value" xsi:type="Property">
+               <source localId="826" locator="158:43-158:89" path="code" xsi:type="Property">
+                  <source localId="813" locator="158:43-158:84" xsi:type="Indexer">
+                     <signature localId="823" xsi:type="ListTypeSpecifier">
+                        <elementType localId="824" name="fhir:Coding" xsi:type="NamedTypeSpecifier"/>
+                     </signature>
+                     <signature localId="825" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="821" locator="158:43-158:81" path="coding" xsi:type="Property">
+                        <source localId="820" locator="158:43-158:74" path="value" xsi:type="Property">
+                           <source localId="814" locator="158:43-158:68" xsi:type="Indexer">
+                              <signature localId="817" xsi:type="ListTypeSpecifier">
+                                 <elementType localId="818" name="fhir:Extension" xsi:type="NamedTypeSpecifier"/>
+                              </signature>
+                              <signature localId="819" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="815" locator="158:43-158:65" name="GenderIdentityExtension" xsi:type="ExpressionRef"/>
+                              <operand localId="816" locator="158:67" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                           </source>
+                        </source>
+                     </operand>
+                     <operand localId="822" locator="158:83" valueType="t:Integer" value="0" xsi:type="Literal"/>
+                  </source>
+               </source>
+            </then>
+            <else localId="830" locator="159:8-159:27" path="value" xsi:type="Property">
+               <source localId="829" locator="159:8-159:21" path="gender" xsi:type="Property">
+                  <source localId="828" locator="159:8-159:14" name="Patient" xsi:type="ExpressionRef"/>
+               </source>
+            </else>
+         </expression>
+      </def>
+      <def localId="836" locator="171:1-173:67" name="BreastCancerDiagnoses" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="836">
+               <a:s>define BreastCancerDiagnoses:
+  </a:s>
+               <a:s r="853">
+                  <a:s>(</a:s>
+                  <a:s r="853">
+                     <a:s r="844">
+                        <a:s r="837">
+                           <a:s>Common</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="844">
+                           <a:s>ValidCondition(</a:s>
+                           <a:s r="840">
+                              <a:s>[Condition: </a:s>
+                              <a:s>
+                                 <a:s>&quot;INVASIVE BREAST CANCER&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> union
+  </a:s>
+                     <a:s r="852">
+                        <a:s r="845">
+                           <a:s>Common</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="852">
+                           <a:s>ValidCondition(</a:s>
+                           <a:s r="848">
+                              <a:s>[Condition: </a:s>
+                              <a:s>
+                                 <a:s>&quot;NON-INVASIVE BREAST CANCER&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="853" locator="172:3-173:67" xsi:type="Union">
+            <operand localId="844" locator="172:4-172:63" name="ValidCondition" libraryName="Common" xsi:type="FunctionRef">
+               <operand localId="840" locator="172:26-172:62" dataType="fhir:Condition" templateId="http://hl7.org/fhir/StructureDefinition/Condition" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                  <codes localId="839" locator="172:38-172:61" name="INVASIVE BREAST CANCER" preserve="true" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+            <operand localId="852" locator="173:3-173:66" name="ValidCondition" libraryName="Common" xsi:type="FunctionRef">
+               <operand localId="848" locator="173:25-173:65" dataType="fhir:Condition" templateId="http://hl7.org/fhir/StructureDefinition/Condition" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                  <codes localId="847" locator="173:37-173:64" name="NON-INVASIVE BREAST CANCER" preserve="true" xsi:type="ValueSetRef"/>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="832" locator="165:1-169:50" name="de-breastca" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="832">
+               <a:s>//------------------------------------------------------------------------------
+// Current breast cancer
+//------------------------------------------------------------------------------
+
+define &quot;de-breastca&quot;:
+  </a:s>
+               <a:s r="833">
+                  <a:s>exists </a:s>
+                  <a:s r="881">
+                     <a:s>
+                        <a:s r="834">
+                           <a:s r="854">
+                              <a:s>
+                                 <a:s>BreastCancerDiagnoses</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> C</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    </a:s>
+                     <a:s r="855">
+                        <a:s>where </a:s>
+                        <a:s r="855">
+                           <a:s r="856">
+                              <a:s r="864">
+                                 <a:s r="859">
+                                    <a:s r="858">
+                                       <a:s>C</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="859">
+                                       <a:s>clinicalStatus</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> !~ </a:s>
+                                 <a:s r="860">
+                                    <a:s>&quot;Condition inactive&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      and </a:s>
+                              <a:s r="872">
+                                 <a:s r="867">
+                                    <a:s r="866">
+                                       <a:s>C</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="867">
+                                       <a:s>clinicalStatus</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> !~ </a:s>
+                                 <a:s r="868">
+                                    <a:s>&quot;Condition remission&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+      and </a:s>
+                           <a:s r="880">
+                              <a:s r="875">
+                                 <a:s r="874">
+                                    <a:s>C</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="875">
+                                    <a:s>clinicalStatus</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> !~ </a:s>
+                              <a:s r="876">
+                                 <a:s>&quot;Condition resolved&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="833" locator="166:3-169:50" xsi:type="Exists">
+            <signature localId="882" xsi:type="ListTypeSpecifier">
+               <elementType localId="883" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+            </signature>
+            <operand localId="881" locator="166:10-169:50" xsi:type="Query">
+               <source localId="834" locator="166:10-166:32" alias="C">
+                  <expression localId="854" locator="166:10-166:30" name="BreastCancerDiagnoses" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="855" locator="167:5-169:50" xsi:type="And">
+                  <operand localId="856" locator="167:11-168:51" xsi:type="And">
+                     <operand localId="864" locator="167:11-167:50" xsi:type="Not">
+                        <operand localId="857" locator="167:11-167:50" xsi:type="Equivalent">
+                           <signature localId="862" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                           <signature localId="863" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="861" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <operand localId="859" locator="167:11-167:26" path="clinicalStatus" scope="C" xsi:type="Property"/>
+                           </operand>
+                           <operand localId="860" locator="167:31-167:50" name="Condition inactive" xsi:type="ConceptRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="872" locator="168:11-168:51" xsi:type="Not">
+                        <operand localId="865" locator="168:11-168:51" xsi:type="Equivalent">
+                           <signature localId="870" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                           <signature localId="871" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="869" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <operand localId="867" locator="168:11-168:26" path="clinicalStatus" scope="C" xsi:type="Property"/>
+                           </operand>
+                           <operand localId="868" locator="168:31-168:51" name="Condition remission" xsi:type="ConceptRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="880" locator="169:11-169:50" xsi:type="Not">
+                     <operand localId="873" locator="169:11-169:50" xsi:type="Equivalent">
+                        <signature localId="878" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                        <signature localId="879" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="877" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand localId="875" locator="169:11-169:26" path="clinicalStatus" scope="C" xsi:type="Property"/>
+                        </operand>
+                        <operand localId="876" locator="169:31-169:50" name="Condition resolved" xsi:type="ConceptRef"/>
+                     </operand>
+                  </operand>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="888" locator="182:1-184:69" name="BilateralMastectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="888">
+               <a:s>define BilateralMastectomy:
+  </a:s>
+               <a:s r="889">
+                  <a:s r="890">
+                     <a:s>exists </a:s>
+                     <a:s r="898">
+                        <a:s r="891">
+                           <a:s>Common</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="898">
+                           <a:s>ValidCondition(</a:s>
+                           <a:s r="894">
+                              <a:s>[Condition: </a:s>
+                              <a:s>
+                                 <a:s>&quot;BILATERAL MASTECTOMY&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> or 
+  </a:s>
+                  <a:s r="901">
+                     <a:s>exists </a:s>
+                     <a:s r="909">
+                        <a:s r="902">
+                           <a:s>C3F</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="909">
+                           <a:s>Completed(</a:s>
+                           <a:s r="905">
+                              <a:s>[Procedure: </a:s>
+                              <a:s>
+                                 <a:s>&quot;BILATERAL MASTECTOMY PROCEDURE&quot;</a:s>
+                              </a:s>
+                              <a:s>]</a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="889" locator="183:3-184:69" xsi:type="Or">
+            <operand localId="890" locator="183:3-183:67" xsi:type="Exists">
+               <signature localId="899" xsi:type="ListTypeSpecifier">
+                  <elementType localId="900" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="898" locator="183:10-183:67" name="ValidCondition" libraryName="Common" xsi:type="FunctionRef">
+                  <operand localId="894" locator="183:32-183:66" dataType="fhir:Condition" templateId="http://hl7.org/fhir/StructureDefinition/Condition" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                     <codes localId="893" locator="183:44-183:65" name="BILATERAL MASTECTOMY" preserve="true" xsi:type="ValueSetRef"/>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="901" locator="184:3-184:69" xsi:type="Exists">
+               <signature localId="910" xsi:type="ListTypeSpecifier">
+                  <elementType localId="911" name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="909" locator="184:10-184:69" name="Completed" libraryName="C3F" xsi:type="FunctionRef">
+                  <operand localId="905" locator="184:24-184:68" dataType="fhir:Procedure" templateId="http://hl7.org/fhir/StructureDefinition/Procedure" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                     <codes localId="904" locator="184:36-184:67" name="BILATERAL MASTECTOMY PROCEDURE" preserve="true" xsi:type="ValueSetRef"/>
+                  </operand>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="915" locator="186:1-194:68" name="LeftUnilateralMastectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="915">
+               <a:s>define LeftUnilateralMastectomy:
+  </a:s>
+               <a:s r="916">
+                  <a:s r="917">
+                     <a:s r="918">
+                        <a:s>exists </a:s>
+                        <a:s r="926">
+                           <a:s r="919">
+                              <a:s>Common</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="926">
+                              <a:s>ValidCondition(</a:s>
+                              <a:s r="922">
+                                 <a:s>[Condition: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;LEFT UNILATERAL MASTECTOMY&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> or
+  </a:s>
+                     <a:s r="929">
+                        <a:s>exists </a:s>
+                        <a:s r="937">
+                           <a:s r="930">
+                              <a:s>C3F</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="937">
+                              <a:s>Completed(</a:s>
+                              <a:s r="933">
+                                 <a:s>[Procedure: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;LEFT UNILATERAL MASTECTOMY PROCEDURE&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> or
+  </a:s>
+                  <a:s r="940">
+                     <a:s>exists </a:s>
+                     <a:s r="1008">
+                        <a:s>
+                           <a:s r="941">
+                              <a:s r="942">
+                                 <a:s>(</a:s>
+                                 <a:s r="942">
+                                    <a:s r="950">
+                                       <a:s r="943">
+                                          <a:s>Common</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="950">
+                                          <a:s>ValidCondition(</a:s>
+                                          <a:s r="946">
+                                             <a:s>[Condition: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;UNILATERAL MASTECTOMY&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> as </a:s>
+                                    <a:s r="951">
+                                       <a:s>List&lt;</a:s>
+                                       <a:s r="952">
+                                          <a:s>Condition</a:s>
+                                       </a:s>
+                                       <a:s>></a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                              <a:s> C</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    </a:s>
+                        <a:s r="953">
+                           <a:s>where
+      </a:s>
+                           <a:s r="953">
+                              <a:s>exists </a:s>
+                              <a:s r="1005">
+                                 <a:s>
+                                    <a:s r="954">
+                                       <a:s r="956">
+                                          <a:s>
+                                             <a:s>C.bodySite</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> bs</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="957">
+                                    <a:s>where </a:s>
+                                    <a:s r="957">
+                                       <a:s r="958">
+                                          <a:s r="959">
+                                             <a:s>bs</a:s>
+                                          </a:s>
+                                          <a:s> ~ </a:s>
+                                          <a:s r="960">
+                                             <a:s>&quot;Left (qualifier value)&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> or
+      </a:s>
+                                       <a:s r="967">
+                                          <a:s>exists </a:s>
+                                          <a:s r="1002">
+                                             <a:s>(</a:s>
+                                             <a:s r="1002">
+                                                <a:s>
+                                                   <a:s r="968">
+                                                      <a:s r="980">
+                                                         <a:s>
+                                                            <a:s>C.bodySite.extension</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s> E</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>
+        </a:s>
+                                                <a:s r="981">
+                                                   <a:s>where </a:s>
+                                                   <a:s r="981">
+                                                      <a:s r="982">
+                                                         <a:s r="984">
+                                                            <a:s r="983">
+                                                               <a:s>E</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="984">
+                                                               <a:s>url</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                         <a:s> = </a:s>
+                                                         <a:s r="985">
+                                                            <a:s>'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier'</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s>
+          and </a:s>
+                                                      <a:s r="990">
+                                                         <a:s r="991">
+                                                            <a:s r="993">
+                                                               <a:s r="992">
+                                                                  <a:s>E</a:s>
+                                                               </a:s>
+                                                               <a:s>.</a:s>
+                                                               <a:s r="993">
+                                                                  <a:s>value</a:s>
+                                                               </a:s>
+                                                            </a:s>
+                                                            <a:s> as </a:s>
+                                                            <a:s r="994">
+                                                               <a:s>CodeableConcept</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                         <a:s> ~ </a:s>
+                                                         <a:s r="995">
+                                                            <a:s>&quot;Left (qualifier value)&quot;</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>)</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="916" locator="187:3-194:68" xsi:type="Or">
+            <operand localId="917" locator="187:3-188:75" xsi:type="Or">
+               <operand localId="918" locator="187:3-187:73" xsi:type="Exists">
+                  <signature localId="927" xsi:type="ListTypeSpecifier">
+                     <elementType localId="928" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+                  </signature>
+                  <operand localId="926" locator="187:10-187:73" name="ValidCondition" libraryName="Common" xsi:type="FunctionRef">
+                     <operand localId="922" locator="187:32-187:72" dataType="fhir:Condition" templateId="http://hl7.org/fhir/StructureDefinition/Condition" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                        <codes localId="921" locator="187:44-187:71" name="LEFT UNILATERAL MASTECTOMY" preserve="true" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="929" locator="188:3-188:75" xsi:type="Exists">
+                  <signature localId="938" xsi:type="ListTypeSpecifier">
+                     <elementType localId="939" name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                  </signature>
+                  <operand localId="937" locator="188:10-188:75" name="Completed" libraryName="C3F" xsi:type="FunctionRef">
+                     <operand localId="933" locator="188:24-188:74" dataType="fhir:Procedure" templateId="http://hl7.org/fhir/StructureDefinition/Procedure" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                        <codes localId="932" locator="188:36-188:73" name="LEFT UNILATERAL MASTECTOMY PROCEDURE" preserve="true" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="940" locator="189:3-194:68" xsi:type="Exists">
+               <signature localId="1009" xsi:type="ListTypeSpecifier">
+                  <elementType localId="1010" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="1008" locator="189:10-194:68" xsi:type="Query">
+                  <source localId="941" locator="189:10-189:91" alias="C">
+                     <expression localId="942" locator="189:10-189:89" strict="false" xsi:type="As">
+                        <operand localId="950" locator="189:11-189:69" name="ValidCondition" libraryName="Common" xsi:type="FunctionRef">
+                           <operand localId="946" locator="189:33-189:68" dataType="fhir:Condition" templateId="http://hl7.org/fhir/StructureDefinition/Condition" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                              <codes localId="945" locator="189:45-189:67" name="UNILATERAL MASTECTOMY" preserve="true" xsi:type="ValueSetRef"/>
+                           </operand>
+                        </operand>
+                        <asTypeSpecifier localId="951" locator="189:74-189:88" xsi:type="ListTypeSpecifier">
+                           <elementType localId="952" locator="189:79-189:87" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+                        </asTypeSpecifier>
+                     </expression>
+                  </source>
+                  <where localId="953" locator="190:5-194:68" xsi:type="Exists">
+                     <signature localId="1006" xsi:type="ListTypeSpecifier">
+                        <elementType localId="1007" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </signature>
+                     <operand localId="1005" locator="191:14-194:68" xsi:type="Query">
+                        <source localId="954" locator="191:14-191:26" alias="bs">
+                           <expression localId="956" locator="191:14-191:23" path="bodySite" scope="C" xsi:type="Property"/>
+                        </source>
+                        <where localId="957" locator="191:28-194:68" xsi:type="Or">
+                           <operand localId="958" locator="191:34-191:62" xsi:type="Equivalent">
+                              <signature localId="965" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                              <signature localId="966" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="961" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <operand localId="959" locator="191:34-191:35" name="bs" xsi:type="AliasRef"/>
+                              </operand>
+                              <operand localId="963" xsi:type="ToConcept">
+                                 <signature localId="964" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="960" locator="191:39-191:62" name="Left (qualifier value)" xsi:type="CodeRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="967" locator="192:7-194:68" xsi:type="Exists">
+                              <signature localId="1003" xsi:type="ListTypeSpecifier">
+                                 <elementType localId="1004" name="fhir:Extension" xsi:type="NamedTypeSpecifier"/>
+                              </signature>
+                              <operand localId="1002" locator="192:14-194:68" xsi:type="Query">
+                                 <source localId="968" locator="192:15-192:36" alias="E">
+                                    <expression localId="980" locator="192:15-192:34" xsi:type="Flatten">
+                                       <operand localId="978" xsi:type="Query">
+                                          <source localId="977" alias="$this">
+                                             <expression localId="970" path="bodySite" scope="C" xsi:type="Property"/>
+                                          </source>
+                                          <where localId="974" xsi:type="Not">
+                                             <operand localId="973" xsi:type="IsNull">
+                                                <operand localId="972" path="extension" xsi:type="Property">
+                                                   <source localId="971" name="$this" xsi:type="AliasRef"/>
+                                                </operand>
+                                             </operand>
+                                          </where>
+                                          <return localId="979" distinct="false">
+                                             <expression localId="976" path="extension" xsi:type="Property">
+                                                <source localId="975" name="$this" xsi:type="AliasRef"/>
+                                             </expression>
+                                          </return>
+                                       </operand>
+                                    </expression>
+                                 </source>
+                                 <where localId="981" locator="193:9-194:67" xsi:type="And">
+                                    <operand localId="982" locator="193:15-193:99" xsi:type="Equal">
+                                       <signature localId="988" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       <signature localId="989" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       <operand localId="986" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                          <signature localId="987" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                          <operand localId="984" locator="193:15-193:19" path="url" scope="E" xsi:type="Property"/>
+                                       </operand>
+                                       <operand localId="985" locator="193:23-193:99" valueType="t:String" value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier" xsi:type="Literal"/>
+                                    </operand>
+                                    <operand localId="990" locator="194:15-194:67" xsi:type="Equivalent">
+                                       <signature localId="1000" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                                       <signature localId="1001" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                                       <operand localId="996" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                          <operand localId="991" locator="194:15-194:40" strict="false" xsi:type="As">
+                                             <operand localId="993" locator="194:15-194:21" path="value" scope="E" xsi:type="Property"/>
+                                             <asTypeSpecifier localId="994" locator="194:26-194:40" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                                          </operand>
+                                       </operand>
+                                       <operand localId="998" xsi:type="ToConcept">
+                                          <signature localId="999" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <operand localId="995" locator="194:44-194:67" name="Left (qualifier value)" xsi:type="CodeRef"/>
+                                       </operand>
+                                    </operand>
+                                 </where>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1013" locator="196:1-204:69" name="RightUnilateralMastectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1013">
+               <a:s>define RightUnilateralMastectomy:
+  </a:s>
+               <a:s r="1014">
+                  <a:s r="1015">
+                     <a:s r="1016">
+                        <a:s>exists </a:s>
+                        <a:s r="1024">
+                           <a:s r="1017">
+                              <a:s>Common</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="1024">
+                              <a:s>ValidCondition(</a:s>
+                              <a:s r="1020">
+                                 <a:s>[Condition: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;RIGHT UNILATERAL MASTECTOMY&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> or
+  </a:s>
+                     <a:s r="1027">
+                        <a:s>exists </a:s>
+                        <a:s r="1035">
+                           <a:s r="1028">
+                              <a:s>C3F</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="1035">
+                              <a:s>Completed(</a:s>
+                              <a:s r="1031">
+                                 <a:s>[Procedure: </a:s>
+                                 <a:s>
+                                    <a:s>&quot;RIGHT UNILATERAL MASTECTOMY PROCEDURE&quot;</a:s>
+                                 </a:s>
+                                 <a:s>]</a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> or 
+  </a:s>
+                  <a:s r="1038">
+                     <a:s>exists </a:s>
+                     <a:s r="1106">
+                        <a:s>
+                           <a:s r="1039">
+                              <a:s r="1040">
+                                 <a:s>(</a:s>
+                                 <a:s r="1040">
+                                    <a:s r="1048">
+                                       <a:s r="1041">
+                                          <a:s>Common</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="1048">
+                                          <a:s>ValidCondition(</a:s>
+                                          <a:s r="1044">
+                                             <a:s>[Condition: </a:s>
+                                             <a:s>
+                                                <a:s>&quot;UNILATERAL MASTECTOMY&quot;</a:s>
+                                             </a:s>
+                                             <a:s>]</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> as </a:s>
+                                    <a:s r="1049">
+                                       <a:s>List&lt;</a:s>
+                                       <a:s r="1050">
+                                          <a:s>Condition</a:s>
+                                       </a:s>
+                                       <a:s>></a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                              <a:s> C</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    </a:s>
+                        <a:s r="1051">
+                           <a:s>where
+      </a:s>
+                           <a:s r="1051">
+                              <a:s>exists </a:s>
+                              <a:s r="1103">
+                                 <a:s>
+                                    <a:s r="1052">
+                                       <a:s r="1054">
+                                          <a:s>
+                                             <a:s>C.bodySite</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> bs</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> </a:s>
+                                 <a:s r="1055">
+                                    <a:s>where </a:s>
+                                    <a:s r="1055">
+                                       <a:s r="1056">
+                                          <a:s r="1057">
+                                             <a:s>bs</a:s>
+                                          </a:s>
+                                          <a:s> ~ </a:s>
+                                          <a:s r="1058">
+                                             <a:s>&quot;Right (qualifier value)&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> or
+      </a:s>
+                                       <a:s r="1065">
+                                          <a:s>exists </a:s>
+                                          <a:s r="1100">
+                                             <a:s>(</a:s>
+                                             <a:s r="1100">
+                                                <a:s>
+                                                   <a:s r="1066">
+                                                      <a:s r="1078">
+                                                         <a:s>
+                                                            <a:s>C.bodySite.extension</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s> E</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>
+        </a:s>
+                                                <a:s r="1079">
+                                                   <a:s>where </a:s>
+                                                   <a:s r="1079">
+                                                      <a:s r="1080">
+                                                         <a:s r="1082">
+                                                            <a:s r="1081">
+                                                               <a:s>E</a:s>
+                                                            </a:s>
+                                                            <a:s>.</a:s>
+                                                            <a:s r="1082">
+                                                               <a:s>url</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                         <a:s> = </a:s>
+                                                         <a:s r="1083">
+                                                            <a:s>'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier'</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s>
+          and </a:s>
+                                                      <a:s r="1088">
+                                                         <a:s r="1089">
+                                                            <a:s r="1091">
+                                                               <a:s r="1090">
+                                                                  <a:s>E</a:s>
+                                                               </a:s>
+                                                               <a:s>.</a:s>
+                                                               <a:s r="1091">
+                                                                  <a:s>value</a:s>
+                                                               </a:s>
+                                                            </a:s>
+                                                            <a:s> as </a:s>
+                                                            <a:s r="1092">
+                                                               <a:s>CodeableConcept</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                         <a:s> ~ </a:s>
+                                                         <a:s r="1093">
+                                                            <a:s>&quot;Right (qualifier value)&quot;</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>)</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1014" locator="197:3-204:69" xsi:type="Or">
+            <operand localId="1015" locator="197:3-198:76" xsi:type="Or">
+               <operand localId="1016" locator="197:3-197:74" xsi:type="Exists">
+                  <signature localId="1025" xsi:type="ListTypeSpecifier">
+                     <elementType localId="1026" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+                  </signature>
+                  <operand localId="1024" locator="197:10-197:74" name="ValidCondition" libraryName="Common" xsi:type="FunctionRef">
+                     <operand localId="1020" locator="197:32-197:73" dataType="fhir:Condition" templateId="http://hl7.org/fhir/StructureDefinition/Condition" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                        <codes localId="1019" locator="197:44-197:72" name="RIGHT UNILATERAL MASTECTOMY" preserve="true" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="1027" locator="198:3-198:76" xsi:type="Exists">
+                  <signature localId="1036" xsi:type="ListTypeSpecifier">
+                     <elementType localId="1037" name="fhir:Procedure" xsi:type="NamedTypeSpecifier"/>
+                  </signature>
+                  <operand localId="1035" locator="198:10-198:76" name="Completed" libraryName="C3F" xsi:type="FunctionRef">
+                     <operand localId="1031" locator="198:24-198:75" dataType="fhir:Procedure" templateId="http://hl7.org/fhir/StructureDefinition/Procedure" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                        <codes localId="1030" locator="198:36-198:74" name="RIGHT UNILATERAL MASTECTOMY PROCEDURE" preserve="true" xsi:type="ValueSetRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="1038" locator="199:3-204:69" xsi:type="Exists">
+               <signature localId="1107" xsi:type="ListTypeSpecifier">
+                  <elementType localId="1108" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <operand localId="1106" locator="199:10-204:69" xsi:type="Query">
+                  <source localId="1039" locator="199:10-199:91" alias="C">
+                     <expression localId="1040" locator="199:10-199:89" strict="false" xsi:type="As">
+                        <operand localId="1048" locator="199:11-199:69" name="ValidCondition" libraryName="Common" xsi:type="FunctionRef">
+                           <operand localId="1044" locator="199:33-199:68" dataType="fhir:Condition" templateId="http://hl7.org/fhir/StructureDefinition/Condition" codeProperty="code" codeComparator="in" xsi:type="Retrieve">
+                              <codes localId="1043" locator="199:45-199:67" name="UNILATERAL MASTECTOMY" preserve="true" xsi:type="ValueSetRef"/>
+                           </operand>
+                        </operand>
+                        <asTypeSpecifier localId="1049" locator="199:74-199:88" xsi:type="ListTypeSpecifier">
+                           <elementType localId="1050" locator="199:79-199:87" name="fhir:Condition" xsi:type="NamedTypeSpecifier"/>
+                        </asTypeSpecifier>
+                     </expression>
+                  </source>
+                  <where localId="1051" locator="200:5-204:69" xsi:type="Exists">
+                     <signature localId="1104" xsi:type="ListTypeSpecifier">
+                        <elementType localId="1105" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                     </signature>
+                     <operand localId="1103" locator="201:14-204:69" xsi:type="Query">
+                        <source localId="1052" locator="201:14-201:26" alias="bs">
+                           <expression localId="1054" locator="201:14-201:23" path="bodySite" scope="C" xsi:type="Property"/>
+                        </source>
+                        <where localId="1055" locator="201:28-204:69" xsi:type="Or">
+                           <operand localId="1056" locator="201:34-201:63" xsi:type="Equivalent">
+                              <signature localId="1063" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                              <signature localId="1064" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="1059" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                 <operand localId="1057" locator="201:34-201:35" name="bs" xsi:type="AliasRef"/>
+                              </operand>
+                              <operand localId="1061" xsi:type="ToConcept">
+                                 <signature localId="1062" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="1058" locator="201:39-201:63" name="Right (qualifier value)" xsi:type="CodeRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="1065" locator="202:7-204:69" xsi:type="Exists">
+                              <signature localId="1101" xsi:type="ListTypeSpecifier">
+                                 <elementType localId="1102" name="fhir:Extension" xsi:type="NamedTypeSpecifier"/>
+                              </signature>
+                              <operand localId="1100" locator="202:14-204:69" xsi:type="Query">
+                                 <source localId="1066" locator="202:15-202:36" alias="E">
+                                    <expression localId="1078" locator="202:15-202:34" xsi:type="Flatten">
+                                       <operand localId="1076" xsi:type="Query">
+                                          <source localId="1075" alias="$this">
+                                             <expression localId="1068" path="bodySite" scope="C" xsi:type="Property"/>
+                                          </source>
+                                          <where localId="1072" xsi:type="Not">
+                                             <operand localId="1071" xsi:type="IsNull">
+                                                <operand localId="1070" path="extension" xsi:type="Property">
+                                                   <source localId="1069" name="$this" xsi:type="AliasRef"/>
+                                                </operand>
+                                             </operand>
+                                          </where>
+                                          <return localId="1077" distinct="false">
+                                             <expression localId="1074" path="extension" xsi:type="Property">
+                                                <source localId="1073" name="$this" xsi:type="AliasRef"/>
+                                             </expression>
+                                          </return>
+                                       </operand>
+                                    </expression>
+                                 </source>
+                                 <where localId="1079" locator="203:9-204:68" xsi:type="And">
+                                    <operand localId="1080" locator="203:15-203:99" xsi:type="Equal">
+                                       <signature localId="1086" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       <signature localId="1087" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       <operand localId="1084" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                          <signature localId="1085" name="fhir:uri" xsi:type="NamedTypeSpecifier"/>
+                                          <operand localId="1082" locator="203:15-203:19" path="url" scope="E" xsi:type="Property"/>
+                                       </operand>
+                                       <operand localId="1083" locator="203:23-203:99" valueType="t:String" value="http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier" xsi:type="Literal"/>
+                                    </operand>
+                                    <operand localId="1088" locator="204:15-204:68" xsi:type="Equivalent">
+                                       <signature localId="1098" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                                       <signature localId="1099" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                                       <operand localId="1094" name="ToConcept" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                                          <operand localId="1089" locator="204:15-204:40" strict="false" xsi:type="As">
+                                             <operand localId="1091" locator="204:15-204:21" path="value" scope="E" xsi:type="Property"/>
+                                             <asTypeSpecifier localId="1092" locator="204:26-204:40" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                                          </operand>
+                                       </operand>
+                                       <operand localId="1096" xsi:type="ToConcept">
+                                          <signature localId="1097" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <operand localId="1093" locator="204:44-204:68" name="Right (qualifier value)" xsi:type="CodeRef"/>
+                                       </operand>
+                                    </operand>
+                                 </where>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="885" locator="179:1-180:81" name="de-mastectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="885">
+               <a:s>//------------------------------------------------------------------------------
+// History of bilateral mastectomy
+//------------------------------------------------------------------------------
+
+define &quot;de-mastectomy&quot;:
+  </a:s>
+               <a:s r="886">
+                  <a:s r="912">
+                     <a:s>BilateralMastectomy</a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="913">
+                     <a:s>(</a:s>
+                     <a:s r="913">
+                        <a:s r="1011">
+                           <a:s>LeftUnilateralMastectomy</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="1109">
+                           <a:s>RightUnilateralMastectomy</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="886" locator="180:3-180:81" xsi:type="Or">
+            <operand localId="912" locator="180:3-180:21" name="BilateralMastectomy" xsi:type="ExpressionRef"/>
+            <operand localId="913" locator="180:26-180:81" xsi:type="And">
+               <operand localId="1011" locator="180:27-180:50" name="LeftUnilateralMastectomy" xsi:type="ExpressionRef"/>
+               <operand localId="1109" locator="180:56-180:80" name="RightUnilateralMastectomy" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1118" locator="225:1-229:3" name="NewOrWorseningBreastSymptomsObservations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1118">
+               <a:s>define NewOrWorseningBreastSymptomsObservations:
+  </a:s>
+               <a:s r="1132">
+                  <a:s r="1119">
+                     <a:s>C3F</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1132">
+                     <a:s>ObservationLookBack(
+    </a:s>
+                     <a:s r="1122">
+                        <a:s>[Observation: </a:s>
+                        <a:s>
+                           <a:s>&quot;New or worsening breast symptoms&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="1131">
+                        <a:s>ObservationLookbackPeriod</a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1132" locator="226:3-229:3" name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+            <operand localId="1122" locator="227:5-227:53" dataType="fhir:Observation" templateId="http://hl7.org/fhir/StructureDefinition/Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+               <codes localId="1130" xsi:type="ToList">
+                  <operand localId="1121" locator="227:19-227:52" name="New or worsening breast symptoms" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+            <operand localId="1131" locator="228:5-228:29" name="ObservationLookbackPeriod" xsi:type="ParameterRef"/>
+         </expression>
+      </def>
+      <def localId="1113" locator="216:1-223:15" name="NewOrWorseningBreastSymptoms" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1113">
+               <a:s>// TODO: look into how to associate with current encounter rather than arbitrary lookback period
+define NewOrWorseningBreastSymptoms:
+  </a:s>
+               <a:s r="1144">
+                  <a:s r="1142">
+                     <a:s r="1114">
+                        <a:s>C3F</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="1142">
+                        <a:s>MostRecent(
+    </a:s>
+                        <a:s r="1141">
+                           <a:s r="1115">
+                              <a:s>C3F</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="1141">
+                              <a:s>ObservationLookBack(
+      </a:s>
+                              <a:s r="1139">
+                                 <a:s>
+                                    <a:s r="1116">
+                                       <a:s r="1133">
+                                          <a:s>
+                                             <a:s>NewOrWorseningBreastSymptomsObservations</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> R</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+        </a:s>
+                                 <a:s r="1136">
+                                    <a:s>where </a:s>
+                                    <a:s r="1136">
+                                       <a:s r="1135">
+                                          <a:s r="1134">
+                                             <a:s>R</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="1135">
+                                             <a:s>value</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> is true</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>,
+      </a:s>
+                              <a:s r="1140">
+                                 <a:s>SymptomaticLookBack</a:s>
+                              </a:s>
+                              <a:s>
+    )</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+  )</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1144" locator="217:3-223:15" xsi:type="Not">
+            <operand localId="1143" locator="217:3-223:15" xsi:type="IsNull">
+               <operand localId="1142" locator="217:3-223:3" name="MostRecent" libraryName="C3F" xsi:type="FunctionRef">
+                  <operand localId="1141" locator="218:5-222:5" name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+                     <operand localId="1139" locator="219:7-220:29" xsi:type="Query">
+                        <source localId="1116" locator="219:7-219:48" alias="R">
+                           <expression localId="1133" locator="219:7-219:46" name="NewOrWorseningBreastSymptomsObservations" xsi:type="ExpressionRef"/>
+                        </source>
+                        <where localId="1136" locator="220:9-220:29" xsi:type="IsTrue">
+                           <operand localId="1138" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <operand localId="1137" asType="fhir:boolean" xsi:type="As">
+                                 <operand localId="1135" locator="220:15-220:21" path="value" scope="R" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                     <operand localId="1140" locator="221:7-221:25" name="SymptomaticLookBack" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1111" locator="211:1-212:30" name="de-breastsymptoms" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1111">
+               <a:s>//------------------------------------------------------------------------------
+// Breast symptoms
+//------------------------------------------------------------------------------
+
+// TODO: move this to events
+define &quot;de-breastsymptoms&quot;:
+  </a:s>
+               <a:s r="1145">
+                  <a:s>NewOrWorseningBreastSymptoms</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1145" locator="212:3-212:30" name="NewOrWorseningBreastSymptoms" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="1154" locator="248:1-252:3" name="NewOrWorseningBreastFindingsObservations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1154">
+               <a:s>define NewOrWorseningBreastFindingsObservations:
+  </a:s>
+               <a:s r="1168">
+                  <a:s r="1155">
+                     <a:s>C3F</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1168">
+                     <a:s>ObservationLookBack(
+    </a:s>
+                     <a:s r="1158">
+                        <a:s>[Observation: </a:s>
+                        <a:s>
+                           <a:s>&quot;New or worsening breast exam findings&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="1167">
+                        <a:s>ObservationLookbackPeriod</a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1168" locator="249:3-252:3" name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+            <operand localId="1158" locator="250:5-250:58" dataType="fhir:Observation" templateId="http://hl7.org/fhir/StructureDefinition/Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+               <codes localId="1166" xsi:type="ToList">
+                  <operand localId="1157" locator="250:19-250:57" name="New or worsening breast exam findings" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+            <operand localId="1167" locator="251:5-251:29" name="ObservationLookbackPeriod" xsi:type="ParameterRef"/>
+         </expression>
+      </def>
+      <def localId="1149" locator="239:1-246:15" name="NewOrWorseningBreastFindings" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1149">
+               <a:s>define NewOrWorseningBreastFindings:
+  </a:s>
+               <a:s r="1180">
+                  <a:s r="1178">
+                     <a:s r="1150">
+                        <a:s>C3F</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="1178">
+                        <a:s>MostRecent(
+    </a:s>
+                        <a:s r="1177">
+                           <a:s r="1151">
+                              <a:s>C3F</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="1177">
+                              <a:s>ObservationLookBack(
+      </a:s>
+                              <a:s r="1175">
+                                 <a:s>
+                                    <a:s r="1152">
+                                       <a:s r="1169">
+                                          <a:s>
+                                             <a:s>NewOrWorseningBreastFindingsObservations</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> R</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+        </a:s>
+                                 <a:s r="1172">
+                                    <a:s>where </a:s>
+                                    <a:s r="1172">
+                                       <a:s r="1171">
+                                          <a:s r="1170">
+                                             <a:s>R</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="1171">
+                                             <a:s>value</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> is true</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>,
+      </a:s>
+                              <a:s r="1176">
+                                 <a:s>SymptomaticLookBack</a:s>
+                              </a:s>
+                              <a:s>
+    )</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+  )</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1180" locator="240:3-246:15" xsi:type="Not">
+            <operand localId="1179" locator="240:3-246:15" xsi:type="IsNull">
+               <operand localId="1178" locator="240:3-246:3" name="MostRecent" libraryName="C3F" xsi:type="FunctionRef">
+                  <operand localId="1177" locator="241:5-245:5" name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+                     <operand localId="1175" locator="242:7-243:29" xsi:type="Query">
+                        <source localId="1152" locator="242:7-242:48" alias="R">
+                           <expression localId="1169" locator="242:7-242:46" name="NewOrWorseningBreastFindingsObservations" xsi:type="ExpressionRef"/>
+                        </source>
+                        <where localId="1172" locator="243:9-243:29" xsi:type="IsTrue">
+                           <operand localId="1174" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <operand localId="1173" asType="fhir:boolean" xsi:type="As">
+                                 <operand localId="1171" locator="243:15-243:21" path="value" scope="R" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                     <operand localId="1176" locator="244:7-244:25" name="SymptomaticLookBack" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1147" locator="236:1-237:30" name="de-breastfindings" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1147">
+               <a:s>//------------------------------------------------------------------------------
+// Breast exam findings
+//------------------------------------------------------------------------------
+
+// TODO: move this to events
+define &quot;de-breastfindings&quot;:
+  </a:s>
+               <a:s r="1181">
+                  <a:s>NewOrWorseningBreastFindings</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1181" locator="237:3-237:30" name="NewOrWorseningBreastFindings" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="1190" locator="270:1-274:3" name="ReducedLifeExpectancyObservations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1190">
+               <a:s>define ReducedLifeExpectancyObservations:
+  </a:s>
+               <a:s r="1204">
+                  <a:s r="1191">
+                     <a:s>C3F</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1204">
+                     <a:s>ObservationLookBack(
+    </a:s>
+                     <a:s r="1194">
+                        <a:s>[Observation: </a:s>
+                        <a:s>
+                           <a:s>&quot;Reduced life expectancy indicator&quot;</a:s>
+                        </a:s>
+                        <a:s>]</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="1203">
+                        <a:s>ObservationLookbackPeriod</a:s>
+                     </a:s>
+                     <a:s>
+  )</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1204" locator="271:3-274:3" name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+            <operand localId="1194" locator="272:5-272:54" dataType="fhir:Observation" templateId="http://hl7.org/fhir/StructureDefinition/Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+               <codes localId="1202" xsi:type="ToList">
+                  <operand localId="1193" locator="272:19-272:53" name="Reduced life expectancy indicator" xsi:type="CodeRef"/>
+               </codes>
+            </operand>
+            <operand localId="1203" locator="273:5-273:29" name="ObservationLookbackPeriod" xsi:type="ParameterRef"/>
+         </expression>
+      </def>
+      <def localId="1185" locator="261:1-268:15" name="ReducedLifeExpectancy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1185">
+               <a:s>define ReducedLifeExpectancy:
+  </a:s>
+               <a:s r="1216">
+                  <a:s r="1214">
+                     <a:s r="1186">
+                        <a:s>C3F</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="1214">
+                        <a:s>MostRecent(
+    </a:s>
+                        <a:s r="1213">
+                           <a:s r="1187">
+                              <a:s>C3F</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="1213">
+                              <a:s>ObservationLookBack(
+      </a:s>
+                              <a:s r="1211">
+                                 <a:s>
+                                    <a:s r="1188">
+                                       <a:s r="1205">
+                                          <a:s>
+                                             <a:s>ReducedLifeExpectancyObservations</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> R</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>
+        </a:s>
+                                 <a:s r="1208">
+                                    <a:s>where </a:s>
+                                    <a:s r="1208">
+                                       <a:s r="1207">
+                                          <a:s r="1206">
+                                             <a:s>R</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="1207">
+                                             <a:s>value</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s> is true</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>,
+      </a:s>
+                              <a:s r="1212">
+                                 <a:s>SymptomaticLookBack</a:s>
+                              </a:s>
+                              <a:s>
+    )</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+  )</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1216" locator="262:3-268:15" xsi:type="Not">
+            <operand localId="1215" locator="262:3-268:15" xsi:type="IsNull">
+               <operand localId="1214" locator="262:3-268:3" name="MostRecent" libraryName="C3F" xsi:type="FunctionRef">
+                  <operand localId="1213" locator="263:5-267:5" name="ObservationLookBack" libraryName="C3F" xsi:type="FunctionRef">
+                     <operand localId="1211" locator="264:7-265:29" xsi:type="Query">
+                        <source localId="1188" locator="264:7-264:41" alias="R">
+                           <expression localId="1205" locator="264:7-264:39" name="ReducedLifeExpectancyObservations" xsi:type="ExpressionRef"/>
+                        </source>
+                        <where localId="1208" locator="265:9-265:29" xsi:type="IsTrue">
+                           <operand localId="1210" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <operand localId="1209" asType="fhir:boolean" xsi:type="As">
+                                 <operand localId="1207" locator="265:15-265:21" path="value" scope="R" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                        </where>
+                     </operand>
+                     <operand localId="1212" locator="266:7-266:25" name="SymptomaticLookBack" xsi:type="ParameterRef"/>
+                  </operand>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1183" locator="258:1-259:23" name="de-lifeexp" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1183">
+               <a:s>//------------------------------------------------------------------------------
+// Life expectancy
+//------------------------------------------------------------------------------
+
+define &quot;de-lifeexp&quot;:
+  </a:s>
+               <a:s r="1217">
+                  <a:s>ReducedLifeExpectancy</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1217" locator="259:3-259:23" name="ReducedLifeExpectancy" xsi:type="ExpressionRef"/>
+      </def>
+   </statements>
+</library>

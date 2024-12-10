@@ -1,0 +1,764 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "s" : {
+            "r" : "254",
+            "s" : [ {
+               "value" : [ "","library ScreeningEligibleActions version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "ScreeningEligibleActions",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "3:1-3:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "4:1-4:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "6:1-6:56",
+            "localIdentifier" : "DataElements",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/DataElements",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "DataElements" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","DataElements" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "209",
+            "locator" : "8:1-8:114",
+            "name" : "ActCode",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ActCode\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "210",
+            "locator" : "9:1-9:124",
+            "name" : "ReasonCode",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ReasonCode\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "211",
+            "locator" : "12:1-12:89",
+            "name" : "Eligible for screening",
+            "id" : "eligible",
+            "display" : "Eligible for screening",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "211",
+                  "s" : [ {
+                     "value" : [ "// Act Codes\n","code ","\"Eligible for screening\"",": ","'eligible'"," from " ]
+                  }, {
+                     "r" : "212",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Eligible for screening'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "212",
+               "locator" : "12:48-12:56",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "213",
+            "locator" : "13:1-13:100",
+            "name" : "Not eligible for screening",
+            "id" : "noteligible",
+            "display" : "Not eligible for screening",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "213",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Not eligible for screening\"",": ","'noteligible'"," from " ]
+                  }, {
+                     "r" : "214",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Not eligible for screening'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "214",
+               "locator" : "13:55-13:63",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "215",
+            "locator" : "15:1-15:111",
+            "name" : "Eligible for screening reason",
+            "id" : "eligibleforscreening",
+            "display" : "Eligible for screening",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "215",
+                  "s" : [ {
+                     "value" : [ "// Reason Codes\n","code ","\"Eligible for screening reason\"",": ","'eligibleforscreening'"," from " ]
+                  }, {
+                     "r" : "216",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Eligible for screening'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "216",
+               "locator" : "15:67-15:78",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "217",
+            "locator" : "16:1-16:120",
+            "name" : "Not assigned female at birth",
+            "id" : "notassignedfemaleatbirth",
+            "display" : "Not assigned female at birth",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "217",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Not assigned female at birth\"",": ","'notassignedfemaleatbirth'"," from " ]
+                  }, {
+                     "r" : "218",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Not assigned female at birth'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "218",
+               "locator" : "16:70-16:81",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "219",
+            "locator" : "17:1-17:101",
+            "name" : "Current breast cancer",
+            "id" : "currentbreastcancer",
+            "display" : "Current breast cancer",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "219",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Current breast cancer\"",": ","'currentbreastcancer'"," from " ]
+                  }, {
+                     "r" : "220",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Current breast cancer'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "220",
+               "locator" : "17:58-17:69",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "221",
+            "locator" : "18:1-18:96",
+            "name" : "Bilateral mastectomy",
+            "id" : "bilatmastectomy",
+            "display" : "Bilateral mastectomy",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "221",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Bilateral mastectomy\"",":  ","'bilatmastectomy'"," from " ]
+                  }, {
+                     "r" : "222",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Bilateral mastectomy'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "222",
+               "locator" : "18:54-18:65",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "223",
+            "locator" : "19:1-19:88",
+            "name" : "Diagnostic testing",
+            "id" : "diagtesting",
+            "display" : "Diagnostic testing",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "223",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Diagnostic testing\"",":  ","'diagtesting'"," from " ]
+                  }, {
+                     "r" : "224",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Diagnostic testing'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "224",
+               "locator" : "19:48-19:59",
+               "name" : "ReasonCode"
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "228",
+            "locator" : "21:1-21:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "226",
+            "locator" : "21:1-21:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "227",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "225",
+                  "locator" : "21:1-21:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "230",
+            "locator" : "23:1-28:2",
+            "name" : "act-eligible",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "230",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-eligible\"",":\n  " ]
+                  }, {
+                     "r" : "231",
+                     "s" : [ {
+                        "value" : [ "{\n    " ]
+                     }, {
+                        "s" : [ {
+                           "r" : "232",
+                           "value" : [ "result",": ","true" ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "233",
+                           "s" : [ {
+                              "value" : [ "\"Eligible for screening\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "234",
+                           "s" : [ {
+                              "value" : [ "\"Eligible for screening reason\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "231",
+               "locator" : "24:3-28:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "result",
+                  "value" : {
+                     "localId" : "232",
+                     "locator" : "25:13-25:16",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "true",
+                     "type" : "Literal"
+                  }
+               }, {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "233",
+                     "locator" : "26:9-26:32",
+                     "name" : "Eligible for screening",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "234",
+                     "locator" : "27:13-27:43",
+                     "name" : "Eligible for screening reason",
+                     "type" : "CodeRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "236",
+            "locator" : "30:1-35:2",
+            "name" : "end-noteligible-notassignedfemaleatbirth",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "236",
+                  "s" : [ {
+                     "value" : [ "","define ","\"end-noteligible-notassignedfemaleatbirth\"",":\n  " ]
+                  }, {
+                     "r" : "237",
+                     "s" : [ {
+                        "value" : [ "{\n    " ]
+                     }, {
+                        "s" : [ {
+                           "r" : "238",
+                           "value" : [ "result",": ","false" ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "239",
+                           "s" : [ {
+                              "value" : [ "\"Not eligible for screening\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "240",
+                           "s" : [ {
+                              "value" : [ "\"Not assigned female at birth\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "237",
+               "locator" : "31:3-35:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "result",
+                  "value" : {
+                     "localId" : "238",
+                     "locator" : "32:13-32:17",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "false",
+                     "type" : "Literal"
+                  }
+               }, {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "239",
+                     "locator" : "33:9-33:36",
+                     "name" : "Not eligible for screening",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "240",
+                     "locator" : "34:13-34:42",
+                     "name" : "Not assigned female at birth",
+                     "type" : "CodeRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "242",
+            "locator" : "37:1-42:2",
+            "name" : "end-noteligible-currentbreastcancer",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "242",
+                  "s" : [ {
+                     "value" : [ "","define ","\"end-noteligible-currentbreastcancer\"",":\n  " ]
+                  }, {
+                     "r" : "243",
+                     "s" : [ {
+                        "value" : [ "{\n    " ]
+                     }, {
+                        "s" : [ {
+                           "r" : "244",
+                           "value" : [ "result",": ","false" ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "245",
+                           "s" : [ {
+                              "value" : [ "\"Not eligible for screening\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "246",
+                           "s" : [ {
+                              "value" : [ "\"Current breast cancer\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "243",
+               "locator" : "38:3-42:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "result",
+                  "value" : {
+                     "localId" : "244",
+                     "locator" : "39:13-39:17",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "false",
+                     "type" : "Literal"
+                  }
+               }, {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "245",
+                     "locator" : "40:9-40:36",
+                     "name" : "Not eligible for screening",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "246",
+                     "locator" : "41:13-41:35",
+                     "name" : "Current breast cancer",
+                     "type" : "CodeRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "248",
+            "locator" : "44:1-49:2",
+            "name" : "end-noteligible-bilatmastectomy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "248",
+                  "s" : [ {
+                     "value" : [ "","define ","\"end-noteligible-bilatmastectomy\"",":  \n  " ]
+                  }, {
+                     "r" : "249",
+                     "s" : [ {
+                        "value" : [ "{\n    " ]
+                     }, {
+                        "s" : [ {
+                           "r" : "250",
+                           "value" : [ "result",": ","false" ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "251",
+                           "s" : [ {
+                              "value" : [ "\"Not eligible for screening\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "252",
+                           "s" : [ {
+                              "value" : [ "\"Bilateral mastectomy\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "249",
+               "locator" : "45:3-49:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "result",
+                  "value" : {
+                     "localId" : "250",
+                     "locator" : "46:13-46:17",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "false",
+                     "type" : "Literal"
+                  }
+               }, {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "251",
+                     "locator" : "47:9-47:36",
+                     "name" : "Not eligible for screening",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "252",
+                     "locator" : "48:13-48:34",
+                     "name" : "Bilateral mastectomy",
+                     "type" : "CodeRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "254",
+            "locator" : "51:1-56:2",
+            "name" : "act-dxtesting",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "254",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-dxtesting\"",":\n  " ]
+                  }, {
+                     "r" : "255",
+                     "s" : [ {
+                        "value" : [ "{\n    " ]
+                     }, {
+                        "s" : [ {
+                           "r" : "256",
+                           "value" : [ "result",": ","false" ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "257",
+                           "s" : [ {
+                              "value" : [ "\"Not eligible for screening\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "258",
+                           "s" : [ {
+                              "value" : [ "\"Diagnostic testing\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "255",
+               "locator" : "52:3-56:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "result",
+                  "value" : {
+                     "localId" : "256",
+                     "locator" : "53:13-53:17",
+                     "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "value" : "false",
+                     "type" : "Literal"
+                  }
+               }, {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "257",
+                     "locator" : "54:9-54:36",
+                     "name" : "Not eligible for screening",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "258",
+                     "locator" : "55:13-55:32",
+                     "name" : "Diagnostic testing",
+                     "type" : "CodeRef"
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}
