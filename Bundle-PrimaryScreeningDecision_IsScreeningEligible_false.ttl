@@ -1,0 +1,36 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/PrimaryScreeningDecision_IsScreeningEligible_false> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "PrimaryScreeningDecision_IsScreeningEligible_false"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/2"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/2> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/2> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "2"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_2\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 2</b></p><a name=\"2\"> </a><a name=\"hc2\"> </a><a name=\"2-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-PrimaryScreeningDecision.html\">Primary Screening Decision</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-IsScreeningEligible_false.html#Patient_defaultIneligiblePatient\">Jane Doe</a></p></div>"
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultIneligiblePatient> ;
+     fhir:reference [ fhir:v "Patient/defaultIneligiblePatient" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

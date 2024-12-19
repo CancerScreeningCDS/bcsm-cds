@@ -1,0 +1,82 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/DecisionToScreen_eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "DecisionToScreen_eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/43"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/43> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/44"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/44> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/43> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "43"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_43\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 43</b></p><a name=\"43\"> </a><a name=\"hc43\"> </a><a name=\"43-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-DecisionToScreen.html\">Decision to Screen</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Patient/22f3bc78-f51c-4546-b142-29805ebb7638\">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>SDMContinueScreeningAge</blockquote><p><b>title</b>: Shared decision making to continue screening based on age</p><p><b>description</b>: Shared decision making to continue screening based on age</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system sdmcontinue}\">Shared decision making to continue screening</span></p><p><b>resource</b>: <a href=\"Bundle-DecisionToScreen_eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk.html#CommunicationRequest_44\">Bundle: type = collection</a></p></blockquote></div>"
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-DecisionToScreen"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-DecisionToScreen>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/22f3bc78-f51c-4546-b142-29805ebb7638> ;
+     fhir:reference [ fhir:v "Patient/22f3bc78-f51c-4546-b142-29805ebb7638" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:action ( [
+     fhir:id [ fhir:v "SDMContinueScreeningAge" ] ;
+     fhir:title [ fhir:v "Shared decision making to continue screening based on age" ] ;
+     fhir:description [ fhir:v "Shared decision making to continue screening based on age" ] ;
+     fhir:code ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "sdmcontinue" ] ;
+         fhir:display [ fhir:v "Shared decision making to continue screening" ]
+       ] )
+     ] ) ;
+     fhir:resource [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/44> ;
+       fhir:reference [ fhir:v "CommunicationRequest/44" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/44> a fhir:CommunicationRequest ;
+  fhir:id [ fhir:v "44"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CommunicationRequest_44\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CommunicationRequest 44</b></p><a name=\"44\"> </a><a name=\"hc44\"> </a><a name=\"44-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-CommunicateSDMContinueScreening.html\">Communicate Shared Decision Making to Continue Screening</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href=\"Patient/22f3bc78-f51c-4546-b142-29805ebb7638\">Jane Doe</a></p><h3>Payloads</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Content[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>Shared decision making to continue screening</td></tr></table><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system ageover74}\">Age over 74 years</span></p></div>"
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMContinueScreening> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMContinueScreening" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/22f3bc78-f51c-4546-b142-29805ebb7638> ;
+     fhir:reference [ fhir:v "Patient/22f3bc78-f51c-4546-b142-29805ebb7638" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:payload ( [
+     fhir:content [ fhir:v "Shared decision making to continue screening" ]
+  ] ) ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "ageover74" ] ;
+       fhir:display [ fhir:v "Age over 74 years" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

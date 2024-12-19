@@ -1,0 +1,2436 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "s" : {
+            "r" : "412",
+            "s" : [ {
+               "value" : [ "","library SpecialPopulationsActions version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "SpecialPopulationsActions",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "3:1-3:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "4:1-4:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "6:1-6:56",
+            "localIdentifier" : "DataElements",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/DataElements",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "DataElements" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","DataElements" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "209",
+            "locator" : "7:1-7:70",
+            "localIdentifier" : "BCSMCommonFunctions",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "BCSMCommonFunctions" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","BCSMCommonFunctions" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "210",
+            "locator" : "9:1-9:114",
+            "name" : "ActCode",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ActCode\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "211",
+            "locator" : "10:1-10:124",
+            "name" : "ReasonCode",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "211",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ReasonCode\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "212",
+            "locator" : "11:1-11:38",
+            "name" : "LOINC",
+            "id" : "http://loinc.org",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "212",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"LOINC\"",": ","'http://loinc.org'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "213",
+            "locator" : "14:1-14:123",
+            "name" : "Perform lifetime risk assessment",
+            "id" : "lifetimeriskassessment",
+            "display" : "Perform lifetime risk assessment",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "213",
+                  "s" : [ {
+                     "value" : [ "// Act Codes\n","code ","\"Perform lifetime risk assessment\"",": ","'lifetimeriskassessment'"," from " ]
+                  }, {
+                     "r" : "214",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Perform lifetime risk assessment'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "214",
+               "locator" : "14:72-14:80",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "215",
+            "locator" : "16:1-16:92",
+            "name" : "High lifetime risk",
+            "id" : "highlifetimerisk",
+            "display" : "High lifetime risk",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "215",
+                  "s" : [ {
+                     "value" : [ "// Reason Codes\n","code ","\"High lifetime risk\"",": ","'highlifetimerisk'"," from " ]
+                  }, {
+                     "r" : "216",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'High lifetime risk'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "216",
+               "locator" : "16:52-16:63",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "217",
+            "locator" : "17:1-17:161",
+            "name" : "First degree relative with genetic marker or syndrome",
+            "id" : "firstdeggenetic",
+            "display" : "First degree relative with genetic marker or syndrome",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "217",
+                  "s" : [ {
+                     "value" : [ "","code ","\"First degree relative with genetic marker or syndrome\"",": ","'firstdeggenetic'"," from " ]
+                  }, {
+                     "r" : "218",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'First degree relative with genetic marker or syndrome'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "218",
+               "locator" : "17:86-17:97",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "219",
+            "locator" : "18:1-18:133",
+            "name" : "BI-RADS breast density category C or D",
+            "id" : "breastdensitycord",
+            "display" : "BI-RADS breast density category C or D",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "219",
+                  "s" : [ {
+                     "value" : [ "","code ","\"BI-RADS breast density category C or D\"",": ","'breastdensitycord'"," from " ]
+                  }, {
+                     "r" : "220",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'BI-RADS breast density category C or D'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "220",
+               "locator" : "18:73-18:84",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "221",
+            "locator" : "19:1-19:139",
+            "name" : "Compelling family history of breast cancer",
+            "id" : "fhxbreastcarisk",
+            "display" : "Compelling family history of breast cancer",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "221",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Compelling family history of breast cancer\"",": ","'fhxbreastcarisk'"," from " ]
+                  }, {
+                     "r" : "222",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Compelling family history of breast cancer'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "222",
+               "locator" : "19:75-19:86",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "223",
+            "locator" : "20:1-20:95",
+            "name" : "USPSTF average risk",
+            "id" : "USPSTFaveragerisk",
+            "display" : "USPSTF average risk",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "223",
+                  "s" : [ {
+                     "value" : [ "","code ","\"USPSTF average risk\"",": ","'USPSTFaveragerisk'"," from " ]
+                  }, {
+                     "r" : "224",
+                     "s" : [ {
+                        "value" : [ "\"ReasonCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'USPSTF average risk'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "224",
+               "locator" : "20:54-20:65",
+               "name" : "ReasonCode"
+            }
+         }, {
+            "localId" : "225",
+            "locator" : "23:1-23:80",
+            "name" : "MG Breast Screening",
+            "id" : "24606-6",
+            "display" : "MG Breast Screening",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "225",
+                  "s" : [ {
+                     "value" : [ "// Standard codes\n","code ","\"MG Breast Screening\"",": ","'24606-6'"," from " ]
+                  }, {
+                     "r" : "226",
+                     "s" : [ {
+                        "value" : [ "\"LOINC\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'MG Breast Screening'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "226",
+               "locator" : "23:44-23:50",
+               "name" : "LOINC"
+            }
+         }, {
+            "localId" : "227",
+            "locator" : "24:1-24:60",
+            "name" : "MR Breast",
+            "id" : "30794-2",
+            "display" : "MR Breast",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "227",
+                  "s" : [ {
+                     "value" : [ "","code ","\"MR Breast\"",": ","'30794-2'"," from " ]
+                  }, {
+                     "r" : "228",
+                     "s" : [ {
+                        "value" : [ "\"LOINC\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'MR Breast'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "228",
+               "locator" : "24:34-24:40",
+               "name" : "LOINC"
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "232",
+            "locator" : "26:1-26:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "230",
+            "locator" : "26:1-26:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "231",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "229",
+                  "locator" : "26:1-26:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "234",
+            "locator" : "28:1-39:2",
+            "name" : "mammo_annual",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "234",
+                  "s" : [ {
+                     "value" : [ "","define ","mammo_annual",":\n  " ]
+                  }, {
+                     "r" : "235",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "236",
+                           "s" : [ {
+                              "value" : [ "\"MG Breast Screening\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "timingTiming",": " ]
+                        }, {
+                           "r" : "237",
+                           "s" : [ {
+                              "value" : [ "{\n      " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "event",": " ]
+                              }, {
+                                 "r" : "238",
+                                 "s" : [ {
+                                    "value" : [ "{" ]
+                                 }, {
+                                    "r" : "247",
+                                    "s" : [ {
+                                       "r" : "243",
+                                       "value" : [ "ToString","(","@2025-01-25",")" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "}" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ", //TODO: placeholder for testing nextduedate\n      " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "repeat",": " ]
+                              }, {
+                                 "r" : "249",
+                                 "s" : [ {
+                                    "value" : [ "{\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "r" : "250",
+                                       "value" : [ "frequency",": ","1" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ",\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "r" : "251",
+                                       "value" : [ "period",": ","1" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ",\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "periodUnit",": " ]
+                                    }, {
+                                       "r" : "252",
+                                       "s" : [ {
+                                          "value" : [ "'a'" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n      }" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n    }" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "235",
+               "locator" : "29:3-39:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "236",
+                     "locator" : "30:9-30:29",
+                     "name" : "MG Breast Screening",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "timingTiming",
+                  "value" : {
+                     "localId" : "237",
+                     "locator" : "31:19-38:5",
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "event",
+                        "value" : {
+                           "localId" : "238",
+                           "locator" : "32:14-32:36",
+                           "type" : "List",
+                           "element" : [ {
+                              "localId" : "247",
+                              "locator" : "32:15-32:35",
+                              "type" : "ToString",
+                              "signature" : [ {
+                                 "localId" : "248",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Date",
+                                 "type" : "NamedTypeSpecifier"
+                              } ],
+                              "operand" : {
+                                 "localId" : "243",
+                                 "locator" : "32:24-32:34",
+                                 "type" : "Date",
+                                 "signature" : [ ],
+                                 "year" : {
+                                    "localId" : "240",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "2025",
+                                    "type" : "Literal"
+                                 },
+                                 "month" : {
+                                    "localId" : "241",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "1",
+                                    "type" : "Literal"
+                                 },
+                                 "day" : {
+                                    "localId" : "242",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "25",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "repeat",
+                        "value" : {
+                           "localId" : "249",
+                           "locator" : "33:15-37:7",
+                           "type" : "Tuple",
+                           "element" : [ {
+                              "name" : "frequency",
+                              "value" : {
+                                 "localId" : "250",
+                                 "locator" : "34:20",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           }, {
+                              "name" : "period",
+                              "value" : {
+                                 "localId" : "251",
+                                 "locator" : "35:17",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           }, {
+                              "name" : "periodUnit",
+                              "value" : {
+                                 "localId" : "252",
+                                 "locator" : "36:21-36:23",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "a",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "254",
+            "locator" : "41:1-52:2",
+            "name" : "mammo_biennial",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "254",
+                  "s" : [ {
+                     "value" : [ "","define ","mammo_biennial",":\n  " ]
+                  }, {
+                     "r" : "255",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "256",
+                           "s" : [ {
+                              "value" : [ "\"MG Breast Screening\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "timingTiming",": " ]
+                        }, {
+                           "r" : "257",
+                           "s" : [ {
+                              "value" : [ "{\n      " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "event",": " ]
+                              }, {
+                                 "r" : "258",
+                                 "s" : [ {
+                                    "value" : [ "{" ]
+                                 }, {
+                                    "r" : "267",
+                                    "s" : [ {
+                                       "r" : "263",
+                                       "value" : [ "ToString","(","@2025-01-25",")" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "}" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ", //TODO: placeholder for testing nextduedate\n      " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "repeat",": " ]
+                              }, {
+                                 "r" : "269",
+                                 "s" : [ {
+                                    "value" : [ "{\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "r" : "270",
+                                       "value" : [ "frequency",": ","1" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ",\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "r" : "271",
+                                       "value" : [ "period",": ","2" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ",\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "periodUnit",": " ]
+                                    }, {
+                                       "r" : "272",
+                                       "s" : [ {
+                                          "value" : [ "'a'" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n      }" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n    }" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "255",
+               "locator" : "42:3-52:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "256",
+                     "locator" : "43:9-43:29",
+                     "name" : "MG Breast Screening",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "timingTiming",
+                  "value" : {
+                     "localId" : "257",
+                     "locator" : "44:19-51:5",
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "event",
+                        "value" : {
+                           "localId" : "258",
+                           "locator" : "45:14-45:36",
+                           "type" : "List",
+                           "element" : [ {
+                              "localId" : "267",
+                              "locator" : "45:15-45:35",
+                              "type" : "ToString",
+                              "signature" : [ {
+                                 "localId" : "268",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Date",
+                                 "type" : "NamedTypeSpecifier"
+                              } ],
+                              "operand" : {
+                                 "localId" : "263",
+                                 "locator" : "45:24-45:34",
+                                 "type" : "Date",
+                                 "signature" : [ ],
+                                 "year" : {
+                                    "localId" : "260",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "2025",
+                                    "type" : "Literal"
+                                 },
+                                 "month" : {
+                                    "localId" : "261",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "1",
+                                    "type" : "Literal"
+                                 },
+                                 "day" : {
+                                    "localId" : "262",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "25",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "repeat",
+                        "value" : {
+                           "localId" : "269",
+                           "locator" : "46:15-50:7",
+                           "type" : "Tuple",
+                           "element" : [ {
+                              "name" : "frequency",
+                              "value" : {
+                                 "localId" : "270",
+                                 "locator" : "47:20",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           }, {
+                              "name" : "period",
+                              "value" : {
+                                 "localId" : "271",
+                                 "locator" : "48:17",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "2",
+                                 "type" : "Literal"
+                              }
+                           }, {
+                              "name" : "periodUnit",
+                              "value" : {
+                                 "localId" : "272",
+                                 "locator" : "49:21-49:23",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "a",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "274",
+            "locator" : "54:1-65:2",
+            "name" : "mri_annual",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "274",
+                  "s" : [ {
+                     "value" : [ "","define ","mri_annual",":\n  " ]
+                  }, {
+                     "r" : "275",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "276",
+                           "s" : [ {
+                              "value" : [ "\"MR Breast\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "timingTiming",": " ]
+                        }, {
+                           "r" : "277",
+                           "s" : [ {
+                              "value" : [ "{\n      " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "event",": " ]
+                              }, {
+                                 "r" : "278",
+                                 "s" : [ {
+                                    "value" : [ "{" ]
+                                 }, {
+                                    "r" : "287",
+                                    "s" : [ {
+                                       "r" : "283",
+                                       "value" : [ "ToString","(","@2025-01-25",")" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "}" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ", //TODO: placeholder for testing nextduedate\n      " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "repeat",": " ]
+                              }, {
+                                 "r" : "289",
+                                 "s" : [ {
+                                    "value" : [ "{\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "r" : "290",
+                                       "value" : [ "frequency",": ","1" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ",\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "r" : "291",
+                                       "value" : [ "period",": ","1" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ ",\n        " ]
+                                 }, {
+                                    "s" : [ {
+                                       "value" : [ "periodUnit",": " ]
+                                    }, {
+                                       "r" : "292",
+                                       "s" : [ {
+                                          "value" : [ "'a'" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "\n      }" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "\n    }" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "275",
+               "locator" : "55:3-65:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "276",
+                     "locator" : "56:9-56:19",
+                     "name" : "MR Breast",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "timingTiming",
+                  "value" : {
+                     "localId" : "277",
+                     "locator" : "57:19-64:5",
+                     "type" : "Tuple",
+                     "element" : [ {
+                        "name" : "event",
+                        "value" : {
+                           "localId" : "278",
+                           "locator" : "58:14-58:36",
+                           "type" : "List",
+                           "element" : [ {
+                              "localId" : "287",
+                              "locator" : "58:15-58:35",
+                              "type" : "ToString",
+                              "signature" : [ {
+                                 "localId" : "288",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Date",
+                                 "type" : "NamedTypeSpecifier"
+                              } ],
+                              "operand" : {
+                                 "localId" : "283",
+                                 "locator" : "58:24-58:34",
+                                 "type" : "Date",
+                                 "signature" : [ ],
+                                 "year" : {
+                                    "localId" : "280",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "2025",
+                                    "type" : "Literal"
+                                 },
+                                 "month" : {
+                                    "localId" : "281",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "1",
+                                    "type" : "Literal"
+                                 },
+                                 "day" : {
+                                    "localId" : "282",
+                                    "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                    "value" : "25",
+                                    "type" : "Literal"
+                                 }
+                              }
+                           } ]
+                        }
+                     }, {
+                        "name" : "repeat",
+                        "value" : {
+                           "localId" : "289",
+                           "locator" : "59:15-63:7",
+                           "type" : "Tuple",
+                           "element" : [ {
+                              "name" : "frequency",
+                              "value" : {
+                                 "localId" : "290",
+                                 "locator" : "60:20",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           }, {
+                              "name" : "period",
+                              "value" : {
+                                 "localId" : "291",
+                                 "locator" : "61:17",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                                 "value" : "1",
+                                 "type" : "Literal"
+                              }
+                           }, {
+                              "name" : "periodUnit",
+                              "value" : {
+                                 "localId" : "292",
+                                 "locator" : "62:21-62:23",
+                                 "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                                 "value" : "a",
+                                 "type" : "Literal"
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "294",
+            "locator" : "67:1-70:88",
+            "name" : "act-acshighriskmammo",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "294",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-acshighriskmammo\"",":  \n  " ]
+                  }, {
+                     "r" : "318",
+                     "s" : [ {
+                        "r" : "295",
+                        "s" : [ {
+                           "value" : [ "BCSMCommonFunctions" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "318",
+                        "s" : [ {
+                           "value" : [ "SetRecommendation","(" ]
+                        }, {
+                           "r" : "297",
+                           "s" : [ {
+                              "r" : "296",
+                              "s" : [ {
+                                 "value" : [ "mammo_annual" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "297",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "298",
+                           "s" : [ {
+                              "value" : [ "\"High lifetime risk\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "300",
+                           "s" : [ {
+                              "r" : "299",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommonFunctions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "300",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationACS" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "301",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "s" : [ {
+                                 "r" : "302",
+                                 "value" : [ "value",": ","30.0" ]
+                              } ]
+                           }, {
+                              "value" : [ ", " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "code",": " ]
+                              }, {
+                                 "r" : "303",
+                                 "s" : [ {
+                                    "value" : [ "'a'" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "304",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "r" : "313",
+                              "s" : [ {
+                                 "r" : "309",
+                                 "value" : [ "ToString","(","@2025-01-25",")" ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "317",
+                           "s" : [ {
+                              "r" : "316",
+                              "s" : [ {
+                                 "r" : "315",
+                                 "s" : [ {
+                                    "value" : [ "mammo_annual" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "316",
+                                 "s" : [ {
+                                    "value" : [ "timingTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "317",
+                              "s" : [ {
+                                 "value" : [ "repeat" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "318",
+               "locator" : "68:3-70:88",
+               "name" : "SetRecommendation",
+               "libraryName" : "BCSMCommonFunctions",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "297",
+                  "locator" : "68:41-68:57",
+                  "path" : "code",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "296",
+                     "locator" : "68:41-68:52",
+                     "name" : "mammo_annual",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "localId" : "298",
+                  "locator" : "68:60-68:79",
+                  "name" : "High lifetime risk",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "300",
+                  "locator" : "69:5-69:46",
+                  "name" : "SourceDocumentationACS",
+                  "libraryName" : "BCSMCommonFunctions",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "301",
+                  "locator" : "70:5-70:28",
+                  "type" : "Tuple",
+                  "element" : [ {
+                     "name" : "value",
+                     "value" : {
+                        "localId" : "302",
+                        "locator" : "70:13-70:16",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value" : "30.0",
+                        "type" : "Literal"
+                     }
+                  }, {
+                     "name" : "code",
+                     "value" : {
+                        "localId" : "303",
+                        "locator" : "70:25-70:27",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "a",
+                        "type" : "Literal"
+                     }
+                  } ]
+               }, {
+                  "localId" : "304",
+                  "locator" : "70:31-70:53",
+                  "type" : "List",
+                  "element" : [ {
+                     "localId" : "313",
+                     "locator" : "70:32-70:52",
+                     "type" : "ToString",
+                     "signature" : [ {
+                        "localId" : "314",
+                        "name" : "{urn:hl7-org:elm-types:r1}Date",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : {
+                        "localId" : "309",
+                        "locator" : "70:41-70:51",
+                        "type" : "Date",
+                        "signature" : [ ],
+                        "year" : {
+                           "localId" : "306",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "2025",
+                           "type" : "Literal"
+                        },
+                        "month" : {
+                           "localId" : "307",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "1",
+                           "type" : "Literal"
+                        },
+                        "day" : {
+                           "localId" : "308",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "25",
+                           "type" : "Literal"
+                        }
+                     }
+                  } ]
+               }, {
+                  "localId" : "317",
+                  "locator" : "70:56-70:87",
+                  "path" : "repeat",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "316",
+                     "locator" : "70:56-70:80",
+                     "path" : "timingTiming",
+                     "type" : "Property",
+                     "source" : {
+                        "localId" : "315",
+                        "locator" : "70:56-70:67",
+                        "name" : "mammo_annual",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "320",
+            "locator" : "72:1-75:86",
+            "name" : "act-acshighriskmri",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "320",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-acshighriskmri\"",":  \n  " ]
+                  }, {
+                     "r" : "344",
+                     "s" : [ {
+                        "r" : "321",
+                        "s" : [ {
+                           "value" : [ "BCSMCommonFunctions" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "344",
+                        "s" : [ {
+                           "value" : [ "SetRecommendation","(" ]
+                        }, {
+                           "r" : "323",
+                           "s" : [ {
+                              "r" : "322",
+                              "s" : [ {
+                                 "value" : [ "mri_annual" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "323",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "324",
+                           "s" : [ {
+                              "value" : [ "\"High lifetime risk\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "326",
+                           "s" : [ {
+                              "r" : "325",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommonFunctions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "326",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationACS" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "327",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "s" : [ {
+                                 "r" : "328",
+                                 "value" : [ "value",": ","30.0" ]
+                              } ]
+                           }, {
+                              "value" : [ ", " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "code",": " ]
+                              }, {
+                                 "r" : "329",
+                                 "s" : [ {
+                                    "value" : [ "'a'" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "330",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "r" : "339",
+                              "s" : [ {
+                                 "r" : "335",
+                                 "value" : [ "ToString","(","@2025-01-25",")" ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "343",
+                           "s" : [ {
+                              "r" : "342",
+                              "s" : [ {
+                                 "r" : "341",
+                                 "s" : [ {
+                                    "value" : [ "mri_annual" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "342",
+                                 "s" : [ {
+                                    "value" : [ "timingTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "343",
+                              "s" : [ {
+                                 "value" : [ "repeat" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "344",
+               "locator" : "73:3-75:86",
+               "name" : "SetRecommendation",
+               "libraryName" : "BCSMCommonFunctions",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "323",
+                  "locator" : "73:41-73:55",
+                  "path" : "code",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "322",
+                     "locator" : "73:41-73:50",
+                     "name" : "mri_annual",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "localId" : "324",
+                  "locator" : "73:58-73:77",
+                  "name" : "High lifetime risk",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "326",
+                  "locator" : "74:5-74:46",
+                  "name" : "SourceDocumentationACS",
+                  "libraryName" : "BCSMCommonFunctions",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "327",
+                  "locator" : "75:5-75:28",
+                  "type" : "Tuple",
+                  "element" : [ {
+                     "name" : "value",
+                     "value" : {
+                        "localId" : "328",
+                        "locator" : "75:13-75:16",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value" : "30.0",
+                        "type" : "Literal"
+                     }
+                  }, {
+                     "name" : "code",
+                     "value" : {
+                        "localId" : "329",
+                        "locator" : "75:25-75:27",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "a",
+                        "type" : "Literal"
+                     }
+                  } ]
+               }, {
+                  "localId" : "330",
+                  "locator" : "75:31-75:53",
+                  "type" : "List",
+                  "element" : [ {
+                     "localId" : "339",
+                     "locator" : "75:32-75:52",
+                     "type" : "ToString",
+                     "signature" : [ {
+                        "localId" : "340",
+                        "name" : "{urn:hl7-org:elm-types:r1}Date",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : {
+                        "localId" : "335",
+                        "locator" : "75:41-75:51",
+                        "type" : "Date",
+                        "signature" : [ ],
+                        "year" : {
+                           "localId" : "332",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "2025",
+                           "type" : "Literal"
+                        },
+                        "month" : {
+                           "localId" : "333",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "1",
+                           "type" : "Literal"
+                        },
+                        "day" : {
+                           "localId" : "334",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "25",
+                           "type" : "Literal"
+                        }
+                     }
+                  } ]
+               }, {
+                  "localId" : "343",
+                  "locator" : "75:56-75:85",
+                  "path" : "repeat",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "342",
+                     "locator" : "75:56-75:78",
+                     "path" : "timingTiming",
+                     "type" : "Property",
+                     "source" : {
+                        "localId" : "341",
+                        "locator" : "75:56-75:65",
+                        "name" : "mri_annual",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "346",
+            "locator" : "77:1-80:88",
+            "name" : "act-firstdeggeneticmammo",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "346",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-firstdeggeneticmammo\"",":    \n  " ]
+                  }, {
+                     "r" : "370",
+                     "s" : [ {
+                        "r" : "347",
+                        "s" : [ {
+                           "value" : [ "BCSMCommonFunctions" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "370",
+                        "s" : [ {
+                           "value" : [ "SetRecommendation","(" ]
+                        }, {
+                           "r" : "349",
+                           "s" : [ {
+                              "r" : "348",
+                              "s" : [ {
+                                 "value" : [ "mammo_annual" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "349",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "350",
+                           "s" : [ {
+                              "value" : [ "\"First degree relative with genetic marker or syndrome\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "352",
+                           "s" : [ {
+                              "r" : "351",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommonFunctions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "352",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationACS" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "353",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "s" : [ {
+                                 "r" : "354",
+                                 "value" : [ "value",": ","30.0" ]
+                              } ]
+                           }, {
+                              "value" : [ ", " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "code",": " ]
+                              }, {
+                                 "r" : "355",
+                                 "s" : [ {
+                                    "value" : [ "'a'" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "356",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "r" : "365",
+                              "s" : [ {
+                                 "r" : "361",
+                                 "value" : [ "ToString","(","@2025-01-25",")" ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "369",
+                           "s" : [ {
+                              "r" : "368",
+                              "s" : [ {
+                                 "r" : "367",
+                                 "s" : [ {
+                                    "value" : [ "mammo_annual" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "368",
+                                 "s" : [ {
+                                    "value" : [ "timingTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "369",
+                              "s" : [ {
+                                 "value" : [ "repeat" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "370",
+               "locator" : "78:3-80:88",
+               "name" : "SetRecommendation",
+               "libraryName" : "BCSMCommonFunctions",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "349",
+                  "locator" : "78:41-78:57",
+                  "path" : "code",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "348",
+                     "locator" : "78:41-78:52",
+                     "name" : "mammo_annual",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "localId" : "350",
+                  "locator" : "78:60-78:114",
+                  "name" : "First degree relative with genetic marker or syndrome",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "352",
+                  "locator" : "79:5-79:46",
+                  "name" : "SourceDocumentationACS",
+                  "libraryName" : "BCSMCommonFunctions",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "353",
+                  "locator" : "80:5-80:28",
+                  "type" : "Tuple",
+                  "element" : [ {
+                     "name" : "value",
+                     "value" : {
+                        "localId" : "354",
+                        "locator" : "80:13-80:16",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value" : "30.0",
+                        "type" : "Literal"
+                     }
+                  }, {
+                     "name" : "code",
+                     "value" : {
+                        "localId" : "355",
+                        "locator" : "80:25-80:27",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "a",
+                        "type" : "Literal"
+                     }
+                  } ]
+               }, {
+                  "localId" : "356",
+                  "locator" : "80:31-80:53",
+                  "type" : "List",
+                  "element" : [ {
+                     "localId" : "365",
+                     "locator" : "80:32-80:52",
+                     "type" : "ToString",
+                     "signature" : [ {
+                        "localId" : "366",
+                        "name" : "{urn:hl7-org:elm-types:r1}Date",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : {
+                        "localId" : "361",
+                        "locator" : "80:41-80:51",
+                        "type" : "Date",
+                        "signature" : [ ],
+                        "year" : {
+                           "localId" : "358",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "2025",
+                           "type" : "Literal"
+                        },
+                        "month" : {
+                           "localId" : "359",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "1",
+                           "type" : "Literal"
+                        },
+                        "day" : {
+                           "localId" : "360",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "25",
+                           "type" : "Literal"
+                        }
+                     }
+                  } ]
+               }, {
+                  "localId" : "369",
+                  "locator" : "80:56-80:87",
+                  "path" : "repeat",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "368",
+                     "locator" : "80:56-80:80",
+                     "path" : "timingTiming",
+                     "type" : "Property",
+                     "source" : {
+                        "localId" : "367",
+                        "locator" : "80:56-80:67",
+                        "name" : "mammo_annual",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "372",
+            "locator" : "82:1-85:86",
+            "name" : "act-firstdeggeneticmri",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "372",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-firstdeggeneticmri\"",":  \n  " ]
+                  }, {
+                     "r" : "396",
+                     "s" : [ {
+                        "r" : "373",
+                        "s" : [ {
+                           "value" : [ "BCSMCommonFunctions" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "396",
+                        "s" : [ {
+                           "value" : [ "SetRecommendation","(" ]
+                        }, {
+                           "r" : "375",
+                           "s" : [ {
+                              "r" : "374",
+                              "s" : [ {
+                                 "value" : [ "mri_annual" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "375",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "376",
+                           "s" : [ {
+                              "value" : [ "\"First degree relative with genetic marker or syndrome\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "378",
+                           "s" : [ {
+                              "r" : "377",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommonFunctions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "378",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationACS" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "379",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "s" : [ {
+                                 "r" : "380",
+                                 "value" : [ "value",": ","30.0" ]
+                              } ]
+                           }, {
+                              "value" : [ ", " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "code",": " ]
+                              }, {
+                                 "r" : "381",
+                                 "s" : [ {
+                                    "value" : [ "'a'" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "382",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "r" : "391",
+                              "s" : [ {
+                                 "r" : "387",
+                                 "value" : [ "ToString","(","@2025-01-25",")" ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "395",
+                           "s" : [ {
+                              "r" : "394",
+                              "s" : [ {
+                                 "r" : "393",
+                                 "s" : [ {
+                                    "value" : [ "mri_annual" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "394",
+                                 "s" : [ {
+                                    "value" : [ "timingTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "395",
+                              "s" : [ {
+                                 "value" : [ "repeat" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "396",
+               "locator" : "83:3-85:86",
+               "name" : "SetRecommendation",
+               "libraryName" : "BCSMCommonFunctions",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "375",
+                  "locator" : "83:41-83:55",
+                  "path" : "code",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "374",
+                     "locator" : "83:41-83:50",
+                     "name" : "mri_annual",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "localId" : "376",
+                  "locator" : "83:58-83:112",
+                  "name" : "First degree relative with genetic marker or syndrome",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "378",
+                  "locator" : "84:5-84:46",
+                  "name" : "SourceDocumentationACS",
+                  "libraryName" : "BCSMCommonFunctions",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "379",
+                  "locator" : "85:5-85:28",
+                  "type" : "Tuple",
+                  "element" : [ {
+                     "name" : "value",
+                     "value" : {
+                        "localId" : "380",
+                        "locator" : "85:13-85:16",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value" : "30.0",
+                        "type" : "Literal"
+                     }
+                  }, {
+                     "name" : "code",
+                     "value" : {
+                        "localId" : "381",
+                        "locator" : "85:25-85:27",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "a",
+                        "type" : "Literal"
+                     }
+                  } ]
+               }, {
+                  "localId" : "382",
+                  "locator" : "85:31-85:53",
+                  "type" : "List",
+                  "element" : [ {
+                     "localId" : "391",
+                     "locator" : "85:32-85:52",
+                     "type" : "ToString",
+                     "signature" : [ {
+                        "localId" : "392",
+                        "name" : "{urn:hl7-org:elm-types:r1}Date",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : {
+                        "localId" : "387",
+                        "locator" : "85:41-85:51",
+                        "type" : "Date",
+                        "signature" : [ ],
+                        "year" : {
+                           "localId" : "384",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "2025",
+                           "type" : "Literal"
+                        },
+                        "month" : {
+                           "localId" : "385",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "1",
+                           "type" : "Literal"
+                        },
+                        "day" : {
+                           "localId" : "386",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "25",
+                           "type" : "Literal"
+                        }
+                     }
+                  } ]
+               }, {
+                  "localId" : "395",
+                  "locator" : "85:56-85:85",
+                  "path" : "repeat",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "394",
+                     "locator" : "85:56-85:78",
+                     "path" : "timingTiming",
+                     "type" : "Property",
+                     "source" : {
+                        "localId" : "393",
+                        "locator" : "85:56-85:65",
+                        "name" : "mri_annual",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "398",
+            "locator" : "87:1-92:2",
+            "name" : "act-breastdensitycord",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "398",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-breastdensitycord\"",":\n  " ]
+                  }, {
+                     "r" : "399",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "400",
+                           "s" : [ {
+                              "value" : [ "\"Perform lifetime risk assessment\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "401",
+                           "s" : [ {
+                              "value" : [ "\"BI-RADS breast density category C or D\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "403",
+                           "s" : [ {
+                              "r" : "402",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommonFunctions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "403",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationACS" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "399",
+               "locator" : "88:3-92:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "400",
+                     "locator" : "89:9-89:42",
+                     "name" : "Perform lifetime risk assessment",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "401",
+                     "locator" : "90:13-90:52",
+                     "name" : "BI-RADS breast density category C or D",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "403",
+                     "locator" : "91:20-91:61",
+                     "name" : "SourceDocumentationACS",
+                     "libraryName" : "BCSMCommonFunctions",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "405",
+            "locator" : "94:1-99:2",
+            "name" : "act-fhxbreastcarisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "405",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-fhxbreastcarisk\"",":\n  " ]
+                  }, {
+                     "r" : "406",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "407",
+                           "s" : [ {
+                              "value" : [ "\"Perform lifetime risk assessment\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "408",
+                           "s" : [ {
+                              "value" : [ "\"Compelling family history of breast cancer\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "410",
+                           "s" : [ {
+                              "r" : "409",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommonFunctions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "410",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationACS" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "406",
+               "locator" : "95:3-99:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "407",
+                     "locator" : "96:9-96:42",
+                     "name" : "Perform lifetime risk assessment",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "408",
+                     "locator" : "97:13-97:56",
+                     "name" : "Compelling family history of breast cancer",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "410",
+                     "locator" : "98:20-98:61",
+                     "name" : "SourceDocumentationACS",
+                     "libraryName" : "BCSMCommonFunctions",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "412",
+            "locator" : "101:1-103:137",
+            "name" : "act-uspstfrecs",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "412",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-uspstfrecs\"",":\n  " ]
+                  }, {
+                     "r" : "436",
+                     "s" : [ {
+                        "r" : "413",
+                        "s" : [ {
+                           "value" : [ "BCSMCommonFunctions" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "436",
+                        "s" : [ {
+                           "value" : [ "SetRecommendation","(" ]
+                        }, {
+                           "r" : "415",
+                           "s" : [ {
+                              "r" : "414",
+                              "s" : [ {
+                                 "value" : [ "mammo_biennial" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "415",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "416",
+                           "s" : [ {
+                              "value" : [ "\"USPSTF average risk\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "418",
+                           "s" : [ {
+                              "r" : "417",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommonFunctions" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "418",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "419",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "s" : [ {
+                                 "r" : "420",
+                                 "value" : [ "value",": ","40.0" ]
+                              } ]
+                           }, {
+                              "value" : [ ", " ]
+                           }, {
+                              "s" : [ {
+                                 "value" : [ "code",": " ]
+                              }, {
+                                 "r" : "421",
+                                 "s" : [ {
+                                    "value" : [ "'a'" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "422",
+                           "s" : [ {
+                              "value" : [ "{" ]
+                           }, {
+                              "r" : "431",
+                              "s" : [ {
+                                 "r" : "427",
+                                 "value" : [ "ToString","(","@2025-01-25",")" ]
+                              } ]
+                           }, {
+                              "value" : [ "}" ]
+                           } ]
+                        }, {
+                           "value" : [ ", " ]
+                        }, {
+                           "r" : "435",
+                           "s" : [ {
+                              "r" : "434",
+                              "s" : [ {
+                                 "r" : "433",
+                                 "s" : [ {
+                                    "value" : [ "mammo_biennial" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "434",
+                                 "s" : [ {
+                                    "value" : [ "timingTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "435",
+                              "s" : [ {
+                                 "value" : [ "repeat" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "436",
+               "locator" : "102:3-103:137",
+               "name" : "SetRecommendation",
+               "libraryName" : "BCSMCommonFunctions",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "415",
+                  "locator" : "102:41-102:59",
+                  "path" : "code",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "414",
+                     "locator" : "102:41-102:54",
+                     "name" : "mammo_biennial",
+                     "type" : "ExpressionRef"
+                  }
+               }, {
+                  "localId" : "416",
+                  "locator" : "102:62-102:82",
+                  "name" : "USPSTF average risk",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "418",
+                  "locator" : "103:5-103:49",
+                  "name" : "SourceDocumentationUSPSTF",
+                  "libraryName" : "BCSMCommonFunctions",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "419",
+                  "locator" : "103:52-103:75",
+                  "type" : "Tuple",
+                  "element" : [ {
+                     "name" : "value",
+                     "value" : {
+                        "localId" : "420",
+                        "locator" : "103:60-103:63",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}Decimal",
+                        "value" : "40.0",
+                        "type" : "Literal"
+                     }
+                  }, {
+                     "name" : "code",
+                     "value" : {
+                        "localId" : "421",
+                        "locator" : "103:72-103:74",
+                        "valueType" : "{urn:hl7-org:elm-types:r1}String",
+                        "value" : "a",
+                        "type" : "Literal"
+                     }
+                  } ]
+               }, {
+                  "localId" : "422",
+                  "locator" : "103:78-103:100",
+                  "type" : "List",
+                  "element" : [ {
+                     "localId" : "431",
+                     "locator" : "103:79-103:99",
+                     "type" : "ToString",
+                     "signature" : [ {
+                        "localId" : "432",
+                        "name" : "{urn:hl7-org:elm-types:r1}Date",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : {
+                        "localId" : "427",
+                        "locator" : "103:88-103:98",
+                        "type" : "Date",
+                        "signature" : [ ],
+                        "year" : {
+                           "localId" : "424",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "2025",
+                           "type" : "Literal"
+                        },
+                        "month" : {
+                           "localId" : "425",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "1",
+                           "type" : "Literal"
+                        },
+                        "day" : {
+                           "localId" : "426",
+                           "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
+                           "value" : "25",
+                           "type" : "Literal"
+                        }
+                     }
+                  } ]
+               }, {
+                  "localId" : "435",
+                  "locator" : "103:103-103:136",
+                  "path" : "repeat",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "434",
+                     "locator" : "103:103-103:129",
+                     "path" : "timingTiming",
+                     "type" : "Property",
+                     "source" : {
+                        "localId" : "433",
+                        "locator" : "103:103-103:116",
+                        "name" : "mammo_biennial",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}

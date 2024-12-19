@@ -1,0 +1,1807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="758">
+         <a:s>library SpecialPopulations version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="SpecialPopulations" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="3:1-3:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="4:1-4:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="6:1-6:62" localIdentifier="Events" path="http://cancerscreeningcds.github.io/bcsm-cds/SpecialPopulationsEvents" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>SpecialPopulationsEvents</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Events</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="7:1-7:64" localIdentifier="Actions" path="http://cancerscreeningcds.github.io/bcsm-cds/SpecialPopulationsActions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>SpecialPopulationsActions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Actions</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="8:1-8:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <contexts>
+      <def localId="214" locator="10:1-10:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="212" locator="10:1-10:15" name="Patient" context="Patient">
+         <expression localId="213" xsi:type="SingletonFrom">
+            <operand localId="211" locator="10:1-10:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="221" locator="26:1-28:47" name="ACSMammoHighRisk" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="221">
+               <a:s>define ACSMammoHighRisk:
+  </a:s>
+               <a:s r="222">
+                  <a:s>if </a:s>
+                  <a:s r="225">
+                     <a:s r="224">
+                        <a:s r="223">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="224">
+                           <a:s>&quot;eve-highlifetimerisk&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="227">
+                     <a:s r="226">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="227">
+                        <a:s>&quot;act-acshighriskmammo&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="228"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="222" locator="27:3-28:47" xsi:type="If">
+            <condition localId="225" locator="27:6-27:42" xsi:type="IsTrue">
+               <operand localId="224" locator="27:6-27:34" name="eve-highlifetimerisk" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="227" locator="28:8-28:37" name="act-acshighriskmammo" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="229" xsi:type="As">
+               <operand localId="228" locator="28:44-28:47" xsi:type="Null"/>
+               <asTypeSpecifier localId="230" xsi:type="TupleTypeSpecifier">
+                  <element localId="231" name="code">
+                     <elementType localId="232" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="233" name="reason">
+                     <elementType localId="234" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="235" name="documentation">
+                     <elementType localId="236" xsi:type="TupleTypeSpecifier">
+                        <element localId="237" name="label">
+                           <elementType localId="238" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="239" name="timingAge">
+                     <elementType localId="240" xsi:type="TupleTypeSpecifier">
+                        <element localId="241" name="value">
+                           <elementType localId="242" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="243" name="code">
+                           <elementType localId="244" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="245" name="timingTiming">
+                     <elementType localId="246" xsi:type="TupleTypeSpecifier">
+                        <element localId="247" name="event">
+                           <elementType localId="248" xsi:type="ListTypeSpecifier">
+                              <elementType localId="249" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </element>
+                        <element localId="250" name="repeat">
+                           <elementType localId="251" xsi:type="TupleTypeSpecifier">
+                              <element localId="252" name="boundsPeriod">
+                                 <elementType localId="253" xsi:type="TupleTypeSpecifier">
+                                    <element localId="254" name="start">
+                                       <elementType localId="255" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="256" name="frequency">
+                                 <elementType localId="257" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="258" name="period">
+                                 <elementType localId="259" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="260" name="periodUnit">
+                                 <elementType localId="261" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="264" locator="42:1-44:45" name="ACSMriHighRisk" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="264">
+               <a:s>define ACSMriHighRisk:
+  </a:s>
+               <a:s r="265">
+                  <a:s>if </a:s>
+                  <a:s r="268">
+                     <a:s r="267">
+                        <a:s r="266">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="267">
+                           <a:s>&quot;eve-highlifetimerisk&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="270">
+                     <a:s r="269">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="270">
+                        <a:s>&quot;act-acshighriskmri&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="271"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="265" locator="43:3-44:45" xsi:type="If">
+            <condition localId="268" locator="43:6-43:42" xsi:type="IsTrue">
+               <operand localId="267" locator="43:6-43:34" name="eve-highlifetimerisk" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="270" locator="44:8-44:35" name="act-acshighriskmri" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="272" xsi:type="As">
+               <operand localId="271" locator="44:42-44:45" xsi:type="Null"/>
+               <asTypeSpecifier localId="273" xsi:type="TupleTypeSpecifier">
+                  <element localId="274" name="code">
+                     <elementType localId="275" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="276" name="reason">
+                     <elementType localId="277" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="278" name="documentation">
+                     <elementType localId="279" xsi:type="TupleTypeSpecifier">
+                        <element localId="280" name="label">
+                           <elementType localId="281" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="282" name="timingAge">
+                     <elementType localId="283" xsi:type="TupleTypeSpecifier">
+                        <element localId="284" name="value">
+                           <elementType localId="285" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="286" name="code">
+                           <elementType localId="287" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="288" name="timingTiming">
+                     <elementType localId="289" xsi:type="TupleTypeSpecifier">
+                        <element localId="290" name="event">
+                           <elementType localId="291" xsi:type="ListTypeSpecifier">
+                              <elementType localId="292" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </element>
+                        <element localId="293" name="repeat">
+                           <elementType localId="294" xsi:type="TupleTypeSpecifier">
+                              <element localId="295" name="boundsPeriod">
+                                 <elementType localId="296" xsi:type="TupleTypeSpecifier">
+                                    <element localId="297" name="start">
+                                       <elementType localId="298" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="299" name="frequency">
+                                 <elementType localId="300" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="301" name="period">
+                                 <elementType localId="302" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="303" name="periodUnit">
+                                 <elementType localId="304" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="307" locator="58:1-60:51" name="ACSFirstDegGeneticMammo" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="307">
+               <a:s>define ACSFirstDegGeneticMammo:
+  </a:s>
+               <a:s r="308">
+                  <a:s>if </a:s>
+                  <a:s r="311">
+                     <a:s r="310">
+                        <a:s r="309">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="310">
+                           <a:s>&quot;eve-firstdeggenetic&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="313">
+                     <a:s r="312">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="313">
+                        <a:s>&quot;act-firstdeggeneticmammo&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="314"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="308" locator="59:3-60:51" xsi:type="If">
+            <condition localId="311" locator="59:6-59:41" xsi:type="IsTrue">
+               <operand localId="310" locator="59:6-59:33" name="eve-firstdeggenetic" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="313" locator="60:8-60:41" name="act-firstdeggeneticmammo" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="315" xsi:type="As">
+               <operand localId="314" locator="60:48-60:51" xsi:type="Null"/>
+               <asTypeSpecifier localId="316" xsi:type="TupleTypeSpecifier">
+                  <element localId="317" name="code">
+                     <elementType localId="318" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="319" name="reason">
+                     <elementType localId="320" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="321" name="documentation">
+                     <elementType localId="322" xsi:type="TupleTypeSpecifier">
+                        <element localId="323" name="label">
+                           <elementType localId="324" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="325" name="timingAge">
+                     <elementType localId="326" xsi:type="TupleTypeSpecifier">
+                        <element localId="327" name="value">
+                           <elementType localId="328" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="329" name="code">
+                           <elementType localId="330" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="331" name="timingTiming">
+                     <elementType localId="332" xsi:type="TupleTypeSpecifier">
+                        <element localId="333" name="event">
+                           <elementType localId="334" xsi:type="ListTypeSpecifier">
+                              <elementType localId="335" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </element>
+                        <element localId="336" name="repeat">
+                           <elementType localId="337" xsi:type="TupleTypeSpecifier">
+                              <element localId="338" name="boundsPeriod">
+                                 <elementType localId="339" xsi:type="TupleTypeSpecifier">
+                                    <element localId="340" name="start">
+                                       <elementType localId="341" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="342" name="frequency">
+                                 <elementType localId="343" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="344" name="period">
+                                 <elementType localId="345" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="346" name="periodUnit">
+                                 <elementType localId="347" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="350" locator="74:1-76:49" name="ACSFirstDegGeneticMri" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="350">
+               <a:s>define ACSFirstDegGeneticMri:
+  </a:s>
+               <a:s r="351">
+                  <a:s>if </a:s>
+                  <a:s r="354">
+                     <a:s r="353">
+                        <a:s r="352">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="353">
+                           <a:s>&quot;eve-firstdeggenetic&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="356">
+                     <a:s r="355">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="356">
+                        <a:s>&quot;act-firstdeggeneticmri&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="357"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="351" locator="75:3-76:49" xsi:type="If">
+            <condition localId="354" locator="75:6-75:41" xsi:type="IsTrue">
+               <operand localId="353" locator="75:6-75:33" name="eve-firstdeggenetic" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="356" locator="76:8-76:39" name="act-firstdeggeneticmri" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="358" xsi:type="As">
+               <operand localId="357" locator="76:46-76:49" xsi:type="Null"/>
+               <asTypeSpecifier localId="359" xsi:type="TupleTypeSpecifier">
+                  <element localId="360" name="code">
+                     <elementType localId="361" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="362" name="reason">
+                     <elementType localId="363" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="364" name="documentation">
+                     <elementType localId="365" xsi:type="TupleTypeSpecifier">
+                        <element localId="366" name="label">
+                           <elementType localId="367" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="368" name="timingAge">
+                     <elementType localId="369" xsi:type="TupleTypeSpecifier">
+                        <element localId="370" name="value">
+                           <elementType localId="371" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="372" name="code">
+                           <elementType localId="373" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="374" name="timingTiming">
+                     <elementType localId="375" xsi:type="TupleTypeSpecifier">
+                        <element localId="376" name="event">
+                           <elementType localId="377" xsi:type="ListTypeSpecifier">
+                              <elementType localId="378" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </element>
+                        <element localId="379" name="repeat">
+                           <elementType localId="380" xsi:type="TupleTypeSpecifier">
+                              <element localId="381" name="boundsPeriod">
+                                 <elementType localId="382" xsi:type="TupleTypeSpecifier">
+                                    <element localId="383" name="start">
+                                       <elementType localId="384" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="385" name="frequency">
+                                 <elementType localId="386" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="387" name="period">
+                                 <elementType localId="388" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="389" name="periodUnit">
+                                 <elementType localId="390" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="393" locator="90:1-93:13" name="BreastImagingHeterogenouslyOrExtremelyDense" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="393">
+               <a:s>define BreastImagingHeterogenouslyOrExtremelyDense:
+  </a:s>
+               <a:s r="394">
+                  <a:s>if </a:s>
+                  <a:s r="397">
+                     <a:s r="396">
+                        <a:s r="395">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="396">
+                           <a:s>&quot;eve-breastdensitycord&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="399">
+                     <a:s r="398">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="399">
+                        <a:s>&quot;act-breastdensitycord&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="400">
+    else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="394" locator="91:3-93:13" xsi:type="If">
+            <condition localId="397" locator="91:6-91:43" xsi:type="IsTrue">
+               <operand localId="396" locator="91:6-91:35" name="eve-breastdensitycord" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="399" locator="92:10-92:40" name="act-breastdensitycord" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="401" xsi:type="As">
+               <operand localId="400" locator="93:10-93:13" xsi:type="Null"/>
+               <asTypeSpecifier localId="402" xsi:type="TupleTypeSpecifier">
+                  <element localId="403" name="code">
+                     <elementType localId="404" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="405" name="reason">
+                     <elementType localId="406" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="407" name="documentation">
+                     <elementType localId="408" xsi:type="TupleTypeSpecifier">
+                        <element localId="409" name="label">
+                           <elementType localId="410" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="413" locator="104:1-107:13" name="CompellingFamilyHistory" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="413">
+               <a:s>define CompellingFamilyHistory:
+  </a:s>
+               <a:s r="414">
+                  <a:s>if </a:s>
+                  <a:s r="417">
+                     <a:s r="416">
+                        <a:s r="415">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="416">
+                           <a:s>&quot;eve-fhxbreastcarisk&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="419">
+                     <a:s r="418">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="419">
+                        <a:s>&quot;act-fhxbreastcarisk&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="420">
+    else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="414" locator="105:3-107:13" xsi:type="If">
+            <condition localId="417" locator="105:6-105:41" xsi:type="IsTrue">
+               <operand localId="416" locator="105:6-105:33" name="eve-fhxbreastcarisk" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="419" locator="106:10-106:38" name="act-fhxbreastcarisk" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="421" xsi:type="As">
+               <operand localId="420" locator="107:10-107:13" xsi:type="Null"/>
+               <asTypeSpecifier localId="422" xsi:type="TupleTypeSpecifier">
+                  <element localId="423" name="code">
+                     <elementType localId="424" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="425" name="reason">
+                     <elementType localId="426" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="427" name="documentation">
+                     <elementType localId="428" xsi:type="TupleTypeSpecifier">
+                        <element localId="429" name="label">
+                           <elementType localId="430" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="218" locator="15:1-24:17" name="ACSRecommendations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="218">
+               <a:s>define ACSRecommendations:
+  </a:s>
+               <a:s r="434">
+                  <a:s r="219">
+                     <a:s>{    
+    </a:s>
+                     <a:s r="262">
+                        <a:s>ACSMammoHighRisk</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="305">
+                        <a:s>ACSMriHighRisk</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="348">
+                        <a:s>ACSFirstDegGeneticMammo</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="391">
+                        <a:s>ACSFirstDegGeneticMri</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="411">
+                        <a:s>BreastImagingHeterogenouslyOrExtremelyDense</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="431">
+                        <a:s>CompellingFamilyHistory</a:s>
+                     </a:s>
+                     <a:s>
+  }</a:s>
+                  </a:s>
+                  <a:s>   
+  except </a:s>
+                  <a:s r="432">
+                     <a:s r="433">{ null }</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="434" locator="16:3-24:17" xsi:type="Except">
+            <operand localId="219" locator="16:3-23:3" xsi:type="List">
+               <element localId="262" locator="17:5-17:20" name="ACSMammoHighRisk" xsi:type="ExpressionRef"/>
+               <element localId="305" locator="18:5-18:18" name="ACSMriHighRisk" xsi:type="ExpressionRef"/>
+               <element localId="348" locator="19:5-19:27" name="ACSFirstDegGeneticMammo" xsi:type="ExpressionRef"/>
+               <element localId="391" locator="20:5-20:25" name="ACSFirstDegGeneticMri" xsi:type="ExpressionRef"/>
+               <element localId="411" locator="21:5-21:47" name="BreastImagingHeterogenouslyOrExtremelyDense" xsi:type="ExpressionRef"/>
+               <element localId="431" locator="22:5-22:27" name="CompellingFamilyHistory" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="435" xsi:type="Query">
+               <source localId="436" alias="X">
+                  <expression localId="432" locator="24:10-24:17" xsi:type="List">
+                     <element localId="433" locator="24:12-24:15" xsi:type="Null"/>
+                  </expression>
+               </source>
+               <return localId="437" distinct="false">
+                  <expression localId="439" xsi:type="As">
+                     <operand localId="438" name="X" xsi:type="AliasRef"/>
+                     <asTypeSpecifier localId="440" xsi:type="TupleTypeSpecifier">
+                        <element localId="441" name="code">
+                           <elementType localId="442" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="443" name="reason">
+                           <elementType localId="444" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="445" name="documentation">
+                           <elementType localId="446" xsi:type="TupleTypeSpecifier">
+                              <element localId="447" name="label">
+                                 <elementType localId="448" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </asTypeSpecifier>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="452" locator="118:1-121:13" name="USPSTFRecommendation" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="452">
+               <a:s>define USPSTFRecommendation:
+  </a:s>
+               <a:s r="453">
+                  <a:s>if </a:s>
+                  <a:s r="454">
+                     <a:s>exists </a:s>
+                     <a:s r="455">
+                        <a:s>ACSRecommendations</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> 
+    then </a:s>
+                  <a:s r="457">
+                     <a:s r="456">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="457">
+                        <a:s>&quot;act-uspstfrecs&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="458">
+    else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="453" locator="119:3-121:13" xsi:type="If">
+            <condition localId="454" locator="119:6-119:30" xsi:type="Exists">
+               <operand localId="455" locator="119:13-119:30" name="ACSRecommendations" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="457" locator="120:10-120:33" name="act-uspstfrecs" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="459" xsi:type="As">
+               <operand localId="458" locator="121:10-121:13" xsi:type="Null"/>
+               <asTypeSpecifier localId="460" xsi:type="TupleTypeSpecifier">
+                  <element localId="461" name="code">
+                     <elementType localId="462" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="463" name="reason">
+                     <elementType localId="464" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="465" name="documentation">
+                     <elementType localId="466" xsi:type="TupleTypeSpecifier">
+                        <element localId="467" name="label">
+                           <elementType localId="468" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="469" name="timingAge">
+                     <elementType localId="470" xsi:type="TupleTypeSpecifier">
+                        <element localId="471" name="value">
+                           <elementType localId="472" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="473" name="code">
+                           <elementType localId="474" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+                  <element localId="475" name="timingTiming">
+                     <elementType localId="476" xsi:type="TupleTypeSpecifier">
+                        <element localId="477" name="event">
+                           <elementType localId="478" xsi:type="ListTypeSpecifier">
+                              <elementType localId="479" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </elementType>
+                        </element>
+                        <element localId="480" name="repeat">
+                           <elementType localId="481" xsi:type="TupleTypeSpecifier">
+                              <element localId="482" name="boundsPeriod">
+                                 <elementType localId="483" xsi:type="TupleTypeSpecifier">
+                                    <element localId="484" name="start">
+                                       <elementType localId="485" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="486" name="frequency">
+                                 <elementType localId="487" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="488" name="period">
+                                 <elementType localId="489" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="490" name="periodUnit">
+                                 <elementType localId="491" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="216" locator="12:1-13:49" name="flow-SpecialPopulations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="216">
+               <a:s>define &quot;flow-SpecialPopulations&quot;:
+  </a:s>
+               <a:s r="581">
+                  <a:s r="449">
+                     <a:s>ACSRecommendations</a:s>
+                  </a:s>
+                  <a:s> union </a:s>
+                  <a:s r="450">
+                     <a:s>{</a:s>
+                     <a:s r="492">
+                        <a:s>USPSTFRecommendation</a:s>
+                     </a:s>
+                     <a:s>}</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="581" locator="13:3-13:49" xsi:type="Union">
+            <operand localId="493" xsi:type="As">
+               <operand localId="449" locator="13:3-13:20" name="ACSRecommendations" xsi:type="ExpressionRef"/>
+               <asTypeSpecifier localId="494" xsi:type="ListTypeSpecifier">
+                  <elementType localId="495" xsi:type="ChoiceTypeSpecifier">
+                     <choice localId="496" xsi:type="TupleTypeSpecifier">
+                        <element localId="497" name="code">
+                           <elementType localId="498" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="499" name="reason">
+                           <elementType localId="500" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="501" name="documentation">
+                           <elementType localId="502" xsi:type="TupleTypeSpecifier">
+                              <element localId="503" name="label">
+                                 <elementType localId="504" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                        <element localId="505" name="timingAge">
+                           <elementType localId="506" xsi:type="TupleTypeSpecifier">
+                              <element localId="507" name="value">
+                                 <elementType localId="508" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="509" name="code">
+                                 <elementType localId="510" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                        <element localId="511" name="timingTiming">
+                           <elementType localId="512" xsi:type="TupleTypeSpecifier">
+                              <element localId="513" name="event">
+                                 <elementType localId="514" xsi:type="ListTypeSpecifier">
+                                    <elementType localId="515" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </element>
+                              <element localId="516" name="repeat">
+                                 <elementType localId="517" xsi:type="TupleTypeSpecifier">
+                                    <element localId="518" name="boundsPeriod">
+                                       <elementType localId="519" xsi:type="TupleTypeSpecifier">
+                                          <element localId="520" name="start">
+                                             <elementType localId="521" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                    <element localId="522" name="frequency">
+                                       <elementType localId="523" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="524" name="period">
+                                       <elementType localId="525" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="526" name="periodUnit">
+                                       <elementType localId="527" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                           </elementType>
+                        </element>
+                     </choice>
+                     <choice localId="528" xsi:type="TupleTypeSpecifier">
+                        <element localId="529" name="code">
+                           <elementType localId="530" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="531" name="reason">
+                           <elementType localId="532" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="533" name="documentation">
+                           <elementType localId="534" xsi:type="TupleTypeSpecifier">
+                              <element localId="535" name="label">
+                                 <elementType localId="536" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </choice>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+            <operand localId="537" xsi:type="As">
+               <operand localId="450" locator="13:28-13:49" xsi:type="List">
+                  <element localId="492" locator="13:29-13:48" name="USPSTFRecommendation" xsi:type="ExpressionRef"/>
+               </operand>
+               <asTypeSpecifier localId="538" xsi:type="ListTypeSpecifier">
+                  <elementType localId="539" xsi:type="ChoiceTypeSpecifier">
+                     <choice localId="540" xsi:type="TupleTypeSpecifier">
+                        <element localId="541" name="code">
+                           <elementType localId="542" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="543" name="reason">
+                           <elementType localId="544" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="545" name="documentation">
+                           <elementType localId="546" xsi:type="TupleTypeSpecifier">
+                              <element localId="547" name="label">
+                                 <elementType localId="548" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                        <element localId="549" name="timingAge">
+                           <elementType localId="550" xsi:type="TupleTypeSpecifier">
+                              <element localId="551" name="value">
+                                 <elementType localId="552" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="553" name="code">
+                                 <elementType localId="554" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                        <element localId="555" name="timingTiming">
+                           <elementType localId="556" xsi:type="TupleTypeSpecifier">
+                              <element localId="557" name="event">
+                                 <elementType localId="558" xsi:type="ListTypeSpecifier">
+                                    <elementType localId="559" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </elementType>
+                              </element>
+                              <element localId="560" name="repeat">
+                                 <elementType localId="561" xsi:type="TupleTypeSpecifier">
+                                    <element localId="562" name="boundsPeriod">
+                                       <elementType localId="563" xsi:type="TupleTypeSpecifier">
+                                          <element localId="564" name="start">
+                                             <elementType localId="565" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                    <element localId="566" name="frequency">
+                                       <elementType localId="567" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="568" name="period">
+                                       <elementType localId="569" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="570" name="periodUnit">
+                                       <elementType localId="571" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                           </elementType>
+                        </element>
+                     </choice>
+                     <choice localId="572" xsi:type="TupleTypeSpecifier">
+                        <element localId="573" name="code">
+                           <elementType localId="574" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="575" name="reason">
+                           <elementType localId="576" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="577" name="documentation">
+                           <elementType localId="578" xsi:type="TupleTypeSpecifier">
+                              <element localId="579" name="label">
+                                 <elementType localId="580" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </choice>
+                  </elementType>
+               </asTypeSpecifier>
+            </operand>
+         </expression>
+      </def>
+      <def localId="583" locator="30:1-31:30" name="ExistsACSMammoHighRisk" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="583">
+               <a:s>define ExistsACSMammoHighRisk:
+  </a:s>
+               <a:s r="586">
+                  <a:s r="584">
+                     <a:s>ACSMammoHighRisk</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="586" locator="31:3-31:30" xsi:type="Not">
+            <operand localId="585" locator="31:3-31:30" xsi:type="IsNull">
+               <operand localId="584" locator="31:3-31:18" name="ACSMammoHighRisk" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="588" locator="33:1-34:34" name="ACSMammoHighRiskCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="588">
+               <a:s>define ACSMammoHighRiskCode:    
+  </a:s>
+               <a:s r="594">
+                  <a:s>
+                     <a:s r="589">
+                        <a:s r="590">
+                           <a:s>
+                              <a:s>ACSMammoHighRisk</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="591">
+                     <a:s>return </a:s>
+                     <a:s r="593">
+                        <a:s r="592">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="593">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="594" locator="34:3-34:34" xsi:type="Query">
+            <source localId="589" locator="34:3-34:20" alias="R">
+               <expression localId="590" locator="34:3-34:18" name="ACSMammoHighRisk" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="591" locator="34:22-34:34">
+               <expression localId="593" locator="34:29-34:34" path="code" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="596" locator="36:1-37:42" name="ACSMammoHighRiskTiming" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="596">
+               <a:s>define ACSMammoHighRiskTiming:    
+  </a:s>
+               <a:s r="602">
+                  <a:s>
+                     <a:s r="597">
+                        <a:s r="598">
+                           <a:s>
+                              <a:s>ACSMammoHighRisk</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="599">
+                     <a:s>return </a:s>
+                     <a:s r="601">
+                        <a:s r="600">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="601">
+                           <a:s>timingTiming</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="602" locator="37:3-37:42" xsi:type="Query">
+            <source localId="597" locator="37:3-37:20" alias="R">
+               <expression localId="598" locator="37:3-37:18" name="ACSMammoHighRisk" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="599" locator="37:22-37:42">
+               <expression localId="601" locator="37:29-37:42" path="timingTiming" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="604" locator="39:1-40:48" name="ACSMammoHighRiskTimingEvent" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="604">
+               <a:s>define ACSMammoHighRiskTimingEvent:    
+  </a:s>
+               <a:s r="613">
+                  <a:s>
+                     <a:s r="605">
+                        <a:s r="606">
+                           <a:s>
+                              <a:s>ACSMammoHighRiskTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="607">
+                     <a:s>return </a:s>
+                     <a:s r="612">
+                        <a:s>First(</a:s>
+                        <a:s r="609">
+                           <a:s r="608">
+                              <a:s>R</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="609">
+                              <a:s>event</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="613" locator="40:3-40:48" xsi:type="Query">
+            <source localId="605" locator="40:3-40:26" alias="R">
+               <expression localId="606" locator="40:3-40:24" name="ACSMammoHighRiskTiming" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="607" locator="40:28-40:48">
+               <expression localId="612" locator="40:35-40:48" xsi:type="First">
+                  <source localId="609" locator="40:41-40:47" path="event" scope="R" xsi:type="Property"/>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def localId="615" locator="46:1-47:28" name="ExistsACSMriHighRisk" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="615">
+               <a:s>define ExistsACSMriHighRisk:
+  </a:s>
+               <a:s r="618">
+                  <a:s r="616">
+                     <a:s>ACSMriHighRisk</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="618" locator="47:3-47:28" xsi:type="Not">
+            <operand localId="617" locator="47:3-47:28" xsi:type="IsNull">
+               <operand localId="616" locator="47:3-47:16" name="ACSMriHighRisk" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="620" locator="49:1-50:32" name="ACSMriHighRiskCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="620">
+               <a:s>define ACSMriHighRiskCode:    
+  </a:s>
+               <a:s r="626">
+                  <a:s>
+                     <a:s r="621">
+                        <a:s r="622">
+                           <a:s>
+                              <a:s>ACSMriHighRisk</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="623">
+                     <a:s>return </a:s>
+                     <a:s r="625">
+                        <a:s r="624">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="625">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="626" locator="50:3-50:32" xsi:type="Query">
+            <source localId="621" locator="50:3-50:18" alias="R">
+               <expression localId="622" locator="50:3-50:16" name="ACSMriHighRisk" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="623" locator="50:20-50:32">
+               <expression localId="625" locator="50:27-50:32" path="code" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="628" locator="52:1-53:40" name="ACSMriHighRiskTiming" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="628">
+               <a:s>define ACSMriHighRiskTiming:    
+  </a:s>
+               <a:s r="634">
+                  <a:s>
+                     <a:s r="629">
+                        <a:s r="630">
+                           <a:s>
+                              <a:s>ACSMriHighRisk</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="631">
+                     <a:s>return </a:s>
+                     <a:s r="633">
+                        <a:s r="632">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="633">
+                           <a:s>timingTiming</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="634" locator="53:3-53:40" xsi:type="Query">
+            <source localId="629" locator="53:3-53:18" alias="R">
+               <expression localId="630" locator="53:3-53:16" name="ACSMriHighRisk" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="631" locator="53:20-53:40">
+               <expression localId="633" locator="53:27-53:40" path="timingTiming" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="636" locator="55:1-56:46" name="ACSMriHighRiskTimingEvent" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="636">
+               <a:s>define ACSMriHighRiskTimingEvent:    
+  </a:s>
+               <a:s r="645">
+                  <a:s>
+                     <a:s r="637">
+                        <a:s r="638">
+                           <a:s>
+                              <a:s>ACSMriHighRiskTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="639">
+                     <a:s>return </a:s>
+                     <a:s r="644">
+                        <a:s>First(</a:s>
+                        <a:s r="641">
+                           <a:s r="640">
+                              <a:s>R</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="641">
+                              <a:s>event</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="645" locator="56:3-56:46" xsi:type="Query">
+            <source localId="637" locator="56:3-56:24" alias="R">
+               <expression localId="638" locator="56:3-56:22" name="ACSMriHighRiskTiming" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="639" locator="56:26-56:46">
+               <expression localId="644" locator="56:33-56:46" xsi:type="First">
+                  <source localId="641" locator="56:39-56:45" path="event" scope="R" xsi:type="Property"/>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def localId="647" locator="62:1-63:37" name="ExistsACSFirstDegGeneticMammo" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="647">
+               <a:s>define ExistsACSFirstDegGeneticMammo:
+  </a:s>
+               <a:s r="650">
+                  <a:s r="648">
+                     <a:s>ACSFirstDegGeneticMammo</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="650" locator="63:3-63:37" xsi:type="Not">
+            <operand localId="649" locator="63:3-63:37" xsi:type="IsNull">
+               <operand localId="648" locator="63:3-63:25" name="ACSFirstDegGeneticMammo" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="652" locator="65:1-66:41" name="ACSFirstDegGeneticMammoCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="652">
+               <a:s>define ACSFirstDegGeneticMammoCode:    
+  </a:s>
+               <a:s r="658">
+                  <a:s>
+                     <a:s r="653">
+                        <a:s r="654">
+                           <a:s>
+                              <a:s>ACSFirstDegGeneticMammo</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="655">
+                     <a:s>return </a:s>
+                     <a:s r="657">
+                        <a:s r="656">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="657">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="658" locator="66:3-66:41" xsi:type="Query">
+            <source localId="653" locator="66:3-66:27" alias="R">
+               <expression localId="654" locator="66:3-66:25" name="ACSFirstDegGeneticMammo" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="655" locator="66:29-66:41">
+               <expression localId="657" locator="66:36-66:41" path="code" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="660" locator="68:1-69:49" name="ACSFirstDegGeneticMammoTiming" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="660">
+               <a:s>define ACSFirstDegGeneticMammoTiming:    
+  </a:s>
+               <a:s r="666">
+                  <a:s>
+                     <a:s r="661">
+                        <a:s r="662">
+                           <a:s>
+                              <a:s>ACSFirstDegGeneticMammo</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="663">
+                     <a:s>return </a:s>
+                     <a:s r="665">
+                        <a:s r="664">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="665">
+                           <a:s>timingTiming</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="666" locator="69:3-69:49" xsi:type="Query">
+            <source localId="661" locator="69:3-69:27" alias="R">
+               <expression localId="662" locator="69:3-69:25" name="ACSFirstDegGeneticMammo" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="663" locator="69:29-69:49">
+               <expression localId="665" locator="69:36-69:49" path="timingTiming" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="668" locator="71:1-72:55" name="ACSFirstDegGeneticMammoTimingEvent" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="668">
+               <a:s>define ACSFirstDegGeneticMammoTimingEvent:    
+  </a:s>
+               <a:s r="677">
+                  <a:s>
+                     <a:s r="669">
+                        <a:s r="670">
+                           <a:s>
+                              <a:s>ACSFirstDegGeneticMammoTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="671">
+                     <a:s>return </a:s>
+                     <a:s r="676">
+                        <a:s>First(</a:s>
+                        <a:s r="673">
+                           <a:s r="672">
+                              <a:s>R</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="673">
+                              <a:s>event</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="677" locator="72:3-72:55" xsi:type="Query">
+            <source localId="669" locator="72:3-72:33" alias="R">
+               <expression localId="670" locator="72:3-72:31" name="ACSFirstDegGeneticMammoTiming" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="671" locator="72:35-72:55">
+               <expression localId="676" locator="72:42-72:55" xsi:type="First">
+                  <source localId="673" locator="72:48-72:54" path="event" scope="R" xsi:type="Property"/>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def localId="679" locator="78:1-79:35" name="ExistsACSFirstDegGeneticMri" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="679">
+               <a:s>define ExistsACSFirstDegGeneticMri:
+  </a:s>
+               <a:s r="682">
+                  <a:s r="680">
+                     <a:s>ACSFirstDegGeneticMri</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="682" locator="79:3-79:35" xsi:type="Not">
+            <operand localId="681" locator="79:3-79:35" xsi:type="IsNull">
+               <operand localId="680" locator="79:3-79:23" name="ACSFirstDegGeneticMri" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="684" locator="81:1-82:39" name="ACSFirstDegGeneticMriCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="684">
+               <a:s>define ACSFirstDegGeneticMriCode:    
+  </a:s>
+               <a:s r="690">
+                  <a:s>
+                     <a:s r="685">
+                        <a:s r="686">
+                           <a:s>
+                              <a:s>ACSFirstDegGeneticMri</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="687">
+                     <a:s>return </a:s>
+                     <a:s r="689">
+                        <a:s r="688">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="689">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="690" locator="82:3-82:39" xsi:type="Query">
+            <source localId="685" locator="82:3-82:25" alias="R">
+               <expression localId="686" locator="82:3-82:23" name="ACSFirstDegGeneticMri" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="687" locator="82:27-82:39">
+               <expression localId="689" locator="82:34-82:39" path="code" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="692" locator="84:1-85:47" name="ACSFirstDegGeneticMriTiming" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="692">
+               <a:s>define ACSFirstDegGeneticMriTiming:    
+  </a:s>
+               <a:s r="698">
+                  <a:s>
+                     <a:s r="693">
+                        <a:s r="694">
+                           <a:s>
+                              <a:s>ACSFirstDegGeneticMri</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="695">
+                     <a:s>return </a:s>
+                     <a:s r="697">
+                        <a:s r="696">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="697">
+                           <a:s>timingTiming</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="698" locator="85:3-85:47" xsi:type="Query">
+            <source localId="693" locator="85:3-85:25" alias="R">
+               <expression localId="694" locator="85:3-85:23" name="ACSFirstDegGeneticMri" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="695" locator="85:27-85:47">
+               <expression localId="697" locator="85:34-85:47" path="timingTiming" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="700" locator="87:1-88:53" name="ACSFirstDegGeneticMriTimingEvent" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="700">
+               <a:s>define ACSFirstDegGeneticMriTimingEvent:    
+  </a:s>
+               <a:s r="709">
+                  <a:s>
+                     <a:s r="701">
+                        <a:s r="702">
+                           <a:s>
+                              <a:s>ACSFirstDegGeneticMriTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="703">
+                     <a:s>return </a:s>
+                     <a:s r="708">
+                        <a:s>First(</a:s>
+                        <a:s r="705">
+                           <a:s r="704">
+                              <a:s>R</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="705">
+                              <a:s>event</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="709" locator="88:3-88:53" xsi:type="Query">
+            <source localId="701" locator="88:3-88:31" alias="R">
+               <expression localId="702" locator="88:3-88:29" name="ACSFirstDegGeneticMriTiming" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="703" locator="88:33-88:53">
+               <expression localId="708" locator="88:40-88:53" xsi:type="First">
+                  <source localId="705" locator="88:46-88:52" path="event" scope="R" xsi:type="Property"/>
+               </expression>
+            </return>
+         </expression>
+      </def>
+      <def localId="711" locator="95:1-96:57" name="ExistsBreastImagingHeterogenouslyOrExtremelyDense" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="711">
+               <a:s>define ExistsBreastImagingHeterogenouslyOrExtremelyDense:
+  </a:s>
+               <a:s r="714">
+                  <a:s r="712">
+                     <a:s>BreastImagingHeterogenouslyOrExtremelyDense</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="714" locator="96:3-96:57" xsi:type="Not">
+            <operand localId="713" locator="96:3-96:57" xsi:type="IsNull">
+               <operand localId="712" locator="96:3-96:45" name="BreastImagingHeterogenouslyOrExtremelyDense" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="716" locator="98:1-99:50" name="BreastImagingHeterogenouslyOrExtremelyDenseCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="716">
+               <a:s>define BreastImagingHeterogenouslyOrExtremelyDenseCode:
+  </a:s>
+               <a:s r="718">
+                  <a:s r="717">
+                     <a:s>BreastImagingHeterogenouslyOrExtremelyDense</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="718">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="718" locator="99:3-99:50" path="code" xsi:type="Property">
+            <source localId="717" locator="99:3-99:45" name="BreastImagingHeterogenouslyOrExtremelyDense" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="720" locator="101:1-102:52" name="BreastImagingHeterogenouslyOrExtremelyDenseReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="720">
+               <a:s>define BreastImagingHeterogenouslyOrExtremelyDenseReason:
+  </a:s>
+               <a:s r="722">
+                  <a:s r="721">
+                     <a:s>BreastImagingHeterogenouslyOrExtremelyDense</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="722">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="722" locator="102:3-102:52" path="reason" xsi:type="Property">
+            <source localId="721" locator="102:3-102:45" name="BreastImagingHeterogenouslyOrExtremelyDense" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="724" locator="109:2-110:37" name="ExistsCompellingFamilyHistory" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="724">
+               <a:s>define ExistsCompellingFamilyHistory:
+  </a:s>
+               <a:s r="727">
+                  <a:s r="725">
+                     <a:s>CompellingFamilyHistory</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="727" locator="110:3-110:37" xsi:type="Not">
+            <operand localId="726" locator="110:3-110:37" xsi:type="IsNull">
+               <operand localId="725" locator="110:3-110:25" name="CompellingFamilyHistory" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="729" locator="112:1-113:30" name="CompellingFamilyHistoryCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="729">
+               <a:s>define CompellingFamilyHistoryCode:
+  </a:s>
+               <a:s r="731">
+                  <a:s r="730">
+                     <a:s>CompellingFamilyHistory</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="731">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="731" locator="113:3-113:30" path="code" xsi:type="Property">
+            <source localId="730" locator="113:3-113:25" name="CompellingFamilyHistory" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="733" locator="115:1-116:32" name="CompellingFamilyHistoryReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="733">
+               <a:s>define CompellingFamilyHistoryReason:
+  </a:s>
+               <a:s r="735">
+                  <a:s r="734">
+                     <a:s>CompellingFamilyHistory</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="735">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="735" locator="116:3-116:32" path="reason" xsi:type="Property">
+            <source localId="734" locator="116:3-116:25" name="CompellingFamilyHistory" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="737" locator="123:1-124:34" name="ExistsUSPSTFRecommendation" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="737">
+               <a:s>define ExistsUSPSTFRecommendation:
+  </a:s>
+               <a:s r="740">
+                  <a:s r="738">
+                     <a:s>USPSTFRecommendation</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="740" locator="124:3-124:34" xsi:type="Not">
+            <operand localId="739" locator="124:3-124:34" xsi:type="IsNull">
+               <operand localId="738" locator="124:3-124:22" name="USPSTFRecommendation" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="742" locator="126:1-127:38" name="USPSTFRecommendationCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="742">
+               <a:s>define USPSTFRecommendationCode:    
+  </a:s>
+               <a:s r="748">
+                  <a:s>
+                     <a:s r="743">
+                        <a:s r="744">
+                           <a:s>
+                              <a:s>USPSTFRecommendation</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="745">
+                     <a:s>return </a:s>
+                     <a:s r="747">
+                        <a:s r="746">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="747">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="748" locator="127:3-127:38" xsi:type="Query">
+            <source localId="743" locator="127:3-127:24" alias="R">
+               <expression localId="744" locator="127:3-127:22" name="USPSTFRecommendation" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="745" locator="127:26-127:38">
+               <expression localId="747" locator="127:33-127:38" path="code" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="750" locator="129:1-130:46" name="USPSTFRecommendationTiming" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="750">
+               <a:s>define USPSTFRecommendationTiming:    
+  </a:s>
+               <a:s r="756">
+                  <a:s>
+                     <a:s r="751">
+                        <a:s r="752">
+                           <a:s>
+                              <a:s>USPSTFRecommendation</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="753">
+                     <a:s>return </a:s>
+                     <a:s r="755">
+                        <a:s r="754">
+                           <a:s>R</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="755">
+                           <a:s>timingTiming</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="756" locator="130:3-130:46" xsi:type="Query">
+            <source localId="751" locator="130:3-130:24" alias="R">
+               <expression localId="752" locator="130:3-130:22" name="USPSTFRecommendation" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="753" locator="130:26-130:46">
+               <expression localId="755" locator="130:33-130:46" path="timingTiming" scope="R" xsi:type="Property"/>
+            </return>
+         </expression>
+      </def>
+      <def localId="758" locator="132:1-133:52" name="USPSTFRecommendationTimingEvent" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="758">
+               <a:s>define USPSTFRecommendationTimingEvent:    
+  </a:s>
+               <a:s r="767">
+                  <a:s>
+                     <a:s r="759">
+                        <a:s r="760">
+                           <a:s>
+                              <a:s>USPSTFRecommendationTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="761">
+                     <a:s>return </a:s>
+                     <a:s r="766">
+                        <a:s>First(</a:s>
+                        <a:s r="763">
+                           <a:s r="762">
+                              <a:s>R</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="763">
+                              <a:s>event</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="767" locator="133:3-133:52" xsi:type="Query">
+            <source localId="759" locator="133:3-133:30" alias="R">
+               <expression localId="760" locator="133:3-133:28" name="USPSTFRecommendationTiming" xsi:type="ExpressionRef"/>
+            </source>
+            <return localId="761" locator="133:32-133:52">
+               <expression localId="766" locator="133:39-133:52" xsi:type="First">
+                  <source localId="763" locator="133:45-133:51" path="event" scope="R" xsi:type="Property"/>
+               </expression>
+            </return>
+         </expression>
+      </def>
+   </statements>
+</library>

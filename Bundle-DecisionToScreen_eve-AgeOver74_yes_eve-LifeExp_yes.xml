@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="DecisionToScreen_eve-AgeOver74_yes_eve-LifeExp_yes"/>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/49"/>
+    <resource>
+      <RequestGroup>
+        <id value="49"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="RequestGroup_49"> </a><p class="res-header-id"><b>Generated Narrative: RequestGroup 49</b></p><a name="49"> </a><a name="hc49"> </a><a name="49-en-US"> </a><p><b>instantiatesCanonical</b>: <a href="PlanDefinition-flow-DecisionToScreen.html">Decision to Screen</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Patient/4b0afee1-be4d-4c62-b8ef-5e7aa7a87cab">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>SDMContinueScreeningAge</blockquote><p><b>title</b>: Shared decision making to continue screening based on age</p><p><b>description</b>: Shared decision making to continue screening based on age</p><p><b>code</b>: <span title="Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system sdmcontinue}">Shared decision making to continue screening</span></p><p><b>resource</b>: <a href="Bundle-DecisionToScreen_eve-AgeOver74_yes_eve-LifeExp_yes.html#CommunicationRequest_50">Bundle: type = collection</a></p></blockquote></div>
+        </text>
+        <instantiatesCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-DecisionToScreen"/>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/4b0afee1-be4d-4c62-b8ef-5e7aa7a87cab"/>
+          <display value="Jane Doe"/>
+        </subject>
+        <action id="SDMContinueScreeningAge">
+          <title value="Shared decision making to continue screening based on age"/>
+          <description value="Shared decision making to continue screening based on age"/>
+          <code>
+            <coding>
+              <system value="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"/>
+              <code value="sdmcontinue"/>
+              <display value="Shared decision making to continue screening"/>
+            </coding>
+          </code>
+          <resource>
+            <reference value="CommunicationRequest/50"/>
+          </resource>
+        </action>
+      </RequestGroup>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/50"/>
+    <resource>
+      <CommunicationRequest>
+        <id value="50"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CommunicationRequest_50"> </a><p class="res-header-id"><b>Generated Narrative: CommunicationRequest 50</b></p><a name="50"> </a><a name="hc50"> </a><a name="50-en-US"> </a><p><b>basedOn</b>: <a href="ActivityDefinition-CommunicateSDMContinueScreening.html">Communicate Shared Decision Making to Continue Screening</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href="Patient/4b0afee1-be4d-4c62-b8ef-5e7aa7a87cab">Jane Doe</a></p><h3>Payloads</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Content[x]</b></td></tr><tr><td style="display: none">*</td><td>Shared decision making to continue screening</td></tr></table><p><b>reasonCode</b>: <span title="Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system ageover74}">Age over 74 years</span></p></div>
+        </text>
+        <basedOn>
+          <reference value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMContinueScreening"/>
+        </basedOn>
+        <status value="option"/>
+        <subject>
+          <reference value="Patient/4b0afee1-be4d-4c62-b8ef-5e7aa7a87cab"/>
+          <display value="Jane Doe"/>
+        </subject>
+        <payload>
+          <contentString value="Shared decision making to continue screening"/>
+        </payload>
+        <reasonCode>
+          <coding>
+            <system value="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"/>
+            <code value="ageover74"/>
+            <display value="Age over 74 years"/>
+          </coding>
+        </reasonCode>
+      </CommunicationRequest>
+    </resource>
+  </entry>
+</Bundle>

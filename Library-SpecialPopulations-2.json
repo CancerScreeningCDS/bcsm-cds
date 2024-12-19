@@ -1,0 +1,3928 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "s" : {
+            "r" : "758",
+            "s" : [ {
+               "value" : [ "","library SpecialPopulations version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "SpecialPopulations",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "3:1-3:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "4:1-4:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "6:1-6:62",
+            "localIdentifier" : "Events",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/SpecialPopulationsEvents",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "SpecialPopulationsEvents" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","Events" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "209",
+            "locator" : "7:1-7:64",
+            "localIdentifier" : "Actions",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/SpecialPopulationsActions",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "SpecialPopulationsActions" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","Actions" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "210",
+            "locator" : "8:1-8:56",
+            "localIdentifier" : "DataElements",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/DataElements",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "DataElements" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","DataElements" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "214",
+            "locator" : "10:1-10:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "212",
+            "locator" : "10:1-10:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "213",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "211",
+                  "locator" : "10:1-10:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "221",
+            "locator" : "26:1-28:47",
+            "name" : "ACSMammoHighRisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "221",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoHighRisk",":\n  " ]
+                  }, {
+                     "r" : "222",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "225",
+                        "s" : [ {
+                           "r" : "224",
+                           "s" : [ {
+                              "r" : "223",
+                              "s" : [ {
+                                 "value" : [ "Events" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "224",
+                              "s" : [ {
+                                 "value" : [ "\"eve-highlifetimerisk\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is true" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "227",
+                        "s" : [ {
+                           "r" : "226",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "227",
+                           "s" : [ {
+                              "value" : [ "\"act-acshighriskmammo\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "228",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "222",
+               "locator" : "27:3-28:47",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "225",
+                  "locator" : "27:6-27:42",
+                  "type" : "IsTrue",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "224",
+                     "locator" : "27:6-27:34",
+                     "name" : "eve-highlifetimerisk",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "localId" : "227",
+                  "locator" : "28:8-28:37",
+                  "name" : "act-acshighriskmammo",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "229",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "228",
+                     "locator" : "28:44-28:47",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "230",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "231",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "232",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "233",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "234",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "235",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "236",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "237",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "238",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "239",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "240",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "241",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "242",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "243",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "244",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "245",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "246",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "247",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "248",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "249",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "250",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "251",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "252",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "253",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "254",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "255",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "256",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "257",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "258",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "259",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "260",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "261",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "264",
+            "locator" : "42:1-44:45",
+            "name" : "ACSMriHighRisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "264",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMriHighRisk",":\n  " ]
+                  }, {
+                     "r" : "265",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "268",
+                        "s" : [ {
+                           "r" : "267",
+                           "s" : [ {
+                              "r" : "266",
+                              "s" : [ {
+                                 "value" : [ "Events" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "267",
+                              "s" : [ {
+                                 "value" : [ "\"eve-highlifetimerisk\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is true" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "270",
+                        "s" : [ {
+                           "r" : "269",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "270",
+                           "s" : [ {
+                              "value" : [ "\"act-acshighriskmri\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "271",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "265",
+               "locator" : "43:3-44:45",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "268",
+                  "locator" : "43:6-43:42",
+                  "type" : "IsTrue",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "267",
+                     "locator" : "43:6-43:34",
+                     "name" : "eve-highlifetimerisk",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "localId" : "270",
+                  "locator" : "44:8-44:35",
+                  "name" : "act-acshighriskmri",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "272",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "271",
+                     "locator" : "44:42-44:45",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "273",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "274",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "275",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "276",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "277",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "278",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "279",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "280",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "281",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "282",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "283",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "284",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "285",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "286",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "287",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "288",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "289",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "290",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "291",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "292",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "293",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "294",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "295",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "296",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "297",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "298",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "299",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "300",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "301",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "302",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "303",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "304",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "307",
+            "locator" : "58:1-60:51",
+            "name" : "ACSFirstDegGeneticMammo",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "307",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMammo",":\n  " ]
+                  }, {
+                     "r" : "308",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "311",
+                        "s" : [ {
+                           "r" : "310",
+                           "s" : [ {
+                              "r" : "309",
+                              "s" : [ {
+                                 "value" : [ "Events" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "310",
+                              "s" : [ {
+                                 "value" : [ "\"eve-firstdeggenetic\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is true" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "313",
+                        "s" : [ {
+                           "r" : "312",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "313",
+                           "s" : [ {
+                              "value" : [ "\"act-firstdeggeneticmammo\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "314",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "308",
+               "locator" : "59:3-60:51",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "311",
+                  "locator" : "59:6-59:41",
+                  "type" : "IsTrue",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "310",
+                     "locator" : "59:6-59:33",
+                     "name" : "eve-firstdeggenetic",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "localId" : "313",
+                  "locator" : "60:8-60:41",
+                  "name" : "act-firstdeggeneticmammo",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "315",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "314",
+                     "locator" : "60:48-60:51",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "316",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "317",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "318",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "319",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "320",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "321",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "322",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "323",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "324",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "325",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "326",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "327",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "328",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "329",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "330",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "331",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "332",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "333",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "334",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "335",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "336",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "337",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "338",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "339",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "340",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "341",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "342",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "343",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "344",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "345",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "346",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "347",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "350",
+            "locator" : "74:1-76:49",
+            "name" : "ACSFirstDegGeneticMri",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "350",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMri",":\n  " ]
+                  }, {
+                     "r" : "351",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "354",
+                        "s" : [ {
+                           "r" : "353",
+                           "s" : [ {
+                              "r" : "352",
+                              "s" : [ {
+                                 "value" : [ "Events" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "353",
+                              "s" : [ {
+                                 "value" : [ "\"eve-firstdeggenetic\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is true" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "356",
+                        "s" : [ {
+                           "r" : "355",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "356",
+                           "s" : [ {
+                              "value" : [ "\"act-firstdeggeneticmri\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "357",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "351",
+               "locator" : "75:3-76:49",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "354",
+                  "locator" : "75:6-75:41",
+                  "type" : "IsTrue",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "353",
+                     "locator" : "75:6-75:33",
+                     "name" : "eve-firstdeggenetic",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "localId" : "356",
+                  "locator" : "76:8-76:39",
+                  "name" : "act-firstdeggeneticmri",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "358",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "357",
+                     "locator" : "76:46-76:49",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "359",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "360",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "361",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "362",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "363",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "364",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "365",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "366",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "367",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "368",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "369",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "370",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "371",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "372",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "373",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "374",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "375",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "376",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "377",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "378",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "379",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "380",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "381",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "382",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "383",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "384",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "385",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "386",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "387",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "388",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "389",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "390",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "393",
+            "locator" : "90:1-93:13",
+            "name" : "BreastImagingHeterogenouslyOrExtremelyDense",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "393",
+                  "s" : [ {
+                     "value" : [ "","define ","BreastImagingHeterogenouslyOrExtremelyDense",":\n  " ]
+                  }, {
+                     "r" : "394",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "397",
+                        "s" : [ {
+                           "r" : "396",
+                           "s" : [ {
+                              "r" : "395",
+                              "s" : [ {
+                                 "value" : [ "Events" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "396",
+                              "s" : [ {
+                                 "value" : [ "\"eve-breastdensitycord\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is true" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    then " ]
+                     }, {
+                        "r" : "399",
+                        "s" : [ {
+                           "r" : "398",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "399",
+                           "s" : [ {
+                              "value" : [ "\"act-breastdensitycord\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "400",
+                        "value" : [ "\n    else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "394",
+               "locator" : "91:3-93:13",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "397",
+                  "locator" : "91:6-91:43",
+                  "type" : "IsTrue",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "396",
+                     "locator" : "91:6-91:35",
+                     "name" : "eve-breastdensitycord",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "localId" : "399",
+                  "locator" : "92:10-92:40",
+                  "name" : "act-breastdensitycord",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "401",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "400",
+                     "locator" : "93:10-93:13",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "402",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "403",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "404",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "405",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "406",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "407",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "408",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "409",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "410",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "413",
+            "locator" : "104:1-107:13",
+            "name" : "CompellingFamilyHistory",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "413",
+                  "s" : [ {
+                     "value" : [ "","define ","CompellingFamilyHistory",":\n  " ]
+                  }, {
+                     "r" : "414",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "417",
+                        "s" : [ {
+                           "r" : "416",
+                           "s" : [ {
+                              "r" : "415",
+                              "s" : [ {
+                                 "value" : [ "Events" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "416",
+                              "s" : [ {
+                                 "value" : [ "\"eve-fhxbreastcarisk\"" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is true" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    then " ]
+                     }, {
+                        "r" : "419",
+                        "s" : [ {
+                           "r" : "418",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "419",
+                           "s" : [ {
+                              "value" : [ "\"act-fhxbreastcarisk\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "420",
+                        "value" : [ "\n    else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "414",
+               "locator" : "105:3-107:13",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "417",
+                  "locator" : "105:6-105:41",
+                  "type" : "IsTrue",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "416",
+                     "locator" : "105:6-105:33",
+                     "name" : "eve-fhxbreastcarisk",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "localId" : "419",
+                  "locator" : "106:10-106:38",
+                  "name" : "act-fhxbreastcarisk",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "421",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "420",
+                     "locator" : "107:10-107:13",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "422",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "423",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "424",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "425",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "426",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "427",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "428",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "429",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "430",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "218",
+            "locator" : "15:1-24:17",
+            "name" : "ACSRecommendations",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "218",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSRecommendations",":\n  " ]
+                  }, {
+                     "r" : "434",
+                     "s" : [ {
+                        "r" : "219",
+                        "s" : [ {
+                           "value" : [ "{    \n    " ]
+                        }, {
+                           "r" : "262",
+                           "s" : [ {
+                              "value" : [ "ACSMammoHighRisk" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "305",
+                           "s" : [ {
+                              "value" : [ "ACSMriHighRisk" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "348",
+                           "s" : [ {
+                              "value" : [ "ACSFirstDegGeneticMammo" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "391",
+                           "s" : [ {
+                              "value" : [ "ACSFirstDegGeneticMri" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "411",
+                           "s" : [ {
+                              "value" : [ "BreastImagingHeterogenouslyOrExtremelyDense" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "431",
+                           "s" : [ {
+                              "value" : [ "CompellingFamilyHistory" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n  }" ]
+                        } ]
+                     }, {
+                        "value" : [ "   \n  except " ]
+                     }, {
+                        "r" : "432",
+                        "s" : [ {
+                           "r" : "433",
+                           "value" : [ "{ ","null"," }" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "434",
+               "locator" : "16:3-24:17",
+               "type" : "Except",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "219",
+                  "locator" : "16:3-23:3",
+                  "type" : "List",
+                  "element" : [ {
+                     "localId" : "262",
+                     "locator" : "17:5-17:20",
+                     "name" : "ACSMammoHighRisk",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "305",
+                     "locator" : "18:5-18:18",
+                     "name" : "ACSMriHighRisk",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "348",
+                     "locator" : "19:5-19:27",
+                     "name" : "ACSFirstDegGeneticMammo",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "391",
+                     "locator" : "20:5-20:25",
+                     "name" : "ACSFirstDegGeneticMri",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "411",
+                     "locator" : "21:5-21:47",
+                     "name" : "BreastImagingHeterogenouslyOrExtremelyDense",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "431",
+                     "locator" : "22:5-22:27",
+                     "name" : "CompellingFamilyHistory",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "localId" : "435",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "436",
+                     "alias" : "X",
+                     "expression" : {
+                        "localId" : "432",
+                        "locator" : "24:10-24:17",
+                        "type" : "List",
+                        "element" : [ {
+                           "localId" : "433",
+                           "locator" : "24:12-24:15",
+                           "type" : "Null"
+                        } ]
+                     }
+                  } ],
+                  "let" : [ ],
+                  "relationship" : [ ],
+                  "return" : {
+                     "localId" : "437",
+                     "distinct" : false,
+                     "expression" : {
+                        "localId" : "439",
+                        "type" : "As",
+                        "signature" : [ ],
+                        "operand" : {
+                           "localId" : "438",
+                           "name" : "X",
+                           "type" : "AliasRef"
+                        },
+                        "asTypeSpecifier" : {
+                           "localId" : "440",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "441",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "442",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "443",
+                              "name" : "reason",
+                              "elementType" : {
+                                 "localId" : "444",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "445",
+                              "name" : "documentation",
+                              "elementType" : {
+                                 "localId" : "446",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "447",
+                                    "name" : "label",
+                                    "elementType" : {
+                                       "localId" : "448",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "452",
+            "locator" : "118:1-121:13",
+            "name" : "USPSTFRecommendation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "452",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFRecommendation",":\n  " ]
+                  }, {
+                     "r" : "453",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "454",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "455",
+                           "s" : [ {
+                              "value" : [ "ACSRecommendations" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " \n    then " ]
+                     }, {
+                        "r" : "457",
+                        "s" : [ {
+                           "r" : "456",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "457",
+                           "s" : [ {
+                              "value" : [ "\"act-uspstfrecs\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "458",
+                        "value" : [ "\n    else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "453",
+               "locator" : "119:3-121:13",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "454",
+                  "locator" : "119:6-119:30",
+                  "type" : "Exists",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "455",
+                     "locator" : "119:13-119:30",
+                     "name" : "ACSRecommendations",
+                     "type" : "ExpressionRef"
+                  }
+               },
+               "then" : {
+                  "localId" : "457",
+                  "locator" : "120:10-120:33",
+                  "name" : "act-uspstfrecs",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "459",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "458",
+                     "locator" : "121:10-121:13",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "460",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "461",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "462",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "463",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "464",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "465",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "466",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "467",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "468",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "469",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "470",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "471",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "472",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "473",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "474",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "475",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "476",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "477",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "478",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "479",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "480",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "481",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "482",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "483",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "484",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "485",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "486",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "487",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "488",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "489",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "490",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "491",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "216",
+            "locator" : "12:1-13:49",
+            "name" : "flow-SpecialPopulations",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "216",
+                  "s" : [ {
+                     "value" : [ "","define ","\"flow-SpecialPopulations\"",":\n  " ]
+                  }, {
+                     "r" : "581",
+                     "s" : [ {
+                        "r" : "449",
+                        "s" : [ {
+                           "value" : [ "ACSRecommendations" ]
+                        } ]
+                     }, {
+                        "value" : [ " union " ]
+                     }, {
+                        "r" : "450",
+                        "s" : [ {
+                           "value" : [ "{" ]
+                        }, {
+                           "r" : "492",
+                           "s" : [ {
+                              "value" : [ "USPSTFRecommendation" ]
+                           } ]
+                        }, {
+                           "value" : [ "}" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "581",
+               "locator" : "13:3-13:49",
+               "type" : "Union",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "493",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "449",
+                     "locator" : "13:3-13:20",
+                     "name" : "ACSRecommendations",
+                     "type" : "ExpressionRef"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "494",
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "localId" : "495",
+                        "type" : "ChoiceTypeSpecifier",
+                        "type" : [ ],
+                        "choice" : [ {
+                           "localId" : "496",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "497",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "498",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "499",
+                              "name" : "reason",
+                              "elementType" : {
+                                 "localId" : "500",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "501",
+                              "name" : "documentation",
+                              "elementType" : {
+                                 "localId" : "502",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "503",
+                                    "name" : "label",
+                                    "elementType" : {
+                                       "localId" : "504",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           }, {
+                              "localId" : "505",
+                              "name" : "timingAge",
+                              "elementType" : {
+                                 "localId" : "506",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "507",
+                                    "name" : "value",
+                                    "elementType" : {
+                                       "localId" : "508",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "509",
+                                    "name" : "code",
+                                    "elementType" : {
+                                       "localId" : "510",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           }, {
+                              "localId" : "511",
+                              "name" : "timingTiming",
+                              "elementType" : {
+                                 "localId" : "512",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "513",
+                                    "name" : "event",
+                                    "elementType" : {
+                                       "localId" : "514",
+                                       "type" : "ListTypeSpecifier",
+                                       "elementType" : {
+                                          "localId" : "515",
+                                          "name" : "{urn:hl7-org:elm-types:r1}String",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 }, {
+                                    "localId" : "516",
+                                    "name" : "repeat",
+                                    "elementType" : {
+                                       "localId" : "517",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "518",
+                                          "name" : "boundsPeriod",
+                                          "elementType" : {
+                                             "localId" : "519",
+                                             "type" : "TupleTypeSpecifier",
+                                             "element" : [ {
+                                                "localId" : "520",
+                                                "name" : "start",
+                                                "elementType" : {
+                                                   "localId" : "521",
+                                                   "name" : "{urn:hl7-org:elm-types:r1}String",
+                                                   "type" : "NamedTypeSpecifier"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "localId" : "522",
+                                          "name" : "frequency",
+                                          "elementType" : {
+                                             "localId" : "523",
+                                             "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }, {
+                                          "localId" : "524",
+                                          "name" : "period",
+                                          "elementType" : {
+                                             "localId" : "525",
+                                             "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }, {
+                                          "localId" : "526",
+                                          "name" : "periodUnit",
+                                          "elementType" : {
+                                             "localId" : "527",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }, {
+                           "localId" : "528",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "529",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "530",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "531",
+                              "name" : "reason",
+                              "elementType" : {
+                                 "localId" : "532",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "533",
+                              "name" : "documentation",
+                              "elementType" : {
+                                 "localId" : "534",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "535",
+                                    "name" : "label",
+                                    "elementType" : {
+                                       "localId" : "536",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        } ]
+                     }
+                  }
+               }, {
+                  "localId" : "537",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "450",
+                     "locator" : "13:28-13:49",
+                     "type" : "List",
+                     "element" : [ {
+                        "localId" : "492",
+                        "locator" : "13:29-13:48",
+                        "name" : "USPSTFRecommendation",
+                        "type" : "ExpressionRef"
+                     } ]
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "538",
+                     "type" : "ListTypeSpecifier",
+                     "elementType" : {
+                        "localId" : "539",
+                        "type" : "ChoiceTypeSpecifier",
+                        "type" : [ ],
+                        "choice" : [ {
+                           "localId" : "540",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "541",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "542",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "543",
+                              "name" : "reason",
+                              "elementType" : {
+                                 "localId" : "544",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "545",
+                              "name" : "documentation",
+                              "elementType" : {
+                                 "localId" : "546",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "547",
+                                    "name" : "label",
+                                    "elementType" : {
+                                       "localId" : "548",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           }, {
+                              "localId" : "549",
+                              "name" : "timingAge",
+                              "elementType" : {
+                                 "localId" : "550",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "551",
+                                    "name" : "value",
+                                    "elementType" : {
+                                       "localId" : "552",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "553",
+                                    "name" : "code",
+                                    "elementType" : {
+                                       "localId" : "554",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           }, {
+                              "localId" : "555",
+                              "name" : "timingTiming",
+                              "elementType" : {
+                                 "localId" : "556",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "557",
+                                    "name" : "event",
+                                    "elementType" : {
+                                       "localId" : "558",
+                                       "type" : "ListTypeSpecifier",
+                                       "elementType" : {
+                                          "localId" : "559",
+                                          "name" : "{urn:hl7-org:elm-types:r1}String",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 }, {
+                                    "localId" : "560",
+                                    "name" : "repeat",
+                                    "elementType" : {
+                                       "localId" : "561",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "562",
+                                          "name" : "boundsPeriod",
+                                          "elementType" : {
+                                             "localId" : "563",
+                                             "type" : "TupleTypeSpecifier",
+                                             "element" : [ {
+                                                "localId" : "564",
+                                                "name" : "start",
+                                                "elementType" : {
+                                                   "localId" : "565",
+                                                   "name" : "{urn:hl7-org:elm-types:r1}String",
+                                                   "type" : "NamedTypeSpecifier"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "localId" : "566",
+                                          "name" : "frequency",
+                                          "elementType" : {
+                                             "localId" : "567",
+                                             "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }, {
+                                          "localId" : "568",
+                                          "name" : "period",
+                                          "elementType" : {
+                                             "localId" : "569",
+                                             "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }, {
+                                          "localId" : "570",
+                                          "name" : "periodUnit",
+                                          "elementType" : {
+                                             "localId" : "571",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }, {
+                           "localId" : "572",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "573",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "574",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "575",
+                              "name" : "reason",
+                              "elementType" : {
+                                 "localId" : "576",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "577",
+                              "name" : "documentation",
+                              "elementType" : {
+                                 "localId" : "578",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "579",
+                                    "name" : "label",
+                                    "elementType" : {
+                                       "localId" : "580",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        } ]
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "583",
+            "locator" : "30:1-31:30",
+            "name" : "ExistsACSMammoHighRisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "583",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsACSMammoHighRisk",":\n  " ]
+                  }, {
+                     "r" : "586",
+                     "s" : [ {
+                        "r" : "584",
+                        "s" : [ {
+                           "value" : [ "ACSMammoHighRisk" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "586",
+               "locator" : "31:3-31:30",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "585",
+                  "locator" : "31:3-31:30",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "584",
+                     "locator" : "31:3-31:18",
+                     "name" : "ACSMammoHighRisk",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "588",
+            "locator" : "33:1-34:34",
+            "name" : "ACSMammoHighRiskCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "588",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoHighRiskCode",":    \n  " ]
+                  }, {
+                     "r" : "594",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "589",
+                           "s" : [ {
+                              "r" : "590",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoHighRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "591",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "593",
+                           "s" : [ {
+                              "r" : "592",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "593",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "594",
+               "locator" : "34:3-34:34",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "589",
+                  "locator" : "34:3-34:20",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "590",
+                     "locator" : "34:3-34:18",
+                     "name" : "ACSMammoHighRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "591",
+                  "locator" : "34:22-34:34",
+                  "expression" : {
+                     "localId" : "593",
+                     "locator" : "34:29-34:34",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "596",
+            "locator" : "36:1-37:42",
+            "name" : "ACSMammoHighRiskTiming",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "596",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoHighRiskTiming",":    \n  " ]
+                  }, {
+                     "r" : "602",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "597",
+                           "s" : [ {
+                              "r" : "598",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoHighRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "599",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "601",
+                           "s" : [ {
+                              "r" : "600",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "601",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "602",
+               "locator" : "37:3-37:42",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "597",
+                  "locator" : "37:3-37:20",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "598",
+                     "locator" : "37:3-37:18",
+                     "name" : "ACSMammoHighRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "599",
+                  "locator" : "37:22-37:42",
+                  "expression" : {
+                     "localId" : "601",
+                     "locator" : "37:29-37:42",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "604",
+            "locator" : "39:1-40:48",
+            "name" : "ACSMammoHighRiskTimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "604",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoHighRiskTimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "613",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "605",
+                           "s" : [ {
+                              "r" : "606",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoHighRiskTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "607",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "612",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "609",
+                              "s" : [ {
+                                 "r" : "608",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "609",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "613",
+               "locator" : "40:3-40:48",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "605",
+                  "locator" : "40:3-40:26",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "606",
+                     "locator" : "40:3-40:24",
+                     "name" : "ACSMammoHighRiskTiming",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "607",
+                  "locator" : "40:28-40:48",
+                  "expression" : {
+                     "localId" : "612",
+                     "locator" : "40:35-40:48",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "609",
+                        "locator" : "40:41-40:47",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "615",
+            "locator" : "46:1-47:28",
+            "name" : "ExistsACSMriHighRisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "615",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsACSMriHighRisk",":\n  " ]
+                  }, {
+                     "r" : "618",
+                     "s" : [ {
+                        "r" : "616",
+                        "s" : [ {
+                           "value" : [ "ACSMriHighRisk" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "618",
+               "locator" : "47:3-47:28",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "617",
+                  "locator" : "47:3-47:28",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "616",
+                     "locator" : "47:3-47:16",
+                     "name" : "ACSMriHighRisk",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "620",
+            "locator" : "49:1-50:32",
+            "name" : "ACSMriHighRiskCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "620",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMriHighRiskCode",":    \n  " ]
+                  }, {
+                     "r" : "626",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "621",
+                           "s" : [ {
+                              "r" : "622",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMriHighRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "623",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "625",
+                           "s" : [ {
+                              "r" : "624",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "625",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "626",
+               "locator" : "50:3-50:32",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "621",
+                  "locator" : "50:3-50:18",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "622",
+                     "locator" : "50:3-50:16",
+                     "name" : "ACSMriHighRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "623",
+                  "locator" : "50:20-50:32",
+                  "expression" : {
+                     "localId" : "625",
+                     "locator" : "50:27-50:32",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "628",
+            "locator" : "52:1-53:40",
+            "name" : "ACSMriHighRiskTiming",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "628",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMriHighRiskTiming",":    \n  " ]
+                  }, {
+                     "r" : "634",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "629",
+                           "s" : [ {
+                              "r" : "630",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMriHighRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "631",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "633",
+                           "s" : [ {
+                              "r" : "632",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "633",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "634",
+               "locator" : "53:3-53:40",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "629",
+                  "locator" : "53:3-53:18",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "630",
+                     "locator" : "53:3-53:16",
+                     "name" : "ACSMriHighRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "631",
+                  "locator" : "53:20-53:40",
+                  "expression" : {
+                     "localId" : "633",
+                     "locator" : "53:27-53:40",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "636",
+            "locator" : "55:1-56:46",
+            "name" : "ACSMriHighRiskTimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "636",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMriHighRiskTimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "645",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "637",
+                           "s" : [ {
+                              "r" : "638",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMriHighRiskTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "639",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "644",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "641",
+                              "s" : [ {
+                                 "r" : "640",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "641",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "645",
+               "locator" : "56:3-56:46",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "637",
+                  "locator" : "56:3-56:24",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "638",
+                     "locator" : "56:3-56:22",
+                     "name" : "ACSMriHighRiskTiming",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "639",
+                  "locator" : "56:26-56:46",
+                  "expression" : {
+                     "localId" : "644",
+                     "locator" : "56:33-56:46",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "641",
+                        "locator" : "56:39-56:45",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "647",
+            "locator" : "62:1-63:37",
+            "name" : "ExistsACSFirstDegGeneticMammo",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "647",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsACSFirstDegGeneticMammo",":\n  " ]
+                  }, {
+                     "r" : "650",
+                     "s" : [ {
+                        "r" : "648",
+                        "s" : [ {
+                           "value" : [ "ACSFirstDegGeneticMammo" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "650",
+               "locator" : "63:3-63:37",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "649",
+                  "locator" : "63:3-63:37",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "648",
+                     "locator" : "63:3-63:25",
+                     "name" : "ACSFirstDegGeneticMammo",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "652",
+            "locator" : "65:1-66:41",
+            "name" : "ACSFirstDegGeneticMammoCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "652",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMammoCode",":    \n  " ]
+                  }, {
+                     "r" : "658",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "653",
+                           "s" : [ {
+                              "r" : "654",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSFirstDegGeneticMammo" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "655",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "657",
+                           "s" : [ {
+                              "r" : "656",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "657",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "658",
+               "locator" : "66:3-66:41",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "653",
+                  "locator" : "66:3-66:27",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "654",
+                     "locator" : "66:3-66:25",
+                     "name" : "ACSFirstDegGeneticMammo",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "655",
+                  "locator" : "66:29-66:41",
+                  "expression" : {
+                     "localId" : "657",
+                     "locator" : "66:36-66:41",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "660",
+            "locator" : "68:1-69:49",
+            "name" : "ACSFirstDegGeneticMammoTiming",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "660",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMammoTiming",":    \n  " ]
+                  }, {
+                     "r" : "666",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "661",
+                           "s" : [ {
+                              "r" : "662",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSFirstDegGeneticMammo" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "663",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "665",
+                           "s" : [ {
+                              "r" : "664",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "665",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "666",
+               "locator" : "69:3-69:49",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "661",
+                  "locator" : "69:3-69:27",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "662",
+                     "locator" : "69:3-69:25",
+                     "name" : "ACSFirstDegGeneticMammo",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "663",
+                  "locator" : "69:29-69:49",
+                  "expression" : {
+                     "localId" : "665",
+                     "locator" : "69:36-69:49",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "668",
+            "locator" : "71:1-72:55",
+            "name" : "ACSFirstDegGeneticMammoTimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "668",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMammoTimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "677",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "669",
+                           "s" : [ {
+                              "r" : "670",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSFirstDegGeneticMammoTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "671",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "676",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "673",
+                              "s" : [ {
+                                 "r" : "672",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "673",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "677",
+               "locator" : "72:3-72:55",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "669",
+                  "locator" : "72:3-72:33",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "670",
+                     "locator" : "72:3-72:31",
+                     "name" : "ACSFirstDegGeneticMammoTiming",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "671",
+                  "locator" : "72:35-72:55",
+                  "expression" : {
+                     "localId" : "676",
+                     "locator" : "72:42-72:55",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "673",
+                        "locator" : "72:48-72:54",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "679",
+            "locator" : "78:1-79:35",
+            "name" : "ExistsACSFirstDegGeneticMri",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "679",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsACSFirstDegGeneticMri",":\n  " ]
+                  }, {
+                     "r" : "682",
+                     "s" : [ {
+                        "r" : "680",
+                        "s" : [ {
+                           "value" : [ "ACSFirstDegGeneticMri" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "682",
+               "locator" : "79:3-79:35",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "681",
+                  "locator" : "79:3-79:35",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "680",
+                     "locator" : "79:3-79:23",
+                     "name" : "ACSFirstDegGeneticMri",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "684",
+            "locator" : "81:1-82:39",
+            "name" : "ACSFirstDegGeneticMriCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "684",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMriCode",":    \n  " ]
+                  }, {
+                     "r" : "690",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "685",
+                           "s" : [ {
+                              "r" : "686",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSFirstDegGeneticMri" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "687",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "689",
+                           "s" : [ {
+                              "r" : "688",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "689",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "690",
+               "locator" : "82:3-82:39",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "685",
+                  "locator" : "82:3-82:25",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "686",
+                     "locator" : "82:3-82:23",
+                     "name" : "ACSFirstDegGeneticMri",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "687",
+                  "locator" : "82:27-82:39",
+                  "expression" : {
+                     "localId" : "689",
+                     "locator" : "82:34-82:39",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "692",
+            "locator" : "84:1-85:47",
+            "name" : "ACSFirstDegGeneticMriTiming",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "692",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMriTiming",":    \n  " ]
+                  }, {
+                     "r" : "698",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "693",
+                           "s" : [ {
+                              "r" : "694",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSFirstDegGeneticMri" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "695",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "697",
+                           "s" : [ {
+                              "r" : "696",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "697",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "698",
+               "locator" : "85:3-85:47",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "693",
+                  "locator" : "85:3-85:25",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "694",
+                     "locator" : "85:3-85:23",
+                     "name" : "ACSFirstDegGeneticMri",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "695",
+                  "locator" : "85:27-85:47",
+                  "expression" : {
+                     "localId" : "697",
+                     "locator" : "85:34-85:47",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "700",
+            "locator" : "87:1-88:53",
+            "name" : "ACSFirstDegGeneticMriTimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "700",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSFirstDegGeneticMriTimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "709",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "701",
+                           "s" : [ {
+                              "r" : "702",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSFirstDegGeneticMriTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "703",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "708",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "705",
+                              "s" : [ {
+                                 "r" : "704",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "705",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "709",
+               "locator" : "88:3-88:53",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "701",
+                  "locator" : "88:3-88:31",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "702",
+                     "locator" : "88:3-88:29",
+                     "name" : "ACSFirstDegGeneticMriTiming",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "703",
+                  "locator" : "88:33-88:53",
+                  "expression" : {
+                     "localId" : "708",
+                     "locator" : "88:40-88:53",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "705",
+                        "locator" : "88:46-88:52",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "711",
+            "locator" : "95:1-96:57",
+            "name" : "ExistsBreastImagingHeterogenouslyOrExtremelyDense",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "711",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsBreastImagingHeterogenouslyOrExtremelyDense",":\n  " ]
+                  }, {
+                     "r" : "714",
+                     "s" : [ {
+                        "r" : "712",
+                        "s" : [ {
+                           "value" : [ "BreastImagingHeterogenouslyOrExtremelyDense" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "714",
+               "locator" : "96:3-96:57",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "713",
+                  "locator" : "96:3-96:57",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "712",
+                     "locator" : "96:3-96:45",
+                     "name" : "BreastImagingHeterogenouslyOrExtremelyDense",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "716",
+            "locator" : "98:1-99:50",
+            "name" : "BreastImagingHeterogenouslyOrExtremelyDenseCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "716",
+                  "s" : [ {
+                     "value" : [ "","define ","BreastImagingHeterogenouslyOrExtremelyDenseCode",":\n  " ]
+                  }, {
+                     "r" : "718",
+                     "s" : [ {
+                        "r" : "717",
+                        "s" : [ {
+                           "value" : [ "BreastImagingHeterogenouslyOrExtremelyDense" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "718",
+                        "s" : [ {
+                           "value" : [ "code" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "718",
+               "locator" : "99:3-99:50",
+               "path" : "code",
+               "type" : "Property",
+               "source" : {
+                  "localId" : "717",
+                  "locator" : "99:3-99:45",
+                  "name" : "BreastImagingHeterogenouslyOrExtremelyDense",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "720",
+            "locator" : "101:1-102:52",
+            "name" : "BreastImagingHeterogenouslyOrExtremelyDenseReason",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "720",
+                  "s" : [ {
+                     "value" : [ "","define ","BreastImagingHeterogenouslyOrExtremelyDenseReason",":\n  " ]
+                  }, {
+                     "r" : "722",
+                     "s" : [ {
+                        "r" : "721",
+                        "s" : [ {
+                           "value" : [ "BreastImagingHeterogenouslyOrExtremelyDense" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "722",
+                        "s" : [ {
+                           "value" : [ "reason" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "722",
+               "locator" : "102:3-102:52",
+               "path" : "reason",
+               "type" : "Property",
+               "source" : {
+                  "localId" : "721",
+                  "locator" : "102:3-102:45",
+                  "name" : "BreastImagingHeterogenouslyOrExtremelyDense",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "724",
+            "locator" : "109:2-110:37",
+            "name" : "ExistsCompellingFamilyHistory",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "724",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsCompellingFamilyHistory",":\n  " ]
+                  }, {
+                     "r" : "727",
+                     "s" : [ {
+                        "r" : "725",
+                        "s" : [ {
+                           "value" : [ "CompellingFamilyHistory" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "727",
+               "locator" : "110:3-110:37",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "726",
+                  "locator" : "110:3-110:37",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "725",
+                     "locator" : "110:3-110:25",
+                     "name" : "CompellingFamilyHistory",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "729",
+            "locator" : "112:1-113:30",
+            "name" : "CompellingFamilyHistoryCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "729",
+                  "s" : [ {
+                     "value" : [ "","define ","CompellingFamilyHistoryCode",":\n  " ]
+                  }, {
+                     "r" : "731",
+                     "s" : [ {
+                        "r" : "730",
+                        "s" : [ {
+                           "value" : [ "CompellingFamilyHistory" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "731",
+                        "s" : [ {
+                           "value" : [ "code" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "731",
+               "locator" : "113:3-113:30",
+               "path" : "code",
+               "type" : "Property",
+               "source" : {
+                  "localId" : "730",
+                  "locator" : "113:3-113:25",
+                  "name" : "CompellingFamilyHistory",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "733",
+            "locator" : "115:1-116:32",
+            "name" : "CompellingFamilyHistoryReason",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "733",
+                  "s" : [ {
+                     "value" : [ "","define ","CompellingFamilyHistoryReason",":\n  " ]
+                  }, {
+                     "r" : "735",
+                     "s" : [ {
+                        "r" : "734",
+                        "s" : [ {
+                           "value" : [ "CompellingFamilyHistory" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "735",
+                        "s" : [ {
+                           "value" : [ "reason" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "735",
+               "locator" : "116:3-116:32",
+               "path" : "reason",
+               "type" : "Property",
+               "source" : {
+                  "localId" : "734",
+                  "locator" : "116:3-116:25",
+                  "name" : "CompellingFamilyHistory",
+                  "type" : "ExpressionRef"
+               }
+            }
+         }, {
+            "localId" : "737",
+            "locator" : "123:1-124:34",
+            "name" : "ExistsUSPSTFRecommendation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "737",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsUSPSTFRecommendation",":\n  " ]
+                  }, {
+                     "r" : "740",
+                     "s" : [ {
+                        "r" : "738",
+                        "s" : [ {
+                           "value" : [ "USPSTFRecommendation" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "740",
+               "locator" : "124:3-124:34",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "739",
+                  "locator" : "124:3-124:34",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "738",
+                     "locator" : "124:3-124:22",
+                     "name" : "USPSTFRecommendation",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "742",
+            "locator" : "126:1-127:38",
+            "name" : "USPSTFRecommendationCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "742",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFRecommendationCode",":    \n  " ]
+                  }, {
+                     "r" : "748",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "743",
+                           "s" : [ {
+                              "r" : "744",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFRecommendation" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "745",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "747",
+                           "s" : [ {
+                              "r" : "746",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "747",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "748",
+               "locator" : "127:3-127:38",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "743",
+                  "locator" : "127:3-127:24",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "744",
+                     "locator" : "127:3-127:22",
+                     "name" : "USPSTFRecommendation",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "745",
+                  "locator" : "127:26-127:38",
+                  "expression" : {
+                     "localId" : "747",
+                     "locator" : "127:33-127:38",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "750",
+            "locator" : "129:1-130:46",
+            "name" : "USPSTFRecommendationTiming",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "750",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFRecommendationTiming",":    \n  " ]
+                  }, {
+                     "r" : "756",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "751",
+                           "s" : [ {
+                              "r" : "752",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFRecommendation" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "753",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "755",
+                           "s" : [ {
+                              "r" : "754",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "755",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "756",
+               "locator" : "130:3-130:46",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "751",
+                  "locator" : "130:3-130:24",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "752",
+                     "locator" : "130:3-130:22",
+                     "name" : "USPSTFRecommendation",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "753",
+                  "locator" : "130:26-130:46",
+                  "expression" : {
+                     "localId" : "755",
+                     "locator" : "130:33-130:46",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "758",
+            "locator" : "132:1-133:52",
+            "name" : "USPSTFRecommendationTimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "758",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFRecommendationTimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "767",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "759",
+                           "s" : [ {
+                              "r" : "760",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFRecommendationTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "761",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "766",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "763",
+                              "s" : [ {
+                                 "r" : "762",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "763",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "767",
+               "locator" : "133:3-133:52",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "759",
+                  "locator" : "133:3-133:30",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "760",
+                     "locator" : "133:3-133:28",
+                     "name" : "USPSTFRecommendationTiming",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "761",
+                  "locator" : "133:32-133:52",
+                  "expression" : {
+                     "localId" : "766",
+                     "locator" : "133:39-133:52",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "763",
+                        "locator" : "133:45-133:51",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         } ]
+      }
+   }
+}

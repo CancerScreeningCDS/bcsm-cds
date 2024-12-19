@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="PrimaryScreeningDecision_IsScreeningEligible_true"/>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/9"/>
+    <resource>
+      <RequestGroup>
+        <id value="9"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="RequestGroup_9"> </a><p class="res-header-id"><b>Generated Narrative: RequestGroup 9</b></p><a name="9"> </a><a name="hc9"> </a><a name="9-en-US"> </a><p><b>instantiatesCanonical</b>: <a href="PlanDefinition-PrimaryScreeningDecision.html">Primary Screening Decision</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>IsScreeningEligible</blockquote><p><b>title</b>: Screening eligible</p><p><b>description</b>: Patient is eligible for screening</p><p><b>code</b>: <span title="Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system eligible}">Eligible for screening</span></p><p><b>resource</b>: <a href="Bundle-PrimaryScreeningDecision_IsScreeningEligible_true.html#CommunicationRequest_17">Bundle: type = collection</a></p></blockquote></div>
+        </text>
+        <instantiatesCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"/>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/defaultPatient"/>
+          <display value="Jane Doe"/>
+        </subject>
+        <action id="IsScreeningEligible">
+          <title value="Screening eligible"/>
+          <description value="Patient is eligible for screening"/>
+          <code>
+            <coding>
+              <system value="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"/>
+              <code value="eligible"/>
+              <display value="Eligible for screening"/>
+            </coding>
+          </code>
+          <resource>
+            <reference value="CommunicationRequest/17"/>
+          </resource>
+        </action>
+      </RequestGroup>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/17"/>
+    <resource>
+      <CommunicationRequest>
+        <id value="17"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CommunicationRequest_17"> </a><p class="res-header-id"><b>Generated Narrative: CommunicationRequest 17</b></p><a name="17"> </a><a name="hc17"> </a><a name="17-en-US"> </a><p><b>basedOn</b>: <a href="ActivityDefinition-CommunicateEligible.html">Communicate Eligible</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href="Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient">Jane Doe</a></p><h3>Payloads</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Content[x]</b></td></tr><tr><td style="display: none">*</td><td>Eligible for screening</td></tr></table></div>
+        </text>
+        <basedOn>
+          <reference value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateEligible"/>
+        </basedOn>
+        <status value="option"/>
+        <subject>
+          <reference value="Patient/defaultPatient"/>
+          <display value="Jane Doe"/>
+        </subject>
+        <payload>
+          <contentString value="Eligible for screening"/>
+        </payload>
+      </CommunicationRequest>
+    </resource>
+  </entry>
+</Bundle>

@@ -1,0 +1,2112 @@
+{
+  "resourceType" : "ImplementationGuide",
+  "id" : "cancerscreeningcds.fhir.us.bcsm-cds",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide cancerscreeningcds.fhir.us.bcsm-cds</b></p><a name=\"cancerscreeningcds.fhir.us.bcsm-cds\"> </a><a name=\"hccancerscreeningcds.fhir.us.bcsm-cds\"> </a><a name=\"cancerscreeningcds.fhir.us.bcsm-cds-en-US\"> </a><h2>bcsmcds</h2><p>The official URL for this implementation guide is: </p><pre>http://cancerscreeningcds.github.io/bcsm-cds/ImplementationGuide/cancerscreeningcds.fhir.us.bcsm-cds</pre></div>"
+  },
+  "url" : "http://cancerscreeningcds.github.io/bcsm-cds/ImplementationGuide/cancerscreeningcds.fhir.us.bcsm-cds",
+  "version" : "0.1.0",
+  "name" : "bcsmcds",
+  "title" : "Breast Cancer Screening and Management (BCSM) Clinical Decision Support (CDS) Implementation Guide",
+  "status" : "draft",
+  "date" : "2024-12-19T22:42:56+00:00",
+  "publisher" : "MITRE",
+  "contact" : [{
+    "name" : "MITRE",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.mitre.org/"
+    }]
+  }],
+  "packageId" : "cancerscreeningcds.fhir.us.bcsm-cds",
+  "license" : "CC0-1.0",
+  "fhirVersion" : ["4.0.1"],
+  "dependsOn" : [{
+    "id" : "hl7tx",
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on HL7 Terminology"
+    }],
+    "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
+    "packageId" : "hl7.terminology.r4",
+    "version" : "6.1.0"
+  },
+  {
+    "id" : "hl7ext",
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
+    }],
+    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+    "packageId" : "hl7.fhir.uv.extensions.r4",
+    "version" : "5.1.0"
+  },
+  {
+    "id" : "hl7_fhir_us_core",
+    "uri" : "http://hl7.org/fhir/us/core/ImplementationGuide/hl7.fhir.us.core",
+    "packageId" : "hl7.fhir.us.core",
+    "version" : "3.1.0"
+  },
+  {
+    "id" : "hl7_fhir_uv_cpg",
+    "uri" : "http://hl7.org/fhir/uv/cpg/ImplementationGuide/hl7.fhir.uv.cpg",
+    "packageId" : "hl7.fhir.uv.cpg",
+    "version" : "1.0.0"
+  },
+  {
+    "id" : "hl7_fhir_uv_sdc",
+    "uri" : "http://hl7.org/fhir/uv/sdc/ImplementationGuide/sdc",
+    "packageId" : "hl7.fhir.uv.sdc",
+    "version" : "2.7.0"
+  }],
+  "definition" : {
+    "extension" : [{
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "copyrightyear"
+      },
+      {
+        "url" : "value",
+        "valueString" : "2024+"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "templates/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-binary"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/cql"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "autoload-resources"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-qa"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/qa"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-temp"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/pages"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-output"
+      },
+      {
+        "url" : "value",
+        "valueString" : "output"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-suppressed-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "path-history"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://cancerscreeningcds.github.io/bcsm-cds/history.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "template-html"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "template-md"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page-md.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-contact"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-context"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-copyright"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-jurisdiction"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-license"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-publisher"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-version"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "active-tables"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "fmm-definition"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "propagate-status"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "excludelogbinaryformat"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueString" : "tabbed-snapshots"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
+      "valueCode" : "hl7.fhir.uv.tools.r4#0.3.0"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "copyrightyear"
+      },
+      {
+        "url" : "value",
+        "valueString" : "2024+"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "releaselabel"
+      },
+      {
+        "url" : "value",
+        "valueString" : "ci-build"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "templates/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-binary"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/cql"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "autoload-resources"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-liquid"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/liquid"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-qa"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/qa"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-temp"
+      },
+      {
+        "url" : "value",
+        "valueString" : "temp/pages"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-output"
+      },
+      {
+        "url" : "value",
+        "valueString" : "output"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-suppressed-warnings"
+      },
+      {
+        "url" : "value",
+        "valueString" : "input/ignoreWarnings.txt"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "path-history"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://cancerscreeningcds.github.io/bcsm-cds/history.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "template-html"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "template-md"
+      },
+      {
+        "url" : "value",
+        "valueString" : "template-page-md.html"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-contact"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-context"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-copyright"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-jurisdiction"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-license"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-publisher"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-version"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "apply-wg"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "active-tables"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "fmm-definition"
+      },
+      {
+        "url" : "value",
+        "valueString" : "http://hl7.org/fhir/versions.html#maturity"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "propagate-status"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "excludelogbinaryformat"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    },
+    {
+      "extension" : [{
+        "url" : "code",
+        "valueCode" : "tabbed-snapshots"
+      },
+      {
+        "url" : "value",
+        "valueString" : "true"
+      }],
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
+    }],
+    "grouping" : [{
+      "id" : "ScreeningEligible",
+      "name" : "Screening Eligible",
+      "description" : "Resources related to ScreeningEligible flow"
+    },
+    {
+      "id" : "DecisionToScreen",
+      "name" : "Decision to Screen",
+      "description" : "Resources related to DecisionToScreen flow"
+    },
+    {
+      "id" : "HighRiskExclusions",
+      "name" : "High Risk Exclusions",
+      "description" : "Resources related to HighRiskExclusions flow"
+    },
+    {
+      "id" : "SpecialPopulations",
+      "name" : "Special Populations",
+      "description" : "Resources related to SpecialPopulations flow"
+    },
+    {
+      "id" : "AverageRisk",
+      "name" : "Average Risk",
+      "description" : "Resources related to AverageRisk flow"
+    }],
+    "resource" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/flow-AverageRisk"
+      },
+      "name" : "Average Risk",
+      "description" : "Average risk logic path.",
+      "exampleBoolean" : false,
+      "groupingId" : "AverageRisk"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/AverageRisk"
+      },
+      "name" : "AverageRisk",
+      "exampleBoolean" : false,
+      "groupingId" : "AverageRisk"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/AverageRiskActions"
+      },
+      "name" : "AverageRiskActions",
+      "exampleBoolean" : false,
+      "groupingId" : "AverageRisk"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/AverageRiskEvents"
+      },
+      "name" : "AverageRiskEvents",
+      "exampleBoolean" : false,
+      "groupingId" : "AverageRisk"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/AverageRisk_eve-age40to44_act-acsavgrecs40_act-uspstfavgrecs"
+      },
+      "name" : "AverageRisk_eve-age40to44_act-acsavgrecs40_act-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/AverageRisk_eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs"
+      },
+      "name" : "AverageRisk_eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/AverageRisk_eve-AgeOver54_act-acsavgrecs55-uspstfavgrecs"
+      },
+      "name" : "AverageRisk_eve-AgeOver54_act-acsavgrecs55-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/AverageRisk_eve-ageUnder40_act-acsavgrecs40_act-uspstfavgrecs"
+      },
+      "name" : "AverageRisk_eve-ageUnder40_act-acsavgrecs40_act-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/BCSMCommonFunctions"
+      },
+      "name" : "BCSMCommonFunctions",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/BreastScreeningNextDueRecordInferenceTask"
+      },
+      "name" : "Breast Screening Next Due Record Inference Task",
+      "description" : "This ActivityDefinition generates a RecordInferenceTask for screening study next due.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/BreastScreeningServiceRequest"
+      },
+      "name" : "Breast Screening Service Request",
+      "description" : "This ActivityDefinition generates a ServiceRequest for screening study.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/CDSConnectCommonsforFHIRv401"
+      },
+      "name" : "CDSConnectCommonsforFHIRv401",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/CommunicateEligible"
+      },
+      "name" : "Communicate Eligible",
+      "description" : "This ActivityDefinition generates a CommunicationRequest containing information about the patient's ineligibility for screening.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/CommunicateNotEligible"
+      },
+      "name" : "Communicate Not Eligible",
+      "description" : "This ActivityDefinition generates a CommunicationRequest containing information about the patient's ineligibility for screening.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/CommunicateRiskAssessment"
+      },
+      "name" : "Communicate recommendation for risk assessment",
+      "description" : "This ActivityDefinition generates a CommunicationRequest recommending risk assessment.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/CommunicateSpecialtyReferral"
+      },
+      "name" : "Communicate Recommendation to refer to specialist",
+      "description" : "This ActivityDefinition generates a CommunicationRequest recommending specialty referral.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/CommunicateSDMContinueScreening"
+      },
+      "name" : "Communicate Shared Decision Making to Continue Screening",
+      "description" : "This ActivityDefinition generates a CommunicationRequest recommending shared decision making on the decision to continue screening.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/CommunicateSDMDelayScreening"
+      },
+      "name" : "Communicate Shared Decision Making to Delay Screening",
+      "description" : "This ActivityDefinition generates a CommunicationRequest recommending shared decision making on the decision to delay screening.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/CSMCommonFunctions"
+      },
+      "name" : "CSMCommonFunctions",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/DataElements"
+      },
+      "name" : "DataElements",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/flow-DecisionToScreen"
+      },
+      "name" : "Decision to Screen",
+      "description" : "Decision to screen logic path.",
+      "exampleBoolean" : false,
+      "groupingId" : "DecisionToScreen"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/DecisionToScreen"
+      },
+      "name" : "DecisionToScreen",
+      "exampleBoolean" : false,
+      "groupingId" : "DecisionToScreen"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/DecisionToScreenActions"
+      },
+      "name" : "DecisionToScreenActions",
+      "exampleBoolean" : false,
+      "groupingId" : "DecisionToScreen"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/DecisionToScreenEvents"
+      },
+      "name" : "DecisionToScreenEvents",
+      "exampleBoolean" : false,
+      "groupingId" : "DecisionToScreen"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DecisionToScreen_eve-AgeOver74_no_eve-LifeExp10_no_eve-highriskexclusions_yes_end-decisionhighrisk"
+      },
+      "name" : "DecisionToScreen_eve-AgeOver74_no_eve-LifeExp10_no_eve-highriskexclusions_yes_end-decisionhighrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DecisionToScreen_eve-AgeOver74_no_eve-LifeExp10_yes_act-sdmcontinuelifexp__eve-highriskexclusions_yes_end-decisionhighrisk"
+      },
+      "name" : "DecisionToScreen_eve-AgeOver74_no_eve-LifeExp10_yes_act-sdmcontinuelifexp__eve-highriskexclusions_yes_end-decisionhighrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DecisionToScreen_eve-AgeOver74_no_eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "DecisionToScreen_eve-AgeOver74_no_eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DecisionToScreen_eve-AgeOver74_no_eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "DecisionToScreen_eve-AgeOver74_no_eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DecisionToScreen_eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "DecisionToScreen_eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DecisionToScreen_eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "DecisionToScreen_eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/DecisionToScreen_eve-AgeOver74_yes_eve-LifeExp_yes"
+      },
+      "name" : "DecisionToScreen_eve-AgeOver74_yes_eve-LifeExp_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-age40to44_act-acsavgrecs40_act-uspstfavgrecs"
+      },
+      "name" : "eve-age40to44_act-acsavgrecs40_act-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs"
+      },
+      "name" : "eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver54_act-acsavgrecs55-uspstfavgrecs"
+      },
+      "name" : "eve-AgeOver54_act-acsavgrecs55-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver74_no_eve-LifeExp10_no_eve-highriskexclusions_yes_end-decisionhighrisk"
+      },
+      "name" : "eve-AgeOver74_no_eve-LifeExp10_no_eve-highriskexclusions_yes_end-decisionhighrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver74_no_eve-LifeExp10_yes_act-sdmcontinuelifexp__eve-highriskexclusions_yes_end-decisionhighrisk"
+      },
+      "name" : "eve-AgeOver74_no_eve-LifeExp10_yes_act-sdmcontinuelifexp__eve-highriskexclusions_yes_end-decisionhighrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver74_no_eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "eve-AgeOver74_no_eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver74_no_eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "eve-AgeOver74_no_eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk"
+      },
+      "name" : "eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-AgeOver74_yes_eve-LifeExp_yes"
+      },
+      "name" : "eve-AgeOver74_yes_eve-LifeExp_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-ageUnder40_act-acsavgrecs40_act-uspstfavgrecs"
+      },
+      "name" : "eve-ageUnder40_act-acsavgrecs40_act-uspstfavgrecs",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-breastdensitycord_eve-acs_act-performriskassessment"
+      },
+      "name" : "eve-breastdensitycord_eve-acs_act-performriskassessment",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-female_no_end-noteligible"
+      },
+      "name" : "eve-female_no_end-noteligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_no_act-eligible"
+      },
+      "name" : "eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_no_act-eligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_yes_act-dxtesting"
+      },
+      "name" : "eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_yes_act-dxtesting",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_yes_act-dxtesting"
+      },
+      "name" : "eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_yes_act-dxtesting",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-female_yes_eve-breastca_no_eve-mastectomy_yes_end-noteligible"
+      },
+      "name" : "eve-female_yes_eve-breastca_no_eve-mastectomy_yes_end-noteligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-female_yes_eve-breastca_yes_end-noteligible"
+      },
+      "name" : "eve-female_yes_eve-breastca_yes_end-noteligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-fhxbrcarisk_eve-acs_act-performriskassessment"
+      },
+      "name" : "eve-fhxbrcarisk_eve-acs_act-performriskassessment",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-firstdeggenetic_eve-acs_act-firstdeggeneticmammo-firstdeggeneticmri"
+      },
+      "name" : "eve-firstdeggenetic_eve-acs_act-firstdeggeneticmammo-firstdeggeneticmri",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_no_act-noexclusions"
+      },
+      "name" : "eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_no_act-noexclusions",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_yes_act-acshighriskmammo__act-acshighriskmri"
+      },
+      "name" : "eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_yes_act-acshighriskmammo__act-acshighriskmri",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo"
+      },
+      "name" : "eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_yes_act-hxbreastcawithin5y"
+      },
+      "name" : "eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_yes_act-hxbreastcawithin5y",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-geneticrisk_no_eve-chestxrt_yes_eve-ageatleast25and8yafterRT_no_act-startat25yand8yafterRT"
+      },
+      "name" : "eve-geneticrisk_no_eve-chestxrt_yes_eve-ageatleast25and8yafterRT_no_act-startat25yand8yafterRT",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk"
+      },
+      "name" : "eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-geneticrisk_yes_eve-acsgeneticrisk_yes_eve-ageatleast30high_yes_act-acshighriskmammo__act-acshighriskmri"
+      },
+      "name" : "eve-geneticrisk_yes_eve-acsgeneticrisk_yes_eve-ageatleast30high_yes_act-acshighriskmammo__act-acshighriskmri",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/eve-highlifetimerisk_eve-acs_act-acshighriskmammo_act-acshighriskmri"
+      },
+      "name" : "eve-highlifetimerisk_eve-acs_act-acshighriskmammo_act-acshighriskmri",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/FHIRHelpers"
+      },
+      "name" : "FHIRHelpers",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/flow-HighRiskExclusions"
+      },
+      "name" : "High Risk Exclusions",
+      "description" : "High risk exclusions logic path.",
+      "exampleBoolean" : false,
+      "groupingId" : "HighRiskExclusions"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/HighRiskExclusions"
+      },
+      "name" : "HighRiskExclusions",
+      "exampleBoolean" : false,
+      "groupingId" : "HighRiskExclusions"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/HighRiskExclusionsActions"
+      },
+      "name" : "HighRiskExclusionsActions",
+      "exampleBoolean" : false,
+      "groupingId" : "HighRiskExclusions"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/HighRiskExclusionsEvents"
+      },
+      "name" : "HighRiskExclusionsEvents",
+      "exampleBoolean" : false,
+      "groupingId" : "HighRiskExclusions"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_no_act-noexclusions"
+      },
+      "name" : "HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_no_act-noexclusions",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_yes_act-acshighriskmammo__act-acshighriskmri"
+      },
+      "name" : "HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_yes_act-acshighriskmammo__act-acshighriskmri",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo"
+      },
+      "name" : "HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_yes_act-hxbreastcawithin5y"
+      },
+      "name" : "HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_yes_act-hxbreastcawithin5y",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_yes_eve-ageatleast25and8yafterRT_no_act-startat25yand8yafterRT"
+      },
+      "name" : "HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_yes_eve-ageatleast25and8yafterRT_no_act-startat25yand8yafterRT",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk"
+      },
+      "name" : "HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_yes_eve-ageatleast30high_yes_act-acshighriskmammo__act-acshighriskmri"
+      },
+      "name" : "HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_yes_eve-ageatleast30high_yes_act-acshighriskmammo__act-acshighriskmri",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/inc-AgeAtLeast18_error"
+      },
+      "name" : "inc-AgeAtLeast18_error",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/inc-AgeAtLeast18_MostRecentAgeValue_yes"
+      },
+      "name" : "inc-AgeAtLeast18_MostRecentAgeValue_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/inc-AgeAtLeast18_no"
+      },
+      "name" : "inc-AgeAtLeast18_no",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/inc-AgeAtLeast18_yes"
+      },
+      "name" : "inc-AgeAtLeast18_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/inc-femaleortransmale_no"
+      },
+      "name" : "inc-femaleortransmale_no",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/inc-femaleortransmale_yes"
+      },
+      "name" : "inc-femaleortransmale_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/IsScreeningEligible_false"
+      },
+      "name" : "IsScreeningEligible_false",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/IsScreeningEligible_true"
+      },
+      "name" : "IsScreeningEligible_true",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/plan-definition-action-code-system"
+      },
+      "name" : "Plan Definition Action Code System",
+      "description" : "Code representing plan definition action codes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/plan-definition-action-codes"
+      },
+      "name" : "Plan Definition Action Codes",
+      "description" : "This value set includes action codes for Plan Definitions within this implementation guide.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/plan-definition-action-reason-code-system"
+      },
+      "name" : "Plan Definition Action Reason Code System",
+      "description" : "Code representing plan definition action reason codes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ValueSet"
+      }],
+      "reference" : {
+        "reference" : "ValueSet/plan-definition-action-reason-codes"
+      },
+      "name" : "Plan Definition Action Reason Codes",
+      "description" : "This value set includes action reason codes for Plan Definitions within this implementation guide.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/PrimaryScreeningDecision"
+      },
+      "name" : "Primary Screening Decision",
+      "description" : "Primary Screening Decision pathway.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/PrimaryScreeningDecision"
+      },
+      "name" : "PrimaryScreeningDecision",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/PrimaryScreeningDecision_IsScreeningEligible_false"
+      },
+      "name" : "PrimaryScreeningDecision_IsScreeningEligible_false",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/PrimaryScreeningDecision_IsScreeningEligible_true"
+      },
+      "name" : "PrimaryScreeningDecision_IsScreeningEligible_true",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/flow-ScreeningEligible"
+      },
+      "name" : "Screening Eligible",
+      "description" : "Screening eligible logic path.",
+      "exampleBoolean" : false,
+      "groupingId" : "ScreeningEligible"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Questionnaire"
+      }],
+      "reference" : {
+        "reference" : "Questionnaire/ScreeningEligibleQuestionnaire"
+      },
+      "name" : "Screening Eligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ActivityDefinition"
+      }],
+      "reference" : {
+        "reference" : "ActivityDefinition/ScreeningEligibleQuestionnaireTask"
+      },
+      "name" : "Screening Eligible Questionnaire Task",
+      "description" : "This ActivityDefinition generates a Questionnaire Task containing a request to complete a questionnaire.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CodeSystem"
+      }],
+      "reference" : {
+        "reference" : "CodeSystem/screening-observation-code-system"
+      },
+      "name" : "Screening Observation Code System",
+      "description" : "Code representing breast cancer screening related observations",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/ScreeningEligible"
+      },
+      "name" : "ScreeningEligible",
+      "exampleBoolean" : false,
+      "groupingId" : "ScreeningEligible"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/ScreeningEligibleActions"
+      },
+      "name" : "ScreeningEligibleActions",
+      "exampleBoolean" : false,
+      "groupingId" : "ScreeningEligible"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/ScreeningEligibleEvents"
+      },
+      "name" : "ScreeningEligibleEvents",
+      "exampleBoolean" : false,
+      "groupingId" : "ScreeningEligible"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_eve-female_no_end-noteligible"
+      },
+      "name" : "ScreeningEligible_eve-female_no_end-noteligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_no_act-eligible"
+      },
+      "name" : "ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_no_act-eligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_yes_act-dxtesting"
+      },
+      "name" : "ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_no_eve-breastfindings_yes_act-dxtesting",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_yes_act-dxtesting"
+      },
+      "name" : "ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_yes_act-dxtesting",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_yes_end-noteligible"
+      },
+      "name" : "ScreeningEligible_eve-female_yes_eve-breastca_no_eve-mastectomy_yes_end-noteligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_eve-female_yes_eve-breastca_yes_end-noteligible"
+      },
+      "name" : "ScreeningEligible_eve-female_yes_eve-breastca_yes_end-noteligible",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_inc-AgeAtLeast18_error"
+      },
+      "name" : "ScreeningEligible_inc-AgeAtLeast18_error",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_inc-AgeAtLeast18_MostRecentAgeValue_yes"
+      },
+      "name" : "ScreeningEligible_inc-AgeAtLeast18_MostRecentAgeValue_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_inc-AgeAtLeast18_no"
+      },
+      "name" : "ScreeningEligible_inc-AgeAtLeast18_no",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_inc-AgeAtLeast18_yes"
+      },
+      "name" : "ScreeningEligible_inc-AgeAtLeast18_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_inc-femaleortransmale_no"
+      },
+      "name" : "ScreeningEligible_inc-femaleortransmale_no",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/ScreeningEligible_inc-femaleortransmale_yes"
+      },
+      "name" : "ScreeningEligible_inc-femaleortransmale_yes",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "PlanDefinition"
+      }],
+      "reference" : {
+        "reference" : "PlanDefinition/flow-SpecialPopulations"
+      },
+      "name" : "Special Populations",
+      "description" : "Special populations logic path.",
+      "exampleBoolean" : false,
+      "groupingId" : "SpecialPopulations"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/SpecialPopulations"
+      },
+      "name" : "SpecialPopulations",
+      "exampleBoolean" : false,
+      "groupingId" : "SpecialPopulations"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/SpecialPopulationsActions"
+      },
+      "name" : "SpecialPopulationsActions",
+      "exampleBoolean" : false,
+      "groupingId" : "SpecialPopulations"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/SpecialPopulationsEvents"
+      },
+      "name" : "SpecialPopulationsEvents",
+      "exampleBoolean" : false,
+      "groupingId" : "SpecialPopulations"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/SpecialPopulations_eve-breastdensitycord_eve-acs_act-performriskassessment"
+      },
+      "name" : "SpecialPopulations_eve-breastdensitycord_eve-acs_act-performriskassessment",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/SpecialPopulations_eve-fhxbrcarisk_eve-acs_act-performriskassessment"
+      },
+      "name" : "SpecialPopulations_eve-fhxbrcarisk_eve-acs_act-performriskassessment",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/SpecialPopulations_eve-firstdeggenetic_eve-acs_act-firstdeggeneticmammo-firstdeggeneticmri"
+      },
+      "name" : "SpecialPopulations_eve-firstdeggenetic_eve-acs_act-firstdeggeneticmammo-firstdeggeneticmri",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/SpecialPopulations_eve-highlifetimerisk_eve-acs_act-acshighriskmammo_act-acshighriskmri"
+      },
+      "name" : "SpecialPopulations_eve-highlifetimerisk_eve-acs_act-acshighriskmammo_act-acshighriskmri",
+      "exampleBoolean" : false
+    }],
+    "page" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+        "valueUrl" : "toc.html"
+      }],
+      "nameUrl" : "toc.html",
+      "title" : "Table of Contents",
+      "generation" : "html",
+      "page" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "index.html"
+        }],
+        "nameUrl" : "index.html",
+        "title" : "Home",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "2_background.html"
+        }],
+        "nameUrl" : "2_background.html",
+        "title" : "Background",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "3_specification.html"
+        }],
+        "nameUrl" : "3_specification.html",
+        "title" : "Specification",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "4_examples.html"
+        }],
+        "nameUrl" : "4_examples.html",
+        "title" : "Examples",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "5_downloads.html"
+        }],
+        "nameUrl" : "5_downloads.html",
+        "title" : "Downloads",
+        "generation" : "markdown"
+      }]
+    },
+    "parameter" : [{
+      "code" : "path-resource",
+      "value" : "input/vocabulary/codesystem"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/vocabulary/valueset"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/resources/library"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/resources/questionnaire"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/examples/*"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/capabilities"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/examples"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/extensions"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/models"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/operations"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/profiles"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/resources"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/vocabulary"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/testing"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "input/history"
+    },
+    {
+      "code" : "path-resource",
+      "value" : "fsh-generated/resources"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "template/config"
+    },
+    {
+      "code" : "path-pages",
+      "value" : "input/images"
+    },
+    {
+      "code" : "path-tx-cache",
+      "value" : "input-cache/txcache"
+    }]
+  }
+}
