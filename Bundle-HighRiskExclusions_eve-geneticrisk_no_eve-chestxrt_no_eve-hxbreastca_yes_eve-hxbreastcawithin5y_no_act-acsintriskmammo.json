@@ -1,0 +1,77 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/43",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "43",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_43\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 43</b></p><a name=\"43\"> </a><a name=\"hc43\"> </a><a name=\"43-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskExclusions.html\">High Risk Exclusions</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-breastdensitycord_eve-acs_act-performriskassessment.html#Patient_defaultPatient\">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>ACSMammoAfterBrca</blockquote><p><b>title</b>: Annual screeening mammogram after 5 years in remission</p><p><b>description</b>: Annual screeening mammogram after 5 years in remission</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 24606-6}\">MG Breast Screening</span></p><p><b>timing</b>: Events: 2025-01-25 , Once per 1 years</p><p><b>resource</b>: <a href=\"Bundle-HighRiskExclusions_eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo.html#ServiceRequest_44\">Bundle: type = collection</a></p></blockquote></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskExclusions"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "action" : [{
+        "id" : "ACSMammoAfterBrca",
+        "title" : "Annual screeening mammogram after 5 years in remission",
+        "description" : "Annual screeening mammogram after 5 years in remission",
+        "code" : [{
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "24606-6",
+            "display" : "MG Breast Screening"
+          }]
+        }],
+        "timingTiming" : {
+          "event" : ["2025-01-25"],
+          "repeat" : {
+            "boundsPeriod" : {
+              "start" : "2024-01-01"
+            },
+            "frequency" : 1,
+            "period" : 1,
+            "periodUnit" : "a"
+          }
+        },
+        "resource" : {
+          "reference" : "ServiceRequest/44"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/44",
+    "resource" : {
+      "resourceType" : "ServiceRequest",
+      "id" : "44",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_44\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 44</b></p><a name=\"44\"> </a><a name=\"hc44\"> </a><a name=\"44-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-BreastScreeningServiceRequest.html\">Breast Screening Service Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 24606-6}\">MG Breast Screening</span></p><p><b>subject</b>: <a href=\"Bundle-eve-breastdensitycord_eve-acs_act-performriskassessment.html#Patient_defaultPatient\">Jane Doe</a></p><p><b>occurrence</b>: 2025-01-25</p></div>"
+      },
+      "basedOn" : [{
+        "reference" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+      }],
+      "status" : "option",
+      "intent" : "proposal",
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "24606-6",
+          "display" : "MG Breast Screening"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "occurrenceDateTime" : "2025-01-25"
+    }
+  }]
+}

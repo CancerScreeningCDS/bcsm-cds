@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk"/>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/53"/>
+    <resource>
+      <RequestGroup>
+        <id value="53"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="RequestGroup_53"> </a><p class="res-header-id"><b>Generated Narrative: RequestGroup 53</b></p><a name="53"> </a><a name="hc53"> </a><a name="53-en-US"> </a><p><b>instantiatesCanonical</b>: <a href="PlanDefinition-flow-HighRiskExclusions.html">High Risk Exclusions</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Bundle-eve-breastdensitycord_eve-acs_act-performriskassessment.html#Patient_defaultPatient">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>SpecialtyReferralGeneticRisk</blockquote><p><b>title</b>: Recommendation for speciality referral</p><p><b>description</b>: Recommendation for speciality referral</p><p><b>resource</b>: <a href="Bundle-HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk.html#CommunicationRequest_54">Bundle: type = collection</a></p></blockquote></div>
+        </text>
+        <instantiatesCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskExclusions"/>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/defaultPatient"/>
+          <display value="Jane Doe"/>
+        </subject>
+        <action id="SpecialtyReferralGeneticRisk">
+          <title value="Recommendation for speciality referral"/>
+          <description value="Recommendation for speciality referral"/>
+          <resource>
+            <reference value="CommunicationRequest/54"/>
+          </resource>
+        </action>
+      </RequestGroup>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/54"/>
+    <resource>
+      <CommunicationRequest>
+        <id value="54"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CommunicationRequest_54"> </a><p class="res-header-id"><b>Generated Narrative: CommunicationRequest 54</b></p><a name="54"> </a><a name="hc54"> </a><a name="54-en-US"> </a><p><b>basedOn</b>: <a href="ActivityDefinition-CommunicateSpecialtyReferral.html">Communicate Recommendation to refer to specialist</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href="Bundle-eve-breastdensitycord_eve-acs_act-performriskassessment.html#Patient_defaultPatient">Jane Doe</a></p><h3>Payloads</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Content[x]</b></td></tr><tr><td style="display: none">*</td><td>Refer to specialist recommendations</td></tr></table><p><b>reasonCode</b>: <span title="Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system othergeneticrisk}">Other genetic marker or syndrome associated with breast cancer</span></p></div>
+        </text>
+        <basedOn>
+          <reference value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSpecialtyReferral"/>
+        </basedOn>
+        <status value="option"/>
+        <subject>
+          <reference value="Patient/defaultPatient"/>
+          <display value="Jane Doe"/>
+        </subject>
+        <payload>
+          <contentString value="Refer to specialist recommendations"/>
+        </payload>
+        <reasonCode>
+          <coding>
+            <system value="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"/>
+            <code value="othergeneticrisk"/>
+            <display value="Other genetic marker or syndrome associated with breast cancer"/>
+          </coding>
+        </reasonCode>
+      </CommunicationRequest>
+    </resource>
+  </entry>
+</Bundle>

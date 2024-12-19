@@ -1,0 +1,70 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "ScreeningEligible_inc-AgeAtLeast18_yes",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/102",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "102",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_102\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 102</b></p><a name=\"102\"> </a><a name=\"hc102\"> </a><a name=\"102-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-ScreeningEligible.html\">Screening Eligible</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Patient/9f054424-742d-43d9-849c-9fa482979215\">Joanne Smith</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>103</blockquote><p><b>title</b>: Screening Eligible Actions</p><p><b>description</b>: Top level action that defines trigger and criteria for inclusion and exclusion.</p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td></tr><tr><td style=\"display: none\">*</td><td>Documentation</td><td>Inclusions</td><td>Appropriate for individuals &gt;= age 18 years</td></tr></table><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>ScreeningEligible</blockquote><p><b>title</b>: Screening Eligible</p><p><b>description</b>: Patient is eligible for screening</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system eligible}\">Eligible for screening</span></p><p><b>resource</b>: <a href=\"Bundle-ScreeningEligible_inc-AgeAtLeast18_yes.html#CommunicationRequest_105\">Bundle: type = collection</a></p></blockquote></blockquote></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-ScreeningEligible"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/9f054424-742d-43d9-849c-9fa482979215",
+        "display" : "Joanne Smith"
+      },
+      "action" : [{
+        "id" : "103",
+        "title" : "Screening Eligible Actions",
+        "description" : "Top level action that defines trigger and criteria for inclusion and exclusion.",
+        "documentation" : [{
+          "type" : "documentation",
+          "label" : "Inclusions",
+          "display" : "Appropriate for individuals >= age 18 years"
+        }],
+        "action" : [{
+          "id" : "ScreeningEligible",
+          "title" : "Screening Eligible",
+          "description" : "Patient is eligible for screening",
+          "code" : [{
+            "coding" : [{
+              "system" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "code" : "eligible",
+              "display" : "Eligible for screening"
+            }]
+          }],
+          "resource" : {
+            "reference" : "CommunicationRequest/105"
+          }
+        }]
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/105",
+    "resource" : {
+      "resourceType" : "CommunicationRequest",
+      "id" : "105",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CommunicationRequest_105\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CommunicationRequest 105</b></p><a name=\"105\"> </a><a name=\"hc105\"> </a><a name=\"105-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-CommunicateEligible.html\">Communicate Eligible</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href=\"Patient/9f054424-742d-43d9-849c-9fa482979215\">Joanne Smith</a></p><h3>Payloads</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Content[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>Eligible for screening</td></tr></table></div>"
+      },
+      "basedOn" : [{
+        "reference" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateEligible"
+      }],
+      "status" : "option",
+      "subject" : {
+        "reference" : "Patient/9f054424-742d-43d9-849c-9fa482979215",
+        "display" : "Joanne Smith"
+      },
+      "payload" : [{
+        "contentString" : "Eligible for screening"
+      }]
+    }
+  }]
+}

@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PlanDefinition xmlns="http://hl7.org/fhir">
+  <id value="flow-SpecialPopulations"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"/>
+  </meta>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">flow-SpecialPopulations</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="PlanDefinition-flow-SpecialPopulations.html">Special Populations</a></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">0.1.0</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Special Populations</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/6.1.0/CodeSystem-plan-definition-type.html">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>eca-rule</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2024-10-22</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">MITRE</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Description: </b></th>
+            <td style="padding-left: 4px;"><div><p>Special populations logic path.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Capability: </b></th>
+            <td style="padding-left: 4px;">
+                
+                executable 
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Representation Level: </b></th>
+            <td style="padding-left: 4px;">
+                
+                structured
+            </td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Copyright: </b></th>
+            <td style="padding-left: 4px;"><div><p>(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Approval Date: </b></th>
+            <td style="padding-left: 4px;">2024-10-22</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Libraries: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td><code>Library/SpecialPopulations|1.0.0</code></td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Actions: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screeening mammogram starting age 30:</b> Annual screeening mammogram starting age 30
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSMammoHighRisk)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSMammoHighRiskCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSMammoHighRiskTiming)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSMammoHighRiskCode)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSMammoHighRiskTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screeening MRI starting age 30:</b> Annual screeening MRI starting age 30
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSMriHighRisk)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSMriHighRiskCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSMriHighRiskTiming)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSMriHighRiskCode)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSMriHighRiskTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screeening mammo starting age 30:</b> Annual screeening mammo starting age 30
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSFirstDegGeneticMammo)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSFirstDegGeneticMammoCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSFirstDegGeneticMammoTiming)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSFirstDegGeneticMammoCode)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSFirstDegGeneticMammoTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screeening MRI starting age 30:</b> Annual screeening MRI starting age 30
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSFirstDegGeneticMri)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSFirstDegGeneticMriCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSFirstDegGeneticMriTiming)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSFirstDegGeneticMriCode)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSFirstDegGeneticMriTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Perform lifetime risk assessment:</b> Perform lifetime risk assessment
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsBreastImagingHeterogenouslyOrExtremelyDense)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateRiskAssessment|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            reasonCode[0].coding[0]: <i>(BreastImagingHeterogenouslyOrExtremelyDenseReason)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Perform lifetime risk assessment:</b> Perform lifetime risk assessment
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsCompellingFamilyHistory)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateRiskAssessment|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            reasonCode[0].coding[0]: <i>(CompellingFamilyHistoryReason)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Biennial screeening mammo starting age 40:</b> Biennial screeening mammo starting age 40
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsUSPSTFRecommendation)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(USPSTFRecommendationCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(USPSTFRecommendationTiming)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(USPSTFRecommendationCode)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(USPSTFRecommendationTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+</div>
+  </text>
+  <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
+    <valueCode value="executable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <url value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-SpecialPopulations"/>
+  <version value="0.1.0"/>
+  <name value="flow-SpecialPopulations"/>
+  <title value="Special Populations"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+      <code value="eca-rule"/>
+    </coding>
+  </type>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2024-10-22"/>
+  <publisher value="MITRE"/>
+  <contact>
+    <name value="MITRE"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.mitre.org/"/>
+    </telecom>
+  </contact>
+  <description value="Special populations logic path."/>
+  <copyright value="(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931."/>
+  <approvalDate value="2024-10-22"/>
+  <lastReviewDate value="2024-10-22"/>
+  <author>
+    <name value="The Health FFRDC, operated by The MITRE Corporation, in support of the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention."/>
+  </author>
+  <editor>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </editor>
+  <reviewer>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </reviewer>
+  <endorser>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </endorser>
+  <library value="Library/SpecialPopulations|1.0.0"/>
+  <action id="ACSMammoHighRisk">
+    <title value="Annual screeening mammogram starting age 30"/>
+    <description value="Annual screeening mammogram starting age 30"/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ExistsACSMammoHighRisk"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMammoHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMammoHighRiskTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMammoHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMammoHighRiskTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="ACSMriHighRisk">
+    <title value="Annual screeening MRI starting age 30"/>
+    <description value="Annual screeening MRI starting age 30"/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ExistsACSMriHighRisk"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMriHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMriHighRiskTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMriHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSMriHighRiskTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="ACSFirstDegGeneticMammo">
+    <title value="Annual screeening mammo starting age 30"/>
+    <description value="Annual screeening mammo starting age 30"/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ExistsACSFirstDegGeneticMammo"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMammoCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMammoTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMammoCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMammoTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="ACSFirstDegGeneticMri">
+    <title value="Annual screeening MRI starting age 30"/>
+    <description value="Annual screeening MRI starting age 30"/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ExistsACSFirstDegGeneticMri"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMriCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMriTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMriCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ACSFirstDegGeneticMriTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="BreastImagingHeterogenouslyOrExtremelyDense">
+    <title value="Perform lifetime risk assessment"/>
+    <description value="Perform lifetime risk assessment"/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ExistsBreastImagingHeterogenouslyOrExtremelyDense"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateRiskAssessment|1.0.0"/>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="BreastImagingHeterogenouslyOrExtremelyDenseReason"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="CompellingFamilyHistory">
+    <title value="Perform lifetime risk assessment"/>
+    <description value="Perform lifetime risk assessment"/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ExistsCompellingFamilyHistory"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateRiskAssessment|1.0.0"/>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="CompellingFamilyHistoryReason"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="USPSTFRecommendation">
+    <title value="Biennial screeening mammo starting age 40"/>
+    <description value="Biennial screeening mammo starting age 40"/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="ExistsUSPSTFRecommendation"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="USPSTFRecommendationCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="USPSTFRecommendationTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="USPSTFRecommendationCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql"/>
+        <expression value="USPSTFRecommendationTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+</PlanDefinition>

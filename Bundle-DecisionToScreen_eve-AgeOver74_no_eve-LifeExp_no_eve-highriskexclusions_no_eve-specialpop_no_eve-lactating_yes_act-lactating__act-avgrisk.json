@@ -1,0 +1,67 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "DecisionToScreen_eve-AgeOver74_no_eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/21",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "21",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_21\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 21</b></p><a name=\"21\"> </a><a name=\"hc21\"> </a><a name=\"21-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-DecisionToScreen.html\">Decision to Screen</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-breastdensitycord_eve-acs_act-performriskassessment.html#Patient_defaultPatient\">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>SDMDelayScreeningLactating</blockquote><p><b>title</b>: Shared decision making to delay screening based on lactation status</p><p><b>description</b>: Shared decision making to delay screening based on lactation status</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system sdmdelay}\">Shared decision making to consider delay in screening</span></p><p><b>resource</b>: <a href=\"Bundle-DecisionToScreen_eve-AgeOver74_no_eve-LifeExp_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_yes_act-lactating__act-avgrisk.html#CommunicationRequest_22\">Bundle: type = collection</a></p></blockquote></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-DecisionToScreen"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "action" : [{
+        "id" : "SDMDelayScreeningLactating",
+        "title" : "Shared decision making to delay screening based on lactation status",
+        "description" : "Shared decision making to delay screening based on lactation status",
+        "code" : [{
+          "coding" : [{
+            "system" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+            "code" : "sdmdelay",
+            "display" : "Shared decision making to consider delay in screening"
+          }]
+        }],
+        "resource" : {
+          "reference" : "CommunicationRequest/22"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/22",
+    "resource" : {
+      "resourceType" : "CommunicationRequest",
+      "id" : "22",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CommunicationRequest_22\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CommunicationRequest 22</b></p><a name=\"22\"> </a><a name=\"hc22\"> </a><a name=\"22-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-CommunicateSDMDelayScreening.html\">Communicate Shared Decision Making to Delay Screening</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href=\"Bundle-eve-breastdensitycord_eve-acs_act-performriskassessment.html#Patient_defaultPatient\">Jane Doe</a></p><h3>Payloads</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Content[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>Shared decision making to delay screening</td></tr></table><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system currentlylactating}\">Currently lactating</span></p></div>"
+      },
+      "basedOn" : [{
+        "reference" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMDelayScreening"
+      }],
+      "status" : "option",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "payload" : [{
+        "contentString" : "Shared decision making to delay screening"
+      }],
+      "reasonCode" : [{
+        "coding" : [{
+          "system" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+          "code" : "currentlylactating",
+          "display" : "Currently lactating"
+        }]
+      }]
+    }
+  }]
+}
