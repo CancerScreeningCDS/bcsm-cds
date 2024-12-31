@@ -1,0 +1,2276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="1245">
+         <a:s>library DecisionToScreen version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="DecisionToScreen" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="3:1-3:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="5:1-5:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="6:1-6:60" localIdentifier="Events" path="http://cancerscreeningcds.github.io/bcsm-cds/DecisionToScreenEvents" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DecisionToScreenEvents</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Events</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="7:1-7:62" localIdentifier="Actions" path="http://cancerscreeningcds.github.io/bcsm-cds/DecisionToScreenActions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DecisionToScreenActions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Actions</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="8:1-8:43" localIdentifier="BCSMCommonFunctions" path="http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>BCSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="211" locator="10:1-10:38" name="LOINC" id="http://loinc.org" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>codesystem &quot;LOINC&quot;: 'http://loinc.org'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="212" locator="12:1-12:80" name="MG Breast Screening" id="24606-6" display="MG Breast Screening" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>code &quot;MG Breast Screening&quot;: '24606-6' from </a:s>
+               <a:s r="213">
+                  <a:s>&quot;LOINC&quot;</a:s>
+               </a:s>
+               <a:s> display 'MG Breast Screening'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="213" locator="12:44-12:50" name="LOINC"/>
+      </def>
+      <def localId="214" locator="13:1-13:60" name="MR Breast" id="30794-2" display="MR Breast" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="214">
+               <a:s>code &quot;MR Breast&quot;: '30794-2' from </a:s>
+               <a:s r="215">
+                  <a:s>&quot;LOINC&quot;</a:s>
+               </a:s>
+               <a:s> display 'MR Breast'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="215" locator="13:34-13:40" name="LOINC"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="219" locator="15:1-15:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="217" locator="15:1-15:15" name="Patient" context="Patient">
+         <expression localId="218" xsi:type="SingletonFrom">
+            <operand localId="216" locator="15:1-15:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="226" locator="38:1-41:13" name="SDMContinueScreeningAge" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="226">
+               <a:s>define SDMContinueScreeningAge:
+  </a:s>
+               <a:s r="227">
+                  <a:s>if </a:s>
+                  <a:s r="230">
+                     <a:s r="229">
+                        <a:s r="228">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="229">
+                           <a:s>&quot;eve-AgeOver74&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="232">
+                     <a:s r="231">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="232">
+                        <a:s>&quot;act-sdmcontinueage&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="233">
+    else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="227" locator="39:3-41:13" xsi:type="If">
+            <condition localId="230" locator="39:6-39:35" xsi:type="IsTrue">
+               <operand localId="229" locator="39:6-39:27" name="eve-AgeOver74" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="232" locator="40:10-40:37" name="act-sdmcontinueage" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="234" xsi:type="As">
+               <operand localId="233" locator="41:10-41:13" xsi:type="Null"/>
+               <asTypeSpecifier localId="235" xsi:type="TupleTypeSpecifier">
+                  <element localId="236" name="code">
+                     <elementType localId="237" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="238" name="reason">
+                     <elementType localId="239" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="240" name="documentation">
+                     <elementType localId="241" xsi:type="TupleTypeSpecifier">
+                        <element localId="242" name="label">
+                           <elementType localId="243" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="264" locator="52:1-55:13" name="SDMContinueScreeningLifeExp" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="264">
+               <a:s>define SDMContinueScreeningLifeExp:
+  </a:s>
+               <a:s r="265">
+                  <a:s>if </a:s>
+                  <a:s r="268">
+                     <a:s r="267">
+                        <a:s r="266">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="267">
+                           <a:s>&quot;eve-LifeExp&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="270">
+                     <a:s r="269">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="270">
+                        <a:s>&quot;act-sdmcontinuelifexp&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="271">
+    else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="265" locator="53:3-55:13" xsi:type="If">
+            <condition localId="268" locator="53:6-53:33" xsi:type="IsTrue">
+               <operand localId="267" locator="53:6-53:25" name="eve-LifeExp" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="270" locator="54:10-54:40" name="act-sdmcontinuelifexp" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="272" xsi:type="As">
+               <operand localId="271" locator="55:10-55:13" xsi:type="Null"/>
+               <asTypeSpecifier localId="273" xsi:type="TupleTypeSpecifier">
+                  <element localId="274" name="code">
+                     <elementType localId="275" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="276" name="reason">
+                     <elementType localId="277" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="278" name="documentation">
+                     <elementType localId="279" xsi:type="TupleTypeSpecifier">
+                        <element localId="280" name="label">
+                           <elementType localId="281" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="301" locator="66:1-67:34" name="HighRiskExclusions" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="301">
+               <a:s>define HighRiskExclusions:
+  </a:s>
+               <a:s r="303">
+                  <a:s r="302">
+                     <a:s>Actions</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="303">
+                     <a:s>&quot;act-highriskexclusions&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="303" locator="67:3-67:34" name="act-highriskexclusions" libraryName="Actions" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="412" locator="69:1-70:26" name="SpecialPopulations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="412">
+               <a:s>define SpecialPopulations:
+  </a:s>
+               <a:s r="414">
+                  <a:s r="413">
+                     <a:s>Actions</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="414">
+                     <a:s>&quot;act-specialpop&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="414" locator="70:3-70:26" name="act-specialpop" libraryName="Actions" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="554" locator="75:1-79:11" name="SDMDelayScreeningLactating" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="554">
+               <a:s>define SDMDelayScreeningLactating:
+  </a:s>
+               <a:s r="555">
+                  <a:s>if </a:s>
+                  <a:s r="556">
+                     <a:s r="557">
+                        <a:s>not </a:s>
+                        <a:s r="558">
+                           <a:s>exists </a:s>
+                           <a:s r="559">
+                              <a:s>HighRiskExclusions</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+      and </a:s>
+                     <a:s r="562">
+                        <a:s r="561">
+                           <a:s r="560">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="561">
+                              <a:s>&quot;eve-lactating&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is true</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="564">
+                     <a:s r="563">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="564">
+                        <a:s>&quot;act-lactating&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="565">
+  else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="555" locator="76:3-79:11" xsi:type="If">
+            <condition localId="556" locator="76:6-77:40" xsi:type="And">
+               <operand localId="557" locator="76:6-76:34" xsi:type="Not">
+                  <operand localId="558" locator="76:10-76:34" xsi:type="Exists">
+                     <operand localId="559" locator="76:17-76:34" name="HighRiskExclusions" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="562" locator="77:11-77:40" xsi:type="IsTrue">
+                  <operand localId="561" locator="77:11-77:32" name="eve-lactating" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="564" locator="78:8-78:30" name="act-lactating" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="566" xsi:type="As">
+               <operand localId="565" locator="79:8-79:11" xsi:type="Null"/>
+               <asTypeSpecifier localId="567" xsi:type="TupleTypeSpecifier">
+                  <element localId="568" name="code">
+                     <elementType localId="569" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="570" name="reason">
+                     <elementType localId="571" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="572" name="documentation">
+                     <elementType localId="573" xsi:type="TupleTypeSpecifier">
+                        <element localId="574" name="label">
+                           <elementType localId="575" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="615" locator="72:1-73:23" name="AverageRisk" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="615">
+               <a:s>define AverageRisk:  
+  </a:s>
+               <a:s r="617">
+                  <a:s r="616">
+                     <a:s>Actions</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="617">
+                     <a:s>&quot;act-avgrisk&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="617" locator="73:3-73:23" name="act-avgrisk" libraryName="Actions" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="221" locator="21:1-30:17" name="flow-DecisionToScreen" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="221">
+               <a:s>//------------------------------------------------------------------------------
+// RECOMMENDATIONS
+//------------------------------------------------------------------------------
+
+define &quot;flow-DecisionToScreen&quot;:  
+  </a:s>
+               <a:s r="222">
+                  <a:s>flatten</a:s>
+                  <a:s r="962">
+                     <a:s r="223">
+                        <a:s>(</a:s>
+                        <a:s r="223">
+                           <a:s>{
+    </a:s>
+                           <a:s r="247">
+                              <a:s r="224">
+                                 <a:s>{</a:s>
+                                 <a:s r="244">
+                                    <a:s>SDMContinueScreeningAge</a:s>
+                                 </a:s>
+                                 <a:s>}</a:s>
+                              </a:s>
+                              <a:s> except </a:s>
+                              <a:s r="245">
+                                 <a:s r="246">{ null }</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>,
+    </a:s>
+                           <a:s r="285">
+                              <a:s r="262">
+                                 <a:s>{</a:s>
+                                 <a:s r="282">
+                                    <a:s>SDMContinueScreeningLifeExp</a:s>
+                                 </a:s>
+                                 <a:s>}</a:s>
+                              </a:s>
+                              <a:s> except </a:s>
+                              <a:s r="283">
+                                 <a:s r="284">{ null }</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>,
+    </a:s>
+                           <a:s r="307">
+                              <a:s r="304">
+                                 <a:s>HighRiskExclusions</a:s>
+                              </a:s>
+                              <a:s> except </a:s>
+                              <a:s r="305">
+                                 <a:s r="306">{ null }</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>,
+    </a:s>
+                           <a:s r="418">
+                              <a:s r="415">
+                                 <a:s>SpecialPopulations</a:s>
+                              </a:s>
+                              <a:s> except </a:s>
+                              <a:s r="416">
+                                 <a:s r="417">{ null }</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>,
+    </a:s>
+                           <a:s r="579">
+                              <a:s r="552">
+                                 <a:s>{</a:s>
+                                 <a:s r="576">
+                                    <a:s>SDMDelayScreeningLactating</a:s>
+                                 </a:s>
+                                 <a:s>}</a:s>
+                              </a:s>
+                              <a:s> except </a:s>
+                              <a:s r="577">
+                                 <a:s r="578">{ null }</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>,
+    </a:s>
+                           <a:s r="621">
+                              <a:s r="618">
+                                 <a:s>AverageRisk</a:s>
+                              </a:s>
+                              <a:s> except </a:s>
+                              <a:s r="619">
+                                 <a:s r="620">{ null }</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+  }</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s>
+  except </a:s>
+                     <a:s r="960">
+                        <a:s r="961">{ null }</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="222" locator="22:3-30:17" xsi:type="Flatten">
+            <operand localId="962" locator="22:10-30:17" xsi:type="Except">
+               <signature localId="1011" xsi:type="ListTypeSpecifier">
+                  <elementType localId="1012" xsi:type="ListTypeSpecifier">
+                     <elementType localId="1013" xsi:type="ChoiceTypeSpecifier">
+                        <choice localId="1014" xsi:type="TupleTypeSpecifier">
+                           <element localId="1015" name="code">
+                              <elementType localId="1016" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1017" name="reason">
+                              <elementType localId="1018" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1019" name="documentation">
+                              <elementType localId="1020" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1021" name="label">
+                                    <elementType localId="1022" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                           <element localId="1023" name="timingAge">
+                              <elementType localId="1024" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1025" name="value">
+                                    <elementType localId="1026" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1027" name="code">
+                                    <elementType localId="1028" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                           <element localId="1029" name="timingTiming">
+                              <elementType localId="1030" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1031" name="event">
+                                    <elementType localId="1032" xsi:type="ListTypeSpecifier">
+                                       <elementType localId="1033" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </element>
+                                 <element localId="1034" name="repeat">
+                                    <elementType localId="1035" xsi:type="TupleTypeSpecifier">
+                                       <element localId="1036" name="boundsPeriod">
+                                          <elementType localId="1037" xsi:type="TupleTypeSpecifier">
+                                             <element localId="1038" name="start">
+                                                <elementType localId="1039" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                       <element localId="1040" name="frequency">
+                                          <elementType localId="1041" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="1042" name="period">
+                                          <elementType localId="1043" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="1044" name="periodUnit">
+                                          <elementType localId="1045" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </element>
+                        </choice>
+                        <choice localId="1046" xsi:type="TupleTypeSpecifier">
+                           <element localId="1047" name="code">
+                              <elementType localId="1048" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1049" name="reason">
+                              <elementType localId="1050" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1051" name="documentation">
+                              <elementType localId="1052" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1053" name="label">
+                                    <elementType localId="1054" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                        </choice>
+                     </elementType>
+                  </elementType>
+               </signature>
+               <signature localId="1055" xsi:type="ListTypeSpecifier">
+                  <elementType localId="1056" xsi:type="ListTypeSpecifier">
+                     <elementType localId="1057" xsi:type="ChoiceTypeSpecifier">
+                        <choice localId="1058" xsi:type="TupleTypeSpecifier">
+                           <element localId="1059" name="code">
+                              <elementType localId="1060" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1061" name="reason">
+                              <elementType localId="1062" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1063" name="documentation">
+                              <elementType localId="1064" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1065" name="label">
+                                    <elementType localId="1066" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                           <element localId="1067" name="timingAge">
+                              <elementType localId="1068" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1069" name="value">
+                                    <elementType localId="1070" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1071" name="code">
+                                    <elementType localId="1072" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                           <element localId="1073" name="timingTiming">
+                              <elementType localId="1074" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1075" name="event">
+                                    <elementType localId="1076" xsi:type="ListTypeSpecifier">
+                                       <elementType localId="1077" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </elementType>
+                                 </element>
+                                 <element localId="1078" name="repeat">
+                                    <elementType localId="1079" xsi:type="TupleTypeSpecifier">
+                                       <element localId="1080" name="boundsPeriod">
+                                          <elementType localId="1081" xsi:type="TupleTypeSpecifier">
+                                             <element localId="1082" name="start">
+                                                <elementType localId="1083" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                       <element localId="1084" name="frequency">
+                                          <elementType localId="1085" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="1086" name="period">
+                                          <elementType localId="1087" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="1088" name="periodUnit">
+                                          <elementType localId="1089" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </element>
+                        </choice>
+                        <choice localId="1090" xsi:type="TupleTypeSpecifier">
+                           <element localId="1091" name="code">
+                              <elementType localId="1092" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1093" name="reason">
+                              <elementType localId="1094" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1095" name="documentation">
+                              <elementType localId="1096" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1097" name="label">
+                                    <elementType localId="1098" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                        </choice>
+                     </elementType>
+                  </elementType>
+               </signature>
+               <operand localId="223" locator="22:10-29:4" xsi:type="List">
+                  <element localId="725" xsi:type="Query">
+                     <source localId="726" alias="X">
+                        <expression localId="247" locator="23:5-23:45" xsi:type="Except">
+                           <operand localId="224" locator="23:5-23:29" xsi:type="List">
+                              <element localId="244" locator="23:6-23:28" name="SDMContinueScreeningAge" xsi:type="ExpressionRef"/>
+                           </operand>
+                           <operand localId="248" xsi:type="Query">
+                              <source localId="249" alias="X">
+                                 <expression localId="245" locator="23:38-23:45" xsi:type="List">
+                                    <element localId="246" locator="23:40-23:43" xsi:type="Null"/>
+                                 </expression>
+                              </source>
+                              <return localId="250" distinct="false">
+                                 <expression localId="252" xsi:type="As">
+                                    <operand localId="251" name="X" xsi:type="AliasRef"/>
+                                    <asTypeSpecifier localId="253" xsi:type="TupleTypeSpecifier">
+                                       <element localId="254" name="code">
+                                          <elementType localId="255" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="256" name="reason">
+                                          <elementType localId="257" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="258" name="documentation">
+                                          <elementType localId="259" xsi:type="TupleTypeSpecifier">
+                                             <element localId="260" name="label">
+                                                <elementType localId="261" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </asTypeSpecifier>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </expression>
+                     </source>
+                     <return localId="727" distinct="false">
+                        <expression localId="729" xsi:type="As">
+                           <operand localId="728" name="X" xsi:type="AliasRef"/>
+                           <asTypeSpecifier localId="730" xsi:type="ChoiceTypeSpecifier">
+                              <choice localId="731" xsi:type="TupleTypeSpecifier">
+                                 <element localId="732" name="code">
+                                    <elementType localId="733" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="734" name="reason">
+                                    <elementType localId="735" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="736" name="documentation">
+                                    <elementType localId="737" xsi:type="TupleTypeSpecifier">
+                                       <element localId="738" name="label">
+                                          <elementType localId="739" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="740" name="timingAge">
+                                    <elementType localId="741" xsi:type="TupleTypeSpecifier">
+                                       <element localId="742" name="value">
+                                          <elementType localId="743" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="744" name="code">
+                                          <elementType localId="745" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="746" name="timingTiming">
+                                    <elementType localId="747" xsi:type="TupleTypeSpecifier">
+                                       <element localId="748" name="event">
+                                          <elementType localId="749" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="750" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="751" name="repeat">
+                                          <elementType localId="752" xsi:type="TupleTypeSpecifier">
+                                             <element localId="753" name="boundsPeriod">
+                                                <elementType localId="754" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="755" name="start">
+                                                      <elementType localId="756" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="757" name="frequency">
+                                                <elementType localId="758" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="759" name="period">
+                                                <elementType localId="760" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="761" name="periodUnit">
+                                                <elementType localId="762" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                              <choice localId="763" xsi:type="TupleTypeSpecifier">
+                                 <element localId="764" name="code">
+                                    <elementType localId="765" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="766" name="reason">
+                                    <elementType localId="767" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="768" name="documentation">
+                                    <elementType localId="769" xsi:type="TupleTypeSpecifier">
+                                       <element localId="770" name="label">
+                                          <elementType localId="771" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                           </asTypeSpecifier>
+                        </expression>
+                     </return>
+                  </element>
+                  <element localId="772" xsi:type="Query">
+                     <source localId="773" alias="X">
+                        <expression localId="285" locator="24:5-24:49" xsi:type="Except">
+                           <operand localId="262" locator="24:5-24:33" xsi:type="List">
+                              <element localId="282" locator="24:6-24:32" name="SDMContinueScreeningLifeExp" xsi:type="ExpressionRef"/>
+                           </operand>
+                           <operand localId="286" xsi:type="Query">
+                              <source localId="287" alias="X">
+                                 <expression localId="283" locator="24:42-24:49" xsi:type="List">
+                                    <element localId="284" locator="24:44-24:47" xsi:type="Null"/>
+                                 </expression>
+                              </source>
+                              <return localId="288" distinct="false">
+                                 <expression localId="290" xsi:type="As">
+                                    <operand localId="289" name="X" xsi:type="AliasRef"/>
+                                    <asTypeSpecifier localId="291" xsi:type="TupleTypeSpecifier">
+                                       <element localId="292" name="code">
+                                          <elementType localId="293" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="294" name="reason">
+                                          <elementType localId="295" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="296" name="documentation">
+                                          <elementType localId="297" xsi:type="TupleTypeSpecifier">
+                                             <element localId="298" name="label">
+                                                <elementType localId="299" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </asTypeSpecifier>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </expression>
+                     </source>
+                     <return localId="774" distinct="false">
+                        <expression localId="776" xsi:type="As">
+                           <operand localId="775" name="X" xsi:type="AliasRef"/>
+                           <asTypeSpecifier localId="777" xsi:type="ChoiceTypeSpecifier">
+                              <choice localId="778" xsi:type="TupleTypeSpecifier">
+                                 <element localId="779" name="code">
+                                    <elementType localId="780" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="781" name="reason">
+                                    <elementType localId="782" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="783" name="documentation">
+                                    <elementType localId="784" xsi:type="TupleTypeSpecifier">
+                                       <element localId="785" name="label">
+                                          <elementType localId="786" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="787" name="timingAge">
+                                    <elementType localId="788" xsi:type="TupleTypeSpecifier">
+                                       <element localId="789" name="value">
+                                          <elementType localId="790" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="791" name="code">
+                                          <elementType localId="792" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="793" name="timingTiming">
+                                    <elementType localId="794" xsi:type="TupleTypeSpecifier">
+                                       <element localId="795" name="event">
+                                          <elementType localId="796" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="797" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="798" name="repeat">
+                                          <elementType localId="799" xsi:type="TupleTypeSpecifier">
+                                             <element localId="800" name="boundsPeriod">
+                                                <elementType localId="801" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="802" name="start">
+                                                      <elementType localId="803" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="804" name="frequency">
+                                                <elementType localId="805" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="806" name="period">
+                                                <elementType localId="807" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="808" name="periodUnit">
+                                                <elementType localId="809" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                              <choice localId="810" xsi:type="TupleTypeSpecifier">
+                                 <element localId="811" name="code">
+                                    <elementType localId="812" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="813" name="reason">
+                                    <elementType localId="814" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="815" name="documentation">
+                                    <elementType localId="816" xsi:type="TupleTypeSpecifier">
+                                       <element localId="817" name="label">
+                                          <elementType localId="818" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                           </asTypeSpecifier>
+                        </expression>
+                     </return>
+                  </element>
+                  <element localId="819" xsi:type="Query">
+                     <source localId="820" alias="X">
+                        <expression localId="307" locator="25:5-25:38" xsi:type="Except">
+                           <signature localId="345" xsi:type="ListTypeSpecifier">
+                              <elementType localId="346" xsi:type="TupleTypeSpecifier">
+                                 <element localId="347" name="code">
+                                    <elementType localId="348" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="349" name="reason">
+                                    <elementType localId="350" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="351" name="documentation">
+                                    <elementType localId="352" xsi:type="TupleTypeSpecifier">
+                                       <element localId="353" name="label">
+                                          <elementType localId="354" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="355" name="timingAge">
+                                    <elementType localId="356" xsi:type="TupleTypeSpecifier">
+                                       <element localId="357" name="value">
+                                          <elementType localId="358" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="359" name="code">
+                                          <elementType localId="360" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="361" name="timingTiming">
+                                    <elementType localId="362" xsi:type="TupleTypeSpecifier">
+                                       <element localId="363" name="event">
+                                          <elementType localId="364" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="365" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="366" name="repeat">
+                                          <elementType localId="367" xsi:type="TupleTypeSpecifier">
+                                             <element localId="368" name="boundsPeriod">
+                                                <elementType localId="369" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="370" name="start">
+                                                      <elementType localId="371" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="372" name="frequency">
+                                                <elementType localId="373" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="374" name="period">
+                                                <elementType localId="375" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="376" name="periodUnit">
+                                                <elementType localId="377" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </signature>
+                           <signature localId="378" xsi:type="ListTypeSpecifier">
+                              <elementType localId="379" xsi:type="TupleTypeSpecifier">
+                                 <element localId="380" name="code">
+                                    <elementType localId="381" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="382" name="reason">
+                                    <elementType localId="383" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="384" name="documentation">
+                                    <elementType localId="385" xsi:type="TupleTypeSpecifier">
+                                       <element localId="386" name="label">
+                                          <elementType localId="387" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="388" name="timingAge">
+                                    <elementType localId="389" xsi:type="TupleTypeSpecifier">
+                                       <element localId="390" name="value">
+                                          <elementType localId="391" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="392" name="code">
+                                          <elementType localId="393" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="394" name="timingTiming">
+                                    <elementType localId="395" xsi:type="TupleTypeSpecifier">
+                                       <element localId="396" name="event">
+                                          <elementType localId="397" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="398" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="399" name="repeat">
+                                          <elementType localId="400" xsi:type="TupleTypeSpecifier">
+                                             <element localId="401" name="boundsPeriod">
+                                                <elementType localId="402" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="403" name="start">
+                                                      <elementType localId="404" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="405" name="frequency">
+                                                <elementType localId="406" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="407" name="period">
+                                                <elementType localId="408" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="409" name="periodUnit">
+                                                <elementType localId="410" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </signature>
+                           <operand localId="304" locator="25:5-25:22" name="HighRiskExclusions" xsi:type="ExpressionRef"/>
+                           <operand localId="308" xsi:type="Query">
+                              <source localId="309" alias="X">
+                                 <expression localId="305" locator="25:31-25:38" xsi:type="List">
+                                    <element localId="306" locator="25:33-25:36" xsi:type="Null"/>
+                                 </expression>
+                              </source>
+                              <return localId="310" distinct="false">
+                                 <expression localId="312" xsi:type="As">
+                                    <operand localId="311" name="X" xsi:type="AliasRef"/>
+                                    <asTypeSpecifier localId="313" xsi:type="TupleTypeSpecifier">
+                                       <element localId="314" name="code">
+                                          <elementType localId="315" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="316" name="reason">
+                                          <elementType localId="317" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="318" name="documentation">
+                                          <elementType localId="319" xsi:type="TupleTypeSpecifier">
+                                             <element localId="320" name="label">
+                                                <elementType localId="321" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                       <element localId="322" name="timingAge">
+                                          <elementType localId="323" xsi:type="TupleTypeSpecifier">
+                                             <element localId="324" name="value">
+                                                <elementType localId="325" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="326" name="code">
+                                                <elementType localId="327" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                       <element localId="328" name="timingTiming">
+                                          <elementType localId="329" xsi:type="TupleTypeSpecifier">
+                                             <element localId="330" name="event">
+                                                <elementType localId="331" xsi:type="ListTypeSpecifier">
+                                                   <elementType localId="332" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                </elementType>
+                                             </element>
+                                             <element localId="333" name="repeat">
+                                                <elementType localId="334" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="335" name="boundsPeriod">
+                                                      <elementType localId="336" xsi:type="TupleTypeSpecifier">
+                                                         <element localId="337" name="start">
+                                                            <elementType localId="338" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                         </element>
+                                                      </elementType>
+                                                   </element>
+                                                   <element localId="339" name="frequency">
+                                                      <elementType localId="340" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                   <element localId="341" name="period">
+                                                      <elementType localId="342" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                   <element localId="343" name="periodUnit">
+                                                      <elementType localId="344" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </asTypeSpecifier>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </expression>
+                     </source>
+                     <return localId="821" distinct="false">
+                        <expression localId="823" xsi:type="As">
+                           <operand localId="822" name="X" xsi:type="AliasRef"/>
+                           <asTypeSpecifier localId="824" xsi:type="ChoiceTypeSpecifier">
+                              <choice localId="825" xsi:type="TupleTypeSpecifier">
+                                 <element localId="826" name="code">
+                                    <elementType localId="827" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="828" name="reason">
+                                    <elementType localId="829" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="830" name="documentation">
+                                    <elementType localId="831" xsi:type="TupleTypeSpecifier">
+                                       <element localId="832" name="label">
+                                          <elementType localId="833" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="834" name="timingAge">
+                                    <elementType localId="835" xsi:type="TupleTypeSpecifier">
+                                       <element localId="836" name="value">
+                                          <elementType localId="837" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="838" name="code">
+                                          <elementType localId="839" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="840" name="timingTiming">
+                                    <elementType localId="841" xsi:type="TupleTypeSpecifier">
+                                       <element localId="842" name="event">
+                                          <elementType localId="843" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="844" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="845" name="repeat">
+                                          <elementType localId="846" xsi:type="TupleTypeSpecifier">
+                                             <element localId="847" name="boundsPeriod">
+                                                <elementType localId="848" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="849" name="start">
+                                                      <elementType localId="850" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="851" name="frequency">
+                                                <elementType localId="852" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="853" name="period">
+                                                <elementType localId="854" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="855" name="periodUnit">
+                                                <elementType localId="856" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                              <choice localId="857" xsi:type="TupleTypeSpecifier">
+                                 <element localId="858" name="code">
+                                    <elementType localId="859" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="860" name="reason">
+                                    <elementType localId="861" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="862" name="documentation">
+                                    <elementType localId="863" xsi:type="TupleTypeSpecifier">
+                                       <element localId="864" name="label">
+                                          <elementType localId="865" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                           </asTypeSpecifier>
+                        </expression>
+                     </return>
+                  </element>
+                  <element localId="418" locator="26:5-26:38" xsi:type="Except">
+                     <signature localId="466" xsi:type="ListTypeSpecifier">
+                        <elementType localId="467" xsi:type="ChoiceTypeSpecifier">
+                           <choice localId="468" xsi:type="TupleTypeSpecifier">
+                              <element localId="469" name="code">
+                                 <elementType localId="470" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="471" name="reason">
+                                 <elementType localId="472" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="473" name="documentation">
+                                 <elementType localId="474" xsi:type="TupleTypeSpecifier">
+                                    <element localId="475" name="label">
+                                       <elementType localId="476" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="477" name="timingAge">
+                                 <elementType localId="478" xsi:type="TupleTypeSpecifier">
+                                    <element localId="479" name="value">
+                                       <elementType localId="480" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="481" name="code">
+                                       <elementType localId="482" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="483" name="timingTiming">
+                                 <elementType localId="484" xsi:type="TupleTypeSpecifier">
+                                    <element localId="485" name="event">
+                                       <elementType localId="486" xsi:type="ListTypeSpecifier">
+                                          <elementType localId="487" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </elementType>
+                                    </element>
+                                    <element localId="488" name="repeat">
+                                       <elementType localId="489" xsi:type="TupleTypeSpecifier">
+                                          <element localId="490" name="boundsPeriod">
+                                             <elementType localId="491" xsi:type="TupleTypeSpecifier">
+                                                <element localId="492" name="start">
+                                                   <elementType localId="493" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                </element>
+                                             </elementType>
+                                          </element>
+                                          <element localId="494" name="frequency">
+                                             <elementType localId="495" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                          <element localId="496" name="period">
+                                             <elementType localId="497" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                          <element localId="498" name="periodUnit">
+                                             <elementType localId="499" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                 </elementType>
+                              </element>
+                           </choice>
+                           <choice localId="500" xsi:type="TupleTypeSpecifier">
+                              <element localId="501" name="code">
+                                 <elementType localId="502" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="503" name="reason">
+                                 <elementType localId="504" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="505" name="documentation">
+                                 <elementType localId="506" xsi:type="TupleTypeSpecifier">
+                                    <element localId="507" name="label">
+                                       <elementType localId="508" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                           </choice>
+                        </elementType>
+                     </signature>
+                     <signature localId="509" xsi:type="ListTypeSpecifier">
+                        <elementType localId="510" xsi:type="ChoiceTypeSpecifier">
+                           <choice localId="511" xsi:type="TupleTypeSpecifier">
+                              <element localId="512" name="code">
+                                 <elementType localId="513" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="514" name="reason">
+                                 <elementType localId="515" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="516" name="documentation">
+                                 <elementType localId="517" xsi:type="TupleTypeSpecifier">
+                                    <element localId="518" name="label">
+                                       <elementType localId="519" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="520" name="timingAge">
+                                 <elementType localId="521" xsi:type="TupleTypeSpecifier">
+                                    <element localId="522" name="value">
+                                       <elementType localId="523" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="524" name="code">
+                                       <elementType localId="525" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                              <element localId="526" name="timingTiming">
+                                 <elementType localId="527" xsi:type="TupleTypeSpecifier">
+                                    <element localId="528" name="event">
+                                       <elementType localId="529" xsi:type="ListTypeSpecifier">
+                                          <elementType localId="530" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </elementType>
+                                    </element>
+                                    <element localId="531" name="repeat">
+                                       <elementType localId="532" xsi:type="TupleTypeSpecifier">
+                                          <element localId="533" name="boundsPeriod">
+                                             <elementType localId="534" xsi:type="TupleTypeSpecifier">
+                                                <element localId="535" name="start">
+                                                   <elementType localId="536" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                </element>
+                                             </elementType>
+                                          </element>
+                                          <element localId="537" name="frequency">
+                                             <elementType localId="538" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                          <element localId="539" name="period">
+                                             <elementType localId="540" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                          <element localId="541" name="periodUnit">
+                                             <elementType localId="542" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                 </elementType>
+                              </element>
+                           </choice>
+                           <choice localId="543" xsi:type="TupleTypeSpecifier">
+                              <element localId="544" name="code">
+                                 <elementType localId="545" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="546" name="reason">
+                                 <elementType localId="547" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                              <element localId="548" name="documentation">
+                                 <elementType localId="549" xsi:type="TupleTypeSpecifier">
+                                    <element localId="550" name="label">
+                                       <elementType localId="551" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                 </elementType>
+                              </element>
+                           </choice>
+                        </elementType>
+                     </signature>
+                     <operand localId="415" locator="26:5-26:22" name="SpecialPopulations" xsi:type="ExpressionRef"/>
+                     <operand localId="419" xsi:type="Query">
+                        <source localId="420" alias="X">
+                           <expression localId="416" locator="26:31-26:38" xsi:type="List">
+                              <element localId="417" locator="26:33-26:36" xsi:type="Null"/>
+                           </expression>
+                        </source>
+                        <return localId="421" distinct="false">
+                           <expression localId="423" xsi:type="As">
+                              <operand localId="422" name="X" xsi:type="AliasRef"/>
+                              <asTypeSpecifier localId="424" xsi:type="ChoiceTypeSpecifier">
+                                 <choice localId="425" xsi:type="TupleTypeSpecifier">
+                                    <element localId="426" name="code">
+                                       <elementType localId="427" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="428" name="reason">
+                                       <elementType localId="429" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="430" name="documentation">
+                                       <elementType localId="431" xsi:type="TupleTypeSpecifier">
+                                          <element localId="432" name="label">
+                                             <elementType localId="433" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                    <element localId="434" name="timingAge">
+                                       <elementType localId="435" xsi:type="TupleTypeSpecifier">
+                                          <element localId="436" name="value">
+                                             <elementType localId="437" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                          <element localId="438" name="code">
+                                             <elementType localId="439" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                    <element localId="440" name="timingTiming">
+                                       <elementType localId="441" xsi:type="TupleTypeSpecifier">
+                                          <element localId="442" name="event">
+                                             <elementType localId="443" xsi:type="ListTypeSpecifier">
+                                                <elementType localId="444" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </elementType>
+                                          </element>
+                                          <element localId="445" name="repeat">
+                                             <elementType localId="446" xsi:type="TupleTypeSpecifier">
+                                                <element localId="447" name="boundsPeriod">
+                                                   <elementType localId="448" xsi:type="TupleTypeSpecifier">
+                                                      <element localId="449" name="start">
+                                                         <elementType localId="450" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                      </element>
+                                                   </elementType>
+                                                </element>
+                                                <element localId="451" name="frequency">
+                                                   <elementType localId="452" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                                </element>
+                                                <element localId="453" name="period">
+                                                   <elementType localId="454" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                                </element>
+                                                <element localId="455" name="periodUnit">
+                                                   <elementType localId="456" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                </element>
+                                             </elementType>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                 </choice>
+                                 <choice localId="457" xsi:type="TupleTypeSpecifier">
+                                    <element localId="458" name="code">
+                                       <elementType localId="459" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="460" name="reason">
+                                       <elementType localId="461" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    </element>
+                                    <element localId="462" name="documentation">
+                                       <elementType localId="463" xsi:type="TupleTypeSpecifier">
+                                          <element localId="464" name="label">
+                                             <elementType localId="465" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </element>
+                                       </elementType>
+                                    </element>
+                                 </choice>
+                              </asTypeSpecifier>
+                           </expression>
+                        </return>
+                     </operand>
+                  </element>
+                  <element localId="866" xsi:type="Query">
+                     <source localId="867" alias="X">
+                        <expression localId="579" locator="27:5-27:48" xsi:type="Except">
+                           <signature localId="594" xsi:type="ListTypeSpecifier">
+                              <elementType localId="595" xsi:type="TupleTypeSpecifier">
+                                 <element localId="596" name="code">
+                                    <elementType localId="597" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="598" name="reason">
+                                    <elementType localId="599" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="600" name="documentation">
+                                    <elementType localId="601" xsi:type="TupleTypeSpecifier">
+                                       <element localId="602" name="label">
+                                          <elementType localId="603" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </signature>
+                           <signature localId="604" xsi:type="ListTypeSpecifier">
+                              <elementType localId="605" xsi:type="TupleTypeSpecifier">
+                                 <element localId="606" name="code">
+                                    <elementType localId="607" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="608" name="reason">
+                                    <elementType localId="609" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="610" name="documentation">
+                                    <elementType localId="611" xsi:type="TupleTypeSpecifier">
+                                       <element localId="612" name="label">
+                                          <elementType localId="613" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </signature>
+                           <operand localId="552" locator="27:5-27:32" xsi:type="List">
+                              <element localId="576" locator="27:6-27:31" name="SDMDelayScreeningLactating" xsi:type="ExpressionRef"/>
+                           </operand>
+                           <operand localId="580" xsi:type="Query">
+                              <source localId="581" alias="X">
+                                 <expression localId="577" locator="27:41-27:48" xsi:type="List">
+                                    <element localId="578" locator="27:43-27:46" xsi:type="Null"/>
+                                 </expression>
+                              </source>
+                              <return localId="582" distinct="false">
+                                 <expression localId="584" xsi:type="As">
+                                    <operand localId="583" name="X" xsi:type="AliasRef"/>
+                                    <asTypeSpecifier localId="585" xsi:type="TupleTypeSpecifier">
+                                       <element localId="586" name="code">
+                                          <elementType localId="587" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="588" name="reason">
+                                          <elementType localId="589" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="590" name="documentation">
+                                          <elementType localId="591" xsi:type="TupleTypeSpecifier">
+                                             <element localId="592" name="label">
+                                                <elementType localId="593" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </asTypeSpecifier>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </expression>
+                     </source>
+                     <return localId="868" distinct="false">
+                        <expression localId="870" xsi:type="As">
+                           <operand localId="869" name="X" xsi:type="AliasRef"/>
+                           <asTypeSpecifier localId="871" xsi:type="ChoiceTypeSpecifier">
+                              <choice localId="872" xsi:type="TupleTypeSpecifier">
+                                 <element localId="873" name="code">
+                                    <elementType localId="874" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="875" name="reason">
+                                    <elementType localId="876" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="877" name="documentation">
+                                    <elementType localId="878" xsi:type="TupleTypeSpecifier">
+                                       <element localId="879" name="label">
+                                          <elementType localId="880" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="881" name="timingAge">
+                                    <elementType localId="882" xsi:type="TupleTypeSpecifier">
+                                       <element localId="883" name="value">
+                                          <elementType localId="884" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="885" name="code">
+                                          <elementType localId="886" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="887" name="timingTiming">
+                                    <elementType localId="888" xsi:type="TupleTypeSpecifier">
+                                       <element localId="889" name="event">
+                                          <elementType localId="890" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="891" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="892" name="repeat">
+                                          <elementType localId="893" xsi:type="TupleTypeSpecifier">
+                                             <element localId="894" name="boundsPeriod">
+                                                <elementType localId="895" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="896" name="start">
+                                                      <elementType localId="897" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="898" name="frequency">
+                                                <elementType localId="899" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="900" name="period">
+                                                <elementType localId="901" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="902" name="periodUnit">
+                                                <elementType localId="903" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                              <choice localId="904" xsi:type="TupleTypeSpecifier">
+                                 <element localId="905" name="code">
+                                    <elementType localId="906" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="907" name="reason">
+                                    <elementType localId="908" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="909" name="documentation">
+                                    <elementType localId="910" xsi:type="TupleTypeSpecifier">
+                                       <element localId="911" name="label">
+                                          <elementType localId="912" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                           </asTypeSpecifier>
+                        </expression>
+                     </return>
+                  </element>
+                  <element localId="913" xsi:type="Query">
+                     <source localId="914" alias="X">
+                        <expression localId="621" locator="28:5-28:31" xsi:type="Except">
+                           <signature localId="659" xsi:type="ListTypeSpecifier">
+                              <elementType localId="660" xsi:type="TupleTypeSpecifier">
+                                 <element localId="661" name="code">
+                                    <elementType localId="662" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="663" name="reason">
+                                    <elementType localId="664" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="665" name="documentation">
+                                    <elementType localId="666" xsi:type="TupleTypeSpecifier">
+                                       <element localId="667" name="label">
+                                          <elementType localId="668" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="669" name="timingAge">
+                                    <elementType localId="670" xsi:type="TupleTypeSpecifier">
+                                       <element localId="671" name="value">
+                                          <elementType localId="672" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="673" name="code">
+                                          <elementType localId="674" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="675" name="timingTiming">
+                                    <elementType localId="676" xsi:type="TupleTypeSpecifier">
+                                       <element localId="677" name="event">
+                                          <elementType localId="678" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="679" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="680" name="repeat">
+                                          <elementType localId="681" xsi:type="TupleTypeSpecifier">
+                                             <element localId="682" name="boundsPeriod">
+                                                <elementType localId="683" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="684" name="start">
+                                                      <elementType localId="685" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="686" name="frequency">
+                                                <elementType localId="687" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="688" name="period">
+                                                <elementType localId="689" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="690" name="periodUnit">
+                                                <elementType localId="691" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </signature>
+                           <signature localId="692" xsi:type="ListTypeSpecifier">
+                              <elementType localId="693" xsi:type="TupleTypeSpecifier">
+                                 <element localId="694" name="code">
+                                    <elementType localId="695" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="696" name="reason">
+                                    <elementType localId="697" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="698" name="documentation">
+                                    <elementType localId="699" xsi:type="TupleTypeSpecifier">
+                                       <element localId="700" name="label">
+                                          <elementType localId="701" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="702" name="timingAge">
+                                    <elementType localId="703" xsi:type="TupleTypeSpecifier">
+                                       <element localId="704" name="value">
+                                          <elementType localId="705" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="706" name="code">
+                                          <elementType localId="707" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="708" name="timingTiming">
+                                    <elementType localId="709" xsi:type="TupleTypeSpecifier">
+                                       <element localId="710" name="event">
+                                          <elementType localId="711" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="712" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="713" name="repeat">
+                                          <elementType localId="714" xsi:type="TupleTypeSpecifier">
+                                             <element localId="715" name="boundsPeriod">
+                                                <elementType localId="716" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="717" name="start">
+                                                      <elementType localId="718" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="719" name="frequency">
+                                                <elementType localId="720" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="721" name="period">
+                                                <elementType localId="722" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="723" name="periodUnit">
+                                                <elementType localId="724" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </elementType>
+                           </signature>
+                           <operand localId="618" locator="28:5-28:15" name="AverageRisk" xsi:type="ExpressionRef"/>
+                           <operand localId="622" xsi:type="Query">
+                              <source localId="623" alias="X">
+                                 <expression localId="619" locator="28:24-28:31" xsi:type="List">
+                                    <element localId="620" locator="28:26-28:29" xsi:type="Null"/>
+                                 </expression>
+                              </source>
+                              <return localId="624" distinct="false">
+                                 <expression localId="626" xsi:type="As">
+                                    <operand localId="625" name="X" xsi:type="AliasRef"/>
+                                    <asTypeSpecifier localId="627" xsi:type="TupleTypeSpecifier">
+                                       <element localId="628" name="code">
+                                          <elementType localId="629" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="630" name="reason">
+                                          <elementType localId="631" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="632" name="documentation">
+                                          <elementType localId="633" xsi:type="TupleTypeSpecifier">
+                                             <element localId="634" name="label">
+                                                <elementType localId="635" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                       <element localId="636" name="timingAge">
+                                          <elementType localId="637" xsi:type="TupleTypeSpecifier">
+                                             <element localId="638" name="value">
+                                                <elementType localId="639" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="640" name="code">
+                                                <elementType localId="641" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                       <element localId="642" name="timingTiming">
+                                          <elementType localId="643" xsi:type="TupleTypeSpecifier">
+                                             <element localId="644" name="event">
+                                                <elementType localId="645" xsi:type="ListTypeSpecifier">
+                                                   <elementType localId="646" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                </elementType>
+                                             </element>
+                                             <element localId="647" name="repeat">
+                                                <elementType localId="648" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="649" name="boundsPeriod">
+                                                      <elementType localId="650" xsi:type="TupleTypeSpecifier">
+                                                         <element localId="651" name="start">
+                                                            <elementType localId="652" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                         </element>
+                                                      </elementType>
+                                                   </element>
+                                                   <element localId="653" name="frequency">
+                                                      <elementType localId="654" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                   <element localId="655" name="period">
+                                                      <elementType localId="656" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                   <element localId="657" name="periodUnit">
+                                                      <elementType localId="658" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </asTypeSpecifier>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </expression>
+                     </source>
+                     <return localId="915" distinct="false">
+                        <expression localId="917" xsi:type="As">
+                           <operand localId="916" name="X" xsi:type="AliasRef"/>
+                           <asTypeSpecifier localId="918" xsi:type="ChoiceTypeSpecifier">
+                              <choice localId="919" xsi:type="TupleTypeSpecifier">
+                                 <element localId="920" name="code">
+                                    <elementType localId="921" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="922" name="reason">
+                                    <elementType localId="923" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="924" name="documentation">
+                                    <elementType localId="925" xsi:type="TupleTypeSpecifier">
+                                       <element localId="926" name="label">
+                                          <elementType localId="927" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="928" name="timingAge">
+                                    <elementType localId="929" xsi:type="TupleTypeSpecifier">
+                                       <element localId="930" name="value">
+                                          <elementType localId="931" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="932" name="code">
+                                          <elementType localId="933" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="934" name="timingTiming">
+                                    <elementType localId="935" xsi:type="TupleTypeSpecifier">
+                                       <element localId="936" name="event">
+                                          <elementType localId="937" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="938" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="939" name="repeat">
+                                          <elementType localId="940" xsi:type="TupleTypeSpecifier">
+                                             <element localId="941" name="boundsPeriod">
+                                                <elementType localId="942" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="943" name="start">
+                                                      <elementType localId="944" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="945" name="frequency">
+                                                <elementType localId="946" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="947" name="period">
+                                                <elementType localId="948" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="949" name="periodUnit">
+                                                <elementType localId="950" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                              <choice localId="951" xsi:type="TupleTypeSpecifier">
+                                 <element localId="952" name="code">
+                                    <elementType localId="953" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="954" name="reason">
+                                    <elementType localId="955" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="956" name="documentation">
+                                    <elementType localId="957" xsi:type="TupleTypeSpecifier">
+                                       <element localId="958" name="label">
+                                          <elementType localId="959" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                           </asTypeSpecifier>
+                        </expression>
+                     </return>
+                  </element>
+               </operand>
+               <operand localId="963" xsi:type="Query">
+                  <source localId="964" alias="X">
+                     <expression localId="960" locator="30:10-30:17" xsi:type="List">
+                        <element localId="961" locator="30:12-30:15" xsi:type="Null"/>
+                     </expression>
+                  </source>
+                  <return localId="965" distinct="false">
+                     <expression localId="967" xsi:type="As">
+                        <operand localId="966" name="X" xsi:type="AliasRef"/>
+                        <asTypeSpecifier localId="968" xsi:type="ListTypeSpecifier">
+                           <elementType localId="969" xsi:type="ChoiceTypeSpecifier">
+                              <choice localId="970" xsi:type="TupleTypeSpecifier">
+                                 <element localId="971" name="code">
+                                    <elementType localId="972" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="973" name="reason">
+                                    <elementType localId="974" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="975" name="documentation">
+                                    <elementType localId="976" xsi:type="TupleTypeSpecifier">
+                                       <element localId="977" name="label">
+                                          <elementType localId="978" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="979" name="timingAge">
+                                    <elementType localId="980" xsi:type="TupleTypeSpecifier">
+                                       <element localId="981" name="value">
+                                          <elementType localId="982" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                       <element localId="983" name="code">
+                                          <elementType localId="984" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="985" name="timingTiming">
+                                    <elementType localId="986" xsi:type="TupleTypeSpecifier">
+                                       <element localId="987" name="event">
+                                          <elementType localId="988" xsi:type="ListTypeSpecifier">
+                                             <elementType localId="989" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                          </elementType>
+                                       </element>
+                                       <element localId="990" name="repeat">
+                                          <elementType localId="991" xsi:type="TupleTypeSpecifier">
+                                             <element localId="992" name="boundsPeriod">
+                                                <elementType localId="993" xsi:type="TupleTypeSpecifier">
+                                                   <element localId="994" name="start">
+                                                      <elementType localId="995" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                                   </element>
+                                                </elementType>
+                                             </element>
+                                             <element localId="996" name="frequency">
+                                                <elementType localId="997" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="998" name="period">
+                                                <elementType localId="999" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                             <element localId="1000" name="periodUnit">
+                                                <elementType localId="1001" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                             </element>
+                                          </elementType>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                              <choice localId="1002" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1003" name="code">
+                                    <elementType localId="1004" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1005" name="reason">
+                                    <elementType localId="1006" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1007" name="documentation">
+                                    <elementType localId="1008" xsi:type="TupleTypeSpecifier">
+                                       <element localId="1009" name="label">
+                                          <elementType localId="1010" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                              </choice>
+                           </elementType>
+                        </asTypeSpecifier>
+                     </expression>
+                  </return>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1100" locator="32:1-33:71" name="ExistsMammogramRecommendations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1100">
+               <a:s>define ExistsMammogramRecommendations:
+  </a:s>
+               <a:s r="1101">
+                  <a:s>exists </a:s>
+                  <a:s r="1110">
+                     <a:s>
+                        <a:s r="1102">
+                           <a:s r="1103">
+                              <a:s>
+                                 <a:s>&quot;flow-DecisionToScreen&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> R</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> </a:s>
+                     <a:s r="1104">
+                        <a:s>where </a:s>
+                        <a:s r="1104">
+                           <a:s r="1106">
+                              <a:s r="1105">
+                                 <a:s>R</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="1106">
+                                 <a:s>code</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="1107">
+                              <a:s>&quot;MG Breast Screening&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1101" locator="33:3-33:71" xsi:type="Exists">
+            <signature localId="1111" xsi:type="ListTypeSpecifier">
+               <elementType localId="1112" xsi:type="ChoiceTypeSpecifier">
+                  <choice localId="1113" xsi:type="TupleTypeSpecifier">
+                     <element localId="1114" name="code">
+                        <elementType localId="1115" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1116" name="reason">
+                        <elementType localId="1117" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1118" name="documentation">
+                        <elementType localId="1119" xsi:type="TupleTypeSpecifier">
+                           <element localId="1120" name="label">
+                              <elementType localId="1121" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                     <element localId="1122" name="timingAge">
+                        <elementType localId="1123" xsi:type="TupleTypeSpecifier">
+                           <element localId="1124" name="value">
+                              <elementType localId="1125" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1126" name="code">
+                              <elementType localId="1127" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                     <element localId="1128" name="timingTiming">
+                        <elementType localId="1129" xsi:type="TupleTypeSpecifier">
+                           <element localId="1130" name="event">
+                              <elementType localId="1131" xsi:type="ListTypeSpecifier">
+                                 <elementType localId="1132" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </elementType>
+                           </element>
+                           <element localId="1133" name="repeat">
+                              <elementType localId="1134" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1135" name="boundsPeriod">
+                                    <elementType localId="1136" xsi:type="TupleTypeSpecifier">
+                                       <element localId="1137" name="start">
+                                          <elementType localId="1138" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="1139" name="frequency">
+                                    <elementType localId="1140" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1141" name="period">
+                                    <elementType localId="1142" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1143" name="periodUnit">
+                                    <elementType localId="1144" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                        </elementType>
+                     </element>
+                  </choice>
+                  <choice localId="1145" xsi:type="TupleTypeSpecifier">
+                     <element localId="1146" name="code">
+                        <elementType localId="1147" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1148" name="reason">
+                        <elementType localId="1149" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1150" name="documentation">
+                        <elementType localId="1151" xsi:type="TupleTypeSpecifier">
+                           <element localId="1152" name="label">
+                              <elementType localId="1153" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                  </choice>
+               </elementType>
+            </signature>
+            <operand localId="1110" locator="33:10-33:71" xsi:type="Query">
+               <source localId="1102" locator="33:10-33:34" alias="R">
+                  <expression localId="1103" locator="33:10-33:32" name="flow-DecisionToScreen" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="1104" locator="33:36-33:71" xsi:type="Equivalent">
+                  <signature localId="1108" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="1109" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="1106" locator="33:42-33:47" path="code" scope="R" xsi:type="Property"/>
+                  <operand localId="1107" locator="33:51-33:71" name="MG Breast Screening" xsi:type="CodeRef"/>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1155" locator="35:1-36:61" name="ExistsMriRecommendations" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1155">
+               <a:s>define ExistsMriRecommendations:
+  </a:s>
+               <a:s r="1156">
+                  <a:s>exists </a:s>
+                  <a:s r="1165">
+                     <a:s>
+                        <a:s r="1157">
+                           <a:s r="1158">
+                              <a:s>
+                                 <a:s>&quot;flow-DecisionToScreen&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> R</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> </a:s>
+                     <a:s r="1159">
+                        <a:s>where </a:s>
+                        <a:s r="1159">
+                           <a:s r="1161">
+                              <a:s r="1160">
+                                 <a:s>R</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="1161">
+                                 <a:s>code</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> ~ </a:s>
+                           <a:s r="1162">
+                              <a:s>&quot;MR Breast&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1156" locator="36:3-36:61" xsi:type="Exists">
+            <signature localId="1166" xsi:type="ListTypeSpecifier">
+               <elementType localId="1167" xsi:type="ChoiceTypeSpecifier">
+                  <choice localId="1168" xsi:type="TupleTypeSpecifier">
+                     <element localId="1169" name="code">
+                        <elementType localId="1170" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1171" name="reason">
+                        <elementType localId="1172" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1173" name="documentation">
+                        <elementType localId="1174" xsi:type="TupleTypeSpecifier">
+                           <element localId="1175" name="label">
+                              <elementType localId="1176" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                     <element localId="1177" name="timingAge">
+                        <elementType localId="1178" xsi:type="TupleTypeSpecifier">
+                           <element localId="1179" name="value">
+                              <elementType localId="1180" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                           <element localId="1181" name="code">
+                              <elementType localId="1182" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                     <element localId="1183" name="timingTiming">
+                        <elementType localId="1184" xsi:type="TupleTypeSpecifier">
+                           <element localId="1185" name="event">
+                              <elementType localId="1186" xsi:type="ListTypeSpecifier">
+                                 <elementType localId="1187" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </elementType>
+                           </element>
+                           <element localId="1188" name="repeat">
+                              <elementType localId="1189" xsi:type="TupleTypeSpecifier">
+                                 <element localId="1190" name="boundsPeriod">
+                                    <elementType localId="1191" xsi:type="TupleTypeSpecifier">
+                                       <element localId="1192" name="start">
+                                          <elementType localId="1193" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                       </element>
+                                    </elementType>
+                                 </element>
+                                 <element localId="1194" name="frequency">
+                                    <elementType localId="1195" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1196" name="period">
+                                    <elementType localId="1197" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                                 <element localId="1198" name="periodUnit">
+                                    <elementType localId="1199" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                                 </element>
+                              </elementType>
+                           </element>
+                        </elementType>
+                     </element>
+                  </choice>
+                  <choice localId="1200" xsi:type="TupleTypeSpecifier">
+                     <element localId="1201" name="code">
+                        <elementType localId="1202" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1203" name="reason">
+                        <elementType localId="1204" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="1205" name="documentation">
+                        <elementType localId="1206" xsi:type="TupleTypeSpecifier">
+                           <element localId="1207" name="label">
+                              <elementType localId="1208" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                  </choice>
+               </elementType>
+            </signature>
+            <operand localId="1165" locator="36:10-36:61" xsi:type="Query">
+               <source localId="1157" locator="36:10-36:34" alias="R">
+                  <expression localId="1158" locator="36:10-36:32" name="flow-DecisionToScreen" xsi:type="ExpressionRef"/>
+               </source>
+               <where localId="1159" locator="36:36-36:61" xsi:type="Equivalent">
+                  <signature localId="1163" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="1164" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="1161" locator="36:42-36:47" path="code" scope="R" xsi:type="Property"/>
+                  <operand localId="1162" locator="36:51-36:61" name="MR Breast" xsi:type="CodeRef"/>
+               </where>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1210" locator="43:1-44:37" name="ExistsSDMContinueScreeningAge" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1210">
+               <a:s>define ExistsSDMContinueScreeningAge:
+  </a:s>
+               <a:s r="1213">
+                  <a:s r="1211">
+                     <a:s>SDMContinueScreeningAge</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1213" locator="44:3-44:37" xsi:type="Not">
+            <operand localId="1212" locator="44:3-44:37" xsi:type="IsNull">
+               <operand localId="1211" locator="44:3-44:25" name="SDMContinueScreeningAge" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1215" locator="46:1-47:30" name="SDMContinueScreeningAgeCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1215">
+               <a:s>define SDMContinueScreeningAgeCode:
+  </a:s>
+               <a:s r="1217">
+                  <a:s r="1216">
+                     <a:s>SDMContinueScreeningAge</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1217">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1217" locator="47:3-47:30" path="code" xsi:type="Property">
+            <source localId="1216" locator="47:3-47:25" name="SDMContinueScreeningAge" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="1219" locator="49:1-50:32" name="SDMContinueScreeningAgeReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1219">
+               <a:s>define SDMContinueScreeningAgeReason:
+  </a:s>
+               <a:s r="1221">
+                  <a:s r="1220">
+                     <a:s>SDMContinueScreeningAge</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1221">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1221" locator="50:3-50:32" path="reason" xsi:type="Property">
+            <source localId="1220" locator="50:3-50:25" name="SDMContinueScreeningAge" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="1223" locator="57:1-58:41" name="ExistsSDMContinueScreeningLifeExp" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1223">
+               <a:s>define ExistsSDMContinueScreeningLifeExp:
+  </a:s>
+               <a:s r="1226">
+                  <a:s r="1224">
+                     <a:s>SDMContinueScreeningLifeExp</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1226" locator="58:3-58:41" xsi:type="Not">
+            <operand localId="1225" locator="58:3-58:41" xsi:type="IsNull">
+               <operand localId="1224" locator="58:3-58:29" name="SDMContinueScreeningLifeExp" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1228" locator="60:1-61:34" name="SDMContinueScreeningLifeExpCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1228">
+               <a:s>define SDMContinueScreeningLifeExpCode:
+  </a:s>
+               <a:s r="1230">
+                  <a:s r="1229">
+                     <a:s>SDMContinueScreeningLifeExp</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1230">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1230" locator="61:3-61:34" path="code" xsi:type="Property">
+            <source localId="1229" locator="61:3-61:29" name="SDMContinueScreeningLifeExp" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="1232" locator="63:1-64:36" name="SDMContinueScreeningLifeExpReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1232">
+               <a:s>define SDMContinueScreeningLifeExpReason:
+  </a:s>
+               <a:s r="1234">
+                  <a:s r="1233">
+                     <a:s>SDMContinueScreeningLifeExp</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1234">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1234" locator="64:3-64:36" path="reason" xsi:type="Property">
+            <source localId="1233" locator="64:3-64:29" name="SDMContinueScreeningLifeExp" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="1236" locator="81:1-82:40" name="ExistsSDMDelayScreeningLactating" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1236">
+               <a:s>define ExistsSDMDelayScreeningLactating:
+  </a:s>
+               <a:s r="1239">
+                  <a:s r="1237">
+                     <a:s>SDMDelayScreeningLactating</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1239" locator="82:3-82:40" xsi:type="Not">
+            <operand localId="1238" locator="82:3-82:40" xsi:type="IsNull">
+               <operand localId="1237" locator="82:3-82:28" name="SDMDelayScreeningLactating" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="1241" locator="84:1-85:33" name="SDMDelayScreeningLactatingCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1241">
+               <a:s>define SDMDelayScreeningLactatingCode:
+  </a:s>
+               <a:s r="1243">
+                  <a:s r="1242">
+                     <a:s>SDMDelayScreeningLactating</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1243">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1243" locator="85:3-85:33" path="code" xsi:type="Property">
+            <source localId="1242" locator="85:3-85:28" name="SDMDelayScreeningLactating" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="1245" locator="87:1-88:35" name="SDMDelayScreeningLactatingReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="1245">
+               <a:s>define SDMDelayScreeningLactatingReason:
+  </a:s>
+               <a:s r="1247">
+                  <a:s r="1246">
+                     <a:s>SDMDelayScreeningLactating</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="1247">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="1247" locator="88:3-88:35" path="reason" xsi:type="Property">
+            <source localId="1246" locator="88:3-88:28" name="SDMDelayScreeningLactating" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+   </statements>
+</library>

@@ -1,0 +1,83 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/67",
+    "resource" : {
+      "resourceType" : "CarePlan",
+      "id" : "67",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_67\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 67</b></p><a name=\"67\"> </a><a name=\"hc67\"> </a><a name=\"67-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskExclusions.html\">High Risk Exclusions</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk.html#RequestGroup_68\">Bundle: type = collection</a></td></tr></table></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskExclusions"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "activity" : [{
+        "reference" : {
+          "reference" : "RequestGroup/68"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/68",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "68",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_68\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 68</b></p><a name=\"68\"> </a><a name=\"hc68\"> </a><a name=\"68-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskExclusions.html\">High Risk Exclusions</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>SpecialtyReferralGeneticRisk</blockquote><p><b>title</b>: Recommendation for speciality referral</p><p><b>description</b>: Recommendation for speciality referral</p><p><b>resource</b>: <a href=\"Bundle-HighRiskExclusions_eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk.html#CommunicationRequest_69\">Bundle: type = collection</a></p></blockquote></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskExclusions"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "action" : [{
+        "id" : "SpecialtyReferralGeneticRisk",
+        "title" : "Recommendation for speciality referral",
+        "description" : "Recommendation for speciality referral",
+        "resource" : {
+          "reference" : "CommunicationRequest/69"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/69",
+    "resource" : {
+      "resourceType" : "CommunicationRequest",
+      "id" : "69",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CommunicationRequest_69\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CommunicationRequest 69</b></p><a name=\"69\"> </a><a name=\"hc69\"> </a><a name=\"69-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-CommunicateSpecialtyReferral.html\">Communicate Recommendation to refer to specialist</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><h3>Payloads</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Content[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>Refer to specialist recommendations</td></tr></table><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system othergeneticrisk}\">Other genetic marker or syndrome associated with breast cancer</span></p></div>"
+      },
+      "basedOn" : [{
+        "reference" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSpecialtyReferral"
+      }],
+      "status" : "option",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "payload" : [{
+        "contentString" : "Refer to specialist recommendations"
+      }],
+      "reasonCode" : [{
+        "coding" : [{
+          "system" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+          "code" : "othergeneticrisk",
+          "display" : "Other genetic marker or syndrome associated with breast cancer"
+        }]
+      }]
+    }
+  }]
+}
