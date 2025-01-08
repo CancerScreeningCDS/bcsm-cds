@@ -111,7 +111,6 @@ define function CalculateNextDueByCodeAndInterval(code Concept,
 define function RepeatIsValid(repeat Tuple{frequency System.Integer,period System.Decimal,periodUnit System.String}):
   repeat.frequency is not null and repeat.period is not null and repeat.periodUnit is not null
 
-//TODO: determine if this needs a value set
 define function MostRecentDiagnosticReportByCode(code Concept):
     CSMCommonFunctions.MostRecentDiagnosticReport(DiagnosticReportsByCode(code))
 
@@ -119,6 +118,12 @@ define function MostRecentDiagnosticReportByCode(code Concept):
 define function DiagnosticReportsByCode(concept Concept):
   [DiagnosticReport] R
     where R.code ~ concept  
+
+define function MostRecentDiagnosticReportByVS(vs System.ValueSet):
+    CSMCommonFunctions.MostRecentDiagnosticReport(DiagnosticReportsByVS(vs))
+
+define function DiagnosticReportsByVS(vs System.ValueSet):
+  [DiagnosticReport: vs] R
 
 define function AddIntervalToDateTime(startDateTime System.DateTime, 
     repeat Tuple{frequency System.Integer,period System.Decimal,periodUnit System.String}):
