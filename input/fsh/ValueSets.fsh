@@ -18,6 +18,7 @@ Description: "Code representing plan definition action codes"
 * #sdmdelay "Shared decision making to delay screening"
 * #specialtyreferral "Refer to specialist recommendations"
 * #lifetimeriskassessment "Perform lifetime risk assessment"
+* #determinenextdue "Determine next due date"
 
 ValueSet:    PlanDefinitionActionCodes
 Id:          plan-definition-action-codes
@@ -54,6 +55,7 @@ Description: "Code representing plan definition action reason codes"
 * #fhxbreastcarisk "Compelling family history of breast cancer"
 * #USPSTFaveragerisk "USPSTF average risk"
 * #ACSaveragerisk "ACS average risk"
+* #noscreening27mo "Age 40-74 without screening in past 27 months"
 
 ValueSet:    PlanDefinitionActionReasonCodes
 Id:          plan-definition-action-reason-codes
