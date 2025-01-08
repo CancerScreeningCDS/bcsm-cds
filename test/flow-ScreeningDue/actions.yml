@@ -1,0 +1,156 @@
+act-determinedue:
+  - &act-determinedue
+    code:
+      code: "determinenextdue"
+      display: "Determine next due date"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"
+    documentation:
+      label: Other
+    reason:
+      code: "noscreening27mo"
+      display: "Age 40-74 without screening in past 27 months"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"  
+
+act-due:
+  - &act-due-unknown
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2024-01-01'
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2024-01-01'
+      scheduledDue: '2024-01-01'
+      scheduledStart: 
+      scheduledRepeat: Unknown
+      lastReportDate: 
+      flag: DUE  
+  - &act-overdue-unknown
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2023-06-01'
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2023-06-01'
+      scheduledDue: '2023-06-01'
+      scheduledStart: 
+      scheduledRepeat: Unknown
+      lastReportDate: 
+      flag: OVERDUE        
+  - &act-due-annual
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2024-01-01'
+          repeat:
+            frequency: 1
+            period: 1
+            periodUnit: a           
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2024-01-01'
+      scheduledDue: '2024-01-01'
+      scheduledStart: 
+      scheduledRepeat: Annual
+      lastReportDate: 
+      flag: DUE
+  - &act-overdue-annual  
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2023-06-01'
+          repeat:
+            frequency: 1
+            period: 1
+            periodUnit: a           
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2023-06-01'
+      scheduledDue: '2023-06-01'
+      scheduledStart: 
+      scheduledRepeat: Annual
+      lastReportDate: 
+      flag: OVERDUE
+  - &act-due-biennial
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2024-01-01'
+          repeat:
+            frequency: 1
+            period: 2
+            periodUnit: a           
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2024-01-01'
+      scheduledDue: '2024-01-01'
+      scheduledStart: 
+      scheduledRepeat: Biennial
+      lastReportDate: 
+      flag: DUE             
+  - &act-overdue-biennial
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2023-06-01'
+          repeat:
+            frequency: 1
+            period: 2
+            periodUnit: a           
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2023-06-01'
+      scheduledDue: '2023-06-01'
+      scheduledStart: 
+      scheduledRepeat: Biennial
+      lastReportDate: 
+      flag: OVERDUE  

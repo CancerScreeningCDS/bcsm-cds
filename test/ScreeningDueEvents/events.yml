@@ -1,0 +1,526 @@
+eve-nextdueexists:
+  - &EXISTS_next_due_date
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"
+  - &EXISTS_next_due_date_is_inactive
+    - resourceType: CarePlan
+      status: inactive
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"            
+  - &EXISTS_next_due_date_is_false
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1        
+
+eve-noscreening27mo:
+  - &Age_is_<_40
+    resourceType: Patient
+    id: "Agelt40"
+    name: 
+      given:
+        - Jane
+      family: Doe    
+    gender: female
+    birthDate: 2000-01-01  
+  - &Age_is_>74
+    resourceType: Patient
+    id: "Agegt74"
+    name: 
+      given:
+        - Jane
+      family: Doe    
+    gender: female
+    birthDate: 1940-01-01  
+  - &Age_is_>=_40_AND_age_is_<=74_AND_'Last_mammography'_does_not_exist
+    resourceType: Patient
+    id: "defaultPatient"
+    name: 
+      given:
+        - Jane
+      family: Doe    
+    gender: female
+    birthDate: 1980-01-01  
+  - &Age_is_>=_40_AND_age_is_<=74_AND_'Last_mammography'_date_is_>_27_months_ago
+    resourceType: DiagnosticReport    
+    status: final
+    category:
+      - coding:
+          - system: http://terminology.hl7.org/CodeSystem/v2-0074
+            code: RAD
+            display: Radiology
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+    effectiveDateTime: 2020-10-01T10:00:00Z
+    issued: 2020-10-02T15:00:00Z  
+  - &Age_is_>=_40_AND_age_is_<=74_AND_'Last_mammography'_date_is_<=_27_months_ago
+    resourceType: DiagnosticReport    
+    status: final
+    category:
+      - coding:
+          - system: http://terminology.hl7.org/CodeSystem/v2-0074
+            code: RAD
+            display: Radiology
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+    effectiveDateTime: 2023-10-01T10:00:00Z
+    issued: 2023-10-02T15:00:00Z     
+
+eve-screeninginterval: 
+  - &ANNUAL_if_preferred_interval_is_annual
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"
+            repeat:
+              frequency: 1
+              period: 1
+              periodUnit: a  
+  - &BIENNIAL_if_preferred_interval_is_biennial
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"
+            repeat:
+              frequency: 1
+              period: 2
+              periodUnit: a    
+  - &UNKNOWN_if_not_documented
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"  
+  - &OTHER_if_preferred_interval_is_other
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"
+            repeat:
+              frequency: 2
+              period: 1
+              periodUnit: a            
+
+eve-due:
+  - &OVERDUE_if_next_due_date_>_3_months_ago_AND_unknown_interval
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"   
+  - &DUE_if_next_due_date_within_2_months_from_now_AND_unknown_interval
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2024-01-01"    
+  - &DUE_if_next_due_date_<=_3_months_ago_AND_unknown_interval
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-11-01"  
+  - &Otherwise_NOT_DUE_AND_unknown_interval
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2024-12-01"   
+
+eve-dueannual:  
+  - &OVERDUE_if_next_due_date_>_2_months_ago_AND_ANNUAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: 
+              - "2023-06-01"
+            repeat:
+              frequency: 1
+              period: 1
+              periodUnit: a  
+  - &DUE_if_next_due_date_within_2_months_from_now_AND_ANNUAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: 
+              - "2024-01-01"
+            repeat:
+              frequency: 1
+              period: 1
+              periodUnit: a    
+  - &DUE_if_next_due_date_<=_2_months_ago_AND_ANNUAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: 
+              - "2023-11-01"
+            repeat:
+              frequency: 1
+              period: 1
+              periodUnit: a  
+  - &Otherwise_NOT_DUE_AND_ANNUAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: 
+              - "2024-12-01"
+            repeat:
+              frequency: 1
+              period: 1
+              periodUnit: a   
+
+eve-duebiennial:  
+  - &OVERDUE_if_next_due_date_>_3_months_ago_AND_BIENNIAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-06-01"
+            repeat:
+              frequency: 1
+              period: 2
+              periodUnit: a   
+  - &DUE_if_next_due_date_within_2_months_from_now_AND_BIENNIAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2024-01-01"
+            repeat:
+              frequency: 1
+              period: 2
+              periodUnit: a     
+  - &DUE_if_next_due_date_<=_3_months_ago_AND_BIENNIAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2023-10-01"
+            repeat:
+              frequency: 1
+              period: 2
+              periodUnit: a   
+  - &Otherwise_NOT_DUE_AND_BIENNIAL
+    - resourceType: CarePlan
+      status: active
+      created: "2023-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: RequestGroup/RequestGroup-1
+    - resourceType: RequestGroup
+      id: RequestGroup-1
+      action:
+        - code:
+            coding:
+              - system: "http://loinc.org"
+                code: "24606-6"
+                display: "MG Breast Screening"
+          timingTiming:
+            event: "2024-12-01"
+            repeat:
+              frequency: 1
+              period: 2
+              periodUnit: a   

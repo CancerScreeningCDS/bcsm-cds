@@ -1,0 +1,16 @@
+---
+name: EXISTS_next_due_date
+elementId: eve-nextdueexists
+externalData:
+  - ../events
+  - ../../DataElements/data_elements
+  - ../../default_patients
+data:
+  - *defaultPatient
+  - $import: *EXISTS_next_due_date
+results:
+  ActiveBreastCancerScreeningCarePlans: $should have length 1
+  BreastCancerScreeningCarePlan: $should exist
+  BreastCancerScreeningRequestGroup: $should exist
+  MammogramScheduledActivity: $should exist
+  eve-nextdueexists: true

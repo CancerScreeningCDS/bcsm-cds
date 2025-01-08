@@ -1,0 +1,12 @@
+---
+name: eve-nextdueexists_yes_eve-screeninginterval_unknown_eve-due_due
+flow: flow-ScreeningDue
+externalData:
+  - ../ScreeningDueEvents/events
+  - ./actions
+  - ../default_patients
+data:
+  - *defaultPatient
+  - $import: *DUE_if_next_due_date_within_2_months_from_now_AND_unknown_interval
+results:
+  flow-ScreeningDue: *act-due-unknown

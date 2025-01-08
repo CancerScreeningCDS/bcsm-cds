@@ -1,0 +1,12 @@
+---
+name: eve-nextdueexists_yes_eve-screeninginterval_annual_eve-dueannual_overdue_act-overdue
+flow: flow-ScreeningDue
+externalData:
+  - ../ScreeningDueEvents/events
+  - ./actions
+  - ../default_patients
+data:
+  - *defaultPatient
+  - $import: *OVERDUE_if_next_due_date_>_2_months_ago_AND_ANNUAL
+results:
+  flow-ScreeningDue: *act-overdue-annual
