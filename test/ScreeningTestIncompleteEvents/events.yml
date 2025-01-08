@@ -1,0 +1,96 @@
+eve-birads0:
+  - "&BI-RADS_score_in_'Last_mammography_result'_is_0__recall_to_imaging_center_"
+
+eve-pendingmammo:
+  - &'Pending_mammography'_exists_AND_'Date_of_last_mammography'_does_not_exists
+    resourceType: ServiceRequest
+    status: active
+    intent: order
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening   
+  - &'Pending_mammography'_exists_inactive
+    resourceType: ServiceRequest
+    status: completed
+    intent: order
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening  
+  - &'Pending_mammography'_exists_AND_'Date_of_last_mammography'is_before_date_'Pending_mammography'_order_or_referral_was_placed
+    - resourceType: ServiceRequest
+      status: active
+      intent: order
+      occurrenceDateTime: 2023-10-02
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+    - resourceType: DiagnosticReport    
+      status: final
+      category:
+        - coding:
+            - system: http://terminology.hl7.org/CodeSystem/v2-0074
+              code: RAD
+              display: Radiology
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+      effectiveDateTime: 2023-10-01T10:00:00Z               
+  - &'Pending_mammography'_exists_AND_'Date_of_last_mammography'is_after_date_'Pending_mammography'_order_or_referral_was_placed
+    - resourceType: ServiceRequest
+      status: active
+      intent: order
+      occurrencePeriod:
+        start: 2023-10-01
+        end: 2023-10-03
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+    - resourceType: DiagnosticReport    
+      status: final
+      category:
+        - coding:
+            - system: http://terminology.hl7.org/CodeSystem/v2-0074
+              code: RAD
+              display: Radiology
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+      effectiveDateTime: 2023-10-02T10:00:00Z 
+
+eve-pendingmri:
+  - "&'Pending_MRI'_exists_AND_'Date_of_last_MRI'_does_not_exists_OR_is_before_date_'Pending_MRI'_order_or_referral_was_placed"
+  - "&'Pending_MRI'_exists_AND_'Date_of_last_MRI'_does_not_exists"
+  - "&'Pending_MRI'_exists"
+  - "&'Date_of_last_MRI'_does_not_exists"
+  - "&is_before_date_'Pending_MRI'_order_or_referral_was_placed"
+eve-pendingus:
+  - "&'Pending_ultrasound'_exists_AND_'Date_of_last_ultrasound'_does_not_exists_OR_is_before_date_'Pending_ultrasound'_order_or_referral_was_placed"
+  - "&'Pending_ultrasound'_exists_AND_'Date_of_last_ultrasound'_does_not_exists"
+  - "&'Pending_ultrasound'_exists"
+  - "&'Date_of_last_ultrasound'_does_not_exists"
+  - "&is_before_date_'Pending_ultrasound'_order_or_referral_was_placed"
+eve-pendingbiopsy:
+  - "&'Pending_biopsy'_exists_AND_'Date_of_last_biopsy'_does_not_exists_OR_is_before_date_'Pending_biopsy'_order_or_referral_was_placed"
+  - "&'Pending_biopsy'_exists_AND_'Date_of_last_biopsy'_does_not_exists"
+  - "&'Pending_biopsy'_exists"
+  - "&'Date_of_last_biopsy'_does_not_exists"
+  - "&is_before_date_'Pending_biopsy'_order_or_referral_was_placed"
+eve-pendingoncreferral:
+  - "&REFERRAL_where_service_type_is_`BREAST_SURGERY`_OR_`MEDICAL_ONCOLOGY`_exists_and_status_is_active_AND_There_does_not_exist_a_CLINICAL_NOTE_of_service_type_`BREAST_SURGERY`_OR_`_MEDICAL_ONCOLOGY`_with_date_after_referral"
+  - "&REFERRAL_where_service_type_is_`BREAST_SURGERY`"
+  - "&`MEDICAL_ONCOLOGY`_exists_and_status_is_active_AND_There_does_not_exist_a_CLINICAL_NOTE_of_service_type_`BREAST_SURGERY`"
+  - "&`MEDICAL_ONCOLOGY`_exists_and_status_is_active"
+  - "&There_does_not_exist_a_CLINICAL_NOTE_of_service_type_`BREAST_SURGERY`"
+  - "&`_MEDICAL_ONCOLOGY`_with_date_after_referral"

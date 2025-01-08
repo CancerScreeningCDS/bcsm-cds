@@ -15,6 +15,8 @@ code "Breast cancer screening": '268547008' from "SNOMED" display 'Breast cancer
 code "MG Breast Screening": '24606-6' from "LOINC" display 'MG Breast Screening' 
 code "MR Breast": '30794-2' from "LOINC" display 'MR Breast' 
 
+valueset "SCREENING MAMMOGRAM": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1206.61'
+
 context Patient
 
 //calculated nextdue logic:
@@ -51,7 +53,7 @@ define "eve-due":
 define CarePlanActivitiesDue:
   BreastCancerScreeningActivities A
   let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(First(A.code)),
-  lastReportDate: FHIRHelpers.ToDateTime(lastReport.effective) as DateTime,
+  lastReportDate: CSMCommonFunctions.DiagnosticReportDate(lastReport),
   nextdue: CalculateActivityNextDue(A)
   return {
     activity: A,
@@ -65,7 +67,7 @@ define CarePlanActivitiesDue:
   } 
 
 define LastMammography:
-  BCSMCommonFunctions.MostRecentDiagnosticReportByCode("MG Breast Screening")
+  BCSMCommonFunctions.MostRecentDiagnosticReportByVS("SCREENING MAMMOGRAM")
 
 
 //------------------------------------------------------------------------------
