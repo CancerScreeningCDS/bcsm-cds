@@ -1,0 +1,36 @@
+---
+name: DUE_if_next_due_date_lt=_2_months_ago_AND_ANNUAL
+elementId: eve-dueannual
+externalData:
+  - ../events
+  - ../../DataElements/data_elements
+  - ../../default_patients
+data:
+  - *defaultPatient
+  - $import: *DUE_if_next_due_date_<=_2_months_ago_AND_ANNUAL
+results:
+  eve-due: 
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2023-11-01'
+          repeat:
+            frequency: 1
+            period: 1
+            periodUnit: a           
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2023-11-01'
+      scheduledDue: '2023-11-01'
+      scheduledStart: 
+      scheduledRepeat: Annual
+      lastReportDate: 
+      flag: DUE

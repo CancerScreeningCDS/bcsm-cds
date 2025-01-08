@@ -5,7 +5,6 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 include ScreeningDueEvents version '1.0.0' called Events
 include ScreeningDueActions version '1.0.0' called Actions
-include DataElements version '1.0.0' called DataElements
 
 context Patient
 
@@ -13,9 +12,15 @@ context Patient
 // RECOMMENDATIONS
 //------------------------------------------------------------------------------
 
-// TODO:check mammogram activity exists
 define "flow-ScreeningDue":
-  if exists Events."eve-due" then
-   Events."eve-due"
-  else null
+  if DetermineNextDueDate is not null
+    then {DetermineNextDueDate}
+    else DueOrOverdue
 
+define DetermineNextDueDate:
+  if Events."eve-nextdueexists" is false and Events."eve-noscreening27mo"
+    then Actions."act-determinedue"
+    else null
+
+define DueOrOverdue:    
+  Events."eve-due"

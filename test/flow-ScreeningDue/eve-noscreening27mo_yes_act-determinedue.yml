@@ -1,14 +1,12 @@
 ---
 name: eve-nextdueexists_no_eve-noscreening27mo_yes_act-determinedue
 flow: flow-ScreeningDue
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../ScreeningDueEvents/events
+  - ./actions
   - ../default_patients
 data:
-  - "*eve-nextdueexists"
-  - "*eve-noscreening27mo"
+  - *Age_is_>=_40_AND_age_is_<=74_AND_'Last_mammography'_does_not_exist
 results:
   flow-ScreeningDue:
-    - "*act-determinedue"
+    - *act-determinedue

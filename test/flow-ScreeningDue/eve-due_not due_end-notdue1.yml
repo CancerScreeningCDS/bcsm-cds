@@ -1,14 +1,12 @@
 ---
 name: eve-nextdueexists_yes_eve-screeninginterval_unknown_eve-due_not due_end-notdue1
 flow: flow-ScreeningDue
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../ScreeningDueEvents/events
+  - ./actions
   - ../default_patients
 data:
-  - "*eve-nextdueexists"
-  - "*eve-screeninginterval"
-  - "*eve-due"
+  - *defaultPatient
+  - $import: *Otherwise_NOT_DUE_AND_unknown_interval
 results:
   flow-ScreeningDue: []

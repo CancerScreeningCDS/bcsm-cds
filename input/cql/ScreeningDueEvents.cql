@@ -41,6 +41,10 @@ context Patient
 define "eve-nextdueexists":
   ActivityScheduledDate(MammogramScheduledActivity.timing) is not null
 
+define "eve-noscreening27mo":
+  AgeInYears() >= 40 and AgeInYears() <=74 and 
+  (LastMammography is null or Today() > (FHIRHelpers.ToDateTime(LastMammography.effective) as DateTime) + 27 months)
+
 define "eve-due":
   CarePlanActivitiesDue A where A.flag in {'DUE', 'OVERDUE'}
 
@@ -55,10 +59,14 @@ define CarePlanActivitiesDue:
     nextDue: nextdue,
     scheduledDue: ActivityScheduledDate(A.timing),
     scheduledStart: ((A.timing as Timing).repeat.bounds as Period).start,
-    scheduledRepeat: (A.timing as Timing).repeat,
+    scheduledRepeat: EvaluateTiming(A.timing as Timing),
     lastReportDate: lastReportDate,
     flag: EvaluateFlag(A.timing as FHIR.Timing, nextdue)
   } 
+
+define LastMammography:
+  BCSMCommonFunctions.MostRecentDiagnosticReportByCode("MG Breast Screening")
+
 
 //------------------------------------------------------------------------------
 // calculated next due
@@ -101,7 +109,11 @@ define BreastCancerScreeningRequestGroup:
   if MostRecentActiveBreastCancerScreeningCarePlan.activity[0].reference.reference is not null
     and StartsWith(MostRecentActiveBreastCancerScreeningCarePlan.activity[0].reference.reference,'RequestGroup/')
   then
-    FHIRHelpers.resolve(MostRecentActiveBreastCancerScreeningCarePlan.activity[0].reference) as FHIR.RequestGroup
+    //FHIRHelpers.resolve(MostRecentActiveBreastCancerScreeningCarePlan.activity[0].reference) as FHIR.RequestGroup
+    First(
+      [RequestGroup] R where 
+        R.id = Last(Split(MostRecentActiveBreastCancerScreeningCarePlan.activity[0].reference.reference,'/'))
+    )
   else null      
 
 define BreastCancerScreeningCarePlan:
@@ -152,6 +164,17 @@ define function MostRecentTimingEvent(timing FHIR.Timing):
 // scheduled frequency
 //------------------------------------------------------------------------------
 
+define function EvaluateTiming(timing FHIR.Timing):
+  case
+    when TimingIsUnknown(timing)
+      then 'Unknown'
+    when TimingIsAnnual(timing)
+      then 'Annual'
+    when TimingIsBiennial(timing)
+      then 'Biennial'
+    else 'Other'
+  end
+
 define function TimingIsAnnual(timing FHIR.Timing):
   if timing.repeat.frequency = 1 and timing.repeat.period = 1 and timing.repeat.periodUnit = 'a' 
   then true else false
@@ -159,6 +182,10 @@ define function TimingIsAnnual(timing FHIR.Timing):
 define function TimingIsBiennial(timing FHIR.Timing):
   if timing.repeat.frequency = 1 and timing.repeat.period = 2 and timing.repeat.periodUnit = 'a' 
   then true else false
+
+ define function TimingIsUnknown(timing FHIR.Timing):
+  if timing is null or timing.repeat is null or timing.repeat.frequency is null
+  then true else false 
 
 //------------------------------------------------------------------------------
 // flag due/overdue
@@ -176,7 +203,7 @@ define function EvaluateFlag(timing FHIR.Timing, nextDueDate DateTime):
 define function EvaluateFlagDefault(nextDueDate DateTime):
   if nextDueDate < Today() - 3 months then
     'OVERDUE'
-  else if nextDueDate <= Today() + 2 months or nextDueDate >= Today() - 3 months then
+  else if nextDueDate <= Today() + 2 months and nextDueDate >= Today() - 3 months then
     'DUE'
   else
     'NOT DUE'  
@@ -187,7 +214,7 @@ define function EvaluateFlagBiennial(nextDueDate DateTime):
 define function EvaluateFlagAnnual(nextDueDate DateTime):
   if nextDueDate < Today() - 2 months then
     'OVERDUE'
-  else if nextDueDate <= Today() + 2 months or nextDueDate >= Today() - 2 months then
+  else if nextDueDate <= Today() + 2 months and nextDueDate >= Today() - 2 months then
     'DUE'
   else
     'NOT DUE'   

@@ -1,0 +1,36 @@
+---
+name: ANNUAL_if_preferred_interval_is_annual
+elementId: eve-screeninginterval
+externalData:
+  - ../events
+  - ../../DataElements/data_elements
+  - ../../default_patients
+data:
+  - *defaultPatient
+  - $import: *ANNUAL_if_preferred_interval_is_annual
+results:
+  CarePlanActivitiesDue: 
+    - activity:
+        code:
+        - coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+        timingTiming:
+          event: 
+          - '2023-06-01'
+          repeat:
+            frequency: 1
+            period: 1
+            periodUnit: a
+      activityCode:
+      - coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening
+      nextDue: '2023-06-01'
+      scheduledDue: '2023-06-01'
+      scheduledStart: 
+      scheduledRepeat: Annual
+      lastReportDate: 
+      flag: OVERDUE
