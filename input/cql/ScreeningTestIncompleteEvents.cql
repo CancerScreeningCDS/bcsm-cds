@@ -10,6 +10,7 @@ include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 // TODO: replace placeholder with OID
 valueset "BREAST CANCER SCREENING ORDERS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
+// TODO: add diagnostic imaging orders, biopsy, referrals in addition to screening
 
 context Patient
 

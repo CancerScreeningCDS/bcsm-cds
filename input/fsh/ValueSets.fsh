@@ -76,3 +76,19 @@ Description: "Code representing breast cancer screening related observations"
 * #BreastSymptoms "New or worsening breast symptoms"
 * #BreastFindings "New or worsening breast exam findings"
 * #ReducedLifeExpectancyIndicator "Reduced life expectancy indicator"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CodeSystem: BiopsyResultObservationCodeSystem
+Id: biopsy-result-observation-code-system
+Title: "Biopsy Result Observation Code System"
+Description: "Code representing breast cancer biopsy result observations"
+
+* ^experimental = true
+
+* #Negative "Normal breast tissue" 
+* #Benign "Benign breast finding" "Non-malignant findings, excluding ADH, LCIS or ALH"
+* #Atypical "Atypical breast finding" "Includes atypical ductal hyperplasia (ADH) and lobular neoplasia (lobular carcinoma in situ [LCIS]/atypical lobular hyperplasia [ALH]"
+* #Malignant "Malignant breast finding"
+* #Indeterminate "Indeterminate breast finding"
+* #Discordant "Discordant breast finding"
