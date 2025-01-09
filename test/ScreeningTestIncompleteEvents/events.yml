@@ -68,6 +68,31 @@ eve-pendingmammo:
             code: 24606-6
             display: MG Breast Screening
       effectiveDateTime: 2023-10-02T10:00:00Z 
+  - &'Pending_mammography'_exists_AND_exists_'Mammography_reports'_based_on_order_or_referral
+    - resourceType: ServiceRequest
+      id: order-1
+      status: active
+      intent: order
+      occurrenceDateTime: 2023-10-01
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+    - resourceType: DiagnosticReport    
+      status: final
+      category:
+        - coding:
+            - system: http://terminology.hl7.org/CodeSystem/v2-0074
+              code: RAD
+              display: Radiology
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+      basedOn:
+        - reference: "ServiceRequest/order-1"                  
 
 eve-pendingmri:
   - "&'Pending_MRI'_exists_AND_'Date_of_last_MRI'_does_not_exists_OR_is_before_date_'Pending_MRI'_order_or_referral_was_placed"

@@ -18,7 +18,7 @@ define "eve-pendingorders":
     return O.request
 
 define PendingOrdersWithoutSubsequentReport:
-  PendingOrdersReportDate O
+  PendingOrdersSubsequentReportDate O
     where O.lastReportDate is null
     or (O.request.occurrence as FHIR.dateTime is not null and O.lastReportDate <= O.request.occurrence as FHIR.dateTime)
     or (O.request.occurrence as FHIR.Period is not null 
@@ -26,8 +26,8 @@ define PendingOrdersWithoutSubsequentReport:
     )
 
 //TODO: determine how to look for non-test result, like specialty consult note
-define PendingOrdersReportDate:
-  ActiveBreastCancerScreeningOrders O
+define PendingOrdersSubsequentReportDate:
+  PendingOrdersWithoutDiagnosticReport O
   let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(O.code),
   lastReportDate: CSMCommonFunctions.DiagnosticReportDate(lastReport)
   return {
@@ -35,8 +35,20 @@ define PendingOrdersReportDate:
     lastReportDate: lastReportDate
   }
 
+define PendingOrdersWithoutDiagnosticReport:
+  if not exists BreastCancerScreeningDiagnosticReports
+    then ActiveBreastCancerScreeningOrders
+  else
+    from ActiveBreastCancerScreeningOrders O,
+      BreastCancerScreeningDiagnosticReports DR
+    where not Exists (DR.basedOn B where B.reference = 'ServiceRequest/' + O.id)
+    return O
+
 define ActiveBreastCancerScreeningOrders:
   [ServiceRequest: "BREAST CANCER SCREENING ORDERS"] O
     where O.status in {'active'}
-    and O.intent in {'order'}
+    and O.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}
+
+define BreastCancerScreeningDiagnosticReports:
+  CSMCommonFunctions.CompletedDiagnosticReport([DiagnosticReport: "BREAST CANCER SCREENING ORDERS"])
 
