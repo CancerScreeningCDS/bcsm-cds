@@ -1,14 +1,13 @@
 ---
 name: eve-latesttesttype_biopsy_eve-biopsyresult_atypical_act-highriskreferral
 flow: flow-FollowupScreeningResult
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../FollowupScreeningResultEvents/events
+  - actions
   - ../default_patients
 data:
-  - "*eve-latesttesttype"
-  - "*eve-biopsyresult"
+  - *defaultPatient
+  - $import: *atypical_if_'Last_biopsy'_result_is_'Biopsy_result_atypical'
 results:
   flow-FollowupScreeningResult:
-    - "*act-highriskreferral"
+    - *act-highriskreferral

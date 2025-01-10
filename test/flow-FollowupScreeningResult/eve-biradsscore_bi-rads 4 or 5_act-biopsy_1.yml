@@ -1,15 +1,13 @@
 ---
-name: eve-latesttesttype_mammogram_eve-actionablebirads_yes_eve-biradsscore_bi-rads 4 or 5_act-biopsy
+name: eve-latesttesttype_mammogram_eve-actionablebirads_yes_eve-biradsscore_bi-rads_4_or_5_act-biopsy
 flow: flow-FollowupScreeningResult
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../FollowupScreeningResultEvents/events
+  - actions
   - ../default_patients
 data:
-  - "*eve-latesttesttype"
-  - "*eve-actionablebirads"
-  - "*eve-biradsscore"
+  - *defaultPatient
+  - $import: *BI-RADS_score_4_in_most_recent_resulted_test_of_'Last_imaging_result'
 results:
   flow-FollowupScreeningResult:
-    - "*act-biopsy"
+    - *act-biopsy4

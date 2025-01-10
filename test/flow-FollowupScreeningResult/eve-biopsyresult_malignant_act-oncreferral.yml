@@ -1,14 +1,13 @@
 ---
 name: eve-latesttesttype_biopsy_eve-biopsyresult_malignant_act-oncreferral
 flow: flow-FollowupScreeningResult
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../FollowupScreeningResultEvents/events
+  - actions
   - ../default_patients
 data:
-  - "*eve-latesttesttype"
-  - "*eve-biopsyresult"
+  - *defaultPatient
+  - $import: *malignant_if_'Last_biopsy'_result_is_'Biopsy_result_malignant'
 results:
   flow-FollowupScreeningResult:
-    - "*act-oncreferral"
+    - *act-oncreferral

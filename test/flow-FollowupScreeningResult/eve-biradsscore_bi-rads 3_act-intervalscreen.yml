@@ -1,15 +1,13 @@
 ---
-name: eve-latesttesttype_mri_eve-actionablebirads_yes_eve-biradsscore_bi-rads 3_act-intervalscreen
+name: eve-latesttesttype_mammogram_eve-actionablebirads_yes_eve-biradsscore_bi-rads_3_act-intervalscreen
 flow: flow-FollowupScreeningResult
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../FollowupScreeningResultEvents/events
+  - actions
   - ../default_patients
 data:
-  - "*eve-latesttesttype"
-  - "*eve-actionablebirads"
-  - "*eve-biradsscore"
+  - *defaultPatient
+  - $import: *BI-RADS_score_3_in_most_recent_resulted_test_of_'Last_imaging_result'
 results:
   flow-FollowupScreeningResult:
-    - "*act-intervalscreen"
+    - *act-intervalscreen

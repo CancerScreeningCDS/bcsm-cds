@@ -104,10 +104,7 @@ define function CollateConclusionCodes(D DiagnosticReport, ObsList List<Observat
   if FHIRHelpers.ToConcept(D.code) ~ code then
     CollateConclusionCodes(D, ObsList)
   else
-    ValuesFromObservation(D, ObsList)  
-
-define AllCompletedDiagnosticReport:
-  Common.CompletedDiagnosticReport([DiagnosticReport])    
+    ValuesFromObservation(D, ObsList)     
 
 //------------------------------------------------------------------------------
 // Assigned female at birth
@@ -402,16 +399,6 @@ define AtypicalBiopsyResults:
     let cC: CollateConclusionCodes(D,BiopsyObservations)
     where cC in "Biopsy Atypical Results"
 
-define BiopsyDiagnosticReports:
-  AllCompletedDiagnosticReport B
-  where 
-    Count(
-      CollateConclusionCodes(B, BiopsyObservations, "Biopsy Report")
-    ) > 0
-
-define BiopsyObservations:
-  [Observation: "Biopsy Report"]
-
 //------------------------------------------------------------------------------
 // High lifetime risk
 //------------------------------------------------------------------------------   
@@ -440,16 +427,6 @@ define BreastImagingHeterogenouslyOrExtremelyDenseResults:
     where exists(cC.coding C where FHIRHelpers.ToCode(C) ~ "Heterogeneously dense") 
       or exists (cC.coding C where FHIRHelpers.ToCode(C) ~ "Extremely dense")
 
-define BreastImagingDiagnosticReports:
-  AllCompletedDiagnosticReport B
-  where 
-    Count(
-      CollateConclusionCodes(B, BreastImagingObservations, "Breast Imaging Report")
-    ) > 0
-
-define BreastImagingObservations:
-  [Observation: "Breast Imaging Report"]
-
 //------------------------------------------------------------------------------
 // Compelling family history of breast cancer
 //------------------------------------------------------------------------------  
@@ -468,3 +445,36 @@ define FamilyHistoryAssessmentObservations:
  
 //TODO: add FamilyMemberHistory for individual criteria
 // 'Informal familial risk criteria' exist
+
+//------------------------------------------------------------------------------
+// Latest screening test type
+//------------------------------------------------------------------------------  
+
+define MostRecentBreastImagingDiagnosticReport:
+  Common.MostRecentDiagnosticReport(BreastImagingDiagnosticReports)
+
+define BreastImagingDiagnosticReports:
+  AllCompletedDiagnosticReport B
+  where 
+    Count(
+      CollateConclusionCodes(B, BreastImagingObservations, "Breast Imaging Report")
+    ) > 0
+
+define BreastImagingObservations:
+  [Observation: "Breast Imaging Report"]  
+
+define MostRecentBreastBiopsyDiagnosticReport:
+  Common.MostRecentDiagnosticReport(BiopsyDiagnosticReports)
+
+define BiopsyDiagnosticReports:
+  AllCompletedDiagnosticReport B
+  where 
+    Count(
+      CollateConclusionCodes(B, BiopsyObservations, "Biopsy Report")
+    ) > 0
+
+define BiopsyObservations:
+  [Observation: "Biopsy Report"]  
+
+define AllCompletedDiagnosticReport:
+  Common.CompletedDiagnosticReport([DiagnosticReport])   

@@ -9,4 +9,9 @@ data:
   - *defaultPatient
   - *'Pending_mammography'_exists_AND_'Date_of_last_mammography'_does_not_exists
 results:
-  eve-pendingorders: $should have length 1
+  BreastCancerScreeningDiagnosticReports: $should have length 0
+  ActiveBreastCancerScreeningOrders: $should have length 1
+  PendingOrdersWithoutDiagnosticReport: $should have length 1
+  PendingOrdersSubsequentReportDate: $should have length 1
+  PendingOrdersWithoutSubsequentReport: $should have length 1
+  eve-pendingorders: $should have length 1  

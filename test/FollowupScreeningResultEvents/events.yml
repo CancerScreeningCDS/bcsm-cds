@@ -1,0 +1,338 @@
+eve-latesttesttype:
+  - &Most_recent_resulted_test_of_'Last_imaging'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category0       
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-09-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: http://snomed.info/sct
+            code: 62061000119107
+            display: "Biopsy Atypical Results"    
+      basedOn:
+        - reference: "ServiceRequest/order-1"                            
+  - &Most_recent_resulted_test_of_'Last_biopsy'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-09-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category0       
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: http://snomed.info/sct
+            code: 62061000119107
+            display: "Biopsy Atypical Results"    
+      basedOn:
+        - reference: "ServiceRequest/order-1"     
+  - &Most_recent_resulted_test_of_none
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: other
+            display: Something
+      effectiveDateTime: 2023-10-01T10:00:00Z    
+
+eve-actionablebirads:
+  - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_is_NOT_2
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category0 
+  - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_is_2
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category2  
+
+eve-biradsscore:
+  - &BI-RADS_score_0_in_most_recent_resulted_test_of_'Last_imaging_result'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category0 
+  - &BI-RADS_score_3_in_most_recent_resulted_test_of_'Last_imaging_result'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category3   
+  - &BI-RADS_score_4_in_most_recent_resulted_test_of_'Last_imaging_result'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category4
+  - &BI-RADS_score_5_in_most_recent_resulted_test_of_'Last_imaging_result'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category5
+  - &BI-RADS_score_6_in_most_recent_resulted_test_of_'Last_imaging_result'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+            code: Category6                                               
+  - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_unknown
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      effectiveDateTime: 2023-10-01T10:00:00Z            
+      conclusionCode:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/something
+            code: something              
+
+eve-biopsyresult:
+  - &malignant_if_'Last_biopsy'_result_is_'Biopsy_result_malignant'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+            code: Malignant
+      basedOn:
+        - reference: "ServiceRequest/order-1"    
+  - &atypical_if_'Last_biopsy'_result_is_'Biopsy_result_atypical'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+            code: Atypical
+      basedOn:
+        - reference: "ServiceRequest/order-1"    
+  - &indeterminate_if_'Last_biopsy'_result_is_'Biopsy_result_indeterminate'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+            code: Indeterminate
+      basedOn:
+        - reference: "ServiceRequest/order-1"    
+  - &discordant_if_'Last_biopsy'_result_is_'Biopsy_result_discordant'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+            code: Discordant
+      basedOn:
+        - reference: "ServiceRequest/order-1"      
+  - &negative_if_'Last_biopsy'_result_is_'Biopsy_result_negative'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+            code: Negative
+      basedOn:
+        - reference: "ServiceRequest/order-1"    
+  - &benign_if_'Last_biopsy'_result_is_'Biopsy_result_benign'
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2023-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+            code: Benign
+      basedOn:
+        - reference: "ServiceRequest/order-1"          
