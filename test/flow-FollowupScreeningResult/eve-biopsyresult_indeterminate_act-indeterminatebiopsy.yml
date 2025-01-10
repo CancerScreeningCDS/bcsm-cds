@@ -1,14 +1,13 @@
 ---
 name: eve-latesttesttype_biopsy_eve-biopsyresult_indeterminate_act-indeterminatebiopsy
 flow: flow-FollowupScreeningResult
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../FollowupScreeningResultEvents/events
+  - actions
   - ../default_patients
 data:
-  - "*eve-latesttesttype"
-  - "*eve-biopsyresult"
+  - *defaultPatient
+  - $import: *indeterminate_if_'Last_biopsy'_result_is_'Biopsy_result_indeterminate'
 results:
   flow-FollowupScreeningResult:
-    - "*act-indeterminatebiopsy"
+    - *act-indeterminatebiopsy

@@ -33,12 +33,12 @@ define FollowupNonactionableBiradsResult:
 
 define FollowupBirads0Result:
   if Events."eve-latesttesttype" = 'imaging' and Events."eve-biradsscore" ~ Events."Category0"
-  then Actions."act-intervalscreen"
+  then Actions."act-incompletescreen"
   else null 
 
 define FollowupBirads3Result:
   if Events."eve-latesttesttype" = 'imaging' and Events."eve-biradsscore" ~ Events."Category3"
-  then Actions."act-incompletescreen"
+  then Actions."act-intervalscreen"
   else null 
 
 define FollowupBirads4Or5Result:
@@ -46,9 +46,11 @@ define FollowupBirads4Or5Result:
     Events."eve-biradsscore" ~ Events."Category4" or
     Events."eve-biradsscore" ~ Events."Category4A" or
     Events."eve-biradsscore" ~ Events."Category4B" or
-    Events."eve-biradsscore" ~ Events."Category4C" or
+    Events."eve-biradsscore" ~ Events."Category4C"
+  then Actions."act-biopsy4"
+  else if Events."eve-latesttesttype" = 'imaging' and
     Events."eve-biradsscore" ~ Events."Category5"
-  then Actions."act-biopsy"
+  then Actions."act-biopsy5"
   else null  
 
 define FollowupNegativeBiopsyResult:

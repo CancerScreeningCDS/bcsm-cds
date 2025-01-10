@@ -1,14 +1,13 @@
 ---
-name: eve-latesttesttype_mri_eve-actionablebirads_no_act-updateduedate
+name: eve-latesttesttype_mammogram_eve-actionablebirads_no_act-updateduedate
 flow: flow-FollowupScreeningResult
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../FollowupScreeningResultEvents/events
+  - actions
   - ../default_patients
 data:
-  - "*eve-latesttesttype"
-  - "*eve-actionablebirads"
+  - *defaultPatient
+  - $import: *BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_is_2
 results:
   flow-FollowupScreeningResult:
-    - "*act-updateduedate"
+    - *act-updateduedate

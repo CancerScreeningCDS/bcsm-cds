@@ -8,13 +8,34 @@ include BCSMCommonFunctions version '1.0.0'
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
 codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "BiRadsAssessmentCategoriesCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS'
+codesystem "BiopsyResultCS": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
 
 // Act Codes
 code "Determine next due date": 'determinenextdue' from "ActCode" display 'Determine next due date'
+code "Follow-up radiologist recommendations": 'radiologyrecs' from "ActCode" display 'Follow-up radiologist recommendations'
+code "Order interval imaging": 'intervalscreen' from "ActCode" display 'Order interval imaging'
+code "Breast biopsy": 'breastbiopsy' from  "ActCode" display 'Breast biopsy'
+code "High risk referral": 'highriskreferral' from  "ActCode" display 'High risk referral'
+code "Indeterminate breast biopsy referral": 'indeterminatebreastbiopsy' from  "ActCode" display 'Indeterminate breast biopsy referral'
+code "Discordant breast biopsy referral": 'discordantbreastbiopsy' from  "ActCode" display 'Discordant breast biopsy referral'
+code "Oncologic referral": 'oncreferral' from  "ActCode" display 'Oncologic referral'
 // Reason Codes
 code "Screening complete": 'screeningcomplete' from "ReasonCode" display 'Screening complete'
+code "Category0": 'Category0' from "BiRadsAssessmentCategoriesCS" display 'Category 0 (Incomplete)'
+code "Category3": 'Category3' from "BiRadsAssessmentCategoriesCS" display 'Category 3 (Probably Benign)'
+code "Category4": 'Category4' from "BiRadsAssessmentCategoriesCS" display 'Category 4 (Suspicious)'
+code "Category5": 'Category5' from "BiRadsAssessmentCategoriesCS" display 'Category 5 (Highly Suggestive of Malignancy)'
+code "Negative": 'Negative' from BiopsyResultCS display 'Normal breast tissue'
+code "Benign": 'Benign' from BiopsyResultCS display 'Benign breast finding'
+code "Atypical": 'Atypical' from BiopsyResultCS display 'Atypical breast finding'
+code "Malignant": 'Malignant' from BiopsyResultCS display 'Malignant breast finding'
+code "Indeterminate": 'Indeterminate' from BiopsyResultCS display 'Indeterminate breast finding'
+code "Discordant": 'Discordant' from BiopsyResultCS display 'Discordant breast finding'
 
 context Patient
+
+// TODO: add timing to these to trigger 90 day overdue for HEDIS
 
 define "act-updateduedate":
   // TODO: replace this with next due date calculation
@@ -25,31 +46,34 @@ define "act-updateduedate":
 	}   
 
 define "act-incompletescreen":
-  // TODO: Implement logic for act-incompletescreen
   {
-		code: "Determine next due date",
-    reason: "Screening complete",
+		code: "Follow-up radiologist recommendations",
+    reason: "Category0",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	} 
 
 define "act-intervalscreen":
-  // TODO: Implement logic for act-intervalscreen
   {
-		code: "Determine next due date",
-    reason: "Screening complete",
+		code: "Order interval imaging",
+    reason: "Category3",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	}  
 
-define "act-biopsy":
-  // TODO: Implement logic for act-biopsy
+define "act-biopsy4":
   {
-		code: "Determine next due date",
-    reason: "Screening complete",
+		code: "Breast biopsy",
+    reason: "Category4",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	}  
+
+define "act-biopsy5":
+  {
+		code: "Breast biopsy",
+    reason: "Category5",
+    documentation: BCSMCommonFunctions.SourceDocumentationOther
+	}    
 
 define "act-benignbiopsy":
-  // TODO: Implement logic for act-benignbiopsy
   {
 		code: "Determine next due date",
     reason: "Screening complete",
@@ -57,34 +81,30 @@ define "act-benignbiopsy":
 	}
 
 define "act-highriskreferral":
-  // TODO: Implement logic for act-highriskreferral
   {
-		code: "Determine next due date",
-    reason: "Screening complete",
+		code: "High risk referral",
+    reason: "Atypical",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	}  
 
 define "act-indeterminatebiopsy":
-  // TODO: Implement logic for act-indeterminatebiopsy
   {
-		code: "Determine next due date",
-    reason: "Screening complete",
+		code: "Indeterminate breast biopsy referral",
+    reason: "Indeterminate",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
-	}  
+	}
 
 define "act-discordantbiopsy":
-  // TODO: Implement logic for act-discordantbiopsy
   {
-		code: "Determine next due date",
-    reason: "Screening complete",
+		code: "Discordant breast biopsy referral",
+    reason: "Discordant",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	}  
 
 define "act-oncreferral":
-  // TODO: Implement logic for act-oncreferral
   {
-		code: "Determine next due date",
-    reason: "Screening complete",
+		code: "Oncologic referral",
+    reason: "Malignant",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	}  
 

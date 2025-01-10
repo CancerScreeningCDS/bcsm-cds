@@ -8,7 +8,7 @@ include CSMCommonFunctions version '1.0.0' called CSMCommonFunctions
 
 //TODO: validate if this STU1 IG is valid to reference for CS
 codesystem "BiRadsAssessmentCategoriesCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS'
-codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
+codesystem "BiopsyResultCS": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
 
 code "Category0": 'Category0' from "BiRadsAssessmentCategoriesCS" display 'Category 0 (Incomplete)'
 code "Category2": 'Category2' from "BiRadsAssessmentCategoriesCS" display 'Category 2 (Benign)'
@@ -19,12 +19,12 @@ code "Category4B": 'Category4B' from "BiRadsAssessmentCategoriesCS" display 'Cat
 code "Category4C": 'Category4C' from "BiRadsAssessmentCategoriesCS" display 'Category 4C (High suspicion)'
 code "Category5": 'Category5' from "BiRadsAssessmentCategoriesCS" display 'Category 5 (Highly Suggestive of Malignancy)'
 code "Category6": 'Category6' from "BiRadsAssessmentCategoriesCS" display 'Category 6 (Known Biopsy-Proven Malignancy)'
-code "Negative": 'Negative' from LOCAL display 'Normal breast tissue'
-code "Benign": 'Benign' from LOCAL display 'Benign breast finding'
-code "Atypical": 'Atypical' from LOCAL display 'Atypical breast finding'
-code "Malignant": 'Malignant' from LOCAL display 'Malignant breast finding'
-code "Indeterminate": 'Indeterminate' from LOCAL display 'Indeterminate breast finding'
-code "Discordant": 'Discordant' from LOCAL display 'Discordant breast finding'
+code "Negative": 'Negative' from BiopsyResultCS display 'Normal breast tissue'
+code "Benign": 'Benign' from BiopsyResultCS display 'Benign breast finding'
+code "Atypical": 'Atypical' from BiopsyResultCS display 'Atypical breast finding'
+code "Malignant": 'Malignant' from BiopsyResultCS display 'Malignant breast finding'
+code "Indeterminate": 'Indeterminate' from BiopsyResultCS display 'Indeterminate breast finding'
+code "Discordant": 'Discordant' from BiopsyResultCS display 'Discordant breast finding'
 
 context Patient
 
@@ -34,9 +34,11 @@ define "eve-latesttesttype":
 define "eve-actionablebirads":
   (MostRecentBreastImagingBiradsResult ~ "Category2") is false
 
+// TODO: error handling for cases where report has no result annotations
 define "eve-biradsscore":
   MostRecentBreastImagingBiradsResult
 
+// TODO: error handling for cases where report has no result annotations
 define "eve-biopsyresult":
   MostRecentBreastBiopsyResult
 
@@ -84,7 +86,7 @@ define MostRecentBreastBiopsyResult:
 
 define function BreastBiopsyResult(report DiagnosticReport):
   report D
-    let cC: DataElements.CollateConclusionCodes(D,DataElements.BreastImagingObservations)
+    let cC: DataElements.CollateConclusionCodes(D,DataElements.BiopsyObservations)
     return First(
       cC.coding C
         let c: FHIRHelpers.ToCode(C)
@@ -96,4 +98,4 @@ define function BreastBiopsyResult(report DiagnosticReport):
           or c ~ "Indeterminate"
           or c ~ "Discordant"
         return c  
-    )
+    )  

@@ -1,0 +1,13 @@
+---
+name: eve-latesttesttype_mammogram_eve-actionablebirads_yes_eve-biradsscore_bi-rads_0_act-incompletescreen
+flow: flow-FollowupScreeningResult
+externalData:
+  - ../FollowupScreeningResultEvents/events
+  - actions
+  - ../default_patients
+data:
+  - *defaultPatient
+  - $import: *BI-RADS_score_0_in_most_recent_resulted_test_of_'Last_imaging_result'
+results:
+  flow-FollowupScreeningResult:
+    - *act-incompletescreen
