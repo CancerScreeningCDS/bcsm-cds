@@ -14,11 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      # this does not work, docker volume must be mounted ie /home/$USER/.fhir:/home/publisher/.fhir
       - name: Cache contents of ~/.fhir
         id: fhir-cache
         uses: actions/cache@v3
         with:
-          path: ./.fhir
+          path: ~/.fhir
           key: ${{ runner.os }}-fhir
           
       - name: Cache input-cache directory
@@ -36,7 +37,7 @@ jobs:
       - name: Run the IG publisher
         uses: docker://hl7fhir/ig-publisher-base:latest
         with:
-          args: /bin/sh -c "export FHIR_CACHE=./.fhir && java -jar ./input-cache/publisher.jar -ig ."                   
+          args: java -jar ./input-cache/publisher.jar publisher -ig .                   
 
       # if it is the main branch, deploy to main directory
       - name: Deploy
