@@ -18,7 +18,7 @@ jobs:
         id: fhir-cache
         uses: actions/cache@v3
         with:
-          path: ~/.fhir
+          path: ./.fhir
           key: ${{ runner.os }}-fhir
           
       - name: Cache input-cache directory
@@ -29,16 +29,14 @@ jobs:
           key: ${{ runner.os }}-input-cache       
           
       - name: Update the image to the latest publisher
-        #uses: docker://hl7fhir/ig-publisher-base:latest
-        #with:
-        #  args: _updatePublisher.sh --yes
-        run: _updatePublisher.sh --yes
+        uses: docker://hl7fhir/ig-publisher-base:latest
+        with:
+          args: _updatePublisher.sh --yes    
           
       - name: Run the IG publisher
-        #uses: docker://hl7fhir/ig-publisher-base:latest
-        #with:
-        #  args: java -jar ./input-cache/publisher.jar publisher -ig .            
-        run: java -jar ./input-cache/publisher.jar publisher -ig .            
+        uses: docker://hl7fhir/ig-publisher-base:latest
+        with:
+          args: /bin/sh -c "export FHIR_CACHE=./.fhir && java -jar ./input-cache/publisher.jar -ig ."                   
 
       # if it is the main branch, deploy to main directory
       - name: Deploy
