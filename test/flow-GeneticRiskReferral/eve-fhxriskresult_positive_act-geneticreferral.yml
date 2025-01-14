@@ -1,18 +1,16 @@
 ---
 name: eve-fhxgeneinherited_no_eve-brcageneancestry_no_eve-fhxbrcaovcatubalperit_yes_eve-preferredfhxriskmethod_informal_act-fhxriskassess__eve-fhxriskresult_positive_act-geneticreferral
 flow: flow-GeneticRiskReferral
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../GeneticRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
   - ../default_patients
-data:
-  - "*eve-fhxgeneinherited"
-  - "*eve-brcageneancestry"
-  - "*eve-fhxbrcaovcatubalperit"
-  - "*eve-preferredfhxriskmethod"
-  - "*eve-fhxriskresult"
+data:  
+  - *defaultPatient
+  - *'Family_history_of_breast_cancer'
+  - *Informal_familial_risk_assessment_suggestive_of_higher_than_average_risk_of_genetic_variant
 results:
   flow-GeneticRiskReferral:
-    - "*act-fhxriskassess"
-    - "*act-geneticreferral"
+    -
+      - *act-geneticreferralrisk

@@ -757,20 +757,48 @@ de-brca1condition:
   - "&CONDITIONS_include_`BRCA-1_MUTATION_CONDITION`_with_status_active"
 de-brca2condition:
   - "&CONDITIONS_include_`BRCA-2_MUTATION_CONDITION`_with_status_active"
+
 de-fhxgeneinherited:
-  - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`BRCA-1_MUTATION_CONDITION`_OR_`BRCA-2_MUTATION_CONDITION`"
-  - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`BRCA-1_MUTATION_CONDITION`"
-  - "&`BRCA-2_MUTATION_CONDITION`"
+  - &FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`BRCA-1_MUTATION_CONDITION`
+    resourceType: FamilyMemberHistory
+    status: completed
+    relationship:
+      coding:
+        - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+          code: "MTH"
+          display: "Mother"
+    condition:
+      - code:
+          coding:
+            - system: http://loinc.org #http://snomed.info/sct
+              code: 21636-6 #412734009
+              display: BRCA1 gene mutation detected  
+
 de-fhxbreastca:
   - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`INVASIVE_BREAST_CANCER`_OR_FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`NON-INVASIVE_BREAST_CANCER`"
-  - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`INVASIVE_BREAST_CANCER`"
+  - &FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`INVASIVE_BREAST_CANCER`
+    resourceType: FamilyMemberHistory
+    status: completed
+    relationship:
+      coding:
+        - system: "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+          code: "MTH"
+          display: "Mother"
+    condition:
+      - code:
+          coding:
+            - system: http://snomed.info/sct
+              code: 254837009
+              display: Invasive breast cancer 
   - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`NON-INVASIVE_BREAST_CANCER`"  
+
 de-fhxovca:
   - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`OVARIAN_CANCER`"
 de-fhxtubalca:
   - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`TUBAL_CANCER`"
 de-fhxperitonealca:
   - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`PERITONEAL_CANCER`"
+
 de-fhxbreastcarisk:
   - &OBSERVATIONS_include_familial_risk_assessment
     resourceType: Observation
@@ -795,6 +823,7 @@ de-fhxbreastcarisk:
   - "&Output_of_validated_brief_familial_risk_assessment_tool_is_positive_OR_'Informal_familial_risk_criteria'_exist"
   - "&Output_of_validated_brief_familial_risk_assessment_tool_is_positive"
   - "&'Informal_familial_risk_criteria'_exist"       
+  
 de-fhxrisk:
   - "&FAMILY_HISTORY_includes_>=_2_first-_or_second-_degree_relatives_with_breast_cancer_OR_FAMILY_HISTORY_includes_>=_2_first-_or_second-_degree_relatives_with_ovarian_cancer_OR_FAMILY_HISTORY_includes_>=_1_first-_or_second-_degree_relatives_with_breast_cancer_diagnosed_<=_50_years_old_OR_FAMILY_HISTORY_includes_at_least_one_first-_or_second-_degree_relative_with_breast_AND_at_least_once_relative_wth_ovarian_cancer_OR_FAMILY_HISTORY_includes_>=_1_first-_or_second-_degree_relative_with_both_breast_and_ovarian_cancer_OR_FAMILY_HISTORY_includes_>=_1_first-_or_second-_degree_relative_with_2_independent_breast_cancers_OR_FAMILY_HISTORY_includes_>=_1_first-_or_second-_degree_male_relative_with_breast_cancer"
   - "&FAMILY_HISTORY_includes_>=_2_first-_or_second-_degree_relatives_with_breast_cancer"

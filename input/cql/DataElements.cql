@@ -52,6 +52,12 @@ valueset "Cowden Syndrome": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113
 valueset "Bannayan-Riley-Ruvalcaba Syndrome": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022'
 // TODO: replace placeholder value set OID
 valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
+// TODO: replace placeholder value set OID
+valueset "OVARIAN CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
+// TODO: replace placeholder value set OID
+valueset "TUBAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
+// TODO: replace placeholder value set OID
+valueset "PERITONEAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
 
 // Standard codes
 code "Gender Identity": '76691-5' from "LOINC" display 'Gender identity'
@@ -75,6 +81,8 @@ code "Genetic marker or syndrome associated with breast cancer": 'GeneticMarkerO
 code "Lifetime risk assessment result": 'LifetimeRiskResult' from "LOCAL" display 'Lifetime risk assessment result'
 code "High lifetime risk": 'HighLifetimeRisk' from "LOCAL" display 'High lifetime risk'
 code "Familial risk assessment": 'FamilialRiskAssessment' from "LOCAL" display 'Familial risk criteria'
+code "Familial genetic history": 'FamilialGeneticHistory' from "LOCAL" display 'Familial genetic history'
+code "Known breast cancer variant status": 'KnownVariantStatus' from "LOCAL" display 'Known breast cancer variant status'
 
 //------------------------------------------------------------------------------
 // PARAMETERS
@@ -432,19 +440,68 @@ define BreastImagingHeterogenouslyOrExtremelyDenseResults:
 //------------------------------------------------------------------------------  
 
 define "de-fhxbreastcarisk":
-  FamilyHistoryAssessmentObservations
+  FamilyHistoryAssessmentObservation.value is true
 
-define FamilyHistoryAssessmentObservations:  
+define FamilyHistoryAssessmentObservation:  
   C3F.MostRecent(
       [Observation: "Familial risk assessment"] R
-        where R.value is true
-  ) is not null  
+  )
 
 //TODO: add observations for assessment tool output structured documentation
 // Output of validated brief familial risk assessment tool is positive
  
 //TODO: add FamilyMemberHistory for individual criteria
 // 'Informal familial risk criteria' exist
+
+//------------------------------------------------------------------------------
+// Family history of inherited cancer susceptibility
+//------------------------------------------------------------------------------  
+
+define "de-fhxgeneinherited":
+  FamilyGeneticHistoryAssessmentObservation.value is true or 
+    exists FamilyMemberGeneticMarkerOrSyndrome
+
+define FamilyGeneticHistoryAssessmentObservation:  
+  C3F.MostRecent(
+      [Observation: "Familial genetic history"] R
+  )
+
+define "FamilyMemberGeneticMarkerOrSyndrome":
+  [FamilyMemberHistory] F
+    where 
+      exists (F.condition C
+        where 
+        C.code in "BRCA1 Gene Mutation" or C.code in "BRCA2 Gene Mutation" or
+        C.code in "Li-Fraumeni Syndrome" or C.code in "Cowden Syndrome" or
+        C.code in "Bannayan-Riley-Ruvalcaba Syndrome"
+      )       
+
+//------------------------------------------------------------------------------
+// Unknown variant status
+//------------------------------------------------------------------------------  
+
+// TODO: move this to GeneticRiskReferralEvents
+define "de-knownvariantstatus":
+  KnownGeneticMarkerOrSyndromeStatusObservation.value is true
+
+define KnownGeneticMarkerOrSyndromeStatusObservation:  
+  C3F.MostRecent(
+      [Observation: "Known breast cancer variant status"] R
+  ) 
+
+//------------------------------------------------------------------------------
+// Family history of breast, ovarian, tubal, or peritoneal cancer
+//------------------------------------------------------------------------------  
+  
+define "FamilyMemberBreastOvarianTubalPeritonealCancer":
+  [FamilyMemberHistory] F
+    where 
+      exists (F.condition C
+        where 
+        C.code in "INVASIVE BREAST CANCER" or C.code in "NON-INVASIVE BREAST CANCER" or
+        C.code in "OVARIAN CANCER" or C.code in "TUBAL CANCER" or
+        C.code in "PERITONEAL CANCER"
+      )   
 
 //------------------------------------------------------------------------------
 // Latest screening test type

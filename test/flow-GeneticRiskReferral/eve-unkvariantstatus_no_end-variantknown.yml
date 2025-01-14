@@ -1,13 +1,14 @@
 ---
 name: eve-fhxgeneinherited_yes_eve-unkvariantstatus_no_end-variantknown
 flow: flow-GeneticRiskReferral
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../GeneticRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
   - ../default_patients
 data:
-  - "*eve-fhxgeneinherited"
-  - "*eve-unkvariantstatus"
+  - *defaultPatient
+  - *Family_history_of_other_variant_of_concern
+  - *EXISTS_prior_genetic_testing_panel_including_variant_of_concern
 results:
   flow-GeneticRiskReferral: []
