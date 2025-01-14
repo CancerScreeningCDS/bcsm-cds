@@ -530,6 +530,7 @@ define BiopsyDiagnosticReports:
       CollateConclusionCodes(B, BiopsyObservations, "Biopsy Report")
     ) > 0
 
+// TODO: should report observation code be a value set?
 define BiopsyObservations:
   [Observation: "Biopsy Report"]  
 
