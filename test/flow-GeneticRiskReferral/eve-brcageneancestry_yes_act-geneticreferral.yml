@@ -1,14 +1,15 @@
 ---
 name: eve-fhxgeneinherited_no_eve-brcageneancestry_yes_act-geneticreferral
 flow: flow-GeneticRiskReferral
-skip: true
 externalData:
-  - ./events/events
-  - ./actions/actions
+  - ../GeneticRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
   - ../default_patients
 data:
-  - "*eve-fhxgeneinherited"
-  - "*eve-brcageneancestry"
+  - *defaultPatient
+  - *Ashkenazi_Jewish_ancestry_in_at_least_one_grandparent
 results:
   flow-GeneticRiskReferral:
-    - "*act-geneticreferral"
+    -
+      - *act-geneticreferralancestry
