@@ -1,0 +1,15 @@
+---
+name: eve-fiveyrrisklowpop_eve-ageAtLeast35_act-ConsiderHighRiskReferral_act-estlifexpectancy
+flow: flow-HighRiskReferral
+externalData:
+  - ../HighRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *Patient_age_>=_35_years
+  - *Formal_clinical_risk_assessment_tool_output_suggests_5_year_risk_>=_1.67%
+results:
+  flow-HighRiskReferral:
+    - *act-ConsiderHighRiskReferral
+    - *act-estlifexpectancy       

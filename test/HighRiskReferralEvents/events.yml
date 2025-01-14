@@ -1,0 +1,177 @@
+eve-ageAny:
+  - &Any_age
+    resourceType: Patient
+    name: 
+      given:
+        - Jane
+      family: Doe    
+    gender: female
+    birthDate: 2022-01-01
+
+eve-ageAtLeast35:
+  - &Patient_age_>=_35_years
+    resourceType: Patient
+    name: 
+      given:
+        - Jane
+      family: Doe    
+    gender: female
+    birthDate: 1980-01-01
+
+eve-geneticriskpop:
+  - "&'Genetic_marker_or_syndrome_associated_with_a_high_risk_of_breast_cancer'_is_TRUE"
+eve-chestxrtpop:
+  - "&'History_of_high-dose_radiation_therapy_to_the_chest'_is_TRUE"
+eve-atypicalbxpop:
+  - "&'High-risk_breast_lesion_on_previous_biopsies'_is_TRUE"
+
+eve-fiveyrriskpop:
+  - &Formal_clinical_risk_assessment_tool_output_suggests_5_year_risk_>=_3%
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "5YRiskResult"
+          display: "5 year risk assessment result"
+    valueQuantity: 
+      value: 3
+      code: "%"
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"    
+  - &assessment_of_breast_cancer_risk_factors_without_using_a_formal_tool_suggests_higher_than_average_risk
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "5YRiskResult"
+          display: "5 year risk assessment result"
+    valueCodeableConcept: 
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "High5YRisk"
+          display: "High 5 year risk"   
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"      
+  - &Formal_clinical_risk_assessment_tool_output_suggests_5_year_risk_<_3%
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "5YRiskResult"
+          display: "5 year risk assessment result"
+    valueQuantity: 
+      value: 2
+      code: "%"
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"          
+
+eve-fiveyrrisklowpop:  
+  - &Formal_clinical_risk_assessment_tool_output_suggests_5_year_risk_>=_1.67%
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "5YRiskResult"
+          display: "5 year risk assessment result"
+    valueQuantity: 
+      value: 1.67
+      code: "%"
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"    
+  - &Formal_clinical_risk_assessment_tool_output_suggests_5_year_risk_<_1.67%
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "5YRiskResult"
+          display: "5 year risk assessment result"
+    valueQuantity: 
+      value: 1.66
+      code: "%"
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"     
+
+eve-fhxbrca:
+  - &Output_of_validated_brief_familial_risk_assessment_tool_is_positive_OR_'Informal_familial_risk_criteria'_exist
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "GeneticRiskResult"
+          display: "Genetic risk assessment result"
+    valueCodeableConcept: 
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "HighGeneticRisk"
+          display: "High genetic risk"   
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"    
+  - &Output_of_validated_brief_familial_risk_assessment_tool_is_negative_OR_'Informal_familial_risk_criteria'_not_exist
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "GeneticRiskResult"
+          display: "Genetic risk assessment result"
+    valueCodeableConcept: 
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "NotHighGeneticRisk"
+          display: "Not high genetic risk"    
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"
+
+eve-personalriskfactors:
+  - &Personal_risk_factors_conferring_increased_risk_of_breast_cancer_is_true
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "personalriskfactors"
+          display: "Personal risk factors conferring increased risk of breast cancer"
+    valueBoolean: true
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"     
+  - &Personal_risk_factors_conferring_increased_risk_of_breast_cancer_is_false
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "personalriskfactors"
+          display: "Personal risk factors conferring increased risk of breast cancer"
+    valueBoolean: false
+    effectiveDateTime: "2023-11-10T00:00:00.0Z"      
+  - &EXISTS_>_1_DIAGNOSTIC_REPORT_of_type_`BREAST_BIOPSY`
+    - resourceType: DiagnosticReport
+      id: biopsy-report-1
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+      conclusionCode:
+        coding:
+          - system: http://example.org/fhir/CodeSystem/biopsy-results
+            code: normal
+            display: "Biopsy Normal Results"        
+    - resourceType: DiagnosticReport
+      id: biopsy-report-2
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      basedOn:
+        - reference: "ServiceRequest/order-2" 
+      conclusionCode:
+        coding:
+          - system: http://example.org/fhir/CodeSystem/biopsy-results
+            code: normal
+            display: "Biopsy Normal Results"                 
+  - &BI-RADS_breast_density_score_in_'Last_mammography_result'_is_C_OR_D
+    *BI-RADS_breast_density_category_of_'Last_mammography'__as_reported_in_DIAGNOSTIC_REPORT

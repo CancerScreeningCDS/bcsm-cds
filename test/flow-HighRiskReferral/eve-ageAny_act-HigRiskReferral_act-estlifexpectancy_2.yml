@@ -1,0 +1,15 @@
+---
+name: eve-atypicalbxpop_eve-ageAny_act-HighRiskReferral_act-estlifexpectancy
+flow: flow-HighRiskReferral
+externalData:
+  - ../HighRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements  
+  - ../default_patients
+data:
+  - *defaultPatient
+  - *CONDITIONS_include_pre-malignant_or_high-risk_lesions
+results:
+  flow-HighRiskReferral:
+    - *act-HighRiskReferralAtypicalBiopsy
+    - *act-estlifexpectancy    
