@@ -1,0 +1,16 @@
+---
+name: eve-personalriskfactors_eve-ageAtLeast35_act-HigRiskAssessment
+flow: flow-HighRiskReferral
+externalData:
+  - ../HighRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *Patient_age_>=_35_years
+  - *Personal_risk_factors_conferring_increased_risk_of_breast_cancer_is_true
+results:
+  flow-HighRiskReferral:
+    -
+      - *act-5YRiskAssessment
+      - *act-5YRiskAssessmentTool    

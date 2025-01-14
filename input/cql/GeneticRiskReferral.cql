@@ -9,15 +9,18 @@ include GeneticRiskReferralActions version '1.0.0' called Actions
 context Patient
 
 define "flow-GeneticRiskReferral":
-  {{    
-    Coalesce(
-      GeneticReferralVariant,
-      GeneticReferralAncestry,
-      GeneticReferralRisk
-    )
-  } except { null }, 
-  GeneticRiskAssessment}
+  {
+    GeneticRiskReferral, 
+    GeneticRiskAssessment
+  }
   except { null, {} }
+
+define GeneticRiskReferral:
+  Coalesce(
+    GeneticReferralVariant,
+    GeneticReferralAncestry,
+    GeneticReferralRisk
+  )
 
 define GeneticReferralVariant:
   if Events."eve-fhxgeneinherited" is true and Events."eve-knownvariantstatus" is false
@@ -29,7 +32,8 @@ define GeneticReferralAncestry:
 
 // TODO: when to reassess family hx vs use last recorded assessment? each cycle vs when new fam hx documented?
 define GeneticRiskAssessment:
-  if Events."eve-fhxbrcaovcatubalperit" is true and Events."MostRecentGeneticRiskAssessment" is null
+  if GeneticRiskReferral is null and Events."eve-fhxbrcaovcatubalperit" is true 
+    and Events."MostRecentGeneticRiskAssessment" is null
   then {Actions."act-fhxrisktool", Actions."act-fhxriskassess"} else null   
 
 // TODO: look into querying encounters or consult notes to determine if referral already happened
