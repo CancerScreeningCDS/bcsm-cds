@@ -1,16 +1,16 @@
 ---
-name: eve-AgeOver74_no_eve-LifeExp10_no_eve-highriskexclusions_no_eve-specialpop_yes_end-decisionspecialpop
+name: eve-specialpop_yes_end-decisionspecialpop
 flow: flow-DecisionToScreen
-skip: true
 externalData:
   - ../DecisionToScreenEvents/events
   - actions
   - ../DataElements/data_elements
   - ../default_patients
 data:
-  - "*eve-AgeOver74"
-  - "*eve-LifeExp10"
-  - "*eve-highriskexclusions"
-  - "*eve-specialpop"
+  - *defaultPatient
+  - *Risk_assessment_using_a_formal_risk_assessment_tool_based_mainly_on_family_history_is_>20%_lifetime_risk
 results:
-  flow-DecisionToScreen: []
+  flow-DecisionToScreen:
+    - *act-highlifetimeriskmammo
+    - *act-highlifetimeriskmri  
+    - *act-uspstfavgrisk

@@ -12,9 +12,61 @@ Usage: #definition
 * description = "Decision to screen logic path."
 * type = $PDTYPE#eca-rule
 * library[+] = "Library/DecisionToScreen|1.0.0"
+
+* insert SDMContinueScreeningAge
+* insert SDMContinueScreeningLifeExp
+* insert SDMDelayScreeningLactating
 // -----------------------------------------------------------------------------
-// Action #1: SDM to continue screening for age
+// HIGH RISK EXCLUSIONS
 // -----------------------------------------------------------------------------
+* insert ACSGeneticRiskMammo
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert ACSGeneticRiskMri
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert SpecialtyReferralGeneticRisk
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert ACSMammoAfterRT
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert ACSMriAfterRT
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert ACSMammoAfterBrca
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert SpecialtyReferralBreastCaWithin5y
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert ACSMammoAtypicalBiopsyHighRisk
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert ACSMriAtypicalBiopsyHighRisk
+* insert ApplicabilityHighRiskExclusionsRecommendations
+// -----------------------------------------------------------------------------
+// SPECIAL POPULATIONS
+// -----------------------------------------------------------------------------
+* insert ACSMammoHighRisk
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert ACSMriHighRisk
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert ACSFirstDegGeneticMammo
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert ACSFirstDegGeneticMri
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert BreastImagingHeterogenouslyOrExtremelyDense
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert CompellingFamilyHistory
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert USPSTFRecommendation
+* insert ApplicabilitySpecialPopulationsRecommendations
+// -----------------------------------------------------------------------------
+// AVERAGE RISK
+// -----------------------------------------------------------------------------
+* insert ACSMammoAvgRiskAgeUnder45
+* insert ApplicabilityAverageRiskRecommendations
+* insert ACSMammoAvgRiskAge45to54
+* insert ApplicabilityAverageRiskRecommendations
+* insert ACSMammoAvgRiskAgeOver54
+* insert ApplicabilityAverageRiskRecommendations
+* insert USPSTFAvgRisk
+* insert ApplicabilityAverageRiskRecommendations
+
+RuleSet: SDMContinueScreeningAge
 * action[+].id = "SDMContinueScreeningAge"
 * action[=].title = "Shared decision making to continue screening based on age"
 * action[=].description = "Shared decision making to continue screening based on age"
@@ -28,9 +80,8 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "SDMContinueScreeningAgeReason"
-// -----------------------------------------------------------------------------
-// Action #2: SDM to continue screening for age
-// -----------------------------------------------------------------------------
+
+RuleSet: SDMContinueScreeningLifeExp
 * action[+].id = "SDMContinueScreeningLifeExp"
 * action[=].title = "Shared decision making to continue screening based on life expectancy"
 * action[=].description = "Shared decision making to continue screening based on life expectancy"
@@ -44,9 +95,8 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "SDMContinueScreeningLifeExpReason"
-// -----------------------------------------------------------------------------
-// Action #3: SDM to delay screening for lactation
-// -----------------------------------------------------------------------------
+
+RuleSet: SDMDelayScreeningLactating
 * action[+].id = "SDMDelayScreeningLactating"
 * action[=].title = "Shared decision making to delay screening based on lactation status"
 * action[=].description = "Shared decision making to delay screening based on lactation status"
@@ -60,19 +110,22 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "SDMDelayScreeningLactatingReason"
-/*
-// -----------------------------------------------------------------------------
-// TestInferenceTask
-// -----------------------------------------------------------------------------
-* action[+].id = "TestInferenceTask"
-* action[=].definitionCanonical = Canonical(BreastScreeningNextDueRecordInferenceTask|1.0.0)
-* action[=].dynamicValue[+].path = "input[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
-* action[=].dynamicValue[=].expression.expression = "InferenceTaskInput"
-* action[=].dynamicValue[+].path = "contained[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
-* action[=].dynamicValue[=].expression.expression = "InferenceTaskInputObservation"
-*/
+
+RuleSet: ApplicabilityHighRiskExclusionsRecommendations
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "ExistsHighRiskExclusionsRecommendations"
+
+RuleSet: ApplicabilitySpecialPopulationsRecommendations
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "ExistsSpecialPopulationsRecommendations"
+
+RuleSet: ApplicabilityAverageRiskRecommendations
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "ExistsAverageRiskRecommendations"
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Instance: CommunicateSDMContinueScreening
@@ -125,25 +178,6 @@ Usage: #definition
 * name = "BreastScreeningServiceRequest"
 * description = "This ActivityDefinition generates a ServiceRequest for screening study."
 * kind = $RRTYPE#ServiceRequest "ServiceRequest"
-* intent = $RINTENT#proposal "Proposal"
-* priority = $RPRIOR#routine "Routine"
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Instance: BreastScreeningNextDueRecordInferenceTask
-InstanceOf: http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity
-Title: "Breast Screening Next Due Record Inference Task"
-Usage: #definition
-
-* insert CPGKnowledgeExtensions
-* insert CommonMetadata
-* meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity"
-* url = Canonical(BreastScreeningNextDueRecordInferenceTask)
-* name = "BreastScreeningNextDueRecordInferenceTask"
-* description = "This ActivityDefinition generates a RecordInferenceTask for screening study next due."
-* kind = $RRTYPE#Task "Task"
-* profile = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-recordinferencetask"
-* code.coding[0] = http://hl7.org/fhir/uv/cpg/CodeSystem/cpg-activity-type-cs#record-inference "Record an inference"
 * intent = $RINTENT#proposal "Proposal"
 * priority = $RPRIOR#routine "Routine"
 

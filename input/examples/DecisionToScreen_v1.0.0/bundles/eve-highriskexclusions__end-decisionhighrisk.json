@@ -1,0 +1,72 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-highriskexclusions__end-decisionhighrisk",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1980-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "invasive-breast-cancer",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "inactive",
+              "display": "Inactive"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                "code": "problem-list-item",
+                "display": "Problem List Item"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "254837009",
+              "display": "Invasive breast cancer"
+            }
+          ],
+          "text": "Invasive Breast Cancer"
+        },
+        "onsetDateTime": "2023-10-01"
+      }
+    }
+  ]
+}

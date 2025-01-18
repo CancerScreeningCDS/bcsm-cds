@@ -1,8 +1,8 @@
 ---
-name: eve-female_yes_eve-breastca_no_eve-mastectomy_yes_end-noteligible
+name: eve-mastectomy_yes_end-noteligible
 flow: flow-ScreeningEligible
 externalData:  
-  - ./events/events
+  - events
   - actions
   - ../DataElements/data_elements
   - ../default_patients
@@ -10,4 +10,5 @@ data:
   - *'Assigned_female_at_birth'_is_TRUE
   - *'History_of_bilateral_mastectomy'_is_TRUE
 results:
-  flow-ScreeningEligible: *end-noteligible-bilatmastectomy
+  flow-ScreeningEligible:
+    - *end-noteligible-bilatmastectomy

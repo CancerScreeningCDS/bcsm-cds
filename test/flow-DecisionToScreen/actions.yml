@@ -10,6 +10,7 @@ act-sdmcontinueage:
       code: "ageover74"
       display: "Age over 74 years"
       system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"
+
 act-sdmcontinuelifexp:
   - &act-sdmcontinuelifexp
     code:
@@ -22,6 +23,7 @@ act-sdmcontinuelifexp:
       code: "lifeexp"
       display: "Reduced life expectancy indicator"
       system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"
+
 act-lactating:
   - &act-lactating
     code:
@@ -82,6 +84,7 @@ act-acsavgrisk:
         frequency: 1
         period: 2
         periodUnit: 'a'        
+
 act-uspstfavgrisk:
   - &act-uspstfavgrisk        
     code:
@@ -130,6 +133,54 @@ act-uspstfavgrisk:
         period: 2
         periodUnit: 'a'        
 
+act-specialpop:
+  - &act-highlifetimeriskmammo
+    code:
+      code: "24606-6"
+      display: "MG Breast Screening"
+      system: "http://loinc.org"
+    documentation:
+      label: ACS
+    reason:
+      code: "highlifetimerisk"
+      display: "High lifetime risk"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"
+    timingAge:
+      value: 30
+      code: 'a'
+    timingTiming:
+      event:
+        - "2010-01-01"
+      repeat:
+        boundsPeriod:
+          start: "2010-01-01"
+        frequency: 1
+        period: 1
+        periodUnit: 'a'
+  - &act-highlifetimeriskmri
+    code:
+      code: "30794-2"
+      display: "MR Breast"
+      system: "http://loinc.org"
+    documentation:
+      label: ACS
+    reason:
+      code: "highlifetimerisk"
+      display: "High lifetime risk"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system"
+    timingAge:
+      value: 30
+      code: 'a'
+    timingTiming:
+      event: 
+        - "2010-01-01"
+      repeat:
+        boundsPeriod:
+          start: "2010-01-01"
+        frequency: 1
+        period: 1
+        periodUnit: 'a'
+
 act-highriskexclusions:
   - &act-highriskexclusions
     code:
@@ -154,3 +205,26 @@ act-highriskexclusions:
         frequency: 1
         period: 1
         periodUnit: a  
+  - &act-highriskexclusionsover74
+    code:
+      code: 24606-6
+      system: http://loinc.org
+      display: MG Breast Screening
+    documentation:
+      label: ACS
+    reason:
+      code: hxbreastca
+      system: http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system
+      display: Previous breast cancer
+    timingAge:
+      value: 78
+      code: a
+    timingTiming:
+      event:
+      - "2023-01-01"
+      repeat:
+        boundsPeriod:
+          start: "2023-01-01"
+        frequency: 1
+        period: 1
+        periodUnit: a         

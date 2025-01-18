@@ -28,11 +28,6 @@ code "Missing age or birth date": 'missingageorbirthdate' from "ReasonCode"
 // Standard codes
 code "Age": '30525-0' from "LOINC" display 'Age'
 
-//------------------------------------------------------------------------------
-// PARAMETERS
-//------------------------------------------------------------------------------
-
-
 context Patient
 
 //------------------------------------------------------------------------------
@@ -51,7 +46,7 @@ define IsIncludedAndNotExcluded:
 
 // INCLUSIONS
 define IsIncluded:
-  "inc-AgeAtLeast18" and "inc-femaleortransmale"
+  "inc-AgeAtLeast18" and "inc-assignedfemaleatbirthortransfemale"
 
 // Age 18 years and older, only use MostRecentAgeValue if no birthdate  
 define "inc-AgeAtLeast18":
@@ -64,7 +59,7 @@ define MostRecentAgeValue:
       sort by effective desc
   ).value.value.value
 
-define "inc-femaleortransmale":
+define "inc-assignedfemaleatbirthortransfemale":
   Events."eve-female" or DataElements."TransgenderFemale"
 
 // EXCLUSIONS
@@ -76,27 +71,56 @@ define Excluded:
 //------------------------------------------------------------------------------
 
 define "flow-ScreeningEligible":
+  { 
+    Coalesce(
+      NotAssignedFemaleAtBirth,
+      CurrentBreastCancer,
+      BilateralMastectomy,
+      BreastSymptomsOrFindings,
+      Eligible
+    )
+  }
+  except { null }
+
+define NotAssignedFemaleAtBirth:
   if Events."eve-female" is not true
-  then Actions."end-noteligible-notassignedfemaleatbirth"
-  else if Events."eve-breastca" is true
-  then Actions."end-noteligible-currentbreastcancer"
-  else if Events."eve-mastectomy" is true
-  then Actions."end-noteligible-bilatmastectomy"
-  else if Events."eve-breastsymptoms" is true or Events."eve-breastfindings" is true
-  then Actions."act-dxtesting"
-  else Actions."act-eligible"
+  then Actions."end-noteligible-notassignedfemaleatbirth" else null
+
+define CurrentBreastCancer:
+  if Events."eve-breastca" is true
+  then Actions."end-noteligible-currentbreastcancer" else null
+
+define BilateralMastectomy:
+  if Events."eve-mastectomy" is true
+  then Actions."end-noteligible-bilatmastectomy" else null  
+
+define BreastSymptomsOrFindings:
+  if Events."eve-breastsymptoms" is true or Events."eve-breastfindings" is true
+  then Actions."act-dxtesting" else null  
+
+define Eligible:
+  if Coalesce(
+      NotAssignedFemaleAtBirth,
+      CurrentBreastCancer,
+      BilateralMastectomy,
+      BreastSymptomsOrFindings) is null
+  then Actions."act-eligible" else null
+
+//------------------------------------------------------------------------------
+// DYNAMIC VALUES
+//------------------------------------------------------------------------------
 
 define IsScreeningEligible:
-  "flow-ScreeningEligible".code ~ Actions."Eligible for screening"
+  Eligible is not null
 
 define IsNotScreeningEligible:
-  "flow-ScreeningEligible".code ~ Actions."Not eligible for screening" 
+  Eligible is null
 
 define ScreeningEligibleCode:
-  "flow-ScreeningEligible".code
+  First("flow-ScreeningEligible").code
 
 define ScreeningEligibleReason:
-  "flow-ScreeningEligible".reason    
+  First("flow-ScreeningEligible").reason    
 
 //------------------------------------------------------------------------------
 // ERRORS

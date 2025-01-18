@@ -1,0 +1,257 @@
+{
+  "resourceType": "Bundle",
+  "id": "PrimaryScreeningDecision_act-lactating__act-avgrisk",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/21",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "21",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/22"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/22",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "22",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "SDMDelayScreeningLactating",
+            "title": "Shared decision making to delay screening based on lactation status",
+            "description": "Shared decision making to delay screening based on lactation status",
+            "resource": {
+              "reference": "CommunicationRequest/23"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "sdmdelay",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Shared decision making to consider delay in screening"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ACSMammoAvgRiskAgeUnder45",
+            "title": "Annual screeening mammo starting age 40",
+            "description": "Annual screeening mammo starting age 40",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ACS"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/24"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2020-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2020-01-01"
+                },
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "a"
+              }
+            }
+          },
+          {
+            "id": "USPSTFAvgRisk",
+            "title": "Biennial screeening mammo starting age 40",
+            "description": "Biennial screeening mammo starting age 40",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement.",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/25"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2020-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2020-01-01"
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/23",
+      "resource": {
+        "id": "23",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMDelayScreening"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "payload": [
+          {
+            "contentString": "Shared decision making to delay screening"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "currentlylactating",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "Currently lactating"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/24",
+      "resource": {
+        "id": "24",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "ACSaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "ACS average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2020-01-01"
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/25",
+      "resource": {
+        "id": "25",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "USPSTFaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "USPSTF average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2020-01-01"
+      }
+    }
+  ]
+}

@@ -12,9 +12,18 @@ Usage: #definition
 * description = "High risk exclusions logic path."
 * type = $PDTYPE#eca-rule
 * library[+] = "Library/HighRiskExclusions|1.0.0"
-// -----------------------------------------------------------------------------
-// Action #1: ACSGeneticRiskMammo
-// -----------------------------------------------------------------------------
+
+* insert ACSGeneticRiskMammo
+* insert ACSGeneticRiskMri
+* insert SpecialtyReferralGeneticRisk
+* insert ACSMammoAfterRT
+* insert ACSMriAfterRT
+* insert ACSMammoAfterBrca
+* insert SpecialtyReferralBreastCaWithin5y
+* insert ACSMammoAtypicalBiopsyHighRisk
+* insert ACSMriAtypicalBiopsyHighRisk
+
+RuleSet: ACSGeneticRiskMammo
 * action[+].id = "ACSGeneticRiskMammo"
 * action[=].title = "Annual screeening mammogram starting age 30"
 * action[=].description = "Annual screeening mammogram starting age 30"
@@ -32,12 +41,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMammoCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMammoReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMammoTimingEvent"
-// -----------------------------------------------------------------------------
-// Action #2: ACSGeneticRiskMri
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSGeneticRiskMri
 * action[+].id = "ACSGeneticRiskMri"
 * action[=].title = "Annual screeening MRI starting age 30"
 * action[=].description = "Annual screeening MRI starting age 30"
@@ -55,12 +66,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMriCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMriReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMriTimingEvent"
-// -----------------------------------------------------------------------------
-// Action #3: SpecialtyReferralGeneticRisk
-// -----------------------------------------------------------------------------
+
+RuleSet: SpecialtyReferralGeneticRisk
 * action[+].id = "SpecialtyReferralGeneticRisk"
 * action[=].title = "Recommendation for speciality referral"
 * action[=].description = "Recommendation for speciality referral"
@@ -71,9 +84,8 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "SpecialtyReferralGeneticRiskReason"
-// -----------------------------------------------------------------------------
-// Action #4: ACSMammoAfterRT
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSMammoAfterRT
 * action[+].id = "ACSMammoAfterRT"
 * action[=].title = "Annual screeening mammogram starting age 30"
 * action[=].description = "Annual screeening mammogram starting age 30"
@@ -91,12 +103,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAfterRTCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMammoAfterRTReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAfterRTTimingEvent"
-// -----------------------------------------------------------------------------
-// Action #5: ACSMriAfterRT
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSMriAfterRT
 * action[+].id = "ACSMriAfterRT"
 * action[=].title = "Annual screeening MRI starting age 30"
 * action[=].description = "Annual screeening MRI starting age 30"
@@ -114,12 +128,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMriAfterRTCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMriAfterRTReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMriAfterRTTimingEvent"
-// -----------------------------------------------------------------------------
-// Action #6: ACSMammoAfterBrca
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSMammoAfterBrca
 * action[+].id = "ACSMammoAfterBrca"
 * action[=].title = "Annual screeening mammogram after 5 years in remission"
 * action[=].description = "Annual screeening mammogram after 5 years in remission"
@@ -137,12 +153,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAfterBrcaCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMammoAfterBrcaReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAfterBrcaTimingEvent"
-// -----------------------------------------------------------------------------
-// Action #7: SpecialtyReferralBreastCaWithin5y
-// -----------------------------------------------------------------------------
+
+RuleSet: SpecialtyReferralBreastCaWithin5y
 * action[+].id = "SpecialtyReferralBreastCaWithin5y"
 * action[=].title = "Refer to Oncologic care plan"
 * action[=].description = "If previous breast cancer within 5 years may require enhanced surveillance including diagnostic mammogram. Refer to patient's Oncologic treatment team or Survivorship Care Plan for patient specific guidance."
@@ -153,9 +171,8 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "SpecialtyReferralBreastCaWithin5yReason"
-// -----------------------------------------------------------------------------
-// Action #6: ACSMammoAtypicalBiopsyHighRisk
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSMammoAtypicalBiopsyHighRisk
 * action[+].id = "ACSMammoAtypicalBiopsyHighRisk"
 * action[=].title = "Annual screeening mammogram in past atypical biopsy with high lifetime risk"
 * action[=].description = "Annual screeening mammogram in past atypical biopsy with high lifetime risk"
@@ -173,12 +190,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAtypicalBiopsyHighRiskCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMammoAtypicalBiopsyHighRiskReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAtypicalBiopsyHighRiskTimingEvent"
-// -----------------------------------------------------------------------------
-// Action #7: ACSMriAtypicalBiopsyHighRisk
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSMriAtypicalBiopsyHighRisk
 * action[+].id = "ACSMriAtypicalBiopsyHighRisk"
 * action[=].title = "Annual screeening MRI in past atypical biopsy with high lifetime risk"
 * action[=].description = "Annual screeening MRI in past atypical biopsy with high lifetime risk"
@@ -196,6 +215,9 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMriAtypicalBiopsyHighRiskCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMriAtypicalBiopsyHighRiskReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMriAtypicalBiopsyHighRiskTimingEvent"

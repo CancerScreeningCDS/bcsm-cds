@@ -1,0 +1,175 @@
+{
+  "resourceType": "Bundle",
+  "id": "PrimaryScreeningDecision_eve-breastdensitycord_act-performriskassessment",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/112",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "112",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/113"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/113",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "113",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "BreastImagingHeterogenouslyOrExtremelyDense",
+            "title": "Perform lifetime risk assessment",
+            "description": "Perform lifetime risk assessment",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ACS"
+              }
+            ],
+            "resource": {
+              "reference": "CommunicationRequest/114"
+            }
+          },
+          {
+            "id": "USPSTFRecommendation",
+            "title": "Biennial screeening mammo starting age 40",
+            "description": "Biennial screeening mammo starting age 40",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement.",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/115"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2020-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2020-01-01"
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/114",
+      "resource": {
+        "id": "114",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateRiskAssessment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "payload": [
+          {
+            "contentString": "Perform lifetime risk assessment"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "breastdensitycord",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "BI-RADS breast density category C or D"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/115",
+      "resource": {
+        "id": "115",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "USPSTFaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "USPSTF average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2020-01-01"
+      }
+    }
+  ]
+}
