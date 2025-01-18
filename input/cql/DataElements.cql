@@ -88,8 +88,9 @@ code "Known breast cancer variant status": 'KnownVariantStatus' from "LOCAL" dis
 // PARAMETERS
 //------------------------------------------------------------------------------
 
+parameter encounter String default null
 parameter ObservationLookbackPeriod default 14 days
-parameter SymptomaticLookBack default 14 days
+parameter SymptomaticLookBack default 1 days
 
 /***** BEGIN CDS LOGIC ********************************************************/
 
@@ -259,24 +260,30 @@ define RightUnilateralMastectomy:
 
 // TODO: move this to events
 define "de-breastsymptoms":
-  NewOrWorseningBreastSymptoms
+  MostRecentNewOrWorseningBreastSymptoms.value is true
 
-
-// TODO: look into how to associate with current encounter rather than arbitrary lookback period
-define NewOrWorseningBreastSymptoms:
+define MostRecentNewOrWorseningBreastSymptoms:
   C3F.MostRecent(
-    C3F.ObservationLookBack(
-      NewOrWorseningBreastSymptomsObservations R
-        where R.value is true,
-      SymptomaticLookBack
-    )
-  ) is not null  
+    Flatten({
+      NewOrWorseningBreastSymptomsEncounter,
+      NewOrWorseningBreastSymptomsLookback
+    }) except {null}
+  )
+
+define NewOrWorseningBreastSymptomsEncounter:
+  NewOrWorseningBreastSymptomsObservations O where O.encounter.reference = encounter
+
+define NewOrWorseningBreastSymptomsLookback:
+  C3F.ObservationLookBack(
+    NewOrWorseningBreastSymptomsObservations,
+    SymptomaticLookBack
+  ) 
 
 define NewOrWorseningBreastSymptomsObservations:
   C3F.ObservationLookBack(
     [Observation: "New or worsening breast symptoms"],
     ObservationLookbackPeriod
-  )  
+  )
 
 //------------------------------------------------------------------------------
 // Breast exam findings
@@ -284,22 +291,30 @@ define NewOrWorseningBreastSymptomsObservations:
 
 // TODO: move this to events
 define "de-breastfindings":
-  NewOrWorseningBreastFindings
+  MostRecentNewOrWorseningBreastFindings.value is true
 
-define NewOrWorseningBreastFindings:
+define MostRecentNewOrWorseningBreastFindings:
   C3F.MostRecent(
-    C3F.ObservationLookBack(
-      NewOrWorseningBreastFindingsObservations R
-        where R.value is true,
-      SymptomaticLookBack
-    )
-  ) is not null
+    Flatten({
+      NewOrWorseningBreastFindingsEncounter,
+      NewOrWorseningBreastFindingsLookback
+    }) except {null}
+  )
+
+define NewOrWorseningBreastFindingsEncounter:
+  NewOrWorseningBreastFindingsObservations O where O.encounter.reference = encounter
+
+define NewOrWorseningBreastFindingsLookback:
+  C3F.ObservationLookBack(
+    NewOrWorseningBreastFindingsObservations,
+    SymptomaticLookBack
+  )  
 
 define NewOrWorseningBreastFindingsObservations:
   C3F.ObservationLookBack(
     [Observation: "New or worsening breast exam findings"],
     ObservationLookbackPeriod
-  )    
+  )  
 
 //------------------------------------------------------------------------------
 // Life expectancy

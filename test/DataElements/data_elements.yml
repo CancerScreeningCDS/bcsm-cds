@@ -17,6 +17,12 @@ de-female:
     -
       url: http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex
       valueCode: M     
+    -
+      url: http://hl7.org/fhir/StructureDefinition/patient-genderIdentity
+      valueCodeableConcept: 
+        coding:
+          - system: http://hl7.org/fhir/gender-identity
+            code: transgender-female
   - &Sex_assigned_at_birth_=_none_AND_gender_=_female
     resourceType: Patient
     name: Joanne Smith
@@ -224,7 +230,29 @@ de-breastsymptoms:
           code: "BreastSymptoms"
           display: "New or worsening breast symptoms"
     valueBoolean: true
-    effectiveDateTime: "2023-11-10T00:00:00.0Z"
+    effectiveDateTime: "2023-12-01T00:00:00.0Z"
+  - &OBSERVATIONS_include_new_or_worsening_breast_symptoms_in_encounter
+    resourceType: Observation
+    status: final
+    encounter:
+      reference: Encounter/1
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "BreastSymptoms"
+          display: "New or worsening breast symptoms"
+    valueBoolean: true
+    effectiveDateTime: "2023-12-01T00:00:00.0Z"    
+  - &OBSERVATIONS_include_new_or_worsening_breast_symptoms_false
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "BreastSymptoms"
+          display: "New or worsening breast symptoms"
+    valueBoolean: false
+    effectiveDateTime: "2023-12-10T00:00:00.0Z"     
 
 de-breastfindings:  
   - &OBSERVATIONS_include_new_or_worsening_breast_findings
@@ -246,7 +274,29 @@ de-breastfindings:
           code: "BreastFindings"
           display: "New or worsening breast findings"
     valueBoolean: true
-    effectiveDateTime: "2023-11-10T00:00:00.0Z"
+    effectiveDateTime: "2023-12-01T00:00:00.0Z"
+  - &OBSERVATIONS_include_new_or_worsening_breast_findings_in_encounter
+    resourceType: Observation
+    status: final
+    encounter:
+      reference: Encounter/1    
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "BreastFindings"
+          display: "New or worsening breast findings"
+    valueBoolean: true
+    effectiveDateTime: "2023-12-01T00:00:00.0Z"    
+  - &OBSERVATIONS_include_new_or_worsening_breast_findings_false
+    resourceType: Observation
+    status: final
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "BreastFindings"
+          display: "New or worsening breast findings"
+    valueBoolean: false
+    effectiveDateTime: "2023-12-10T00:00:00.0Z"    
 
 de-screeningeligible:
   - "&See_'Screening_Eligible'_flow_logic"
