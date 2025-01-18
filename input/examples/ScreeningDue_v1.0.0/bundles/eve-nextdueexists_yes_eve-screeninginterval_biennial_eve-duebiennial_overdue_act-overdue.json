@@ -1,0 +1,88 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-nextdueexists_yes_eve-screeninginterval_biennial_eve-duebiennial_overdue_act-overdue",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1980-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "c667f111-cd35-4b06-831f-2f0cb757cb21",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "active",
+        "created": "2023-06-01",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "268547008",
+                "display": "Breast cancer screening"
+              }
+            ]
+          }
+        ],
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/RequestGroup-1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "RequestGroup-1",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "active",
+        "intent": "order",
+        "action": [
+          {
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "24606-6",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2023-06-01"
+              ],
+              "repeat": {
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

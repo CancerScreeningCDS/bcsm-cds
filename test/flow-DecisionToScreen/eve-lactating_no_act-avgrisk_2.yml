@@ -1,5 +1,5 @@
 ---
-name: eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_no_act-avgrisk
+name: act-sdmcontinueage__act-avgrisk
 flow: flow-DecisionToScreen
 skip: true
 externalData:
@@ -8,12 +8,9 @@ externalData:
   - ../DataElements/data_elements
   - ../default_patients
 data:
-  - "*eve-AgeOver74"
-  - "*eve-LifeExp10"
-  - "*eve-highriskexclusions"
-  - "*eve-specialpop"
-  - "*eve-lactating"
+  - *Patient_age_>_74_years
 results:
   flow-DecisionToScreen:
-    - "*act-sdmcontinueage"
-    - "*act-avgrisk"
+    - *act-sdmcontinueage
+    - *act-acsavgriskover74  
+    - *act-uspstfavgriskover74

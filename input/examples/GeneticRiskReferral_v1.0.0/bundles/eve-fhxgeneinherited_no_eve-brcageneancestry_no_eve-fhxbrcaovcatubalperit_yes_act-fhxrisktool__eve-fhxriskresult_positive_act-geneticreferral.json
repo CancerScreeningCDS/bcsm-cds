@@ -1,0 +1,85 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-fhxgeneinherited_no_eve-brcageneancestry_no_eve-fhxbrcaovcatubalperit_yes_act-fhxrisktool__eve-fhxriskresult_positive_act-geneticreferral",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1980-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "FamilyMemberHistory",
+        "id": "010cecd2-c7de-4794-bfd9-a6fad6049841",
+        "patient": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "completed",
+        "name": "Unknown",
+        "relationship": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+              "code": "MTH",
+              "display": "Mother"
+            }
+          ]
+        },
+        "condition": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "254837009",
+                  "display": "Invasive breast cancer"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "f93af850-62a4-4d87-99ed-7997d8c5f52d",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+              "code": "GeneticRiskResult",
+              "display": "Genetic risk assessment result"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+              "code": "HighGeneticRisk",
+              "display": "High genetic risk"
+            }
+          ]
+        },
+        "effectiveDateTime": "2023-11-10T00:00:00.0Z"
+      }
+    }
+  ]
+}

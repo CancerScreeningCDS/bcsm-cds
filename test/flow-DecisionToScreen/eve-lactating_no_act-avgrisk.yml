@@ -1,18 +1,14 @@
 ---
-name: eve-AgeOver74_no_eve-LifeExp10_no_eve-highriskexclusions_no_eve-specialpop_no_eve-lactating_no_act-avgrisk
+name: act-avgrisk
 flow: flow-DecisionToScreen
-skip: true
 externalData:
   - ../DecisionToScreenEvents/events
   - actions
   - ../DataElements/data_elements
   - ../default_patients
 data:
-  - "*eve-AgeOver74"
-  - "*eve-LifeExp10"
-  - "*eve-highriskexclusions"
-  - "*eve-specialpop"
-  - "*eve-lactating"
+  - *defaultPatient
 results:
   flow-DecisionToScreen:
-    - "*act-avgrisk"
+    - *act-acsavgrisk    
+    - *act-uspstfavgrisk

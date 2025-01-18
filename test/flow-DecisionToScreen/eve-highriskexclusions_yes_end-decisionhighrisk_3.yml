@@ -1,17 +1,17 @@
 ---
-name: eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_yes_act-sdmcontinuelifexp__eve-highriskexclusions_yes_end-decisionhighrisk
+name: act-sdmcontinueage__act-sdmcontinuelifexp__end-decisionhighrisk
 flow: flow-DecisionToScreen
-skip: true
 externalData:
   - ../DecisionToScreenEvents/events
   - actions
   - ../DataElements/data_elements
   - ../default_patients
 data:
-  - "*eve-AgeOver74"
-  - "*eve-LifeExp10"
-  - "*eve-highriskexclusions"
+  - *Patient_age_>_74_years
+  - *Life_expectancy_reduced
+  - *'Previous_breast_cancer'_is_TRUE_AND_end_date_>=_5_years_ago
 results:
   flow-DecisionToScreen:
-    - "*act-sdmcontinueage"
-    - "*act-sdmcontinuelifexp"
+    - *act-sdmcontinueage
+    - *act-sdmcontinuelifexp
+    - *act-highriskexclusionsover74

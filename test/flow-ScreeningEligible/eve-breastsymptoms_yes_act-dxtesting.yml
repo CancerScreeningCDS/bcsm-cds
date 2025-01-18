@@ -1,8 +1,8 @@
 ---
-name: eve-female_yes_eve-breastca_no_eve-mastectomy_no_eve-breastsymptoms_yes_act-dxtesting
+name: eve-breastsymptoms_yes_act-dxtesting
 flow: flow-ScreeningEligible
 externalData:
-  - ./events/events
+  - events
   - actions
   - ../DataElements/data_elements
   - ../default_patients
@@ -10,4 +10,5 @@ data:
   - *'Assigned_female_at_birth'_is_TRUE
   - *Current_'Breast_symptoms'_exist_which_are_new_onset_or_progressively_worsening
 results:
-  flow-ScreeningEligible: *act-dxtesting
+  flow-ScreeningEligible:
+    - *act-dxtesting

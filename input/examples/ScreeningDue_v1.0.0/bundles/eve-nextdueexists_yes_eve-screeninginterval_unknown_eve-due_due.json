@@ -1,0 +1,83 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-nextdueexists_yes_eve-screeninginterval_unknown_eve-due_due",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1980-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "5a9bccc7-4d41-448b-8c5e-e223f571d381",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "active",
+        "created": "2023-06-01",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "268547008",
+                "display": "Breast cancer screening"
+              }
+            ]
+          }
+        ],
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/RequestGroup-1"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "RequestGroup-1",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "active",
+        "intent": "order",
+        "action": [
+          {
+            "code": [
+              {
+                "coding": [
+                  {
+                    "system": "http://loinc.org",
+                    "code": "24606-6",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2024-01-01"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
