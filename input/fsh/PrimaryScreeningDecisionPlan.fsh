@@ -12,15 +12,92 @@ Usage: #definition
 * type = $PDTYPE#eca-rule "ECA Rule"
 * library[+] = "Library/PrimaryScreeningDecision|1.0.0"
 // -----------------------------------------------------------------------------
-// Action #1: Screening Eligible
+// Action #1: Not Screening Eligible
 // -----------------------------------------------------------------------------
-* action[+].title = "Screening Eligible"
-* action[=].definitionCanonical = Canonical(flow-ScreeningEligible|1.0.0)
+* insert IsNotScreeningEligible
 // -----------------------------------------------------------------------------
-// Action #2: Decision to Screen
+// DECISION TO SCREEN
 // -----------------------------------------------------------------------------
-* action[+].title = "Decision to Screen"
-* action[=].definitionCanonical = Canonical(flow-DecisionToScreen|1.0.0)
+* insert SDMContinueScreeningAge
+* insert Applicability
+* insert SDMContinueScreeningLifeExp
+* insert Applicability
+* insert SDMDelayScreeningLactating
+* insert Applicability
+// -----------------------------------------------------------------------------
+// HIGH RISK EXCLUSIONS
+// -----------------------------------------------------------------------------
+* insert ACSGeneticRiskMammo
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert ACSGeneticRiskMri
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert SpecialtyReferralGeneticRisk
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert ACSMammoAfterRT
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert ACSMriAfterRT
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert ACSMammoAfterBrca
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert SpecialtyReferralBreastCaWithin5y
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert ACSMammoAtypicalBiopsyHighRisk
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+* insert ACSMriAtypicalBiopsyHighRisk
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert Applicability
+// -----------------------------------------------------------------------------
+// SPECIAL POPULATIONS
+// -----------------------------------------------------------------------------
+* insert ACSMammoHighRisk
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert Applicability
+* insert ACSMriHighRisk
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert Applicability
+* insert ACSFirstDegGeneticMammo
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert Applicability
+* insert ACSFirstDegGeneticMri
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert Applicability
+* insert BreastImagingHeterogenouslyOrExtremelyDense
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert Applicability
+* insert CompellingFamilyHistory
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert Applicability
+* insert USPSTFRecommendation
+* insert ApplicabilitySpecialPopulationsRecommendations
+* insert Applicability
+// -----------------------------------------------------------------------------
+// AVERAGE RISK
+// -----------------------------------------------------------------------------
+* insert ACSMammoAvgRiskAgeUnder45
+* insert ApplicabilityAverageRiskRecommendations
+* insert Applicability
+* insert ACSMammoAvgRiskAge45to54
+* insert ApplicabilityAverageRiskRecommendations
+* insert Applicability
+* insert ACSMammoAvgRiskAgeOver54
+* insert ApplicabilityAverageRiskRecommendations
+* insert Applicability
+* insert USPSTFAvgRisk
+* insert ApplicabilityAverageRiskRecommendations
+* insert Applicability
+
+RuleSet: Applicability
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "IsScreeningEligible"

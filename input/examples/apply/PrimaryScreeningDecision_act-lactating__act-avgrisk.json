@@ -1,13 +1,13 @@
 {
   "resourceType": "Bundle",
-  "id": "PrimaryScreeningDecision_IsScreeningEligible_true",
+  "id": "PrimaryScreeningDecision_act-lactating__act-avgrisk",
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/6",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/21",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "6",
+        "id": "21",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -20,17 +20,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/7"
+              "reference": "RequestGroup/22"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/7",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/22",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "7",
+        "id": "22",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -42,6 +42,25 @@
         "status": "draft",
         "action": [
           {
+            "id": "SDMDelayScreeningLactating",
+            "title": "Shared decision making to delay screening based on lactation status",
+            "description": "Shared decision making to delay screening based on lactation status",
+            "resource": {
+              "reference": "CommunicationRequest/23"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "sdmdelay",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Shared decision making to consider delay in screening"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "id": "ACSMammoAvgRiskAgeUnder45",
             "title": "Annual screeening mammo starting age 40",
             "description": "Annual screeening mammo starting age 40",
@@ -52,7 +71,7 @@
               }
             ],
             "resource": {
-              "reference": "ServiceRequest/8"
+              "reference": "ServiceRequest/24"
             },
             "code": [
               {
@@ -93,7 +112,7 @@
               }
             ],
             "resource": {
-              "reference": "ServiceRequest/9"
+              "reference": "ServiceRequest/25"
             },
             "code": [
               {
@@ -124,9 +143,42 @@
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/8",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/23",
       "resource": {
-        "id": "8",
+        "id": "23",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMDelayScreening"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "payload": [
+          {
+            "contentString": "Shared decision making to delay screening"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "currentlylactating",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "Currently lactating"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/24",
+      "resource": {
+        "id": "24",
         "resourceType": "ServiceRequest",
         "status": "option",
         "basedOn": [
@@ -163,9 +215,9 @@
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/9",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/25",
       "resource": {
-        "id": "9",
+        "id": "25",
         "resourceType": "ServiceRequest",
         "status": "option",
         "basedOn": [

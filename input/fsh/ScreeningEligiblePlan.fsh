@@ -29,6 +29,19 @@ Usage: #definition
 // -----------------------------------------------------------------------------
 // Action #2: Not Screening Eligible
 // -----------------------------------------------------------------------------
+* insert IsNotScreeningEligible
+// -----------------------------------------------------------------------------
+// Inclusions error
+// -----------------------------------------------------------------------------
+* action[+].title = "Screening Eligible Missing Data"
+* action[=].description = "Error due to missing required data for inclusion and exclusion evaluation."
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "MissingAgeOrBirthdate"
+* action[=].condition[=].expression.reference = "Library/ScreeningEligible|1.0.0"
+* action[=].definitionCanonical = Canonical(ScreeningEligibleQuestionnaire|1.0.0)
+
+RuleSet: IsNotScreeningEligible
 * action[+].id = "IsNotScreeningEligible"
 * action[=].title = "Not Screening Eligible"
 * action[=].description = "Patient is not eligible for screening"
@@ -43,16 +56,6 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
-// -----------------------------------------------------------------------------
-// Inclusions error
-// -----------------------------------------------------------------------------
-* action[+].title = "Screening Eligible Missing Data"
-* action[=].description = "Error due to missing required data for inclusion and exclusion evaluation."
-* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
-* action[=].condition[=].expression.expression = "MissingAgeOrBirthdate"
-* action[=].condition[=].expression.reference = "Library/ScreeningEligible|1.0.0"
-* action[=].definitionCanonical = Canonical(ScreeningEligibleQuestionnaire|1.0.0)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -12,9 +12,13 @@ Usage: #definition
 * description = "Average risk logic path."
 * type = $PDTYPE#eca-rule
 * library[+] = "Library/AverageRisk|1.0.0"
-// -----------------------------------------------------------------------------
-// Action #1: ACSMammoAvgRiskAgeUnder45
-// -----------------------------------------------------------------------------
+
+* insert ACSMammoAvgRiskAgeUnder45
+* insert ACSMammoAvgRiskAge45to54
+* insert ACSMammoAvgRiskAgeOver54
+* insert USPSTFAvgRisk
+
+RuleSet: ACSMammoAvgRiskAgeUnder45
 * action[+].id = "ACSMammoAvgRiskAgeUnder45"
 * action[=].title = "Annual screeening mammo starting age 40"
 * action[=].description = "Annual screeening mammo starting age 40"
@@ -32,12 +36,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeUnder45Code"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeUnder45Reason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeUnder45TimingEvent"
-// -----------------------------------------------------------------------------
-// Action #2: ACSMammoAvgRiskAge45to54
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSMammoAvgRiskAge45to54
 * action[+].id = "ACSMammoAvgRiskAge45to54"
 * action[=].title = "Annual screeening mammo starting age 40"
 * action[=].description = "Annual screeening mammo starting age 40"
@@ -55,12 +61,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAge45to54Code"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAge45to54Reason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAge45to54TimingEvent"
-// -----------------------------------------------------------------------------
-// Action #3: ACSMammoAvgRiskAgeOver54
-// -----------------------------------------------------------------------------
+
+RuleSet: ACSMammoAvgRiskAgeOver54
 * action[+].id = "ACSMammoAvgRiskAgeOver54"
 * action[=].title = "Biennial screeening mammo after age 54"
 * action[=].description = "Biennial screeening mammo after age 54"
@@ -78,12 +86,14 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeOver54Code"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeOver54Reason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeOver54TimingEvent"
-// -----------------------------------------------------------------------------
-// Action #4: USPSTFAvgRisk
-// -----------------------------------------------------------------------------
+
+RuleSet: USPSTFAvgRisk
 * action[+].id = "USPSTFAvgRisk"
 * action[=].title = "Biennial screeening mammo starting age 40"
 * action[=].description = "Biennial screeening mammo starting age 40"
@@ -101,6 +111,9 @@ Usage: #definition
 * action[=].dynamicValue[+].path = "code.coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "USPSTFAvgRiskCode"
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "USPSTFAvgRiskReason"
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].dynamicValue[=].expression.expression = "USPSTFAvgRiskTimingEvent"
