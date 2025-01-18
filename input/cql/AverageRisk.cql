@@ -9,6 +9,10 @@ include DataElements version '1.0.0' called DataElements
 
 context Patient
 
+//------------------------------------------------------------------------------
+// RECOMMENDATIONS
+//------------------------------------------------------------------------------
+
 define "flow-AverageRisk":
   {    
     ACSMammoAvgRiskAgeUnder45,
@@ -20,7 +24,22 @@ define "flow-AverageRisk":
 
 define ACSMammoAvgRiskAgeUnder45:
   if Events."eve-ageUnder40" or Events."eve-age40to44" is true
-  then Actions."act-acsavgrecs40" else null
+  then Actions."act-acsavgrecs40" else null 
+
+define ACSMammoAvgRiskAge45to54:
+  if Events."eve-Age45to54" is true
+  then Actions."act-acsavgrecs45" else null    
+
+define ACSMammoAvgRiskAgeOver54:
+  if Events."eve-AgeOver54" is true
+  then Actions."act-acsavgrecs55" else null  
+
+define USPSTFAvgRisk:
+  Actions."act-uspstfavgrecs"  
+
+//------------------------------------------------------------------------------
+// DYNAMIC VALUES
+//------------------------------------------------------------------------------    
 
 define ExistsACSMammoAvgRiskAgeUnder45:
   ACSMammoAvgRiskAgeUnder45 is not null
@@ -28,15 +47,14 @@ define ExistsACSMammoAvgRiskAgeUnder45:
 define ACSMammoAvgRiskAgeUnder45Code:    
   ACSMammoAvgRiskAgeUnder45 R return R.code
 
+define ACSMammoAvgRiskAgeUnder45Reason:
+  ACSMammoAvgRiskAgeUnder45 R return R.reason
+
 define ACSMammoAvgRiskAgeUnder45Timing:    
   ACSMammoAvgRiskAgeUnder45 R return R.timingTiming
 
 define ACSMammoAvgRiskAgeUnder45TimingEvent:    
-  ACSMammoAvgRiskAgeUnder45Timing R return First(R.event)    
-
-define ACSMammoAvgRiskAge45to54:
-  if Events."eve-Age45to54" is true
-  then Actions."act-acsavgrecs45" else null  
+  ACSMammoAvgRiskAgeUnder45Timing R return First(R.event)   
 
 define ExistsACSMammoAvgRiskAge45to54:
   ACSMammoAvgRiskAge45to54 is not null
@@ -44,15 +62,14 @@ define ExistsACSMammoAvgRiskAge45to54:
 define ACSMammoAvgRiskAge45to54Code:    
   ACSMammoAvgRiskAge45to54 R return R.code
 
+define ACSMammoAvgRiskAge45to54Reason:
+  ACSMammoAvgRiskAge45to54 R return R.reason
+
 define ACSMammoAvgRiskAge45to54Timing:    
   ACSMammoAvgRiskAge45to54 R return R.timingTiming
 
 define ACSMammoAvgRiskAge45to54TimingEvent:    
-  ACSMammoAvgRiskAge45to54Timing R return First(R.event)    
-
-define ACSMammoAvgRiskAgeOver54:
-  if Events."eve-AgeOver54" is true
-  then Actions."act-acsavgrecs55" else null
+  ACSMammoAvgRiskAge45to54Timing R return First(R.event)  
 
 define ExistsACSMammoAvgRiskAgeOver54:
   ACSMammoAvgRiskAgeOver54 is not null
@@ -60,20 +77,23 @@ define ExistsACSMammoAvgRiskAgeOver54:
 define ACSMammoAvgRiskAgeOver54Code:    
   ACSMammoAvgRiskAgeOver54 R return R.code
 
+define ACSMammoAvgRiskAgeOver54Reason:
+  ACSMammoAvgRiskAgeOver54 R return R.reason
+
 define ACSMammoAvgRiskAgeOver54Timing:    
   ACSMammoAvgRiskAgeOver54 R return R.timingTiming
 
 define ACSMammoAvgRiskAgeOver54TimingEvent:    
-  ACSMammoAvgRiskAgeOver54Timing R return First(R.event)    
-
-define USPSTFAvgRisk:
-  Actions."act-uspstfavgrecs"  
+  ACSMammoAvgRiskAgeOver54Timing R return First(R.event)  
 
 define ExistsUSPSTFAvgRisk:
   USPSTFAvgRisk is not null
 
 define USPSTFAvgRiskCode:    
   USPSTFAvgRisk R return R.code
+
+define USPSTFAvgRiskReason:
+  USPSTFAvgRisk R return R.reason
 
 define USPSTFAvgRiskTiming:    
   USPSTFAvgRisk R return R.timingTiming

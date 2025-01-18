@@ -3,9 +3,6 @@ library DecisionToScreenActions version '1.0.0'
 using FHIR version '4.0.1'
 
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
-include HighRiskExclusions version '1.0.0'
-include SpecialPopulations version '1.0.0'
-include AverageRisk version '1.0.0'
 include BCSMCommonFunctions version '1.0.0'
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
@@ -43,17 +40,4 @@ define "act-lactating":
     reason: "Currently lactating",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	} 
-
-define "act-highriskexclusions":  
-  HighRiskExclusions."flow-HighRiskExclusions"
-
-define "act-specialpop":
-  if exists "act-highriskexclusions"
-  then SpecialPopulations."flow-SpecialPopulations" R where (R.reason ~ "USPSTF average risk") is false
-  else SpecialPopulations."flow-SpecialPopulations"
-
-define "act-avgrisk":  
-  if not exists "act-highriskexclusions" and not exists "act-specialpop"
-  then AverageRisk."flow-AverageRisk" 
-  else null  
 
