@@ -86,192 +86,225 @@ define ExistsSpecialPopulationsRecommendations:
   exists DecisionToScreen.SpecialPopulationsRecommendations
 
 define ExistsAverageRiskRecommendations:
-  exists DecisionToScreen.AverageRiskRecommendations      
+  exists DecisionToScreen.AverageRiskRecommendations  
 
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES HIGH RISK EXCLUSIONS
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------   
 
-define ExistsSpecialtyReferralGeneticRisk:
-  DecisionToScreen.ExistsSpecialtyReferralGeneticRisk
+define ExistsSpecialtyReferralGeneticRisk:  
+  DecisionToScreen."ExistsSpecialtyReferralGeneticRisk"
 
 define SpecialtyReferralGeneticRiskReason:
-  DecisionToScreen.SpecialtyReferralGeneticRiskReason
+  DecisionToScreen."SpecialtyReferralGeneticRiskReason"
 
 define ExistsACSGeneticRiskMammo:
-  DecisionToScreen.ExistsACSGeneticRiskMammo
+  DecisionToScreen."ExistsACSGeneticRiskMammo"
 
-define ACSGeneticRiskMammoCode:
-  DecisionToScreen.ACSGeneticRiskMammoCode
+define ACSGeneticRiskMammoCode:    
+  DecisionToScreen."ACSGeneticRiskMammoCode"
 
 define ACSGeneticRiskMammoReason:
-  DecisionToScreen.ACSGeneticRiskMammoReason
+  DecisionToScreen."ACSGeneticRiskMammoReason"
 
-define ACSGeneticRiskMammoTiming:
-  DecisionToScreen.ACSGeneticRiskMammoTiming
+define ACSGeneticRiskMammoTiming:    
+  DecisionToScreen."ACSGeneticRiskMammoTiming"
 
-define ACSGeneticRiskMammoTimingEvent:
-  DecisionToScreen.ACSGeneticRiskMammoTimingEvent
+define ACSGeneticRiskMammoTimingEvent:    
+  DecisionToScreen."ACSGeneticRiskMammoTimingEvent"
+
+define ACSGeneticRiskMammoFlag:  
+  DecisionToScreen."ACSGeneticRiskMammoFlag"
 
 define ExistsACSGeneticRiskMri:
-  DecisionToScreen.ExistsACSGeneticRiskMri
+  DecisionToScreen."ExistsACSGeneticRiskMri"
 
-define ACSGeneticRiskMriCode:
-  DecisionToScreen.ACSGeneticRiskMriCode
+define ACSGeneticRiskMriCode:    
+  DecisionToScreen."ACSGeneticRiskMriCode"
 
-define ACSGeneticRiskMriReason:
-  DecisionToScreen.ACSGeneticRiskMriReason
+define ACSGeneticRiskMriReason:  
+  DecisionToScreen."ACSGeneticRiskMriReason"
 
-define ACSGeneticRiskMriTiming:
-  DecisionToScreen.ACSGeneticRiskMriTiming
+define ACSGeneticRiskMriTiming:    
+  DecisionToScreen."ACSGeneticRiskMriTiming"
 
-define ACSGeneticRiskMriTimingEvent:
-  DecisionToScreen.ACSGeneticRiskMriTimingEvent
+define ACSGeneticRiskMriTimingEvent:    
+  DecisionToScreen."ACSGeneticRiskMriTimingEvent"
+
+define ACSGeneticRiskMriFlag:  
+  DecisionToScreen."ACSGeneticRiskMriFlag"
 
 define ExistsACSMammoAfterRT:
-  DecisionToScreen.ExistsACSMammoAfterRT
+  DecisionToScreen."ExistsACSMammoAfterRT"
 
-define ACSMammoAfterRTCode:
-  DecisionToScreen.ACSMammoAfterRTCode
+define ACSMammoAfterRTCode:    
+  DecisionToScreen."ACSMammoAfterRTCode"
 
-define ACSMammoAfterRTReason:
-  DecisionToScreen.ACSMammoAfterRTReason
+define ACSMammoAfterRTReason:  
+  DecisionToScreen."ACSMammoAfterRTReason"
 
-define ACSMammoAfterRTTiming:
-  DecisionToScreen.ACSMammoAfterRTTiming
+define ACSMammoAfterRTTiming:    
+  DecisionToScreen."ACSMammoAfterRTTiming"
 
-define ACSMammoAfterRTTimingEvent:
-  DecisionToScreen.ACSMammoAfterRTTimingEvent
+define ACSMammoAfterRTTimingEvent:    
+  DecisionToScreen."ACSMammoAfterRTTimingEvent"
+
+define ACSMammoAfterRTFlag:  
+  DecisionToScreen."ACSMammoAfterRTFlag"
 
 define ExistsACSMriAfterRT:
-  DecisionToScreen.ExistsACSMriAfterRT
+  DecisionToScreen."ExistsACSMriAfterRT"
 
-define ACSMriAfterRTCode:
-  DecisionToScreen.ACSMriAfterRTCode
+define ACSMriAfterRTCode:    
+  DecisionToScreen."ACSMriAfterRTCode"
 
-define ACSMriAfterRTReason:
-  DecisionToScreen.ACSMriAfterRTReason
+define ACSMriAfterRTReason:    
+  DecisionToScreen."ACSMriAfterRTReason"
 
-define ACSMriAfterRTTiming:
-  DecisionToScreen.ACSMriAfterRTTiming
+define ACSMriAfterRTTiming:    
+  DecisionToScreen."ACSMriAfterRTTiming"
 
-define ACSMriAfterRTTimingEvent:
-  DecisionToScreen.ACSMriAfterRTTimingEvent
+define ACSMriAfterRTTimingEvent:    
+  DecisionToScreen."ACSMriAfterRTTimingEvent"
+
+define ACSMriAfterRTFlag:  
+  DecisionToScreen."ACSMriAfterRTFlag"
 
 define ExistsACSMammoAfterBrca:
-  DecisionToScreen.ExistsACSMammoAfterBrca
+  DecisionToScreen."ExistsACSMammoAfterBrca"
 
-define ACSMammoAfterBrcaCode:
-  DecisionToScreen.ACSMammoAfterBrcaCode
+define ACSMammoAfterBrcaCode:    
+  DecisionToScreen."ACSMammoAfterBrcaCode"
 
-define ACSMammoAfterBrcaReason:
-  DecisionToScreen.ACSMammoAfterBrcaReason
+define ACSMammoAfterBrcaReason:    
+  DecisionToScreen."ACSMammoAfterBrcaReason"
 
-define ACSMammoAfterBrcaTiming:
-  DecisionToScreen.ACSMammoAfterBrcaTiming
+define ACSMammoAfterBrcaTiming:    
+  DecisionToScreen."ACSMammoAfterBrcaTiming"
 
-define ACSMammoAfterBrcaTimingEvent:
-  DecisionToScreen.ACSMammoAfterBrcaTimingEvent
+define ACSMammoAfterBrcaTimingEvent:    
+  DecisionToScreen."ACSMammoAfterBrcaTimingEvent"
 
-define ExistsSpecialtyReferralBreastCaWithin5y:
-  DecisionToScreen.ExistsSpecialtyReferralBreastCaWithin5y
+define ACSMammoAfterBrcaFlag:
+  DecisionToScreen."ACSMammoAfterBrcaFlag"  
+
+define ExistsSpecialtyReferralBreastCaWithin5y:  
+  DecisionToScreen."ExistsSpecialtyReferralBreastCaWithin5y"
 
 define SpecialtyReferralBreastCaWithin5yReason:
-  DecisionToScreen.SpecialtyReferralBreastCaWithin5yReason
+  DecisionToScreen."SpecialtyReferralBreastCaWithin5yReason"
 
 define ExistsACSMammoAtypicalBiopsyHighRisk:
-  DecisionToScreen.ExistsACSMammoAtypicalBiopsyHighRisk
+  DecisionToScreen."ExistsACSMammoAtypicalBiopsyHighRisk"
 
-define ACSMammoAtypicalBiopsyHighRiskCode:
-  DecisionToScreen.ACSMammoAtypicalBiopsyHighRiskCode
+define ACSMammoAtypicalBiopsyHighRiskCode:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskCode"
 
-define ACSMammoAtypicalBiopsyHighRiskReason:
-  DecisionToScreen.ACSMammoAtypicalBiopsyHighRiskReason
+define ACSMammoAtypicalBiopsyHighRiskReason:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskReason"
 
-define ACSMammoAtypicalBiopsyHighRiskTiming:
-  DecisionToScreen.ACSMammoAtypicalBiopsyHighRiskTiming
+define ACSMammoAtypicalBiopsyHighRiskTiming:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskTiming"
 
-define ACSMammoAtypicalBiopsyHighRiskTimingEvent:
-  DecisionToScreen.ACSMammoAtypicalBiopsyHighRiskTimingEvent
+define ACSMammoAtypicalBiopsyHighRiskTimingEvent:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskTimingEvent"
+
+define ACSMammoAtypicalBiopsyHighRiskFlag:  
+  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskFlag"  
 
 define ExistsACSMriAtypicalBiopsyHighRisk:
-  DecisionToScreen.ExistsACSMriAtypicalBiopsyHighRisk
+  DecisionToScreen."ExistsACSMriAtypicalBiopsyHighRisk"
 
-define ACSMriAtypicalBiopsyHighRiskCode:
-  DecisionToScreen.ACSMriAtypicalBiopsyHighRiskCode
+define ACSMriAtypicalBiopsyHighRiskCode:    
+  DecisionToScreen."ACSMriAtypicalBiopsyHighRiskCode"
 
-define ACSMriAtypicalBiopsyHighRiskReason:
-  DecisionToScreen.ACSMriAtypicalBiopsyHighRiskReason
+define ACSMriAtypicalBiopsyHighRiskReason:    
+  DecisionToScreen."ACSMriAtypicalBiopsyHighRiskReason"
 
-define ACSMriAtypicalBiopsyHighRiskTiming:
-  DecisionToScreen.ACSMriAtypicalBiopsyHighRiskTiming
+define ACSMriAtypicalBiopsyHighRiskTiming:    
+  DecisionToScreen."ACSMriAtypicalBiopsyHighRiskTiming"
 
-define ACSMriAtypicalBiopsyHighRiskTimingEvent:
-  DecisionToScreen.ACSMriAtypicalBiopsyHighRiskTimingEvent
+define ACSMriAtypicalBiopsyHighRiskTimingEvent:    
+  DecisionToScreen."ACSMriAtypicalBiopsyHighRiskTimingEvent"
+
+define ACSMriAtypicalBiopsyHighRiskFlag:  
+  DecisionToScreen."ACSMriAtypicalBiopsyHighRiskFlag"  
 
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES SPECIAL POPULATIONS
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------  
 
 define ExistsACSMammoHighRisk:
   DecisionToScreen.ExistsACSMammoHighRisk
 
-define ACSMammoHighRiskCode:
+define ACSMammoHighRiskCode:    
   DecisionToScreen.ACSMammoHighRiskCode
 
-define ACSMammoHighRiskReason:
+define ACSMammoHighRiskReason:    
   DecisionToScreen.ACSMammoHighRiskReason
 
-define ACSMammoHighRiskTiming:
+define ACSMammoHighRiskTiming:    
   DecisionToScreen.ACSMammoHighRiskTiming
 
-define ACSMammoHighRiskTimingEvent:
+define ACSMammoHighRiskTimingEvent:    
   DecisionToScreen.ACSMammoHighRiskTimingEvent
+
+define ACSMammoHighRiskFlag:  
+  DecisionToScreen.ACSMammoHighRiskFlag
 
 define ExistsACSMriHighRisk:
   DecisionToScreen.ExistsACSMriHighRisk
 
-define ACSMriHighRiskCode:
+define ACSMriHighRiskCode:    
   DecisionToScreen.ACSMriHighRiskCode
 
-define ACSMriHighRiskReason:
+define ACSMriHighRiskReason:    
   DecisionToScreen.ACSMriHighRiskReason
 
-define ACSMriHighRiskTiming:
+define ACSMriHighRiskTiming:    
   DecisionToScreen.ACSMriHighRiskTiming
 
-define ACSMriHighRiskTimingEvent:
+define ACSMriHighRiskTimingEvent:    
   DecisionToScreen.ACSMriHighRiskTimingEvent
+
+define ACSMriHighRiskFlag:  
+  DecisionToScreen.ACSMriHighRiskFlag  
 
 define ExistsACSFirstDegGeneticMammo:
   DecisionToScreen.ExistsACSFirstDegGeneticMammo
 
-define ACSFirstDegGeneticMammoCode:
+define ACSFirstDegGeneticMammoCode:    
   DecisionToScreen.ACSFirstDegGeneticMammoCode
 
-define ACSFirstDegGeneticMammoReason:
+define ACSFirstDegGeneticMammoReason:    
   DecisionToScreen.ACSFirstDegGeneticMammoReason
 
-define ACSFirstDegGeneticMammoTiming:
+define ACSFirstDegGeneticMammoTiming:    
   DecisionToScreen.ACSFirstDegGeneticMammoTiming
 
-define ACSFirstDegGeneticMammoTimingEvent:
+define ACSFirstDegGeneticMammoTimingEvent:    
   DecisionToScreen.ACSFirstDegGeneticMammoTimingEvent
+
+define ACSFirstDegGeneticMammoFlag:  
+  DecisionToScreen.ACSFirstDegGeneticMammoFlag  
 
 define ExistsACSFirstDegGeneticMri:
   DecisionToScreen.ExistsACSFirstDegGeneticMri
 
-define ACSFirstDegGeneticMriCode:
+define ACSFirstDegGeneticMriCode:    
   DecisionToScreen.ACSFirstDegGeneticMriCode
 
-define ACSFirstDegGeneticMriReason:
+define ACSFirstDegGeneticMriReason:    
   DecisionToScreen.ACSFirstDegGeneticMriReason
 
-define ACSFirstDegGeneticMriTiming:
+define ACSFirstDegGeneticMriTiming:    
   DecisionToScreen.ACSFirstDegGeneticMriTiming
 
-define ACSFirstDegGeneticMriTimingEvent:
+define ACSFirstDegGeneticMriTimingEvent:    
   DecisionToScreen.ACSFirstDegGeneticMriTimingEvent
+
+define ACSFirstDegGeneticMriFlag:  
+  DecisionToScreen.ACSFirstDegGeneticMriFlag  
 
 define ExistsBreastImagingHeterogenouslyOrExtremelyDense:
   DecisionToScreen.ExistsBreastImagingHeterogenouslyOrExtremelyDense
@@ -294,78 +327,93 @@ define CompellingFamilyHistoryReason:
 define ExistsUSPSTFRecommendation:
   DecisionToScreen.ExistsUSPSTFRecommendation
 
-define USPSTFRecommendationCode:
+define USPSTFRecommendationCode:    
   DecisionToScreen.USPSTFRecommendationCode
 
-define USPSTFRecommendationReason:
+define USPSTFRecommendationReason:    
   DecisionToScreen.USPSTFRecommendationReason
 
-define USPSTFRecommendationTiming:
+define USPSTFRecommendationTiming:    
   DecisionToScreen.USPSTFRecommendationTiming
 
-define USPSTFRecommendationTimingEvent:
+define USPSTFRecommendationTimingEvent:    
   DecisionToScreen.USPSTFRecommendationTimingEvent
+
+define USPSTFRecommendationFlag:  
+  DecisionToScreen.USPSTFRecommendationFlag  
 
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES AVERAGE RISK
-//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------    
 
 define ExistsACSMammoAvgRiskAgeUnder45:
   DecisionToScreen.ExistsACSMammoAvgRiskAgeUnder45
 
-define ACSMammoAvgRiskAgeUnder45Code:
+define ACSMammoAvgRiskAgeUnder45Code:    
   DecisionToScreen.ACSMammoAvgRiskAgeUnder45Code
 
 define ACSMammoAvgRiskAgeUnder45Reason:
   DecisionToScreen.ACSMammoAvgRiskAgeUnder45Reason
 
-define ACSMammoAvgRiskAgeUnder45Timing:
+define ACSMammoAvgRiskAgeUnder45Timing:    
   DecisionToScreen.ACSMammoAvgRiskAgeUnder45Timing
 
-define ACSMammoAvgRiskAgeUnder45TimingEvent:
+define ACSMammoAvgRiskAgeUnder45TimingEvent:    
   DecisionToScreen.ACSMammoAvgRiskAgeUnder45TimingEvent
+
+define ACSMammoAvgRiskAgeUnder45Flag:
+  DecisionToScreen.ACSMammoAvgRiskAgeUnder45Flag  
 
 define ExistsACSMammoAvgRiskAge45to54:
   DecisionToScreen.ExistsACSMammoAvgRiskAge45to54
 
-define ACSMammoAvgRiskAge45to54Code:
+define ACSMammoAvgRiskAge45to54Code:    
   DecisionToScreen.ACSMammoAvgRiskAge45to54Code
 
 define ACSMammoAvgRiskAge45to54Reason:
   DecisionToScreen.ACSMammoAvgRiskAge45to54Reason
 
-define ACSMammoAvgRiskAge45to54Timing:
+define ACSMammoAvgRiskAge45to54Timing:    
   DecisionToScreen.ACSMammoAvgRiskAge45to54Timing
 
-define ACSMammoAvgRiskAge45to54TimingEvent:
+define ACSMammoAvgRiskAge45to54TimingEvent:    
   DecisionToScreen.ACSMammoAvgRiskAge45to54TimingEvent
+
+define ACSMammoAvgRiskAge45to54Flag:
+  DecisionToScreen.ACSMammoAvgRiskAge45to54Flag   
 
 define ExistsACSMammoAvgRiskAgeOver54:
   DecisionToScreen.ExistsACSMammoAvgRiskAgeOver54
 
-define ACSMammoAvgRiskAgeOver54Code:
+define ACSMammoAvgRiskAgeOver54Code:    
   DecisionToScreen.ACSMammoAvgRiskAgeOver54Code
 
 define ACSMammoAvgRiskAgeOver54Reason:
   DecisionToScreen.ACSMammoAvgRiskAgeOver54Reason
 
-define ACSMammoAvgRiskAgeOver54Timing:
+define ACSMammoAvgRiskAgeOver54Timing:    
   DecisionToScreen.ACSMammoAvgRiskAgeOver54Timing
 
-define ACSMammoAvgRiskAgeOver54TimingEvent:
+define ACSMammoAvgRiskAgeOver54TimingEvent:    
   DecisionToScreen.ACSMammoAvgRiskAgeOver54TimingEvent
+
+define ACSMammoAvgRiskAgeOver54Flag:
+  DecisionToScreen.ACSMammoAvgRiskAgeOver54Flag    
 
 define ExistsUSPSTFAvgRisk:
   DecisionToScreen.ExistsUSPSTFAvgRisk
 
-define USPSTFAvgRiskCode:
+define USPSTFAvgRiskCode:    
   DecisionToScreen.USPSTFAvgRiskCode
 
 define USPSTFAvgRiskReason:
   DecisionToScreen.USPSTFAvgRiskReason
 
-define USPSTFAvgRiskTiming:
+define USPSTFAvgRiskTiming:    
   DecisionToScreen.USPSTFAvgRiskTiming
 
-define USPSTFAvgRiskTimingEvent:
+define USPSTFAvgRiskTimingEvent:    
   DecisionToScreen.USPSTFAvgRiskTimingEvent
+
+define USPSTFAvgRiskFlag:
+  DecisionToScreen.USPSTFAvgRiskFlag

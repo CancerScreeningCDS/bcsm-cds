@@ -132,6 +132,9 @@ define ACSGeneticRiskMammoTiming:
 define ACSGeneticRiskMammoTimingEvent:    
   HighRiskExclusions."ACSGeneticRiskMammoTimingEvent"
 
+define ACSGeneticRiskMammoFlag:  
+  HighRiskExclusions."ACSGeneticRiskMammoFlag"
+
 define ExistsACSGeneticRiskMri:
   HighRiskExclusions."ExistsACSGeneticRiskMri"
 
@@ -146,6 +149,9 @@ define ACSGeneticRiskMriTiming:
 
 define ACSGeneticRiskMriTimingEvent:    
   HighRiskExclusions."ACSGeneticRiskMriTimingEvent"
+
+define ACSGeneticRiskMriFlag:  
+  HighRiskExclusions."ACSGeneticRiskMriFlag"
 
 define ExistsACSMammoAfterRT:
   HighRiskExclusions."ExistsACSMammoAfterRT"
@@ -162,6 +168,9 @@ define ACSMammoAfterRTTiming:
 define ACSMammoAfterRTTimingEvent:    
   HighRiskExclusions."ACSMammoAfterRTTimingEvent"
 
+define ACSMammoAfterRTFlag:  
+  HighRiskExclusions."ACSMammoAfterRTFlag"
+
 define ExistsACSMriAfterRT:
   HighRiskExclusions."ExistsACSMriAfterRT"
 
@@ -177,6 +186,9 @@ define ACSMriAfterRTTiming:
 define ACSMriAfterRTTimingEvent:    
   HighRiskExclusions."ACSMriAfterRTTimingEvent"
 
+define ACSMriAfterRTFlag:  
+  HighRiskExclusions."ACSMriAfterRTFlag"
+
 define ExistsACSMammoAfterBrca:
   HighRiskExclusions."ExistsACSMammoAfterBrca"
 
@@ -191,6 +203,9 @@ define ACSMammoAfterBrcaTiming:
 
 define ACSMammoAfterBrcaTimingEvent:    
   HighRiskExclusions."ACSMammoAfterBrcaTimingEvent"
+
+define ACSMammoAfterBrcaFlag:
+  HighRiskExclusions."ACSMammoAfterBrcaFlag"  
 
 define ExistsSpecialtyReferralBreastCaWithin5y:  
   HighRiskExclusions."ExistsSpecialtyReferralBreastCaWithin5y"
@@ -213,6 +228,9 @@ define ACSMammoAtypicalBiopsyHighRiskTiming:
 define ACSMammoAtypicalBiopsyHighRiskTimingEvent:    
   HighRiskExclusions."ACSMammoAtypicalBiopsyHighRiskTimingEvent"
 
+define ACSMammoAtypicalBiopsyHighRiskFlag:  
+  HighRiskExclusions."ACSMammoAtypicalBiopsyHighRiskFlag"  
+
 define ExistsACSMriAtypicalBiopsyHighRisk:
   HighRiskExclusions."ExistsACSMriAtypicalBiopsyHighRisk"
 
@@ -227,6 +245,9 @@ define ACSMriAtypicalBiopsyHighRiskTiming:
 
 define ACSMriAtypicalBiopsyHighRiskTimingEvent:    
   HighRiskExclusions."ACSMriAtypicalBiopsyHighRiskTimingEvent"
+
+define ACSMriAtypicalBiopsyHighRiskFlag:  
+  HighRiskExclusions."ACSMriAtypicalBiopsyHighRiskFlag"  
 
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES SPECIAL POPULATIONS
@@ -247,6 +268,9 @@ define ACSMammoHighRiskTiming:
 define ACSMammoHighRiskTimingEvent:    
   SpecialPopulations.ACSMammoHighRiskTimingEvent
 
+define ACSMammoHighRiskFlag:  
+  SpecialPopulations.ACSMammoHighRiskFlag
+
 define ExistsACSMriHighRisk:
   SpecialPopulations.ExistsACSMriHighRisk
 
@@ -261,6 +285,9 @@ define ACSMriHighRiskTiming:
 
 define ACSMriHighRiskTimingEvent:    
   SpecialPopulations.ACSMriHighRiskTimingEvent
+
+define ACSMriHighRiskFlag:  
+  SpecialPopulations.ACSMriHighRiskFlag  
 
 define ExistsACSFirstDegGeneticMammo:
   SpecialPopulations.ExistsACSFirstDegGeneticMammo
@@ -277,6 +304,9 @@ define ACSFirstDegGeneticMammoTiming:
 define ACSFirstDegGeneticMammoTimingEvent:    
   SpecialPopulations.ACSFirstDegGeneticMammoTimingEvent
 
+define ACSFirstDegGeneticMammoFlag:  
+  SpecialPopulations.ACSFirstDegGeneticMammoFlag  
+
 define ExistsACSFirstDegGeneticMri:
   SpecialPopulations.ExistsACSFirstDegGeneticMri
 
@@ -291,6 +321,9 @@ define ACSFirstDegGeneticMriTiming:
 
 define ACSFirstDegGeneticMriTimingEvent:    
   SpecialPopulations.ACSFirstDegGeneticMriTimingEvent
+
+define ACSFirstDegGeneticMriFlag:  
+  SpecialPopulations.ACSFirstDegGeneticMriFlag  
 
 define ExistsBreastImagingHeterogenouslyOrExtremelyDense:
   SpecialPopulations.ExistsBreastImagingHeterogenouslyOrExtremelyDense
@@ -325,6 +358,9 @@ define USPSTFRecommendationTiming:
 define USPSTFRecommendationTimingEvent:    
   SpecialPopulations.USPSTFRecommendationTimingEvent
 
+define USPSTFRecommendationFlag:  
+  SpecialPopulations.USPSTFRecommendationFlag  
+
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES AVERAGE RISK
 //------------------------------------------------------------------------------    
@@ -344,6 +380,9 @@ define ACSMammoAvgRiskAgeUnder45Timing:
 define ACSMammoAvgRiskAgeUnder45TimingEvent:    
   AverageRisk.ACSMammoAvgRiskAgeUnder45TimingEvent
 
+define ACSMammoAvgRiskAgeUnder45Flag:
+  AverageRisk.ACSMammoAvgRiskAgeUnder45Flag  
+
 define ExistsACSMammoAvgRiskAge45to54:
   AverageRisk.ExistsACSMammoAvgRiskAge45to54
 
@@ -358,6 +397,9 @@ define ACSMammoAvgRiskAge45to54Timing:
 
 define ACSMammoAvgRiskAge45to54TimingEvent:    
   AverageRisk.ACSMammoAvgRiskAge45to54TimingEvent
+
+define ACSMammoAvgRiskAge45to54Flag:
+  AverageRisk.ACSMammoAvgRiskAge45to54Flag   
 
 define ExistsACSMammoAvgRiskAgeOver54:
   AverageRisk.ExistsACSMammoAvgRiskAgeOver54
@@ -374,6 +416,9 @@ define ACSMammoAvgRiskAgeOver54Timing:
 define ACSMammoAvgRiskAgeOver54TimingEvent:    
   AverageRisk.ACSMammoAvgRiskAgeOver54TimingEvent
 
+define ACSMammoAvgRiskAgeOver54Flag:
+  AverageRisk.ACSMammoAvgRiskAgeOver54Flag    
+
 define ExistsUSPSTFAvgRisk:
   AverageRisk.ExistsUSPSTFAvgRisk
 
@@ -388,4 +433,7 @@ define USPSTFAvgRiskTiming:
 
 define USPSTFAvgRiskTimingEvent:    
   AverageRisk.USPSTFAvgRiskTimingEvent
+
+define USPSTFAvgRiskFlag:
+  AverageRisk.USPSTFAvgRiskFlag
 
