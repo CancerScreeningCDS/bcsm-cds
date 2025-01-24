@@ -1,37 +1,42 @@
 {
   "resourceType": "Bundle",
-  "id": "eve-atypicalbxpop_eve-ageAny_act-HighRiskReferral_act-estlifexpectancy",
+  "id": "eve-mastectomy_yes_end-noteligible",
   "type": "collection",
   "entry": [
     {
       "resource": {
         "resourceType": "Patient",
-        "id": "defaultPatient",
+        "id": "a2df6a48-444b-46bb-a3ec-00a72c93a47d",
         "name": [
           {
             "given": [
-              "Jane"
+              "Joanne"
             ],
-            "family": "Doe"
+            "family": "Smith"
           }
         ],
-        "gender": "female",
-        "birthDate": "1980-01-01"
+        "gender": "other",
+        "birthDate": "1980-01-01",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex",
+            "valueCode": "F"
+          }
+        ]
       }
     },
     {
       "resource": {
         "resourceType": "Condition",
-        "id": "ce02f2f6-9075-4beb-9c39-f28ba10b8e3d",
+        "id": "bilateral-mastectomy-condition",
         "subject": {
-          "reference": "Patient/defaultPatient"
+          "reference": "Patient/a2df6a48-444b-46bb-a3ec-00a72c93a47d"
         },
         "clinicalStatus": {
           "coding": [
             {
               "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-              "code": "active",
-              "display": "Active"
+              "code": "active"
             }
           ]
         },
@@ -42,13 +47,14 @@
               "code": "confirmed",
               "display": "Confirmed"
             }
-          ]
+          ],
+          "text": "Confirmed"
         },
         "code": {
           "coding": [
             {
               "system": "http://snomed.info/sct",
-              "code": "62061000119107"
+              "code": "428529004"
             }
           ]
         }
