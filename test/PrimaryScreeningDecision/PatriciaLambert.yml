@@ -1,0 +1,42 @@
+---
+name: PatriciaLambert
+skip: true
+externalData:
+  - ../default_patients
+data:
+  - *PatriciaLambert
+  - resourceType: Condition
+    id: "HistoryOfBreastCancer"
+    subject:
+      reference: "Patient/PatriciaLambert"
+    code:
+      text: "History of breast cancer in remission"
+    onsetDateTime: "2021-08-21"
+  - resourceType: Procedure
+    id: "Lumpectomy"
+    subject:
+      reference: "Patient/PatriciaLambert"
+    code:
+      text: "Lumpectomy"
+    performedDateTime: "2018-07-28"
+  - resourceType: Procedure
+    id: "MammogramNoEvidence"
+    subject:
+      reference: "Patient/PatriciaLambert"
+    code:
+      text: "Mammogram"
+    performedDateTime: "2021-08-21"
+    outcome:
+      text: "No evidence of disease"
+  - resourceType: ServiceRequest
+    id: "OncologicCarePlan"
+    subject:
+      reference: "Patient/PatriciaLambert"
+    code:
+      text: "Refer to Oncologic care plan"
+    note:
+      - text: "History of invasive or non-invasive breast cancer in remission for less than 5 years may require enhanced surveillance."
+
+results:
+  IsScreeningEligible: true
+  PrimaryScreeningDecision: $should have length 1

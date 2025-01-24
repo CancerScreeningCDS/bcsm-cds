@@ -1,0 +1,34 @@
+---
+name: NadiaWills
+skip: true
+externalData:
+  - ../default_patients
+data:
+  - *NadiaWills
+  - resourceType: Condition
+    id: "PalpableBreastMass"
+    subject:
+      reference: "Patient/NadiaWills"
+    code:
+      text: "Palpable breast mass"
+    onsetDateTime: "2015-05-04"
+  - resourceType: Procedure
+    id: "ScreeningMammogram"
+    subject:
+      reference: "Patient/NadiaWills"
+    code:
+      text: "Screening Mammogram"
+    performedDateTime: "2015-05-04"
+    outcome:
+      text: "BI-RADS 1"
+  - resourceType: ServiceRequest
+    id: "DiagnosticExamination"
+    subject:
+      reference: "Patient/NadiaWills"
+    code:
+      text: "Diagnostic Examination"
+    note:
+      - text: "Consider diagnostic work-up or examination. This patient has symptoms concerning for breast disease, and should undergo diagnostic testing rather than routine screening."
+results:
+  IsScreeningEligible: true
+  PrimaryScreeningDecision: $should have length 1
