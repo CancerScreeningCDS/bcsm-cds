@@ -48,7 +48,7 @@ define "eve-noscreening27mo":
   (LastMammography is null or Today() > (FHIRHelpers.ToDateTime(LastMammography.effective) as DateTime) + 27 months)
 
 define "eve-due":
-  CarePlanActivitiesDue A where A.flag in {'DUE', 'OVERDUE'}
+  CarePlanActivitiesDue A where A.flag in {BCSMCommonFunctions."DUE", BCSMCommonFunctions."OVERDUE"}
 
 define CarePlanActivitiesDue:
   BreastCancerScreeningActivities A
@@ -61,9 +61,9 @@ define CarePlanActivitiesDue:
     nextDue: nextdue,
     scheduledDue: ActivityScheduledDate(A.timing),
     scheduledStart: ((A.timing as Timing).repeat.bounds as Period).start,
-    scheduledRepeat: EvaluateTiming(A.timing as Timing),
+    scheduledRepeat: BCSMCommonFunctions.EvaluateInterval((A.timing as FHIR.Timing).repeat),
     lastReportDate: lastReportDate,
-    flag: EvaluateFlag(A.timing as FHIR.Timing, nextdue)
+    flag: BCSMCommonFunctions.EvaluateFlag((A.timing as FHIR.Timing).repeat, nextdue)
   } 
 
 define LastMammography:
@@ -161,63 +161,4 @@ define function ActivityScheduledDate(timing Choice<FHIR.Timing,FHIR.Period>):
 
 define function MostRecentTimingEvent(timing FHIR.Timing):
   Last(timing.event E sort asc).value 
-
-//------------------------------------------------------------------------------
-// scheduled frequency
-//------------------------------------------------------------------------------
-
-define function EvaluateTiming(timing FHIR.Timing):
-  case
-    when TimingIsUnknown(timing)
-      then 'Unknown'
-    when TimingIsAnnual(timing)
-      then 'Annual'
-    when TimingIsBiennial(timing)
-      then 'Biennial'
-    else 'Other'
-  end
-
-define function TimingIsAnnual(timing FHIR.Timing):
-  if timing.repeat.frequency = 1 and timing.repeat.period = 1 and timing.repeat.periodUnit = 'a' 
-  then true else false
-
-define function TimingIsBiennial(timing FHIR.Timing):
-  if timing.repeat.frequency = 1 and timing.repeat.period = 2 and timing.repeat.periodUnit = 'a' 
-  then true else false
-
- define function TimingIsUnknown(timing FHIR.Timing):
-  if timing is null or timing.repeat is null or timing.repeat.frequency is null
-  then true else false 
-
-//------------------------------------------------------------------------------
-// flag due/overdue
-//------------------------------------------------------------------------------
-
-define function EvaluateFlag(timing FHIR.Timing, nextDueDate DateTime):
-  case
-    when TimingIsAnnual(timing)
-      then EvaluateFlagAnnual(nextDueDate)
-    when TimingIsBiennial(timing)
-      then EvaluateFlagBiennial(nextDueDate)
-    else EvaluateFlagDefault(nextDueDate)
-  end
-
-define function EvaluateFlagDefault(nextDueDate DateTime):
-  if nextDueDate < Today() - 3 months then
-    'OVERDUE'
-  else if nextDueDate <= Today() + 2 months and nextDueDate >= Today() - 3 months then
-    'DUE'
-  else
-    'NOT DUE'  
-
-define function EvaluateFlagBiennial(nextDueDate DateTime):
-  EvaluateFlagDefault(nextDueDate)
-
-define function EvaluateFlagAnnual(nextDueDate DateTime):
-  if nextDueDate < Today() - 2 months then
-    'OVERDUE'
-  else if nextDueDate <= Today() + 2 months and nextDueDate >= Today() - 2 months then
-    'DUE'
-  else
-    'NOT DUE'   
 

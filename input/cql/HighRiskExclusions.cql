@@ -5,6 +5,7 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 include HighRiskExclusionsEvents version '1.0.0' called Events
 include HighRiskExclusionsActions version '1.0.0' called Actions
+include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 context Patient
 
@@ -101,6 +102,9 @@ define ACSGeneticRiskMammoTiming:
 define ACSGeneticRiskMammoTimingEvent:    
   ACSGeneticRiskMammoTiming R return First(R.event)
 
+define ACSGeneticRiskMammoFlag:
+  ACSGeneticRiskMammo R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)    
+
 define ExistsACSGeneticRiskMri:
   ACSGeneticRiskMri is not null
 
@@ -115,6 +119,9 @@ define ACSGeneticRiskMriTiming:
 
 define ACSGeneticRiskMriTimingEvent:    
   ACSGeneticRiskMriTiming R return First(R.event)
+
+define ACSGeneticRiskMriFlag:
+  ACSGeneticRiskMri R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)      
 
 define ExistsACSMammoAfterRT:
   ACSMammoAfterRT is not null
@@ -131,6 +138,9 @@ define ACSMammoAfterRTTiming:
 define ACSMammoAfterRTTimingEvent:    
   ACSMammoAfterRTTiming R return First(R.event)
 
+define ACSMammoAfterRTFlag:
+  ACSMammoAfterRT R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)      
+
 define ExistsACSMriAfterRT:
   ACSMriAfterRT is not null
 
@@ -146,6 +156,9 @@ define ACSMriAfterRTTiming:
 define ACSMriAfterRTTimingEvent:    
   ACSMriAfterRTTiming R return First(R.event)  
 
+define ACSMriAfterRTFlag:
+  ACSMriAfterRT R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)      
+
 define ExistsACSMammoAfterBrca:
   ACSMammoAfterBrca is not null
 
@@ -160,6 +173,9 @@ define ACSMammoAfterBrcaTiming:
 
 define ACSMammoAfterBrcaTimingEvent:    
   ACSMammoAfterBrcaTiming R return First(R.event)
+
+define ACSMammoAfterBrcaFlag:
+  ACSMammoAfterBrca R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)      
 
 define ExistsSpecialtyReferralBreastCaWithin5y:  
   SpecialtyReferralBreastCaWithin5y is not null
@@ -182,6 +198,9 @@ define ACSMammoAtypicalBiopsyHighRiskTiming:
 define ACSMammoAtypicalBiopsyHighRiskTimingEvent:    
   ACSMammoAtypicalBiopsyHighRiskTiming R return First(R.event)  
 
+define ACSMammoAtypicalBiopsyHighRiskFlag:
+  ACSMammoAtypicalBiopsyHighRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)      
+
 define ExistsACSMriAtypicalBiopsyHighRisk:
   ACSMriAtypicalBiopsyHighRisk is not null
 
@@ -196,3 +215,6 @@ define ACSMriAtypicalBiopsyHighRiskTiming:
 
 define ACSMriAtypicalBiopsyHighRiskTimingEvent:    
   ACSMriAtypicalBiopsyHighRiskTiming R return First(R.event) 
+
+define ACSMriAtypicalBiopsyHighRiskFlag:
+  ACSMriAtypicalBiopsyHighRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)      

@@ -6,6 +6,7 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include SpecialPopulationsEvents version '1.0.0' called Events
 include SpecialPopulationsActions version '1.0.0' called Actions
 include DataElements version '1.0.0' called DataElements
+include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 context Patient
 
@@ -75,7 +76,10 @@ define ACSMammoHighRiskTiming:
   ACSMammoHighRisk R return R.timingTiming
 
 define ACSMammoHighRiskTimingEvent:    
-  ACSMammoHighRiskTiming R return First(R.event)  
+  ACSMammoHighRiskTiming R return First(R.event) 
+
+define ACSMammoHighRiskFlag:
+  ACSMammoHighRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)       
 
 define ExistsACSMriHighRisk:
   ACSMriHighRisk is not null
@@ -92,6 +96,9 @@ define ACSMriHighRiskTiming:
 define ACSMriHighRiskTimingEvent:    
   ACSMriHighRiskTiming R return First(R.event)   
 
+define ACSMriHighRiskFlag:
+  ACSMriHighRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)   
+
 define ExistsACSFirstDegGeneticMammo:
   ACSFirstDegGeneticMammo is not null
 
@@ -107,6 +114,9 @@ define ACSFirstDegGeneticMammoTiming:
 define ACSFirstDegGeneticMammoTimingEvent:    
   ACSFirstDegGeneticMammoTiming R return First(R.event)   
 
+define ACSFirstDegGeneticMammoFlag:
+  ACSFirstDegGeneticMammo R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)   
+
 define ExistsACSFirstDegGeneticMri:
   ACSFirstDegGeneticMri is not null
 
@@ -120,7 +130,10 @@ define ACSFirstDegGeneticMriTiming:
   ACSFirstDegGeneticMri R return R.timingTiming
 
 define ACSFirstDegGeneticMriTimingEvent:    
-  ACSFirstDegGeneticMriTiming R return First(R.event)    
+  ACSFirstDegGeneticMriTiming R return First(R.event)  
+
+define ACSFirstDegGeneticMriFlag:
+  ACSFirstDegGeneticMri R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)     
 
 define ExistsBreastImagingHeterogenouslyOrExtremelyDense:
   BreastImagingHeterogenouslyOrExtremelyDense is not null
@@ -154,3 +167,6 @@ define USPSTFRecommendationTiming:
 
 define USPSTFRecommendationTimingEvent:    
   USPSTFRecommendationTiming R return First(R.event) 
+
+define USPSTFRecommendationFlag:
+  USPSTFRecommendation R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)   

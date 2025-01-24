@@ -1,6 +1,7 @@
 Alias: $PDACS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system
 Alias: $PDARCS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system
 Alias: $SOCS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system
+Alias: $RecommendationFlagCS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -63,6 +64,26 @@ Title:       "Plan Definition Action Reason Codes"
 Description: "This value set includes action reason codes for Plan Definitions within this implementation guide."
 * ^experimental = true
 * include codes from system $PDARCS
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+CodeSystem: RecommendationFlagCodeSystem
+Id: recommendation-flag-code-system
+Title: "Recommendation Flag Code System"
+Description: "Code representing due/overdue flags"
+
+* ^experimental = true
+
+* #overdue "Overdue"
+* #due "Due"
+* #not-due "Not due"
+
+ValueSet:    RecommendationFlagCodes
+Id:          recommendation-flag-codes
+Title:       "Recommendation Flag Codes"
+Description: "This value set includes flag codes for recommendation actions within this implementation guide."
+* ^experimental = true
+* include codes from system $RecommendationFlagCS
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
