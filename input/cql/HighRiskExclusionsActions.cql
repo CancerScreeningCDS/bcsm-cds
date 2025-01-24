@@ -12,12 +12,14 @@ codesystem "LOINC": 'http://loinc.org'
 
 // Act Codes
 code "Refer to specialist recommendations": 'specialtyreferral' from "ActCode" display 'Refer to specialist recommendations'
+code "Perform lifetime risk assessment": 'lifetimeriskassessment' from "ActCode" display 'Perform lifetime risk assessment'
 // Reason Codes
 code "Other genetic marker or syndrome associated with breast cancer": 'othergeneticrisk' from "ReasonCode" display 'Other genetic marker or syndrome associated with breast cancer'
 code "Genetic risk exclusion": 'geneticriskexclusion' from "ReasonCode" display 'Genetic risk exclusion'
 code "History of chest radiation ages 10-30 y": 'chestxrt' from "ReasonCode" display 'History of chest radiation ages 10-30 y'
 code "Previous breast cancer": 'hxbreastca' from "ReasonCode" display 'Previous breast cancer'
 code "Breast cancer in remission < 5 years": 'hxbreastcawithin5y' from "ReasonCode" display 'Breast cancer in remission < 5 years'
+code "Atypical biopsy": 'atypicalbx' from "ReasonCode" display 'Atypical biopsy'
 code "Atypical biopsy high lifetime risk": 'atypicalbxhighlifetimerisk' from "ReasonCode" display 'Atypical biopsy high lifetime risk'
 
 // Standard codes
@@ -92,9 +94,16 @@ define "act-hxbreastcawithin5y":
 	}
 
 define "act-acsmammoatypicalbx":
-  BCSMCommonFunctions.SetRecommendation("act-acshighriskmammo".code, "Atypical biopsy high lifetime risk", 
+  BCSMCommonFunctions.SetRecommendation("act-acshighriskmammo".code, "Atypical biopsy", 
     BCSMCommonFunctions.SourceDocumentationACS, 
-    {value: AgeInYears() * 1.0, code: 'a'}, null, "act-acshighriskmammo".timingTiming.repeat)   
+    {value: AgeInYears() * 1.0, code: 'a'}, null, "act-acshighriskmammo".timingTiming.repeat)
+
+define "act-acsatypicalbx":
+  {
+		code: "Perform lifetime risk assessment",
+    reason: "Atypical biopsy",
+    documentation: BCSMCommonFunctions.SourceDocumentationACS
+	}      
 
 define "act-acsmriatypicalbx":  
   BCSMCommonFunctions.SetRecommendation("act-acshighriskmri".code, "Atypical biopsy high lifetime risk", 

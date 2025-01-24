@@ -4,6 +4,7 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include DataElements version '1.0.0' called DataElements
+include CSMCommonFunctions version '1.0.0' called Common
 
 context Patient
 
@@ -23,6 +24,10 @@ define "eve-hxbreastcawithin5y":
 
 define "eve-atypicalbx":
   DataElements."de-atypicalbx"
+
+define "eve-nolifetimerisk":
+  DataElements."MostRecentLifetimeRiskAssessment" is null or
+  DataElements."MostRecentAtypicalBiopsyDate" after Common.ObservationDate(DataElements."MostRecentLifetimeRiskAssessment")
 
 define "eve-highlifetimerisk":
   DataElements."de-highlifetimerisk"
