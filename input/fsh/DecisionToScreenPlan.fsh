@@ -33,7 +33,9 @@ Usage: #definition
 * insert ApplicabilityHighRiskExclusionsRecommendations
 * insert SpecialtyReferralBreastCaWithin5y
 * insert ApplicabilityHighRiskExclusionsRecommendations
-* insert ACSMammoAtypicalBiopsyHighRisk
+* insert ACSMammoAtypicalBiopsy
+* insert ApplicabilityHighRiskExclusionsRecommendations
+* insert ACSAtypicalBiopsy
 * insert ApplicabilityHighRiskExclusionsRecommendations
 * insert ACSMriAtypicalBiopsyHighRisk
 * insert ApplicabilityHighRiskExclusionsRecommendations

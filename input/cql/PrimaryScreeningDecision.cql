@@ -95,6 +95,9 @@ define ExistsAverageRiskRecommendations:
 define ExistsSpecialtyReferralGeneticRisk:  
   DecisionToScreen."ExistsSpecialtyReferralGeneticRisk"
 
+define SpecialtyReferralGeneticRiskCode:
+  DecisionToScreen."SpecialtyReferralGeneticRiskCode"    
+
 define SpecialtyReferralGeneticRiskReason:
   DecisionToScreen."SpecialtyReferralGeneticRiskReason"
 
@@ -191,26 +194,38 @@ define ACSMammoAfterBrcaFlag:
 define ExistsSpecialtyReferralBreastCaWithin5y:  
   DecisionToScreen."ExistsSpecialtyReferralBreastCaWithin5y"
 
+define SpecialtyReferralBreastCaWithin5yCode:
+  DecisionToScreen."SpecialtyReferralBreastCaWithin5yCode"  
+
 define SpecialtyReferralBreastCaWithin5yReason:
   DecisionToScreen."SpecialtyReferralBreastCaWithin5yReason"
 
-define ExistsACSMammoAtypicalBiopsyHighRisk:
-  DecisionToScreen."ExistsACSMammoAtypicalBiopsyHighRisk"
+define ExistsACSMammoAtypicalBiopsy:
+  DecisionToScreen."ExistsACSMammoAtypicalBiopsy"
 
-define ACSMammoAtypicalBiopsyHighRiskCode:    
-  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskCode"
+define ACSMammoAtypicalBiopsyCode:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyCode"
 
-define ACSMammoAtypicalBiopsyHighRiskReason:    
-  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskReason"
+define ACSMammoAtypicalBiopsyReason:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyReason"
 
-define ACSMammoAtypicalBiopsyHighRiskTiming:    
-  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskTiming"
+define ACSMammoAtypicalBiopsyTiming:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyTiming"
 
-define ACSMammoAtypicalBiopsyHighRiskTimingEvent:    
-  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskTimingEvent"
+define ACSMammoAtypicalBiopsyTimingEvent:    
+  DecisionToScreen."ACSMammoAtypicalBiopsyTimingEvent"
 
-define ACSMammoAtypicalBiopsyHighRiskFlag:  
-  DecisionToScreen."ACSMammoAtypicalBiopsyHighRiskFlag"  
+define ACSMammoAtypicalBiopsyFlag:  
+  DecisionToScreen."ACSMammoAtypicalBiopsyFlag"  
+
+define ExistsACSAtypicalBiopsy:
+  DecisionToScreen."ExistsACSAtypicalBiopsy"
+
+define ACSAtypicalBiopsyCode:    
+  DecisionToScreen."ACSAtypicalBiopsyCode"
+
+define ACSAtypicalBiopsyReason:    
+  DecisionToScreen."ACSAtypicalBiopsyReason"  
 
 define ExistsACSMriAtypicalBiopsyHighRisk:
   DecisionToScreen."ExistsACSMriAtypicalBiopsyHighRisk"

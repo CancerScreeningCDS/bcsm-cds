@@ -114,6 +114,9 @@ define ExistsAverageRiskRecommendations:
 define ExistsSpecialtyReferralGeneticRisk:  
   HighRiskExclusions."ExistsSpecialtyReferralGeneticRisk"
 
+define SpecialtyReferralGeneticRiskCode:
+  HighRiskExclusions."SpecialtyReferralGeneticRiskCode"  
+
 define SpecialtyReferralGeneticRiskReason:
   HighRiskExclusions."SpecialtyReferralGeneticRiskReason"
 
@@ -210,26 +213,38 @@ define ACSMammoAfterBrcaFlag:
 define ExistsSpecialtyReferralBreastCaWithin5y:  
   HighRiskExclusions."ExistsSpecialtyReferralBreastCaWithin5y"
 
+define SpecialtyReferralBreastCaWithin5yCode:
+  HighRiskExclusions."SpecialtyReferralBreastCaWithin5yCode"
+
 define SpecialtyReferralBreastCaWithin5yReason:
   HighRiskExclusions."SpecialtyReferralBreastCaWithin5yReason"
 
-define ExistsACSMammoAtypicalBiopsyHighRisk:
-  HighRiskExclusions."ExistsACSMammoAtypicalBiopsyHighRisk"
+define ExistsACSMammoAtypicalBiopsy:
+  HighRiskExclusions."ExistsACSMammoAtypicalBiopsy"
 
-define ACSMammoAtypicalBiopsyHighRiskCode:    
-  HighRiskExclusions."ACSMammoAtypicalBiopsyHighRiskCode"
+define ACSMammoAtypicalBiopsyCode:    
+  HighRiskExclusions."ACSMammoAtypicalBiopsyCode"
 
-define ACSMammoAtypicalBiopsyHighRiskReason:    
-  HighRiskExclusions."ACSMammoAtypicalBiopsyHighRiskReason"
+define ACSMammoAtypicalBiopsyReason:    
+  HighRiskExclusions."ACSMammoAtypicalBiopsyReason"
 
-define ACSMammoAtypicalBiopsyHighRiskTiming:    
-  HighRiskExclusions."ACSMammoAtypicalBiopsyHighRiskTiming"
+define ACSMammoAtypicalBiopsyTiming:    
+  HighRiskExclusions."ACSMammoAtypicalBiopsyTiming"
 
-define ACSMammoAtypicalBiopsyHighRiskTimingEvent:    
-  HighRiskExclusions."ACSMammoAtypicalBiopsyHighRiskTimingEvent"
+define ACSMammoAtypicalBiopsyTimingEvent:    
+  HighRiskExclusions."ACSMammoAtypicalBiopsyTimingEvent"
 
-define ACSMammoAtypicalBiopsyHighRiskFlag:  
-  HighRiskExclusions."ACSMammoAtypicalBiopsyHighRiskFlag"  
+define ACSMammoAtypicalBiopsyFlag:  
+  HighRiskExclusions."ACSMammoAtypicalBiopsyFlag"  
+
+define ExistsACSAtypicalBiopsy:
+  HighRiskExclusions."ExistsACSAtypicalBiopsy"
+
+define ACSAtypicalBiopsyCode:    
+  HighRiskExclusions."ACSAtypicalBiopsyCode"
+
+define ACSAtypicalBiopsyReason:    
+  HighRiskExclusions."ACSAtypicalBiopsyReason"
 
 define ExistsACSMriAtypicalBiopsyHighRisk:
   HighRiskExclusions."ExistsACSMriAtypicalBiopsyHighRisk"

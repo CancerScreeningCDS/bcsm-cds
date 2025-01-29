@@ -1,0 +1,35 @@
+---
+name: JustineWallace
+skip: true
+externalData:
+  - ../default_patients
+data:
+  - *JustineWallace
+  - resourceType: Condition
+    id: "BRCA1Mutation"
+    subject:
+      reference: "Patient/JustineWallace"
+    code:
+      text: "BRCA 1 Mutation"
+    onsetDateTime: "2023-05-04"
+  - resourceType: Procedure
+    id: "ScreeningMammogram2023"
+    subject:
+      reference: "Patient/JustineWallace"
+    code:
+      text: "Screening Mammogram"
+    performedDateTime: "2023-05-04"
+    outcome:
+      text: "BI-RADS 2"
+  - resourceType: ServiceRequest
+    id: "AnnualMammogramAndMRI"
+    subject:
+      reference: "Patient/JustineWallace"
+    code:
+      text: "Annual Mammogram and MRI"
+    occurrenceDateTime: "2024-05-04"
+    note:
+      - text: "Annual screening mammogram and annual screening MRI are recommended for women at high risk for breast cancer."
+results:
+  IsScreeningEligible: true
+  PrimaryScreeningDecision: $should have length 1

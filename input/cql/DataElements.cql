@@ -410,12 +410,27 @@ define "de-hxbreastca":
       or C.clinicalStatus ~ "Condition resolved"  
 
 //------------------------------------------------------------------------------
-// Previous breast cancer
+// Atypical biopsy
 //------------------------------------------------------------------------------      
 
 define "de-atypicalbx":
   exists Common.ValidCondition([Condition: "Biopsy Atypical Results"]) or
     exists AtypicalBiopsyResults
+
+define MostRecentAtypicalBiopsyDate:
+  if MostRecentAtypicalBiopsyConditionDate is null then MostRecentAtypicalBiopsyResultDate
+  else if MostRecentAtypicalBiopsyResultDate is null then MostRecentAtypicalBiopsyConditionDate
+  else Last(({MostRecentAtypicalBiopsyConditionDate, MostRecentAtypicalBiopsyResultDate}) E sort asc)
+
+define MostRecentAtypicalBiopsyConditionDate:
+  Common.ConditionDate(
+    C3F.MostRecentCondition(Common.ValidCondition([Condition: "Biopsy Atypical Results"]))
+  )
+
+define MostRecentAtypicalBiopsyResultDate:
+  Common.DiagnosticReportDate(
+    Common.MostRecentDiagnosticReport(AtypicalBiopsyResults)
+  )
 
 define AtypicalBiopsyResults:
   BiopsyDiagnosticReports D

@@ -22,7 +22,8 @@ define "flow-HighRiskExclusions":
     ACSMriAfterRT,
     ACSMammoAfterBrca,
     SpecialtyReferralBreastCaWithin5y,
-    ACSMammoAtypicalBiopsyHighRisk,
+    ACSMammoAtypicalBiopsy,
+    ACSAtypicalBiopsy,
     ACSMriAtypicalBiopsyHighRisk
   }   
   except { null }
@@ -65,10 +66,16 @@ define SpecialtyReferralBreastCaWithin5y:
       then Actions."act-hxbreastcawithin5y" else null
     else null  
 
-define ACSMammoAtypicalBiopsyHighRisk:
+define ACSMammoAtypicalBiopsy:
   if Events."eve-geneticrisk" is false and Events."eve-chestxrt" is false and Events."eve-hxbreastca" is false
-    then if Events."eve-atypicalbx" is true and Events."eve-highlifetimerisk" is true
+    then if Events."eve-atypicalbx" is true
       then Actions."act-acsmammoatypicalbx" else null
+    else null       
+
+define ACSAtypicalBiopsy:
+  if Events."eve-geneticrisk" is false and Events."eve-chestxrt" is false and Events."eve-hxbreastca" is false
+    then if Events."eve-atypicalbx" is true and Events."eve-highlifetimerisk" is false and Events."eve-nolifetimerisk" is true
+      then Actions."act-acsatypicalbx" else null
     else null       
 
 define ACSMriAtypicalBiopsyHighRisk:
@@ -83,6 +90,9 @@ define ACSMriAtypicalBiopsyHighRisk:
 
 define ExistsSpecialtyReferralGeneticRisk:  
   SpecialtyReferralGeneticRisk is not null
+
+define SpecialtyReferralGeneticRiskCode:
+  SpecialtyReferralGeneticRisk R return R.code  
 
 define SpecialtyReferralGeneticRiskReason:
   SpecialtyReferralGeneticRisk R return R.reason
@@ -180,26 +190,38 @@ define ACSMammoAfterBrcaFlag:
 define ExistsSpecialtyReferralBreastCaWithin5y:  
   SpecialtyReferralBreastCaWithin5y is not null
 
+define SpecialtyReferralBreastCaWithin5yCode:
+  SpecialtyReferralBreastCaWithin5y R return R.code    
+
 define SpecialtyReferralBreastCaWithin5yReason:
   SpecialtyReferralBreastCaWithin5y R return R.reason
 
-define ExistsACSMammoAtypicalBiopsyHighRisk:
-  ACSMammoAtypicalBiopsyHighRisk is not null
+define ExistsACSMammoAtypicalBiopsy:
+  ACSMammoAtypicalBiopsy is not null
 
-define ACSMammoAtypicalBiopsyHighRiskCode:    
-  ACSMammoAtypicalBiopsyHighRisk R return R.code
+define ACSMammoAtypicalBiopsyCode:    
+  ACSMammoAtypicalBiopsy R return R.code
 
-define ACSMammoAtypicalBiopsyHighRiskReason:    
-  ACSMammoAtypicalBiopsyHighRisk R return R.reason  
+define ACSMammoAtypicalBiopsyReason:    
+  ACSMammoAtypicalBiopsy R return R.reason  
 
-define ACSMammoAtypicalBiopsyHighRiskTiming:    
-  ACSMammoAtypicalBiopsyHighRisk R return R.timingTiming
+define ACSMammoAtypicalBiopsyTiming:    
+  ACSMammoAtypicalBiopsy R return R.timingTiming
 
-define ACSMammoAtypicalBiopsyHighRiskTimingEvent:    
-  ACSMammoAtypicalBiopsyHighRiskTiming R return First(R.event)  
+define ACSMammoAtypicalBiopsyTimingEvent:    
+  ACSMammoAtypicalBiopsyTiming R return First(R.event)  
 
-define ACSMammoAtypicalBiopsyHighRiskFlag:
-  ACSMammoAtypicalBiopsyHighRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)      
+define ACSMammoAtypicalBiopsyFlag:
+  ACSMammoAtypicalBiopsy R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)   
+
+define ExistsACSAtypicalBiopsy:
+  ACSAtypicalBiopsy is not null
+
+define ACSAtypicalBiopsyCode:    
+  ACSAtypicalBiopsy R return R.code
+
+define ACSAtypicalBiopsyReason:    
+  ACSAtypicalBiopsy R return R.reason
 
 define ExistsACSMriAtypicalBiopsyHighRisk:
   ACSMriAtypicalBiopsyHighRisk is not null

@@ -1,0 +1,28 @@
+---
+name: MarionHenderson
+skip: true
+externalData:
+  - ../default_patients
+data:
+  - *MarionHenderson
+  - resourceType: ServiceRequest
+    id: "BiennialMammogram"
+    subject:
+      reference: "Patient/MarionHenderson"
+    code:
+      text: "Biennial Mammogram"
+    occurrenceDateTime: "2018-01-10"
+    note:
+      - text: "Biennial screening mammogram is recommended starting at age 40."
+  - resourceType: ServiceRequest
+    id: "AnnualMammogram"
+    subject:
+      reference: "Patient/MarionHenderson"
+    code:
+      text: "Annual Mammogram"
+    occurrenceDateTime: "2023-01-10"
+    note:
+      - text: "An annual screening mammogram for patients age 45-54 is recommended."
+results:
+  IsScreeningEligible: true
+  PrimaryScreeningDecision: $should have length 1
