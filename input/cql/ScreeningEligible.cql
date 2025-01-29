@@ -73,37 +73,37 @@ define Excluded:
 define "flow-ScreeningEligible":
   { 
     Coalesce(
-      NotAssignedFemaleAtBirth,
-      CurrentBreastCancer,
-      BilateralMastectomy,
-      BreastSymptomsOrFindings,
+      NotEligibleNotAssignedFemaleAtBirth,
+      NotEligibleCurrentBreastCancer,
+      NotEligibleBilateralMastectomy,
+      NotEligibleBreastSymptomsOrFindings,
       Eligible
     )
   }
   except { null }
 
-define NotAssignedFemaleAtBirth:
+define NotEligibleNotAssignedFemaleAtBirth:
   if Events."eve-female" is not true
   then Actions."end-noteligible-notassignedfemaleatbirth" else null
 
-define CurrentBreastCancer:
+define NotEligibleCurrentBreastCancer:
   if Events."eve-breastca" is true
   then Actions."end-noteligible-currentbreastcancer" else null
 
-define BilateralMastectomy:
+define NotEligibleBilateralMastectomy:
   if Events."eve-mastectomy" is true
   then Actions."end-noteligible-bilatmastectomy" else null  
 
-define BreastSymptomsOrFindings:
+define NotEligibleBreastSymptomsOrFindings:
   if Events."eve-breastsymptoms" is true or Events."eve-breastfindings" is true
   then Actions."act-dxtesting" else null  
 
 define Eligible:
   if Coalesce(
-      NotAssignedFemaleAtBirth,
-      CurrentBreastCancer,
-      BilateralMastectomy,
-      BreastSymptomsOrFindings) is null
+      NotEligibleNotAssignedFemaleAtBirth,
+      NotEligibleCurrentBreastCancer,
+      NotEligibleBilateralMastectomy,
+      NotEligibleBreastSymptomsOrFindings) is null
   then Actions."act-eligible" else null
 
 //------------------------------------------------------------------------------
@@ -115,6 +115,18 @@ define IsScreeningEligible:
 
 define IsNotScreeningEligible:
   Eligible is null
+
+define ExistsNotEligibleNotAssignedFemaleAtBirth:
+  NotEligibleNotAssignedFemaleAtBirth is not null  
+
+define ExistsNotEligibleCurrentBreastCancer:
+  NotEligibleCurrentBreastCancer is not null  
+
+define ExistsNotEligibleBilateralMastectomy:
+  NotEligibleBilateralMastectomy is not null  
+
+define ExistsNotEligibleBreastSymptomsOrFindings:
+  NotEligibleBreastSymptomsOrFindings is not null  
 
 define ScreeningEligibleCode:
   First("flow-ScreeningEligible").code

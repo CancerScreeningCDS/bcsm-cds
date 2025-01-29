@@ -36,6 +36,18 @@ define IsScreeningEligible:
 define IsNotScreeningEligible:
   ScreeningEligible.IsNotScreeningEligible
 
+define ExistsNotEligibleNotAssignedFemaleAtBirth:
+  ScreeningEligible.ExistsNotEligibleNotAssignedFemaleAtBirth
+
+define ExistsNotEligibleCurrentBreastCancer:
+  ScreeningEligible.ExistsNotEligibleCurrentBreastCancer 
+
+define ExistsNotEligibleBilateralMastectomy:
+  ScreeningEligible.ExistsNotEligibleBilateralMastectomy 
+
+define ExistsNotEligibleBreastSymptomsOrFindings:
+  ScreeningEligible.ExistsNotEligibleBreastSymptomsOrFindings   
+
 define ScreeningEligibleCode:
   ScreeningEligible.ScreeningEligibleCode
 

@@ -18,13 +18,31 @@ RuleSet: CommonMetadata
 * reviewer[+].name = "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"
 * endorser[+].name = "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"
 
-RuleSet: ACSCitationActionDocumentation
+RuleSet: ACSCitationDocumentationArtifact
 * documentation[+].type = $RATYPE#citation "Citation"
 * documentation[=].label = "ACS"
 
-RuleSet: USPSTFScreeningCitationActionDocumentation
+RuleSet: USPSTFScreeningCitationDocumentationArtifact
 * documentation[+].type = $RATYPE#citation "Citation"
 * documentation[=].label = "USPSTF"
 * documentation[=].display = "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement."
 * documentation[=].citation = "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024."
 * documentation[=].url = "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+
+RuleSet: ACRTransgenderCitationDocumentationArtifact
+* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[=].label = "ACR"
+* documentation[=].display = "ACR Appropriateness Criteria® Transgender Breast Cancer Screening"
+* documentation[=].citation = "Brown, Ann, et al. \"ACR appropriateness criteria® transgender breast cancer screening.\" Journal of the American College of Radiology 18.11 (2021): S502-S515."
+* documentation[=].url = "https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext"
+
+RuleSet: UCSFTransgenderCitationDocumentationArtifact
+* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[=].label = "UCSF"
+* documentation[=].display = "UCSF Transgender Care & Treatment Guidelines: Screening for breast cancer in transgender women"
+* documentation[=].url = "https://transcare.ucsf.edu/guidelines/breast-cancer-women"
+
+RuleSet: ScreeningEligibleDocumentationArtifact
+* documentation[+].type = $RATYPE#derived-from "Derived From"
+* documentation[=].label = "Screening Eligible"
+* documentation[=].display = "Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed."
