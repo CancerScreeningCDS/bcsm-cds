@@ -1,0 +1,89 @@
+{
+  "resourceType": "Bundle",
+  "id": "ScreeningEligible_inc-AgeAtLeast18_yes",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/151",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "151",
+        "subject": {
+          "reference": "Patient/ddaf07f4-ea6c-4e2c-b93a-deabdf9b07e8",
+          "display": "Joanne Smith"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-ScreeningEligible"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/152"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/152",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "152",
+        "subject": {
+          "reference": "Patient/ddaf07f4-ea6c-4e2c-b93a-deabdf9b07e8",
+          "display": "Joanne Smith"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-ScreeningEligible"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "IsScreeningEligible",
+            "title": "Screening eligible",
+            "description": "Patient is eligible for screening",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "eligible",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Eligible for screening"
+                  }
+                ]
+              }
+            ],
+            "resource": {
+              "reference": "CommunicationRequest/154"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/154",
+      "resource": {
+        "id": "154",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateEligible"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ddaf07f4-ea6c-4e2c-b93a-deabdf9b07e8",
+          "display": "Joanne Smith"
+        },
+        "payload": [
+          {
+            "contentString": "Eligible for screening"
+          }
+        ]
+      }
+    }
+  ]
+}

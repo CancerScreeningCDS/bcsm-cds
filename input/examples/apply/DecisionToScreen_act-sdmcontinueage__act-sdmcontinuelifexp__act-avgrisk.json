@@ -1,0 +1,337 @@
+{
+  "resourceType": "Bundle",
+  "id": "DecisionToScreen_act-sdmcontinueage__act-sdmcontinuelifexp__act-avgrisk",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/41",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "41",
+        "subject": {
+          "reference": "Patient/bf55b57e-806e-4c90-8b14-2960c551ff1d",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-DecisionToScreen"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/42"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/42",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "42",
+        "subject": {
+          "reference": "Patient/bf55b57e-806e-4c90-8b14-2960c551ff1d",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-DecisionToScreen"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "SDMContinueScreeningAge",
+            "title": "Shared decision making to continue screening based on age",
+            "description": "Shared decision making to continue screening based on age",
+            "resource": {
+              "reference": "CommunicationRequest/43"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "sdmcontinue",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Shared decision making to continue screening"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SDMContinueScreeningLifeExp",
+            "title": "Shared decision making to continue screening based on life expectancy",
+            "description": "Shared decision making to continue screening based on life expectancy",
+            "resource": {
+              "reference": "CommunicationRequest/44"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "sdmcontinue",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Shared decision making to continue screening"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ACSMammoAvgRiskAgeOver54",
+            "title": "Biennial screeening mammo after age 54",
+            "description": "Biennial screeening mammo after age 54",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ACS"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/45"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "1985-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "1985-01-01"
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "overdue",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Overdue"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "USPSTFAvgRisk",
+            "title": "Biennial screeening mammo starting age 40",
+            "description": "Biennial screeening mammo starting age 40",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement.",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/46"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "1985-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "1985-01-01"
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "overdue",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Overdue"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/43",
+      "resource": {
+        "id": "43",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMContinueScreening"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/bf55b57e-806e-4c90-8b14-2960c551ff1d",
+          "display": "Jane Doe"
+        },
+        "payload": [
+          {
+            "contentString": "Shared decision making to continue screening"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "ageover74",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "Age over 74 years"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/44",
+      "resource": {
+        "id": "44",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMContinueScreening"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/bf55b57e-806e-4c90-8b14-2960c551ff1d",
+          "display": "Jane Doe"
+        },
+        "payload": [
+          {
+            "contentString": "Shared decision making to continue screening"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "lifeexp",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "Reduced life expectancy indicator"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/45",
+      "resource": {
+        "id": "45",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/bf55b57e-806e-4c90-8b14-2960c551ff1d",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "ACSaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "ACS average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "1985-01-01"
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/46",
+      "resource": {
+        "id": "46",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/bf55b57e-806e-4c90-8b14-2960c551ff1d",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "USPSTFaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "USPSTF average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "1985-01-01"
+      }
+    }
+  ]
+}
