@@ -58,6 +58,8 @@ valueset "OVARIAN CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.1137
 valueset "TUBAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
 // TODO: replace placeholder value set OID
 valueset "PERITONEAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
+// TODO: replace placeholder value set OID
+valueset "BREAST SYMPTOMS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.73'
 
 // Standard codes
 code "Gender Identity": '76691-5' from "LOINC" display 'Gender identity'
@@ -261,6 +263,11 @@ define RightUnilateralMastectomy:
 // TODO: move this to events
 define "de-breastsymptoms":
   MostRecentNewOrWorseningBreastSymptoms.value is true
+    or exists EncounterBreastSymptomConditions
+
+define EncounterBreastSymptomConditions:
+  (Common.ValidCondition([Condition: "BREAST SYMPTOMS"])) C
+    where C.encounter.reference = encounter
 
 define MostRecentNewOrWorseningBreastSymptoms:
   C3F.MostRecent(
