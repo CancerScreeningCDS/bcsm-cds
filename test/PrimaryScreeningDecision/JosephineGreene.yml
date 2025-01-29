@@ -1,36 +1,57 @@
 ---
-name: JosephineGreene-past-breast-pain-adh-biopsy-acshighriskmammo-acsperfromriskassess
-skip: true
+name: JosephineGreene-past-breast-pain-adh-biopsy
 externalData:
+  - ../DataElements/data_elements  
   - ../default_patients
+parameters:
+  encounter: Encounter/1  
 data:
   - *JosephineGreene
-  - resourceType: Condition
-    id: "BreastPain"
+  - *CONDITIONS_include_`BREAST_SYMPTOMS`_NOT_in_encounter
+  - resourceType: DiagnosticReport
+    id: biopsy-report-1
+    status: final
+    effectiveDateTime: "2024-11-20"    
     code:
-      text: "Breast Pain"
-    onsetDateTime: "2022-07-28"
-  - resourceType: Procedure
-    id: "CoreNeedleBiopsy"
+      coding:
+        - system: http://loinc.org
+          code: 66110-8 #TODO replace placeholder code
+          display: "Core needle biopsy"
+    conclusionCode:
+      coding:
+        - system: http://snomed.info/sct
+          code: 62061000119107 #TODO replace placeholder code
+          display: "Atypical ductal hyperplasia"
+  - resourceType: DiagnosticReport
+    id: "mammogram-2024-birads-4"
+    status: final
     code:
-      text: "Core needle biopsy"
-    performedDateTime: "2024-11-20"
-    outcome:
-      text: "Atypical ductal hyperplasia"
-  - resourceType: Procedure
-    id: "Mammogram2024"
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2024-11-15T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+          code: Category4
+          display: Category 4 (Suspicious)       
+  - resourceType: DiagnosticReport
+    id: "mammogram-2022-birads-2"
+    status: final
     code:
-      text: "Mammogram"
-    performedDateTime: "2024-11-15"
-    outcome:
-      text: "BI-RADS 4"
-  - resourceType: Procedure
-    id: "mammogram-2022-birads-1"
-    code:
-      text: "Mammogram"
-    performedDateTime: "2022-12-02"
-    outcome:
-      text: "BI-RADS 1"
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2022-12-02T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
+          code: Category2
+          display: 	Category 2 (Benign)  
 results:
   IsScreeningEligible: true
-  PrimaryScreeningDecision: $should have length 1
+  ExistsACSMammoAtypicalBiopsy: true
+  ExistsACSAtypicalBiopsy: true
+  PrimaryScreeningDecision: $should have length 3  

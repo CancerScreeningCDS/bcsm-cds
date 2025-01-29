@@ -2,15 +2,26 @@
 name: JustineWallace
 skip: true
 externalData:
+  - ../DataElements/data_elements  
   - ../default_patients
+parameters:
+  encounter: Encounter/1
 data:
   - *JustineWallace
   - resourceType: Condition
-    id: "BRCA1Mutation"
-    subject:
-      reference: "Patient/JustineWallace"
+    clinicalStatus:
+      coding:
+        - system: http://terminology.hl7.org/CodeSystem/condition-clinical
+          code: active
+    verificationStatus:
+      coding:
+        - system: http://terminology.hl7.org/CodeSystem/condition-ver-status
+          code: confirmed
     code:
-      text: "BRCA 1 Mutation"
+      coding:
+        - system: http://loinc.org #http://snomed.info/sct
+          code: 21636-6 #412734009
+          display: BRCA1 gene mutation detected
     onsetDateTime: "2023-05-04"
   - resourceType: Procedure
     id: "ScreeningMammogram2023"
