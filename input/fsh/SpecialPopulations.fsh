@@ -25,7 +25,7 @@ RuleSet: ACSMammoHighRisk
 * action[+].id = "ACSMammoHighRisk"
 * action[=].title = "Annual screeening mammogram starting age 30"
 * action[=].description = "Annual screeening mammogram starting age 30"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMammoHighRisk"
@@ -53,7 +53,7 @@ RuleSet: ACSMriHighRisk
 * action[+].id = "ACSMriHighRisk"
 * action[=].title = "Annual screeening MRI starting age 30"
 * action[=].description = "Annual screeening MRI starting age 30"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMriHighRisk"
@@ -81,7 +81,7 @@ RuleSet: ACSFirstDegGeneticMammo
 * action[+].id = "ACSFirstDegGeneticMammo"
 * action[=].title = "Annual screeening mammo starting age 30"
 * action[=].description = "Annual screeening mammo starting age 30"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSFirstDegGeneticMammo"
@@ -109,7 +109,7 @@ RuleSet: ACSFirstDegGeneticMri
 * action[+].id = "ACSFirstDegGeneticMri"
 * action[=].title = "Annual screeening MRI starting age 30"
 * action[=].description = "Annual screeening MRI starting age 30"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSFirstDegGeneticMri"
@@ -137,7 +137,7 @@ RuleSet: BreastImagingHeterogenouslyOrExtremelyDense
 * action[+].id = "BreastImagingHeterogenouslyOrExtremelyDense"
 * action[=].title = "Perform lifetime risk assessment"
 * action[=].description = "Perform lifetime risk assessment"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsBreastImagingHeterogenouslyOrExtremelyDense"
@@ -150,7 +150,7 @@ RuleSet: CompellingFamilyHistory
 * action[+].id = "CompellingFamilyHistory"
 * action[=].title = "Perform lifetime risk assessment"
 * action[=].description = "Perform lifetime risk assessment"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsCompellingFamilyHistory"
@@ -163,7 +163,7 @@ RuleSet: USPSTFRecommendation
 * action[+].id = "USPSTFRecommendation"
 * action[=].title = "Biennial screeening mammo starting age 40"
 * action[=].description = "Biennial screeening mammo starting age 40"
-* action[=] insert USPSTFScreeningCitationActionDocumentation
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsUSPSTFRecommendation"

@@ -18,6 +18,8 @@ Usage: #definition
 * action[+].id = "IsScreeningEligible"
 * action[=].title = "Screening eligible"
 * action[=].description = "Patient is eligible for screening"
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
+* action[=] insert ScreeningEligibleDocumentationArtifact
 * action[=].code = $PDACS#eligible "Eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
@@ -29,7 +31,10 @@ Usage: #definition
 // -----------------------------------------------------------------------------
 // Action #2: Not Screening Eligible
 // -----------------------------------------------------------------------------
-* insert IsNotScreeningEligible
+* insert NotEligibleNotAssignedFemaleAtBirth
+* insert NotEligibleCurrentBreastCancer
+* insert NotEligibleBreastSymptomsOrFindings
+* insert NotEligibleBilateralMastectomy
 // -----------------------------------------------------------------------------
 // Inclusions error
 // -----------------------------------------------------------------------------
@@ -41,17 +46,93 @@ Usage: #definition
 * action[=].condition[=].expression.reference = "Library/ScreeningEligible|1.0.0"
 * action[=].definitionCanonical = Canonical(ScreeningEligibleQuestionnaire|1.0.0)
 
-RuleSet: IsNotScreeningEligible
-* action[+].id = "IsNotScreeningEligible"
-* action[=].title = "Not Screening Eligible"
-* action[=].description = "Patient is not eligible for screening"
+RuleSet: NotEligibleNotAssignedFemaleAtBirth
+* action[+].id = "NotEligibleCurrentBreastCancer"
+* action[=].title = "Not eligible for screening"
+* action[=].description = """
+  This patient is not eligible for screening.
+
+  Referenced guidelines apply to individuals assigned female at birth. Routine screening of cis-gender individuals assigned male at birth is not recommended. For transgender women, consider specialist referral.
+
+  Additional resources: ACR Appropriateness Criteria® Transgender Breast Cancer Screening; UCSF guidelines 'Screening for breast cancer in transgender women'
+  """
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
+* action[=] insert ScreeningEligibleDocumentationArtifact
+* action[=] insert ACRTransgenderCitationDocumentationArtifact
+* action[=] insert UCSFTransgenderCitationDocumentationArtifact
 * action[=].code = $PDACS#noteligible "Not eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
 * action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
-* action[=].condition[=].expression.expression = "IsNotScreeningEligible"
+* action[=].condition[=].expression.expression = "ExistsNotEligibleNotAssignedFemaleAtBirth"
+* action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
+
+RuleSet: NotEligibleCurrentBreastCancer
+* action[+].id = "NotEligibleCurrentBreastCancer"
+* action[=].title = "Not eligible for screening"
+* action[=].description = """
+  This patient is not eligible for screening and should be referred to a specialist for management.
+
+  This patient has an active condition of breast cancer and does not meet the eligibility requirements for routine breast cancer screening.
+  """
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
+* action[=] insert ScreeningEligibleDocumentationArtifact
+* action[=].code = $PDACS#noteligible "Not eligible for screening"
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
+* action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "ExistsNotEligibleCurrentBreastCancer"
+* action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
+
+RuleSet: NotEligibleBilateralMastectomy
+* action[+].id = "NotEligibleBilateralMastectomy"
+* action[=].title = "Not eligible for screening"
+* action[=].description = """
+  This patient is not eligible for screening.
+
+  This patient has had bilateral mastectomy and does not meet the eligibility requirements for routine breast cancer screening.
+  """
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
+* action[=] insert ScreeningEligibleDocumentationArtifact
+* action[=].code = $PDACS#noteligible "Not eligible for screening"
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
+* action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "ExistsNotEligibleBilateralMastectomy"
+* action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
+* action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
+
+RuleSet: NotEligibleBreastSymptomsOrFindings
+* action[+].id = "NotEligibleBreastSymptomsOrFindings"
+* action[=].title = "Not eligible for screening"
+* action[=].description = """
+  This patient is not eligible for screening.
+
+  New breast symptoms or exam findings, or chronic symptoms or findings which have progressively worsened, should undergo diagnostic testing rather than routine screening.
+  """
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
+* action[=] insert ScreeningEligibleDocumentationArtifact
+* action[=].code = $PDACS#noteligible "Not eligible for screening"
+* action[=].condition[+].kind = $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
+* action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.expression = "ExistsNotEligibleBreastSymptomsOrFindings"
 * action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"

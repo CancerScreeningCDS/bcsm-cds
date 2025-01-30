@@ -22,7 +22,7 @@ RuleSet: ACSMammoAvgRiskAgeUnder45
 * action[+].id = "ACSMammoAvgRiskAgeUnder45"
 * action[=].title = "Annual screeening mammo starting age 40"
 * action[=].description = "Annual screeening mammo starting age 40"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAvgRiskAgeUnder45"
@@ -50,7 +50,7 @@ RuleSet: ACSMammoAvgRiskAge45to54
 * action[+].id = "ACSMammoAvgRiskAge45to54"
 * action[=].title = "Annual screeening mammo starting age 40"
 * action[=].description = "Annual screeening mammo starting age 40"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAvgRiskAge45to54"
@@ -78,7 +78,7 @@ RuleSet: ACSMammoAvgRiskAgeOver54
 * action[+].id = "ACSMammoAvgRiskAgeOver54"
 * action[=].title = "Biennial screeening mammo after age 54"
 * action[=].description = "Biennial screeening mammo after age 54"
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAvgRiskAgeOver54"
@@ -106,7 +106,7 @@ RuleSet: USPSTFAvgRisk
 * action[+].id = "USPSTFAvgRisk"
 * action[=].title = "Biennial screeening mammo starting age 40"
 * action[=].description = "Biennial screeening mammo starting age 40"
-* action[=] insert USPSTFScreeningCitationActionDocumentation
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsUSPSTFAvgRisk"

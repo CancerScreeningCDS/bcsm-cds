@@ -14,7 +14,10 @@ Usage: #definition
 // -----------------------------------------------------------------------------
 // Action #1: Not Screening Eligible
 // -----------------------------------------------------------------------------
-* insert IsNotScreeningEligible
+* insert NotEligibleNotAssignedFemaleAtBirth
+* insert NotEligibleCurrentBreastCancer
+* insert NotEligibleBreastSymptomsOrFindings
+* insert NotEligibleBilateralMastectomy
 // -----------------------------------------------------------------------------
 // DECISION TO SCREEN
 // -----------------------------------------------------------------------------

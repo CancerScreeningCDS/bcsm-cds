@@ -28,7 +28,7 @@ RuleSet: ACSGeneticRiskMammo
 * action[+].id = "ACSGeneticRiskMammo"
 * action[=].title = "Annual screeening mammogram starting age 30"
 * action[=].description = "An annual screening mammogram starting at age 30 is recommended."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSGeneticRiskMammo"
@@ -56,7 +56,7 @@ RuleSet: ACSGeneticRiskMri
 * action[+].id = "ACSGeneticRiskMri"
 * action[=].title = "Annual screeening MRI starting age 30"
 * action[=].description = "An annual screening MRI starting at age 30 is recommended."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSGeneticRiskMri"
@@ -96,7 +96,7 @@ RuleSet: ACSMammoAfterRT
 * action[+].id = "ACSMammoAfterRT"
 * action[=].title = "Annual screeening mammogram"
 * action[=].description = "An annual screening mammogram starting 8 years after radiotherapy and no earlier than age 25 is recommended."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAfterRT"
@@ -124,7 +124,7 @@ RuleSet: ACSMriAfterRT
 * action[+].id = "ACSMriAfterRT"
 * action[=].title = "Annual screeening MRI"
 * action[=].description = "An annual screening MRI starting 8 years after radiotherapy and no earlier than age 25 is recommended."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMriAfterRT"
@@ -152,7 +152,7 @@ RuleSet: ACSMammoAfterBrca
 * action[+].id = "ACSMammoAfterBrca"
 * action[=].title = "Annual screeening mammogram"
 * action[=].description = "Annual screeening mammogram after 5 years in remission is recomended."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAfterBrca"
@@ -192,7 +192,7 @@ RuleSet: ACSMammoAtypicalBiopsy
 * action[+].id = "ACSMammoAtypicalBiopsy"
 * action[=].title = "Annual screeening mammogram"
 * action[=].description = "An annual screening mammogram starting at age 30 is recommended in patients with past atypical biopsy."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAtypicalBiopsy"
@@ -220,7 +220,7 @@ RuleSet: ACSAtypicalBiopsy
 * action[+].id = "ACSAtypicalBiopsy"
 * action[=].title = "Perform lifetime risk assessment"
 * action[=].description = "Consider performing assessment of lifetime risk. If estimated lifetime risk is >20%, patient may be eligible for supplemental screening with annual screening MRI."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSAtypicalBiopsy"
@@ -233,7 +233,7 @@ RuleSet: ACSMriAtypicalBiopsyHighRisk
 * action[+].id = "ACSMriAtypicalBiopsyHighRisk"
 * action[=].title = "Annual screeening MRI"
 * action[=].description = "An annual screening MRI starting at age 30 is recommended in patients with past atypical biopsy and high lifetime risk."
-* action[=] insert ACSCitationActionDocumentation
+* action[=] insert ACSCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
 * action[=].condition[=].expression.expression = "ExistsACSMriAtypicalBiopsyHighRisk"
