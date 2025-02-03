@@ -17,7 +17,7 @@ codesystem "ICD-9": 'http://hl7.org/fhir/sid/icd-9-cm'
 codesystem "ICD-10": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "GENDER-IDENTITY": 'http://hl7.org/fhir/gender-identity'
 codesystem "CONDCLINSTATUS": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
-//TODO: validate of this STU1 IG is valid to reference for VS
+//TODO: validate of this STU1 IG is valid to reference for VS, if not change to SNOMED codes
 codesystem "MGBreastDensityCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/MGBreastDensityCS'
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 

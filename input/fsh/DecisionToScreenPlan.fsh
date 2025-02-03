@@ -71,61 +71,76 @@ Usage: #definition
 RuleSet: SDMContinueScreeningAge
 * action[+].id = "SDMContinueScreeningAge"
 * action[=].title = "Shared decision making to continue screening based on age"
-* action[=].description = "Shared decision making to continue screening based on age"
+* action[=].description = """
+Decision to continue screening mammography in average risk women age 75 years or older should be based on shared decision-making.
+
+The USPSTF concludes that the evidence is insufficient to determine the balance of benefits and harms of screening mammography in women 75 years or older.
+"""
+* action[=] insert USPSTFScreeningCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsSDMContinueScreeningAge"
 * action[=].definitionCanonical = Canonical(CommunicateSDMContinueScreening|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SDMContinueScreeningAgeCode"
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SDMContinueScreeningAgeReason"
 
 RuleSet: SDMContinueScreeningLifeExp
 * action[+].id = "SDMContinueScreeningLifeExp"
 * action[=].title = "Shared decision making to continue screening based on life expectancy"
-* action[=].description = "Shared decision making to continue screening based on life expectancy"
+* action[=].description = """
+Decision to continue screening mammography in cases of limited life expectancy should be based on shared decision-making.
+
+ACS advises that women should continue screening mammography as long as their overall health is good and they have a life expectancy of 10 years or more.
+
+Life expectancy is generally defined as having greater than a 50% probability of surviving 10 years. A validated tool such as www.eprognosis.com can help guide decision making.
+"""
+* action[=] insert ACSAvgRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsSDMContinueScreeningLifeExp"
 * action[=].definitionCanonical = Canonical(CommunicateSDMContinueScreening|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SDMContinueScreeningLifeExpCode"
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SDMContinueScreeningLifeExpReason"
 
 RuleSet: SDMDelayScreeningLactating
 * action[+].id = "SDMDelayScreeningLactating"
 * action[=].title = "Shared decision making to delay screening based on lactation status"
-* action[=].description = "Shared decision making to delay screening based on lactation status"
+* action[=].description = """
+There is no contraindication to screening mammography during lactation, however sensitivity and specificity are decreased. For average risk patients, consider a short delay in routine breast imaging until after lactation, particularly if they are not planning prolonged breastfeeding.
+"""
+//TODO: Add citation NCCN
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsSDMDelayScreeningLactating"
 * action[=].definitionCanonical = Canonical(CommunicateSDMDelayScreening|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SDMDelayScreeningLactatingCode"
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SDMDelayScreeningLactatingReason"
 
 RuleSet: ApplicabilityHighRiskExclusionsRecommendations
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsHighRiskExclusionsRecommendations"
 
 RuleSet: ApplicabilitySpecialPopulationsRecommendations
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsSpecialPopulationsRecommendations"
 
 RuleSet: ApplicabilityAverageRiskRecommendations
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsAverageRiskRecommendations"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -22,10 +22,10 @@ Usage: #definition
 * action[=] insert ScreeningEligibleDocumentationArtifact
 * action[=].code = $PDACS#eligible "Eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "IsScreeningEligible"
 * action[=].definitionCanonical = Canonical(CommunicateEligible|1.0.0)
 // -----------------------------------------------------------------------------
@@ -41,7 +41,7 @@ Usage: #definition
 * action[+].title = "Screening Eligible Missing Data"
 * action[=].description = "Error due to missing required data for inclusion and exclusion evaluation."
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "MissingAgeOrBirthdate"
 * action[=].condition[=].expression.reference = "Library/ScreeningEligible|1.0.0"
 * action[=].definitionCanonical = Canonical(ScreeningEligibleQuestionnaire|1.0.0)
@@ -62,14 +62,14 @@ RuleSet: NotEligibleNotAssignedFemaleAtBirth
 * action[=] insert UCSFTransgenderCitationDocumentationArtifact
 * action[=].code = $PDACS#noteligible "Not eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
 * action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsNotEligibleNotAssignedFemaleAtBirth"
 * action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
 
 RuleSet: NotEligibleCurrentBreastCancer
@@ -84,14 +84,14 @@ RuleSet: NotEligibleCurrentBreastCancer
 * action[=] insert ScreeningEligibleDocumentationArtifact
 * action[=].code = $PDACS#noteligible "Not eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
 * action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsNotEligibleCurrentBreastCancer"
 * action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
 
 RuleSet: NotEligibleBilateralMastectomy
@@ -106,14 +106,14 @@ RuleSet: NotEligibleBilateralMastectomy
 * action[=] insert ScreeningEligibleDocumentationArtifact
 * action[=].code = $PDACS#noteligible "Not eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
 * action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsNotEligibleBilateralMastectomy"
 * action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
 
 RuleSet: NotEligibleBreastSymptomsOrFindings
@@ -128,14 +128,14 @@ RuleSet: NotEligibleBreastSymptomsOrFindings
 * action[=] insert ScreeningEligibleDocumentationArtifact
 * action[=].code = $PDACS#noteligible "Not eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "CheckIsIncludedAndNotExcluded"
 * action[=].condition[+].kind =  $ACKIND#applicability "Applicability"
-* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsNotEligibleBreastSymptomsOrFindings"
 * action[=].definitionCanonical = Canonical(CommunicateNotEligible|1.0.0)
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
-* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql "CQL"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ScreeningEligibleReason"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -186,7 +186,6 @@ Usage: #definition
 * insert CPGKnowledgeExtensions
 * insert CommonMetadata
 * meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity"
-// * cpg-partOf = Canonical(TopLevelPlanDefinition) // TODO: Tie this into the entire pathway
 * url = Canonical(ScreeningEligibleQuestionnaireTask)
 * name = "ScreeningEligibleQuestionnaireTask"
 * description = "This ActivityDefinition generates a Questionnaire Task containing a request to complete a questionnaire."
