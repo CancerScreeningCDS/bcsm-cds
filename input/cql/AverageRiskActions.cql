@@ -45,7 +45,6 @@ define mammo_biennial:
     }
 	}   
 
-//TODO: determine if any codes needed for Offer annual screening mammogram ages 40-44
 define "act-acsavgrecs40":
   BCSMCommonFunctions.SetRecommendation(mammo_annual.code, "ACS average risk", 
     BCSMCommonFunctions.SourceDocumentationACS, {value: 40.0, code: 'a'}, null, mammo_annual.timingTiming.repeat)  

@@ -31,7 +31,7 @@ code "Age": '30525-0' from "LOINC" display 'Age'
 context Patient
 
 //------------------------------------------------------------------------------
-// CDS Logic
+// INCLUSIONS/EXCLUSIONS
 //------------------------------------------------------------------------------
 
 define CheckIsIncludedAndNotExcluded:

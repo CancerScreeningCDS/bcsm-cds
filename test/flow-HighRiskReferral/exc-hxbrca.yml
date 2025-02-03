@@ -1,0 +1,16 @@
+---
+name: exc-hxbrca
+flow: flow-HighRiskReferral
+externalData:
+  - ../HighRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *Patient_age_>=_35_years
+  - *CONDITIONS_include_`INVASIVE_BREAST_CANCER`_with_status_inactive
+results:
+  exc-hxbrca: true
+  Excluded: true
+  IsIncludedAndNotExcluded: false
+  CheckIsIncludedAndNotExcluded: false 
