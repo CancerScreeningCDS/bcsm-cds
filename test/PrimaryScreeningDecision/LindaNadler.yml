@@ -11,7 +11,7 @@ data:
   - resourceType: DiagnosticReport
     id: biopsy-report-1
     status: final
-    effectiveDateTime: "2024-11-20"    
+    effectiveDateTime: "2026-11-20"    
     code:
       coding:
         - system: http://loinc.org
@@ -23,19 +23,19 @@ data:
           code: 62061000119107 #TODO replace placeholder code
           display: DCIS
   - resourceType: DiagnosticReport
-    id: "mammogram-2023-birads-5"
+    id: "mammogram-2024-birads-5"
     status: final
     code:
       coding:
         - system: http://loinc.org
           code: 10193-1
           display: Screening Mammogram
-    effectiveDateTime: 2023-09-30           
+    effectiveDateTime: 2024-09-30           
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-          code: Category5
-          display: Category 4 (Suspicious)
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category5HighlySuggestiveOfMalignancy
+          display: category4,suspiciousabnormality
 results:
   IsScreeningEligible: false
   PrimaryScreeningDecision: $should have length 1

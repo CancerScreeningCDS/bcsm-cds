@@ -1,42 +1,117 @@
 ---
-name: PatriciaLambert
-skip: true
+name: PatriciaLambert_remission_lt_5_years
 externalData:
   - ../default_patients
 data:
   - *PatriciaLambert
   - resourceType: Condition
-    id: "HistoryOfBreastCancer"
-    subject:
-      reference: "Patient/PatriciaLambert"
+    clinicalStatus:
+      coding:
+        - system: http://terminology.hl7.org/CodeSystem/condition-clinical
+          code: inactive
+          display: Inactive
+    verificationStatus:
+      coding:
+        - system: http://terminology.hl7.org/CodeSystem/condition-ver-status
+          code: confirmed
+          display: Confirmed
+    category:
+      - coding:
+          - system: http://terminology.hl7.org/CodeSystem/condition-category
+            code: problem-list-item
+            display: Problem List Item
     code:
-      text: "History of breast cancer in remission"
-    onsetDateTime: "2021-08-21"
+      coding:
+        - system: http://snomed.info/sct
+          code: 254837009
+          display: Invasive breast cancer
+    onsetDateTime: 2018-05-16
+    abatementDateTime: 2021-08-21
+  - resourceType: DiagnosticReport
+    status: final
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2021-08-21T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category1Negative
+          display: category1,negative  
+  - resourceType: DiagnosticReport
+    status: final
+    effectiveDateTime: "2018-05-16T00:00:00.0Z"    
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 66110-8
+          display: "Biopsy Report"
+    conclusionCode:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+          code: Malignant     
+  - resourceType: DiagnosticReport
+    status: final
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2018-04-02T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category4SuspiciousAbnormality
+          display: category4,suspiciousabnormality
+  - resourceType: DiagnosticReport
+    status: final
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2016-03-05T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category1Negative
+          display: category1,negative    
+  - resourceType: DiagnosticReport
+    status: final
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2014-03-01T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category1Negative
+          display: category1,negative  
+  - resourceType: DiagnosticReport
+    status: final
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2012-02-25T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category1Negative
+          display: category1,negative                         
   - resourceType: Procedure
-    id: "Lumpectomy"
-    subject:
-      reference: "Patient/PatriciaLambert"
     code:
-      text: "Lumpectomy"
+      coding:
+        - system: http://www.ama-assn.org/go/cpt
+          code: 19301
+          display: Mastectomy, partial (eg, lumpectomy, tylectomy, quadrantectomy, segmentectomy)
     performedDateTime: "2018-07-28"
-  - resourceType: Procedure
-    id: "MammogramNoEvidence"
-    subject:
-      reference: "Patient/PatriciaLambert"
-    code:
-      text: "Mammogram"
-    performedDateTime: "2021-08-21"
-    outcome:
-      text: "No evidence of disease"
-  - resourceType: ServiceRequest
-    id: "OncologicCarePlan"
-    subject:
-      reference: "Patient/PatriciaLambert"
-    code:
-      text: "Refer to Oncologic care plan"
-    note:
-      - text: "History of invasive or non-invasive breast cancer in remission for less than 5 years may require enhanced surveillance."
-
 results:
   IsScreeningEligible: true
-  PrimaryScreeningDecision: $should have length 1
+  ExistsSpecialtyReferralBreastCaWithin5y: true
+  PrimaryScreeningDecision: $should have length 2

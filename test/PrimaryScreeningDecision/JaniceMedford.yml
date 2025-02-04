@@ -1,19 +1,12 @@
 ---
-name: JaniceMedford
-skip: true
+name: JaniceMedford_fdr_breastca_age_45
 externalData:
+  - ../DataElements/data_elements
   - ../default_patients
 data:
   - *JaniceMedford
-  - resourceType: ServiceRequest
-    id: "BiennialScreeningMammogram"
-    subject:
-      reference: "Patient/JaniceMedford"
-    code:
-      text: "Biennial Screening Mammogram"
-    occurrenceDateTime: "2029-03-09"
-    note:
-      - text: "Biennial screening mammogram starting at age 40. Consider assessment of lifetime risk for more frequent screening."
+  - *FAMILY_HISTORY_includes_>=_1_first-_or_second-_degree_relatives_with_breast_cancer_diagnosed_<=_50_years_old
 results:
   IsScreeningEligible: true
-  PrimaryScreeningDecision: $should have length 1
+  ExistsCompellingFamilyHistory: true
+  PrimaryScreeningDecision: $should have length 3

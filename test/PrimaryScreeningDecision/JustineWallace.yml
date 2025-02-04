@@ -1,6 +1,5 @@
 ---
-name: JustineWallace
-skip: true
+name: JustineWallace_brca1
 externalData:
   - ../DataElements/data_elements  
   - ../default_patients
@@ -21,26 +20,23 @@ data:
       coding:
         - system: http://loinc.org #http://snomed.info/sct
           code: 21636-6 #412734009
-          display: BRCA1 gene mutation detected
-    onsetDateTime: "2023-05-04"
-  - resourceType: Procedure
-    id: "ScreeningMammogram2023"
-    subject:
-      reference: "Patient/JustineWallace"
+          display: BRCA1 gene mutation detected   
+    onsetDateTime: "2024-05-04"
+  - resourceType: DiagnosticReport
+    id: "mammogram-2024-birads-2"
+    status: final
     code:
-      text: "Screening Mammogram"
-    performedDateTime: "2023-05-04"
-    outcome:
-      text: "BI-RADS 2"
-  - resourceType: ServiceRequest
-    id: "AnnualMammogramAndMRI"
-    subject:
-      reference: "Patient/JustineWallace"
-    code:
-      text: "Annual Mammogram and MRI"
-    occurrenceDateTime: "2024-05-04"
-    note:
-      - text: "Annual screening mammogram and annual screening MRI are recommended for women at high risk for breast cancer."
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2024-05-04T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category2BenignFinding             
 results:
   IsScreeningEligible: true
-  PrimaryScreeningDecision: $should have length 1
+  ExistsACSGeneticRiskMammo: true
+  ExistsACSGeneticRiskMri: true
+  PrimaryScreeningDecision: $should have length 3
