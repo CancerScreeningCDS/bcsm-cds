@@ -4,12 +4,12 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/151",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/130",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "151",
+        "id": "130",
         "subject": {
-          "reference": "Patient/09621799-7676-43e8-9295-9428cadc8655",
+          "reference": "Patient/4573ea77-84b3-46d3-abdb-496b65733c29",
           "display": "Joanne Smith"
         },
         "instantiatesCanonical": [
@@ -17,22 +17,23 @@
         ],
         "intent": "proposal",
         "status": "draft",
+        "created": "2023-12-10T00:00:00.0Z",
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/152"
+              "reference": "RequestGroup/131"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/152",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/131",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "152",
+        "id": "131",
         "subject": {
-          "reference": "Patient/09621799-7676-43e8-9295-9428cadc8655",
+          "reference": "Patient/4573ea77-84b3-46d3-abdb-496b65733c29",
           "display": "Joanne Smith"
         },
         "instantiatesCanonical": [
@@ -42,9 +43,9 @@
         "status": "draft",
         "action": [
           {
-            "id": "IsNotScreeningEligible",
-            "title": "Not Screening Eligible",
-            "description": "Patient is not eligible for screening",
+            "id": "NotEligibleBilateralMastectomy",
+            "title": "Not eligible for screening",
+            "description": "This patient is not eligible for screening.\n\nThis patient has had bilateral mastectomy and does not meet the eligibility requirements for routine breast cancer screening.",
             "code": [
               {
                 "coding": [
@@ -56,17 +57,31 @@
                 ]
               }
             ],
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              },
+              {
+                "type": "derived-from",
+                "label": "Screening Eligible",
+                "display": "Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed."
+              }
+            ],
             "resource": {
-              "reference": "CommunicationRequest/153"
+              "reference": "CommunicationRequest/132"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/153",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/132",
       "resource": {
-        "id": "153",
+        "id": "132",
         "resourceType": "CommunicationRequest",
         "status": "option",
         "basedOn": [
@@ -75,7 +90,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/09621799-7676-43e8-9295-9428cadc8655",
+          "reference": "Patient/4573ea77-84b3-46d3-abdb-496b65733c29",
           "display": "Joanne Smith"
         },
         "payload": [
