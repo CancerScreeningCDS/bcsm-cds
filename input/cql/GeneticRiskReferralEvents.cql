@@ -7,11 +7,14 @@ include DataElements version '1.0.0' called DataElements
 include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
+codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
+codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
 
-code "Ancestry associated with BRCA1/2 gene mutations": 'brcageneancestry' from "LOCAL" display 'Ancestry associated with BRCA1/2 gene mutations'
-code "Family history of breast, ovarian, tubal, or peritoneal cancer": 'fhxbrcaovcatubalperit' from "LOCAL" display 'Family history of breast, ovarian, tubal, or peritoneal cancer'
-code "Genetic risk assessment result": 'GeneticRiskResult' from "LOCAL" display 'Genetic risk assessment result'
-code "High genetic risk": 'HighGeneticRisk' from "LOCAL" display 'High genetic risk'
+code "Family history of inherited cancer susceptibility": 'fhxgenetic' from "ReasonCode" display 'Family history of inherited cancer susceptibility'
+code "Ancestry associated with BRCA1/2 gene mutations": 'brcageneancestry' from "ReasonCode" display 'Ancestry associated with BRCA1/2 gene mutations'
+code "Family history of breast, ovarian, tubal, or peritoneal cancer": 'fhxbrcaovcatubalperit' from "ReasonCode" display 'Family history of breast, ovarian, tubal, or peritoneal cancer'
+code "Familial risk assessment": 'familialriskassessment' from "ActCode" display 'Familial risk assessment'
+code "High genetic risk": 'highgeneticrisk' from "ReasonCode" display 'High genetic risk'
 
 context Patient
 
@@ -36,13 +39,7 @@ define "eve-brcageneancestry":
   ).value is true
 
 define "eve-fhxriskresult":
-  MostRecentGeneticRiskAssessmentResultHigh is not null
+  DataElements."de-fhxbreastcarisk"
 
-define MostRecentGeneticRiskAssessmentResultHigh:
-  MostRecentGeneticRiskAssessment R where 
-    R.value as FHIR.Quantity is not null and C3F.QuantityValue(R).value >5 or
-    R.value as FHIR.CodeableConcept is not null and C3F.ConceptValue(R) ~ "High genetic risk"
 
-define MostRecentGeneticRiskAssessment:
-  C3F.MostRecent([Observation: "Genetic risk assessment result"])  
 

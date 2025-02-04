@@ -7,13 +7,13 @@ include DataElements version '1.0.0' called DataElements
 include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
+codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
+codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
 
-code "5 year risk assessment result": '5YRiskResult' from "LOCAL" display '5 year risk assessment result'
-code "High 5 year risk": 'High5YRisk' from "LOCAL" display 'High 5 year risk'
-code "5 year risk at least 1.67%": 'HigherThanAverage5YRisk' from "LOCAL" display '"5 year risk at least 1.67%"'
-code "Genetic risk assessment result": 'GeneticRiskResult' from "LOCAL" display 'Genetic risk assessment result'
-code "High genetic risk": 'HighGeneticRisk' from "LOCAL" display 'High genetic risk'
-code "Personal risk factors conferring increased risk of breast cancer": 'personalriskfactors' from "LOCAL" display 'Personal risk factors conferring increased risk of breast cancer'
+code "5 year risk assessment": '5yriskassessment' from "ActCode" display '5 year risk assessment'
+code "High 5 year risk": 'high5yrisk' from "ReasonCode" display 'High 5 year risk'
+code "5 year risk at least 1.67%": 'higherthanaverage5yrisk' from "ReasonCode" display '5 year risk at least 1.67%'
+code "Personal risk factors conferring increased risk of breast cancer": 'PersonalRiskFactors' from "LOCAL" display 'Personal risk factors conferring increased risk of breast cancer'
 
 context Patient
 
@@ -39,7 +39,7 @@ define "eve-fiveyrrisklowpop":
   MostRecent5YrRiskAssessmentResultHigherThanAverage is not null
 
 define "eve-fhxbrca":  
-  MostRecentGeneticRiskAssessmentResultHigh is not null  
+  DataElements."de-fhxbreastcarisk"
 
 define "eve-personalriskfactors":
   MostRecentPersonalRiskFactorAssessment.value is true or 
@@ -57,15 +57,7 @@ define MostRecent5YrRiskAssessmentResultHigherThanAverage:
     or R.value as FHIR.CodeableConcept is not null and C3F.ConceptValue(R) ~ "High 5 year risk"
 
 define MostRecent5YrRiskAssessment:
-  C3F.MostRecent([Observation: "5 year risk assessment result"])  
-
-define MostRecentGeneticRiskAssessmentResultHigh:
-  MostRecentGeneticRiskAssessment R where 
-    R.value as FHIR.Quantity is not null and C3F.QuantityValue(R).value >5 or
-    R.value as FHIR.CodeableConcept is not null and C3F.ConceptValue(R) ~ "High genetic risk"
-
-define MostRecentGeneticRiskAssessment:
-  C3F.MostRecent([Observation: "Genetic risk assessment result"])
+  C3F.MostRecent([Observation: "5 year risk assessment"])  
 
 define MostRecentPersonalRiskFactorAssessment:
   C3F.MostRecent([Observation: "Personal risk factors conferring increased risk of breast cancer"])   

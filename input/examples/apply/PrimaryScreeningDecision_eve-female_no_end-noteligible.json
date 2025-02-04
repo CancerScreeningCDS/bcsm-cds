@@ -4,12 +4,12 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/122",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/107",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "122",
+        "id": "107",
         "subject": {
-          "reference": "Patient/88b0c162-369f-4144-a038-99f15fe30d5c",
+          "reference": "Patient/33493d88-2b99-4b5b-b468-012582cf708e",
           "display": "Joanne Smith"
         },
         "instantiatesCanonical": [
@@ -17,22 +17,23 @@
         ],
         "intent": "proposal",
         "status": "draft",
+        "created": "2023-12-10T00:00:00.0Z",
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/123"
+              "reference": "RequestGroup/108"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/123",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/108",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "123",
+        "id": "108",
         "subject": {
-          "reference": "Patient/88b0c162-369f-4144-a038-99f15fe30d5c",
+          "reference": "Patient/33493d88-2b99-4b5b-b468-012582cf708e",
           "display": "Joanne Smith"
         },
         "instantiatesCanonical": [
@@ -42,9 +43,9 @@
         "status": "draft",
         "action": [
           {
-            "id": "IsNotScreeningEligible",
-            "title": "Not Screening Eligible",
-            "description": "Patient is not eligible for screening",
+            "id": "NotEligibleCurrentBreastCancer",
+            "title": "Not eligible for screening",
+            "description": "This patient is not eligible for screening.\n\nReferenced guidelines apply to individuals assigned female at birth. Routine screening of cis-gender individuals assigned male at birth is not recommended. For transgender women, consider specialist referral.\n\nAdditional resources: ACR Appropriateness Criteria® Transgender Breast Cancer Screening; UCSF guidelines 'Screening for breast cancer in transgender women'",
             "code": [
               {
                 "coding": [
@@ -56,17 +57,44 @@
                 ]
               }
             ],
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              },
+              {
+                "type": "derived-from",
+                "label": "Screening Eligible",
+                "display": "Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed."
+              },
+              {
+                "type": "documentation",
+                "label": "ACR",
+                "display": "ACR Appropriateness Criteria® Transgender Breast Cancer Screening",
+                "citation": "Brown, Ann, et al. \"ACR appropriateness criteria® transgender breast cancer screening.\" Journal of the American College of Radiology 18.11 (2021): S502-S515.",
+                "url": "https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext"
+              },
+              {
+                "type": "documentation",
+                "label": "UCSF",
+                "display": "UCSF Transgender Care & Treatment Guidelines: Screening for breast cancer in transgender women",
+                "url": "https://transcare.ucsf.edu/guidelines/breast-cancer-women"
+              }
+            ],
             "resource": {
-              "reference": "CommunicationRequest/124"
+              "reference": "CommunicationRequest/109"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/124",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/109",
       "resource": {
-        "id": "124",
+        "id": "109",
         "resourceType": "CommunicationRequest",
         "status": "option",
         "basedOn": [
@@ -75,7 +103,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/88b0c162-369f-4144-a038-99f15fe30d5c",
+          "reference": "Patient/33493d88-2b99-4b5b-b468-012582cf708e",
           "display": "Joanne Smith"
         },
         "payload": [

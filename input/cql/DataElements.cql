@@ -20,6 +20,8 @@ codesystem "CONDCLINSTATUS": 'http://terminology.hl7.org/CodeSystem/condition-cl
 //TODO: validate of this STU1 IG is valid to reference for VS, if not change to SNOMED codes
 codesystem "MGBreastDensityCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/MGBreastDensityCS'
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
+codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
+codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
 
 code "Condition inactive code": 'inactive' from "CONDCLINSTATUS" display 'Inactive'
 code "Condition remission code": 'remission' from "CONDCLINSTATUS" display 'Remission'
@@ -75,15 +77,18 @@ code "Breast Imaging Report": '10193-1' from "LOINC" display 'Physical findings 
 code "Heterogeneously dense": 'HeterogeneouslyDense' from "MGBreastDensityCS" display 'Heterogeneously dense'
 code "Extremely dense": 'ExtremelyDense' from "MGBreastDensityCS" display 'Extremely dense'
 
-// Non-standard or "local" codes
+// Non-standard codes
 code "New or worsening breast symptoms": 'BreastSymptoms' from "LOCAL" display 'New or worsening breast symptoms'
 code "New or worsening breast exam findings": 'BreastFindings' from "LOCAL" display 'New or worsening breast exam findings'
-code "Reduced life expectancy indicator": 'ReducedLifeExpectancyIndicator' from "LOCAL" display 'Reduced life expectancy indicator'
+code "Reduced life expectancy indicator": 'lifeexp' from "ReasonCode" display 'Reduced life expectancy indicator'
 code "Genetic marker or syndrome associated with breast cancer": 'GeneticMarkerOrSyndrome' from "LOCAL" display 'Genetic marker or syndrome associated with breast cancer'
-code "Lifetime risk assessment result": 'LifetimeRiskResult' from "LOCAL" display 'Lifetime risk assessment result'
-code "High lifetime risk": 'HighLifetimeRisk' from "LOCAL" display 'High lifetime risk'
-code "Familial risk assessment": 'FamilialRiskAssessment' from "LOCAL" display 'Familial risk criteria'
-code "Familial genetic history": 'FamilialGeneticHistory' from "LOCAL" display 'Familial genetic history'
+code "Lifetime risk assessment": 'lifetimeriskassessment' from "ActCode" display 'Lifetime risk assessment'
+code "High lifetime risk": 'highlifetimerisk' from "ReasonCode" display 'High lifetime risk'
+code "Family history of inherited cancer susceptibility": 'fhxgenetic' from "ReasonCode" display 'Family history of inherited cancer susceptibility'
+code "Familial risk assessment": 'familialriskassessment' from "ActCode" display 'Familial risk assessment'
+code "Brief familial risk assessment tool": 'fhxrisktool' from "ActCode" display 'Brief familial risk assessment tool'
+code "Informal familial risk assessment": 'fhxriskassess' from "ActCode" display 'Informal familial risk assessment'
+code "High familial risk": 'highfamilialrisk' from "ReasonCode" display 'High familial risk'
 code "Known breast cancer variant status": 'KnownVariantStatus' from "LOCAL" display 'Known breast cancer variant status'
 
 //------------------------------------------------------------------------------
@@ -457,7 +462,7 @@ define MostRecentLifetimeRiskAssessmentResultHigh:
     R.value as FHIR.CodeableConcept is not null and C3F.ConceptValue(R) ~ "High lifetime risk"
 
 define MostRecentLifetimeRiskAssessment:
-  C3F.MostRecent([Observation: "Lifetime risk assessment result"])
+  C3F.MostRecent([Observation: "Lifetime risk assessment"])
 
 //------------------------------------------------------------------------------
 // BI-RADS breast density category C or D
@@ -477,17 +482,26 @@ define BreastImagingHeterogenouslyOrExtremelyDenseResults:
 //------------------------------------------------------------------------------  
 
 define "de-fhxbreastcarisk":
-  FamilyHistoryAssessmentObservation.value is true
+  MostRecentFamilialRiskAssessmentObservation.value is true
+    or MostRecentFamilialRiskAssessmentResultHigh is not null
 
-define FamilyHistoryAssessmentObservation:  
+define MostRecentFamilialRiskAssessmentObservation:  
   C3F.MostRecent(
-      [Observation: "Familial risk assessment"] R
+      [Observation: "Familial risk assessment"] R      
   )
 
-//TODO: add observations for assessment tool output structured documentation
-// Output of validated brief familial risk assessment tool is positive
+// Output of validated brief familial risk assessment tool is positive or greater than 5%
+define MostRecentFamilialRiskAssessmentResultHigh:
+  MostRecentFamilialRiskAssessmentResult R where 
+    R.value as FHIR.Quantity is not null and C3F.QuantityValue(R).value >5 or
+    R.value as FHIR.CodeableConcept is not null and C3F.ConceptValue(R) ~ "High familial risk"
+
+define MostRecentFamilialRiskAssessmentResult:
+  C3F.MostRecent([Observation: "Brief familial risk assessment tool"])
+
  
 //TODO: add FamilyMemberHistory for individual criteria
+//define "de-fhxrisk":
 // 'Informal familial risk criteria' exist
 
 //------------------------------------------------------------------------------
@@ -500,7 +514,7 @@ define "de-fhxgeneinherited":
 
 define FamilyGeneticHistoryAssessmentObservation:  
   C3F.MostRecent(
-      [Observation: "Familial genetic history"] R
+      [Observation: "Family history of inherited cancer susceptibility"] R
   )
 
 define "FamilyMemberGeneticMarkerOrSyndrome":

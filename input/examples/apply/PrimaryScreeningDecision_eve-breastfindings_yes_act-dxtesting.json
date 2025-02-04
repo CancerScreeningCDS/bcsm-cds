@@ -4,12 +4,12 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/116",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/101",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "116",
+        "id": "101",
         "subject": {
-          "reference": "Patient/fa4a2d98-88cd-4e0f-84a2-51b300e77624",
+          "reference": "Patient/662a569e-68d9-4159-830a-4cf38dc7a210",
           "display": "Joanne Smith"
         },
         "instantiatesCanonical": [
@@ -17,22 +17,23 @@
         ],
         "intent": "proposal",
         "status": "draft",
+        "created": "2023-12-10T00:00:00.0Z",
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/117"
+              "reference": "RequestGroup/102"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/117",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/102",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "117",
+        "id": "102",
         "subject": {
-          "reference": "Patient/fa4a2d98-88cd-4e0f-84a2-51b300e77624",
+          "reference": "Patient/662a569e-68d9-4159-830a-4cf38dc7a210",
           "display": "Joanne Smith"
         },
         "instantiatesCanonical": [
@@ -42,9 +43,9 @@
         "status": "draft",
         "action": [
           {
-            "id": "IsNotScreeningEligible",
-            "title": "Not Screening Eligible",
-            "description": "Patient is not eligible for screening",
+            "id": "NotEligibleBreastSymptomsOrFindings",
+            "title": "Not eligible for screening",
+            "description": "This patient is not eligible for screening.\n\nNew breast symptoms or exam findings, or chronic symptoms or findings which have progressively worsened, should undergo diagnostic testing rather than routine screening.",
             "code": [
               {
                 "coding": [
@@ -56,17 +57,31 @@
                 ]
               }
             ],
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              },
+              {
+                "type": "derived-from",
+                "label": "Screening Eligible",
+                "display": "Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed."
+              }
+            ],
             "resource": {
-              "reference": "CommunicationRequest/118"
+              "reference": "CommunicationRequest/103"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/118",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/103",
       "resource": {
-        "id": "118",
+        "id": "103",
         "resourceType": "CommunicationRequest",
         "status": "option",
         "basedOn": [
@@ -75,7 +90,7 @@
           }
         ],
         "subject": {
-          "reference": "Patient/fa4a2d98-88cd-4e0f-84a2-51b300e77624",
+          "reference": "Patient/662a569e-68d9-4159-830a-4cf38dc7a210",
           "display": "Joanne Smith"
         },
         "payload": [
@@ -87,9 +102,9 @@
           {
             "coding": [
               {
-                "code": "diagtesting",
+                "code": "breastsymptomsorfindings",
                 "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
-                "display": "Diagnostic testing"
+                "display": "New or worsening breast symptoms or findings"
               }
             ]
           }
