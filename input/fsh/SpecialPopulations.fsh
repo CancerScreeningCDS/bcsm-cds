@@ -153,9 +153,11 @@ RuleSet: BreastImagingHeterogenouslyOrExtremelyDense
 * action[+].id = "BreastImagingHeterogenouslyOrExtremelyDense"
 * action[=].title = "Perform lifetime risk assessment"
 * action[=].description = """
-Consider performing assessment of lifetime risk. 
+Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.
 
-If estimated lifetime risk is >20%, patient may be eligible for screening starting age 30 and for supplemental screening with annual screening MRI.
+If estimated lifetime risk is >20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.
+
+Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick.
 """
 * action[=] insert ACSHighRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
@@ -170,10 +172,13 @@ RuleSet: CompellingFamilyHistory
 * action[+].id = "CompellingFamilyHistory"
 * action[=].title = "Perform lifetime risk assessment"
 * action[=].description = """
-Consider performing assessment of lifetime risk. 
+Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.
 
-If estimated lifetime risk is >20%, patient may be eligible for screening starting age 30 and for supplemental screening with annual screening MRI.
+If estimated lifetime risk is >20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.
+
+Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick.
 """
+//TODO: add tool links
 * action[=] insert ACSHighRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"

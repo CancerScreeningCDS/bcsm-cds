@@ -8,7 +8,7 @@ include BCSMCommonFunctions version '1.0.0'
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
 codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
-codesystem "BiRadsAssessmentCategoriesCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS'
+codesystem "BiRadsAssessmentCategoriesCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE'
 codesystem "BiopsyResultCS": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
 
 // Act Codes
@@ -22,10 +22,10 @@ code "Discordant breast biopsy referral": 'discordantbreastbiopsy' from  "ActCod
 code "Oncologic referral": 'oncreferral' from  "ActCode" display 'Oncologic referral'
 // Reason Codes
 code "Screening complete": 'screeningcomplete' from "ReasonCode" display 'Screening complete'
-code "Category0": 'Category0' from "BiRadsAssessmentCategoriesCS" display 'Category 0 (Incomplete)'
-code "Category3": 'Category3' from "BiRadsAssessmentCategoriesCS" display 'Category 3 (Probably Benign)'
-code "Category4": 'Category4' from "BiRadsAssessmentCategoriesCS" display 'Category 4 (Suspicious)'
-code "Category5": 'Category5' from "BiRadsAssessmentCategoriesCS" display 'Category 5 (Highly Suggestive of Malignancy)'
+code "Category0": 'RDE1586_category0IncompleteNeedAdditionalImaging' from "BiRadsAssessmentCategoriesCS" display 'category0needadditionalimaging'
+code "Category3": 'RDE1586_category3ProbablyBenignFinding' from "BiRadsAssessmentCategoriesCS" display 'category3,probablybenignfinding'
+code "Category4": 'RDE1586_category4SuspiciousAbnormality' from "BiRadsAssessmentCategoriesCS" display 'category4,suspiciousabnormality'
+code "Category5": 'RDE1586_category5HighlySuggestiveOfMalignancy' from "BiRadsAssessmentCategoriesCS" display 'category5,highlysuggestiveofmalignancy'
 code "Negative": 'Negative' from BiopsyResultCS display 'Normal breast tissue'
 code "Benign": 'Benign' from BiopsyResultCS display 'Benign breast finding'
 code "Atypical": 'Atypical' from BiopsyResultCS display 'Atypical breast finding'

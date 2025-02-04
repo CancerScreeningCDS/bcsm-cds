@@ -1,34 +1,43 @@
 ---
-name: NadiaWills
-skip: true
+name: NadiaWills_palpable_breast_mass
 externalData:
   - ../default_patients
+parameters:
+  encounter: Encounter/1  
 data:
   - *NadiaWills
   - resourceType: Condition
-    id: "PalpableBreastMass"
-    subject:
-      reference: "Patient/NadiaWills"
+    clinicalStatus:
+      coding:
+        - system: http://terminology.hl7.org/CodeSystem/condition-clinical
+          code: active
+    verificationStatus:
+      coding:
+        - system: http://terminology.hl7.org/CodeSystem/condition-ver-status
+          code: confirmed
     code:
-      text: "Palpable breast mass"
-    onsetDateTime: "2015-05-04"
-  - resourceType: Procedure
-    id: "ScreeningMammogram"
-    subject:
-      reference: "Patient/NadiaWills"
+      coding:
+        - system: http://snomed.info/sct
+          code: 200430001 #TODO replace placeholder
+          display: Palpable breast mass
+    encounter:
+      reference: Encounter/1 
+    recordedDate: "2026-12-10" 
+  - resourceType: DiagnosticReport
+    id: "mammogram-2023-birads-2"
+    status: final
     code:
-      text: "Screening Mammogram"
-    performedDateTime: "2015-05-04"
-    outcome:
-      text: "BI-RADS 1"
-  - resourceType: ServiceRequest
-    id: "DiagnosticExamination"
-    subject:
-      reference: "Patient/NadiaWills"
-    code:
-      text: "Diagnostic Examination"
-    note:
-      - text: "Consider diagnostic work-up or examination. This patient has symptoms concerning for breast disease, and should undergo diagnostic testing rather than routine screening."
+      coding:
+        - system: http://loinc.org
+          code: 10193-1
+          display: Physical findings of Breasts Narrative
+    effectiveDateTime: 2023-12-02T10:00:00Z            
+    conclusionCode:
+      coding:
+        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+          code: RDE1586_category2BenignFinding
+          display: 	category2,benignfinding
 results:
-  IsScreeningEligible: true
+  ExistsNotEligibleBreastSymptomsOrFindings: true
+  IsScreeningEligible: false
   PrimaryScreeningDecision: $should have length 1

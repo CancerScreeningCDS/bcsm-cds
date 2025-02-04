@@ -17,6 +17,7 @@ codesystem "ICD-9": 'http://hl7.org/fhir/sid/icd-9-cm'
 codesystem "ICD-10": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "GENDER-IDENTITY": 'http://hl7.org/fhir/gender-identity'
 codesystem "CONDCLINSTATUS": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
+codesystem "AdministrativeGender": 'http://hl7.org/fhir/administrative-gender'
 //TODO: validate of this STU1 IG is valid to reference for VS, if not change to SNOMED codes
 codesystem "MGBreastDensityCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/MGBreastDensityCS'
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
@@ -53,17 +54,21 @@ valueset "Cowden Syndrome": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113
 // TODO: replace placeholder value set OID
 valueset "Bannayan-Riley-Ruvalcaba Syndrome": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022'
 // TODO: replace placeholder value set OID
-valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
-// TODO: replace placeholder value set OID
-valueset "OVARIAN CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
+valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235' 
+valueset "OVARIAN CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.232'
 // TODO: replace placeholder value set OID
 valueset "TUBAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
 // TODO: replace placeholder value set OID
 valueset "PERITONEAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
 // TODO: replace placeholder value set OID
 valueset "BREAST SYMPTOMS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.73'
+valueset "FIRST DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
+// TODO: replace placeholder value set OID
+valueset "SECOND DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
+valueset "MAMMOGRAPHY": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 
 // Standard codes
+code "Male": 'male' from "AdministrativeGender" display 'Male'
 code "Gender Identity": '76691-5' from "LOINC" display 'Gender identity'
 code "Transgender Male Code": 'transgender-male' from "GENDER-IDENTITY" display 'transgender male'
 code "Transgender Female Code": 'transgender-female' from "GENDER-IDENTITY" display 'transgender female'
@@ -499,10 +504,52 @@ define MostRecentFamilialRiskAssessmentResultHigh:
 define MostRecentFamilialRiskAssessmentResult:
   C3F.MostRecent([Observation: "Brief familial risk assessment tool"])
 
- 
-//TODO: add FamilyMemberHistory for individual criteria
-//define "de-fhxrisk":
 // 'Informal familial risk criteria' exist
+define "de-fhxrisk":
+  Count(FirstOrSecondDegreeRelativesWithBreastCancer) >= 2
+  or Count(FirstOrSecondDegreeRelativesWithOvarianCancer) >= 2
+  or exists (BreastCancerDiagnosedBefore50)
+  or BreastAndOvarianCancerInFamily
+  or exists (BreastAndOvarianCancerInSameRelative)
+  or exists (TwoIndependentBreastCancers)
+  or exists (MaleRelativeWithBreastCancer) 
+
+define "FirstOrSecondDegreeRelativesWithBreastCancer":
+  FirstOrSecondDegreeRelatives F
+    where exists (F.condition C where C.code in "INVASIVE BREAST CANCER" or C.code in "NON-INVASIVE BREAST CANCER")
+
+define "FirstOrSecondDegreeRelativesWithOvarianCancer":
+  FirstOrSecondDegreeRelatives F
+    where exists (F.condition C where C.code in "OVARIAN CANCER")
+
+define "BreastCancerDiagnosedBefore50":
+  FirstOrSecondDegreeRelatives F
+    where exists (F.condition C where (C.code in "INVASIVE BREAST CANCER" or C.code in "NON-INVASIVE BREAST CANCER")
+      and C.onset as Age <= 50 years)
+
+define "BreastAndOvarianCancerInFamily":
+  exists (FirstOrSecondDegreeRelativesWithBreastCancer)
+    and exists (FirstOrSecondDegreeRelativesWithOvarianCancer)
+
+define "BreastAndOvarianCancerInSameRelative":
+  FirstOrSecondDegreeRelatives F
+    where exists (F.condition C1 where C1.code in "INVASIVE BREAST CANCER" or C1.code in "NON-INVASIVE BREAST CANCER")
+      and exists (F.condition C2 where C2.code in "OVARIAN CANCER")
+
+define "TwoIndependentBreastCancers":
+  FirstOrSecondDegreeRelatives F
+    where exists F.condition C1 where C1.code in "INVASIVE BREAST CANCER" or C1.code in "NON-INVASIVE BREAST CANCER"
+      and exists F.condition C2 where (C2.code in "INVASIVE BREAST CANCER" or C2.code in "NON-INVASIVE BREAST CANCER")
+        and C1 != C2
+
+define "MaleRelativeWithBreastCancer":
+  FirstOrSecondDegreeRelatives F
+    where exists (F.condition C where C.code in "INVASIVE BREAST CANCER" or C.code in "NON-INVASIVE BREAST CANCER")
+      and F.sex ~ "Male"
+
+define "FirstOrSecondDegreeRelatives":
+  [FamilyMemberHistory] F
+    where F.relationship in "FIRST DEGREE FAMILY MEMBER" or F.relationship in "SECOND DEGREE FAMILY MEMBER"
 
 //------------------------------------------------------------------------------
 // Family history of inherited cancer susceptibility

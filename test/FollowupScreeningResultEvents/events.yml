@@ -7,12 +7,12 @@ eve-latesttesttype:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category0      
-            display: Category 0 (Incomplete) 
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category0IncompleteNeedAdditionalImaging      
+            display: category0needadditionalimaging 
     - resourceType: DiagnosticReport
       status: final
       code:
@@ -20,7 +20,7 @@ eve-latesttesttype:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-09-01T10:00:00Z  
+      effectiveDateTime: 2024-09-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
@@ -45,12 +45,12 @@ eve-latesttesttype:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-09-01T10:00:00Z            
+      effectiveDateTime: 2024-09-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category0       
-            display: Category 0 (Incomplete) 
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category0IncompleteNeedAdditionalImaging       
+            display: category0needadditionalimaging 
     - resourceType: DiagnosticReport
       status: final
       code:
@@ -58,7 +58,7 @@ eve-latesttesttype:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-10-01T10:00:00Z  
+      effectiveDateTime: 2024-10-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
@@ -83,7 +83,7 @@ eve-latesttesttype:
           - system: http://loinc.org
             code: other
             display: Something
-      effectiveDateTime: 2023-10-01T10:00:00Z    
+      effectiveDateTime: 2024-10-01T10:00:00Z    
 
 eve-actionablebirads:
   - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_is_NOT_2
@@ -94,12 +94,12 @@ eve-actionablebirads:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category0 
-            display: Category 0 (Incomplete) 
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category0IncompleteNeedAdditionalImaging 
+            display: category0needadditionalimaging 
   - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_is_2
     - resourceType: DiagnosticReport
       status: final
@@ -108,11 +108,11 @@ eve-actionablebirads:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category2  
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category2BenignFinding  
             display: Category 2 (Benign)
 
 eve-biradsscore:
@@ -124,12 +124,12 @@ eve-biradsscore:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category0 
-            display: Category 0 (Incomplete) 
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category0IncompleteNeedAdditionalImaging 
+            display: category0needadditionalimaging 
   - &BI-RADS_score_3_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
@@ -138,12 +138,12 @@ eve-biradsscore:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category3   
-            display: Category 3 (Probably Benign)
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category3ProbablyBenignFinding   
+            display: category3,probablybenignfinding
   - &BI-RADS_score_4_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
@@ -152,12 +152,12 @@ eve-biradsscore:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category4
-            display: Category 4 (Suspicious)
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category4SuspiciousAbnormality
+            display: category4,suspiciousabnormality
   - &BI-RADS_score_5_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
@@ -166,12 +166,12 @@ eve-biradsscore:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category5
-            display: Category 5 (Highly Suggestive of Malignancy)
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category5HighlySuggestiveOfMalignancy
+            display: category5,highlysuggestiveofmalignancy
   - &BI-RADS_score_6_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
@@ -180,12 +180,12 @@ eve-biradsscore:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/BiRadsAssessmentCategoriesCS
-            code: Category6      
-            display: Category 6 (Known Biopsy-Proven Malignancy)
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category6KnownBiopsyProvenMalignancy      
+            display: category6,knownbiopsy-provenmalignancy
   - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_unknown
     - resourceType: DiagnosticReport
       status: final
@@ -194,7 +194,7 @@ eve-biradsscore:
           - system: http://loinc.org
             code: 10193-1
             display: Physical findings of Breasts Narrative
-      effectiveDateTime: 2023-10-01T10:00:00Z            
+      effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
           - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/something
@@ -209,7 +209,7 @@ eve-biopsyresult:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-10-01T10:00:00Z  
+      effectiveDateTime: 2024-10-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
@@ -233,7 +233,7 @@ eve-biopsyresult:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-10-01T10:00:00Z  
+      effectiveDateTime: 2024-10-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
@@ -257,7 +257,7 @@ eve-biopsyresult:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-10-01T10:00:00Z  
+      effectiveDateTime: 2024-10-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
@@ -281,7 +281,7 @@ eve-biopsyresult:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-10-01T10:00:00Z  
+      effectiveDateTime: 2024-10-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
@@ -305,7 +305,7 @@ eve-biopsyresult:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-10-01T10:00:00Z  
+      effectiveDateTime: 2024-10-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
@@ -329,7 +329,7 @@ eve-biopsyresult:
           - system: http://loinc.org
             code: 66110-8
             display: "Biopsy Report"
-      effectiveDateTime: 2023-10-01T10:00:00Z  
+      effectiveDateTime: 2024-10-01T10:00:00Z  
       basedOn:
         - reference: "ServiceRequest/order-1"
     - resourceType: Observation
