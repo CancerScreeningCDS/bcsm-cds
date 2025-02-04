@@ -133,8 +133,8 @@ Description: "Code representing breast cancer biopsy result observations"
 * ^experimental = true
 
 * #Negative "Normal breast tissue" 
-* #Benign "Benign breast finding" "Non-malignant findings, excluding ADH, LCIS or ALH"
+* #Benign "Benign breast finding" "Benign findings, excluding ADH, LCIS or ALH"
 * #Atypical "Atypical breast finding" "Includes atypical ductal hyperplasia (ADH) and lobular neoplasia (lobular carcinoma in situ [LCIS]/atypical lobular hyperplasia [ALH]"
-* #Malignant "Malignant breast finding"
+* #Malignant "Malignant breast finding" "Invasive or non-invasive breast malignancy"
 * #Indeterminate "Indeterminate breast finding"
 * #Discordant "Discordant breast finding"
