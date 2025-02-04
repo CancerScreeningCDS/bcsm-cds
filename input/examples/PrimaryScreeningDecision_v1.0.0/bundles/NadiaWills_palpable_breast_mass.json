@@ -1,0 +1,131 @@
+{
+  "resourceType": "Bundle",
+  "id": "NadiaWills_palpable_breast_mass",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "NadiaWills",
+        "identifier": [
+          {
+            "value": "123-345-567",
+            "type": {
+              "coding": [
+                {
+                  "code": "MR",
+                  "display": "Medical Record Number"
+                }
+              ]
+            }
+          }
+        ],
+        "name": [
+          {
+            "given": [
+              "Nadia"
+            ],
+            "family": "Wills"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1969-03-09",
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/Race",
+                  "code": "2106-3",
+                  "display": "White"
+                }
+              ]
+            }
+          },
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/v3/Ethnicity",
+                  "code": "2186-5",
+                  "display": "Not Hispanic or Latino"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1dd29678-abd5-4c2a-a329-6ae150a948d7",
+        "subject": {
+          "reference": "Patient/NadiaWills"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "200430001",
+              "display": "Palpable breast mass"
+            }
+          ]
+        },
+        "encounter": {
+          "reference": "Encounter/1"
+        },
+        "recordedDate": "2026-12-10"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "mammogram-2023-birads-2",
+        "subject": {
+          "reference": "Patient/NadiaWills"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "10193-1",
+              "display": "Physical findings of Breasts Narrative"
+            }
+          ]
+        },
+        "effectiveDateTime": "2023-12-02T10:00:00.000Z",
+        "conclusionCode": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE",
+                "code": "RDE1586_category2BenignFinding",
+                "display": "category2,benignfinding"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
