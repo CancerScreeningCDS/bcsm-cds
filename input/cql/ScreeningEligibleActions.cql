@@ -12,12 +12,13 @@ codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSyste
 // Act Codes
 code "Eligible for screening": 'eligible' from "ActCode" display 'Eligible for screening'
 code "Not eligible for screening": 'noteligible' from "ActCode" display 'Not eligible for screening'
+code "Diagnostic testing":  'diagtesting' from "ActCode" display 'Diagnostic testing'
 // Reason Codes
 code "Eligible for screening reason": 'eligibleforscreening' from "ReasonCode" display 'Eligible for screening'
 code "Not assigned female at birth": 'notassignedfemaleatbirth' from "ReasonCode" display 'Not assigned female at birth'
 code "Current breast cancer": 'currentbreastcancer' from "ReasonCode" display 'Current breast cancer'
 code "Bilateral mastectomy":  'bilatmastectomy' from "ReasonCode" display 'Bilateral mastectomy'
-code "Diagnostic testing":  'diagtesting' from "ReasonCode" display 'Diagnostic testing'
+code "New or worsening breast symptoms or findings":  'breastsymptomsorfindings' from "ReasonCode" display 'New or worsening breast symptoms or findings'
 
 context Patient
 
@@ -51,8 +52,8 @@ define "end-noteligible-bilatmastectomy":
 
 define "act-dxtesting":
   {
-		code: "Not eligible for screening",
-    reason: "Diagnostic testing",
+		code: "Diagnostic testing",
+    reason: "New or worsening breast symptoms or findings",
     documentation: BCSMCommonFunctions.SourceDocumentationOther
 	} 
 

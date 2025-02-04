@@ -10,7 +10,7 @@ include DataElements version '1.0.0' called DataElements
 // CODE SYSTEMS, VALUE SETS, AND CODES
 //------------------------------------------------------------------------------
 
-codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
+codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
 codesystem "v3-RoleCode": 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
 
 code "father": 'FTH' from "v3-RoleCode" display 'father'
@@ -31,8 +31,8 @@ concept "CHILD": { "child", "natural child" } display 'child'
 concept "SON": { "son", "natural son" } display 'son'
 concept "DAU": { "daughter", "natural daughter" } display 'daughter'
 
-// Non-standard or "local" codes
-code "First degree relative with genetic marker or syndrome": 'FirstDegGenetic' from "LOCAL" display 'First degree relative with genetic marker or syndrome'
+// Non-standard codes
+code "First degree relative with genetic marker or syndrome": 'firstdeggenetic' from "ReasonCode" display 'First degree relative with genetic marker or syndrome'
 
 context Patient
 
