@@ -1,5 +1,4 @@
 Alias: $PDACS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system
-Alias: $PDARCS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system
 Alias: $SOCS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system
 Alias: $RecommendationFlagCS = http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system
 
@@ -42,10 +41,10 @@ Description: "This value set includes action codes for Plan Definitions within t
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-CodeSystem: PlanDefinitionActionReasonCodeSystem
-Id: plan-definition-action-reason-code-system
-Title: "Plan Definition Action Reason Code System"
-Description: "Code representing plan definition action reason codes"
+CodeSystem: ScreeningObservationCodeSystem
+Id: screening-observation-code-system
+Title: "Screening Observation Code System"
+Description: "Code representing breast cancer screening related observations"
 
 * ^experimental = true
 
@@ -80,13 +79,50 @@ Description: "Code representing plan definition action reason codes"
 * #high5yrisk "High 5 year risk"
 * #higherthanaverage5yrisk "5 year risk at least 1.67%"
 * #riskfactors "Personal or family history risk factors"
+// not used for rrason codes
+* #BreastSymptoms "New or worsening breast symptoms"
+* #BreastFindings "New or worsening breast exam findings"
+* #GeneticMarkerOrSyndrome "Genetic marker or syndrome associated with breast cancer"
+* #KnownVariantStatus "Known breast cancer variant status"
+* #PersonalRiskFactors "Personal risk factors conferring increased risk of breast cancer"
 
 ValueSet:    PlanDefinitionActionReasonCodes
 Id:          plan-definition-action-reason-codes
 Title:       "Plan Definition Action Reason Codes"
 Description: "This value set includes action reason codes for Plan Definitions within this implementation guide."
 * ^experimental = true
-* include codes from system $PDARCS
+
+* include $SOCS#eligibleforscreening "Eligible for screening"
+* include $SOCS#missingageorbirthdate "Missing patient age in years or birth date"
+* include $SOCS#notassignedfemaleatbirth "Not assigned female at birth"
+* include $SOCS#screeningcomplete "Screening complete"
+* include $SOCS#USPSTFaveragerisk "USPSTF average risk"
+* include $SOCS#ACSaveragerisk "ACS average risk"
+* include $SOCS#noscreening27mo "Age 40-74 without screening in past 27 months"
+* include $SOCS#currentbreastcancer "Current breast cancer"
+* include $SOCS#bilatmastectomy "Bilateral mastectomy"
+* include $SOCS#breastsymptomsorfindings "New or worsening breast symptoms or findings"
+* include $SOCS#ageover74 "Age over 74 years"
+* include $SOCS#lifeexp "Reduced life expectancy indicator"
+* include $SOCS#currentlylactating "Currently lactating"
+* include $SOCS#othergeneticrisk "Other genetic marker or syndrome associated with breast cancer"
+* include $SOCS#hxbreastca "Previous breast cancer"
+* include $SOCS#hxbreastcawithin5y "Breast cancer in remission < 5 years"
+* include $SOCS#geneticriskexclusion "Genetic risk exclusion"
+* include $SOCS#chestxrt "History of chest radiation ages 10-30 y"
+* include $SOCS#atypicalbx "Atypical biopsy"
+* include $SOCS#atypicalbxhighlifetimerisk "Atypical biopsy high lifetime risk"
+* include $SOCS#highlifetimerisk "High lifetime risk"
+* include $SOCS#firstdeggenetic "First degree relative with genetic marker or syndrome"
+* include $SOCS#breastdensitycord "BI-RADS breast density category C or D"
+* include $SOCS#fhxbreastcarisk "Compelling family history of breast cancer"
+* include $SOCS#fhxgenetic "Family history of inherited cancer susceptibility"
+* include $SOCS#brcageneancestry "Ancestry associated with BRCA1/2 gene mutations"
+* include $SOCS#fhxbrcaovcatubalperit "Family history of breast, ovarian, tubal, or peritoneal cancer"
+* include $SOCS#highfamilialrisk "High familial risk"
+* include $SOCS#high5yrisk "High 5 year risk"
+* include $SOCS#higherthanaverage5yrisk "5 year risk at least 1.67%"
+* include $SOCS#riskfactors "Personal or family history risk factors"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -107,21 +143,6 @@ Title:       "Recommendation Flag Codes"
 Description: "This value set includes flag codes for recommendation actions within this implementation guide."
 * ^experimental = true
 * include codes from system $RecommendationFlagCS
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-CodeSystem: ScreeningObservationCodeSystem
-Id: screening-observation-code-system
-Title: "Screening Observation Code System"
-Description: "Code representing breast cancer screening related observations"
-
-* ^experimental = true
-
-* #BreastSymptoms "New or worsening breast symptoms"
-* #BreastFindings "New or worsening breast exam findings"
-* #GeneticMarkerOrSyndrome "Genetic marker or syndrome associated with breast cancer"
-* #KnownVariantStatus "Known breast cancer variant status"
-* #PersonalRiskFactors "Personal risk factors conferring increased risk of breast cancer"
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

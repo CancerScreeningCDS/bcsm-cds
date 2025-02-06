@@ -1,0 +1,16 @@
+---
+name: eve-fhxbrca_eve-ageAtLeast35_act-HighRiskAssessment
+flow: flow-HighRiskReferral
+externalData:
+  - ../HighRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *Patient_age_>=_35_years
+  - *Output_of_validated_brief_familial_risk_assessment_tool_is_positive_OR_'Informal_familial_risk_criteria'_exist
+results:
+  flow-HighRiskReferral:
+    -
+      - *act-5YRiskAssessment
+      - *act-5YRiskAssessmentTool

@@ -7,12 +7,12 @@ include DataElements version '1.0.0' called DataElements
 include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 codesystem "LOINC": 'http://loinc.org'
 
 // Reason Codes
-code "ACS average risk": 'ACSaveragerisk' from "ReasonCode" display 'ACS average risk'
-code "USPSTF average risk": 'USPSTFaveragerisk' from "ReasonCode" display 'USPSTF average risk'
+code "ACS average risk": 'ACSaveragerisk' from "LOCAL" display 'ACS average risk'
+code "USPSTF average risk": 'USPSTFaveragerisk' from "LOCAL" display 'USPSTF average risk'
 
 // Standard codes
 code "MG Breast Screening": '24606-6' from "LOINC" display 'MG Breast Screening' 

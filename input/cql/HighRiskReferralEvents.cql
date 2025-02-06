@@ -8,10 +8,9 @@ include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
 
-code "High 5 year risk": 'high5yrisk' from "ReasonCode" display 'High 5 year risk'
-code "5 year risk at least 1.67%": 'higherthanaverage5yrisk' from "ReasonCode" display '5 year risk at least 1.67%'
+code "High 5 year risk": 'high5yrisk' from "LOCAL" display 'High 5 year risk'
+code "5 year risk at least 1.67%": 'higherthanaverage5yrisk' from "LOCAL" display '5 year risk at least 1.67%'
 
 context Patient
 
@@ -29,6 +28,9 @@ define "eve-chestxrtpop":
 
 define "eve-atypicalbxpop":
   DataElements."de-atypicalbx"
+
+define "eve-LifeExp":
+  DataElements."de-lifeexp"  
 
 define "eve-fiveyrriskpop":
   MostRecent5YrRiskAssessmentResultHigh is not null

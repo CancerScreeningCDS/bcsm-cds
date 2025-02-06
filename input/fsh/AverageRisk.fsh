@@ -9,7 +9,9 @@ Usage: #definition
 * insert CommonMetadata
 * meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"
 * name = "flow-AverageRisk"
-* description = "Average risk logic path."
+* description = """
+Patient population identified as average risk. Provides criteria to determine age to start, screening modality, and screening interval for these populations of patients.
+"""
 * type = $PDTYPE#eca-rule
 * library[+] = "Library/AverageRisk|1.0.0"
 

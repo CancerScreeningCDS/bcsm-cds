@@ -7,7 +7,7 @@ include DataElements version '1.0.0' called DataElements
 include BCSMCommonFunctions version '1.0.0'
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 codesystem "BiRadsAssessmentCategoriesCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE'
 codesystem "BiopsyResultCS": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
 
@@ -21,7 +21,7 @@ code "Indeterminate breast biopsy referral": 'indeterminatebreastbiopsy' from  "
 code "Discordant breast biopsy referral": 'discordantbreastbiopsy' from  "ActCode" display 'Discordant breast biopsy referral'
 code "Oncologic referral": 'oncreferral' from  "ActCode" display 'Oncologic referral'
 // Reason Codes
-code "Screening complete": 'screeningcomplete' from "ReasonCode" display 'Screening complete'
+code "Screening complete": 'screeningcomplete' from "LOCAL" display 'Screening complete'
 code "Category0": 'RDE1586_category0IncompleteNeedAdditionalImaging' from "BiRadsAssessmentCategoriesCS" display 'category0needadditionalimaging'
 code "Category3": 'RDE1586_category3ProbablyBenignFinding' from "BiRadsAssessmentCategoriesCS" display 'category3,probablybenignfinding'
 code "Category4": 'RDE1586_category4SuspiciousAbnormality' from "BiRadsAssessmentCategoriesCS" display 'category4,suspiciousabnormality'
