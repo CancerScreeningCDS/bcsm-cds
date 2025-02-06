@@ -5,6 +5,7 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 include DataElements version '1.0.0' called DataElements
 include CSMCommonFunctions version '1.0.0' called CSMCommonFunctions
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 //TODO: validate if this STU1 IG is valid to reference for CS
 codesystem "BiRadsAssessmentCategoriesCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE'
@@ -64,7 +65,7 @@ define MostRecentBreastImagingBiradsResult:
 
 define function BreastImagingBiradsResult(report DiagnosticReport):
   report D
-    let cC: DataElements.CollateConclusionCodes(D,DataElements.BreastImagingObservations)
+    let cC: BCSMCommon.CollateConclusionCodes(D,DataElements.BreastImagingObservations)
     return First(
       cC.coding C
         let c: FHIRHelpers.ToCode(C)
@@ -86,7 +87,7 @@ define MostRecentBreastBiopsyResult:
 
 define function BreastBiopsyResult(report DiagnosticReport):
   report D
-    let cC: DataElements.CollateConclusionCodes(D,DataElements.BiopsyObservations)
+    let cC: BCSMCommon.CollateConclusionCodes(D,DataElements.BiopsyObservations)
     return First(
       cC.coding C
         let c: FHIRHelpers.ToCode(C)

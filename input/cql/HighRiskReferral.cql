@@ -102,7 +102,7 @@ define HighRiskReferral5YRiskHigherThanAverage:
 define HighRiskAssessment:
   if HighRiskReferral is null and 
     Events."eve-ageAtLeast35" and (Events."eve-fhxbrca" or Events."eve-personalriskfactors")
-    and Events."MostRecent5YrRiskAssessment" is null
+    and DataElements."MostRecent5YrRiskAssessment" is null
   then {Actions."act-5YRiskAssessment",Actions."act-5YRiskAssessmentTool"} else null
 
 //------------------------------------------------------------------------------

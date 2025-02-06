@@ -1,57 +1,13 @@
 ---
 name: JosephineGreene-past-breast-pain-adh-biopsy
 externalData:
+  - ../demo_patients
   - ../DataElements/data_elements  
-  - ../default_patients
 parameters:
   encounter: Encounter/1  
-data:
-  - *JosephineGreene
-  - *CONDITIONS_include_`BREAST_SYMPTOMS`_NOT_in_encounter
-  - resourceType: DiagnosticReport
-    id: biopsy-report-1
-    status: final
-    effectiveDateTime: "2026-11-20"    
-    code:
-      coding:
-        - system: http://loinc.org
-          code: 66110-8 #TODO replace placeholder code
-          display: "Core needle biopsy"
-    conclusionCode:
-      coding:
-        - system: http://snomed.info/sct
-          code: 62061000119107 #TODO replace placeholder code
-          display: "Atypical ductal hyperplasia"
-  - resourceType: DiagnosticReport
-    id: "mammogram-2026-birads-4"
-    status: final
-    code:
-      coding:
-        - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
-    effectiveDateTime: 2026-11-15T10:00:00Z            
-    conclusionCode:
-      coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category4SuspiciousAbnormality
-          display: category4,suspiciousabnormality       
-  - resourceType: DiagnosticReport
-    id: "mammogram-2023-birads-2"
-    status: final
-    code:
-      coding:
-        - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
-    effectiveDateTime: 2023-12-02T10:00:00Z            
-    conclusionCode:
-      coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category1Negative
-          display: category1,negative  
+data: *JosephineGreene  
 results:
   IsScreeningEligible: true
   ExistsACSMammoAtypicalBiopsy: true
   ExistsACSAtypicalBiopsy: true
-  PrimaryScreeningDecision: $should have length 3  
+  PrimaryScreeningDecision: $should have length 3

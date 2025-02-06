@@ -4,6 +4,7 @@ using FHIR version '4.0.1'
 
 include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 include CSMCommonFunctions version '1.0.0' called Common
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 //------------------------------------------------------------------------------
@@ -32,6 +33,9 @@ concept "Condition inactive": { "Condition inactive code" } display 'Inactive'
 concept "Condition remission": { "Condition remission code" } display 'Remission'
 concept "Condition resolved": { "Condition resolved code" } display 'Resolved'
 
+// Pregnancy
+valueset "Pregnancy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.378'
+valueset "Pregnancy (New ICD10 codes published in 2018 and 2020)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.80'
 // Breast diagnoses, procedures, and observations
 valueset "INVASIVE BREAST CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185'
 // TODO: replace placeholder value set OID
@@ -66,6 +70,8 @@ valueset "FIRST DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.1
 // TODO: replace placeholder value set OID
 valueset "SECOND DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
 valueset "MAMMOGRAPHY": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
+// TODO: replace placeholder with OID
+valueset "BREAST CANCER SCREENING ORDERS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 
 // Standard codes
 code "Male": 'male' from "AdministrativeGender" display 'Male'
@@ -81,20 +87,29 @@ code "Biopsy Report": '66110-8' from "LOINC" display 'Breast Pathology biopsy re
 code "Breast Imaging Report": '10193-1' from "LOINC" display 'Physical findings of Breasts Narrative'
 code "Heterogeneously dense": 'HeterogeneouslyDense' from "MGBreastDensityCS" display 'Heterogeneously dense'
 code "Extremely dense": 'ExtremelyDense' from "MGBreastDensityCS" display 'Extremely dense'
+code "Pregnancy Status": '82810-3' from "LOINC" display 'Pregnancy status'
+code "Patient currently pregnant": '77386006' from "SNOMED-CT" display 'Patient currently pregnant (finding)'
+code "Pregnancy Episode Of Care": '424525001' from "SNOMED-CT" display 'Antenatal care (regime/therapy)'
 
 // Non-standard codes
 code "New or worsening breast symptoms": 'BreastSymptoms' from "LOCAL" display 'New or worsening breast symptoms'
 code "New or worsening breast exam findings": 'BreastFindings' from "LOCAL" display 'New or worsening breast exam findings'
 code "Reduced life expectancy indicator": 'lifeexp' from "ReasonCode" display 'Reduced life expectancy indicator'
+code "Currently lactating": 'currentlylactating' from "ReasonCode" display 'Currently lactating'
 code "Genetic marker or syndrome associated with breast cancer": 'GeneticMarkerOrSyndrome' from "LOCAL" display 'Genetic marker or syndrome associated with breast cancer'
 code "Lifetime risk assessment": 'lifetimeriskassessment' from "ActCode" display 'Lifetime risk assessment'
 code "High lifetime risk": 'highlifetimerisk' from "ReasonCode" display 'High lifetime risk'
+code "First degree relative with genetic marker or syndrome": 'firstdeggenetic' from "ReasonCode" display 'First degree relative with genetic marker or syndrome'
 code "Family history of inherited cancer susceptibility": 'fhxgenetic' from "ReasonCode" display 'Family history of inherited cancer susceptibility'
+code "Ancestry associated with BRCA1/2 gene mutations": 'brcageneancestry' from "ReasonCode" display 'Ancestry associated with BRCA1/2 gene mutations'
 code "Familial risk assessment": 'familialriskassessment' from "ActCode" display 'Familial risk assessment'
 code "Brief familial risk assessment tool": 'fhxrisktool' from "ActCode" display 'Brief familial risk assessment tool'
 code "Informal familial risk assessment": 'fhxriskassess' from "ActCode" display 'Informal familial risk assessment'
 code "High familial risk": 'highfamilialrisk' from "ReasonCode" display 'High familial risk'
 code "Known breast cancer variant status": 'KnownVariantStatus' from "LOCAL" display 'Known breast cancer variant status'
+code "Family history of breast, ovarian, tubal, or peritoneal cancer": 'fhxbrcaovcatubalperit' from "ReasonCode" display 'Family history of breast, ovarian, tubal, or peritoneal cancer'
+code "5 year risk assessment": '5yriskassessment' from "ActCode" display '5 year risk assessment'
+code "Personal risk factors conferring increased risk of breast cancer": 'PersonalRiskFactors' from "LOCAL" display 'Personal risk factors conferring increased risk of breast cancer'
 
 //------------------------------------------------------------------------------
 // PARAMETERS
@@ -106,26 +121,7 @@ parameter SymptomaticLookBack default 1 days
 
 /***** BEGIN CDS LOGIC ********************************************************/
 
-context Patient
-
-define function ValuesFromObservation(D DiagnosticReport, ObsList List<Observation>):
-  (ObsList) O
-  where
-    Exists( (D.result ) R where Last(Split(R.reference,'/')) =  O.id ) or
-    Exists( (O.basedOn) oB where AnyTrue((D.basedOn) dB return dB = oB ) )
-  return O.value as FHIR.CodeableConcept
-
-define function CollateConclusionCodes(D DiagnosticReport, ObsList List<Observation>):
-  D.conclusionCode union
-  ValuesFromObservation(D, ObsList)
-
-// if a DiagnosticReport.code has target code, then call orignial CollateConclusionCodes
-// if a DiagnosticReport.code does not have target code, then return values from matched Observations
-define function CollateConclusionCodes(D DiagnosticReport, ObsList List<Observation>, code System.Code):
-  if FHIRHelpers.ToConcept(D.code) ~ code then
-    CollateConclusionCodes(D, ObsList)
-  else
-    ValuesFromObservation(D, ObsList)     
+context Patient   
 
 //------------------------------------------------------------------------------
 // Assigned female at birth
@@ -164,11 +160,6 @@ define BirthSexMissingOrUnknown:
 define BirthSexCode:
   if BirthSexMissingOrUnknown then 'Unknown'
   else Coalesce(BirthSex.value.value)
-
-define BirthSexText:
-  if BirthSexCode = 'F' then 'Female'
-  else if BirthSexCode = 'M' then 'Male'
-  else 'Unknown'
 
 define FemaleGender:
   Patient.gender.value = 'female'
@@ -217,10 +208,6 @@ define TransgenderFemale:
 define FemaleorTransgenderMale:
   Female or TransgenderMale
 
-define GenderText:
-  if Exists(GenderIdentityExtension) then GenderIdentityExtension[0].value.coding[0].code.value
-  else Patient.gender.value
-
 //------------------------------------------------------------------------------
 // Current breast cancer
 //------------------------------------------------------------------------------
@@ -243,28 +230,49 @@ define "de-mastectomy":
   BilateralMastectomy or (LeftUnilateralMastectomy and RightUnilateralMastectomy)
 
 define BilateralMastectomy:
-  exists Common.ValidCondition([Condition: "BILATERAL MASTECTOMY"]) or 
-  exists C3F.Completed([Procedure: "BILATERAL MASTECTOMY PROCEDURE"])
+  exists BilateralMastectomyConditions or 
+  exists BilateralMastectomyProcedures
 
 define LeftUnilateralMastectomy:
-  exists Common.ValidCondition([Condition: "LEFT UNILATERAL MASTECTOMY"]) or
-  exists C3F.Completed([Procedure: "LEFT UNILATERAL MASTECTOMY PROCEDURE"]) or
-  exists (Common.ValidCondition([Condition: "UNILATERAL MASTECTOMY"]) as List<Condition>) C
+  exists LeftUnilateralMastectomyConditions or
+  exists LeftUnilateralMastectomyProcedures or
+  exists UnilateralMastectomyConditions C
     where
       exists C.bodySite bs where bs ~ "Left (qualifier value)" or
       exists (C.bodySite.extension E
         where E.url = 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier'
-          and E.value as CodeableConcept ~ "Left (qualifier value)")   
+          and E.value as CodeableConcept ~ "Left (qualifier value)")           
 
 define RightUnilateralMastectomy:
-  exists Common.ValidCondition([Condition: "RIGHT UNILATERAL MASTECTOMY"]) or
-  exists C3F.Completed([Procedure: "RIGHT UNILATERAL MASTECTOMY PROCEDURE"]) or 
-  exists (Common.ValidCondition([Condition: "UNILATERAL MASTECTOMY"]) as List<Condition>) C
+  exists RightUnilateralMastectomyConditions or
+  exists RightUnilateralMastectomyProcedures or 
+  exists UnilateralMastectomyConditions C
     where
       exists C.bodySite bs where bs ~ "Right (qualifier value)" or
       exists (C.bodySite.extension E
         where E.url = 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-laterality-qualifier'
           and E.value as CodeableConcept ~ "Right (qualifier value)")
+
+define BilateralMastectomyConditions:
+  Common.ValidCondition([Condition: "BILATERAL MASTECTOMY"])     
+
+define LeftUnilateralMastectomyConditions:
+  Common.ValidCondition([Condition: "LEFT UNILATERAL MASTECTOMY"])
+
+define RightUnilateralMastectomyConditions:
+  Common.ValidCondition([Condition: "RIGHT UNILATERAL MASTECTOMY"])  
+
+define UnilateralMastectomyConditions:
+  Common.ValidCondition([Condition: "UNILATERAL MASTECTOMY"])      
+
+define BilateralMastectomyProcedures:
+  C3F.Completed([Procedure: "BILATERAL MASTECTOMY PROCEDURE"])
+
+define LeftUnilateralMastectomyProcedures:
+  C3F.Completed([Procedure: "LEFT UNILATERAL MASTECTOMY PROCEDURE"])
+
+define RightUnilateralMastectomyProcedures:
+  C3F.Completed([Procedure: "RIGHT UNILATERAL MASTECTOMY PROCEDURE"])
 
 //------------------------------------------------------------------------------
 // Breast symptoms
@@ -274,10 +282,25 @@ define RightUnilateralMastectomy:
 define "de-breastsymptoms":
   MostRecentNewOrWorseningBreastSymptoms.value is true
     or exists EncounterBreastSymptomConditions
+    or EncounterReasonBreastSymptoms
+
+define EncounterReasonBreastSymptoms:
+  encounter is not null and 
+    exists AllBreastSymptomEncounters E where encounter = 'Encounter/' + E.id
+
+define AllBreastSymptomEncounters:
+  Common.RelevantEncounterStatus(
+    [Encounter] E
+      where
+        E.reasonCode in "BREAST SYMPTOMS"      
+  )
 
 define EncounterBreastSymptomConditions:
-  (Common.ValidCondition([Condition: "BREAST SYMPTOMS"])) C
+  BreastSymptomConditions C
     where C.encounter.reference = encounter
+
+define BreastSymptomConditions:
+  Common.ValidCondition([Condition: "BREAST SYMPTOMS"])
 
 define MostRecentNewOrWorseningBreastSymptoms:
   C3F.MostRecent(
@@ -371,6 +394,73 @@ define ReducedLifeExpectancyObservations:
   // TODO: Implement logic for de-frailtyadvillness
 
 //------------------------------------------------------------------------------
+// Lactating
+//------------------------------------------------------------------------------
+
+define LactatingObservations:
+  C3F.ObservationLookBack(
+    [Observation: "Currently lactating"],
+    ObservationLookbackPeriod
+  ) 
+
+//------------------------------------------------------------------------------
+// Pregnancy
+//------------------------------------------------------------------------------
+
+define Pregnant:
+  // IF any Epsidose of care with status = active
+  //    Pregnant = true
+  // If any Episode of care with status = finished
+  //    Pregnant = false
+  // Use existing logic with conditions and observations
+  if (HasActivePregnancyEpisodesOfCare) then
+    true
+  else if (HasFinishedPregnancyEpisodesOfCare) then
+    false
+  else
+    Exists(PregnancyDiagnoses) or Exists(PregnancyObservations)
+
+define PregnancyDiagnoses:
+  C3F.Confirmed(
+    C3F.ActiveCondition(
+      C3F.ConditionLookBack(
+        [Condition: "Pregnancy"] union [Condition: "Pregnancy (New ICD10 codes published in 2018 and 2020)"],
+        42 weeks
+      )
+    )
+  )
+
+define PregnancyObservations:
+  C3F.ObservationLookBack(
+    C3F.Verified(
+      [Observation: "Pregnancy Status"] P
+        where P.value ~ "Patient currently pregnant"
+    ),
+    42 weeks
+  )  
+
+define PregnancyEpisodesOfCare:
+  [EpisodeOfCare] E where
+    AnyTrue(
+      (E.type) t
+        return t ~ "Pregnancy Episode Of Care"
+    )
+
+define ActivePregnancyEpisodesOfCare:
+  PregnancyEpisodesOfCare P
+  where P.status ~ 'active'
+
+define FinishedPregnancyEpisodesOfCare:
+  PregnancyEpisodesOfCare P
+  where P.status ~ 'finished'
+
+define HasActivePregnancyEpisodesOfCare:
+  Exists(ActivePregnancyEpisodesOfCare)
+
+define HasFinishedPregnancyEpisodesOfCare:
+  Exists(FinishedPregnancyEpisodesOfCare)  
+
+//------------------------------------------------------------------------------
 // Genetic syndrome
 //------------------------------------------------------------------------------
 
@@ -378,10 +468,12 @@ define "de-geneticrisk":
   GeneticMarkerOrSyndrome or "de-acsgeneticrisk"
 
 define GeneticMarkerOrSyndrome:
+  (MostRecentGeneticMarkerOrSyndromeObservation R where R.value is true) is not null
+
+define MostRecentGeneticMarkerOrSyndromeObservation:
   C3F.MostRecent(
-      [Observation: "Genetic marker or syndrome associated with breast cancer"] R
-        where R.value is true
-  ) is not null
+    [Observation: "Genetic marker or syndrome associated with breast cancer"]
+  )
 
 define "de-acsgeneticrisk":
   exists "BRCA-1 Mutation Conditions" or exists "BRCA-2 Mutation Conditions" or
@@ -389,26 +481,26 @@ define "de-acsgeneticrisk":
     exists "Bannayan-Riley-Ruvalcaba Syndrome Conditions"
 
 define "BRCA-1 Mutation Conditions":
-  Common.ValidCondition([Condition: code in "BRCA1 Gene Mutation"])
+  Common.ValidCondition([Condition: "BRCA1 Gene Mutation"])
 
 define "BRCA-2 Mutation Conditions":
-  Common.ValidCondition([Condition: code in "BRCA2 Gene Mutation"])
+  Common.ValidCondition([Condition: "BRCA2 Gene Mutation"])
 
 define "Li-Fraumeni Syndrome Conditions":
-  Common.ValidCondition([Condition: code in "Li-Fraumeni Syndrome"])
+  Common.ValidCondition([Condition: "Li-Fraumeni Syndrome"])
 
 define "Cowden Syndrome Conditions":
-  Common.ValidCondition([Condition: code in "Cowden Syndrome"])
+  Common.ValidCondition([Condition: "Cowden Syndrome"])
 
 define "Bannayan-Riley-Ruvalcaba Syndrome Conditions":
-  Common.ValidCondition([Condition: code in "Bannayan-Riley-Ruvalcaba Syndrome"])
+  Common.ValidCondition([Condition: "Bannayan-Riley-Ruvalcaba Syndrome"])
 
 //------------------------------------------------------------------------------
 // Chest XRT
 //------------------------------------------------------------------------------
 
 define "de-chestxrt":
-  Common.ValidCondition([Condition: code ~ "History of radiation therapy to chest"])
+  Common.ValidCondition([Condition: "History of radiation therapy to chest"])
 
 //TODO: figure out the math with dateTime, Period, etc
 define "de-chestxrtage10to30":
@@ -431,7 +523,7 @@ define "de-hxbreastca":
 //------------------------------------------------------------------------------      
 
 define "de-atypicalbx":
-  exists Common.ValidCondition([Condition: "Biopsy Atypical Results"]) or
+  exists AtypicalBiopsyConditions or
     exists AtypicalBiopsyResults
 
 define MostRecentAtypicalBiopsyDate:
@@ -441,8 +533,11 @@ define MostRecentAtypicalBiopsyDate:
 
 define MostRecentAtypicalBiopsyConditionDate:
   Common.ConditionDate(
-    C3F.MostRecentCondition(Common.ValidCondition([Condition: "Biopsy Atypical Results"]))
+    C3F.MostRecentCondition(AtypicalBiopsyConditions)
   )
+
+define AtypicalBiopsyConditions:
+  Common.ValidCondition([Condition: "Biopsy Atypical Results"])
 
 define MostRecentAtypicalBiopsyResultDate:
   Common.DiagnosticReportDate(
@@ -451,7 +546,7 @@ define MostRecentAtypicalBiopsyResultDate:
 
 define AtypicalBiopsyResults:
   BiopsyDiagnosticReports D
-    let cC: CollateConclusionCodes(D,BiopsyObservations)
+    let cC: BCSMCommon.CollateConclusionCodes(D,BiopsyObservations)
     where cC in "Biopsy Atypical Results"
 
 //------------------------------------------------------------------------------
@@ -470,6 +565,15 @@ define MostRecentLifetimeRiskAssessment:
   C3F.MostRecent([Observation: "Lifetime risk assessment"])
 
 //------------------------------------------------------------------------------
+// First degree relative with genetic marker or syndrome
+//------------------------------------------------------------------------------  
+
+define "MostRecentFirstDegRelativeGeneticObservation":
+  C3F.MostRecent(
+      [Observation: "First degree relative with genetic marker or syndrome"]
+  ) 
+
+//------------------------------------------------------------------------------
 // BI-RADS breast density category C or D
 //------------------------------------------------------------------------------  
 
@@ -478,7 +582,7 @@ define "de-breastdensitycord":
 
 define BreastImagingHeterogenouslyOrExtremelyDenseResults:
   BreastImagingDiagnosticReports D
-    let cC: CollateConclusionCodes(D,BreastImagingObservations)
+    let cC: BCSMCommon.CollateConclusionCodes(D,BreastImagingObservations)
     where exists(cC.coding C where FHIRHelpers.ToCode(C) ~ "Heterogeneously dense") 
       or exists (cC.coding C where FHIRHelpers.ToCode(C) ~ "Extremely dense")
 
@@ -564,15 +668,30 @@ define FamilyGeneticHistoryAssessmentObservation:
       [Observation: "Family history of inherited cancer susceptibility"] R
   )
 
-define "FamilyMemberGeneticMarkerOrSyndrome":
-  [FamilyMemberHistory] F
+define "FirstDegRelativeGeneticMarkerOrSyndrome":
+  FamilyMemberGeneticMarkerOrSyndrome F
     where 
-      exists (F.condition C
-        where 
-        C.code in "BRCA1 Gene Mutation" or C.code in "BRCA2 Gene Mutation" or
-        C.code in "Li-Fraumeni Syndrome" or C.code in "Cowden Syndrome" or
-        C.code in "Bannayan-Riley-Ruvalcaba Syndrome"
-      )       
+      F.relationship in "FIRST DEGREE FAMILY MEMBER"
+
+define "FamilyMemberGeneticMarkerOrSyndrome":
+  FamilyMemberGeneticMarkerOrSyndromeConditions F
+    return F.familyMemberHistory
+
+define "FamilyMemberGeneticMarkerOrSyndromeConditions":
+  [FamilyMemberHistory] F
+    let
+      GeneticConditions: F.condition C
+        where         
+          C.code in "BRCA1 Gene Mutation" or 
+          C.code in "BRCA2 Gene Mutation" or
+          C.code in "Li-Fraumeni Syndrome" or 
+          C.code in "Cowden Syndrome" or
+          C.code in "Bannayan-Riley-Ruvalcaba Syndrome"
+    where exists GeneticConditions
+    return {
+      familyMemberHistory: F,
+      conditions: GeneticConditions
+    }
 
 //------------------------------------------------------------------------------
 // Unknown variant status
@@ -588,23 +707,57 @@ define KnownGeneticMarkerOrSyndromeStatusObservation:
   ) 
 
 //------------------------------------------------------------------------------
+// BRCA ancestry
+//------------------------------------------------------------------------------ 
+
+define "MostRecentBRCAGeneAncestryObservation":
+  C3F.MostRecent(
+      [Observation: "Ancestry associated with BRCA1/2 gene mutations"] R
+  )
+
+//------------------------------------------------------------------------------
 // Family history of breast, ovarian, tubal, or peritoneal cancer
 //------------------------------------------------------------------------------  
-  
+
+define FamilyHistoryBreastOvarianTubalPeritonealCancerObservation:  
+  C3F.MostRecent(
+      [Observation: "Family history of breast, ovarian, tubal, or peritoneal cancer"] R
+  )   
+
 define "FamilyMemberBreastOvarianTubalPeritonealCancer":
+  FamilyMemberBreastOvarianTubalPeritonealCancerCondition FMH
+    return FMH.familyMemberHistory
+
+define "FamilyMemberBreastOvarianTubalPeritonealCancerCondition":
   [FamilyMemberHistory] F
-    where 
-      exists (F.condition C
-        where 
-        C.code in "INVASIVE BREAST CANCER" or C.code in "NON-INVASIVE BREAST CANCER" or
-        C.code in "OVARIAN CANCER" or C.code in "TUBAL CANCER" or
-        C.code in "PERITONEAL CANCER"
-      )   
+    let
+      CancerConditions: F.condition C
+        where C.code in "INVASIVE BREAST CANCER" or
+              C.code in "NON-INVASIVE BREAST CANCER" or
+              C.code in "OVARIAN CANCER" or
+              C.code in "TUBAL CANCER" or
+              C.code in "PERITONEAL CANCER"
+    where exists CancerConditions
+    return {
+      familyMemberHistory: F,
+      conditions: CancerConditions
+    }
+
+//------------------------------------------------------------------------------
+// High risk referral factors
+//------------------------------------------------------------------------------  
+
+define MostRecent5YrRiskAssessment:
+  C3F.MostRecent([Observation: "5 year risk assessment"])  
+
+define MostRecentPersonalRiskFactorAssessment:
+  C3F.MostRecent([Observation: "Personal risk factors conferring increased risk of breast cancer"])       
 
 //------------------------------------------------------------------------------
 // Latest screening test type
 //------------------------------------------------------------------------------  
 
+// Imaging
 define MostRecentBreastImagingDiagnosticReport:
   Common.MostRecentDiagnosticReport(BreastImagingDiagnosticReports)
 
@@ -612,12 +765,16 @@ define BreastImagingDiagnosticReports:
   AllCompletedDiagnosticReport B
   where 
     Count(
-      CollateConclusionCodes(B, BreastImagingObservations, "Breast Imaging Report")
+      BCSMCommon.CollateConclusionCodes(B, BreastImagingObservations, "Breast Imaging Report")
     ) > 0
 
 define BreastImagingObservations:
   [Observation: "Breast Imaging Report"]  
 
+define BreastCancerScreeningDiagnosticReports:
+  Common.CompletedDiagnosticReport([DiagnosticReport: "BREAST CANCER SCREENING ORDERS"])   
+
+// Biopsy
 define MostRecentBreastBiopsyDiagnosticReport:
   Common.MostRecentDiagnosticReport(BiopsyDiagnosticReports)
 
@@ -625,7 +782,7 @@ define BiopsyDiagnosticReports:
   AllCompletedDiagnosticReport B
   where 
     Count(
-      CollateConclusionCodes(B, BiopsyObservations, "Biopsy Report")
+      BCSMCommon.CollateConclusionCodes(B, BiopsyObservations, "Biopsy Report")
     ) > 0
 
 // TODO: should report observation code be a value set?
@@ -633,4 +790,4 @@ define BiopsyObservations:
   [Observation: "Biopsy Report"]  
 
 define AllCompletedDiagnosticReport:
-  Common.CompletedDiagnosticReport([DiagnosticReport])   
+  Common.CompletedDiagnosticReport([DiagnosticReport])    

@@ -12,7 +12,6 @@ codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSyste
 
 code "Family history of inherited cancer susceptibility": 'fhxgenetic' from "ReasonCode" display 'Family history of inherited cancer susceptibility'
 code "Ancestry associated with BRCA1/2 gene mutations": 'brcageneancestry' from "ReasonCode" display 'Ancestry associated with BRCA1/2 gene mutations'
-code "Family history of breast, ovarian, tubal, or peritoneal cancer": 'fhxbrcaovcatubalperit' from "ReasonCode" display 'Family history of breast, ovarian, tubal, or peritoneal cancer'
 code "Familial risk assessment": 'familialriskassessment' from "ActCode" display 'Familial risk assessment'
 code "High genetic risk": 'highgeneticrisk' from "ReasonCode" display 'High genetic risk'
 
@@ -25,18 +24,11 @@ define "eve-knownvariantstatus":
   DataElements."de-knownvariantstatus"
 
 define "eve-fhxbrcaovcatubalperit":
-    FamilyHistoryBreastOvarianTubalPeritonealCancerObservation.value is true or
+    DataElements.FamilyHistoryBreastOvarianTubalPeritonealCancerObservation.value is true or
       exists DataElements.FamilyMemberBreastOvarianTubalPeritonealCancer
 
-define FamilyHistoryBreastOvarianTubalPeritonealCancerObservation:  
-  C3F.MostRecent(
-      [Observation: "Family history of breast, ovarian, tubal, or peritoneal cancer"] R
-  )   
-
 define "eve-brcageneancestry":
-  C3F.MostRecent(
-      [Observation: "Ancestry associated with BRCA1/2 gene mutations"] R
-  ).value is true
+  DataElements.MostRecentBRCAGeneAncestryObservation.value is true
 
 define "eve-fhxriskresult":
   DataElements."de-fhxbreastcarisk"
