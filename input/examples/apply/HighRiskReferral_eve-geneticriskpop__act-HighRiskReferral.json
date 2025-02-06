@@ -1,13 +1,13 @@
 {
   "resourceType": "Bundle",
-  "id": "HighRiskReferral_eve-geneticriskpop_eve-ageAny_act-HighRiskReferral_act-estlifexpectancy",
+  "id": "HighRiskReferral_eve-geneticriskpop__act-HighRiskReferral",
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/384",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/379",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "384",
+        "id": "379",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/385"
+              "reference": "RequestGroup/380"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/385",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/380",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "385",
+        "id": "380",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -56,33 +56,16 @@
               }
             ],
             "resource": {
-              "reference": "ServiceRequest/386"
-            }
-          },
-          {
-            "id": "ConsiderLifeExpectancy",
-            "title": "Shared decision making for high risk specialty referral based on life expectancy",
-            "description": "Patient may not be a candidate for chemoprevention if estimated life expectancy is < 10 years.\n\nFactors that may impact this estimation should be considered prior to referral. A validated tool such as www.eprognosis.com can help guide decision making.",
-            "documentation": [
-              {
-                "type": "citation",
-                "label": "USPSTF",
-                "display": "Breast Cancer: Medication Use to Reduce Risk",
-                "citation": "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
-                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
-              }
-            ],
-            "resource": {
-              "reference": "CommunicationRequest/387"
+              "reference": "ServiceRequest/381"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/386",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/381",
       "resource": {
-        "id": "386",
+        "id": "381",
         "resourceType": "ServiceRequest",
         "status": "option",
         "basedOn": [
@@ -109,42 +92,9 @@
             "coding": [
               {
                 "code": "highfamilialrisk",
-                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
                 "display": "High familial risk"
               }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/387",
-      "resource": {
-        "id": "387",
-        "resourceType": "CommunicationRequest",
-        "status": "option",
-        "basedOn": [
-          {
-            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMConsiderLifeExpectancy"
-          }
-        ],
-        "subject": {
-          "reference": "Patient/defaultPatient",
-          "display": "Jane Doe"
-        },
-        "code": {
-          "coding": [
-            {
-              "code": "estlifexpectancy",
-              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
-              "display": "Consider life expectancy"
-            }
-          ]
-        },
-        "reasonCode": [
-          {
-            "coding": [
-              null
             ]
           }
         ]

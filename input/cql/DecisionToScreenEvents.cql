@@ -10,7 +10,7 @@ include DataElements version '1.0.0' called DataElements
 // CODE SYSTEMS, VALUE SETS, AND CODES
 //------------------------------------------------------------------------------
 
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 
 //------------------------------------------------------------------------------
 // PARAMETERS

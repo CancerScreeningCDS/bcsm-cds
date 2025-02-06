@@ -65,7 +65,7 @@ define "flow-HighRiskReferral":
   except { null, {} }
 
 define ConsiderLifeExpectancy:
-  if HighRiskReferral is not null
+  if HighRiskReferral is not null and Events."eve-LifeExp" is true
   then Actions."act-estlifexpectancy" else null
 
 define HighRiskReferral: 

@@ -9,7 +9,9 @@ Usage: #definition
 * insert CommonMetadata
 * meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"
 * name = "flow-DecisionToScreen"
-* description = "Decision to screen logic path."
+* description = """
+Evaluate criteria to determine age to start and age to stop, screening modality, and screening interval.
+"""
 * type = $PDTYPE#eca-rule
 * library[+] = "Library/DecisionToScreen|1.0.0"
 

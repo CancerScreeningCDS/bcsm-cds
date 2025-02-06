@@ -18,12 +18,12 @@ include DataElements version '1.0.0' called DataElements
 codesystem "LOINC": 'http://loinc.org'
 
 codesystem "ActCode": 'http://example.org/CodeSystem/plan-definition-action-code-system'
-codesystem "ReasonCode": 'http://example.org/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://example.org/CodeSystem/plan-definition-action-reason-code-system'
 
 // Act Codes
 code "Error": 'error' from "ActCode"
 // Reason Codes
-code "Missing age or birth date": 'missingageorbirthdate' from "ReasonCode"
+code "Missing age or birth date": 'missingageorbirthdate' from "LOCAL"
 
 // Standard codes
 code "Age": '30525-0' from "LOINC" display 'Age'

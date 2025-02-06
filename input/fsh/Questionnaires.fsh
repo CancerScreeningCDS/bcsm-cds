@@ -39,12 +39,12 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "currentbreastcancer"
 * item[=].text = "Current breast cancer"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#currentbreastcancer
+* item[=].code = $SOCS#currentbreastcancer
 
 * item[+].linkId = "bilatmastectomy"
 * item[=].text = "Bilateral mastectomy"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#bilatmastectomy
+* item[=].code = $SOCS#bilatmastectomy
 
 * item[+].linkId = "BreastSymptoms"
 * item[=].text = "New or worsening breast symptoms"
@@ -59,12 +59,12 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "lifeexp"
 * item[=].text = "Reduced life expectancy indicator"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#lifeexp
+* item[=].code = $SOCS#lifeexp
 
 * item[+].linkId = "currentlylactating"
 * item[=].text = "Currently lactating"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#currentlylactating
+* item[=].code = $SOCS#currentlylactating
 
 * item[+].linkId = "GeneticMarkerOrSyndrome"
 * item[=].text = "Genetic marker or syndrome associated with breast cancer"
@@ -74,7 +74,7 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "othergeneticrisk"
 * item[=].text = "Other genetic marker or syndrome associated with breast cancer"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#othergeneticrisk
+* item[=].code = $SOCS#othergeneticrisk
 * item[=].enableWhen[+].question = "GeneticMarkerOrSyndrome"
 * item[=].enableWhen[=].operator = http://hl7.org/fhir/questionnaire-enable-operator#=
 * item[=].enableWhen[=].answerBoolean = true
@@ -82,17 +82,17 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "chestxrt"
 * item[=].text = "History of chest radiation ages 10-30 y"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#chestxrt
+* item[=].code = $SOCS#chestxrt
 
 * item[+].linkId = "hxbreastca"
 * item[=].text = "Previous breast cancer"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#hxbreastca
+* item[=].code = $SOCS#hxbreastca
 
 * item[+].linkId = "hxbreastcawithin5y"
 * item[=].text = "Breast cancer in remission < 5 years"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#hxbreastcawithin5y
+* item[=].code = $SOCS#hxbreastcawithin5y
 * item[=].enableWhen[+].question = "hxbreastca"
 * item[=].enableWhen[=].operator = http://hl7.org/fhir/questionnaire-enable-operator#=
 * item[=].enableWhen[=].answerBoolean = true
@@ -100,32 +100,32 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "atypicalbx"
 * item[=].text = "Atypical biopsy"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#atypicalbx
+* item[=].code = $SOCS#atypicalbx
 
 * item[+].linkId = "highlifetimerisk"
 * item[=].text = "High lifetime risk"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#highlifetimerisk
+* item[=].code = $SOCS#highlifetimerisk
 
 * item[+].linkId = "firstdeggenetic"
 * item[=].text = "First degree relative with genetic marker or syndrome"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#firstdeggenetic
+* item[=].code = $SOCS#firstdeggenetic
 
 * item[+].linkId = "breastdensitycord"
 * item[=].text = "BI-RADS breast density category C or D"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#breastdensitycord
+* item[=].code = $SOCS#breastdensitycord
 
 * item[+].linkId = "fhxbreastcarisk"
 * item[=].text = "Compelling family history of breast cancer"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#fhxbreastcarisk
+* item[=].code = $SOCS#fhxbreastcarisk
 
 * item[+].linkId = "fhxgenetic"
 * item[=].text = "Family history of inherited cancer susceptibility"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#fhxgenetic
+* item[=].code = $SOCS#fhxgenetic
 
 * item[+].linkId = "KnownVariantStatus"
 * item[=].text = "Known breast cancer variant status"
@@ -138,12 +138,12 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "brcageneancestry"
 * item[=].text = "Ancestry associated with BRCA1/2 gene mutations"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#brcageneancestry
+* item[=].code = $SOCS#brcageneancestry
 
 * item[+].linkId = "fhxbrcaovcatubalperit"
 * item[=].text = "Family history of breast, ovarian, tubal, or peritoneal cancer"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#fhxbrcaovcatubalperit
+* item[=].code = $SOCS#fhxbrcaovcatubalperit
 
 * item[+].linkId = "PersonalRiskFactors"
 * item[=].text = "Personal risk factors conferring increased risk of breast cancer"
@@ -168,7 +168,7 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "highfamilialrisk"
 * item[=].text = "High familial risk"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#highfamilialrisk
+* item[=].code = $SOCS#highfamilialrisk
 
 * item[+].linkId = "fhxriskassess"
 * item[=].text = "Informal familial risk assessment"
@@ -183,10 +183,10 @@ Description: "A questionnaire to assess risk factors related to breast cancer."
 * item[+].linkId = "high5yrisk"
 * item[=].text = "High 5 year risk"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#high5yrisk
+* item[=].code = $SOCS#high5yrisk
 
 * item[+].linkId = "higherthanaverage5yrisk"
 * item[=].text = "5 year risk at least 1.67%"
 * item[=].type = $ITEMTYPE#boolean
-* item[=].code = $PDARCS#higherthanaverage5yrisk
+* item[=].code = $SOCS#higherthanaverage5yrisk
 

@@ -7,17 +7,17 @@ include DataElements version '1.0.0' called DataElements
 include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 codesystem "LOINC": 'http://loinc.org'
 
 // Act Codes
 code "Perform lifetime risk assessment": 'lifetimeriskassessment' from "ActCode" display 'Perform lifetime risk assessment'
 // Reason Codes
-code "High lifetime risk": 'highlifetimerisk' from "ReasonCode" display 'High lifetime risk'
-code "First degree relative with genetic marker or syndrome": 'firstdeggenetic' from "ReasonCode" display 'First degree relative with genetic marker or syndrome'
-code "BI-RADS breast density category C or D": 'breastdensitycord' from "ReasonCode" display 'BI-RADS breast density category C or D'
-code "Compelling family history of breast cancer": 'fhxbreastcarisk' from "ReasonCode" display 'Compelling family history of breast cancer'
-code "USPSTF average risk": 'USPSTFaveragerisk' from "ReasonCode" display 'USPSTF average risk'
+code "High lifetime risk": 'highlifetimerisk' from "LOCAL" display 'High lifetime risk'
+code "First degree relative with genetic marker or syndrome": 'firstdeggenetic' from "LOCAL" display 'First degree relative with genetic marker or syndrome'
+code "BI-RADS breast density category C or D": 'breastdensitycord' from "LOCAL" display 'BI-RADS breast density category C or D'
+code "Compelling family history of breast cancer": 'fhxbreastcarisk' from "LOCAL" display 'Compelling family history of breast cancer'
+code "USPSTF average risk": 'USPSTFaveragerisk' from "LOCAL" display 'USPSTF average risk'
 
 // Standard codes
 code "MG Breast Screening": '24606-6' from "LOINC" display 'MG Breast Screening' 
