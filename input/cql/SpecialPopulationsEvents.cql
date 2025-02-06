@@ -6,7 +6,7 @@ include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include DataElements version '1.0.0' called DataElements
 
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 codesystem "v3-RoleCode": 'http://terminology.hl7.org/CodeSystem/v3-RoleCode'
 
 context Patient

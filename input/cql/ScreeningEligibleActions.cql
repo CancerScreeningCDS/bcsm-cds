@@ -7,18 +7,18 @@ include DataElements version '1.0.0' called DataElements
 include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 
 // Act Codes
 code "Eligible for screening": 'eligible' from "ActCode" display 'Eligible for screening'
 code "Not eligible for screening": 'noteligible' from "ActCode" display 'Not eligible for screening'
 code "Diagnostic testing":  'diagtesting' from "ActCode" display 'Diagnostic testing'
 // Reason Codes
-code "Eligible for screening reason": 'eligibleforscreening' from "ReasonCode" display 'Eligible for screening'
-code "Not assigned female at birth": 'notassignedfemaleatbirth' from "ReasonCode" display 'Not assigned female at birth'
-code "Current breast cancer": 'currentbreastcancer' from "ReasonCode" display 'Current breast cancer'
-code "Bilateral mastectomy":  'bilatmastectomy' from "ReasonCode" display 'Bilateral mastectomy'
-code "New or worsening breast symptoms or findings":  'breastsymptomsorfindings' from "ReasonCode" display 'New or worsening breast symptoms or findings'
+code "Eligible for screening reason": 'eligibleforscreening' from "LOCAL" display 'Eligible for screening'
+code "Not assigned female at birth": 'notassignedfemaleatbirth' from "LOCAL" display 'Not assigned female at birth'
+code "Current breast cancer": 'currentbreastcancer' from "LOCAL" display 'Current breast cancer'
+code "Bilateral mastectomy":  'bilatmastectomy' from "LOCAL" display 'Bilateral mastectomy'
+code "New or worsening breast symptoms or findings":  'breastsymptomsorfindings' from "LOCAL" display 'New or worsening breast symptoms or findings'
 
 context Patient
 

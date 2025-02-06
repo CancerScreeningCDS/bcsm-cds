@@ -7,20 +7,20 @@ include DataElements version '1.0.0' called DataElements
 include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
+codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 codesystem "LOINC": 'http://loinc.org'
 
 // Act Codes
 code "Refer to specialist recommendations": 'specialtyreferral' from "ActCode" display 'Refer to specialist recommendations'
 code "Perform lifetime risk assessment": 'lifetimeriskassessment' from "ActCode" display 'Perform lifetime risk assessment'
 // Reason Codes
-code "Other genetic marker or syndrome associated with breast cancer": 'othergeneticrisk' from "ReasonCode" display 'Other genetic marker or syndrome associated with breast cancer'
-code "Genetic risk exclusion": 'geneticriskexclusion' from "ReasonCode" display 'Genetic risk exclusion'
-code "History of chest radiation ages 10-30 y": 'chestxrt' from "ReasonCode" display 'History of chest radiation ages 10-30 y'
-code "Previous breast cancer": 'hxbreastca' from "ReasonCode" display 'Previous breast cancer'
-code "Breast cancer in remission < 5 years": 'hxbreastcawithin5y' from "ReasonCode" display 'Breast cancer in remission < 5 years'
-code "Atypical biopsy": 'atypicalbx' from "ReasonCode" display 'Atypical biopsy'
-code "Atypical biopsy high lifetime risk": 'atypicalbxhighlifetimerisk' from "ReasonCode" display 'Atypical biopsy high lifetime risk'
+code "Other genetic marker or syndrome associated with breast cancer": 'othergeneticrisk' from "LOCAL" display 'Other genetic marker or syndrome associated with breast cancer'
+code "Genetic risk exclusion": 'geneticriskexclusion' from "LOCAL" display 'Genetic risk exclusion'
+code "History of chest radiation ages 10-30 y": 'chestxrt' from "LOCAL" display 'History of chest radiation ages 10-30 y'
+code "Previous breast cancer": 'hxbreastca' from "LOCAL" display 'Previous breast cancer'
+code "Breast cancer in remission < 5 years": 'hxbreastcawithin5y' from "LOCAL" display 'Breast cancer in remission < 5 years'
+code "Atypical biopsy": 'atypicalbx' from "LOCAL" display 'Atypical biopsy'
+code "Atypical biopsy high lifetime risk": 'atypicalbxhighlifetimerisk' from "LOCAL" display 'Atypical biopsy high lifetime risk'
 
 // Standard codes
 code "MG Breast Screening": '24606-6' from "LOINC" display 'MG Breast Screening' 
