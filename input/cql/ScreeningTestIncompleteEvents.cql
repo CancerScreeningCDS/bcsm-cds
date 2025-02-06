@@ -5,11 +5,9 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 include DataElements version '1.0.0' called DataElements
 include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
-include CSMCommonFunctions version '1.0.0' called CSMCommonFunctions
+include CSMCommonFunctions version '1.0.0' called Common
 include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
-// TODO: replace placeholder with OID
-valueset "BREAST CANCER SCREENING ORDERS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 // TODO: add diagnostic imaging orders, biopsy, referrals in addition to screening
 
 context Patient
@@ -30,26 +28,22 @@ define PendingOrdersWithoutSubsequentReport:
 define PendingOrdersSubsequentReportDate:
   PendingOrdersWithoutDiagnosticReport O
   let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(O.code),
-  lastReportDate: CSMCommonFunctions.DiagnosticReportDate(lastReport)
+  lastReportDate: Common.DiagnosticReportDate(lastReport)
   return {
     request: O,
     lastReportDate: lastReportDate
   }
 
 define PendingOrdersWithoutDiagnosticReport:
-  if not exists BreastCancerScreeningDiagnosticReports
+  if not exists DataElements.BreastCancerScreeningDiagnosticReports
     then ActiveBreastCancerScreeningOrders
   else
     from ActiveBreastCancerScreeningOrders O,
-      BreastCancerScreeningDiagnosticReports DR
+      DataElements.BreastCancerScreeningDiagnosticReports DR
     where not Exists (DR.basedOn B where B.reference = 'ServiceRequest/' + O.id)
     return O
 
 define ActiveBreastCancerScreeningOrders:
-  [ServiceRequest: "BREAST CANCER SCREENING ORDERS"] O
+  [ServiceRequest: DataElements."BREAST CANCER SCREENING ORDERS"] O
     where O.status in {'active'}
     and O.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}
-
-define BreastCancerScreeningDiagnosticReports:
-  CSMCommonFunctions.CompletedDiagnosticReport([DiagnosticReport: "BREAST CANCER SCREENING ORDERS"])
-

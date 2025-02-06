@@ -10,10 +10,8 @@ codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/scr
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
 codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
 
-code "5 year risk assessment": '5yriskassessment' from "ActCode" display '5 year risk assessment'
 code "High 5 year risk": 'high5yrisk' from "ReasonCode" display 'High 5 year risk'
 code "5 year risk at least 1.67%": 'higherthanaverage5yrisk' from "ReasonCode" display '5 year risk at least 1.67%'
-code "Personal risk factors conferring increased risk of breast cancer": 'PersonalRiskFactors' from "LOCAL" display 'Personal risk factors conferring increased risk of breast cancer'
 
 context Patient
 
@@ -42,23 +40,16 @@ define "eve-fhxbrca":
   DataElements."de-fhxbreastcarisk"
 
 define "eve-personalriskfactors":
-  MostRecentPersonalRiskFactorAssessment.value is true or 
+  DataElements.MostRecentPersonalRiskFactorAssessment.value is true or 
     Count(DataElements."BiopsyDiagnosticReports") > 1 or
     DataElements."de-breastdensitycord"
 
 define MostRecent5YrRiskAssessmentResultHigh:
-  MostRecent5YrRiskAssessment R where 
+  DataElements.MostRecent5YrRiskAssessment R where 
     R.value as FHIR.Quantity is not null and C3F.QuantityValue(R).value >=3 or
     R.value as FHIR.CodeableConcept is not null and C3F.ConceptValue(R) ~ "High 5 year risk"
 
 define MostRecent5YrRiskAssessmentResultHigherThanAverage:
-  MostRecent5YrRiskAssessment R where 
+  DataElements.MostRecent5YrRiskAssessment R where 
     R.value as FHIR.Quantity is not null and C3F.QuantityValue(R).value >=1.67 and C3F.QuantityValue(R).value <3 
     or R.value as FHIR.CodeableConcept is not null and C3F.ConceptValue(R) ~ "High 5 year risk"
-
-define MostRecent5YrRiskAssessment:
-  C3F.MostRecent([Observation: "5 year risk assessment"])  
-
-define MostRecentPersonalRiskFactorAssessment:
-  C3F.MostRecent([Observation: "Personal risk factors conferring increased risk of breast cancer"])   
-

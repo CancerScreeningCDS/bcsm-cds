@@ -150,7 +150,6 @@ define function AddIntervalToDateTime(startDateTime System.DateTime,
     unit: FHIRHelpers.ToCalendarUnit(repeat.periodUnit)
   }
 
-
 //------------------------------------------------------------------------------
 // scheduled frequency
 //------------------------------------------------------------------------------
@@ -275,3 +274,31 @@ define function CreateInferenceTaskObservation(code System.Code, value DateTime)
     },    
     valueDateTime: ToString(value)
   }    
+
+//------------------------------------------------------------------------------
+// Diagnostic report results
+//------------------------------------------------------------------------------
+// Aggregate result codes -
+//  DiagnosticReport.conclusionCode[]
+//  Observatio.value where DiagnosticReport.result[].reference = Observation
+//  Observatio.value where Observation.basedOn = DiagnosticReport.basedOn (request)
+
+// if a DiagnosticReport.code has target code, then call original CollateConclusionCodes
+// if a DiagnosticReport.code does not have target code, then return values from matched Observations
+define function CollateConclusionCodes(D DiagnosticReport, ObsList List<Observation>, code System.Code):
+  if FHIRHelpers.ToConcept(D.code) ~ code then
+    CollateConclusionCodes(D, ObsList)
+  else
+    ValuesFromObservation(D, ObsList)  
+
+define function CollateConclusionCodes(D DiagnosticReport, ObsList List<Observation>):
+  D.conclusionCode union
+  ValuesFromObservation(D, ObsList)
+
+define function ValuesFromObservation(D DiagnosticReport, ObsList List<Observation>):
+  (ObsList) O
+  where
+    Exists( (D.result ) R where Last(Split(R.reference,'/')) =  O.id ) or
+    Exists( (O.basedOn) oB where AnyTrue((D.basedOn) dB return dB = oB ) )
+  return O.value as FHIR.CodeableConcept
+

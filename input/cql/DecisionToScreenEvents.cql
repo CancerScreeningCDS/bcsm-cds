@@ -12,9 +12,6 @@ include DataElements version '1.0.0' called DataElements
 
 codesystem "ReasonCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system'
 
-// Non-standard codes
-code "Currently lactating": 'currentlylactating' from "ReasonCode" display 'Currently lactating'
-
 //------------------------------------------------------------------------------
 // PARAMETERS
 //------------------------------------------------------------------------------
@@ -36,15 +33,9 @@ define "eve-lactating":
 define Lactating:
   C3F.MostRecent(
     C3F.ObservationLookBack(
-      LactatingObservations R
+      DataElements.LactatingObservations R
         where R.value is true,
       SymptomaticLookBack
     )
-  ) is not null
-
-define LactatingObservations:
-  C3F.ObservationLookBack(
-    [Observation: "Currently lactating"],
-    ObservationLookbackPeriod
-  )    
+  ) is not null   
 
