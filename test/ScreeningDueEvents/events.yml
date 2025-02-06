@@ -57,6 +57,28 @@ eve-nextdueexists:
             reference: RequestGroup/RequestGroup-1
     - resourceType: RequestGroup
       id: RequestGroup-1        
+  - &EXISTS_next_due_date_request
+    - resourceType: CarePlan
+      status: active
+      created: "2024-06-01"
+      category:
+        - coding:
+            - system: "http://snomed.info/sct"
+              code: "268547008"
+              display: "Breast cancer screening"
+      activity:
+        - reference: 
+            reference: ServiceRequest/ServiceRequest-1
+    - resourceType: ServiceRequest            
+      id: ServiceRequest-1
+      intent: plan
+      code:
+        coding:
+          - system: "http://loinc.org"
+            code: "24606-6"
+            display: "MG Breast Screening"
+      occurrenceTiming:
+        event: "2024-06-01"
 
 eve-noscreening27mo:
   - &Age_is_<_40
