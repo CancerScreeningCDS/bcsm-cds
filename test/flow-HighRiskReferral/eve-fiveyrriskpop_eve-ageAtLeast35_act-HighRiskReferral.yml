@@ -1,5 +1,5 @@
 ---
-name: eve-personalriskfactors_eve-ageAtLeast35_act-HigRiskAssessment
+name: eve-fiveyrriskpop_eve-ageAtLeast35_act-HighRiskReferral
 flow: flow-HighRiskReferral
 externalData:
   - ../HighRiskReferralEvents/events
@@ -8,9 +8,7 @@ externalData:
   - ../default_patients
 data:
   - *Patient_age_>=_35_years
-  - *Personal_risk_factors_conferring_increased_risk_of_breast_cancer_is_true
+  - *Formal_clinical_risk_assessment_tool_output_suggests_5_year_risk_>=_3%
 results:
   flow-HighRiskReferral:
-    -
-      - *act-5YRiskAssessment
-      - *act-5YRiskAssessmentTool    
+    - *act-HighRiskReferral

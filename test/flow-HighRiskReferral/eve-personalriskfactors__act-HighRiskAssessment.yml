@@ -1,5 +1,5 @@
 ---
-name: eve-fhxbrca_eve-ageAtLeast35_act-HigRiskAssessment
+name: eve-personalriskfactors__act-HighRiskAssessment
 flow: flow-HighRiskReferral
 externalData:
   - ../HighRiskReferralEvents/events
@@ -8,9 +8,9 @@ externalData:
   - ../default_patients
 data:
   - *Patient_age_>=_35_years
-  - *Output_of_validated_brief_familial_risk_assessment_tool_is_positive_OR_'Informal_familial_risk_criteria'_exist
+  - *Personal_risk_factors_conferring_increased_risk_of_breast_cancer_is_true
 results:
   flow-HighRiskReferral:
     -
       - *act-5YRiskAssessment
-      - *act-5YRiskAssessmentTool
+      - *act-5YRiskAssessmentTool    
