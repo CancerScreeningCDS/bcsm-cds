@@ -21,10 +21,10 @@
       "valueString": "DisableListPromotion"
     }, {
       "name": "format",
-      "valueString": "XML"
+      "valueString": "JSON"
     }, {
       "name": "format",
-      "valueString": "JSON"
+      "valueString": "XML"
     }, {
       "name": "analyzeDataRequirements",
       "valueBoolean": true
@@ -91,6 +91,10 @@
     "type": "depends-on",
     "display": "Library C3F",
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/Library/CDSConnectCommonsforFHIRv401|1.0.0"
+  }, {
+    "type": "depends-on",
+    "display": "Library BCSMCommon",
+    "resource": "http://cancerscreeningcds.github.io/bcsm-cds/Library/BCSMCommonFunctions|1.0.0"
   }, {
     "type": "depends-on",
     "display": "Code system LOCAL",
@@ -213,7 +217,7 @@
   }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
-    "mustSupport": [ "code", "id", "basedOn", "value" ],
+    "mustSupport": [ "code", "value", "id", "basedOn" ],
     "codeFilter": [ {
       "path": "code",
       "code": [ {
@@ -225,7 +229,7 @@
   }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
-    "mustSupport": [ "code", "id", "basedOn", "value" ],
+    "mustSupport": [ "code", "value", "id", "basedOn" ],
     "codeFilter": [ {
       "path": "code",
       "code": [ {
