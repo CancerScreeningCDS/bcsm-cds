@@ -30,6 +30,9 @@ define "eve-chestxrtpop":
 define "eve-atypicalbxpop":
   DataElements."de-atypicalbx"
 
+define "eve-LifeExp":
+  DataElements."de-lifeexp"  
+
 define "eve-fiveyrriskpop":
   MostRecent5YrRiskAssessmentResultHigh is not null
 
