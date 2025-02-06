@@ -9,7 +9,9 @@ Usage: #definition
 * insert CommonMetadata
 * meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"
 * name = "flow-GeneticRiskReferral"
-* description = "Genetic Risk Referral logic path."
+* description = """
+Risk assessment for women who have family history that may be associated with an increased risk for potentially harmful mutations in breast cancer susceptibility genes to determine who should receive referral for genetic counseling and, if indicated after counseling, testing.
+"""
 * type = $PDTYPE#eca-rule
 * library[+] = "Library/GeneticRiskReferral|1.0.0"
 //TODO: add citations for non-BRCA variants not addressed in USPSTF, NCCN?
