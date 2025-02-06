@@ -4,10 +4,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/159",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/315",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "159",
+        "id": "315",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/160"
+              "reference": "RequestGroup/316"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/160",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/316",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "160",
+        "id": "316",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -41,7 +41,63 @@
         ],
         "intent": "proposal",
         "status": "draft",
-        "action": []
+        "action": [
+          {
+            "id": "GeneticReferralAncestry",
+            "title": "Referral for genetic risk counseling",
+            "description": "Referral for genetic counseling if not previously consulted, or if limited panel was done and additional testing may be warranted.\n\nCan offer referral to individuals who have one grandparent identified as of Ashkenazi Jewish ancestry, irrespective of cancer history in the family and without additional risk factors.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "BRCA-Related Cancer: Risk Assessment, Genetic Counseling, and Genetic Testing",
+                "citation": "US Preventive Services Task Force. Risk Assessment, Genetic Counseling, and Genetic Testing for BRCA-Related Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(7):652–665.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/317"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/317",
+      "resource": {
+        "id": "317",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "geneticriskreferral",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "Genetic risk referral"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "brcageneancestry",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "Ancestry associated with BRCA1/2 gene mutations"
+              }
+            ]
+          }
+        ]
       }
     }
   ]

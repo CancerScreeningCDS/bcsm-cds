@@ -4,10 +4,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/230",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/422",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "230",
+        "id": "422",
         "subject": {
           "reference": "Patient/ed0cea73-72a8-4b1e-bdef-88e36a3983e9",
           "display": "Joanne Smith"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/231"
+              "reference": "RequestGroup/423"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/231",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/423",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "231",
+        "id": "423",
         "subject": {
           "reference": "Patient/ed0cea73-72a8-4b1e-bdef-88e36a3983e9",
           "display": "Joanne Smith"
@@ -41,7 +41,87 @@
         ],
         "intent": "proposal",
         "status": "draft",
-        "action": []
+        "action": [
+          {
+            "id": "424",
+            "title": "Screening Eligible Missing Data",
+            "description": "Error due to missing required data for inclusion and exclusion evaluation.",
+            "resource": {
+              "reference": "Questionnaire/ScreeningEligibleQuestionnaire"
+            }
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-messages",
+            "valueReference": {
+              "reference": "#contained-1"
+            }
+          }
+        ],
+        "contained": [
+          {
+            "resourceType": "OperationOutcome",
+            "issue": [
+              {
+                "severity": "warning",
+                "code": "processing",
+                "diagnostics": "Missing age or birth date",
+                "details": {
+                  "coding": [
+                    {
+                      "system": "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+                      "code": "missingageorbirthdate"
+                    }
+                  ]
+                }
+              }
+            ],
+            "id": "contained-1"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/Questionnaire/ScreeningEligibleQuestionnaire",
+      "resource": {
+        "resourceType": "Questionnaire",
+        "id": "ScreeningEligibleQuestionnaire",
+        "meta": {
+          "profile": [
+            "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire"
+          ]
+        },
+        "url": "http://cancerscreeningcds.github.io/bcsm-cds/Questionnaire/ScreeningEligibleQuestionnaire",
+        "title": "Screening Eligible",
+        "subjectType": [
+          "Patient"
+        ],
+        "item": [
+          {
+            "code": [
+              {
+                "code": "30525-0",
+                "system": "http://loinc.org"
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+                "valueCoding": {
+                  "code": "[a]",
+                  "system": "http://unitsofmeasure.org"
+                }
+              }
+            ],
+            "linkId": "age-in-years",
+            "text": "Age in years",
+            "type": "integer"
+          }
+        ],
+        "version": "1.0.0",
+        "name": "ScreeningEligible",
+        "status": "draft"
       }
     }
   ]

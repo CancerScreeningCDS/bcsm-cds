@@ -4,10 +4,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/209",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/394",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "209",
+        "id": "394",
         "subject": {
           "reference": "Patient/c608f8c0-ca32-4872-b9d3-563526c31719",
           "display": "Joanne Smith"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/210"
+              "reference": "RequestGroup/395"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/210",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/395",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "210",
+        "id": "395",
         "subject": {
           "reference": "Patient/c608f8c0-ca32-4872-b9d3-563526c31719",
           "display": "Joanne Smith"
@@ -41,7 +41,63 @@
         ],
         "intent": "proposal",
         "status": "draft",
-        "action": []
+        "action": [
+          {
+            "id": "IsScreeningEligible",
+            "title": "Screening eligible",
+            "description": "Patient is eligible for screening",
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "eligible",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Eligible for screening"
+                  }
+                ]
+              }
+            ],
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              },
+              {
+                "type": "derived-from",
+                "label": "Screening Eligible",
+                "display": "Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed."
+              }
+            ],
+            "resource": {
+              "reference": "CommunicationRequest/397"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/397",
+      "resource": {
+        "id": "397",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateEligible"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c608f8c0-ca32-4872-b9d3-563526c31719",
+          "display": "Joanne Smith"
+        },
+        "payload": [
+          {
+            "contentString": "Eligible for screening"
+          }
+        ]
       }
     }
   ]

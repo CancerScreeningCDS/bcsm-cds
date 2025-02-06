@@ -4,10 +4,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/191",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/362",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "191",
+        "id": "362",
         "subject": {
           "reference": "Patient/PatriciaLambert",
           "display": "Patricia Lambert"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/192"
+              "reference": "RequestGroup/363"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/192",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/363",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "192",
+        "id": "363",
         "subject": {
           "reference": "Patient/PatriciaLambert",
           "display": "Patricia Lambert"
@@ -41,7 +41,36 @@
         ],
         "intent": "proposal",
         "status": "draft",
-        "action": []
+        "action": [],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-messages",
+            "valueReference": {
+              "reference": "#contained-1"
+            }
+          }
+        ],
+        "contained": [
+          {
+            "resourceType": "OperationOutcome",
+            "issue": [
+              {
+                "severity": "error",
+                "code": "processing",
+                "diagnostics": "Excluded or not included",
+                "details": {
+                  "coding": [
+                    {
+                      "system": "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+                      "code": "excludedornotincluded"
+                    }
+                  ]
+                }
+              }
+            ],
+            "id": "contained-1"
+          }
+        ]
       }
     }
   ]

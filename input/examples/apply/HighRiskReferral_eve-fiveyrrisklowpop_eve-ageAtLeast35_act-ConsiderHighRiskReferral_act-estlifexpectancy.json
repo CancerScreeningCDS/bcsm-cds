@@ -4,10 +4,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/199",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/376",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "199",
+        "id": "376",
         "subject": {
           "reference": "Patient/2334e24f-9739-413f-8ea2-a3c17eaf8922",
           "display": "Jane Doe"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/200"
+              "reference": "RequestGroup/377"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/200",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/377",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "200",
+        "id": "377",
         "subject": {
           "reference": "Patient/2334e24f-9739-413f-8ea2-a3c17eaf8922",
           "display": "Jane Doe"
@@ -41,7 +41,113 @@
         ],
         "intent": "proposal",
         "status": "draft",
-        "action": []
+        "action": [
+          {
+            "id": "HighRiskReferral5YRiskHigherThanAverage",
+            "title": "Consider referral for high risk breast specialty evaluation",
+            "description": "Consider referral to breast specialist to discuss primary risk reduction interventions such as chemoprevention.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Breast Cancer: Medication Use to Reduce Risk",
+                "citation": "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/378"
+            }
+          },
+          {
+            "id": "ConsiderLifeExpectancy",
+            "title": "Shared decision making for high risk specialty referral based on life expectancy",
+            "description": "Patient may not be a candidate for chemoprevention if estimated life expectancy is < 10 years.\n\nFactors that may impact this estimation should be considered prior to referral. A validated tool such as www.eprognosis.com can help guide decision making.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Breast Cancer: Medication Use to Reduce Risk",
+                "citation": "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+              }
+            ],
+            "resource": {
+              "reference": "CommunicationRequest/379"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/378",
+      "resource": {
+        "id": "378",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/2334e24f-9739-413f-8ea2-a3c17eaf8922",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "highriskreferral",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "High risk referral"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "higherthanaverage5yrisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-reason-code-system",
+                "display": "5 year risk at least 1.67%"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/379",
+      "resource": {
+        "id": "379",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMConsiderLifeExpectancy"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/2334e24f-9739-413f-8ea2-a3c17eaf8922",
+          "display": "Jane Doe"
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "estlifexpectancy",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "Consider life expectancy"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              null
+            ]
+          }
+        ]
       }
     }
   ]
