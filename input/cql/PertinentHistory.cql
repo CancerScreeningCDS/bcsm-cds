@@ -7,6 +7,7 @@ include CSMCommonFunctions version '1.0.0' called Common
 include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 include DataElements version '1.0.0' called DataElements
+include ScreeningDue version '1.0.0'
 
 context Patient
 
@@ -30,7 +31,8 @@ define PertinentHistory:
     procedures: PertinentProceduresSummary,
     diagnosticReports: DiagnosticReportsSummary,
     encounters: PertinentEncountersSummary,
-    episodeOfCares: PertinentEpisodesOfCareSummary
+    episodeOfCares: PertinentEpisodesOfCareSummary,
+    requests: PertinentRequestsSummary
   }
 }
 
@@ -311,3 +313,21 @@ define function displayEndDate(endDate String):
     endDate
   else
     'no end date available'
+
+//------------------------------------------------------------------------------
+// PERTINENT REQUESTS
+//------------------------------------------------------------------------------  
+
+define PertinentRequests:
+  ScreeningDue.DueOrOverdue
+
+define PertinentRequestsSummary:
+  (PertinentRequests) R
+    return
+  {
+    name: Common.ConceptText(R.code),
+    intent: R.intent, 
+    occurence: R.nextDue,
+    flag: R.flag.display,
+    plannedRepeat: R.plannedRepeat
+  }    
