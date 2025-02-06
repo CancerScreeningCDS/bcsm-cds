@@ -1,0 +1,80 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-latesttesttype_biopsy_eve-biopsyresult_negative_act-updateduedate",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1981-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "cc30597f-2c52-45e7-903f-3d4a557dde9f",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-10-01T10:00:00.000Z",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "5827fcb5-7f6e-47c7-adbb-38b96f90254e",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+              "code": "Negative"
+            }
+          ]
+        },
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    }
+  ]
+}

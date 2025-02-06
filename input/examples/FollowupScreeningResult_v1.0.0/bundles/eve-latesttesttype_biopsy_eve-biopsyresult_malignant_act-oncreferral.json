@@ -1,0 +1,80 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-latesttesttype_biopsy_eve-biopsyresult_malignant_act-oncreferral",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1981-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "284c78a9-e9a8-4726-8fb3-61e249742358",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-10-01T10:00:00.000Z",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "115c0d1d-232c-4c08-9dc8-bce87c7bcd48",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+              "code": "Malignant"
+            }
+          ]
+        },
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    }
+  ]
+}

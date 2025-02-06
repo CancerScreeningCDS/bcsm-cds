@@ -1,0 +1,80 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-latesttesttype_biopsy_eve-biopsyresult_atypical_act-highriskreferral",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1981-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "83dbf1d5-9b58-4a63-b802-aa5a93f09bbd",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-10-01T10:00:00.000Z",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "93f06128-4c5a-4887-848e-a37a30f470ad",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+              "code": "Atypical"
+            }
+          ]
+        },
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    }
+  ]
+}
