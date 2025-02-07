@@ -8,42 +8,94 @@ include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 include CSMCommonFunctions version '1.0.0' called Common
 include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
-// TODO: add diagnostic imaging orders, biopsy, referrals in addition to screening
-
 context Patient
 
 define "eve-pendingorders":
-  PendingOrdersWithoutSubsequentReport O
-    return O.request
+  ActiveBreastCancerScreeningOrders union 
+  CompletedOrdersWithoutSubsequentReport
 
-define PendingOrdersWithoutSubsequentReport:
-  PendingOrdersSubsequentReportDate O
-    where O.lastReportDate is null
-    or (O.request.occurrence as FHIR.dateTime is not null and O.lastReportDate <= O.request.occurrence as FHIR.dateTime)
-    or (O.request.occurrence as FHIR.Period is not null 
-      and (O.lastReportDate in C3F.PeriodToInterval(O.request.occurrence as FHIR.Period)) is not true
-    )
+define "eve-pendingprocedures":
+  CompletedProceduresWithoutSubsequentReport
 
-//TODO: determine how to look for non-test result, like specialty consult note
-define PendingOrdersSubsequentReportDate:
-  PendingOrdersWithoutDiagnosticReport O
-  let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(O.code),
-  lastReportDate: Common.DiagnosticReportDate(lastReport)
-  return {
-    request: O,
-    lastReportDate: lastReportDate
-  }
+//------------------------------------------------------------------------------
+// ORDERS
+//------------------------------------------------------------------------------ 
 
-define PendingOrdersWithoutDiagnosticReport:
+define CompletedOrdersWithoutSubsequentReport:
+  CompletedOrdersWithoutDiagnosticReport O
+  let lastReportDate: LastReportDateByCode(O.code)
+  where LastReportNotAfterOccurrenceDateTime(O.occurrence as FHIR.dateTime, lastReportDate)
+    or LastReportNotAfterOccurrencePeriod(O.occurrence as FHIR.Period, lastReportDate)    
+
+define CompletedOrdersWithoutDiagnosticReport:
   if not exists DataElements.BreastCancerScreeningDiagnosticReports
-    then ActiveBreastCancerScreeningOrders
+    then CompletedBreastCancerScreeningOrders
   else
-    from ActiveBreastCancerScreeningOrders O,
+    from CompletedBreastCancerScreeningOrders O,
       DataElements.BreastCancerScreeningDiagnosticReports DR
     where not Exists (DR.basedOn B where B.reference = 'ServiceRequest/' + O.id)
     return O
 
+define CompletedBreastCancerScreeningOrders:
+  BreastCancerScreeningOrders O
+    where O.status in {'completed'}
+
 define ActiveBreastCancerScreeningOrders:
-  [ServiceRequest: DataElements."BREAST CANCER SCREENING ORDERS"] O
+  BreastCancerScreeningOrders O
     where O.status in {'active'}
-    and O.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}
+
+define BreastCancerScreeningOrders:
+  [ServiceRequest: DataElements."BREAST CANCER SCREENING ORDERS"] O
+    where O.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}    
+
+//------------------------------------------------------------------------------
+// PROCEDURES
+//------------------------------------------------------------------------------ 
+
+define CompletedProceduresWithoutSubsequentReport:
+  CompletedProceduresWithoutDiagnosticReport P
+  let lastReportDate: LastReportDateByCode(P.code)
+  where LastReportNotAfterOccurrenceDateTime(P.performed as FHIR.dateTime, lastReportDate)
+    or LastReportNotAfterOccurrencePeriod(P.performed as FHIR.Period, lastReportDate)    
+
+define CompletedProceduresWithoutDiagnosticReport:
+  if not exists DataElements.BreastCancerScreeningDiagnosticReports
+    then CompletedBreastCancerScreeningProcedures
+  else
+    from CompletedBreastCancerScreeningProcedures P,
+      DataElements.BreastCancerScreeningDiagnosticReports DR
+    where not Exists (DR.basedOn B where B.reference = 'Procedure/' + P.id)
+    return P
+
+define CompletedBreastCancerScreeningProcedures:
+  BreastCancerScreeningProcedures P
+    where P.status in {'completed'}
+
+define BreastCancerScreeningProcedures:
+  BreastCancerScreeningOrderedProcedures union
+  [Procedure] P
+    where P.code in DataElements."BREAST CANCER SCREENING ORDERS"
+
+define BreastCancerScreeningOrderedProcedures:
+  from CompletedBreastCancerScreeningOrders O,
+    [Procedure] P
+  where Exists (P.basedOn B where B.reference = 'ServiceRequest/' + O.id)
+    return P
+
+//------------------------------------------------------------------------------
+// Functions
+//------------------------------------------------------------------------------ 
+
+define function LastReportDateByCode(code FHIR.CodeableConcept):
+  code C
+  let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(C),
+  lastReportDate: Common.DiagnosticReportDate(lastReport)
+  return lastReportDate
+
+define function LastReportNotAfterOccurrenceDateTime(occurrence FHIR.dateTime, lastReportDate System.DateTime):
+  lastReportDate is null 
+    or (occurrence is not null and lastReportDate <= occurrence) 
+
+define function LastReportNotAfterOccurrencePeriod(occurrence FHIR.Period, lastReportDate System.DateTime):
+  lastReportDate is null
+    or (occurrence is not null and lastReportDate before C3F.PeriodToInterval(occurrence))

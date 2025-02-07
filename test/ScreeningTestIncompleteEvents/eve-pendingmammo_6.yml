@@ -1,0 +1,13 @@
+---
+name: Pending_mammography_exists_active
+elementId: eve-pendingorders
+externalData:
+  - events
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *defaultPatient
+  - *'Pending_mammography'_exists_active
+results:
+  ActiveBreastCancerScreeningOrders: $should have length 1
+  eve-pendingorders: $should have length 1  

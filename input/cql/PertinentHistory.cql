@@ -8,6 +8,7 @@ include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 include DataElements version '1.0.0' called DataElements
 include ScreeningDue version '1.0.0'
+include ScreeningTestIncomplete version '1.0.0'
 
 context Patient
 
@@ -318,16 +319,28 @@ define function displayEndDate(endDate String):
 // PERTINENT REQUESTS
 //------------------------------------------------------------------------------  
 
-define PertinentRequests:
-  ScreeningDue.DueOrOverdue
-
-define PertinentRequestsSummary:
-  (PertinentRequests) R
+define DueOrOverdueScreeningSummary:
+  (ScreeningDue.DueOrOverdue) R
     return
   {
     name: Common.ConceptText(R.code),
     intent: R.intent, 
-    occurence: R.nextDue,
+    occurrence: R.nextDue,
     flag: R.flag.display,
     plannedRepeat: R.plannedRepeat
-  }    
+  }  
+
+define IncompleteScreeningOrdersSummary:
+  (ScreeningTestIncomplete.IncompleteScreeningOrders) R
+    return
+  {
+    name: Common.ConceptText(R.code),
+    intent: R.intent, 
+    occurence: R.occurrence as FHIR.dateTime,
+    flag: null,
+    plannedRepeat: null
+  }      
+
+define PertinentRequestsSummary:
+  DueOrOverdueScreeningSummary union
+    IncompleteScreeningOrdersSummary

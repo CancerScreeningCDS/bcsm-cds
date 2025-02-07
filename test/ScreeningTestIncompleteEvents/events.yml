@@ -1,19 +1,19 @@
 eve-birads0:
   - "&BI-RADS_score_in_'Last_mammography_result'_is_0__recall_to_imaging_center_"
 
-eve-pendingmammo:
+eve-pendingorders:
   - &'Pending_mammography'_exists_AND_'Date_of_last_mammography'_does_not_exists
     resourceType: ServiceRequest
-    status: active
+    status: completed
     intent: order
     code:
       coding:
         - system: http://loinc.org
           code: 24606-6
-          display: MG Breast Screening   
+          display: MG Breast Screening            
   - &'Pending_mammography'_exists_inactive
     resourceType: ServiceRequest
-    status: completed
+    status: revoked
     intent: order
     code:
       coding:
@@ -22,7 +22,7 @@ eve-pendingmammo:
           display: MG Breast Screening  
   - &'Pending_mammography'_exists_AND_'Date_of_last_mammography'is_before_date_'Pending_mammography'_order_or_referral_was_placed
     - resourceType: ServiceRequest
-      status: active
+      status: completed
       intent: order
       occurrenceDateTime: 2024-10-02
       code:
@@ -42,10 +42,10 @@ eve-pendingmammo:
           - system: http://loinc.org
             code: 24606-6
             display: MG Breast Screening
-      effectiveDateTime: 2024-10-01T10:00:00Z               
+      effectiveDateTime: 2024-10-01T10:00:00Z            
   - &'Pending_mammography'_exists_AND_'Date_of_last_mammography'is_after_date_'Pending_mammography'_order_or_referral_was_placed
     - resourceType: ServiceRequest
-      status: active
+      status: completed
       intent: order
       occurrencePeriod:
         start: 2024-10-01
@@ -71,7 +71,7 @@ eve-pendingmammo:
   - &'Pending_mammography'_exists_AND_exists_'Mammography_reports'_based_on_order_or_referral
     - resourceType: ServiceRequest
       id: order-1
-      status: active
+      status: completed
       intent: order
       occurrenceDateTime: 2024-10-01
       code:
@@ -92,7 +92,104 @@ eve-pendingmammo:
             code: 24606-6
             display: MG Breast Screening
       basedOn:
-        - reference: "ServiceRequest/order-1"                  
+        - reference: "ServiceRequest/order-1"  
+  - &'Pending_mammography'_exists_active
+    resourceType: ServiceRequest
+    status: active
+    intent: order
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening                           
+
+eve-pendingprocedures:
+  - &'Mammography_procedure'_exists_AND_'Date_of_last_mammography'_does_not_exists
+    resourceType: Procedure
+    status: completed    
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening            
+  - &'Mammography_procedure'_exists_inactive
+    resourceType: Procedure
+    status: on-hold   
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 24606-6
+          display: MG Breast Screening  
+  - &'Mammography_procedure'_exists_AND_'Date_of_last_mammography'is_before_date_'Mammography_procedure'_order_or_referral_was_placed
+    - resourceType: Procedure
+      status: completed   
+      performedDateTime: 2024-10-02
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+    - resourceType: DiagnosticReport    
+      status: final
+      category:
+        - coding:
+            - system: http://terminology.hl7.org/CodeSystem/v2-0074
+              code: RAD
+              display: Radiology
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+      effectiveDateTime: 2024-10-01T10:00:00Z            
+  - &'Mammography_procedure'_exists_AND_'Date_of_last_mammography'is_after_date_'Mammography_procedure'_order_or_referral_was_placed
+    - resourceType: Procedure
+      status: completed   
+      performedPeriod:
+        start: 2024-10-01
+        end: 2024-10-03
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+    - resourceType: DiagnosticReport    
+      status: final
+      category:
+        - coding:
+            - system: http://terminology.hl7.org/CodeSystem/v2-0074
+              code: RAD
+              display: Radiology
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+      effectiveDateTime: 2024-10-02T10:00:00Z 
+  - &'Mammography_procedure'_exists_AND_exists_'Mammography_reports'_based_on_procedure
+    - resourceType: Procedure
+      id: procedure-1
+      status: completed  
+      performedDateTime: 2024-10-01
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+    - resourceType: DiagnosticReport    
+      status: final
+      category:
+        - coding:
+            - system: http://terminology.hl7.org/CodeSystem/v2-0074
+              code: RAD
+              display: Radiology
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+      basedOn:
+        - reference: "Procedure/procedure-1"               
 
 eve-pendingmri:
   - "&'Pending_MRI'_exists_AND_'Date_of_last_MRI'_does_not_exists_OR_is_before_date_'Pending_MRI'_order_or_referral_was_placed"

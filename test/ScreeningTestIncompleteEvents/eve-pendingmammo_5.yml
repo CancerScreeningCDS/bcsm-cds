@@ -9,4 +9,7 @@ data:
   - *defaultPatient
   - $import: *'Pending_mammography'_exists_AND_exists_'Mammography_reports'_based_on_order_or_referral
 results:
+  CompletedBreastCancerScreeningOrders: $should have length 1
+  CompletedOrdersWithoutDiagnosticReport: $should have length 0
+  CompletedOrdersWithoutSubsequentReport: $should have length 0
   eve-pendingorders: []
