@@ -9,4 +9,8 @@ data:
   - *defaultPatient
   - $import: *'Pending_mammography'_exists_AND_'Date_of_last_mammography'is_after_date_'Pending_mammography'_order_or_referral_was_placed
 results:
+  ActiveBreastCancerScreeningOrders: $should have length 0
+  CompletedBreastCancerScreeningOrders: $should have length 1
+  CompletedOrdersWithoutDiagnosticReport: $should have length 1
+  CompletedOrdersWithoutSubsequentReport: $should have length 0
   eve-pendingorders: $should have length 0

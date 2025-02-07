@@ -4,7 +4,6 @@ using FHIR version '4.0.1'
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 include ScreeningDueEvents version '1.0.0' called Events
-include ScreeningDueActions version '1.0.0' called Actions
 include ScreeningEligible version '1.0.0'
 
 context Patient
@@ -14,14 +13,8 @@ context Patient
 //------------------------------------------------------------------------------
 
 define "flow-ScreeningDue":
-  if DetermineNextDueDate is not null
-    then {DetermineNextDueDate}
-    else DueOrOverdue
-
-define DetermineNextDueDate:
-  if Events."eve-nextdueexists" is false and Events."eve-noscreening27mo"
-    then Actions."act-determinedue"
-    else null
+  (Events."eve-nextdueexists" is false and Events."eve-noscreening27mo")
+    or exists DueOrOverdue
 
 define DueOrOverdue:    
   Events."eve-due"
@@ -41,4 +34,4 @@ define "Denominator Exclusion":
 	//TODO: add Hospice."Has Hospice"
 
 define "Numerator":
-  DueOrOverdue
+  "flow-ScreeningDue"

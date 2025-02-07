@@ -70,6 +70,7 @@ valueset "FIRST DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.1
 valueset "SECOND DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
 valueset "MAMMOGRAPHY": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 // TODO: replace placeholder with OID
+// TODO: should include screening and diagnostic imaging, biopsy
 valueset "BREAST CANCER SCREENING ORDERS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 
 // Standard codes
