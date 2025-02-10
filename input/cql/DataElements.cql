@@ -757,6 +757,12 @@ define MostRecentPersonalRiskFactorAssessment:
 // Latest screening test type
 //------------------------------------------------------------------------------  
 
+define BreastCancerScreeningDiagnosticReports:
+  Common.CompletedDiagnosticReport([DiagnosticReport: "BREAST CANCER SCREENING ORDERS"])  
+
+define AllCompletedDiagnosticReport:
+  Common.CompletedDiagnosticReport([DiagnosticReport])    
+  
 // Imaging
 define MostRecentBreastImagingDiagnosticReport:
   Common.MostRecentDiagnosticReport(BreastImagingDiagnosticReports)
@@ -769,10 +775,7 @@ define BreastImagingDiagnosticReports:
     ) > 0
 
 define BreastImagingObservations:
-  [Observation: "Breast Imaging Report"]  
-
-define BreastCancerScreeningDiagnosticReports:
-  Common.CompletedDiagnosticReport([DiagnosticReport: "BREAST CANCER SCREENING ORDERS"])   
+  [Observation: "Breast Imaging Report"]   
 
 // Biopsy
 define MostRecentBreastBiopsyDiagnosticReport:
@@ -787,7 +790,4 @@ define BiopsyDiagnosticReports:
 
 // TODO: should report observation code be a value set?
 define BiopsyObservations:
-  [Observation: "Biopsy Report"]  
-
-define AllCompletedDiagnosticReport:
-  Common.CompletedDiagnosticReport([DiagnosticReport])    
+  [Observation: "Biopsy Report"]    

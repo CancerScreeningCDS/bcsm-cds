@@ -1,13 +1,12 @@
 ---
 name: eve-pendingbiopsy_act-testpending
 flow: flow-ScreeningTestIncomplete
-skip: true
 externalData:
   - ../ScreeningTestIncompleteEvents/events
-  - actions
   - ../default_patients
 data:
-  - "*eve-pendingbiopsy"
+  - *defaultPatient
+  - *'Pending_pathology'_exists_registered
 results:
-  flow-ScreeningTestIncomplete:
-    - "*act-testpending"
+  IncompleteScreeningPathology: $should exist
+  flow-ScreeningTestIncomplete: true

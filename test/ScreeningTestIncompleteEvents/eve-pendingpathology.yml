@@ -1,0 +1,13 @@
+---
+name: Pending_pathology_exists_registered
+elementId: eve-pendingorders
+externalData:
+  - events
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *defaultPatient
+  - *'Pending_pathology'_exists_registered
+results:  
+  IncompleteBreastBiopsyDiagnosticReports: $should have length 1
+  eve-pendingpathology: $should have length 1  

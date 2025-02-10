@@ -102,6 +102,31 @@ eve-pendingorders:
         - system: http://loinc.org
           code: 24606-6
           display: MG Breast Screening                           
+  - &'Pending_mammography'_exists_AND_exists_observation_based_on_order
+    - resourceType: ServiceRequest
+      id: order-1
+      status: completed
+      intent: order
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening  
+    - resourceType: Observation
+      id: observation-1
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      valueCodeableConcept:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category0IncompleteNeedAdditionalImaging      
+            display: category0needadditionalimaging 
+      basedOn:
+        - reference: "ServiceRequest/order-1"            
 
 eve-pendingprocedures:
   - &'Mammography_procedure'_exists_AND_'Date_of_last_mammography'_does_not_exists
@@ -189,12 +214,60 @@ eve-pendingprocedures:
             code: 24606-6
             display: MG Breast Screening
       basedOn:
-        - reference: "Procedure/procedure-1"               
+        - reference: "Procedure/procedure-1"  
+  - &'Mammography_procedure'_exists_AND_exists_observation_based_on_procedure
+    - resourceType: Procedure
+      id: procedure-1
+      status: completed  
+      performedDateTime: 2024-10-01
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+    - resourceType: Observation
+      id: observation-1
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 10193-1
+            display: Physical findings of Breasts Narrative
+      valueCodeableConcept:
+        coding:
+          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
+            code: RDE1586_category0IncompleteNeedAdditionalImaging      
+            display: category0needadditionalimaging 
+      basedOn:
+        - reference: "Procedure/procedure-1"                      
+
+eve-pendingpathology:
+  - &'Pending_pathology'_exists_registered
+    resourceType: DiagnosticReport    
+    status: registered
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 66110-8
+          display: "Biopsy Report"
+    conclusionCode:
+      coding:
+        - system: http://snomed.info/sct
+          code: 62061000119107 #TODO replace placeholder code
+          display: "Atypical ductal hyperplasia"
 
 eve-pendingmri:
   - "&'Pending_MRI'_exists_AND_'Date_of_last_MRI'_does_not_exists_OR_is_before_date_'Pending_MRI'_order_or_referral_was_placed"
   - "&'Pending_MRI'_exists_AND_'Date_of_last_MRI'_does_not_exists"
-  - "&'Pending_MRI'_exists"
+  - &'Pending_mri'_exists_active
+    resourceType: ServiceRequest
+    status: active
+    intent: order
+    code:
+      coding:
+        - code: "30794-2"
+          display: "MR Breast"
+          system: "http://loinc.org"  
   - "&'Date_of_last_MRI'_does_not_exists"
   - "&is_before_date_'Pending_MRI'_order_or_referral_was_placed"
 eve-pendingus:

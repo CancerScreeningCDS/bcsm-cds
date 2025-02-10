@@ -12,14 +12,27 @@ context Patient
 
 define "eve-pendingorders":
   ActiveBreastCancerScreeningOrders union 
-  CompletedOrdersWithoutSubsequentReport
+  CompletedOrdersWithoutResults
 
 define "eve-pendingprocedures":
-  CompletedProceduresWithoutSubsequentReport
+  CompletedProceduresWithoutResults
+
+define "eve-pendingpathology":
+  IncompleteBreastBiopsyDiagnosticReports  
 
 //------------------------------------------------------------------------------
 // ORDERS
 //------------------------------------------------------------------------------ 
+
+define CompletedOrdersWithoutResults:
+  if not exists DataElements.BreastImagingObservations 
+      and not exists DataElements.BiopsyObservations
+    then CompletedOrdersWithoutSubsequentReport
+  else
+    from CompletedOrdersWithoutSubsequentReport O,
+      (DataElements.BreastImagingObservations union DataElements.BiopsyObservations) Obs
+    where not Exists (Obs.basedOn B where B.reference = 'ServiceRequest/' + O.id)
+    return O
 
 define CompletedOrdersWithoutSubsequentReport:
   CompletedOrdersWithoutDiagnosticReport O
@@ -52,6 +65,17 @@ define BreastCancerScreeningOrders:
 // PROCEDURES
 //------------------------------------------------------------------------------ 
 
+define CompletedProceduresWithoutResults:
+  if not exists DataElements.BreastImagingObservations 
+      and not exists DataElements.BiopsyObservations
+    then CompletedProceduresWithoutSubsequentReport
+  else
+    from CompletedProceduresWithoutSubsequentReport P,
+      (DataElements.BreastImagingObservations union DataElements.BiopsyObservations) Obs
+    where not Exists (Obs.basedOn B where B.reference = 'Procedure/' + P.id)
+    and not Exists( (Obs.basedOn) oB where AnyTrue((P.basedOn) pB return pB = oB ) )
+    return P
+
 define CompletedProceduresWithoutSubsequentReport:
   CompletedProceduresWithoutDiagnosticReport P
   let lastReportDate: LastReportDateByCode(P.code)
@@ -81,6 +105,14 @@ define BreastCancerScreeningOrderedProcedures:
     [Procedure] P
   where Exists (P.basedOn B where B.reference = 'ServiceRequest/' + O.id)
     return P
+
+//------------------------------------------------------------------------------
+// DIAGNOSTIC REPORTS
+//------------------------------------------------------------------------------ 
+
+define IncompleteBreastBiopsyDiagnosticReports:
+  [DiagnosticReport: DataElements."Biopsy Report"] DR where
+    DR.status in {'preliminary', 'registered', 'partial'}
 
 //------------------------------------------------------------------------------
 // Functions
