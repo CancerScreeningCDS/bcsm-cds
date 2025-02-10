@@ -226,6 +226,7 @@ define DiagnosticReportsSummary:
   (
     BreastImagingDiagnosticReportsSummary
     union BiopsyDiagnosticReportsSummary
+    union IncompleteBiopsyDiagnosticReportsSummary
   ) D
   sort by date desc
 
@@ -234,6 +235,9 @@ define BreastImagingDiagnosticReportsSummary:
 
 define BiopsyDiagnosticReportsSummary:
   FormatReports(DataElements.BiopsyDiagnosticReports, DataElements.BiopsyObservations, 'Breast Biopsy')  
+
+define IncompleteBiopsyDiagnosticReportsSummary:
+  FormatReports(ScreeningTestIncomplete.IncompleteScreeningPathology, DataElements.BiopsyObservations, 'Breast Biopsy')    
 
 //------------------------------------------------------------------------------
 // PERTINENT ENCOUNTERS
@@ -272,6 +276,37 @@ define PertinentEpisodesOfCareSummary:
     edited: HasBeenLocallyEdited(E)
   }
   sort by (date as String) desc
+
+
+//------------------------------------------------------------------------------
+// PERTINENT REQUESTS
+//------------------------------------------------------------------------------  
+
+define DueOrOverdueScreeningSummary:
+  (ScreeningDue.DueOrOverdue) R
+    return
+  {
+    name: Common.ConceptText(R.code),
+    intent: R.intent, 
+    occurrence: R.nextDue,
+    flag: R.flag.display,
+    plannedRepeat: R.plannedRepeat
+  }  
+
+define IncompleteScreeningOrdersSummary:
+  (ScreeningTestIncomplete.IncompleteScreeningOrders) R
+    return
+  {
+    name: Common.ConceptText(R.code),
+    intent: R.intent, 
+    occurence: R.occurrence as FHIR.dateTime,
+    flag: null,
+    plannedRepeat: null
+  }      
+
+define PertinentRequestsSummary:
+  DueOrOverdueScreeningSummary union
+    IncompleteScreeningOrdersSummary
 
 //------------------------------------------------------------------------------
 // FUNCTIONS
@@ -314,33 +349,3 @@ define function displayEndDate(endDate String):
     endDate
   else
     'no end date available'
-
-//------------------------------------------------------------------------------
-// PERTINENT REQUESTS
-//------------------------------------------------------------------------------  
-
-define DueOrOverdueScreeningSummary:
-  (ScreeningDue.DueOrOverdue) R
-    return
-  {
-    name: Common.ConceptText(R.code),
-    intent: R.intent, 
-    occurrence: R.nextDue,
-    flag: R.flag.display,
-    plannedRepeat: R.plannedRepeat
-  }  
-
-define IncompleteScreeningOrdersSummary:
-  (ScreeningTestIncomplete.IncompleteScreeningOrders) R
-    return
-  {
-    name: Common.ConceptText(R.code),
-    intent: R.intent, 
-    occurence: R.occurrence as FHIR.dateTime,
-    flag: null,
-    plannedRepeat: null
-  }      
-
-define PertinentRequestsSummary:
-  DueOrOverdueScreeningSummary union
-    IncompleteScreeningOrdersSummary

@@ -13,12 +13,16 @@ context Patient
 define "flow-ScreeningTestIncomplete":
   exists IncompleteScreeningOrders
     or exists IncompleteScreeningProcedures
+    or exists IncompleteScreeningPathology
 
 define IncompleteScreeningOrders:
   Events."eve-pendingorders"  
 
 define IncompleteScreeningProcedures:
   Events."eve-pendingprocedures"
+
+define IncompleteScreeningPathology:
+  Events."eve-pendingpathology"  
 
 //------------------------------------------------------------------------------
 // MEASURE
@@ -32,7 +36,6 @@ define "Denominator":
 
 define "Denominator Exclusion":
   ScreeningEligible.IsNotScreeningEligible
-	//TODO: add Hospice."Has Hospice"
 
 define "Numerator":
   "flow-ScreeningTestIncomplete"  

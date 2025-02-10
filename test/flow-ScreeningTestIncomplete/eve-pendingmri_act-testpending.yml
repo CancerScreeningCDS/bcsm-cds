@@ -1,13 +1,13 @@
 ---
 name: eve-pendingmri_act-testpending
 flow: flow-ScreeningTestIncomplete
-skip: true
+#TODO: activate test once value sets fixed
+skip: true 
 externalData:
   - ../ScreeningTestIncompleteEvents/events
-  - actions
   - ../default_patients
 data:
-  - "*eve-pendingmri"
+  - *defaultPatient
+  - *'Pending_mri'_exists_active
 results:
-  flow-ScreeningTestIncomplete:
-    - "*act-testpending"
+  flow-ScreeningTestIncomplete: true
