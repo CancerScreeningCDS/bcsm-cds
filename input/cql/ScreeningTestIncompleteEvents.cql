@@ -111,8 +111,7 @@ define BreastCancerScreeningOrderedProcedures:
 //------------------------------------------------------------------------------ 
 
 define IncompleteBreastBiopsyDiagnosticReports:
-  [DiagnosticReport: DataElements."Biopsy Report"] DR where
-    DR.status in {'preliminary', 'registered', 'partial'}
+  DataElements.IncompleteBreastBiopsyDiagnosticReports
 
 //------------------------------------------------------------------------------
 // Functions

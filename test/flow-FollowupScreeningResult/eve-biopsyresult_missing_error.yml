@@ -1,0 +1,14 @@
+---
+name: eve-latesttesttype_biopsy_eve-biopsyresult_missing_error
+flow: flow-FollowupScreeningResult
+externalData:
+  - ../FollowupScreeningResultEvents/events
+  - actions
+  - ../default_patients
+data:
+  - *defaultPatient
+  - $import: *null_if_'Last_biopsy'_result_no_conclusion_codes
+results:
+  ErrorBreastBiopsyWithNoConclusionCodes: true
+  Errors: true
+  flow-FollowupScreeningResult: []

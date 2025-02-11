@@ -5,6 +5,7 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 include HighRiskExclusionsEvents version '1.0.0' called Events
 include HighRiskExclusionsActions version '1.0.0' called Actions
+include DataElements version '1.0.0' called DataElements
 include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
 
 context Patient
@@ -68,21 +69,33 @@ define SpecialtyReferralBreastCaWithin5y:
 
 define ACSMammoAtypicalBiopsy:
   if Events."eve-geneticrisk" is false and Events."eve-chestxrt" is false and Events."eve-hxbreastca" is false
-    then if Events."eve-atypicalbx" is true
+    then if "eve-atypicalbx" is true
       then Actions."act-acsmammoatypicalbx" else null
     else null       
 
 define ACSAtypicalBiopsy:
   if Events."eve-geneticrisk" is false and Events."eve-chestxrt" is false and Events."eve-hxbreastca" is false
-    then if Events."eve-atypicalbx" is true and Events."eve-highlifetimerisk" is false and Events."eve-nolifetimerisk" is true
+    then if "eve-atypicalbx" is true and Events."eve-highlifetimerisk" is false and Events."eve-nolifetimerisk" is true
       then Actions."act-acsatypicalbx" else null
     else null       
 
 define ACSMriAtypicalBiopsyHighRisk:
   if Events."eve-geneticrisk" is false and Events."eve-chestxrt" is false and Events."eve-hxbreastca" is false
-    then if Events."eve-atypicalbx" is true and Events."eve-highlifetimerisk" is true
+    then if "eve-atypicalbx" is true and Events."eve-highlifetimerisk" is true
       then Actions."act-acsmriatypicalbx" else null
     else null       
+
+//------------------------------------------------------------------------------
+// ERRORS
+//------------------------------------------------------------------------------     
+
+//TODO: add error codes to IG
+define "eve-atypicalbx":  
+  Message(Events."eve-atypicalbx", 
+    DataElements.BiopsyDiagnosticReportsWithNoConclusionCodes,
+    'http://example.org/CodeSystem/plan-definition-action-reason-code-system/missingresultcode',
+    'Warning', 
+    'A laboratory test was found without a result. Please review patient record to resolve.')      
 
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES

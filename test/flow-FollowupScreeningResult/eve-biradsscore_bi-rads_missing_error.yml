@@ -1,0 +1,14 @@
+---
+name: eve-latesttesttype_mammogram__bi-rads_missing_error
+flow: flow-FollowupScreeningResult
+externalData:
+  - ../FollowupScreeningResultEvents/events
+  - actions
+  - ../default_patients
+data:
+  - *defaultPatient
+  - $import: *BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_missing
+results:
+  ErrorBreastImagingWithNoConclusionCodes: true
+  Errors: true
+  flow-FollowupScreeningResult: []

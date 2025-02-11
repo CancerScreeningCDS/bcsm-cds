@@ -83,7 +83,7 @@ code "Male-to-female Transsexual": '407376001' from "SNOMED-CT" display 'Male-to
 code "Left (qualifier value)": '7771000' from "SNOMED-CT" display 'Left (qualifier value)'
 code "Right (qualifier value)": '24028007' from "SNOMED-CT" display 'Right (qualifier value)'
 code "History of radiation therapy to chest": '77941000119104' from "SNOMED-CT" display 'History of radiation therapy to chest'
-code "Biopsy Report": '66110-8' from "LOINC" display 'Breast Pathology biopsy report'
+code "Breast Pathology biopsy report": '66110-8' from "LOINC" display 'Breast Pathology biopsy report'
 code "Breast Imaging Report": '10193-1' from "LOINC" display 'Physical findings of Breasts Narrative'
 code "Heterogeneously dense": 'HeterogeneouslyDense' from "MGBreastDensityCS" display 'Heterogeneously dense'
 code "Extremely dense": 'ExtremelyDense' from "MGBreastDensityCS" display 'Extremely dense'
@@ -547,7 +547,7 @@ define MostRecentAtypicalBiopsyResultDate:
 define AtypicalBiopsyResults:
   BiopsyDiagnosticReports D
     let cC: BCSMCommon.CollateConclusionCodes(D,BiopsyObservations)
-    where cC in "Biopsy Atypical Results"
+    where cC in "Biopsy Atypical Results"   
 
 //------------------------------------------------------------------------------
 // High lifetime risk
@@ -754,7 +754,7 @@ define MostRecentPersonalRiskFactorAssessment:
   C3F.MostRecent([Observation: "Personal risk factors conferring increased risk of breast cancer"])       
 
 //------------------------------------------------------------------------------
-// Latest screening test type
+// Latest screening test
 //------------------------------------------------------------------------------  
 
 define BreastCancerScreeningDiagnosticReports:
@@ -767,12 +767,32 @@ define AllCompletedDiagnosticReport:
 define MostRecentBreastImagingDiagnosticReport:
   Common.MostRecentDiagnosticReport(BreastImagingDiagnosticReports)
 
+define MostRecentBreastImagingDiagnosticReportNoConclusionCodes:
+  MostRecentBreastImagingDiagnosticReport is not null and
+    not Exists(BCSMCommon.CollateConclusionCodes(
+      MostRecentBreastImagingDiagnosticReport,
+      BreastImagingObservations,
+      "Breast Imaging Report"))  
+
 define BreastImagingDiagnosticReports:
-  AllCompletedDiagnosticReport B
-  where 
-    Count(
-      BCSMCommon.CollateConclusionCodes(B, BreastImagingObservations, "Breast Imaging Report")
-    ) > 0
+  distinct(
+    (AllCompletedDiagnosticReport B
+      where 
+        Count(
+          BCSMCommon.CollateConclusionCodes(B, BreastImagingObservations, "Breast Imaging Report")
+        ) > 0)
+    union CompleteBreastImagingDiagnosticReports
+  )
+
+define ImagingDiagnosticReportsWithNoConclusionCodes:
+  Exists(BreastImagingDiagnosticReports) and
+    AnyTrue(
+      (BiopsyDiagnosticReports) D 
+      return not Exists(BCSMCommon.CollateConclusionCodes(D,BreastImagingObservations,"Breast Imaging Report"))
+  )
+
+define CompleteBreastImagingDiagnosticReports:
+  Common.CompletedDiagnosticReport([DiagnosticReport: "Breast Imaging Report"]) 
 
 define BreastImagingObservations:
   [Observation: "Breast Imaging Report"]   
@@ -781,13 +801,37 @@ define BreastImagingObservations:
 define MostRecentBreastBiopsyDiagnosticReport:
   Common.MostRecentDiagnosticReport(BiopsyDiagnosticReports)
 
+define MostRecentBreastBiopsyDiagnosticReportNoConclusionCodes:
+  MostRecentBreastBiopsyDiagnosticReport is not null and
+    not Exists(BCSMCommon.CollateConclusionCodes(
+      MostRecentBreastBiopsyDiagnosticReport,
+      BiopsyObservations,
+      "Breast Pathology biopsy report"))   
+
 define BiopsyDiagnosticReports:
-  AllCompletedDiagnosticReport B
-  where 
-    Count(
-      BCSMCommon.CollateConclusionCodes(B, BiopsyObservations, "Biopsy Report")
-    ) > 0
+  distinct(
+    (AllCompletedDiagnosticReport B
+      where 
+        Count(
+          BCSMCommon.CollateConclusionCodes(B, BiopsyObservations, "Breast Pathology biopsy report")
+        ) > 0 ) 
+    union CompleteBreastBiopsyDiagnosticReports
+  )
+
+define BiopsyDiagnosticReportsWithNoConclusionCodes:
+  Exists(BiopsyDiagnosticReports) and
+    AnyTrue(
+      (BiopsyDiagnosticReports) D 
+      return not Exists(BCSMCommon.CollateConclusionCodes(D,BiopsyObservations,"Breast Pathology biopsy report"))
+  )
+
+define CompleteBreastBiopsyDiagnosticReports:
+  Common.CompletedDiagnosticReport([DiagnosticReport: "Breast Pathology biopsy report"])      
+
+define IncompleteBreastBiopsyDiagnosticReports:
+  [DiagnosticReport: "Breast Pathology biopsy report"] DR where
+    DR.status in {'preliminary', 'registered', 'partial'}  
 
 // TODO: should report observation code be a value set?
 define BiopsyObservations:
-  [Observation: "Biopsy Report"]    
+  [Observation: "Breast Pathology biopsy report"]      

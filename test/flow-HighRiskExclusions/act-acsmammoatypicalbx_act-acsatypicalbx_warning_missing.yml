@@ -1,0 +1,16 @@
+---
+name: act-acsmammoatypicalbx_act-acsatypicalbx_warning_missing
+flow: flow-HighRiskExclusions
+externalData:
+  - ../HighRiskExclusionsEvents/events
+  - ../HighRiskExclusionsActions/actions
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *defaultPatient
+  - *'High-risk_benign_breast_lesion_on_previous_biopsies'_is_TRUE
+  - *Previous_biopsies_include_conclusion_missing  
+results:
+  flow-HighRiskExclusions:
+    - *act-acsmammoatypicalbx
+    - *act-acsatypicalbx

@@ -72,6 +72,7 @@ act-acsgeneticriskmri:
   - "&Next_due_date_=_'Date_of_last_MRI'_plus_1_year__if_exists"
   - "&Next_due_date_=_'Date_of_last_mammography'_plus_1_year__if_exists"
   - "&Next_due_date_=_Now_if_'Last_MRI'_and_'Last_mammography'_do_not_exist"
+
 act-acsintriskmammo:
   - "&Next_due_date_=_'Date_of_last_mammography'_plus_1_year__OR_Next_due_date_=_Now_if_'Last_mammography'_does_not_exist"
   - "&Next_due_date_=_'Date_of_last_mammography'_plus_1_year_"
@@ -476,5 +477,18 @@ act-acsmriatypicalbx:
       code: overdue
       display: "Overdue"
       system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"        
+
+act-acsatypicalbx:
+  - &act-acsatypicalbx
+    code:
+      code: "lifetimeriskassessment"
+      display: "Perform lifetime risk assessment"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"
+    documentation:
+      label: ACS
+    reason:
+      code: "atypicalbx"
+      display: "Atypical biopsy"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
 
 act-noexclusions: &act-noexclusions []
