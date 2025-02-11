@@ -11,11 +11,9 @@ context Patient
 
 define "flow-FollowupScreeningResult":
   {    
-    FollowupNonactionableBiradsResult,
     FollowupBirads0Result,
     FollowupBirads3Result,
     FollowupBirads4Or5Result,
-    FollowupNegativeBiopsyResult,
     FollowupBenignBiopsyResult,
     FollowupAtypicalBiopsyResult,
     FollowupMalignantBiopsyResult,
@@ -26,59 +24,48 @@ define "flow-FollowupScreeningResult":
 
 
 // TODO: add FSH conditional and dynamicValue accessors
-define FollowupNonactionableBiradsResult:
-  if Events."eve-latesttesttype" = 'imaging' and Events."eve-actionablebirads" is false
-  then Actions."act-updateduedate"
-  else null
 
 define FollowupBirads0Result:
-  if Events."eve-latesttesttype" = 'imaging' and Events."eve-biradsscore" ~ Events."Category0"
+  if Events."eve-latesttest".result ~ Events."Category0"
   then Actions."act-incompletescreen"
   else null 
 
 define FollowupBirads3Result:
-  if Events."eve-latesttesttype" = 'imaging' and Events."eve-biradsscore" ~ Events."Category3"
+  if Events."eve-latesttest".result ~ Events."Category3"
   then Actions."act-intervalscreen"
   else null 
 
 define FollowupBirads4Or5Result:
-  if Events."eve-latesttesttype" = 'imaging' and 
-    Events."eve-biradsscore" ~ Events."Category4" or
-    Events."eve-biradsscore" ~ Events."Category4A" or
-    Events."eve-biradsscore" ~ Events."Category4B" or
-    Events."eve-biradsscore" ~ Events."Category4C"
+  if Events."eve-latesttest".result ~ Events."Category4" or
+    Events."eve-latesttest".result ~ Events."Category4A" or
+    Events."eve-latesttest".result ~ Events."Category4B" or
+    Events."eve-latesttest".result ~ Events."Category4C"
   then Actions."act-biopsy4"
-  else if Events."eve-latesttesttype" = 'imaging' and
-    Events."eve-biradsscore" ~ Events."Category5"
+  else if Events."eve-latesttest".result ~ Events."Category5"
   then Actions."act-biopsy5"
   else null  
 
-define FollowupNegativeBiopsyResult:
-  if Events."eve-latesttesttype" = 'biopsy' and Events."eve-biopsyresult" ~ Events."Negative"
-  then Actions."act-updateduedate"
-  else null
-
 define FollowupBenignBiopsyResult:
-  if Events."eve-latesttesttype" = 'biopsy' and Events."eve-biopsyresult" ~ Events."Benign"
+  if Events."eve-latesttest".result ~ Events."Benign"
   then Actions."act-benignbiopsy"
   else null 
 
 define FollowupAtypicalBiopsyResult:
-  if Events."eve-latesttesttype" = 'biopsy' and Events."eve-biopsyresult" ~ Events."Atypical"
+  if Events."eve-latesttest".result ~ Events."Atypical"
   then Actions."act-highriskreferral"
   else null 
 
 define FollowupMalignantBiopsyResult:
-  if Events."eve-latesttesttype" = 'biopsy' and Events."eve-biopsyresult" ~ Events."Malignant"
+  if Events."eve-latesttest".result ~ Events."Malignant"
   then Actions."act-oncreferral"
   else null 
 
 define FollowupIndeterminateBiopsyResult:
-  if Events."eve-latesttesttype" = 'biopsy' and Events."eve-biopsyresult" ~ Events."Indeterminate"
+  if Events."eve-latesttest".result ~ Events."Indeterminate"
   then Actions."act-indeterminatebiopsy"
   else null 
 
 define FollowupDiscordantBiopsyResult:
-  if Events."eve-latesttesttype" = 'biopsy' and Events."eve-biopsyresult" ~ Events."Discordant"
+  if Events."eve-latesttest".result ~ Events."Discordant"
   then Actions."act-discordantbiopsy"
   else null   
