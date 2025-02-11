@@ -60,8 +60,7 @@ valueset "OVARIAN CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.1138
 valueset "TUBAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
 // TODO: replace placeholder value set OID
 valueset "PERITONEAL CANCER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
-// TODO: replace placeholder value set OID
-valueset "BREAST SYMPTOMS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.73'
+valueset "BREAST SYMPTOMS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374'
 valueset "FIRST DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
 // TODO: replace placeholder value set OID
 valueset "SECOND DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
@@ -732,8 +731,7 @@ define "FamilyMemberBreastOvarianTubalPeritonealCancerCondition":
   [FamilyMemberHistory] F
     let
       CancerConditions: F.condition C
-        where C.code in "INVASIVE BREAST CANCER" or
-              C.code in "NON-INVASIVE BREAST CANCER" or
+        where C.code in "BREAST CANCER" or
               C.code in "OVARIAN CANCER" or
               C.code in "TUBAL CANCER" or
               C.code in "PERITONEAL CANCER"
