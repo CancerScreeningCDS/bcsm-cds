@@ -17,9 +17,7 @@ code "Determine next due date": 'determinenextdue' from "ActCode" display 'Deter
 code "Follow-up radiologist recommendations": 'radiologyrecs' from "ActCode" display 'Follow-up radiologist recommendations'
 code "Order interval imaging": 'intervalscreen' from "ActCode" display 'Order interval imaging'
 code "Breast biopsy": 'breastbiopsy' from  "ActCode" display 'Breast biopsy'
-code "High risk referral": 'highriskreferral' from  "ActCode" display 'High risk referral'
-code "Indeterminate breast biopsy referral": 'indeterminatebreastbiopsy' from  "ActCode" display 'Indeterminate breast biopsy referral'
-code "Discordant breast biopsy referral": 'discordantbreastbiopsy' from  "ActCode" display 'Discordant breast biopsy referral'
+code "Breast surgeon referral": 'surgicalreferral' from  "ActCode" display 'Breast surgeon referral'
 code "Oncologic referral": 'oncreferral' from  "ActCode" display 'Oncologic referral'
 // Reason Codes
 code "Category0": '397138000' from "SNOMED-CT" display 'Mammography assessment (Category 0) - Need additional imaging evaluation (finding)'
@@ -72,21 +70,21 @@ define "act-benignbiopsy":
 
 define "act-highriskreferral":
   BCSMCommonFunctions.SetFollowupRecommendation(
-    "High risk referral", 
+    "Breast surgeon referral", 
     "Atypical", 
     BCSMCommonFunctions.SourceDocumentationOther, 
     Events.LatestTest.date)    
 
 define "act-indeterminatebiopsy":
   BCSMCommonFunctions.SetFollowupRecommendation(
-    "Indeterminate breast biopsy referral", 
+    "Breast surgeon referral", 
     "Indeterminate", 
     BCSMCommonFunctions.SourceDocumentationOther, 
     Events.LatestTest.date)    
 
 define "act-discordantbiopsy":
   BCSMCommonFunctions.SetFollowupRecommendation(
-    "Discordant breast biopsy referral", 
+    "Breast surgeon referral", 
     "Discordant", 
     BCSMCommonFunctions.SourceDocumentationOther, 
     Events.LatestTest.date)    

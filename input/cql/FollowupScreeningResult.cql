@@ -83,7 +83,9 @@ define Errors:
     ErrorBreastImagingWithNoConclusionCodes or
     ErrorDiagnosticReportWithUnsupportedConclusionCode
 
-//TODO: add error codes to IG
+define NoErrorsHaveOccurred:
+  not Errors
+
 define ErrorBreastBiopsyWithNoConclusionCodes:
   Events."eve-latesttest".type = 'biopsy' and 
   Message(DataElements.MostRecentBreastBiopsyDiagnosticReportNoConclusionCodes, 
@@ -112,3 +114,148 @@ define ErrorDiagnosticReportWithUnsupportedConclusionCode:
 //------------------------------------------------------------------------------    
 
 // TODO: add FSH conditional and dynamicValue accessors
+define ExistsFollowupBirads0Result:
+  FollowupBirads0Result is not null
+
+define FollowupBirads0ResultCode:    
+  FollowupBirads0Result R return R.code
+
+define FollowupBirads0ResultReason:  
+  FollowupBirads0Result R return R.reason
+
+define FollowupBirads0ResultTiming:    
+  FollowupBirads0Result R return R.timingTiming
+
+define FollowupBirads0ResultTimingEvent:    
+  FollowupBirads0ResultTiming R return First(R.event)
+
+define FollowupBirads0ResultFlag:
+  FollowupBirads0Result R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)  
+
+define ExistsFollowupBirads3Result:
+  FollowupBirads3Result is not null
+
+define FollowupBirads3ResultCode:    
+  FollowupBirads3Result R return R.code
+
+define FollowupBirads3ResultReason:  
+  FollowupBirads3Result R return R.reason
+
+define FollowupBirads3ResultTiming:    
+  FollowupBirads3Result R return R.timingTiming
+
+define FollowupBirads3ResultTimingEvent:    
+  FollowupBirads3ResultTiming R return First(R.event)
+
+define FollowupBirads3ResultFlag:
+  FollowupBirads3Result R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
+
+define ExistsFollowupBirads4Or5Result:
+  FollowupBirads4Or5Result is not null
+
+define FollowupBirads4Or5ResultCode:    
+  FollowupBirads4Or5Result R return R.code
+
+define FollowupBirads4Or5ResultReason:  
+  FollowupBirads4Or5Result R return R.reason
+
+define FollowupBirads4Or5ResultTiming:    
+  FollowupBirads4Or5Result R return R.timingTiming
+
+define FollowupBirads4Or5ResultTimingEvent:    
+  FollowupBirads4Or5ResultTiming R return First(R.event)
+
+define FollowupBirads4Or5ResultFlag:
+  FollowupBirads4Or5Result R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
+
+define ExistsFollowupBenignBiopsyResult:
+  FollowupBenignBiopsyResult is not null
+
+define FollowupBenignBiopsyResultCode:    
+  FollowupBenignBiopsyResult R return R.code
+
+define FollowupBenignBiopsyResultReason:  
+  FollowupBenignBiopsyResult R return R.reason
+
+define FollowupBenignBiopsyResultTiming:    
+  FollowupBenignBiopsyResult R return R.timingTiming
+
+define FollowupBenignBiopsyResultTimingEvent:    
+  FollowupBenignBiopsyResultTiming R return First(R.event)
+
+define FollowupBenignBiopsyResultFlag:
+  FollowupBenignBiopsyResult R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
+
+define ExistsFollowupAtypicalBiopsyResult:
+  FollowupAtypicalBiopsyResult is not null
+
+define FollowupAtypicalBiopsyResultCode:    
+  FollowupAtypicalBiopsyResult R return R.code
+
+define FollowupAtypicalBiopsyResultReason:  
+  FollowupAtypicalBiopsyResult R return R.reason
+
+define FollowupAtypicalBiopsyResultTiming:    
+  FollowupAtypicalBiopsyResult R return R.timingTiming
+
+define FollowupAtypicalBiopsyResultTimingEvent:    
+  FollowupAtypicalBiopsyResultTiming R return First(R.event)
+
+define FollowupAtypicalBiopsyResultFlag:
+  FollowupAtypicalBiopsyResult R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
+
+define ExistsFollowupMalignantBiopsyResult:
+  FollowupMalignantBiopsyResult is not null
+
+define FollowupMalignantBiopsyResultCode:    
+  FollowupMalignantBiopsyResult R return R.code
+
+define FollowupMalignantBiopsyResultReason:  
+  FollowupMalignantBiopsyResult R return R.reason
+
+define FollowupMalignantBiopsyResultTiming:    
+  FollowupMalignantBiopsyResult R return R.timingTiming
+
+define FollowupMalignantBiopsyResultTimingEvent:    
+  FollowupMalignantBiopsyResultTiming R return First(R.event)
+
+define FollowupMalignantBiopsyResultFlag:
+  FollowupMalignantBiopsyResult R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
+
+define ExistsFollowupIndeterminateBiopsyResult:
+  FollowupIndeterminateBiopsyResult is not null
+
+define FollowupIndeterminateBiopsyResultCode:    
+  FollowupIndeterminateBiopsyResult R return R.code
+
+define FollowupIndeterminateBiopsyResultReason:  
+  FollowupIndeterminateBiopsyResult R return R.reason
+
+define FollowupIndeterminateBiopsyResultTiming:    
+  FollowupIndeterminateBiopsyResult R return R.timingTiming
+
+define FollowupIndeterminateBiopsyResultTimingEvent:    
+  FollowupIndeterminateBiopsyResultTiming R return First(R.event)
+
+define FollowupIndeterminateBiopsyResultFlag:
+  FollowupIndeterminateBiopsyResult R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
+
+define ExistsFollowupDiscordantBiopsyResult:
+  FollowupDiscordantBiopsyResult is not null
+
+define FollowupDiscordantBiopsyResultCode:    
+  FollowupDiscordantBiopsyResult R return R.code
+
+define FollowupDiscordantBiopsyResultReason:  
+  FollowupDiscordantBiopsyResult R return R.reason
+
+define FollowupDiscordantBiopsyResultTiming:    
+  FollowupDiscordantBiopsyResult R return R.timingTiming
+
+define FollowupDiscordantBiopsyResultTimingEvent:    
+  FollowupDiscordantBiopsyResultTiming R return First(R.event)
+
+define FollowupDiscordantBiopsyResultFlag:
+  FollowupDiscordantBiopsyResult R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
+
+

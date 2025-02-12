@@ -89,7 +89,6 @@ define ACSMriAtypicalBiopsyHighRisk:
 // ERRORS
 //------------------------------------------------------------------------------     
 
-//TODO: add error codes to IG
 define "eve-atypicalbx":  
   Message(Events."eve-atypicalbx", 
     DataElements.BiopsyDiagnosticReportsWithNoConclusionCodes,

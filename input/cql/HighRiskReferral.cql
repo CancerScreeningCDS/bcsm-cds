@@ -109,7 +109,6 @@ define HighRiskAssessment:
 // ERRORS
 //------------------------------------------------------------------------------     
 
-//TODO: add error codes to IG
 define "eve-atypicalbxpop":  
   Message(Events."eve-atypicalbxpop", 
     DataElements.BiopsyDiagnosticReportsWithNoConclusionCodes,

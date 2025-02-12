@@ -34,8 +34,8 @@ define "eve-latesttest":
   LatestTest
 
 define "eve-actionablebirads":
-  (LatestTest.result ~ "Category1" or 
-    LatestTest.result ~ "Category2") is false
+  LatestTest.result !~ "Category1" and 
+    LatestTest.result !~ "Category2"
 
 // TODO: error handling for cases where report has no result annotations
 define "eve-biradsscore":
@@ -101,7 +101,7 @@ define function BreastImagingBiradsResult(report DiagnosticReport):
 
 define function BreastBiopsyResult(report DiagnosticReport):
   report D
-    let cC: BCSMCommon.CollateConclusionCodes(D,DataElements.BiopsyObservations,FHIRHelpers.ToCode(First(D.code.coding)))
+    let cC: BCSMCommon.CollateConclusionCodes(D,DataElements.BiopsyObservations)
     return First(
       cC.coding C
         let c: FHIRHelpers.ToCode(C)
