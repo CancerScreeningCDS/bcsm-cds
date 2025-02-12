@@ -1,0 +1,90 @@
+{
+  "resourceType": "Bundle",
+  "id": "FollowupScreeningResult_eve-latesttesttype_mammogram__bi-rads_missing_error",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/333",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "333",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "created": "2024-12-10T00:00:00.0Z",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/334"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/334",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "334",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/cqf-messages",
+            "valueReference": {
+              "reference": "#contained-1"
+            }
+          }
+        ],
+        "contained": [
+          {
+            "resourceType": "OperationOutcome",
+            "issue": [
+              {
+                "severity": "warning",
+                "code": "processing",
+                "diagnostics": "An imaging test was found without a result. Please review patient record to resolve.",
+                "details": {
+                  "coding": [
+                    {
+                      "system": "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+                      "code": "missingresultcode"
+                    }
+                  ]
+                }
+              },
+              {
+                "severity": "warning",
+                "code": "processing",
+                "diagnostics": "A laboratory test was found with an unexpected result code. Please review patient record to resolve.",
+                "details": {
+                  "coding": [
+                    {
+                      "system": "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+                      "code": "unknownresultcode"
+                    }
+                  ]
+                }
+              }
+            ],
+            "id": "contained-1"
+          }
+        ]
+      }
+    }
+  ]
+}
