@@ -87,7 +87,7 @@ define HighRiskReferralChestXRT:
   then Actions."act-HighRiskReferralChestXRT" else null
 
 define HighRiskReferralAtypicalBiopsy:  
-  if Events."eve-ageAny" and Events."eve-atypicalbxpop"
+  if Events."eve-ageAny" and "eve-atypicalbxpop"
   then Actions."act-HighRiskReferralAtypicalBiopsy" else null
 
 define HighRiskReferral5YRiskHigh:
@@ -104,6 +104,17 @@ define HighRiskAssessment:
     Events."eve-ageAtLeast35" and (Events."eve-fhxbrca" or Events."eve-personalriskfactors")
     and DataElements."MostRecent5YrRiskAssessment" is null
   then {Actions."act-5YRiskAssessment",Actions."act-5YRiskAssessmentTool"} else null
+
+//------------------------------------------------------------------------------
+// ERRORS
+//------------------------------------------------------------------------------     
+
+define "eve-atypicalbxpop":  
+  Message(Events."eve-atypicalbxpop", 
+    DataElements.BiopsyDiagnosticReportsWithNoConclusionCodes,
+    'http://example.org/CodeSystem/plan-definition-action-reason-code-system/missingresultcode',
+    'Warning', 
+    'A laboratory test was found without a result. Please review patient record to resolve.')    
 
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES

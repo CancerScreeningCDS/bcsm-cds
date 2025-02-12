@@ -1,0 +1,14 @@
+---
+name: eve-latesttesttype_biopsy_eve-biopsyresult_uknown_error
+flow: flow-FollowupScreeningResult
+externalData:
+  - ../FollowupScreeningResultEvents/events
+  - actions
+  - ../default_patients
+data:
+  - *defaultPatient
+  - $import: *unknown_if_'Last_biopsy'_result_is_unknown
+results:
+  ErrorDiagnosticReportWithUnsupportedConclusionCode: true
+  Errors: true
+  flow-FollowupScreeningResult: []

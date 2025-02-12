@@ -1,0 +1,126 @@
+{
+  "resourceType": "Bundle",
+  "id": "FollowupScreeningResult_eve-latesttesttype_mammogram__bi-rads_3_act-intervalscreen",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/325",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "325",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "created": "2024-12-10T00:00:00.0Z",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/326"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/326",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "326",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "FollowupBirads3Result",
+            "title": "Refer to Radiologist recommendations",
+            "description": "Probably benign finding. Refer to Radiologist recommendations for interval imaging in BI-RADS 3 screening results.\n\nPeriodic monitoring, including diagnostic mammogram or ultrasound, is warranted to assess for changes. Monitoring may be recommended at 6, 12 and 24 months until the finding is felt to be stable or resolving or is transitioned to a higher BI-RADS categorization.",
+            "resource": {
+              "reference": "ServiceRequest/327"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "intervalscreen",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Order interval imaging"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2024-10-01T10:00:00.000+00:00"
+              ]
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "due",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Due"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/327",
+      "resource": {
+        "id": "327",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "intervalscreen",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "Order interval imaging"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "397143007",
+                "system": "http://snomed.info/sct",
+                "display": "Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2024-10-01T10:00:00.000+00:00"
+      }
+    }
+  ]
+}

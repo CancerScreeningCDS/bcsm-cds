@@ -20,9 +20,16 @@ act-incompletescreen:
     documentation:
       label: Other
     reason:
-      code: 'RDE1586_category0IncompleteNeedAdditionalImaging'
-      system: 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE'
-      display: 'category0needadditionalimaging'
+      code: '397138000'
+      system: 'http://snomed.info/sct'
+      display: 'Mammography assessment (Category 0) - Need additional imaging evaluation (finding)'
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"        
 
 act-intervalscreen:
   - &act-intervalscreen
@@ -33,9 +40,16 @@ act-intervalscreen:
     documentation:
       label: Other
     reason:
-      code: 'RDE1586_category3ProbablyBenignFinding'
-      system: 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE'
-      display: 'category3,probablybenignfinding'
+      code: '397143007'
+      system: 'http://snomed.info/sct'
+      display: 'Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)'
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"        
 
 act-biopsy4:
   - &act-biopsy4
@@ -46,9 +60,16 @@ act-biopsy4:
     documentation:
       label: Other
     reason:
-      code: 'RDE1586_category4SuspiciousAbnormality'
-      system: 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE'
-      display: 'category4,suspiciousabnormality'
+      code: '397144001'
+      system: 'http://snomed.info/sct'
+      display: 'Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)'
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"        
 
 act-biopsy5:
   - &act-biopsy5
@@ -59,48 +80,76 @@ act-biopsy5:
     documentation:
       label: Other
     reason:
-      code: 'RDE1586_category5HighlySuggestiveOfMalignancy'
-      system: 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE'
-      display: 'category5,highlysuggestiveofmalignancy'      
+      code: '397145000'
+      system: 'http://snomed.info/sct'
+      display: 'Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)'      
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"        
 
 act-highriskreferral:
   - &act-highriskreferral
     code:
-      code: 'highriskreferral'
+      code: 'surgicalreferral'
       system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-      display: 'High risk referral'
+      display: 'Breast surgeon referral'
     documentation:
       label: Other
     reason:
       code: 'Atypical'
       system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
       display: 'Atypical breast finding' 
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"  
 
 act-indeterminatebiopsy:
   - &act-indeterminatebiopsy
     code:
-      code: 'indeterminatebreastbiopsy'
+      code: 'surgicalreferral'
       system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-      display: 'Indeterminate breast biopsy referral'
+      display: "Breast surgeon referral"
     documentation:
       label: Other
     reason:
       code: 'Indeterminate'
       system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
       display: 'Indeterminate breast finding' 
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"  
 
 act-discordantbiopsy:
   - &act-discordantbiopsy
     code:
-      code: 'discordantbreastbiopsy'
+      code: 'surgicalreferral'
       system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
-      display: 'Discordant breast biopsy referral'
+      display: "Breast surgeon referral"
     documentation:
       label: Other
     reason:
       code: 'Discordant'
       system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
       display: 'Discordant breast finding'
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"  
 
 act-oncreferral:
   - &act-oncreferral
@@ -114,5 +163,11 @@ act-oncreferral:
       code: 'Malignant'
       system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
       display: 'Malignant breast finding'
-
+    timingTiming:
+      event:
+        - "2024-10-01T10:00:00.000+00:00"   
+    flag:
+      code: "due"
+      display: "Due"
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"  
 

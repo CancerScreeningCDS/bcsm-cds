@@ -41,11 +41,11 @@ define CompletedOrdersWithoutSubsequentReport:
     or LastReportNotAfterOccurrencePeriod(O.occurrence as FHIR.Period, lastReportDate)    
 
 define CompletedOrdersWithoutDiagnosticReport:
-  if not exists DataElements.BreastCancerScreeningDiagnosticReports
+  if not exists DataElements.CompletedBreastCancerScreeningDiagnosticReports
     then CompletedBreastCancerScreeningOrders
   else
     from CompletedBreastCancerScreeningOrders O,
-      DataElements.BreastCancerScreeningDiagnosticReports DR
+      DataElements.CompletedBreastCancerScreeningDiagnosticReports DR
     where not Exists (DR.basedOn B where B.reference = 'ServiceRequest/' + O.id)
     return O
 
@@ -58,7 +58,7 @@ define ActiveBreastCancerScreeningOrders:
     where O.status in {'active'}
 
 define BreastCancerScreeningOrders:
-  [ServiceRequest: DataElements."BREAST CANCER SCREENING ORDERS"] O
+  ([ServiceRequest: DataElements."BREAST CANCER IMAGING ORDERS"] union [ServiceRequest: DataElements."BREAST CANCER BIOPSY ORDERS"]) O
     where O.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}    
 
 //------------------------------------------------------------------------------
@@ -83,11 +83,11 @@ define CompletedProceduresWithoutSubsequentReport:
     or LastReportNotAfterOccurrencePeriod(P.performed as FHIR.Period, lastReportDate)    
 
 define CompletedProceduresWithoutDiagnosticReport:
-  if not exists DataElements.BreastCancerScreeningDiagnosticReports
+  if not exists DataElements.CompletedBreastCancerScreeningDiagnosticReports
     then CompletedBreastCancerScreeningProcedures
   else
     from CompletedBreastCancerScreeningProcedures P,
-      DataElements.BreastCancerScreeningDiagnosticReports DR
+      DataElements.CompletedBreastCancerScreeningDiagnosticReports DR
     where not Exists (DR.basedOn B where B.reference = 'Procedure/' + P.id)
     return P
 
@@ -98,7 +98,8 @@ define CompletedBreastCancerScreeningProcedures:
 define BreastCancerScreeningProcedures:
   BreastCancerScreeningOrderedProcedures union
   [Procedure] P
-    where P.code in DataElements."BREAST CANCER SCREENING ORDERS"
+    where P.code in DataElements."BREAST CANCER IMAGING ORDERS"
+     or P.code in DataElements."BREAST CANCER BIOPSY ORDERS"
 
 define BreastCancerScreeningOrderedProcedures:
   from CompletedBreastCancerScreeningOrders O,
@@ -111,8 +112,7 @@ define BreastCancerScreeningOrderedProcedures:
 //------------------------------------------------------------------------------ 
 
 define IncompleteBreastBiopsyDiagnosticReports:
-  [DiagnosticReport: DataElements."Biopsy Report"] DR where
-    DR.status in {'preliminary', 'registered', 'partial'}
+  DataElements.IncompleteBreastBiopsyDiagnosticReports
 
 //------------------------------------------------------------------------------
 // Functions

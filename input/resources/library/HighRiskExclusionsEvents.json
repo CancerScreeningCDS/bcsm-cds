@@ -117,6 +117,10 @@
     "resource": "http://loinc.org"
   }, {
     "type": "depends-on",
+    "display": "Code system BiopsyResultCS",
+    "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+  }, {
+    "type": "depends-on",
     "display": "Code system ActCode",
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"
   }, {
@@ -314,6 +318,18 @@
     "type": "DiagnosticReport",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/DiagnosticReport" ],
     "mustSupport": [ "status", "status.value", "reference" ]
+  }, {
+    "type": "DiagnosticReport",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/DiagnosticReport" ],
+    "mustSupport": [ "code", "status", "status.value", "reference" ],
+    "codeFilter": [ {
+      "path": "code",
+      "code": [ {
+        "system": "http://loinc.org",
+        "code": "66110-8",
+        "display": "Breast Pathology biopsy report"
+      } ]
+    } ]
   } ],
   "content": [ {
     "contentType": "text/cql",

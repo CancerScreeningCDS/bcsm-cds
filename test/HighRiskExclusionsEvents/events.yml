@@ -67,9 +67,22 @@ eve-hxbreastcawithin5y:
 eve-atypicalbx:
   - &'High-risk_benign_breast_lesion_on_previous_biopsies'_is_TRUE
     *PATHOLOGY_REPORT_of_type_`BREAST_BIOPSY`_includes_conclusion_of_pre-malignant_or_high-risk_lesions
+  - &Previous_biopsies_include_conclusion_missing
+    resourceType: DiagnosticReport
+    status: final
+    code:
+      coding:
+        - system: http://loinc.org
+          code: 66110-8
+          display: "Biopsy Report"
+    effectiveDateTime: 2024-10-01T10:00:00Z  
+    basedOn:
+      - reference: "ServiceRequest/order-1"      
+
 eve-highlifetimerisk:
   - &'Lifetime_risk_of_breast_cancer_>_20%_or_25%'
     *Risk_assessment_using_a_formal_risk_assessment_tool_based_mainly_on_family_history_is_>20%_lifetime_risk
+
 eve-acsgeneticrisk:
   - &'Genetic_marker_or_syndrome_associated_with_a_high_risk_of_breast_cancer_as_defined_by_ACS'_is_TRUE
     *CONDITIONS_include_`BRCA-1_MUTATION_CONDITION`

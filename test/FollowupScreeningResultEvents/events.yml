@@ -5,14 +5,14 @@ eve-latesttesttype:
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category0IncompleteNeedAdditionalImaging      
-            display: category0needadditionalimaging 
+          - system:  http://snomed.info/sct
+            code: '397138000'      
+            display: Mammography assessment (Category 0) - Need additional imaging evaluation (finding) 
     - resourceType: DiagnosticReport
       status: final
       code:
@@ -43,14 +43,14 @@ eve-latesttesttype:
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-09-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category0IncompleteNeedAdditionalImaging       
-            display: category0needadditionalimaging 
+          - system:  http://snomed.info/sct
+            code: '397138000'       
+            display: Mammography assessment (Category 0) - Need additional imaging evaluation (finding) 
     - resourceType: DiagnosticReport
       status: final
       code:
@@ -70,9 +70,9 @@ eve-latesttesttype:
             display: "Biopsy Report"
       valueCodeableConcept:
         coding:
-          - system: http://snomed.info/sct
-            code: 62061000119107
-            display: "Biopsy Atypical Results"    
+          - system: http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system
+            code: Atypical
+            display: "Atypical breast finding"    
       basedOn:
         - reference: "ServiceRequest/order-1"     
   - &Most_recent_resulted_test_of_none
@@ -92,27 +92,27 @@ eve-actionablebirads:
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category0IncompleteNeedAdditionalImaging 
-            display: category0needadditionalimaging 
+          - system:  http://snomed.info/sct
+            code: '397138000' 
+            display: Mammography assessment (Category 0) - Need additional imaging evaluation (finding) 
   - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_is_2
     - resourceType: DiagnosticReport
       status: final
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category2BenignFinding  
+          - system:  http://snomed.info/sct
+            code: 397141009  
             display: Category 2 (Benign)
 
 eve-biradsscore:
@@ -122,83 +122,92 @@ eve-biradsscore:
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category0IncompleteNeedAdditionalImaging 
-            display: category0needadditionalimaging 
+          - system:  http://snomed.info/sct
+            code: '397138000' 
+            display: Mammography assessment (Category 0) - Need additional imaging evaluation (finding) 
   - &BI-RADS_score_3_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category3ProbablyBenignFinding   
-            display: category3,probablybenignfinding
+          - system:  http://snomed.info/sct
+            code: 397143007   
+            display: Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)
   - &BI-RADS_score_4_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category4SuspiciousAbnormality
-            display: category4,suspiciousabnormality
+          - system:  http://snomed.info/sct
+            code: 397144001
+            display: Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)
   - &BI-RADS_score_5_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category5HighlySuggestiveOfMalignancy
-            display: category5,highlysuggestiveofmalignancy
+          - system:  http://snomed.info/sct
+            code: 397145000
+            display: Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)
   - &BI-RADS_score_6_in_most_recent_resulted_test_of_'Last_imaging_result'
     - resourceType: DiagnosticReport
       status: final
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
-          - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-            code: RDE1586_category6KnownBiopsyProvenMalignancy      
-            display: category6,knownbiopsy-provenmalignancy
+          - system:  http://snomed.info/sct
+            code: 6111000179101      
+            display: Mammography assessment (Category 6) - known biopsy, proven malignancy (finding)
   - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_unknown
     - resourceType: DiagnosticReport
       status: final
       code:
         coding:
           - system: http://loinc.org
-            code: 10193-1
-            display: Physical findings of Breasts Narrative
+            code: 24606-6
+            display: MG Breast Screening
       effectiveDateTime: 2024-10-01T10:00:00Z            
       conclusionCode:
         coding:
           - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/something
-            code: something              
+            code: something      
+  - &BI-RADS_score_in_most_recent_resulted_test_of_'Last_imaging_result'_missing
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 24606-6
+            display: MG Breast Screening
+      effectiveDateTime: 2024-10-01T10:00:00Z                    
 
 eve-biopsyresult:
   - &malignant_if_'Last_biopsy'_result_is_'Biopsy_result_malignant'
@@ -345,3 +354,38 @@ eve-biopsyresult:
             code: Benign
       basedOn:
         - reference: "ServiceRequest/order-1"          
+  - &null_if_'Last_biopsy'_result_no_conclusion_codes
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2024-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"     
+  - &unknown_if_'Last_biopsy'_result_is_unknown
+    - resourceType: DiagnosticReport
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      effectiveDateTime: 2024-10-01T10:00:00Z  
+      basedOn:
+        - reference: "ServiceRequest/order-1"
+    - resourceType: Observation
+      status: final
+      code:
+        coding:
+          - system: http://loinc.org
+            code: 66110-8
+            display: "Biopsy Report"
+      valueCodeableConcept:
+        coding:
+          - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+            code: Unknown
+      basedOn:
+        - reference: "ServiceRequest/order-1"              

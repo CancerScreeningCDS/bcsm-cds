@@ -26,7 +26,7 @@ JosephineGreene: &JosephineGreene
   - resourceType: DiagnosticReport
     id: biopsy-report-1
     status: final
-    effectiveDateTime: "2026-11-20"    
+    effectiveDateTime: "2024-11-20"    
     code:
       coding:
         - system: http://loinc.org
@@ -34,37 +34,37 @@ JosephineGreene: &JosephineGreene
           display: "Core needle biopsy"
     conclusionCode:
       coding:
-        - system: http://snomed.info/sct
-          code: 62061000119107 #TODO replace placeholder code
-          display: "Atypical ductal hyperplasia"
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
+          code: Atypical #TODO replace placeholder code
+          display: "Atypical ductal hyperplasia"         
   - resourceType: DiagnosticReport
-    id: "mammogram-2026-birads-4"
+    id: "mammogram-2024-birads-4"
     status: final
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
-    effectiveDateTime: 2026-11-15T10:00:00Z            
+          code: 24606-6
+          display: Screening mammogram
+    effectiveDateTime: 2024-11-15T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category4SuspiciousAbnormality
-          display: category4,suspiciousabnormality       
+        - system:  http://snomed.info/sct
+          code: 397144001
+          display: Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)       
   - resourceType: DiagnosticReport
-    id: "mammogram-2023-birads-2"
+    id: "mammogram-2022-birads-2"
     status: final
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
-    effectiveDateTime: 2023-12-02T10:00:00Z            
+          code: 24606-6
+          display: Screening mammogram
+    effectiveDateTime: 2022-12-02T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category1Negative
-          display: category1,negative                
+        - system:  http://snomed.info/sct
+          code: 397140005
+          display: Mammography assessment (Category 1) - Negative (finding)                
 
 LindaNadler: &LindaNadler
   - resourceType: Patient
@@ -94,7 +94,7 @@ LindaNadler: &LindaNadler
   - resourceType: DiagnosticReport
     id: biopsy-report-1
     status: final
-    effectiveDateTime: "2026-11-20"    
+    effectiveDateTime: "2023-11-20"    
     code:
       coding:
         - system: http://loinc.org
@@ -111,14 +111,14 @@ LindaNadler: &LindaNadler
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
+          code: 24606-6
           display: Screening Mammogram
-    effectiveDateTime: 2024-09-30           
+    effectiveDateTime: 2023-09-30           
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category5HighlySuggestiveOfMalignancy
-          display: category5,highlysuggestiveofmalignancy
+        - system:  http://snomed.info/sct
+          code: 397145000
+          display: Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)
 
 NadiaWills: &NadiaWills
   - resourceType: Patient
@@ -160,21 +160,21 @@ NadiaWills: &NadiaWills
           display: Palpable breast mass
     encounter:
       reference: Encounter/1 
-    recordedDate: "2026-12-10" 
+    recordedDate: "2023-12-02" 
   - resourceType: DiagnosticReport
-    id: "mammogram-2023-birads-2"
+    id: "mammogram-2023-birads-1"
     status: final
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
-    effectiveDateTime: 2023-12-02T10:00:00Z            
+          code: 24606-6
+          display: Screening mammogram
+    effectiveDateTime: 2022-12-02T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category2BenignFinding
-          display: 	category2,benignfinding
+        - system:  http://snomed.info/sct
+          code: 397140005
+          display: Mammography assessment (Category 1) - Negative (finding)  
 
 JustineWallace: &JustineWallace
   - resourceType: Patient
@@ -214,21 +214,21 @@ JustineWallace: &JustineWallace
         - system: http://loinc.org #http://snomed.info/sct
           code: 21636-6 #412734009
           display: BRCA1 gene mutation detected   
-    onsetDateTime: "2024-05-04"
+    onsetDateTime: "2023-05-04"
   - resourceType: DiagnosticReport
     id: "mammogram-2024-birads-2"
     status: final
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
-    effectiveDateTime: 2024-05-04T10:00:00Z            
+          code: 24606-6
+          display: Screening mammogram
+    effectiveDateTime: 2023-05-04T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category2BenignFinding
-          display: 	category2,benignfinding                           
+        - system:  http://snomed.info/sct
+          code: 397141009
+          display: 	Mammography assessment (Category 2) - Benign finding (finding)                           
   
 JaniceMedford: &JaniceMedford
   - resourceType: Patient
@@ -308,14 +308,14 @@ PatriciaLambert: &PatriciaLambert
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
+          code: 24606-6
+          display: Screening mammogram
     effectiveDateTime: 2021-08-21T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category1Negative
-          display: category1,negative  
+        - system:  http://snomed.info/sct
+          code: 397140005
+          display: Mammography assessment (Category 1) - Negative (finding)  
   - resourceType: DiagnosticReport
     status: final
     effectiveDateTime: "2018-05-16T00:00:00.0Z"    
@@ -333,53 +333,53 @@ PatriciaLambert: &PatriciaLambert
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
+          code: 24606-6
+          display: Screening mammogram
     effectiveDateTime: 2018-04-02T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category4SuspiciousAbnormality
-          display: category4,suspiciousabnormality
+        - system:  http://snomed.info/sct
+          code: 397144001
+          display: Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)
   - resourceType: DiagnosticReport
     status: final
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
+          code: 24606-6
+          display: Screening mammogram
     effectiveDateTime: 2016-03-05T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category1Negative
-          display: category1,negative    
+        - system:  http://snomed.info/sct
+          code: 397140005
+          display: Mammography assessment (Category 1) - Negative (finding)    
   - resourceType: DiagnosticReport
     status: final
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
+          code: 24606-6
+          display: Screening mammogram
     effectiveDateTime: 2014-03-01T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category1Negative
-          display: category1,negative  
+        - system:  http://snomed.info/sct
+          code: 397140005
+          display: Mammography assessment (Category 1) - Negative (finding)  
   - resourceType: DiagnosticReport
     status: final
     code:
       coding:
         - system: http://loinc.org
-          code: 10193-1
-          display: Physical findings of Breasts Narrative
+          code: 24606-6
+          display: Screening mammogram
     effectiveDateTime: 2012-02-25T10:00:00Z            
     conclusionCode:
       coding:
-        - system:  http://hl7.org/fhir/us/breast-radiology/CodeSystem/RadLexCDE
-          code: RDE1586_category1Negative
-          display: category1,negative                         
+        - system:  http://snomed.info/sct
+          code: 397140005
+          display: Mammography assessment (Category 1) - Negative (finding)                         
   - resourceType: Procedure
     code:
       coding:

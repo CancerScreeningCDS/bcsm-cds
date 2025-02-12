@@ -19,10 +19,9 @@ codesystem "ICD-10": 'http://hl7.org/fhir/sid/icd-10-cm'
 codesystem "GENDER-IDENTITY": 'http://hl7.org/fhir/gender-identity'
 codesystem "CONDCLINSTATUS": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
 codesystem "AdministrativeGender": 'http://hl7.org/fhir/administrative-gender'
-//TODO: validate of this STU1 IG is valid to reference for VS, if not change to SNOMED codes
-codesystem "MGBreastDensityCS": 'http://hl7.org/fhir/us/breast-radiology/CodeSystem/MGBreastDensityCS'
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
+codesystem "BiopsyResultCS": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
 
 code "Condition inactive code": 'inactive' from "CONDCLINSTATUS" display 'Inactive'
 code "Condition remission code": 'remission' from "CONDCLINSTATUS" display 'Remission'
@@ -70,8 +69,10 @@ valueset "FIRST DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.1
 valueset "SECOND DEGREE FAMILY MEMBER": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
 valueset "MAMMOGRAPHY": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 // TODO: replace placeholder with OID
-// TODO: should include screening and diagnostic imaging, biopsy
-valueset "BREAST CANCER SCREENING ORDERS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
+// TODO: should include biopsy (FNA, core needle, incisional, excisional), this VS is sugical only
+valueset "BREAST CANCER BIOPSY ORDERS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1206.66'
+// TODO: should include screening and diagnostic imaging, this value set is mammography only
+valueset "BREAST CANCER IMAGING ORDERS": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 
 // Standard codes
 code "Male": 'male' from "AdministrativeGender" display 'Male'
@@ -83,10 +84,10 @@ code "Male-to-female Transsexual": '407376001' from "SNOMED-CT" display 'Male-to
 code "Left (qualifier value)": '7771000' from "SNOMED-CT" display 'Left (qualifier value)'
 code "Right (qualifier value)": '24028007' from "SNOMED-CT" display 'Right (qualifier value)'
 code "History of radiation therapy to chest": '77941000119104' from "SNOMED-CT" display 'History of radiation therapy to chest'
-code "Biopsy Report": '66110-8' from "LOINC" display 'Breast Pathology biopsy report'
+code "Breast Pathology biopsy report": '66110-8' from "LOINC" display 'Breast Pathology biopsy report'
 code "Breast Imaging Report": '10193-1' from "LOINC" display 'Physical findings of Breasts Narrative'
-code "Heterogeneously dense": 'HeterogeneouslyDense' from "MGBreastDensityCS" display 'Heterogeneously dense'
-code "Extremely dense": 'ExtremelyDense' from "MGBreastDensityCS" display 'Extremely dense'
+code "Heterogeneously dense": '129718006' from "SNOMED-CT" display 'Heterogeneously dense breast composition'
+code "Extremely dense": '129719003' from "SNOMED-CT" display 'Extremely dense breast composition'
 code "Pregnancy Status": '82810-3' from "LOINC" display 'Pregnancy status'
 code "Patient currently pregnant": '77386006' from "SNOMED-CT" display 'Patient currently pregnant (finding)'
 code "Pregnancy Episode Of Care": '424525001' from "SNOMED-CT" display 'Antenatal care (regime/therapy)'
@@ -110,6 +111,7 @@ code "Known breast cancer variant status": 'KnownVariantStatus' from "LOCAL" dis
 code "Family history of breast, ovarian, tubal, or peritoneal cancer": 'fhxbrcaovcatubalperit' from "LOCAL" display 'Family history of breast, ovarian, tubal, or peritoneal cancer'
 code "5 year risk assessment": '5yriskassessment' from "ActCode" display '5 year risk assessment'
 code "Personal risk factors conferring increased risk of breast cancer": 'PersonalRiskFactors' from "LOCAL" display 'Personal risk factors conferring increased risk of breast cancer'
+code "Atypical": 'Atypical' from BiopsyResultCS display 'Atypical breast finding'
 
 //------------------------------------------------------------------------------
 // PARAMETERS
@@ -547,7 +549,8 @@ define MostRecentAtypicalBiopsyResultDate:
 define AtypicalBiopsyResults:
   BiopsyDiagnosticReports D
     let cC: BCSMCommon.CollateConclusionCodes(D,BiopsyObservations)
-    where cC in "Biopsy Atypical Results"
+    where cC in "Biopsy Atypical Results" 
+      or Exists(cC.coding c where c ~ Atypical)
 
 //------------------------------------------------------------------------------
 // High lifetime risk
@@ -754,11 +757,11 @@ define MostRecentPersonalRiskFactorAssessment:
   C3F.MostRecent([Observation: "Personal risk factors conferring increased risk of breast cancer"])       
 
 //------------------------------------------------------------------------------
-// Latest screening test type
+// Latest screening test
 //------------------------------------------------------------------------------  
 
-define BreastCancerScreeningDiagnosticReports:
-  Common.CompletedDiagnosticReport([DiagnosticReport: "BREAST CANCER SCREENING ORDERS"])  
+define CompletedBreastCancerScreeningDiagnosticReports:
+  CompletedBreastImagingDiagnosticReports union CompletedBreastBiopsyDiagnosticReports 
 
 define AllCompletedDiagnosticReport:
   Common.CompletedDiagnosticReport([DiagnosticReport])    
@@ -767,12 +770,29 @@ define AllCompletedDiagnosticReport:
 define MostRecentBreastImagingDiagnosticReport:
   Common.MostRecentDiagnosticReport(BreastImagingDiagnosticReports)
 
+define MostRecentBreastImagingDiagnosticReportNoConclusionCodes:
+  MostRecentBreastImagingDiagnosticReport is not null and
+    not Exists(BCSMCommon.CollateConclusionCodes(MostRecentBreastImagingDiagnosticReport,BreastImagingObservations))
+
 define BreastImagingDiagnosticReports:
-  AllCompletedDiagnosticReport B
-  where 
-    Count(
-      BCSMCommon.CollateConclusionCodes(B, BreastImagingObservations, "Breast Imaging Report")
-    ) > 0
+  distinct(
+    (AllCompletedDiagnosticReport R
+      where 
+        Count(
+          BCSMCommon.CollateConclusionCodes(R, BreastImagingObservations,"Breast Imaging Report")        
+      ) > 0)
+    union CompletedBreastImagingDiagnosticReports
+  )
+
+define ImagingDiagnosticReportsWithNoConclusionCodes:
+  Exists(BreastImagingDiagnosticReports) and
+    AnyTrue(
+      (BiopsyDiagnosticReports) D 
+      return not Exists(BCSMCommon.CollateConclusionCodes(D,BreastImagingObservations))
+  )
+
+define CompletedBreastImagingDiagnosticReports:
+  Common.CompletedDiagnosticReport([DiagnosticReport: "BREAST CANCER IMAGING ORDERS"]) 
 
 define BreastImagingObservations:
   [Observation: "Breast Imaging Report"]   
@@ -781,13 +801,35 @@ define BreastImagingObservations:
 define MostRecentBreastBiopsyDiagnosticReport:
   Common.MostRecentDiagnosticReport(BiopsyDiagnosticReports)
 
+define MostRecentBreastBiopsyDiagnosticReportNoConclusionCodes:
+  MostRecentBreastBiopsyDiagnosticReport is not null and
+    not Exists(BCSMCommon.CollateConclusionCodes(
+      MostRecentBreastBiopsyDiagnosticReport,BiopsyObservations))   
+
 define BiopsyDiagnosticReports:
-  AllCompletedDiagnosticReport B
-  where 
-    Count(
-      BCSMCommon.CollateConclusionCodes(B, BiopsyObservations, "Biopsy Report")
-    ) > 0
+  distinct(
+    (AllCompletedDiagnosticReport B
+      where 
+        Count(
+          BCSMCommon.CollateConclusionCodes(B, BiopsyObservations,"Breast Pathology biopsy report")
+        ) > 0 ) 
+    union CompletedBreastBiopsyDiagnosticReports
+  )
+
+define BiopsyDiagnosticReportsWithNoConclusionCodes:
+  Exists(BiopsyDiagnosticReports) and
+    AnyTrue(
+      (BiopsyDiagnosticReports) D 
+      return not Exists(BCSMCommon.CollateConclusionCodes(D,BiopsyObservations))
+  )
+
+define CompletedBreastBiopsyDiagnosticReports:
+  Common.CompletedDiagnosticReport([DiagnosticReport: "Breast Pathology biopsy report"])      
+
+define IncompleteBreastBiopsyDiagnosticReports:
+  [DiagnosticReport: "Breast Pathology biopsy report"] DR where
+    DR.status in {'preliminary', 'registered', 'partial'}  
 
 // TODO: should report observation code be a value set?
 define BiopsyObservations:
-  [Observation: "Biopsy Report"]    
+  [Observation: "Breast Pathology biopsy report"]      

@@ -18,6 +18,7 @@ parameter "OverdueDefault" System.Quantity default 3 months
 parameter "DueDefault" System.Quantity default 2 months
 parameter "OverdueAnnual" System.Quantity default 2 months
 parameter "DueAnnual" System.Quantity default 2 months
+parameter "OverdueFollowup" System.Quantity default 90 days
 
 context Patient
 
@@ -78,6 +79,30 @@ define function SetRecommendation(
 
 define function CalculateStartDateByAge(timingAge Tuple{value Decimal, code String}): 
   Patient.birthDate + System.Quantity{value: (timingAge.value), unit: FHIRHelpers.ToCalendarUnit(timingAge.code)}
+
+define function SetFollowupRecommendation(          
+    code System.Code,
+    reason System.Code,
+    documentation Tuple{label System.String},
+    event System.DateTime)
+    returns Tuple {code System.Code,reason System.Code,documentation Tuple{label System.String},
+      timingTiming Tuple{event List<System.String>},
+      flag System.Code
+    }: 
+  code C
+  let nextdue: event,
+  timingTiming: {
+      event: {ToString(nextdue)}
+    },
+  flag: EvaluateFollowupFlag(nextdue)    
+  return      
+  Tuple {
+    code: C,
+    reason: reason,
+    documentation: documentation,
+    timingTiming: timingTiming,
+    flag: flag
+  }  
 
 //------------------------------------------------------------------------------
 // Calculated next due date
@@ -209,6 +234,14 @@ define function EvaluateFlagAnnual(nextDueDate DateTime):
     "DUE"
   else
     "NOT DUE" 
+
+define function EvaluateFollowupFlag(nextDueDate DateTime):
+  if nextDueDate < Today() - (OverdueFollowup) then
+    "OVERDUE"
+  else if nextDueDate <= Today() + (DueDefault) and nextDueDate >= Today() - (OverdueFollowup) then
+    "DUE"
+  else
+    "NOT DUE"    
 
 //------------------------------------------------------------------------------
 // Create extension

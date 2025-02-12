@@ -1,0 +1,79 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-atypicalbxpop__act-HighRiskReferralAtypicalBiopsy_warning_missing",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1981-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "biopsy-report-1",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "effectiveDateTime": "2024-11-10T00:00:00.0Z",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "conclusionCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "62061000119107",
+                "display": "Biopsy Atypical Results"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "60bb0e8b-7086-4e4b-b165-84f8abaac971",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-10-01T10:00:00.000Z",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    }
+  ]
+}
