@@ -1,0 +1,48 @@
+{
+  "resourceType": "Bundle",
+  "id": "eve-biopsyresult_missing_error",
+  "type": "collection",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "defaultPatient",
+        "name": [
+          {
+            "given": [
+              "Jane"
+            ],
+            "family": "Doe"
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1981-01-01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "bcbcf5ee-7fd7-41ab-b94e-f83877ed7575",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "effectiveDateTime": "2024-10-01T10:00:00.000Z",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    }
+  ]
+}
