@@ -32,7 +32,7 @@ code "Condition active": 'active' from "CONDCLINSTATUS" display 'active'
 valueset "Pregnancy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.526.3.378'
 valueset "Pregnancy (New ICD10 codes published in 2018 and 2020)": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.80'
 // Breast diagnoses, procedures, and observations
-valueset "Breast Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367'
+valueset "Breast Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367' // TODO clinical validation: Keep secondary cancers?
 valueset "Bilateral Mastectomy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1068'
 valueset "Left Unilateral Mastectomy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1069'
 valueset "Right Unilateral Mastectomy": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1070'
@@ -41,22 +41,22 @@ valueset "Bilateral Mastectomy Procedure": 'http://cts.nlm.nih.gov/fhir/ValueSet
 valueset "Left Unilateral Mastectomy Procedure": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1133'
 valueset "Right Unilateral Mastectomy Procedure": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1134'
 valueset "Genetic Marker of Susceptibility to Breast Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.378'
-valueset "BRCA1 Gene Mutation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.379'
-valueset "BRCA2 Gene Mutation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.380'
-valueset "History of Breast Cancer or Breast Cancer in Remission": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383'
-// TODO: replace placeholder value set OID
-valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235' 
+valueset "BRCA1 Gene Mutation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.379' // TODO clinical validation: keep weird codes referencing specific BRCA mutations?
+valueset "BRCA2 Gene Mutation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.380' // TODO clinical validation: keep weird codes referencing specific BRCA mutations?
+valueset "History of Breast Cancer or Breast Cancer in Remission": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383' // TODO clinical validation: include codes for partial remission?
+// TODO: replace with http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.387 when published on 2/14
+valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235' // TODO clinical validation: Keep "generic" ICD-10-CM codes under which atypical hyperplasia is classified (but which are not specific to atypical hyperplasia)? Decided against it for similar situations in CRC.
 valueset "Ovarian Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.232'
 // TODO: replace placeholder value set OID
 valueset "Tubal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
 // TODO: replace placeholder value set OID
 valueset "Peritoneal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
-valueset "Breast Cancer Signs and Symptoms": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374'
+valueset "Breast Cancer Signs and Symptoms": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374' // TODO clinical validation: check for overall accuracy.
 valueset "First Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
 // TODO: replace placeholder value set OID
 valueset "Second Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
-// TODO: replace OID when 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.387' is published
-valueset "Breast Cancer Biopsy Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1206.66' //TODO: add CPT, HCPCS, ICD-10-PCS
+// TODO: replace OID when 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.387' is published on 2/14
+valueset "Breast Cancer Biopsy Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1206.66' //TODO: add CPT, HCPCS, ICD-10-PCS. TODO clinical validation: check for overall accuracy.
 // TODO: should include screening and diagnostic imaging, this value set is mammography only
 valueset "Breast Cancer Imaging Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
 
