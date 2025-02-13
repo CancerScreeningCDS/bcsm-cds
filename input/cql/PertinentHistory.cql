@@ -123,11 +123,11 @@ define PertinentConditions:
   DataElements.UnilateralMastectomyConditions union
   DataElements.BreastSymptomConditions union
   DataElements.PregnancyDiagnoses union
-  DataElements."BRCA-1 Mutation Conditions" union
-  DataElements."BRCA-2 Mutation Conditions" union
-  DataElements."Li-Fraumeni Syndrome Conditions" union
-  DataElements."Cowden Syndrome Conditions" union
-  DataElements."Bannayan-Riley-Ruvalcaba Syndrome Conditions" union
+  DataElements."BRCA-1MutationConditions" union
+  DataElements."BRCA-2MutationConditions" union
+  DataElements."Li-FraumeniSyndromeConditions" union
+  DataElements.CowdenSyndromeConditions union
+  DataElements."Bannayan-Riley-RuvalcabaSyndromeConditions" union
 	DataElements."de-chestxrt" union
 	DataElements.AtypicalBiopsyConditions
 

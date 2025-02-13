@@ -21,10 +21,10 @@
       "valueString": "DisableListPromotion"
     }, {
       "name": "format",
-      "valueString": "JSON"
+      "valueString": "XML"
     }, {
       "name": "format",
-      "valueString": "XML"
+      "valueString": "JSON"
     }, {
       "name": "analyzeDataRequirements",
       "valueBoolean": true
@@ -97,6 +97,10 @@
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/Library/BCSMCommonFunctions|1.0.0"
   }, {
     "type": "depends-on",
+    "display": "Code system CONDCLINSTATUS",
+    "resource": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+  }, {
+    "type": "depends-on",
     "display": "Code system LOCAL",
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
   }, {
@@ -107,10 +111,6 @@
     "type": "depends-on",
     "display": "Code system SNOMED-CT",
     "resource": "http://snomed.info/sct"
-  }, {
-    "type": "depends-on",
-    "display": "Code system CONDCLINSTATUS",
-    "resource": "http://terminology.hl7.org/CodeSystem/condition-clinical"
   }, {
     "type": "depends-on",
     "display": "Code system LOINC",
@@ -125,20 +125,24 @@
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"
   }, {
     "type": "depends-on",
+    "display": "Value set Genetic Marker of Susceptibility to Breast Cancer",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.378"
+  }, {
+    "type": "depends-on",
     "display": "Value set BRCA1 Gene Mutation",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.3.203"
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.379"
   }, {
     "type": "depends-on",
     "display": "Value set BRCA2 Gene Mutation",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.3.204"
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.380"
   }, {
     "type": "depends-on",
-    "display": "Value set Li-Fraumeni Syndrome",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
+    "display": "Value set Breast Cancer",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
   }, {
     "type": "depends-on",
-    "display": "Value set INVASIVE BREAST CANCER",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
+    "display": "Value set History of Breast Cancer or Breast Cancer in Remission",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383"
   }, {
     "type": "depends-on",
     "display": "Value set Biopsy Atypical Results",
@@ -203,6 +207,112 @@
     "type": "Patient",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Patient" ]
   }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.378"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.379"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.380"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "code": [ {
+        "system": "http://snomed.info/sct",
+        "code": "428850001",
+        "display": "Li-Fraumeni syndrome (disorder)"
+      } ]
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "code": [ {
+        "system": "http://snomed.info/sct",
+        "code": "58037000",
+        "display": "Cowden syndrome (disorder)"
+      } ]
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "code": [ {
+        "system": "http://snomed.info/sct",
+        "code": "234138005",
+        "display": "Bannayan syndrome (disorder)"
+      } ]
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383"
+    }, {
+      "path": "clinicalStatus"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "abatement", "verificationStatus", "abatement.value", "onset", "onset.value", "onset.code", "abatement.code" ],
+    "codeFilter": [ {
+      "path": "code",
+      "code": [ {
+        "system": "http://snomed.info/sct",
+        "code": "77941000119104",
+        "display": "History of radiation therapy to chest"
+      } ]
+    } ]
+  }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
     "mustSupport": [ "code", "value", "id", "basedOn" ],
@@ -236,82 +346,6 @@
         "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
         "code": "lifetimeriskassessment",
         "display": "Lifetime risk assessment"
-      } ]
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.3.203"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.3.204"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "abatement", "abatement.value", "onset", "onset.value", "onset.code", "abatement.code" ],
-    "codeFilter": [ {
-      "path": "code",
-      "code": [ {
-        "system": "http://snomed.info/sct",
-        "code": "77941000119104",
-        "display": "History of radiation therapy to chest"
       } ]
     } ]
   }, {

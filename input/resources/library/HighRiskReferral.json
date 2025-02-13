@@ -21,10 +21,10 @@
       "valueString": "DisableListPromotion"
     }, {
       "name": "format",
-      "valueString": "JSON"
+      "valueString": "XML"
     }, {
       "name": "format",
-      "valueString": "XML"
+      "valueString": "JSON"
     }, {
       "name": "analyzeDataRequirements",
       "valueBoolean": true
@@ -133,12 +133,12 @@
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
   }, {
     "type": "depends-on",
-    "display": "Value set INVASIVE BREAST CANCER",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
+    "display": "Value set Breast Cancer",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
   }, {
     "type": "depends-on",
-    "display": "Value set NON-INVASIVE BREAST CANCER",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
+    "display": "Value set History of Breast Cancer or Breast Cancer in Remission",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383"
   }, {
     "type": "depends-on",
     "display": "Value set Biopsy Atypical Results",
@@ -397,10 +397,24 @@
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "clinicalStatus", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
+    }, {
+      "path": "clinicalStatus"
+    }, {
+      "path": "clinicalStatus"
+    }, {
+      "path": "clinicalStatus"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "verificationStatus" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383"
     } ]
   }, {
     "type": "Condition",
@@ -408,12 +422,22 @@
     "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
     "codeFilter": [ {
       "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
     } ]
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "clinicalStatus", "verificationStatus" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383"
+    }, {
+      "path": "clinicalStatus"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235"

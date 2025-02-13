@@ -21,10 +21,10 @@
       "valueString": "DisableListPromotion"
     }, {
       "name": "format",
-      "valueString": "JSON"
+      "valueString": "XML"
     }, {
       "name": "format",
-      "valueString": "XML"
+      "valueString": "JSON"
     }, {
       "name": "analyzeDataRequirements",
       "valueBoolean": true
@@ -109,43 +109,43 @@
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"
   }, {
     "type": "depends-on",
-    "display": "Code system LOINC",
-    "resource": "http://loinc.org"
-  }, {
-    "type": "depends-on",
     "display": "Code system SNOMED-CT",
     "resource": "http://snomed.info/sct"
+  }, {
+    "type": "depends-on",
+    "display": "Code system LOINC",
+    "resource": "http://loinc.org"
   }, {
     "type": "depends-on",
     "display": "Code system AdministrativeGender",
     "resource": "http://hl7.org/fhir/administrative-gender"
   }, {
     "type": "depends-on",
+    "display": "Value set Genetic Marker of Susceptibility to Breast Cancer",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.378"
+  }, {
+    "type": "depends-on",
     "display": "Value set BRCA1 Gene Mutation",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.3.203"
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.379"
   }, {
     "type": "depends-on",
     "display": "Value set BRCA2 Gene Mutation",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.3.204"
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.380"
   }, {
     "type": "depends-on",
-    "display": "Value set Li-Fraumeni Syndrome",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
-  }, {
-    "type": "depends-on",
-    "display": "Value set FIRST DEGREE FAMILY MEMBER",
+    "display": "Value set First Degree Family Member",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92"
   }, {
     "type": "depends-on",
-    "display": "Value set BREAST CANCER IMAGING ORDERS",
+    "display": "Value set Breast Cancer Imaging Orders",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018"
   }, {
     "type": "depends-on",
-    "display": "Value set INVASIVE BREAST CANCER",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
+    "display": "Value set Breast Cancer",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
   }, {
     "type": "depends-on",
-    "display": "Value set OVARIAN CANCER",
+    "display": "Value set Ovarian Cancer",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.232"
   } ],
   "parameter": [ {
@@ -257,6 +257,10 @@
   }, {
     "type": "FamilyMemberHistory",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory" ],
+    "mustSupport": [ "condition", "relationship" ]
+  }, {
+    "type": "FamilyMemberHistory",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory" ],
     "mustSupport": [ "relationship", "condition" ],
     "codeFilter": [ {
       "path": "condition.code",
@@ -265,13 +269,10 @@
   }, {
     "type": "FamilyMemberHistory",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory" ],
-    "mustSupport": [ "condition", "relationship" ]
-  }, {
-    "type": "FamilyMemberHistory",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory" ],
     "mustSupport": [ "relationship", "condition", "sex" ],
     "codeFilter": [ {
-      "path": "sex"
+      "path": "condition.code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
     } ]
   }, {
     "type": "DiagnosticReport",

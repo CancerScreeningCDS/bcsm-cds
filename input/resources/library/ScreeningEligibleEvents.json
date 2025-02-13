@@ -21,10 +21,10 @@
       "valueString": "DisableListPromotion"
     }, {
       "name": "format",
-      "valueString": "JSON"
+      "valueString": "XML"
     }, {
       "name": "format",
-      "valueString": "XML"
+      "valueString": "JSON"
     }, {
       "name": "analyzeDataRequirements",
       "valueBoolean": true
@@ -117,44 +117,40 @@
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
   }, {
     "type": "depends-on",
-    "display": "Value set INVASIVE BREAST CANCER",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
+    "display": "Value set Breast Cancer",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
   }, {
     "type": "depends-on",
-    "display": "Value set NON-INVASIVE BREAST CANCER",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
-  }, {
-    "type": "depends-on",
-    "display": "Value set BILATERAL MASTECTOMY",
+    "display": "Value set Bilateral Mastectomy",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1068"
   }, {
     "type": "depends-on",
-    "display": "Value set BILATERAL MASTECTOMY PROCEDURE",
+    "display": "Value set Bilateral Mastectomy Procedure",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1005"
   }, {
     "type": "depends-on",
-    "display": "Value set LEFT UNILATERAL MASTECTOMY",
+    "display": "Value set Left Unilateral Mastectomy",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1069"
   }, {
     "type": "depends-on",
-    "display": "Value set LEFT UNILATERAL MASTECTOMY PROCEDURE",
+    "display": "Value set Left Unilateral Mastectomy Procedure",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1133"
   }, {
     "type": "depends-on",
-    "display": "Value set UNILATERAL MASTECTOMY",
+    "display": "Value set Unilateral Mastectomy",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1071"
   }, {
     "type": "depends-on",
-    "display": "Value set RIGHT UNILATERAL MASTECTOMY",
+    "display": "Value set Right Unilateral Mastectomy",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1070"
   }, {
     "type": "depends-on",
-    "display": "Value set RIGHT UNILATERAL MASTECTOMY PROCEDURE",
+    "display": "Value set Right Unilateral Mastectomy Procedure",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1134"
   }, {
     "type": "depends-on",
-    "display": "Value set BREAST SYMPTOMS",
-    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.73"
+    "display": "Value set Breast Cancer Signs and Symptoms",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374"
   } ],
   "parameter": [ {
     "name": "ObservationLookbackPeriod",
@@ -254,23 +250,15 @@
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
     } ]
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
-    "codeFilter": [ {
-      "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1240.2017.3.2.1022"
-    } ]
-  }, {
-    "type": "Condition",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1068"
@@ -278,7 +266,7 @@
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1069"
@@ -286,7 +274,7 @@
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1070"
@@ -294,7 +282,7 @@
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus", "bodySite" ],
+    "mustSupport": [ "code", "verificationStatus", "bodySite" ],
     "codeFilter": [ {
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1071"
@@ -302,20 +290,34 @@
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.73"
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374"
     } ]
   }, {
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
-    "mustSupport": [ "code", "encounter", "encounter.reference", "verificationStatus", "clinicalStatus" ],
+    "mustSupport": [ "code", "encounter", "encounter.reference", "verificationStatus" ],
     "codeFilter": [ {
       "path": "code",
-      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1047.73"
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374"
     }, {
       "path": "encounter.reference"
+    } ]
+  }, {
+    "type": "Condition",
+    "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
+    "mustSupport": [ "code", "clinicalStatus", "verificationStatus" ],
+    "codeFilter": [ {
+      "path": "code",
+      "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
+    }, {
+      "path": "clinicalStatus"
+    }, {
+      "path": "clinicalStatus"
+    }, {
+      "path": "clinicalStatus"
     } ]
   }, {
     "type": "Procedure",
