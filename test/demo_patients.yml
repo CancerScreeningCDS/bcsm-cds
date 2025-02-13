@@ -90,7 +90,7 @@ LindaNadler: &LindaNadler
         extension:
             - url: text
               valueString: "Not Hispanic or Latino"                
-  - *CONDITIONS_include_`NON-INVASIVE_BREAST_CANCER`_with_status_active
+  - *CONDITIONS_include_`BREAST_CANCER`_with_status_active
   - resourceType: DiagnosticReport
     id: biopsy-report-1
     status: final
@@ -156,8 +156,8 @@ NadiaWills: &NadiaWills
     code:
       coding:
         - system: http://snomed.info/sct
-          code: 200430001 #TODO replace placeholder
-          display: Palpable breast mass
+          code: 457191000124103
+          display: Lump in upper outer quadrant of left breast (finding)
     encounter:
       reference: Encounter/1 
     recordedDate: "2023-12-02" 
@@ -211,9 +211,9 @@ JustineWallace: &JustineWallace
           code: confirmed
     code:
       coding:
-        - system: http://loinc.org #http://snomed.info/sct
-          code: 21636-6 #412734009
-          display: BRCA1 gene mutation detected   
+        - system: http://snomed.info/sct
+          code: 412734009
+          display: BRCA1 gene mutation detected (finding)
     onsetDateTime: "2023-05-04"
   - resourceType: DiagnosticReport
     id: "mammogram-2024-birads-2"
