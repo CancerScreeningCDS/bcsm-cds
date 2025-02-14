@@ -30,13 +30,13 @@ JosephineGreene: &JosephineGreene
     code:
       coding:
         - system: http://loinc.org
-          code: 66110-8 #TODO replace placeholder code
-          display: "Core needle biopsy"
+          code: 46296-0
+          display: MG stereo Guidance for percutaneous biopsy.core needle of Breast
     conclusionCode:
       coding:
-        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"
-          code: Atypical #TODO replace placeholder code
-          display: "Atypical ductal hyperplasia"         
+        - system: http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system
+          code: Atypical
+          display: "Atypical breast finding"
   - resourceType: DiagnosticReport
     id: "mammogram-2024-birads-4"
     status: final
@@ -52,7 +52,7 @@ JosephineGreene: &JosephineGreene
           code: 397144001
           display: Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)       
   - resourceType: DiagnosticReport
-    id: "mammogram-2022-birads-2"
+    id: "mammogram-2022-birads-1"
     status: final
     code:
       coding:
@@ -90,7 +90,7 @@ LindaNadler: &LindaNadler
         extension:
             - url: text
               valueString: "Not Hispanic or Latino"                
-  - *CONDITIONS_include_`BREAST_CANCER`_with_status_active
+  - *CONDITIONS_include_`BREAST_CANCER_DCIS`_with_status_active
   - resourceType: DiagnosticReport
     id: biopsy-report-1
     status: final
@@ -98,13 +98,13 @@ LindaNadler: &LindaNadler
     code:
       coding:
         - system: http://loinc.org
-          code: 66110-8 #TODO replace placeholder code
-          display: "Core needle biopsy"
+          code: 46296-0
+          display: MG stereo Guidance for percutaneous biopsy.core needle of Breast
     conclusionCode:
       coding:
-        - system: http://snomed.info/sct
-          code: 62061000119107 #TODO replace placeholder code
-          display: DCIS
+        - system: http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system
+          code: Malignant
+          display: Malignant breast finding
   - resourceType: DiagnosticReport
     id: "mammogram-2024-birads-5"
     status: final

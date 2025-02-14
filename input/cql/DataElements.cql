@@ -44,21 +44,17 @@ valueset "Genetic Marker of Susceptibility to Breast Cancer": 'http://cts.nlm.ni
 valueset "BRCA1 Gene Mutation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.379' // TODO clinical validation: keep weird codes referencing specific BRCA mutations?
 valueset "BRCA2 Gene Mutation": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.380' // TODO clinical validation: keep weird codes referencing specific BRCA mutations?
 valueset "History of Breast Cancer or Breast Cancer in Remission": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.383' // TODO clinical validation: include codes for partial remission?
-// TODO: replace with http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.387 when published on 2/14
-valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235' // TODO clinical validation: Keep "generic" ICD-10-CM codes under which atypical hyperplasia is classified (but which are not specific to atypical hyperplasia)? Decided against it for similar situations in CRC.
+valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.392' // TODO clinical validation: Keep "generic" ICD-10-CM codes under which atypical hyperplasia is classified (but which are not specific to atypical hyperplasia)? Decided against it for similar situations in CRC.
 valueset "Ovarian Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.232'
-// TODO: replace placeholder value set OID
-valueset "Tubal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
-// TODO: replace placeholder value set OID
-valueset "Peritoneal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235'
+valueset "Tubal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.539'
+valueset "Peritoneal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.233' // TODO clinical validation: ok to be just primary cancers?
 valueset "Breast Cancer Signs and Symptoms": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374' // TODO clinical validation: check for overall accuracy.
 valueset "First Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
-// TODO: replace placeholder value set OID
-valueset "Second Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
-// TODO: replace OID when 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.387' is published on 2/14
-valueset "Breast Cancer Biopsy Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1206.66' //TODO: add CPT, HCPCS, ICD-10-PCS. TODO clinical validation: check for overall accuracy.
-// TODO: should include screening and diagnostic imaging, this value set is mammography only
-valueset "Breast Cancer Imaging Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018'
+// TODO: replace with http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.401 when published on 2/15
+valueset "Second Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92' // TODO clinical validation: keep cousins (could be second cousins according to definition)?
+valueset "Breast Cancer Biopsy Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.387' //TODO: add CPT, HCPCS, ICD-10-PCS. TODO clinical validation: check for overall accuracy.
+// TODO: replace with http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018
+valueset "Breast Cancer Imaging Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.11.1047' //TODO: add CPT, HCPCS, ICD-10-PCS. TODO clinical validation: Keep SNOMED codes for core compression, magnification and localization mammography? Keep mammary ductograms? Keep doppler US?
 
 // Standard codes
 code "Male": 'male' from "AdministrativeGender" display 'Male'
@@ -712,6 +708,8 @@ define KnownGeneticMarkerOrSyndromeStatusObservation:
   C3F.MostRecent(
       [Observation: "Known breast cancer variant status"] R
   ) 
+
+// TODO: check for BRCA1 and BRCA2 DiagnosticReports with conclusion code and/or associated observations?
 
 //------------------------------------------------------------------------------
 // BRCA ancestry

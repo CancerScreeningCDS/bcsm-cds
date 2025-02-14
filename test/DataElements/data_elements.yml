@@ -76,10 +76,10 @@ de-breastca:
       coding:
         - system: http://snomed.info/sct
           code: 254837009
-          display: Invasive breast cancer
+          display: Malignant neoplasm of breast (disorder)
       text: Invasive Breast Cancer
     onsetDateTime: '2024-10-01'
-  - &CONDITIONS_include_`BREAST_CANCER`_with_status_active
+  - &CONDITIONS_include_`BREAST_CANCER_DCIS`_with_status_active
     resourceType: Condition
     id: non-invasive-breast-cancer
     clinicalStatus:
@@ -533,7 +533,8 @@ de-atypicalbx:
     code:
       coding:
         - system: http://snomed.info/sct
-          code: 62061000119107 #TODO: placeholder          
+          code: 109888004
+          display: Lobular carcinoma in situ of breast (disorder)          
   - &PATHOLOGY_REPORT_of_type_`BREAST_BIOPSY`_includes_conclusion_of_pre-malignant_or_high-risk_lesions
     resourceType: DiagnosticReport
     id: biopsy-report-1
@@ -547,8 +548,8 @@ de-atypicalbx:
     conclusionCode:
       coding:
         - system: http://snomed.info/sct
-          code: 62061000119107
-          display: "Biopsy Atypical Results"
+          code: 109888004
+          display: Lobular carcinoma in situ of breast (disorder)
   - &PATHOLOGY_REPORT_of_type_`BREAST_BIOPSY`_includes_observation_of_pre-malignant_or_high-risk_lesions
     - resourceType: DiagnosticReport
       id: biopsy-report-1
@@ -571,8 +572,8 @@ de-atypicalbx:
       valueCodeableConcept:        
         coding:
           - system: http://snomed.info/sct
-            code: 62061000119107
-            display: "Biopsy Atypical Results" 
+            code: 109888004
+            display: Lobular carcinoma in situ of breast (disorder)
   - &PATHOLOGY_REPORT_of_type_`BREAST_BIOPSY`_associated_with_observation_of_pre-malignant_or_high-risk_lesions
     - resourceType: DiagnosticReport
       id: biopsy-report-1
@@ -595,8 +596,8 @@ de-atypicalbx:
       valueCodeableConcept:
         coding:
           - system: http://snomed.info/sct
-            code: 62061000119107
-            display: "Biopsy Atypical Results"    
+            code: 109888004
+            display: Lobular carcinoma in situ of breast (disorder)   
       basedOn:
         - reference: "ServiceRequest/order-1"                              
   - &PATHOLOGY_REPORT_of_type_`BREAST_BIOPSY`_no_pre-malignant_or_high-risk_lesions
@@ -611,8 +612,8 @@ de-atypicalbx:
     conclusionCode:
       coding:
         - system: http://example.org/fhir/CodeSystem/biopsy-results
-          code: normal
-          display: "Biopsy Normal Results"
+          code: 165324008
+          display: Biopsy result normal (finding)
 
 de-highlifetimerisk:
   - &Risk_assessment_using_a_formal_risk_assessment_tool_based_mainly_on_family_history_is_>20%_lifetime_risk
