@@ -67,7 +67,7 @@ code "Left (qualifier value)": '7771000' from "SNOMED-CT" display 'Left (qualifi
 code "Right (qualifier value)": '24028007' from "SNOMED-CT" display 'Right (qualifier value)'
 code "History of radiation therapy to chest": '77941000119104' from "SNOMED-CT" display 'History of radiation therapy to chest'
 code "Breast Pathology biopsy report": '66110-8' from "LOINC" display 'Breast Pathology biopsy report'
-code "Breast Imaging Report": '10193-1' from "LOINC" display 'Physical findings of Breasts Narrative'
+code "Breast Imaging Report": '10193-1' from "LOINC" display 'Physical findings of Breasts Narrative' // Consider replacing with "Breast Screening Cancer Imaging Orders" value set when using to identify DiagnosticReport resources. All but a couple of the LOINC codes included can be used for both orders and observations/results.
 code "Heterogeneously dense": '129718006' from "SNOMED-CT" display 'Heterogeneously dense breast composition'
 code "Extremely dense": '129719003' from "SNOMED-CT" display 'Extremely dense breast composition'
 code "Pregnancy Status": '82810-3' from "LOINC" display 'Pregnancy status'
