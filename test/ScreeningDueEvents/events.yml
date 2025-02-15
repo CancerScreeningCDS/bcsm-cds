@@ -546,3 +546,15 @@ eve-duebiennial:
               frequency: 1
               period: 2
               periodUnit: a   
+
+flow-ScreeningDue:
+  - &Denominator_Exclusion_Has_Hospice
+    resourceType: ServiceRequest
+    status: completed
+    intent: order
+    code:
+      coding:
+        - system: http://snomed.info/sct
+          code: 385763009
+          display: Hospice care (regime/therapy)
+    authoredOn: 2024-10-01 

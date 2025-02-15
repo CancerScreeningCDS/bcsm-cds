@@ -731,7 +731,7 @@ de-breastdensitycord:
         - system:  http://snomed.info/sct
           code: Other   
 
-de-LifeExp10:
+de-lifeexp:
   - &OBSERVATIONS_include_life_expectancy_indicator
     resourceType: Observation
     status: final
@@ -742,6 +742,18 @@ de-LifeExp10:
           display: "Reduced life expectancy indicator"
     valueBoolean: true
     effectiveDateTime: "2024-12-10T00:00:00.0Z"  
+  - &OBSERVATIONS_include_life_expectancy_in_encounter
+    resourceType: Observation
+    status: final
+    encounter:
+      reference: Encounter/1
+    code:
+      coding:
+        - system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+          code: "lifeexp"
+          display: "Reduced life expectancy indicator"
+    valueBoolean: true
+    effectiveDateTime: "2024-12-01T00:00:00.0Z"      
 
 de-hospice:
   - "&CONDITIONS_or_ENCOUNTER_DIAGNOSES_include_codes_from_`HOSPICE_INTERVENTION`_OR_`HOSPICE_ENCOUNTER`"
