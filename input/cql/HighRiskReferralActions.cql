@@ -3,7 +3,7 @@ library HighRiskReferralActions version '1.0.0'
 using FHIR version '4.0.1'
 
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
-include BCSMCommonFunctions version '1.0.0'
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
@@ -28,21 +28,21 @@ define "act-estlifexpectancy":
   {
 		code: "Consider life expectancy",
     reason: null,
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}
 
 define "act-HighRiskReferralGenetic":
   {
 		code: "High risk referral",
     reason: "High familial risk",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}
 
 define "act-HighRiskReferralChestXRT":
   {
 		code: "High risk referral",
     reason: "History of chest radiation ages 10-30 y",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}
 
 
@@ -50,34 +50,34 @@ define "act-HighRiskReferralAtypicalBiopsy":
   {
 		code: "High risk referral",
     reason: "Atypical breast finding",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}  
   
 define "act-HighRiskReferral":
   {
 		code: "High risk referral",
     reason: "High 5 year risk",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}
 
 define "act-ConsiderHighRiskReferral":
   {
 		code: "High risk referral",
     reason: "5 year risk at least 1.67%",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}
 
 define "act-5YRiskAssessment":
   {
 		code: "Perform informal 5 year risk assessment",
     reason: "Personal or family history risk factors",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}  
 
 define "act-5YRiskAssessmentTool":
   {
 		code: "5 year risk assessment tool",
     reason: "Personal or family history risk factors",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	} 
 

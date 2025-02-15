@@ -77,9 +77,8 @@ define HighRiskReferral:
     HighRiskReferral5YRiskHigherThanAverage
   )
 
-// TODO: look into querying encounters or consult notes to determine if referral already happened
 define HighRiskReferralGenetic:  
-  if Events."eve-ageAny" and Events."eve-geneticriskpop"
+  if Events."eve-ageAny" and Events."eve-geneticriskpop"    
   then Actions."act-HighRiskReferralGenetic" else null
 
 define HighRiskReferralChestXRT:  
@@ -92,18 +91,20 @@ define HighRiskReferralAtypicalBiopsy:
 
 define HighRiskReferral5YRiskHigh:
   if Events."eve-ageAtLeast35" and Events."eve-fiveyrriskpop"
+    and Events.ValidMostRecent5YrRiskAssessment    
   then Actions."act-HighRiskReferral" else null
 
 define HighRiskReferral5YRiskHigherThanAverage:
-  if Events."eve-ageAtLeast35" and Events."eve-fiveyrrisklowpop"
+  if Events."eve-ageAtLeast35" and Events."eve-fiveyrrisklowpop"   
+    and Events.ValidMostRecent5YrRiskAssessment     
   then Actions."act-ConsiderHighRiskReferral" else null
 
-// TODO: when to reassess risk vs use last recorded assessment? each cycle vs when new hx documented?
 define HighRiskAssessment:
   if HighRiskReferral is null and 
-    Events."eve-ageAtLeast35" and (Events."eve-fhxbrca" or Events."eve-personalriskfactors")
-    and DataElements."MostRecent5YrRiskAssessment" is null
-  then {Actions."act-5YRiskAssessment",Actions."act-5YRiskAssessmentTool"} else null
+    Events."eve-ageAtLeast35" 
+    and (Events."eve-fhxbrca" or Events."eve-personalriskfactors")
+    and Events.ValidMostRecent5YrRiskAssessment is false
+  then {Actions."act-5YRiskAssessment",Actions."act-5YRiskAssessmentTool"} else null   
 
 //------------------------------------------------------------------------------
 // ERRORS
