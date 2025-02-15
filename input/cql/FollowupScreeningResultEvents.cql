@@ -37,11 +37,9 @@ define "eve-actionablebirads":
   LatestTest.result !~ "Category1" and 
     LatestTest.result !~ "Category2"
 
-// TODO: error handling for cases where report has no result annotations
 define "eve-biradsscore":
   MostRecentBreastImagingBiradsResult
 
-// TODO: error handling for cases where report has no result annotations
 define "eve-biopsyresult":
   MostRecentBreastBiopsyResult
 

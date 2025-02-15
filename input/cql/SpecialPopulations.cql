@@ -6,7 +6,7 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include SpecialPopulationsEvents version '1.0.0' called Events
 include SpecialPopulationsActions version '1.0.0' called Actions
 include DataElements version '1.0.0' called DataElements
-include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 context Patient
 
@@ -79,7 +79,7 @@ define ACSMammoHighRiskTimingEvent:
   ACSMammoHighRiskTiming R return First(R.event) 
 
 define ACSMammoHighRiskFlag:
-  ACSMammoHighRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)       
+  ACSMammoHighRisk R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)       
 
 define ExistsACSMriHighRisk:
   ACSMriHighRisk is not null
@@ -97,7 +97,7 @@ define ACSMriHighRiskTimingEvent:
   ACSMriHighRiskTiming R return First(R.event)   
 
 define ACSMriHighRiskFlag:
-  ACSMriHighRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)   
+  ACSMriHighRisk R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)   
 
 define ExistsACSFirstDegGeneticMammo:
   ACSFirstDegGeneticMammo is not null
@@ -115,7 +115,7 @@ define ACSFirstDegGeneticMammoTimingEvent:
   ACSFirstDegGeneticMammoTiming R return First(R.event)   
 
 define ACSFirstDegGeneticMammoFlag:
-  ACSFirstDegGeneticMammo R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)   
+  ACSFirstDegGeneticMammo R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)   
 
 define ExistsACSFirstDegGeneticMri:
   ACSFirstDegGeneticMri is not null
@@ -133,7 +133,7 @@ define ACSFirstDegGeneticMriTimingEvent:
   ACSFirstDegGeneticMriTiming R return First(R.event)  
 
 define ACSFirstDegGeneticMriFlag:
-  ACSFirstDegGeneticMri R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)     
+  ACSFirstDegGeneticMri R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)     
 
 define ExistsBreastImagingHeterogenouslyOrExtremelyDense:
   BreastImagingHeterogenouslyOrExtremelyDense is not null
@@ -169,4 +169,4 @@ define USPSTFRecommendationTimingEvent:
   USPSTFRecommendationTiming R return First(R.event) 
 
 define USPSTFRecommendationFlag:
-  USPSTFRecommendation R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)   
+  USPSTFRecommendation R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)   

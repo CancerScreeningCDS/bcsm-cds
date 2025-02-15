@@ -113,7 +113,6 @@ define ErrorDiagnosticReportWithUnsupportedConclusionCode:
 // DYNAMIC VALUES
 //------------------------------------------------------------------------------    
 
-// TODO: add FSH conditional and dynamicValue accessors
 define ExistsFollowupBirads0Result:
   FollowupBirads0Result is not null
 

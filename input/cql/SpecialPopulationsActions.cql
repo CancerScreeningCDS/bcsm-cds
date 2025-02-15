@@ -4,7 +4,7 @@ using FHIR version '4.0.1'
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
 
 include DataElements version '1.0.0' called DataElements
-include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
@@ -65,39 +65,39 @@ define mri_annual:
 	}
 
 define "act-acshighriskmammo":  
-  BCSMCommonFunctions.SetRecommendation(mammo_annual.code, "High lifetime risk", 
-    BCSMCommonFunctions.SourceDocumentationACS, 
+  BCSMCommon.SetRecommendation(mammo_annual.code, "High lifetime risk", 
+    BCSMCommon.SourceDocumentationACS, 
     {value: 30.0, code: 'a'}, null, mammo_annual.timingTiming.repeat)     
 
 define "act-acshighriskmri":  
-  BCSMCommonFunctions.SetRecommendation(mri_annual.code, "High lifetime risk", 
-    BCSMCommonFunctions.SourceDocumentationACS, 
+  BCSMCommon.SetRecommendation(mri_annual.code, "High lifetime risk", 
+    BCSMCommon.SourceDocumentationACS, 
     {value: 30.0, code: 'a'}, null, mri_annual.timingTiming.repeat)
 
 define "act-firstdeggeneticmammo":    
-  BCSMCommonFunctions.SetRecommendation(mammo_annual.code, "First degree relative with genetic marker or syndrome", 
-    BCSMCommonFunctions.SourceDocumentationACS, 
+  BCSMCommon.SetRecommendation(mammo_annual.code, "First degree relative with genetic marker or syndrome", 
+    BCSMCommon.SourceDocumentationACS, 
     {value: 30.0, code: 'a'}, null, mammo_annual.timingTiming.repeat)
 
 define "act-firstdeggeneticmri":  
-  BCSMCommonFunctions.SetRecommendation(mri_annual.code, "First degree relative with genetic marker or syndrome", 
-    BCSMCommonFunctions.SourceDocumentationACS, 
+  BCSMCommon.SetRecommendation(mri_annual.code, "First degree relative with genetic marker or syndrome", 
+    BCSMCommon.SourceDocumentationACS, 
     {value: 30.0, code: 'a'}, null, mri_annual.timingTiming.repeat)
 
 define "act-breastdensitycord":
   {
 		code: "Perform lifetime risk assessment",
     reason: "BI-RADS breast density category C or D",
-    documentation: BCSMCommonFunctions.SourceDocumentationACS
+    documentation: BCSMCommon.SourceDocumentationACS
 	}  
 
 define "act-fhxbreastcarisk":
   {
 		code: "Perform lifetime risk assessment",
     reason: "Compelling family history of breast cancer",
-    documentation: BCSMCommonFunctions.SourceDocumentationACS
+    documentation: BCSMCommon.SourceDocumentationACS
 	}   
 
 define "act-uspstfrecs":
-  BCSMCommonFunctions.SetRecommendation(mammo_biennial.code, "USPSTF average risk", 
-    BCSMCommonFunctions.SourceDocumentationUSPSTF, {value: 40.0, code: 'a'}, null, mammo_biennial.timingTiming.repeat) 
+  BCSMCommon.SetRecommendation(mammo_biennial.code, "USPSTF average risk", 
+    BCSMCommon.SourceDocumentationUSPSTF, {value: 40.0, code: 'a'}, null, mammo_biennial.timingTiming.repeat) 
