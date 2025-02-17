@@ -24,11 +24,14 @@ define "eve-knownvariantstatus":
   DataElements."de-knownvariantstatus"
 
 define "eve-fhxbrcaovcatubalperit":
-    DataElements.FamilyHistoryBreastOvarianTubalPeritonealCancerObservation.value is true or
-      exists DataElements.FamilyMemberBreastOvarianTubalPeritonealCancer
+  if DataElements.FamilyHistoryBreastOvarianTubalPeritonealCancerObservation is not null
+    then FHIRHelpers.ToBoolean(DataElements.FamilyHistoryBreastOvarianTubalPeritonealCancerObservation.value as boolean) 
+  else exists DataElements.FamilyMemberBreastOvarianTubalPeritonealCancer
 
 define "eve-brcageneancestry":
-  DataElements.MostRecentBRCAGeneAncestryObservation.value is true
+  if DataElements.MostRecentBRCAGeneAncestryObservation is not null
+    then FHIRHelpers.ToBoolean(DataElements.MostRecentBRCAGeneAncestryObservation.value as boolean) 
+  else false
 
 define "eve-fhxriskresult":
   DataElements."de-fhxbreastcarisk"

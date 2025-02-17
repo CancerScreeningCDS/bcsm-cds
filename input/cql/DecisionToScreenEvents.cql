@@ -31,5 +31,7 @@ define "eve-lactating":
    Lactating
 
 define Lactating:
-  DataElements.MostRecentLactatingObservation.value is true 
+  if DataElements.MostRecentLactatingObservation is not null
+    then FHIRHelpers.ToBoolean(DataElements.MostRecentLactatingObservation.value as boolean) 
+  else false
 

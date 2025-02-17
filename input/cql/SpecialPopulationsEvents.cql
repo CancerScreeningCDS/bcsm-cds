@@ -18,7 +18,9 @@ define "eve-firstdeggenetic":
   FirstDegRelativeGeneticMarkerOrSyndromeObservation or exists FirstDegRelativeGeneticMarkerOrSyndrome
 
 define "FirstDegRelativeGeneticMarkerOrSyndromeObservation":
-  (DataElements.MostRecentFirstDegRelativeGeneticObservation R where R.value is true) is not null
+  if DataElements.MostRecentFirstDegRelativeGeneticObservation is not null
+    then FHIRHelpers.ToBoolean(DataElements.MostRecentFirstDegRelativeGeneticObservation.value as boolean) 
+  else false
 
 define "FirstDegRelativeGeneticMarkerOrSyndrome":
   DataElements."FirstDegRelativeGeneticMarkerOrSyndrome"

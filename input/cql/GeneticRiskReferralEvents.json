@@ -9,7 +9,7 @@
       }, {
          "type" : "Annotation",
          "s" : {
-            "r" : "330",
+            "r" : "342",
             "s" : [ {
                "value" : [ "","library GeneticRiskReferralEvents version '1.0.0'" ]
             } ]
@@ -405,7 +405,7 @@
             }
          }, {
             "localId" : "234",
-            "locator" : "26:1-28:72",
+            "locator" : "26:1-29:73",
             "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
             "name" : "eve-fhxbrcaovcatubalperit",
             "context" : "Patient",
@@ -415,56 +415,102 @@
                "s" : {
                   "r" : "234",
                   "s" : [ {
-                     "value" : [ "","define ","\"eve-fhxbrcaovcatubalperit\"",":\n    " ]
+                     "value" : [ "","define ","\"eve-fhxbrcaovcatubalperit\"",":\n  " ]
                   }, {
                      "r" : "235",
                      "s" : [ {
-                        "r" : "263",
-                        "s" : [ {
-                           "r" : "238",
-                           "s" : [ {
-                              "r" : "237",
-                              "s" : [ {
-                                 "r" : "236",
-                                 "s" : [ {
-                                    "value" : [ "DataElements" ]
-                                 } ]
-                              }, {
-                                 "value" : [ "." ]
-                              }, {
-                                 "r" : "237",
-                                 "s" : [ {
-                                    "value" : [ "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" ]
-                                 } ]
-                              } ]
-                           }, {
-                              "value" : [ "." ]
-                           }, {
-                              "r" : "238",
-                              "s" : [ {
-                                 "value" : [ "value" ]
-                              } ]
-                           } ]
-                        }, {
-                           "value" : [ " is true" ]
-                        } ]
+                        "value" : [ "if " ]
                      }, {
-                        "value" : [ " or\n      " ]
-                     }, {
-                        "r" : "268",
+                        "r" : "240",
                         "s" : [ {
-                           "value" : [ "exists " ]
-                        }, {
-                           "r" : "270",
+                           "r" : "237",
                            "s" : [ {
-                              "r" : "269",
+                              "r" : "236",
                               "s" : [ {
                                  "value" : [ "DataElements" ]
                               } ]
                            }, {
                               "value" : [ "." ]
                            }, {
-                              "r" : "270",
+                              "r" : "237",
+                              "s" : [ {
+                                 "value" : [ "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is not null" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    then " ]
+                     }, {
+                        "r" : "272",
+                        "s" : [ {
+                           "r" : "242",
+                           "s" : [ {
+                              "value" : [ "FHIRHelpers" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "272",
+                           "s" : [ {
+                              "value" : [ "ToBoolean","(" ]
+                           }, {
+                              "r" : "243",
+                              "s" : [ {
+                                 "r" : "246",
+                                 "s" : [ {
+                                    "r" : "245",
+                                    "s" : [ {
+                                       "r" : "244",
+                                       "s" : [ {
+                                          "value" : [ "DataElements" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "245",
+                                       "s" : [ {
+                                          "value" : [ "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "246",
+                                    "s" : [ {
+                                       "value" : [ "value" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " as " ]
+                              }, {
+                                 "r" : "271",
+                                 "s" : [ {
+                                    "value" : [ "boolean" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " \n  else " ]
+                     }, {
+                        "r" : "274",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "276",
+                           "s" : [ {
+                              "r" : "275",
+                              "s" : [ {
+                                 "value" : [ "DataElements" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "276",
                               "s" : [ {
                                  "value" : [ "FamilyMemberBreastOvarianTubalPeritonealCancer" ]
                               } ]
@@ -476,144 +522,166 @@
             } ],
             "expression" : {
                "localId" : "235",
-               "locator" : "27:5-28:72",
+               "locator" : "27:3-29:73",
                "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
-               "type" : "Or",
-               "signature" : [ {
-                  "localId" : "277",
-                  "name" : "{urn:hl7-org:elm-types:r1}Boolean",
-                  "type" : "NamedTypeSpecifier"
-               }, {
-                  "localId" : "278",
-                  "name" : "{urn:hl7-org:elm-types:r1}Boolean",
-                  "type" : "NamedTypeSpecifier"
-               } ],
-               "operand" : [ {
-                  "localId" : "263",
-                  "locator" : "27:5-27:89",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "240",
+                  "locator" : "27:6-27:88",
                   "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
-                  "type" : "IsTrue",
+                  "type" : "Not",
                   "signature" : [ {
-                     "localId" : "267",
+                     "localId" : "241",
                      "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                      "type" : "NamedTypeSpecifier"
                   } ],
                   "operand" : {
-                     "localId" : "265",
-                     "name" : "ToBoolean",
-                     "libraryName" : "FHIRHelpers",
-                     "type" : "FunctionRef",
+                     "localId" : "238",
+                     "locator" : "27:6-27:88",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "IsNull",
                      "signature" : [ {
-                        "localId" : "266",
-                        "name" : "{http://hl7.org/fhir}boolean",
+                        "localId" : "239",
+                        "name" : "{urn:hl7-org:elm-types:r1}Any",
                         "type" : "NamedTypeSpecifier"
                      } ],
-                     "operand" : [ {
-                        "localId" : "264",
-                        "asType" : "{http://hl7.org/fhir}boolean",
-                        "type" : "As",
-                        "signature" : [ ],
-                        "operand" : {
-                           "localId" : "238",
-                           "locator" : "27:5-27:81",
-                           "path" : "value",
-                           "type" : "Property",
-                           "resultTypeSpecifier" : {
-                              "localId" : "251",
-                              "type" : "ChoiceTypeSpecifier",
-                              "type" : [ ],
-                              "choice" : [ {
-                                 "localId" : "252",
-                                 "name" : "{http://hl7.org/fhir}Quantity",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "253",
-                                 "name" : "{http://hl7.org/fhir}CodeableConcept",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "254",
-                                 "name" : "{http://hl7.org/fhir}string",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "255",
-                                 "name" : "{http://hl7.org/fhir}boolean",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "256",
-                                 "name" : "{http://hl7.org/fhir}integer",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "257",
-                                 "name" : "{http://hl7.org/fhir}Range",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "258",
-                                 "name" : "{http://hl7.org/fhir}Ratio",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "259",
-                                 "name" : "{http://hl7.org/fhir}SampledData",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "260",
-                                 "name" : "{http://hl7.org/fhir}time",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "261",
-                                 "name" : "{http://hl7.org/fhir}dateTime",
-                                 "type" : "NamedTypeSpecifier"
-                              }, {
-                                 "localId" : "262",
-                                 "name" : "{http://hl7.org/fhir}Period",
-                                 "type" : "NamedTypeSpecifier"
-                              } ]
-                           },
-                           "source" : {
-                              "localId" : "237",
-                              "locator" : "27:5-27:75",
-                              "resultTypeName" : "{http://hl7.org/fhir}Observation",
-                              "name" : "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation",
-                              "libraryName" : "DataElements",
-                              "type" : "ExpressionRef"
-                           }
-                        }
-                     } ]
+                     "operand" : {
+                        "localId" : "237",
+                        "locator" : "27:6-27:76",
+                        "resultTypeName" : "{http://hl7.org/fhir}Observation",
+                        "name" : "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation",
+                        "libraryName" : "DataElements",
+                        "type" : "ExpressionRef"
+                     }
                   }
-               }, {
-                  "localId" : "268",
-                  "locator" : "28:7-28:72",
+               },
+               "then" : {
+                  "localId" : "272",
+                  "locator" : "28:10-28:120",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "name" : "ToBoolean",
+                  "libraryName" : "FHIRHelpers",
+                  "type" : "FunctionRef",
+                  "signature" : [ {
+                     "localId" : "273",
+                     "name" : "{http://hl7.org/fhir}boolean",
+                     "type" : "NamedTypeSpecifier"
+                  } ],
+                  "operand" : [ {
+                     "localId" : "243",
+                     "locator" : "28:32-28:119",
+                     "resultTypeName" : "{http://hl7.org/fhir}boolean",
+                     "strict" : false,
+                     "type" : "As",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "246",
+                        "locator" : "28:32-28:108",
+                        "path" : "value",
+                        "type" : "Property",
+                        "resultTypeSpecifier" : {
+                           "localId" : "259",
+                           "type" : "ChoiceTypeSpecifier",
+                           "type" : [ ],
+                           "choice" : [ {
+                              "localId" : "260",
+                              "name" : "{http://hl7.org/fhir}Quantity",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "261",
+                              "name" : "{http://hl7.org/fhir}CodeableConcept",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "262",
+                              "name" : "{http://hl7.org/fhir}string",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "263",
+                              "name" : "{http://hl7.org/fhir}boolean",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "264",
+                              "name" : "{http://hl7.org/fhir}integer",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "265",
+                              "name" : "{http://hl7.org/fhir}Range",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "266",
+                              "name" : "{http://hl7.org/fhir}Ratio",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "267",
+                              "name" : "{http://hl7.org/fhir}SampledData",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "268",
+                              "name" : "{http://hl7.org/fhir}time",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "269",
+                              "name" : "{http://hl7.org/fhir}dateTime",
+                              "type" : "NamedTypeSpecifier"
+                           }, {
+                              "localId" : "270",
+                              "name" : "{http://hl7.org/fhir}Period",
+                              "type" : "NamedTypeSpecifier"
+                           } ]
+                        },
+                        "source" : {
+                           "localId" : "245",
+                           "locator" : "28:32-28:102",
+                           "resultTypeName" : "{http://hl7.org/fhir}Observation",
+                           "name" : "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation",
+                           "libraryName" : "DataElements",
+                           "type" : "ExpressionRef"
+                        }
+                     },
+                     "asTypeSpecifier" : {
+                        "localId" : "271",
+                        "locator" : "28:113-28:119",
+                        "resultTypeName" : "{http://hl7.org/fhir}boolean",
+                        "name" : "{http://hl7.org/fhir}boolean",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  } ]
+               },
+               "else" : {
+                  "localId" : "274",
+                  "locator" : "29:8-29:73",
                   "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "type" : "Exists",
                   "signature" : [ {
-                     "localId" : "275",
+                     "localId" : "281",
                      "type" : "ListTypeSpecifier",
                      "elementType" : {
-                        "localId" : "276",
+                        "localId" : "282",
                         "name" : "{http://hl7.org/fhir}FamilyMemberHistory",
                         "type" : "NamedTypeSpecifier"
                      }
                   } ],
                   "operand" : {
-                     "localId" : "270",
-                     "locator" : "28:14-28:72",
+                     "localId" : "276",
+                     "locator" : "29:15-29:73",
                      "name" : "FamilyMemberBreastOvarianTubalPeritonealCancer",
                      "libraryName" : "DataElements",
                      "type" : "ExpressionRef",
                      "resultTypeSpecifier" : {
-                        "localId" : "273",
+                        "localId" : "279",
                         "type" : "ListTypeSpecifier",
                         "elementType" : {
-                           "localId" : "274",
+                           "localId" : "280",
                            "name" : "{http://hl7.org/fhir}FamilyMemberHistory",
                            "type" : "NamedTypeSpecifier"
                         }
                      }
                   }
-               } ]
+               }
             }
          }, {
-            "localId" : "280",
-            "locator" : "30:1-31:66",
+            "localId" : "284",
+            "locator" : "31:1-34:12",
             "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
             "name" : "eve-brcageneancestry",
             "context" : "Patient",
@@ -621,137 +689,233 @@
             "annotation" : [ {
                "type" : "Annotation",
                "s" : {
-                  "r" : "280",
+                  "r" : "284",
                   "s" : [ {
                      "value" : [ "","define ","\"eve-brcageneancestry\"",":\n  " ]
                   }, {
-                     "r" : "308",
+                     "r" : "285",
                      "s" : [ {
-                        "r" : "283",
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "290",
                         "s" : [ {
-                           "r" : "282",
+                           "r" : "287",
                            "s" : [ {
-                              "r" : "281",
+                              "r" : "286",
                               "s" : [ {
                                  "value" : [ "DataElements" ]
                               } ]
                            }, {
                               "value" : [ "." ]
                            }, {
-                              "r" : "282",
+                              "r" : "287",
                               "s" : [ {
                                  "value" : [ "MostRecentBRCAGeneAncestryObservation" ]
                               } ]
                            } ]
                         }, {
+                           "value" : [ " is not null" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    then " ]
+                     }, {
+                        "r" : "322",
+                        "s" : [ {
+                           "r" : "292",
+                           "s" : [ {
+                              "value" : [ "FHIRHelpers" ]
+                           } ]
+                        }, {
                            "value" : [ "." ]
                         }, {
-                           "r" : "283",
+                           "r" : "322",
                            "s" : [ {
-                              "value" : [ "value" ]
+                              "value" : [ "ToBoolean","(" ]
+                           }, {
+                              "r" : "293",
+                              "s" : [ {
+                                 "r" : "296",
+                                 "s" : [ {
+                                    "r" : "295",
+                                    "s" : [ {
+                                       "r" : "294",
+                                       "s" : [ {
+                                          "value" : [ "DataElements" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "295",
+                                       "s" : [ {
+                                          "value" : [ "MostRecentBRCAGeneAncestryObservation" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "296",
+                                    "s" : [ {
+                                       "value" : [ "value" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " as " ]
+                              }, {
+                                 "r" : "321",
+                                 "s" : [ {
+                                    "value" : [ "boolean" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
                            } ]
                         } ]
                      }, {
-                        "value" : [ " is true" ]
+                        "r" : "324",
+                        "value" : [ " \n  else ","false" ]
                      } ]
                   } ]
                }
             } ],
             "expression" : {
-               "localId" : "308",
-               "locator" : "31:3-31:66",
+               "localId" : "285",
+               "locator" : "32:3-34:12",
                "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
-               "type" : "IsTrue",
-               "signature" : [ {
-                  "localId" : "312",
-                  "name" : "{urn:hl7-org:elm-types:r1}Boolean",
-                  "type" : "NamedTypeSpecifier"
-               } ],
-               "operand" : {
-                  "localId" : "310",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "290",
+                  "locator" : "32:6-32:67",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "type" : "Not",
+                  "signature" : [ {
+                     "localId" : "291",
+                     "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "NamedTypeSpecifier"
+                  } ],
+                  "operand" : {
+                     "localId" : "288",
+                     "locator" : "32:6-32:67",
+                     "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                     "type" : "IsNull",
+                     "signature" : [ {
+                        "localId" : "289",
+                        "name" : "{urn:hl7-org:elm-types:r1}Any",
+                        "type" : "NamedTypeSpecifier"
+                     } ],
+                     "operand" : {
+                        "localId" : "287",
+                        "locator" : "32:6-32:55",
+                        "resultTypeName" : "{http://hl7.org/fhir}Observation",
+                        "name" : "MostRecentBRCAGeneAncestryObservation",
+                        "libraryName" : "DataElements",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               },
+               "then" : {
+                  "localId" : "322",
+                  "locator" : "33:10-33:99",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "name" : "ToBoolean",
                   "libraryName" : "FHIRHelpers",
                   "type" : "FunctionRef",
                   "signature" : [ {
-                     "localId" : "311",
+                     "localId" : "323",
                      "name" : "{http://hl7.org/fhir}boolean",
                      "type" : "NamedTypeSpecifier"
                   } ],
                   "operand" : [ {
-                     "localId" : "309",
-                     "asType" : "{http://hl7.org/fhir}boolean",
+                     "localId" : "293",
+                     "locator" : "33:32-33:98",
+                     "resultTypeName" : "{http://hl7.org/fhir}boolean",
+                     "strict" : false,
                      "type" : "As",
                      "signature" : [ ],
                      "operand" : {
-                        "localId" : "283",
-                        "locator" : "31:3-31:58",
+                        "localId" : "296",
+                        "locator" : "33:32-33:87",
                         "path" : "value",
                         "type" : "Property",
                         "resultTypeSpecifier" : {
-                           "localId" : "296",
+                           "localId" : "309",
                            "type" : "ChoiceTypeSpecifier",
                            "type" : [ ],
                            "choice" : [ {
-                              "localId" : "297",
+                              "localId" : "310",
                               "name" : "{http://hl7.org/fhir}Quantity",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "298",
+                              "localId" : "311",
                               "name" : "{http://hl7.org/fhir}CodeableConcept",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "299",
+                              "localId" : "312",
                               "name" : "{http://hl7.org/fhir}string",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "300",
+                              "localId" : "313",
                               "name" : "{http://hl7.org/fhir}boolean",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "301",
+                              "localId" : "314",
                               "name" : "{http://hl7.org/fhir}integer",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "302",
+                              "localId" : "315",
                               "name" : "{http://hl7.org/fhir}Range",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "303",
+                              "localId" : "316",
                               "name" : "{http://hl7.org/fhir}Ratio",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "304",
+                              "localId" : "317",
                               "name" : "{http://hl7.org/fhir}SampledData",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "305",
+                              "localId" : "318",
                               "name" : "{http://hl7.org/fhir}time",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "306",
+                              "localId" : "319",
                               "name" : "{http://hl7.org/fhir}dateTime",
                               "type" : "NamedTypeSpecifier"
                            }, {
-                              "localId" : "307",
+                              "localId" : "320",
                               "name" : "{http://hl7.org/fhir}Period",
                               "type" : "NamedTypeSpecifier"
                            } ]
                         },
                         "source" : {
-                           "localId" : "282",
-                           "locator" : "31:3-31:52",
+                           "localId" : "295",
+                           "locator" : "33:32-33:81",
                            "resultTypeName" : "{http://hl7.org/fhir}Observation",
                            "name" : "MostRecentBRCAGeneAncestryObservation",
                            "libraryName" : "DataElements",
                            "type" : "ExpressionRef"
                         }
+                     },
+                     "asTypeSpecifier" : {
+                        "localId" : "321",
+                        "locator" : "33:92-33:98",
+                        "resultTypeName" : "{http://hl7.org/fhir}boolean",
+                        "name" : "{http://hl7.org/fhir}boolean",
+                        "type" : "NamedTypeSpecifier"
                      }
                   } ]
+               },
+               "else" : {
+                  "localId" : "324",
+                  "locator" : "34:8-34:12",
+                  "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "value" : "false",
+                  "type" : "Literal"
                }
             }
          }, {
-            "localId" : "314",
-            "locator" : "33:1-34:35",
+            "localId" : "326",
+            "locator" : "36:1-37:35",
             "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
             "name" : "eve-fhxriskresult",
             "context" : "Patient",
@@ -759,20 +923,20 @@
             "annotation" : [ {
                "type" : "Annotation",
                "s" : {
-                  "r" : "314",
+                  "r" : "326",
                   "s" : [ {
                      "value" : [ "","define ","\"eve-fhxriskresult\"",":\n  " ]
                   }, {
-                     "r" : "316",
+                     "r" : "328",
                      "s" : [ {
-                        "r" : "315",
+                        "r" : "327",
                         "s" : [ {
                            "value" : [ "DataElements" ]
                         } ]
                      }, {
                         "value" : [ "." ]
                      }, {
-                        "r" : "316",
+                        "r" : "328",
                         "s" : [ {
                            "value" : [ "\"de-fhxbreastcarisk\"" ]
                         } ]
@@ -781,53 +945,53 @@
                }
             } ],
             "expression" : {
-               "localId" : "316",
-               "locator" : "34:3-34:35",
+               "localId" : "328",
+               "locator" : "37:3-37:35",
                "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                "name" : "de-fhxbreastcarisk",
                "libraryName" : "DataElements",
                "type" : "ExpressionRef"
             }
          }, {
-            "localId" : "330",
-            "locator" : "50:1-53:12",
+            "localId" : "342",
+            "locator" : "53:1-56:12",
             "name" : "LastFhxBreastOvarianTubalPeritonealCancerObservationResult",
             "context" : "Patient",
             "accessLevel" : "Public",
             "annotation" : [ {
                "type" : "Annotation",
                "s" : {
-                  "r" : "330",
+                  "r" : "342",
                   "s" : [ {
                      "value" : [ "","define ","LastFhxBreastOvarianTubalPeritonealCancerObservationResult",":\n  " ]
                   }, {
-                     "r" : "350",
+                     "r" : "362",
                      "s" : [ {
-                        "r" : "331",
+                        "r" : "343",
                         "s" : [ {
-                           "r" : "339",
+                           "r" : "351",
                            "s" : [ {
-                              "r" : "332",
+                              "r" : "344",
                               "s" : [ {
                                  "value" : [ "BCSMCommon" ]
                               } ]
                            }, {
                               "value" : [ "." ]
                            }, {
-                              "r" : "339",
+                              "r" : "351",
                               "s" : [ {
                                  "value" : [ "SortedObservations","(\n    " ]
                               }, {
-                                 "r" : "334",
+                                 "r" : "346",
                                  "s" : [ {
-                                    "r" : "333",
+                                    "r" : "345",
                                     "s" : [ {
                                        "value" : [ "DataElements" ]
                                     } ]
                                  }, {
                                     "value" : [ "." ]
                                  }, {
-                                    "r" : "334",
+                                    "r" : "346",
                                     "s" : [ {
                                        "value" : [ "FamilyHistoryBreastOvarianTubalPeritonealCancerObservations" ]
                                     } ]
@@ -837,13 +1001,13 @@
                               } ]
                            } ]
                         }, {
-                           "r" : "346",
+                           "r" : "358",
                            "value" : [ "[","1","]" ]
                         } ]
                      }, {
                         "value" : [ "." ]
                      }, {
-                        "r" : "350",
+                        "r" : "362",
                         "s" : [ {
                            "value" : [ "value" ]
                         } ]
@@ -852,171 +1016,171 @@
                }
             } ],
             "resultTypeSpecifier" : {
-               "localId" : "440",
+               "localId" : "452",
                "type" : "ChoiceTypeSpecifier",
                "type" : [ ],
                "choice" : [ {
-                  "localId" : "441",
+                  "localId" : "453",
                   "name" : "{http://hl7.org/fhir}Quantity",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "442",
+                  "localId" : "454",
                   "name" : "{http://hl7.org/fhir}CodeableConcept",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "443",
+                  "localId" : "455",
                   "name" : "{http://hl7.org/fhir}string",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "444",
+                  "localId" : "456",
                   "name" : "{http://hl7.org/fhir}boolean",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "445",
+                  "localId" : "457",
                   "name" : "{http://hl7.org/fhir}integer",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "446",
+                  "localId" : "458",
                   "name" : "{http://hl7.org/fhir}Range",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "447",
+                  "localId" : "459",
                   "name" : "{http://hl7.org/fhir}Ratio",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "448",
+                  "localId" : "460",
                   "name" : "{http://hl7.org/fhir}SampledData",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "449",
+                  "localId" : "461",
                   "name" : "{http://hl7.org/fhir}time",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "450",
+                  "localId" : "462",
                   "name" : "{http://hl7.org/fhir}dateTime",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "451",
+                  "localId" : "463",
                   "name" : "{http://hl7.org/fhir}Period",
                   "type" : "NamedTypeSpecifier"
                } ]
             },
             "expression" : {
-               "localId" : "350",
-               "locator" : "51:3-53:12",
+               "localId" : "362",
+               "locator" : "54:3-56:12",
                "path" : "value",
                "type" : "Property",
                "resultTypeSpecifier" : {
-                  "localId" : "363",
+                  "localId" : "375",
                   "type" : "ChoiceTypeSpecifier",
                   "type" : [ ],
                   "choice" : [ {
-                     "localId" : "364",
+                     "localId" : "376",
                      "name" : "{http://hl7.org/fhir}Quantity",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "365",
+                     "localId" : "377",
                      "name" : "{http://hl7.org/fhir}CodeableConcept",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "366",
+                     "localId" : "378",
                      "name" : "{http://hl7.org/fhir}string",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "367",
+                     "localId" : "379",
                      "name" : "{http://hl7.org/fhir}boolean",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "368",
+                     "localId" : "380",
                      "name" : "{http://hl7.org/fhir}integer",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "369",
+                     "localId" : "381",
                      "name" : "{http://hl7.org/fhir}Range",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "370",
+                     "localId" : "382",
                      "name" : "{http://hl7.org/fhir}Ratio",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "371",
+                     "localId" : "383",
                      "name" : "{http://hl7.org/fhir}SampledData",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "372",
+                     "localId" : "384",
                      "name" : "{http://hl7.org/fhir}time",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "373",
+                     "localId" : "385",
                      "name" : "{http://hl7.org/fhir}dateTime",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "374",
+                     "localId" : "386",
                      "name" : "{http://hl7.org/fhir}Period",
                      "type" : "NamedTypeSpecifier"
                   } ]
                },
                "source" : {
-                  "localId" : "331",
-                  "locator" : "51:3-53:6",
+                  "localId" : "343",
+                  "locator" : "54:3-56:6",
                   "resultTypeName" : "{http://hl7.org/fhir}Observation",
                   "type" : "Indexer",
                   "signature" : [ {
-                     "localId" : "347",
+                     "localId" : "359",
                      "type" : "ListTypeSpecifier",
                      "elementType" : {
-                        "localId" : "348",
+                        "localId" : "360",
                         "name" : "{http://hl7.org/fhir}Observation",
                         "type" : "NamedTypeSpecifier"
                      }
                   }, {
-                     "localId" : "349",
+                     "localId" : "361",
                      "name" : "{urn:hl7-org:elm-types:r1}Integer",
                      "type" : "NamedTypeSpecifier"
                   } ],
                   "operand" : [ {
-                     "localId" : "339",
-                     "locator" : "51:3-53:3",
+                     "localId" : "351",
+                     "locator" : "54:3-56:3",
                      "name" : "SortedObservations",
                      "libraryName" : "BCSMCommon",
                      "type" : "FunctionRef",
                      "resultTypeSpecifier" : {
-                        "localId" : "344",
+                        "localId" : "356",
                         "type" : "ListTypeSpecifier",
                         "elementType" : {
-                           "localId" : "345",
+                           "localId" : "357",
                            "name" : "{http://hl7.org/fhir}Observation",
                            "type" : "NamedTypeSpecifier"
                         }
                      },
                      "signature" : [ {
-                        "localId" : "340",
+                        "localId" : "352",
                         "type" : "ListTypeSpecifier",
                         "elementType" : {
-                           "localId" : "341",
+                           "localId" : "353",
                            "name" : "{http://hl7.org/fhir}Observation",
                            "type" : "NamedTypeSpecifier"
                         }
                      } ],
                      "operand" : [ {
-                        "localId" : "334",
-                        "locator" : "52:5-52:76",
+                        "localId" : "346",
+                        "locator" : "55:5-55:76",
                         "name" : "FamilyHistoryBreastOvarianTubalPeritonealCancerObservations",
                         "libraryName" : "DataElements",
                         "type" : "ExpressionRef",
                         "resultTypeSpecifier" : {
-                           "localId" : "337",
+                           "localId" : "349",
                            "type" : "ListTypeSpecifier",
                            "elementType" : {
-                              "localId" : "338",
+                              "localId" : "350",
                               "name" : "{http://hl7.org/fhir}Observation",
                               "type" : "NamedTypeSpecifier"
                            }
                         }
                      } ]
                   }, {
-                     "localId" : "346",
-                     "locator" : "53:5",
+                     "localId" : "358",
+                     "locator" : "56:5",
                      "resultTypeName" : "{urn:hl7-org:elm-types:r1}Integer",
                      "valueType" : "{urn:hl7-org:elm-types:r1}Integer",
                      "value" : "1",
@@ -1025,8 +1189,8 @@
                }
             }
          }, {
-            "localId" : "323",
-            "locator" : "42:1-48:12",
+            "localId" : "335",
+            "locator" : "45:1-51:12",
             "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
             "name" : "RiskFactorModifiedAfterRiskAssessment",
             "context" : "Patient",
@@ -1034,30 +1198,30 @@
             "annotation" : [ {
                "type" : "Annotation",
                "s" : {
-                  "r" : "323",
+                  "r" : "335",
                   "s" : [ {
                      "value" : [ "","define ","RiskFactorModifiedAfterRiskAssessment",":\n  " ]
                   }, {
-                     "r" : "324",
+                     "r" : "336",
                      "s" : [ {
                         "value" : [ "if " ]
                      }, {
-                        "r" : "325",
+                        "r" : "337",
                         "s" : [ {
-                           "r" : "326",
+                           "r" : "338",
                            "s" : [ {
-                              "r" : "327",
+                              "r" : "339",
                               "s" : [ {
-                                 "r" : "328",
+                                 "r" : "340",
                                  "s" : [ {
                                     "value" : [ "\"eve-fhxbrcaovcatubalperit\"" ]
                                  } ]
                               }, {
                                  "value" : [ " and " ]
                               }, {
-                                 "r" : "400",
+                                 "r" : "412",
                                  "s" : [ {
-                                    "r" : "387",
+                                    "r" : "399",
                                     "s" : [ {
                                        "value" : [ "LastFhxBreastOvarianTubalPeritonealCancerObservationResult" ]
                                     } ]
@@ -1068,31 +1232,31 @@
                            }, {
                               "value" : [ "\n    and " ]
                            }, {
-                              "r" : "414",
+                              "r" : "426",
                               "s" : [ {
-                                 "r" : "410",
+                                 "r" : "422",
                                  "s" : [ {
-                                    "r" : "407",
+                                    "r" : "419",
                                     "s" : [ {
                                        "value" : [ "Common" ]
                                     } ]
                                  }, {
                                     "value" : [ "." ]
                                  }, {
-                                    "r" : "410",
+                                    "r" : "422",
                                     "s" : [ {
                                        "value" : [ "ObservationDate","(" ]
                                     }, {
-                                       "r" : "409",
+                                       "r" : "421",
                                        "s" : [ {
-                                          "r" : "408",
+                                          "r" : "420",
                                           "s" : [ {
                                              "value" : [ "DataElements" ]
                                           } ]
                                        }, {
                                           "value" : [ "." ]
                                        }, {
-                                          "r" : "409",
+                                          "r" : "421",
                                           "s" : [ {
                                              "value" : [ "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" ]
                                           } ]
@@ -1108,31 +1272,31 @@
                         }, {
                            "value" : [ "\n    and " ]
                         }, {
-                           "r" : "418",
+                           "r" : "430",
                            "s" : [ {
-                              "r" : "422",
+                              "r" : "434",
                               "s" : [ {
-                                 "r" : "419",
+                                 "r" : "431",
                                  "s" : [ {
                                     "value" : [ "Common" ]
                                  } ]
                               }, {
                                  "value" : [ "." ]
                               }, {
-                                 "r" : "422",
+                                 "r" : "434",
                                  "s" : [ {
                                     "value" : [ "ObservationDate","(" ]
                                  }, {
-                                    "r" : "421",
+                                    "r" : "433",
                                     "s" : [ {
-                                       "r" : "420",
+                                       "r" : "432",
                                        "s" : [ {
                                           "value" : [ "DataElements" ]
                                        } ]
                                     }, {
                                        "value" : [ "." ]
                                     }, {
-                                       "r" : "421",
+                                       "r" : "433",
                                        "s" : [ {
                                           "value" : [ "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" ]
                                        } ]
@@ -1144,29 +1308,29 @@
                            }, {
                               "value" : [ " \n      ",">"," " ]
                            }, {
-                              "r" : "427",
+                              "r" : "439",
                               "s" : [ {
-                                 "r" : "424",
+                                 "r" : "436",
                                  "s" : [ {
                                     "value" : [ "Common" ]
                                  } ]
                               }, {
                                  "value" : [ "." ]
                               }, {
-                                 "r" : "427",
+                                 "r" : "439",
                                  "s" : [ {
                                     "value" : [ "ObservationDate","(" ]
                                  }, {
-                                    "r" : "426",
+                                    "r" : "438",
                                     "s" : [ {
-                                       "r" : "425",
+                                       "r" : "437",
                                        "s" : [ {
                                           "value" : [ "DataElements" ]
                                        } ]
                                     }, {
                                        "value" : [ "." ]
                                     }, {
-                                       "r" : "426",
+                                       "r" : "438",
                                        "s" : [ {
                                           "value" : [ "\"MostRecentFamilialRiskAssessmentObservation\"" ]
                                        } ]
@@ -1178,141 +1342,141 @@
                            } ]
                         } ]
                      }, {
-                        "r" : "433",
+                        "r" : "445",
                         "value" : [ "\n    then ","true","\n  else ","false" ]
                      } ]
                   } ]
                }
             } ],
             "expression" : {
-               "localId" : "324",
-               "locator" : "43:3-48:12",
+               "localId" : "336",
+               "locator" : "46:3-51:12",
                "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                "type" : "If",
                "condition" : {
-                  "localId" : "325",
-                  "locator" : "43:6-46:90",
+                  "localId" : "337",
+                  "locator" : "46:6-49:90",
                   "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "type" : "And",
                   "signature" : [ {
-                     "localId" : "431",
+                     "localId" : "443",
                      "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                      "type" : "NamedTypeSpecifier"
                   }, {
-                     "localId" : "432",
+                     "localId" : "444",
                      "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                      "type" : "NamedTypeSpecifier"
                   } ],
                   "operand" : [ {
-                     "localId" : "326",
-                     "locator" : "43:6-44:115",
+                     "localId" : "338",
+                     "locator" : "46:6-47:115",
                      "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                      "type" : "And",
                      "signature" : [ {
-                        "localId" : "416",
+                        "localId" : "428",
                         "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                         "type" : "NamedTypeSpecifier"
                      }, {
-                        "localId" : "417",
+                        "localId" : "429",
                         "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                         "type" : "NamedTypeSpecifier"
                      } ],
                      "operand" : [ {
-                        "localId" : "327",
-                        "locator" : "43:6-43:104",
+                        "localId" : "339",
+                        "locator" : "46:6-46:104",
                         "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                         "type" : "And",
                         "signature" : [ {
-                           "localId" : "405",
+                           "localId" : "417",
                            "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                            "type" : "NamedTypeSpecifier"
                         }, {
-                           "localId" : "406",
+                           "localId" : "418",
                            "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                            "type" : "NamedTypeSpecifier"
                         } ],
                         "operand" : [ {
-                           "localId" : "328",
-                           "locator" : "43:6-43:32",
+                           "localId" : "340",
+                           "locator" : "46:6-46:32",
                            "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                            "name" : "eve-fhxbrcaovcatubalperit",
                            "type" : "ExpressionRef"
                         }, {
-                           "localId" : "400",
-                           "locator" : "43:38-43:104",
+                           "localId" : "412",
+                           "locator" : "46:38-46:104",
                            "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                            "type" : "IsFalse",
                            "signature" : [ {
-                              "localId" : "404",
+                              "localId" : "416",
                               "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                               "type" : "NamedTypeSpecifier"
                            } ],
                            "operand" : {
-                              "localId" : "402",
+                              "localId" : "414",
                               "name" : "ToBoolean",
                               "libraryName" : "FHIRHelpers",
                               "type" : "FunctionRef",
                               "signature" : [ {
-                                 "localId" : "403",
+                                 "localId" : "415",
                                  "name" : "{http://hl7.org/fhir}boolean",
                                  "type" : "NamedTypeSpecifier"
                               } ],
                               "operand" : [ {
-                                 "localId" : "401",
+                                 "localId" : "413",
                                  "asType" : "{http://hl7.org/fhir}boolean",
                                  "type" : "As",
                                  "signature" : [ ],
                                  "operand" : {
-                                    "localId" : "387",
-                                    "locator" : "43:38-43:95",
+                                    "localId" : "399",
+                                    "locator" : "46:38-46:95",
                                     "name" : "LastFhxBreastOvarianTubalPeritonealCancerObservationResult",
                                     "type" : "ExpressionRef",
                                     "resultTypeSpecifier" : {
-                                       "localId" : "388",
+                                       "localId" : "400",
                                        "type" : "ChoiceTypeSpecifier",
                                        "type" : [ ],
                                        "choice" : [ {
-                                          "localId" : "389",
+                                          "localId" : "401",
                                           "name" : "{http://hl7.org/fhir}Quantity",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "390",
+                                          "localId" : "402",
                                           "name" : "{http://hl7.org/fhir}CodeableConcept",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "391",
+                                          "localId" : "403",
                                           "name" : "{http://hl7.org/fhir}string",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "392",
+                                          "localId" : "404",
                                           "name" : "{http://hl7.org/fhir}boolean",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "393",
+                                          "localId" : "405",
                                           "name" : "{http://hl7.org/fhir}integer",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "394",
+                                          "localId" : "406",
                                           "name" : "{http://hl7.org/fhir}Range",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "395",
+                                          "localId" : "407",
                                           "name" : "{http://hl7.org/fhir}Ratio",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "396",
+                                          "localId" : "408",
                                           "name" : "{http://hl7.org/fhir}SampledData",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "397",
+                                          "localId" : "409",
                                           "name" : "{http://hl7.org/fhir}time",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "398",
+                                          "localId" : "410",
                                           "name" : "{http://hl7.org/fhir}dateTime",
                                           "type" : "NamedTypeSpecifier"
                                        }, {
-                                          "localId" : "399",
+                                          "localId" : "411",
                                           "name" : "{http://hl7.org/fhir}Period",
                                           "type" : "NamedTypeSpecifier"
                                        } ]
@@ -1322,40 +1486,40 @@
                            }
                         } ]
                      }, {
-                        "localId" : "414",
-                        "locator" : "44:9-44:115",
+                        "localId" : "426",
+                        "locator" : "47:9-47:115",
                         "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                         "type" : "Not",
                         "signature" : [ {
-                           "localId" : "415",
+                           "localId" : "427",
                            "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                            "type" : "NamedTypeSpecifier"
                         } ],
                         "operand" : {
-                           "localId" : "412",
-                           "locator" : "44:9-44:115",
+                           "localId" : "424",
+                           "locator" : "47:9-47:115",
                            "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                            "type" : "IsNull",
                            "signature" : [ {
-                              "localId" : "413",
+                              "localId" : "425",
                               "name" : "{urn:hl7-org:elm-types:r1}Any",
                               "type" : "NamedTypeSpecifier"
                            } ],
                            "operand" : {
-                              "localId" : "410",
-                              "locator" : "44:9-44:103",
+                              "localId" : "422",
+                              "locator" : "47:9-47:103",
                               "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
                               "name" : "ObservationDate",
                               "libraryName" : "Common",
                               "type" : "FunctionRef",
                               "signature" : [ {
-                                 "localId" : "411",
+                                 "localId" : "423",
                                  "name" : "{http://hl7.org/fhir}Observation",
                                  "type" : "NamedTypeSpecifier"
                               } ],
                               "operand" : [ {
-                                 "localId" : "409",
-                                 "locator" : "44:32-44:102",
+                                 "localId" : "421",
+                                 "locator" : "47:32-47:102",
                                  "resultTypeName" : "{http://hl7.org/fhir}Observation",
                                  "name" : "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation",
                                  "libraryName" : "DataElements",
@@ -1365,54 +1529,54 @@
                         }
                      } ]
                   }, {
-                     "localId" : "418",
-                     "locator" : "45:9-46:90",
+                     "localId" : "430",
+                     "locator" : "48:9-49:90",
                      "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                      "type" : "Greater",
                      "signature" : [ {
-                        "localId" : "429",
+                        "localId" : "441",
                         "name" : "{urn:hl7-org:elm-types:r1}DateTime",
                         "type" : "NamedTypeSpecifier"
                      }, {
-                        "localId" : "430",
+                        "localId" : "442",
                         "name" : "{urn:hl7-org:elm-types:r1}DateTime",
                         "type" : "NamedTypeSpecifier"
                      } ],
                      "operand" : [ {
-                        "localId" : "422",
-                        "locator" : "45:9-45:103",
+                        "localId" : "434",
+                        "locator" : "48:9-48:103",
                         "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
                         "name" : "ObservationDate",
                         "libraryName" : "Common",
                         "type" : "FunctionRef",
                         "signature" : [ {
-                           "localId" : "423",
+                           "localId" : "435",
                            "name" : "{http://hl7.org/fhir}Observation",
                            "type" : "NamedTypeSpecifier"
                         } ],
                         "operand" : [ {
-                           "localId" : "421",
-                           "locator" : "45:32-45:102",
+                           "localId" : "433",
+                           "locator" : "48:32-48:102",
                            "resultTypeName" : "{http://hl7.org/fhir}Observation",
                            "name" : "FamilyHistoryBreastOvarianTubalPeritonealCancerObservation",
                            "libraryName" : "DataElements",
                            "type" : "ExpressionRef"
                         } ]
                      }, {
-                        "localId" : "427",
-                        "locator" : "46:9-46:90",
+                        "localId" : "439",
+                        "locator" : "49:9-49:90",
                         "resultTypeName" : "{urn:hl7-org:elm-types:r1}DateTime",
                         "name" : "ObservationDate",
                         "libraryName" : "Common",
                         "type" : "FunctionRef",
                         "signature" : [ {
-                           "localId" : "428",
+                           "localId" : "440",
                            "name" : "{http://hl7.org/fhir}Observation",
                            "type" : "NamedTypeSpecifier"
                         } ],
                         "operand" : [ {
-                           "localId" : "426",
-                           "locator" : "46:32-46:89",
+                           "localId" : "438",
+                           "locator" : "49:32-49:89",
                            "resultTypeName" : "{http://hl7.org/fhir}Observation",
                            "name" : "MostRecentFamilialRiskAssessmentObservation",
                            "libraryName" : "DataElements",
@@ -1422,16 +1586,16 @@
                   } ]
                },
                "then" : {
-                  "localId" : "433",
-                  "locator" : "47:10-47:13",
+                  "localId" : "445",
+                  "locator" : "50:10-50:13",
                   "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "value" : "true",
                   "type" : "Literal"
                },
                "else" : {
-                  "localId" : "434",
-                  "locator" : "48:8-48:12",
+                  "localId" : "446",
+                  "locator" : "51:8-51:12",
                   "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "value" : "false",
@@ -1439,8 +1603,8 @@
                }
             }
          }, {
-            "localId" : "318",
-            "locator" : "38:1-40:54",
+            "localId" : "330",
+            "locator" : "41:1-43:54",
             "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
             "name" : "ValidMostRecentFamilialRiskAssessment",
             "context" : "Patient",
@@ -1448,22 +1612,22 @@
             "annotation" : [ {
                "type" : "Annotation",
                "s" : {
-                  "r" : "318",
+                  "r" : "330",
                   "s" : [ {
                      "value" : [ "// Familial risk assessment is valid if exists\n// and risk factor observation not changed from false to true  after risk assessment\n","define ","ValidMostRecentFamilialRiskAssessment",":\n  " ]
                   }, {
-                     "r" : "319",
+                     "r" : "331",
                      "s" : [ {
-                        "r" : "321",
+                        "r" : "333",
                         "s" : [ {
-                           "r" : "320",
+                           "r" : "332",
                            "s" : [ {
                               "value" : [ "DataElements" ]
                            } ]
                         }, {
                            "value" : [ "." ]
                         }, {
-                           "r" : "321",
+                           "r" : "333",
                            "s" : [ {
                               "value" : [ "FamilialRiskAssessmentExists" ]
                            } ]
@@ -1471,9 +1635,9 @@
                      }, {
                         "value" : [ "\n    and " ]
                      }, {
-                        "r" : "436",
+                        "r" : "448",
                         "s" : [ {
-                           "r" : "435",
+                           "r" : "447",
                            "s" : [ {
                               "value" : [ "RiskFactorModifiedAfterRiskAssessment" ]
                            } ]
@@ -1485,39 +1649,39 @@
                }
             } ],
             "expression" : {
-               "localId" : "319",
-               "locator" : "39:3-40:54",
+               "localId" : "331",
+               "locator" : "42:3-43:54",
                "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                "type" : "And",
                "signature" : [ {
-                  "localId" : "438",
+                  "localId" : "450",
                   "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "type" : "NamedTypeSpecifier"
                }, {
-                  "localId" : "439",
+                  "localId" : "451",
                   "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "type" : "NamedTypeSpecifier"
                } ],
                "operand" : [ {
-                  "localId" : "321",
-                  "locator" : "39:3-39:43",
+                  "localId" : "333",
+                  "locator" : "42:3-42:43",
                   "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "name" : "FamilialRiskAssessmentExists",
                   "libraryName" : "DataElements",
                   "type" : "ExpressionRef"
                }, {
-                  "localId" : "436",
-                  "locator" : "40:9-40:54",
+                  "localId" : "448",
+                  "locator" : "43:9-43:54",
                   "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                   "type" : "IsFalse",
                   "signature" : [ {
-                     "localId" : "437",
+                     "localId" : "449",
                      "name" : "{urn:hl7-org:elm-types:r1}Boolean",
                      "type" : "NamedTypeSpecifier"
                   } ],
                   "operand" : {
-                     "localId" : "435",
-                     "locator" : "40:9-40:45",
+                     "localId" : "447",
+                     "locator" : "43:9-43:45",
                      "resultTypeName" : "{urn:hl7-org:elm-types:r1}Boolean",
                      "name" : "RiskFactorModifiedAfterRiskAssessment",
                      "type" : "ExpressionRef"

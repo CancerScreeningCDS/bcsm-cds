@@ -44,8 +44,9 @@ define "eve-fhxbrca":
   DataElements."de-fhxbreastcarisk" or DataElements."de-fhxrisk"
 
 define "eve-personalriskfactors":
-  DataElements.MostRecentPersonalRiskFactorAssessment.value is true or 
-    Count(DataElements."BiopsyDiagnosticReports") > 1 or
+  if DataElements.MostRecentPersonalRiskFactorAssessment is not null
+    then FHIRHelpers.ToBoolean(DataElements.MostRecentPersonalRiskFactorAssessment.value as boolean) 
+  else Count(DataElements."BiopsyDiagnosticReports") > 1 or
     DataElements."de-breastdensitycord"
 
 define MostRecent5YrRiskAssessmentResultHigh:

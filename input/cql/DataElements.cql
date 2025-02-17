@@ -285,9 +285,10 @@ define RightUnilateralMastectomyProcedures:
 //------------------------------------------------------------------------------
 
 define "de-breastsymptoms":
-  MostRecentBreastSymptomObservation.value is true
-    or exists EncounterBreastSymptomConditions
-    or EncounterReasonBreastSymptoms
+  if MostRecentBreastSymptomObservation is not null 
+    then FHIRHelpers.ToBoolean(MostRecentBreastSymptomObservation.value as boolean)
+  else  
+    exists EncounterBreastSymptomConditions or EncounterReasonBreastSymptoms
 
 define EncounterReasonBreastSymptoms:
   encounter is not null and 
@@ -319,7 +320,9 @@ define NewOrWorseningBreastSymptomsObservations:
 //------------------------------------------------------------------------------
 
 define "de-breastfindings":
-  MostRecentBreastFindingsObservation.value is true
+  if MostRecentBreastFindingsObservation is not null 
+    then FHIRHelpers.ToBoolean(MostRecentBreastFindingsObservation.value as boolean)
+  else false
 
 define MostRecentBreastFindingsObservation:
   BCSMCommon.MostRecentLocalObservation(NewOrWorseningBreastFindingsObservations,
@@ -333,7 +336,9 @@ define NewOrWorseningBreastFindingsObservations:
 //------------------------------------------------------------------------------
 
 define "de-lifeexp":
-  MostRecentReducedLifeExpectancyObservation.value is true or "de-hospice"
+  if MostRecentReducedLifeExpectancyObservation is not null 
+    then FHIRHelpers.ToBoolean(MostRecentReducedLifeExpectancyObservation.value as boolean) 
+  else "de-hospice"
 
 define MostRecentReducedLifeExpectancyObservation:
   BCSMCommon.MostRecentLocalObservation(ReducedLifeExpectancyObservations, encounter, ObservationLookbackPeriod)
@@ -416,10 +421,12 @@ define HasFinishedPregnancyEpisodesOfCare:
 //------------------------------------------------------------------------------
 
 define "de-geneticrisk":
-  GeneticMarkerOrSyndrome or "de-acsgeneticrisk"
+  if MostRecentGeneticMarkerOrSyndromeObservation is not null
+    then FHIRHelpers.ToBoolean(MostRecentGeneticMarkerOrSyndromeObservation.value as boolean) 
+  else "de-acsgeneticrisk"
 
 define GeneticMarkerOrSyndrome:
-  (MostRecentGeneticMarkerOrSyndromeObservation R where R.value is true) is not null
+  MostRecentGeneticMarkerOrSyndromeObservation.value is true
 
 define MostRecentGeneticMarkerOrSyndromeObservation:
   C3F.MostRecent(
@@ -454,8 +461,9 @@ define "de-chestxrt":
   Common.ValidCondition([Condition: "History of radiation therapy to chest"])
 
 define "de-chestxrtage10to30":
-  HistoryOfChestRadiationAges10To30Observation.value is true
-  or exists HistoryOfChestRadiationAges10To30Condition
+  if HistoryOfChestRadiationAges10To30Observation is not null
+    then FHIRHelpers.ToBoolean(HistoryOfChestRadiationAges10To30Observation.value as boolean) 
+  else exists HistoryOfChestRadiationAges10To30Condition
 
 define HistoryOfChestRadiationAges10To30Condition:    
   "de-chestxrt" C 
@@ -549,8 +557,9 @@ define BreastImagingHeterogenouslyOrExtremelyDenseResults:
 //------------------------------------------------------------------------------  
 
 define "de-fhxbreastcarisk":
-  MostRecentFamilialRiskAssessmentObservation.value is true
-    or MostRecentFamilialRiskAssessmentResultHigh is not null
+  if MostRecentFamilialRiskAssessmentObservation is not null
+    then FHIRHelpers.ToBoolean(MostRecentFamilialRiskAssessmentObservation.value as boolean) 
+  else MostRecentFamilialRiskAssessmentResultHigh is not null
 
 define FamilialRiskAssessmentExists:
   MostRecentFamilialRiskAssessmentObservation is not null or 
@@ -623,8 +632,9 @@ define "FirstOrSecondDegreeRelatives":
 //------------------------------------------------------------------------------  
 
 define "de-fhxgeneinherited":
-  FamilyGeneticHistoryAssessmentObservation.value is true or 
-    exists FamilyMemberGeneticMarkerOrSyndrome
+  if FamilyGeneticHistoryAssessmentObservation is not null
+    then FHIRHelpers.ToBoolean(FamilyGeneticHistoryAssessmentObservation.value as boolean) 
+  else exists FamilyMemberGeneticMarkerOrSyndrome
 
 define FamilyGeneticHistoryAssessmentObservation:  
   C3F.MostRecent(
@@ -661,7 +671,9 @@ define "FamilyMemberGeneticMarkerOrSyndromeConditions":
 //------------------------------------------------------------------------------  
 
 define "de-knownvariantstatus":
-  KnownGeneticMarkerOrSyndromeStatusObservation.value is true
+  if KnownGeneticMarkerOrSyndromeStatusObservation is not null
+    then FHIRHelpers.ToBoolean(KnownGeneticMarkerOrSyndromeStatusObservation.value as boolean) 
+  else false
 
 define KnownGeneticMarkerOrSyndromeStatusObservation:  
   C3F.MostRecent(
