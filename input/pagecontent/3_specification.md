@@ -72,6 +72,10 @@ Management of Abnormal Breast Cancer Screening Results
 -   [*NCCN Guidelines: Breast Cancer Screening and Diagnosis, Version
     2.2023*](https://www.nccn.org/guidelines/guidelines-detail?category=2&id=1421){:target="_blank"}
 
+-   [*The American Society of Breast Surgeons Resource Guide: Excisional breast biopsy (November 2014)*](https://www.breastsurgeons.org/docs/statements/asbrs-rg-excisional-breast-biopsy.pdf){:target="_blank"}
+
+-   [*The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)*](https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf){:target="_blank"}
+
 ### Overview of the CDS L2 Representation
 
 The CDS Level 2 (L2) includes a semi-structured representation of

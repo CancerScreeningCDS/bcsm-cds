@@ -24,7 +24,7 @@ Determines next steps, if any, based on result of screening imaging or biopsy. T
 * insert FollowupIndeterminateBiopsyResult
 * insert FollowupDiscordantBiopsyResult
 
-//TODO: add citation, NCCN? ASBS?
+//TODO: add citation, NCCN? ACR?
 RuleSet: FollowupBirads0Result
 * action[+].id = "FollowupBirads0Result"
 * action[=].title = "Refer to Radiologist recommendations"
@@ -39,7 +39,7 @@ Additional work-up including comparison to prior mammograms or diagnostic imagin
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupBirads0Result"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupBirads0ResultCode"
@@ -73,7 +73,7 @@ Periodic monitoring, including diagnostic mammogram or ultrasound, is warranted 
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupBirads3Result"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupBirads3ResultCode"
@@ -99,15 +99,18 @@ RuleSet: FollowupBirads4Or5Result
 * action[=].description = """
 Refer for breast biopsy.
 
-Initial biopsy will typically involve image-guided core needle biopsy, unless otherwise recommended by resulting Radiologist.
+Initial modality will typically be image-guided core needle biopsy (guided by mammography, ultrasound, or MRI). In certain conditions, an initial excisional biopsy may be preferable. These may include lesions anatomically unsuitable for needle biopsy or patient anatomic considerations. Refer to resulting Radiologist for recommendations.
+
+In imaging findings that have previously been biopsied and found to be benign, consider referral for excisional biopsy if there have been suspicious interval changes in the lesion.
 """
+* action[=] insert ASBrSExcisionalCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "NoErrorsHaveOccurred"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupBirads4Or5Result"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupBirads4Or5ResultCode"
@@ -135,15 +138,16 @@ Benign lesions without atypia or discordance with imaging can return to routine 
 
 Certain specific benign histologies may require additional tissue, including mucin-producing lesions, potential phyllodes tumor, papillary lesions, or radial scars. Refer to pathologist for further recommendations.
 
-Other specific histologies may be considered for excisional biopsy and can be referred to a breast surgeon for evaluation. These may include flat epithelial atypia [FEA], papillomas with atypia, complex sclerosing lesions (CSL) and fibroepithelial lesions favoring fibroadenoma.
+Other specific histologies may be considered for excisional biopsy and can be referred to a breast surgeon for evaluation. These may include flat epithelial atypia [FEA], papillary and/or sclerosing lesion, and fibroepithelial lesions (fibroadenoma vs benign phyllodes tumor).
 """
+* action[=] insert ASBrSRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "NoErrorsHaveOccurred"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupBenignBiopsyResult"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupBenignBiopsyResultCode"
@@ -173,13 +177,14 @@ Atypical ductal hyperplasia (ADH) and non-classic lobular carcinoma in situ (LCI
 
 Classic LCIS and atypical lobular hyperplasia (ALH) are typically candidates for observation with clinical and imaging follow-up but may benefit from excision in certain circumstances.
 """
+* action[=] insert ASBrSRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "NoErrorsHaveOccurred"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupAtypicalBiopsyResult"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupAtypicalBiopsyResultCode"
@@ -211,7 +216,7 @@ Referral to breast surgery or medical oncology as appropriate.
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupMalignantBiopsyResult"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupMalignantBiopsyResultCode"
@@ -236,14 +241,17 @@ RuleSet: FollowupIndeterminateBiopsyResult
 * action[=].title = "Refer to breast surgeon"
 * action[=].description = """
 Indeterminate fndings should be referred for potential excisional biopsy.
+
+A core needle biopsy specimen may be non-diagnostic for a number of reasons (insufficient material, lack of calcifications, hemorrhage).
 """
+* action[=] insert ASBrSExcisionalCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "NoErrorsHaveOccurred"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupIndeterminateBiopsyResult"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupIndeterminateBiopsyResultCode"
@@ -273,13 +281,14 @@ A histologic result may be discordant if the pathology result does not account f
 
 A repeat needle biopsy may be considered if the initial biopsy procedure was felt to be inadequate. Refer to radiologist recommendations for guidance.
 """
+* action[=] insert ASBrSRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "NoErrorsHaveOccurred"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsFollowupDiscordantBiopsyResult"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "FollowupDiscordantBiopsyResultCode"

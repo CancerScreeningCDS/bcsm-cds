@@ -30,7 +30,7 @@ Women between 40 and 44 have the option to start screening with a mammogram ever
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAvgRiskAgeUnder45"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeUnder45Code"
@@ -58,7 +58,7 @@ RuleSet: ACSMammoAvgRiskAge45to54
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAvgRiskAge45to54"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAge45to54Code"
@@ -90,7 +90,7 @@ Women 55 and older can switch to a mammogram every other year, or they can choos
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAvgRiskAgeOver54"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAvgRiskAgeOver54Code"
@@ -118,7 +118,7 @@ RuleSet: USPSTFAvgRisk
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsUSPSTFAvgRisk"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "USPSTFAvgRiskCode"
