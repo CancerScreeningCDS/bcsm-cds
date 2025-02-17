@@ -6,7 +6,7 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include AverageRiskEvents version '1.0.0' called Events
 include AverageRiskActions version '1.0.0' called Actions
 include DataElements version '1.0.0' called DataElements
-include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 context Patient
 
@@ -58,7 +58,7 @@ define ACSMammoAvgRiskAgeUnder45TimingEvent:
   ACSMammoAvgRiskAgeUnder45Timing R return First(R.event)  
 
 define ACSMammoAvgRiskAgeUnder45Flag:
-  ACSMammoAvgRiskAgeUnder45 R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)    
+  ACSMammoAvgRiskAgeUnder45 R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)    
 
 define ExistsACSMammoAvgRiskAge45to54:
   ACSMammoAvgRiskAge45to54 is not null
@@ -76,7 +76,7 @@ define ACSMammoAvgRiskAge45to54TimingEvent:
   ACSMammoAvgRiskAge45to54Timing R return First(R.event)  
 
 define ACSMammoAvgRiskAge45to54Flag:
-  ACSMammoAvgRiskAge45to54 R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)
+  ACSMammoAvgRiskAge45to54 R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)
 
 define ExistsACSMammoAvgRiskAgeOver54:
   ACSMammoAvgRiskAgeOver54 is not null
@@ -94,7 +94,7 @@ define ACSMammoAvgRiskAgeOver54TimingEvent:
   ACSMammoAvgRiskAgeOver54Timing R return First(R.event)  
 
 define ACSMammoAvgRiskAgeOver54Flag:
-  ACSMammoAvgRiskAgeOver54 R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)  
+  ACSMammoAvgRiskAgeOver54 R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)  
 
 define ExistsUSPSTFAvgRisk:
   USPSTFAvgRisk is not null
@@ -112,4 +112,4 @@ define USPSTFAvgRiskTimingEvent:
   USPSTFAvgRiskTiming R return First(R.event)
 
 define USPSTFAvgRiskFlag:
-  USPSTFAvgRisk R return BCSMCommonFunctions.CreateRecommendationFlagExtension(R.flag)    
+  USPSTFAvgRisk R return BCSMCommon.CreateRecommendationFlagExtension(R.flag)    

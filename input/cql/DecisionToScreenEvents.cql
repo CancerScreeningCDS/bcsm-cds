@@ -28,14 +28,10 @@ define "eve-LifeExp":
   DataElements."de-lifeexp"
 
 define "eve-lactating":
-  Lactating
+   Lactating
 
 define Lactating:
-  C3F.MostRecent(
-    C3F.ObservationLookBack(
-      DataElements.LactatingObservations R
-        where R.value is true,
-      SymptomaticLookBack
-    )
-  ) is not null   
+  if DataElements.MostRecentLactatingObservation is not null
+    then FHIRHelpers.ToBoolean(DataElements.MostRecentLactatingObservation.value as boolean) 
+  else false
 

@@ -4,7 +4,7 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include DataElements version '1.0.0' called DataElements
-include BCSMCommonFunctions version '1.0.0'
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 include FollowupScreeningResultEvents version '1.0.0' called Events
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
@@ -34,65 +34,65 @@ code "Discordant": 'Discordant' from BiopsyResultCS display 'Discordant breast f
 context Patient
 
 define "act-incompletescreen":
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Follow-up radiologist recommendations", 
     "Category0", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)     
 
 define "act-intervalscreen":
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Order interval imaging", 
     "Category3", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)  
 
 define "act-biopsy4": 
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Breast biopsy", 
     "Category4", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)    
 
 define "act-biopsy5":
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Breast biopsy", 
     "Category5", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)      
 
 define "act-benignbiopsy":
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Determine next due date", 
     "Benign", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)    
 
 define "act-highriskreferral":
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Breast surgeon referral", 
     "Atypical", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)    
 
 define "act-indeterminatebiopsy":
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Breast surgeon referral", 
     "Indeterminate", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)    
 
 define "act-discordantbiopsy":
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Breast surgeon referral", 
     "Discordant", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)    
 
 define "act-oncreferral": 
-  BCSMCommonFunctions.SetFollowupRecommendation(
+  BCSMCommon.SetFollowupRecommendation(
     "Oncologic referral", 
     "Malignant", 
-    BCSMCommonFunctions.SourceDocumentationOther, 
+    BCSMCommon.SourceDocumentationOther, 
     Events.LatestTest.date)    
 

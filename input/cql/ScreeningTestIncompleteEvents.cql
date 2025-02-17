@@ -6,7 +6,7 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include DataElements version '1.0.0' called DataElements
 include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 include CSMCommonFunctions version '1.0.0' called Common
-include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 context Patient
 
@@ -59,7 +59,7 @@ define ActiveBreastCancerScreeningOrders:
 
 define BreastCancerScreeningOrders:
   ([ServiceRequest: DataElements."BREAST CANCER IMAGING ORDERS"] union [ServiceRequest: DataElements."BREAST CANCER BIOPSY ORDERS"]) O
-    where O.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}    
+    where BCSMCommon.ServiceRequestWithOrderIntent(O)
 
 //------------------------------------------------------------------------------
 // PROCEDURES
@@ -120,7 +120,7 @@ define IncompleteBreastBiopsyDiagnosticReports:
 
 define function LastReportDateByCode(code FHIR.CodeableConcept):
   code C
-  let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(C),
+  let lastReport: BCSMCommon.MostRecentDiagnosticReportByCode(C),
   lastReportDate: Common.DiagnosticReportDate(lastReport)
   return lastReportDate
 

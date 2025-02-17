@@ -5,7 +5,7 @@ using FHIR version '4.0.1'
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include DataElements version '1.0.0' called DataElements
 include CSMCommonFunctions version '1.0.0' called CSMCommonFunctions
-include BCSMCommonFunctions version '1.0.0' called BCSMCommonFunctions
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMED": 'http://snomed.info/sct'
@@ -47,11 +47,11 @@ define "eve-noscreening27mo":
   (LastMammography is null or Today() > (FHIRHelpers.ToDateTime(LastMammography.effective) as DateTime) + 27 months)
 
 define "eve-due":
-  CarePlanActivitiesDue A where A.flag in {BCSMCommonFunctions."DUE", BCSMCommonFunctions."OVERDUE"}
+  CarePlanActivitiesDue A where A.flag in {BCSMCommon."DUE", BCSMCommon."OVERDUE"}
 
 define CarePlanActivitiesDue:
   ScreeningActivities A
-  let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(A.code),
+  let lastReport: BCSMCommon.MostRecentDiagnosticReportByCode(A.code),
   lastReportDate: CSMCommonFunctions.DiagnosticReportDate(lastReport),
   nextdue: CalculateActivityNextDue(A)
   return {
@@ -60,16 +60,16 @@ define CarePlanActivitiesDue:
     nextDue: nextdue,
     plannedDue: A.plannedDue,
     plannedStart: A.plannedStart,
-    plannedRepeat: BCSMCommonFunctions.EvaluateInterval((A.timing as FHIR.Timing).repeat),
+    plannedRepeat: BCSMCommon.EvaluateInterval((A.timing as FHIR.Timing).repeat),
     lastReportDate: lastReportDate,
-    flag: BCSMCommonFunctions.EvaluateFlag((A.timing as FHIR.Timing).repeat, nextdue)
+    flag: BCSMCommon.EvaluateFlag((A.timing as FHIR.Timing).repeat, nextdue)
   }   
 
 define ScreeningActivities:
   ScreeningRequestGroupActions union ScreeningServiceRequests
 
 define LastMammography:
-  BCSMCommonFunctions.MostRecentDiagnosticReportByVS("SCREENING MAMMOGRAM")
+  BCSMCommon.MostRecentDiagnosticReportByVS("SCREENING MAMMOGRAM")
 
 
 //------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ define function CalculateActivityNextDue(
   activity Tuple{code FHIR.CodeableConcept,plannedDue System.DateTime,plannedStart System.DateTime,timing FHIR.Timing}
 ):
   activity A
-  let lastReport: BCSMCommonFunctions.MostRecentDiagnosticReportByCode(A.code),
+  let lastReport: BCSMCommon.MostRecentDiagnosticReportByCode(A.code),
   lastReportDate: FHIRHelpers.ToDateTime(lastReport.effective) as DateTime,
   duedate: A.plannedDue,
   repeat: Tuple{frequency: FHIRHelpers.ToInteger((A.timing as Timing).repeat.frequency),
@@ -90,19 +90,19 @@ define function CalculateActivityNextDue(
     case
       // -duedate = use CalculateNextDueByCodeAndInterval
       when duedate is null then 
-        BCSMCommonFunctions.CalculateNextDueByCodeAndInterval(
+        BCSMCommon.CalculateNextDueByCodeAndInterval(
           A.code, 
           FHIRHelpers.ToDateTime(((A.timing as Timing).repeat.bounds as Period).start),
           repeat)
       // +duedate, -repeat, -lastreport or +lastreport < duedate = use duedate
-      when BCSMCommonFunctions.RepeatIsValid(repeat) is false and (lastReport is null or lastReportDate < duedate) then duedate
+      when BCSMCommon.RepeatIsValid(repeat) is false and (lastReport is null or lastReportDate < duedate) then duedate
       // +duedate, +repeat, -lastreport or +lastreport < duedate = use duedate
-      when BCSMCommonFunctions.RepeatIsValid(repeat) and (lastReport is null or lastReportDate < duedate) then duedate
+      when BCSMCommon.RepeatIsValid(repeat) and (lastReport is null or lastReportDate < duedate) then duedate
       // +duedate, -repeat, +lastreport > duedate = no prediction
-      when BCSMCommonFunctions.RepeatIsValid(repeat) is false and lastReport is not null and lastReportDate > duedate then null
+      when BCSMCommon.RepeatIsValid(repeat) is false and lastReport is not null and lastReportDate > duedate then null
       // +duedate, +repeat, +lastreport > duedate = use lastreport + repeat
-      when BCSMCommonFunctions.RepeatIsValid(repeat) and lastReport is not null and lastReportDate > duedate then
-        date from BCSMCommonFunctions.AddIntervalToDateTime(lastReportDate, repeat)
+      when BCSMCommon.RepeatIsValid(repeat) and lastReport is not null and lastReportDate > duedate then
+        date from BCSMCommon.AddIntervalToDateTime(lastReportDate, repeat)
       // Default case if none of the above conditions are met      
       else null
     end         

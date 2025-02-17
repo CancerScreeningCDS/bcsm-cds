@@ -6,10 +6,10 @@ include FHIRHelpers  version '4.0.1' called FHIRHelpers
 include ScreeningTestIncompleteEvents version '1.0.0' called Events
 include DataElements version '1.0.0' called DataElements
 include ScreeningEligible version '1.0.0'
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 context Patient
 
-// TODO: how to handle BI-RADS 0
 define "flow-ScreeningTestIncomplete":
   exists IncompleteScreeningOrders
     or exists IncompleteScreeningProcedures

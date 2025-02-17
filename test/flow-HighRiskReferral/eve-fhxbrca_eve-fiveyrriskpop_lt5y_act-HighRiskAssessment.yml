@@ -1,0 +1,17 @@
+---
+name: eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment
+flow: flow-HighRiskReferral
+externalData:
+  - ../HighRiskReferralEvents/events
+  - actions
+  - ../DataElements/data_elements
+  - ../default_patients
+data:
+  - *Patient_age_>=_35_years
+  - $import: *Multiple_output_of_validated_brief_familial_risk_assessment_false_to_true
+  - *Formal_clinical_risk_assessment_tool_output_<5_years_ago
+results:
+  flow-HighRiskReferral:
+    -
+      - *act-5YRiskAssessment
+      - *act-5YRiskAssessmentTool

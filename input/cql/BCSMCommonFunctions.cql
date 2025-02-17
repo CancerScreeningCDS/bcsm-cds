@@ -53,13 +53,14 @@ define function SetRecommendation(
       flag System.Code
     }: 
   code C
-  let nextdue: if event is not null then event else 
-    CalculateNextDueByCodeAndInterval(ToConcept(C), CalculateStartDateByAge(timingAge), repeat),
+  let startDate: if timingAge is not null then CalculateStartDateByAge(timingAge) else null,
+  nextdue: if event is not null then event 
+    else CalculateNextDueByCodeAndInterval(ToConcept(C), startDate, repeat),
   timingTiming: {
       event: {ToString(nextdue)},
       repeat: {
         boundsPeriod: {
-          start: if timingAge is not null then ToString(CalculateStartDateByAge(timingAge)) else null
+          start: ToString(startDate)
         },
         frequency: repeat.frequency,
         period: repeat.period,
@@ -119,7 +120,6 @@ define function CalculateNextDueByCodeAndInterval(code Concept,
     startDate DateTime,
     repeat Tuple{frequency System.Integer,period System.Decimal,periodUnit System.String}):
   code C
-  //TODO: add last report lookup from observation for cases where report itself is not transmitted, only documented in a flowsheet
   let lastReport: MostRecentDiagnosticReportByCode(C)
   return
     case
@@ -156,8 +156,7 @@ define function RepeatIsValid(repeat Tuple{frequency System.Integer,period Syste
 
 define function MostRecentDiagnosticReportByCode(code Concept):
     CSMCommonFunctions.MostRecentDiagnosticReport(DiagnosticReportsByCode(code))
-
-//TODO: determine if we need to look for non-test result, like specialty referral
+    
 define function DiagnosticReportsByCode(concept Concept):
   [DiagnosticReport] R
     where R.code ~ concept  
@@ -279,36 +278,6 @@ define function AggregateRecommendationsByCode(recommendations List<Choice<Tuple
   }   
 
 //------------------------------------------------------------------------------
-// CPG inference task
-//------------------------------------------------------------------------------
-//TODO: may not need this, if using CarePlan then can delete
-
-define InferenceTaskInput:
-  {
-    type: {coding: {"Record an inference"}},
-    valueReference: '#inference'
-  }
-
-define function CreateInferenceTaskObservation(code System.Code, value DateTime):
-  {
-    resourceType: 'Observation',
-    id : 'inference',
-    status: 'final',
-    issued: ToString(Now()),
-    subject: {reference: 'Patient/' + Patient.id },
-    code: {
-      coding: {
-        {
-          system: code.system,
-          code: code.code ,
-          display: code.display
-        }
-      }
-    },    
-    valueDateTime: ToString(value)
-  }    
-
-//------------------------------------------------------------------------------
 // Diagnostic report results
 //------------------------------------------------------------------------------
 // Aggregate result codes -
@@ -335,3 +304,35 @@ define function ValuesFromObservation(D DiagnosticReport, ObsList List<Observati
     Exists( (O.basedOn) oB where AnyTrue((D.basedOn) dB return dB = oB ) )
   return O.value as FHIR.CodeableConcept
 
+//------------------------------------------------------------------------------
+// Local observations
+//------------------------------------------------------------------------------  
+
+define function MostRecentLocalObservation(observations List<FHIR.Observation>, encounter String, ObservationLookbackPeriod System.Quantity):
+  C3F.MostRecent(
+    (observations O where encounter is not null and O.encounter.reference = encounter)
+    union
+    (C3F.ObservationLookBack(
+      observations,
+      ObservationLookbackPeriod
+    )) except { null }
+  )
+
+define function SortedObservations(obs List<FHIR.Observation>):
+  obs o sort by Coalesce(
+    (effective as FHIR.dateTime).value,
+    (effective as FHIR.instant).value,
+    (effective as FHIR.Period)."end".value,
+    (effective as FHIR.Period)."start".value,
+    (issued as FHIR.instant).value
+  ) desc   
+
+//------------------------------------------------------------------------------
+// Service requests
+//------------------------------------------------------------------------------
+define function ServiceRequestsWithOrderIntent(requests List<ServiceRequest>):
+  requests O
+    where O.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}  
+
+define function ServiceRequestWithOrderIntent(request ServiceRequest):
+  request.intent in {'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order'}

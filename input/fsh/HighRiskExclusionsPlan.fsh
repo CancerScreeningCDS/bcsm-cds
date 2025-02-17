@@ -38,7 +38,7 @@ Women who are at higher than average risk for breast cancer based on known genet
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSGeneticRiskMammo"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMammoCode"
@@ -70,7 +70,7 @@ Women who are at higher than average risk for breast cancer based on known genet
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSGeneticRiskMri"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSGeneticRiskMriCode"
@@ -101,7 +101,13 @@ Variants may include ATM, BARD1, CDH1, CHEK2, NF1, PALB2, RAD51C, RAD51D, STK11.
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsSpecialtyReferralGeneticRisk"
-* action[=].definitionCanonical = Canonical(CommunicateSpecialtyReferral|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
+* action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "SpecialtyReferralGeneticRiskCode"
+* action[=].dynamicValue[+].path = "code.coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "SpecialtyReferralGeneticRiskCode"
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SpecialtyReferralGeneticRiskReason"
@@ -118,7 +124,7 @@ Refer to patient's Oncologic treatment team or Survivorship Care Plan for patien
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAfterRT"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAfterRTCode"
@@ -150,7 +156,7 @@ Refer to patient's Oncologic treatment team or Survivorship Care Plan for patien
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier" 
 * action[=].condition[=].expression.expression = "ExistsACSMriAfterRT"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMriAfterRTCode"
@@ -178,7 +184,7 @@ RuleSet: ACSMammoAfterBrca
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAfterBrca"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAfterBrcaCode"
@@ -210,7 +216,13 @@ Refer to patient's Oncologic treatment team or Survivorship Care Plan for patien
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsSpecialtyReferralBreastCaWithin5y"
-* action[=].definitionCanonical = Canonical(CommunicateSpecialtyReferral|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
+* action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "SpecialtyReferralBreastCaWithin5yCode"
+* action[=].dynamicValue[+].path = "code.coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "SpecialtyReferralBreastCaWithin5yCode"
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "SpecialtyReferralBreastCaWithin5yReason"
@@ -228,7 +240,7 @@ Women who are at higher than average risk for breast cancer based on past atypic
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMammoAtypicalBiopsy"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoAtypicalBiopsyCode"
@@ -260,7 +272,13 @@ If estimated lifetime risk is >20%, patient may be eligible for supplemental scr
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSAtypicalBiopsy"
-* action[=].definitionCanonical = Canonical(CommunicateRiskAssessment|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
+* action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "ACSAtypicalBiopsyCode"
+* action[=].dynamicValue[+].path = "code.coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "ACSAtypicalBiopsyCode"
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSAtypicalBiopsyReason"
@@ -273,7 +291,7 @@ RuleSet: ACSMriAtypicalBiopsyHighRisk
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMriAtypicalBiopsyHighRisk"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMriAtypicalBiopsyHighRiskCode"
@@ -292,22 +310,3 @@ RuleSet: ACSMriAtypicalBiopsyHighRisk
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMriAtypicalBiopsyHighRiskTimingEvent"
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Instance: CommunicateSpecialtyReferral
-InstanceOf: http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity
-Title: "Communicate Recommendation to refer to specialist"
-Usage: #definition
-
-* insert CPGKnowledgeExtensions
-* insert CommonMetadata
-* meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity"
-* url = Canonical(CommunicateSpecialtyReferral)
-* name = "CommunicateSpecialtyReferral"
-* description = "This ActivityDefinition generates a CommunicationRequest recommending specialty referral."
-* kind = $RRTYPE#CommunicationRequest "CommunicationRequest"
-* intent = $RINTENT#proposal "Proposal"
-* priority = $RPRIOR#routine "Routine"
-* code = $PDACS#specialtyreferral "Refer to specialist recommendations"
-* code.text = "Refer to specialist recommendations"
