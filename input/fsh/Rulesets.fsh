@@ -78,6 +78,27 @@ RuleSet: ACRTransgenderCitationDocumentationArtifact
 * documentation[=].citation = "Brown, Ann, et al. \"ACR appropriateness criteria® transgender breast cancer screening.\" Journal of the American College of Radiology 18.11 (2021): S502-S515."
 * documentation[=].url = "https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext"
 
+RuleSet: ACRMammographyReportingCitationDocumentationArtifact
+* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[=].label = "ACR"
+* documentation[=].display = "ACR BI-RADS Atlas Excerpt: Mammography Reporting System"
+* documentation[=].citation = "American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."
+* documentation[=].url = "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"
+
+RuleSet: ACRMriReportingCitationDocumentationArtifact
+* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[=].label = "ACR"
+* documentation[=].display = "ACR BI-RADS Atlas Excerpt: MRI Reporting System"
+* documentation[=].citation = "American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."
+* documentation[=].url = "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"
+
+RuleSet: ACRUltrasoundReportingCitationDocumentationArtifact
+* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[=].label = "ACR"
+* documentation[=].display = "ACR BI-RADS Atlas Excerpt: Ultrasound Reporting System"
+* documentation[=].citation = "American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."
+* documentation[=].url = "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"
+
 RuleSet: UCSFTransgenderCitationDocumentationArtifact
 * documentation[+].type = $RATYPE#documentation "Documentation"
 * documentation[=].label = "UCSF"

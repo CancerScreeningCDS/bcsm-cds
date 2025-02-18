@@ -26,7 +26,7 @@ Provides criteria to determine age to start, screening modality, and screening i
 
 RuleSet: ACSMammoHighRisk
 * action[+].id = "ACSMammoHighRisk"
-* action[=].title = "Annual screeening mammogram starting age 30"
+* action[=].title = "Annual screening mammogram starting age 30"
 * action[=].description = """
 An annual screening mammogram starting at age 30 is recommended.
 
@@ -58,7 +58,7 @@ Women who are at higher than average risk for breast cancer based on certain ris
 
 RuleSet: ACSMriHighRisk
 * action[+].id = "ACSMriHighRisk"
-* action[=].title = "Annual screeening MRI starting age 30"
+* action[=].title = "Annual screening MRI starting age 30"
 * action[=].description = """
 An annual screening MRI starting at age 30 is recommended.
 
@@ -90,7 +90,7 @@ Women who are at higher than average risk for breast cancer based on certain ris
 
 RuleSet: ACSFirstDegGeneticMammo
 * action[+].id = "ACSFirstDegGeneticMammo"
-* action[=].title = "Annual screeening mammo starting age 30"
+* action[=].title = "Annual screening mammo starting age 30"
 * action[=].description = """
 An annual screening mammogram starting at age 30 is recommended.
 
@@ -122,7 +122,7 @@ Women who are at higher than average risk for breast cancer based on certain ris
 
 RuleSet: ACSFirstDegGeneticMri
 * action[+].id = "ACSFirstDegGeneticMri"
-* action[=].title = "Annual screeening MRI starting age 30"
+* action[=].title = "Annual screening MRI starting age 30"
 * action[=].description = """
 An annual screening MRI starting at age 30 is recommended.
 
@@ -199,8 +199,8 @@ Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of
 
 RuleSet: USPSTFRecommendation
 * action[+].id = "USPSTFRecommendation"
-* action[=].title = "Biennial screeening mammo starting age 40"
-* action[=].description = "Biennial screeening mammogram starting at age 40"
+* action[=].title = "Biennial screening mammo starting age 40"
+* action[=].description = "Biennial screening mammogram starting at age 40"
 * action[=] insert USPSTFScreeningCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
