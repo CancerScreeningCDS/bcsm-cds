@@ -4,10 +4,10 @@
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/501",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/507",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "501",
+        "id": "507",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/502"
+              "reference": "RequestGroup/508"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/502",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/508",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "502",
+        "id": "508",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -55,8 +55,19 @@
               }
             ],
             "resource": {
-              "reference": "CommunicationRequest/503"
-            }
+              "reference": "ServiceRequest/509"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "lifetimeriskassessment",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Perform lifetime risk assessment"
+                  }
+                ]
+              }
+            ]
           },
           {
             "id": "USPSTFRecommendation",
@@ -72,7 +83,7 @@
               }
             ],
             "resource": {
-              "reference": "ServiceRequest/504"
+              "reference": "ServiceRequest/510"
             },
             "code": [
               {
@@ -117,25 +128,30 @@
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/503",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/509",
       "resource": {
-        "id": "503",
-        "resourceType": "CommunicationRequest",
+        "id": "509",
+        "resourceType": "ServiceRequest",
         "status": "option",
         "basedOn": [
           {
-            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateRiskAssessment"
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
           }
         ],
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
         },
-        "payload": [
-          {
-            "contentString": "Perform lifetime risk assessment"
-          }
-        ],
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "lifetimeriskassessment",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "Perform lifetime risk assessment"
+            }
+          ]
+        },
         "reasonCode": [
           {
             "coding": [
@@ -150,14 +166,14 @@
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/504",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/510",
       "resource": {
-        "id": "504",
+        "id": "510",
         "resourceType": "ServiceRequest",
         "status": "option",
         "basedOn": [
           {
-            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
           }
         ],
         "subject": {

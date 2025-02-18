@@ -1,13 +1,13 @@
 {
   "resourceType": "Bundle",
-  "id": "FollowupScreeningResult_eve-latesttesttype_biopsy_eve-biopsyresult_discordant_act-discordantbiopsy",
+  "id": "FollowupScreeningResult_eve-biradsscore_mri__bi-rads_4_or_5_act-biopsy",
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/310",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/339",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "310",
+        "id": "339",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -21,17 +21,17 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/311"
+              "reference": "RequestGroup/340"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/311",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/340",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "311",
+        "id": "340",
         "subject": {
           "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
@@ -43,19 +43,27 @@
         "status": "draft",
         "action": [
           {
-            "id": "FollowupDiscordantBiopsyResult",
-            "title": "Refer to breast surgeon",
-            "description": "Benign histology findings on core needle biopsy that are discordant with imaging findings should be referred for potential excisional biopsy.\n\nA histologic result may be discordant if the pathology result does not account for imaging findings that are suspicious for malignancy. The designation of discordance may require input from radiologist, breast surgeon, and breast pathologist. \n\nA repeat needle biopsy may be considered if the initial biopsy procedure was felt to be inadequate. Refer to radiologist recommendations for guidance.",
+            "id": "FollowupBirads4Or5Result",
+            "title": "Refer for breast biopsy",
+            "description": "Refer for breast biopsy.\n\nInitial modality will typically be image-guided core needle biopsy (guided by mammography, ultrasound, or MRI). In certain conditions, an initial excisional biopsy may be preferable. These may include lesions anatomically unsuitable for needle biopsy or patient anatomic considerations. Refer to resulting Radiologist for recommendations.\n\nIn imaging findings that have previously been biopsied and found to be benign, consider referral for excisional biopsy if there have been suspicious interval changes in the lesion.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ASBrS",
+                "display": "The American Society of Breast Surgeons Resource Guide: Excisional Breast Biopsy (Nov 2014)",
+                "url": "https://www.breastsurgeons.org/docs/statements/asbrs-rg-excisional-breast-biopsy.pdf"
+              }
+            ],
             "resource": {
-              "reference": "ServiceRequest/312"
+              "reference": "ServiceRequest/341"
             },
             "code": [
               {
                 "coding": [
                   {
-                    "code": "surgicalreferral",
+                    "code": "breastbiopsy",
                     "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
-                    "display": "Breast surgeon referral"
+                    "display": "Breast biopsy"
                   }
                 ]
               }
@@ -84,14 +92,14 @@
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/312",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/341",
       "resource": {
-        "id": "312",
+        "id": "341",
         "resourceType": "ServiceRequest",
         "status": "option",
         "basedOn": [
           {
-            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
           }
         ],
         "subject": {
@@ -102,9 +110,9 @@
         "code": {
           "coding": [
             {
-              "code": "surgicalreferral",
+              "code": "breastbiopsy",
               "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
-              "display": "Breast surgeon referral"
+              "display": "Breast biopsy"
             }
           ]
         },
@@ -112,9 +120,9 @@
           {
             "coding": [
               {
-                "code": "Discordant",
-                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
-                "display": "Discordant breast finding"
+                "code": "397145000",
+                "system": "http://snomed.info/sct",
+                "display": "Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)"
               }
             ]
           }
