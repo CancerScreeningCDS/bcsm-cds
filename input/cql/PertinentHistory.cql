@@ -23,9 +23,6 @@ code "Category4C": '6141000179100' from "SNOMED-CT" display 'Mammography assessm
 code "Category5": '397145000' from "SNOMED-CT" display 'Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)'
 code "Category6": '6111000179101' from "SNOMED-CT" display 'Mammography assessment (Category 6) - known biopsy, proven malignancy (finding)'
 
-//TODO: this should be a value set
-concept BIRADS: {Category0, Category1, Category2, Category3, Category4, Category4A, Category4B, Category4C, Category5, Category6}
-
 context Patient
 
 define PertinentHistory:
@@ -380,15 +377,15 @@ define function FormatReports(DrList List<DiagnosticReport>, ObsList List<Observ
 //return biopsy result annotation or BI-RADS result annotation if exists, otherwise return first coding
 define function HighestRankedResult(CollatedCodes List<FHIR.CodeableConcept>):
   Coalesce(
-    (CollatedCodes cC    
+    First(CollatedCodes cC    
     return First(cC.coding C 
       where C.system = 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'
     )),
-    (CollatedCodes cC    
-    return First(cC.coding C 
-      where FHIRHelpers.ToCode(C) ~ BIRADS
+    First(CollatedCodes cC    
+    return First(cC.coding coding
+      where FHIRHelpers.ToCode(coding) in {Category0, Category1, Category2, Category3, Category4, Category4A, Category4B, Category4C, Category5, Category6}
     )),
-    CollatedCodes cC return First(cC.coding C)
+    First(CollatedCodes cC return First(cC.coding C))
   )
   
 define function displayStartDate(startDate String):
