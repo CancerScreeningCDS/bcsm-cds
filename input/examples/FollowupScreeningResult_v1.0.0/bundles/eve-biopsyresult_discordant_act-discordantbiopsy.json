@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "eve-biopsyresult_missing_error",
+  "id": "eve-biopsyresult_discordant_act-discordantbiopsy",
   "type": "collection",
   "entry": [
     {
@@ -22,7 +22,7 @@
     {
       "resource": {
         "resourceType": "DiagnosticReport",
-        "id": "39fed0b2-e455-451d-9b4f-323b027674aa",
+        "id": "b5d06f92-81ab-4b64-835b-9fbe524cd0d7",
         "subject": {
           "reference": "Patient/defaultPatient"
         },
@@ -37,6 +37,38 @@
           ]
         },
         "effectiveDateTime": "2024-10-01T10:00:00.000Z",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/order-1"
+          }
+        ]
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "id": "e37e4d86-08f2-4069-97fa-5f8fcc65e305",
+        "subject": {
+          "reference": "Patient/defaultPatient"
+        },
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "66110-8",
+              "display": "Biopsy Report"
+            }
+          ]
+        },
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+              "code": "Discordant"
+            }
+          ]
+        },
         "basedOn": [
           {
             "reference": "ServiceRequest/order-1"

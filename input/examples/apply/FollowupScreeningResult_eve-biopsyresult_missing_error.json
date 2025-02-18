@@ -1,19 +1,19 @@
 {
   "resourceType": "Bundle",
-  "id": "HighRiskReferral_exc-hxbrca",
+  "id": "FollowupScreeningResult_eve-biopsyresult_missing_error",
   "type": "collection",
   "entry": [
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/456",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/318",
       "resource": {
         "resourceType": "CarePlan",
-        "id": "456",
+        "id": "318",
         "subject": {
-          "reference": "Patient/185648ce-e7b1-4d6a-9fcf-ff03a0825e6a",
+          "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
         },
         "instantiatesCanonical": [
-          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"
         ],
         "intent": "proposal",
         "status": "draft",
@@ -21,23 +21,23 @@
         "activity": [
           {
             "reference": {
-              "reference": "RequestGroup/457"
+              "reference": "RequestGroup/319"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/457",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/319",
       "resource": {
         "resourceType": "RequestGroup",
-        "id": "457",
+        "id": "319",
         "subject": {
-          "reference": "Patient/185648ce-e7b1-4d6a-9fcf-ff03a0825e6a",
+          "reference": "Patient/defaultPatient",
           "display": "Jane Doe"
         },
         "instantiatesCanonical": [
-          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"
         ],
         "intent": "proposal",
         "status": "draft",
@@ -55,14 +55,27 @@
             "resourceType": "OperationOutcome",
             "issue": [
               {
-                "severity": "error",
+                "severity": "warning",
                 "code": "processing",
-                "diagnostics": "Excluded or not included",
+                "diagnostics": "A laboratory test was found without a result. Please review patient record to resolve.",
                 "details": {
                   "coding": [
                     {
                       "system": "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
-                      "code": "excludedornotincluded"
+                      "code": "missingresultcode"
+                    }
+                  ]
+                }
+              },
+              {
+                "severity": "warning",
+                "code": "processing",
+                "diagnostics": "A laboratory test was found with an unexpected result code. Please review patient record to resolve.",
+                "details": {
+                  "coding": [
+                    {
+                      "system": "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+                      "code": "unknownresultcode"
                     }
                   ]
                 }
