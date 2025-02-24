@@ -201,11 +201,7 @@ Description: "A questionnaire to assess familial risk factors related to breast 
 * item[=].text = "Brief familial risk assessment tool"
 * item[=].type = $ITEMTYPE#boolean
 * item[=].code = $PDACS#fhxrisktool
-
-* item[+].linkId = "highfamilialrisk"
-* item[=].text = "High familial risk"
-* item[=].type = $ITEMTYPE#boolean
-* item[=].code = $SOCS#highfamilialrisk
+* item[=].answerOption[+].valueCoding = $SOCS#highfamilialrisk "High familial risk"
 
 //this is queried from pertinent history
 /*
