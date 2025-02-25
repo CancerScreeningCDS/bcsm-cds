@@ -55,6 +55,8 @@ valueset "Second Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.
 valueset "Breast Cancer Biopsy Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.387' //TODO: add CPT, HCPCS, ICD-10-PCS. TODO clinical validation: check for overall accuracy.
 // TODO: replace with http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.12.1018
 valueset "Breast Cancer Imaging Orders": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.108.11.1047' //TODO: add CPT, HCPCS, ICD-10-PCS. TODO clinical validation: Keep SNOMED codes for core compression, magnification and localization mammography? Keep mammary ductograms? Keep doppler US?
+// TODO: replace placeholder value set OID
+valueset "GENETIC COUNSELING": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.235' 
 
 // Standard codes
 code "Male": 'male' from "AdministrativeGender" display 'Male'
@@ -404,20 +406,21 @@ define HasFinishedPregnancyEpisodesOfCare:
 define "de-geneticrisk":
   if MostRecentGeneticMarkerOrSyndromeObservation is not null
     then FHIRHelpers.ToBoolean(MostRecentGeneticMarkerOrSyndromeObservation.value as boolean) 
-  else "de-acsgeneticrisk"
+  else GeneticMarkerOrSyndrome is true or "de-acsgeneticrisk"
 
 define GeneticMarkerOrSyndrome:
   MostRecentGeneticMarkerOrSyndromeObservation.value is true
-
-define GeneticMarkerOrSyndromeCondition:
-  C3F.ActiveCondition(
-    [Condition: "Genetic Marker of Susceptibility to Breast Cancer"]
-  )
+    or exists GeneticMarkerOrSyndromeCondition
 
 define MostRecentGeneticMarkerOrSyndromeObservation:
   C3F.MostRecent(
     [Observation: "Genetic marker or syndrome associated with breast cancer"]
   )
+
+define GeneticMarkerOrSyndromeCondition:
+  C3F.ActiveCondition(
+    [Condition: "Genetic Marker of Susceptibility to Breast Cancer"]
+  )  
 
 define "de-acsgeneticrisk":
   exists "BRCA-1MutationConditions" or exists "BRCA-2MutationConditions" or

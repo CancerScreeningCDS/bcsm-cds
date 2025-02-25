@@ -69,7 +69,7 @@ define ScreeningActivities:
   ScreeningRequestGroupActions union ScreeningServiceRequests
 
 define LastMammography:
-  BCSMCommonFunctions.MostRecentDiagnosticReportByVS("SCREENING MAMMOGRAM")
+  BCSMCommon.MostRecentDiagnosticReportByVS("Screening Mammogram")
 
 
 //------------------------------------------------------------------------------
