@@ -22,7 +22,7 @@ Patient population identified as average risk. Provides criteria to determine ag
 
 RuleSet: ACSMammoAvgRiskAgeUnder45
 * action[+].id = "ACSMammoAvgRiskAgeUnder45"
-* action[=].title = "Annual screeening mammogram starting age 40"
+* action[=].title = "Annual screening mammogram starting age 40"
 * action[=].description = """
 Women between 40 and 44 have the option to start screening with a mammogram every year.
 """
@@ -52,8 +52,8 @@ Women between 40 and 44 have the option to start screening with a mammogram ever
 
 RuleSet: ACSMammoAvgRiskAge45to54
 * action[+].id = "ACSMammoAvgRiskAge45to54"
-* action[=].title = "Annual screeening mammogram starting age 40"
-* action[=].description = "Annual screeening mammogram is recommended for women 45 to 54."
+* action[=].title = "Annual screening mammogram starting age 40"
+* action[=].description = "Annual screening mammogram is recommended for women 45 to 54."
 * action[=] insert ACSAvgRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
@@ -80,9 +80,9 @@ RuleSet: ACSMammoAvgRiskAge45to54
 
 RuleSet: ACSMammoAvgRiskAgeOver54
 * action[+].id = "ACSMammoAvgRiskAgeOver54"
-* action[=].title = "Biennial screeening mammogram after age 54"
+* action[=].title = "Biennial screening mammogram after age 54"
 * action[=].description = """
-Biennial screeening mammogram is recommended after age 54.
+Biennial screening mammogram is recommended after age 54.
 
 Women 55 and older can switch to a mammogram every other year, or they can choose to continue yearly mammograms. Screening should continue as long as a woman is in good health and is expected to live at least 10 more years.
 """
@@ -112,8 +112,8 @@ Women 55 and older can switch to a mammogram every other year, or they can choos
 
 RuleSet: USPSTFAvgRisk
 * action[+].id = "USPSTFAvgRisk"
-* action[=].title = "Biennial screeening mammogram starting age 40"
-* action[=].description = "Biennial screeening mammogram starting at age 40"
+* action[=].title = "Biennial screening mammogram starting age 40"
+* action[=].description = "Biennial screening mammogram starting at age 40"
 * action[=] insert USPSTFScreeningCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"

@@ -24,7 +24,6 @@ Determines next steps, if any, based on result of screening imaging or biopsy. T
 * insert FollowupIndeterminateBiopsyResult
 * insert FollowupDiscordantBiopsyResult
 
-//TODO: add citation, NCCN? ACR?
 RuleSet: FollowupBirads0Result
 * action[+].id = "FollowupBirads0Result"
 * action[=].title = "Refer to Radiologist recommendations"
@@ -33,6 +32,9 @@ Refer to Radiologist recommendations for further evaluation in BI-RADS 0 screeni
 
 Additional work-up including comparison to prior mammograms or diagnostic imaging may be indicated.
 """
+* action[=] insert ACRMammographyReportingCitationDocumentationArtifact
+* action[=] insert ACRMriReportingCitationDocumentationArtifact
+* action[=] insert ACRUltrasoundReportingCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "NoErrorsHaveOccurred"
@@ -67,6 +69,9 @@ Probably benign finding. Refer to Radiologist recommendations for interval imagi
 
 Periodic monitoring, including diagnostic mammogram or ultrasound, is warranted to assess for changes. Monitoring may be recommended at 6, 12 and 24 months until the finding is felt to be stable or resolving or is transitioned to a higher BI-RADS categorization.
 """
+* action[=] insert ACRMammographyReportingCitationDocumentationArtifact
+* action[=] insert ACRMriReportingCitationDocumentationArtifact
+* action[=] insert ACRUltrasoundReportingCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "NoErrorsHaveOccurred"
@@ -103,6 +108,9 @@ Initial modality will typically be image-guided core needle biopsy (guided by ma
 
 In imaging findings that have previously been biopsied and found to be benign, consider referral for excisional biopsy if there have been suspicious interval changes in the lesion.
 """
+* action[=] insert ACRMammographyReportingCitationDocumentationArtifact
+* action[=] insert ACRMriReportingCitationDocumentationArtifact
+* action[=] insert ACRUltrasoundReportingCitationDocumentationArtifact
 * action[=] insert ASBrSExcisionalCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
