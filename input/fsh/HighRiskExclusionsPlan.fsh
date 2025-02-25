@@ -28,7 +28,7 @@ Clinical characteristics that have been identified in the USPSTF breast screenin
 
 RuleSet: ACSGeneticRiskMammo
 * action[+].id = "ACSGeneticRiskMammo"
-* action[=].title = "Annual screeening mammogram starting age 30"
+* action[=].title = "Annual screening mammogram starting age 30"
 * action[=].description = """
 An annual screening mammogram starting at age 30 is recommended.
 
@@ -60,7 +60,7 @@ Women who are at higher than average risk for breast cancer based on known genet
 
 RuleSet: ACSGeneticRiskMri
 * action[+].id = "ACSGeneticRiskMri"
-* action[=].title = "Annual screeening MRI starting age 30"
+* action[=].title = "Annual screening MRI starting age 30"
 * action[=].description = """
 An annual screening MRI starting at age 30 is recommended.
 
@@ -114,7 +114,7 @@ Variants may include ATM, BARD1, CDH1, CHEK2, NF1, PALB2, RAD51C, RAD51D, STK11.
 
 RuleSet: ACSMammoAfterRT
 * action[+].id = "ACSMammoAfterRT"
-* action[=].title = "Annual screeening mammogram"
+* action[=].title = "Annual screening mammogram"
 * action[=].description = """
 An annual screening mammogram starting 8 years after radiotherapy and no earlier than age 25 is recommended.
 
@@ -146,7 +146,7 @@ Refer to patient's Oncologic treatment team or Survivorship Care Plan for patien
 
 RuleSet: ACSMriAfterRT
 * action[+].id = "ACSMriAfterRT"
-* action[=].title = "Annual screeening MRI"
+* action[=].title = "Annual screening MRI"
 * action[=].description = """
 An annual screening MRI starting 8 years after radiotherapy and no earlier than age 25 is recommended.
 
@@ -178,8 +178,8 @@ Refer to patient's Oncologic treatment team or Survivorship Care Plan for patien
 
 RuleSet: ACSMammoAfterBrca
 * action[+].id = "ACSMammoAfterBrca"
-* action[=].title = "Annual screeening mammogram"
-* action[=].description = "Annual screeening mammogram after 5 years in remission from breast cancer is recomended."
+* action[=].title = "Annual screening mammogram"
+* action[=].description = "Annual screening mammogram after 5 years in remission from breast cancer is recomended."
 * action[=] insert ACSHighRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
@@ -229,7 +229,7 @@ Refer to patient's Oncologic treatment team or Survivorship Care Plan for patien
 
 RuleSet: ACSMammoAtypicalBiopsy
 * action[+].id = "ACSMammoAtypicalBiopsy"
-* action[=].title = "Annual screeening mammogram starting age 30"
+* action[=].title = "Annual screening mammogram starting age 30"
 * action[=].description = """
 An annual screening mammogram starting at age 30 is recommended.
 
@@ -285,7 +285,7 @@ If estimated lifetime risk is >20%, patient may be eligible for supplemental scr
 
 RuleSet: ACSMriAtypicalBiopsyHighRisk
 * action[+].id = "ACSMriAtypicalBiopsyHighRisk"
-* action[=].title = "Annual screeening MRI starting age 30"
+* action[=].title = "Annual screening MRI starting age 30"
 * action[=].description = "An annual screening MRI starting at age 30 is recommended in patients with past atypical biopsy and lifetime risk > 20-25%."
 * action[=] insert ACSMriCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
