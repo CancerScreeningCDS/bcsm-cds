@@ -70,8 +70,8 @@ define ActiveBreastCancerScreeningOrders:
   BreastCancerScreeningOrders O
     where O.status in {'active'}
 
-define BreastCancerScreeningOrders:
-  ([ServiceRequest: DataElements."BREAST CANCER IMAGING ORDERS"] union [ServiceRequest: DataElements."BREAST CANCER BIOPSY ORDERS"]) O
+define BreastCancerScreeningOrders:  
+  ([ServiceRequest: DataElements."Breast Cancer Imaging Orders"] union [ServiceRequest: DataElements."Breast Cancer Biopsy Orders"]) O
     where BCSMCommon.ServiceRequestWithOrderIntent(O)
 
 //------------------------------------------------------------------------------
@@ -111,8 +111,8 @@ define CompletedBreastCancerScreeningProcedures:
 define BreastCancerScreeningProcedures:
   BreastCancerScreeningOrderedProcedures union
   [Procedure] P
-    where P.code in DataElements."BREAST CANCER IMAGING ORDERS"
-     or P.code in DataElements."BREAST CANCER BIOPSY ORDERS"
+    where P.code in DataElements."Breast Cancer Imaging Orders"
+     or P.code in DataElements."Breast Cancer Biopsy Orders"
 
 define BreastCancerScreeningOrderedProcedures:
   from CompletedBreastCancerScreeningOrders O,

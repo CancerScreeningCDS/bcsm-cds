@@ -28,7 +28,7 @@ code "Breast cancer screening": '268547008' from "SNOMED" display 'Breast cancer
 code "MG Breast Screening": '24606-6' from "LOINC" display 'MG Breast Screening' 
 code "MR Breast": '30794-2' from "LOINC" display 'MR Breast' 
 
-valueset "SCREENING MAMMOGRAM": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1206.61'
+valueset "Screening Mammogram": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.393' // TODO clinical validation: keep magnification/localized/spot views?
 
 context Patient
 
@@ -82,7 +82,7 @@ define ScreeningActivities:
   ScreeningRequestGroupActions union ScreeningServiceRequests
 
 define LastMammography:
-  BCSMCommon.MostRecentDiagnosticReportByVS("SCREENING MAMMOGRAM")
+  BCSMCommon.MostRecentDiagnosticReportByVS("Screening Mammogram")
 
 
 //------------------------------------------------------------------------------

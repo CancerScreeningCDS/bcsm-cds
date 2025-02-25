@@ -79,7 +79,7 @@ Description: "Code representing breast cancer screening related observations"
 * #high5yrisk "High 5 year risk"
 * #higherthanaverage5yrisk "5 year risk at least 1.67%"
 * #riskfactors "Personal or family history risk factors"
-// not used for rrason codes
+// not used for reason codes
 * #BreastSymptoms "New or worsening breast symptoms"
 * #BreastFindings "New or worsening breast exam findings"
 * #GeneticMarkerOrSyndrome "Genetic marker or syndrome associated with breast cancer"
