@@ -105,6 +105,34 @@ act-acsavgrecs40:
         code: overdue
         display: "Overdue"
         system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"                  
+  - &Screening_age_=_>=40_and_<45_ACS_only
+    - code:
+        code: "24606-6"
+        display: "MG Breast Screening"
+        system: "http://loinc.org"
+      documentation:
+        label: ACS
+      reason:
+        code: "ACSaveragerisk"
+        display: "ACS average risk"
+        system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
+      timingAge:
+        value: 40
+        code: 'a'
+      timingTiming:
+        event:
+          - "2021-01-01"
+        repeat:
+          boundsPeriod:
+            start: "2021-01-01"
+          frequency: 1
+          period: 1
+          periodUnit: 'a'  
+      flag:
+        code: overdue
+        display: "Overdue"
+        system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"          
+    
 act-acsavgrecs45: &Screening_age_=_>=_45_and_<=54
   - code:
       code: "24606-6"
@@ -157,7 +185,8 @@ act-acsavgrecs45: &Screening_age_=_>=_45_and_<=54
     flag:
       code: not-due
       display: "Not due"
-      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"              
+      system: "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"                  
+
 act-AgeOver54: &Screening_age_=_>=_55
   - code:
       code: "24606-6"
