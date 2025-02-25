@@ -1,0 +1,359 @@
+{
+  "resourceType": "Bundle",
+  "id": "PrimaryScreeningDecision_eve-AgeOver74_yes_eve-LifeExp_yes",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/117",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "117",
+        "subject": {
+          "reference": "Patient/9c0bbf9e-99da-4d45-8c5d-ae15f36d2b23",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "created": "2024-12-10T00:00:00.0Z",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/118"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/118",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "118",
+        "subject": {
+          "reference": "Patient/9c0bbf9e-99da-4d45-8c5d-ae15f36d2b23",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "SDMContinueScreeningAge",
+            "title": "Shared decision making to continue screening based on age",
+            "description": "Decision to continue screening mammography in average risk women age 75 years or older should be based on shared decision-making.\n\nThe USPSTF concludes that the evidence is insufficient to determine the balance of benefits and harms of screening mammography in women 75 years or older.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              }
+            ],
+            "resource": {
+              "reference": "CommunicationRequest/119"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "sdmcontinue",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Shared decision making to continue screening"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SDMContinueScreeningLifeExp",
+            "title": "Shared decision making to continue screening based on life expectancy",
+            "description": "Decision to continue screening mammography in cases of limited life expectancy should be based on shared decision-making.\n\nACS advises that women should continue screening mammography as long as their overall health is good and they have a life expectancy of 10 years or more.\n\nLife expectancy is generally defined as having greater than a 50% probability of surviving 10 years. A validated tool such as www.eprognosis.com can help guide decision making.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ACS",
+                "display": "Breast Cancer Screening for Women at Average Risk: 2015 Guideline Update From the American Cancer Society",
+                "citation": "Saslow D, Boetes C, Burke W, Harms S, Leach MO, Lehman CD, Morris E, Pisano E, Schnall M, Sener S, Smith RA, Warner E, Yaffe M, Andrews KS, Russell CA; American Cancer Society Breast Cancer Advisory Group. American Cancer Society guidelines for breast screening with MRI as an adjunct to mammography. CA Cancer J Clin. 2007 Mar-Apr;57(2):75-89.",
+                "url": "https://jamanetwork.com/journals/jama/fullarticle/2463262"
+              }
+            ],
+            "resource": {
+              "reference": "CommunicationRequest/120"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "sdmcontinue",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Shared decision making to continue screening"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "ACSMammoAvgRiskAgeOver54",
+            "title": "Biennial screeening mammogram after age 54",
+            "description": "Biennial screeening mammogram is recommended after age 54.\n\nWomen 55 and older can switch to a mammogram every other year, or they can choose to continue yearly mammograms. Screening should continue as long as a woman is in good health and is expected to live at least 10 more years.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ACS",
+                "display": "Breast Cancer Screening for Women at Average Risk: 2015 Guideline Update From the American Cancer Society",
+                "citation": "Saslow D, Boetes C, Burke W, Harms S, Leach MO, Lehman CD, Morris E, Pisano E, Schnall M, Sener S, Smith RA, Warner E, Yaffe M, Andrews KS, Russell CA; American Cancer Society Breast Cancer Advisory Group. American Cancer Society guidelines for breast screening with MRI as an adjunct to mammography. CA Cancer J Clin. 2007 Mar-Apr;57(2):75-89.",
+                "url": "https://jamanetwork.com/journals/jama/fullarticle/2463262"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/121"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "1985-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "1985-01-01"
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "overdue",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Overdue"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "USPSTFAvgRisk",
+            "title": "Biennial screeening mammogram starting age 40",
+            "description": "Biennial screeening mammogram starting at age 40",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/122"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "1985-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "1985-01-01"
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "overdue",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Overdue"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/119",
+      "resource": {
+        "id": "119",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMContinueScreening"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/9c0bbf9e-99da-4d45-8c5d-ae15f36d2b23",
+          "display": "Jane Doe"
+        },
+        "payload": [
+          {
+            "contentString": "Shared decision making to continue screening"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "ageover74",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "Age over 74 years"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/120",
+      "resource": {
+        "id": "120",
+        "resourceType": "CommunicationRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMContinueScreening"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/9c0bbf9e-99da-4d45-8c5d-ae15f36d2b23",
+          "display": "Jane Doe"
+        },
+        "payload": [
+          {
+            "contentString": "Shared decision making to continue screening"
+          }
+        ],
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "lifeexp",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "Reduced life expectancy indicator"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/121",
+      "resource": {
+        "id": "121",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/9c0bbf9e-99da-4d45-8c5d-ae15f36d2b23",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "ACSaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "ACS average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "1985-01-01"
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/122",
+      "resource": {
+        "id": "122",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/9c0bbf9e-99da-4d45-8c5d-ae15f36d2b23",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "USPSTFaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "USPSTF average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "1985-01-01"
+      }
+    }
+  ]
+}

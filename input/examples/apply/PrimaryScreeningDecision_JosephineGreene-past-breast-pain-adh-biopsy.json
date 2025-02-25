@@ -110,8 +110,19 @@
               }
             ],
             "resource": {
-              "reference": "CommunicationRequest/17"
-            }
+              "reference": "ServiceRequest/17"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "lifetimeriskassessment",
+                    "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+                    "display": "Perform lifetime risk assessment"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -124,7 +135,7 @@
         "status": "option",
         "basedOn": [
           {
-            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastScreeningServiceRequest"
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
           }
         ],
         "subject": {
@@ -156,25 +167,30 @@
       }
     },
     {
-      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/17",
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/17",
       "resource": {
         "id": "17",
-        "resourceType": "CommunicationRequest",
+        "resourceType": "ServiceRequest",
         "status": "option",
         "basedOn": [
           {
-            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateRiskAssessment"
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
           }
         ],
         "subject": {
           "reference": "Patient/JosephineGreene",
           "display": "Josephine Greene"
         },
-        "payload": [
-          {
-            "contentString": "Perform lifetime risk assessment"
-          }
-        ],
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "lifetimeriskassessment",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "Perform lifetime risk assessment"
+            }
+          ]
+        },
         "reasonCode": [
           {
             "coding": [

@@ -1,0 +1,330 @@
+{
+  "resourceType": "Bundle",
+  "id": "PrimaryScreeningDecision_eve-specialpop_yes_end-decisionspecialpop",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/184",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "184",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "created": "2024-12-10T00:00:00.0Z",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/185"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/185",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "185",
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "ACSMammoHighRisk",
+            "title": "Annual screeening mammogram starting age 30",
+            "description": "An annual screening mammogram starting at age 30 is recommended.\n\nWomen who are at higher than average risk for breast cancer based on certain risk factors should get a mammogram every year, typically starting at age 30.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ACS",
+                "display": "American Cancer Society Recommendations for the Early Detection of Breast Cancer",
+                "url": "https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/186"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2011-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2011-01-01"
+                },
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "overdue",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Overdue"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "ACSMriHighRisk",
+            "title": "Annual screeening MRI starting age 30",
+            "description": "An annual screening MRI starting at age 30 is recommended.\n\nWomen who are at higher than average risk for breast cancer based on certain risk factors should get a breast MRI every year, typically starting at age 30.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "ACS",
+                "display": "American Cancer Society Guidelines for Breast Screening with MRI as an Adjunct to Mammography",
+                "citation": "Oeffinger KC, Fontham ETH, Etzioni R, et al. Breast Cancer Screening for Women at Average Risk: 2015 Guideline Update From the American Cancer Society. JAMA. 2015;314(15):1599–1614.",
+                "url": "https://acsjournals.onlinelibrary.wiley.com/doi/full/10.3322/canjclin.57.2.75"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/187"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "30794-2",
+                    "system": "http://loinc.org",
+                    "display": "MR Breast"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2011-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2011-01-01"
+                },
+                "frequency": 1,
+                "period": 1,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "overdue",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Overdue"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "id": "USPSTFRecommendation",
+            "title": "Biennial screeening mammo starting age 40",
+            "description": "Biennial screeening mammogram starting at age 40",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/188"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2021-01-01"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": "2021-01-01"
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "overdue",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Overdue"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/186",
+      "resource": {
+        "id": "186",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "highlifetimerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "High lifetime risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2011-01-01"
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/187",
+      "resource": {
+        "id": "187",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "30794-2",
+              "system": "http://loinc.org",
+              "display": "MR Breast"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "highlifetimerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "High lifetime risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2011-01-01"
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/188",
+      "resource": {
+        "id": "188",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/defaultPatient",
+          "display": "Jane Doe"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "USPSTFaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "USPSTF average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2021-01-01"
+      }
+    }
+  ]
+}

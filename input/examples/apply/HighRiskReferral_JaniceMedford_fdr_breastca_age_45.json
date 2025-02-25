@@ -41,7 +41,131 @@
         ],
         "intent": "proposal",
         "status": "draft",
-        "action": []
+        "action": [
+          {
+            "id": "HighRiskAssessment",
+            "title": "Perform 5 year risk assessment",
+            "description": "A 5 year risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for high risk breast specialty evaluation.\n\nWomen at higher than average 5 year risk may be candidates for referral to breast specialist to discuss primary risk reduction interventions such as chemoprevention.",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Breast Cancer: Medication Use to Reduce Risk",
+                "citation": "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+              }
+            ],
+            "selectionBehavior": "any",
+            "action": [
+              {
+                "id": "5YRiskAssessment",
+                "title": "Informal 5 year risk assessment",
+                "description": "Perform assessment based on personal risk factors conferring increased risk of breast cancer.\n\nThese may include: increasing age, younger age at menarche, older age at first live birth, nulliparity/lower parity, number of prior breast biopsies, heterogeneously and/or extremely dense breasts.",
+                "resource": {
+                  "reference": "ServiceRequest/409"
+                }
+              },
+              {
+                "id": "5YRiskAssessmentTool",
+                "title": "5 year risk assessment instrument",
+                "description": "The NCI Breast Cancer Risk Assessment Tool and the Breast Cancer Surveillance Consortium Risk Calculator are based on models tested in US populations and are publicly available for clinicians and patients to use.",
+                "documentation": [
+                  {
+                    "type": "documentation",
+                    "label": "NCI Breast Cancer Risk Assessment Tool",
+                    "display": "National Cancer Institute (NCI) Breast Cancer Risk Assessment Tool",
+                    "url": "https://bcrisktool.cancer.gov/"
+                  },
+                  {
+                    "type": "documentation",
+                    "label": "BCSC Risk Calculator",
+                    "display": "Breast Cancer Surveillance Consortium (BCSC) Risk Calculator",
+                    "url": "https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk"
+                  }
+                ],
+                "resource": {
+                  "reference": "ServiceRequest/410"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/409",
+      "resource": {
+        "id": "409",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/JaniceMedford",
+          "display": "Janice Medford"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "5YRiskAssess",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "Perform informal 5 year risk assessment"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "riskfactors",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "Personal or family history risk factors"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/410",
+      "resource": {
+        "id": "410",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/JaniceMedford",
+          "display": "Janice Medford"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "5yrisktool",
+              "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+              "display": "5 year risk assessment tool"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "riskfactors",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "Personal or family history risk factors"
+              }
+            ]
+          }
+        ]
       }
     }
   ]

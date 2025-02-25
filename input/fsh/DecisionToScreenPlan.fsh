@@ -185,17 +185,17 @@ Usage: #definition
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Instance: BreastScreeningServiceRequest
+Instance: BreastCancerScreeningServiceRequest
 InstanceOf: http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity
-Title: "Breast Screening Service Request"
+Title: "Breast Cancer Screening Service Request"
 Usage: #definition
 
 * insert CPGKnowledgeExtensions
 * insert CommonMetadata
 * meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity"
-* url = Canonical(BreastScreeningServiceRequest)
-* name = "BreastScreeningServiceRequest"
-* description = "This ActivityDefinition generates a ServiceRequest for screening study."
+* url = Canonical(BreastCancerScreeningServiceRequest)
+* name = "BreastCancerScreeningServiceRequest"
+* description = "This ActivityDefinition generates a ServiceRequest for screening study, biopsy procedure or specialty referral."
 * kind = $RRTYPE#ServiceRequest "ServiceRequest"
 * intent = $RINTENT#proposal "Proposal"
 * priority = $RPRIOR#routine "Routine"

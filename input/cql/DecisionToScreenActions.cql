@@ -3,7 +3,7 @@ library DecisionToScreenActions version '1.0.0'
 using FHIR version '4.0.1'
 
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
-include BCSMCommonFunctions version '1.0.0'
+include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
 codesystem "ActCode": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
 codesystem "LOCAL": 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'
@@ -24,20 +24,20 @@ define "act-sdmcontinueage":
   {
 		code: "Discuss decision to continue screening",
     reason: "Age over 74 years",
-    documentation: BCSMCommonFunctions.SourceDocumentationUSPSTF
+    documentation: BCSMCommon.SourceDocumentationUSPSTF
 	}  
 
 define "act-sdmcontinuelifexp":
   {
 		code: "Discuss decision to continue screening",
     reason: "Reduced life expectancy indicator",
-    documentation: BCSMCommonFunctions.SourceDocumentationACS
+    documentation: BCSMCommon.SourceDocumentationACS
 	} 
 
 define "act-lactating":
   {
 		code: "Discuss delay in screening",
     reason: "Currently lactating",
-    documentation: BCSMCommonFunctions.SourceDocumentationOther
+    documentation: BCSMCommon.SourceDocumentationOther
 	} 
 

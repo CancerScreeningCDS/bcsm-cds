@@ -9,7 +9,6 @@ using FHIR version '4.0.1'
 
 include FHIRHelpers version '4.0.1' called FHIRHelpers
 
-codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
 
 valueset "Encounter Inpatient": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.666.5.307'
@@ -20,7 +19,7 @@ valueset "Hospice Diagnosis": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.1
 code "Discharge to healthcare facility for hospice care (procedure)": '428371000124100' from "SNOMEDCT" display 'Discharge to healthcare facility for hospice care (procedure)'
 code "Discharge to home for hospice care (procedure)": '428361000124107' from "SNOMEDCT" display 'Discharge to home for hospice care (procedure)'
 
-parameter "Measurement Period" Interval<DateTime>
+parameter "Measurement Period" Interval<DateTime> default Interval[Today() - 1 year,Today()]
 
 context Patient
 

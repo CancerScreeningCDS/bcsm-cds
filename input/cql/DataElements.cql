@@ -6,6 +6,7 @@ include CDSConnectCommonsforFHIRv401 version '1.0.0' called C3F
 include CSMCommonFunctions version '1.0.0' called Common
 include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 include FHIRHelpers  version '4.0.1' called FHIRHelpers
+include Hospice version '1.0.0' 
 
 //------------------------------------------------------------------------------
 // CODE SYSTEMS, VALUE SETS, AND CODES
@@ -82,6 +83,7 @@ code "Genetic marker or syndrome associated with breast cancer": 'GeneticMarkerO
 code "Li-Fraumeni Syndrome": '428850001' from "SNOMED-CT" display 'Li-Fraumeni syndrome (disorder)'
 code "Cowden Syndrome": '58037000' from "SNOMED-CT" display 'Cowden syndrome (disorder)'
 code "Bannayan-Riley-Ruvalcaba Syndrome": '234138005' from "SNOMED-CT" display 'Bannayan syndrome (disorder)'
+code "History of chest radiation ages 10-30 y": 'chestxrt' from "LOCAL" display 'History of chest radiation ages 10-30 y'
 code "Lifetime risk assessment": 'lifetimeriskassessment' from "ActCode" display 'Lifetime risk assessment'
 code "High lifetime risk": 'highlifetimerisk' from "LOCAL" display 'High lifetime risk'
 code "First degree relative with genetic marker or syndrome": 'firstdeggenetic' from "LOCAL" display 'First degree relative with genetic marker or syndrome'
@@ -263,11 +265,11 @@ define RightUnilateralMastectomyProcedures:
 // Breast symptoms
 //------------------------------------------------------------------------------
 
-// TODO: move this to events
 define "de-breastsymptoms":
-  MostRecentNewOrWorseningBreastSymptoms.value is true
-    or exists EncounterBreastSymptomConditions
-    or EncounterReasonBreastSymptoms
+  if MostRecentBreastSymptomObservation is not null 
+    then FHIRHelpers.ToBoolean(MostRecentBreastSymptomObservation.value as boolean)
+  else  
+    exists EncounterBreastSymptomConditions or EncounterReasonBreastSymptoms
 
 define EncounterReasonBreastSymptoms:
   encounter is not null and 
@@ -287,106 +289,56 @@ define EncounterBreastSymptomConditions:
 define BreastSymptomConditions:
   Common.ValidCondition([Condition: "Breast Cancer Signs and Symptoms"])
 
-define MostRecentNewOrWorseningBreastSymptoms:
-  C3F.MostRecent(
-    Flatten({
-      NewOrWorseningBreastSymptomsEncounter,
-      NewOrWorseningBreastSymptomsLookback
-    }) except {null}
-  )
-
-define NewOrWorseningBreastSymptomsEncounter:
-  NewOrWorseningBreastSymptomsObservations O where O.encounter.reference = encounter
-
-define NewOrWorseningBreastSymptomsLookback:
-  C3F.ObservationLookBack(
-    NewOrWorseningBreastSymptomsObservations,
-    SymptomaticLookBack
-  ) 
+define MostRecentBreastSymptomObservation:
+  BCSMCommon.MostRecentLocalObservation(NewOrWorseningBreastSymptomsObservations,
+    encounter, SymptomaticLookBack)
 
 define NewOrWorseningBreastSymptomsObservations:
-  C3F.ObservationLookBack(
-    [Observation: "New or worsening breast symptoms"],
-    ObservationLookbackPeriod
-  )
+  [Observation: "New or worsening breast symptoms"]
 
 //------------------------------------------------------------------------------
 // Breast exam findings
 //------------------------------------------------------------------------------
 
-// TODO: move this to events
 define "de-breastfindings":
-  MostRecentNewOrWorseningBreastFindings.value is true
+  if MostRecentBreastFindingsObservation is not null 
+    then FHIRHelpers.ToBoolean(MostRecentBreastFindingsObservation.value as boolean)
+  else false
 
-define MostRecentNewOrWorseningBreastFindings:
-  C3F.MostRecent(
-    Flatten({
-      NewOrWorseningBreastFindingsEncounter,
-      NewOrWorseningBreastFindingsLookback
-    }) except {null}
-  )
-
-define NewOrWorseningBreastFindingsEncounter:
-  NewOrWorseningBreastFindingsObservations O where O.encounter.reference = encounter
-
-define NewOrWorseningBreastFindingsLookback:
-  C3F.ObservationLookBack(
-    NewOrWorseningBreastFindingsObservations,
-    SymptomaticLookBack
-  )  
+define MostRecentBreastFindingsObservation:
+  BCSMCommon.MostRecentLocalObservation(NewOrWorseningBreastFindingsObservations,
+    encounter, SymptomaticLookBack)
 
 define NewOrWorseningBreastFindingsObservations:
-  C3F.ObservationLookBack(
-    [Observation: "New or worsening breast exam findings"],
-    ObservationLookbackPeriod
-  )  
+  [Observation: "New or worsening breast exam findings"]
 
 //------------------------------------------------------------------------------
 // Life expectancy
 //------------------------------------------------------------------------------
 
 define "de-lifeexp":
-  ReducedLifeExpectancy
+  if MostRecentReducedLifeExpectancyObservation is not null 
+    then FHIRHelpers.ToBoolean(MostRecentReducedLifeExpectancyObservation.value as boolean) 
+  else "de-hospice"
 
-define ReducedLifeExpectancy:
-  C3F.MostRecent(
-    C3F.ObservationLookBack(
-      ReducedLifeExpectancyObservations R
-        where R.value is true,
-      SymptomaticLookBack
-    )
-  ) is not null
+define MostRecentReducedLifeExpectancyObservation:
+  BCSMCommon.MostRecentLocalObservation(ReducedLifeExpectancyObservations, encounter, ObservationLookbackPeriod)
 
-define ReducedLifeExpectancyObservations:
-  C3F.ObservationLookBack(
-    [Observation: "Reduced life expectancy indicator"],
-    ObservationLookbackPeriod
-  )   
+define ReducedLifeExpectancyObservations:  
+  [Observation: "Reduced life expectancy indicator"]
 
-//define "de-hospice":
-  // TODO: Implement logic for de-hospice
-
-//define "de-palliative":
-  // TODO: Implement logic for de-palliative
-
-//define "de-snpltc":
-  // TODO: Implement logic for de-snpltc
-
-//define "de-frailtydementiamed":
-  // TODO: Implement logic for de-frailtydementiamed
-
-//define "de-frailtyadvillness":
-  // TODO: Implement logic for de-frailtyadvillness
+define "de-hospice":
+  Hospice."Has Hospice"
 
 //------------------------------------------------------------------------------
 // Lactating
 //------------------------------------------------------------------------------
 
+define MostRecentLactatingObservation:
+  BCSMCommon.MostRecentLocalObservation(LactatingObservations, encounter, ObservationLookbackPeriod)
+
 define LactatingObservations:
-  C3F.ObservationLookBack(
-    [Observation: "Currently lactating"],
-    ObservationLookbackPeriod
-  ) 
+  [Observation: "Currently lactating"]
 
 //------------------------------------------------------------------------------
 // Pregnancy
@@ -450,11 +402,12 @@ define HasFinishedPregnancyEpisodesOfCare:
 //------------------------------------------------------------------------------
 
 define "de-geneticrisk":
-  GeneticMarkerOrSyndrome or "de-acsgeneticrisk"
+  if MostRecentGeneticMarkerOrSyndromeObservation is not null
+    then FHIRHelpers.ToBoolean(MostRecentGeneticMarkerOrSyndromeObservation.value as boolean) 
+  else "de-acsgeneticrisk"
 
 define GeneticMarkerOrSyndrome:
-  exists GeneticMarkerOrSyndromeCondition or
-    (MostRecentGeneticMarkerOrSyndromeObservation R where R.value is true) is not null
+  MostRecentGeneticMarkerOrSyndromeObservation.value is true
 
 define GeneticMarkerOrSyndromeCondition:
   C3F.ActiveCondition(
@@ -493,11 +446,18 @@ define "Bannayan-Riley-RuvalcabaSyndromeConditions":
 define "de-chestxrt":
   Common.ValidCondition([Condition: "History of radiation therapy to chest"])
 
-//TODO: figure out the math with dateTime, Period, etc
 define "de-chestxrtage10to30":
+  if HistoryOfChestRadiationAges10To30Observation is not null
+    then FHIRHelpers.ToBoolean(HistoryOfChestRadiationAges10To30Observation.value as boolean) 
+  else exists HistoryOfChestRadiationAges10To30Condition
+
+define HistoryOfChestRadiationAges10To30Condition:    
   "de-chestxrt" C 
     where C.onset as Age is not null and C.onset.value >= 10 and C.onset.value <= 30 and C.onset.code = 'a'
-    or C.abatement as Age is not null and C.abatement.value >= 10 and C.abatement.value <= 30 and C.abatement.code = 'a'  
+    or C.abatement as Age is not null and C.abatement.value >= 10 and C.abatement.value <= 30 and C.abatement.code = 'a' 
+
+define HistoryOfChestRadiationAges10To30Observation:
+  C3F.MostRecent([Observation: "History of chest radiation ages 10-30 y"])
 
 //------------------------------------------------------------------------------
 // Previous breast cancer
@@ -591,13 +551,19 @@ define BreastImagingHeterogenouslyOrExtremelyDenseResults:
 //------------------------------------------------------------------------------  
 
 define "de-fhxbreastcarisk":
-  MostRecentFamilialRiskAssessmentObservation.value is true
-    or MostRecentFamilialRiskAssessmentResultHigh is not null
+  if MostRecentFamilialRiskAssessmentObservation is not null
+    then FHIRHelpers.ToBoolean(MostRecentFamilialRiskAssessmentObservation.value as boolean) 
+  else MostRecentFamilialRiskAssessmentResultHigh is not null
+
+define FamilialRiskAssessmentExists:
+  MostRecentFamilialRiskAssessmentObservation is not null or 
+    MostRecentFamilialRiskAssessmentResult is not null
 
 define MostRecentFamilialRiskAssessmentObservation:  
-  C3F.MostRecent(
-      [Observation: "Familial risk assessment"] R      
-  )
+  C3F.MostRecent(FamilialRiskAssessmentObservations)
+
+define FamilialRiskAssessmentObservations:  
+  [Observation: "Familial risk assessment"] R    
 
 // Output of validated brief familial risk assessment tool is positive or greater than 5%
 define MostRecentFamilialRiskAssessmentResultHigh:
@@ -661,8 +627,9 @@ define "FirstOrSecondDegreeRelatives":
 //------------------------------------------------------------------------------  
 
 define "de-fhxgeneinherited":
-  FamilyGeneticHistoryAssessmentObservation.value is true or 
-    exists FamilyMemberGeneticMarkerOrSyndrome
+  if FamilyGeneticHistoryAssessmentObservation is not null
+    then FHIRHelpers.ToBoolean(FamilyGeneticHistoryAssessmentObservation.value as boolean) 
+  else exists FamilyMemberGeneticMarkerOrSyndrome
 
 define FamilyGeneticHistoryAssessmentObservation:  
   C3F.MostRecent(
@@ -699,9 +666,10 @@ define "FamilyMemberGeneticMarkerOrSyndromeConditions":
 // Unknown variant status
 //------------------------------------------------------------------------------  
 
-// TODO: move this to GeneticRiskReferralEvents
 define "de-knownvariantstatus":
-  KnownGeneticMarkerOrSyndromeStatusObservation.value is true
+  if KnownGeneticMarkerOrSyndromeStatusObservation is not null
+    then FHIRHelpers.ToBoolean(KnownGeneticMarkerOrSyndromeStatusObservation.value as boolean) 
+  else false
 
 define KnownGeneticMarkerOrSyndromeStatusObservation:  
   C3F.MostRecent(
@@ -724,9 +692,10 @@ define "MostRecentBRCAGeneAncestryObservation":
 //------------------------------------------------------------------------------  
 
 define FamilyHistoryBreastOvarianTubalPeritonealCancerObservation:  
-  C3F.MostRecent(
-      [Observation: "Family history of breast, ovarian, tubal, or peritoneal cancer"] R
-  )   
+  C3F.MostRecent(FamilyHistoryBreastOvarianTubalPeritonealCancerObservations)
+
+define FamilyHistoryBreastOvarianTubalPeritonealCancerObservations:  
+  [Observation: "Family history of breast, ovarian, tubal, or peritoneal cancer"]  
 
 define "FamilyMemberBreastOvarianTubalPeritonealCancer":
   FamilyMemberBreastOvarianTubalPeritonealCancerCondition FMH
@@ -747,14 +716,35 @@ define "FamilyMemberBreastOvarianTubalPeritonealCancerCondition":
     }
 
 //------------------------------------------------------------------------------
+// Genetic risk referrals and encounters
+//------------------------------------------------------------------------------  
+
+define GeneticCounselingEncounters:
+  Common.RelevantEncounterStatus(
+    [Encounter] E
+      where E.serviceType in "GENETIC COUNSELING" or E.reasonCode in "GENETIC COUNSELING"
+  )
+
+define GeneticCounselingReferralOrders:
+  [ServiceRequest] O where 
+    BCSMCommon.ServiceRequestWithOrderIntent(O) 
+    and O.code in "GENETIC COUNSELING" or O.reasonCode in "GENETIC COUNSELING"
+
+//------------------------------------------------------------------------------
 // High risk referral factors
 //------------------------------------------------------------------------------  
 
 define MostRecent5YrRiskAssessment:
   C3F.MostRecent([Observation: "5 year risk assessment"])  
 
+define MostRecent5YrRiskAssessmentDate:
+  Common.ObservationDate(MostRecent5YrRiskAssessment)
+
 define MostRecentPersonalRiskFactorAssessment:
-  C3F.MostRecent([Observation: "Personal risk factors conferring increased risk of breast cancer"])       
+  C3F.MostRecent(PersonalRiskFactorAssessments)  
+
+define PersonalRiskFactorAssessments:
+  [Observation: "Personal risk factors conferring increased risk of breast cancer"]
 
 //------------------------------------------------------------------------------
 // Latest screening test

@@ -75,16 +75,14 @@ define GeneticReferralAncestry:
   if Events."eve-brcageneancestry" is true
   then Actions."act-geneticreferralancestry" else null    
 
-// TODO: when to reassess family hx vs use last recorded assessment? each cycle vs when new fam hx documented?
 define GeneticRiskAssessment:
   if GeneticRiskReferral is null and Events."eve-fhxbrcaovcatubalperit" is true 
-    and DataElements."MostRecentFamilialRiskAssessmentObservation" is null
-    and  DataElements."MostRecentFamilialRiskAssessmentResult" is null
+    and Events.ValidMostRecentFamilialRiskAssessment is false
   then {Actions."act-fhxrisktool", Actions."act-fhxriskassess"} else null   
 
-// TODO: look into querying encounters or consult notes to determine if referral already happened
 define GeneticReferralRisk:
   if Events."eve-fhxriskresult" is true
+    and Events.ValidMostRecentFamilialRiskAssessment
   then Actions."act-geneticreferralrisk" else null
 
 //------------------------------------------------------------------------------

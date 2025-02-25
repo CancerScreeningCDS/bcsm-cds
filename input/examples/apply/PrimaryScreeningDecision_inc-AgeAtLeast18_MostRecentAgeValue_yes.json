@@ -1,0 +1,143 @@
+{
+  "resourceType": "Bundle",
+  "id": "PrimaryScreeningDecision_inc-AgeAtLeast18_MostRecentAgeValue_yes",
+  "type": "collection",
+  "entry": [
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/189",
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "189",
+        "subject": {
+          "reference": "Patient/106a44ad-ef27-429d-b59f-b7f78f09c16f",
+          "display": "Joanne Smith"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "created": "2024-12-10T00:00:00.0Z",
+        "activity": [
+          {
+            "reference": {
+              "reference": "RequestGroup/190"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/190",
+      "resource": {
+        "resourceType": "RequestGroup",
+        "id": "190",
+        "subject": {
+          "reference": "Patient/106a44ad-ef27-429d-b59f-b7f78f09c16f",
+          "display": "Joanne Smith"
+        },
+        "instantiatesCanonical": [
+          "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"
+        ],
+        "intent": "proposal",
+        "status": "draft",
+        "action": [
+          {
+            "id": "USPSTFAvgRisk",
+            "title": "Biennial screeening mammogram starting age 40",
+            "description": "Biennial screeening mammogram starting at age 40",
+            "documentation": [
+              {
+                "type": "citation",
+                "label": "USPSTF",
+                "display": "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement",
+                "citation": "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.",
+                "url": "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"
+              }
+            ],
+            "resource": {
+              "reference": "ServiceRequest/191"
+            },
+            "code": [
+              {
+                "coding": [
+                  {
+                    "code": "24606-6",
+                    "system": "http://loinc.org",
+                    "display": "MG Breast Screening"
+                  }
+                ]
+              }
+            ],
+            "timingTiming": {
+              "event": [
+                "2024-12-10"
+              ],
+              "repeat": {
+                "boundsPeriod": {
+                  "start": null
+                },
+                "frequency": 1,
+                "period": 2,
+                "periodUnit": "a"
+              }
+            },
+            "extension": [
+              {
+                "url": "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "due",
+                      "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system",
+                      "display": "Due"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/191",
+      "resource": {
+        "id": "191",
+        "resourceType": "ServiceRequest",
+        "status": "option",
+        "basedOn": [
+          {
+            "reference": "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/106a44ad-ef27-429d-b59f-b7f78f09c16f",
+          "display": "Joanne Smith"
+        },
+        "intent": "proposal",
+        "code": {
+          "coding": [
+            {
+              "code": "24606-6",
+              "system": "http://loinc.org",
+              "display": "MG Breast Screening"
+            }
+          ]
+        },
+        "reasonCode": [
+          {
+            "coding": [
+              {
+                "code": "USPSTFaveragerisk",
+                "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+                "display": "USPSTF average risk"
+              }
+            ]
+          }
+        ],
+        "occurrenceDateTime": "2024-12-10"
+      }
+    }
+  ]
+}

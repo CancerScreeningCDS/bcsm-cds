@@ -65,6 +65,7 @@
   "url": "http://cancerscreeningcds.github.io/bcsm-cds/Library/ScreeningEligibleEvents",
   "version": "1.0.0",
   "name": "ScreeningEligibleEvents",
+  "title": "Screening Eligible Events",
   "type": {
     "coding": [ {
       "system": "http://terminology.hl7.org/CodeSystem/library-type",
@@ -113,12 +114,17 @@
     "resource": "http://terminology.hl7.org/CodeSystem/condition-clinical"
   }, {
     "type": "depends-on",
+<<<<<<< HEAD
     "display": "Code system LOCAL",
     "resource": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"
   }, {
     "type": "depends-on",
     "display": "Value set Breast Cancer",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.367"
+=======
+    "display": "Value set INVASIVE BREAST CANCER",
+    "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.185"
+>>>>>>> main
   }, {
     "type": "depends-on",
     "display": "Value set Bilateral Mastectomy",
@@ -147,30 +153,15 @@
     "type": "depends-on",
     "display": "Value set Right Unilateral Mastectomy Procedure",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1134"
+<<<<<<< HEAD
   }, {
     "type": "depends-on",
     "display": "Value set Breast Cancer Signs and Symptoms",
     "resource": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374"
+=======
+>>>>>>> main
   } ],
   "parameter": [ {
-    "name": "ObservationLookbackPeriod",
-    "use": "in",
-    "min": 0,
-    "max": "1",
-    "type": "Quantity"
-  }, {
-    "name": "encounter",
-    "use": "in",
-    "min": 0,
-    "max": "1",
-    "type": "string"
-  }, {
-    "name": "SymptomaticLookBack",
-    "use": "in",
-    "min": 0,
-    "max": "1",
-    "type": "Quantity"
-  }, {
     "name": "Patient",
     "use": "out",
     "min": 0,
@@ -214,37 +205,13 @@
   }, {
     "type": "Observation",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
-    "mustSupport": [ "code", "effective", "effective.value", "issued", "issued.value", "value" ],
+    "mustSupport": [ "code", "value" ],
     "codeFilter": [ {
       "path": "code",
       "code": [ {
         "system": "http://loinc.org",
         "code": "76691-5",
         "display": "Gender identity"
-      } ]
-    } ]
-  }, {
-    "type": "Observation",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
-    "mustSupport": [ "code", "effective", "effective.value", "issued", "issued.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "code": [ {
-        "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
-        "code": "BreastSymptoms",
-        "display": "New or worsening breast symptoms"
-      } ]
-    } ]
-  }, {
-    "type": "Observation",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Observation" ],
-    "mustSupport": [ "code", "effective", "effective.value", "issued", "issued.value" ],
-    "codeFilter": [ {
-      "path": "code",
-      "code": [ {
-        "system": "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
-        "code": "BreastFindings",
-        "display": "New or worsening breast exam findings"
       } ]
     } ]
   }, {
@@ -288,6 +255,7 @@
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1071"
     } ]
   }, {
+<<<<<<< HEAD
     "type": "Condition",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Condition" ],
     "mustSupport": [ "code", "verificationStatus" ],
@@ -320,6 +288,8 @@
       "path": "clinicalStatus"
     } ]
   }, {
+=======
+>>>>>>> main
     "type": "Procedure",
     "profile": [ "http://hl7.org/fhir/StructureDefinition/Procedure" ],
     "mustSupport": [ "code", "status", "status.value" ],
@@ -343,10 +313,6 @@
       "path": "code",
       "valueSet": "http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.464.1003.198.12.1134"
     } ]
-  }, {
-    "type": "Encounter",
-    "profile": [ "http://hl7.org/fhir/StructureDefinition/Encounter" ],
-    "mustSupport": [ "reasonCode", "status", "status.value", "id" ]
   } ],
   "content": [ {
     "contentType": "text/cql",

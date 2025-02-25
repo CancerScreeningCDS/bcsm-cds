@@ -59,6 +59,18 @@ RuleSet: USPSTFRiskCitationDocumentationArtifact
 * documentation[=].citation = "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867."
 * documentation[=].url = "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
 
+RuleSet: ASBrSExcisionalCitationDocumentationArtifact
+* documentation[+].type = $RATYPE#citation "Citation"
+* documentation[=].label = "ASBrS"
+* documentation[=].display = "The American Society of Breast Surgeons Resource Guide: Excisional Breast Biopsy (Nov 2014)"
+* documentation[=].url = "https://www.breastsurgeons.org/docs/statements/asbrs-rg-excisional-breast-biopsy.pdf"
+
+RuleSet: ASBrSRiskCitationDocumentationArtifact
+* documentation[+].type = $RATYPE#citation "Citation"
+* documentation[=].label = "ASBrS"
+* documentation[=].display = "The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)"
+* documentation[=].url = "https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"
+
 RuleSet: ACRTransgenderCitationDocumentationArtifact
 * documentation[+].type = $RATYPE#documentation "Documentation"
 * documentation[=].label = "ACR"

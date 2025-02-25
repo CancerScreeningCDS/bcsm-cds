@@ -36,7 +36,7 @@ Women who are at higher than average risk for breast cancer based on certain ris
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMammoHighRisk"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMammoHighRiskCode"
@@ -68,7 +68,7 @@ Women who are at higher than average risk for breast cancer based on certain ris
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSMriHighRisk"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSMriHighRiskCode"
@@ -100,7 +100,7 @@ Women who are at higher than average risk for breast cancer based on certain ris
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSFirstDegGeneticMammo"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSFirstDegGeneticMammoCode"
@@ -132,7 +132,7 @@ Women who are at higher than average risk for breast cancer based on certain ris
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsACSFirstDegGeneticMri"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "ACSFirstDegGeneticMriCode"
@@ -166,7 +166,7 @@ Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsBreastImagingHeterogenouslyOrExtremelyDense"
-* action[=].definitionCanonical = Canonical(CommunicateRiskAssessment|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "BreastImagingHeterogenouslyOrExtremelyDenseReason"
@@ -186,7 +186,13 @@ Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsCompellingFamilyHistory"
-* action[=].definitionCanonical = Canonical(CommunicateRiskAssessment|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
+* action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "CompellingFamilyHistoryCode"
+* action[=].dynamicValue[+].path = "code.coding[0]"
+* action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
+* action[=].dynamicValue[=].expression.expression = "CompellingFamilyHistoryCode"
 * action[=].dynamicValue[+].path = "reasonCode[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "CompellingFamilyHistoryReason"
@@ -199,7 +205,7 @@ RuleSet: USPSTFRecommendation
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].condition[=].expression.expression = "ExistsUSPSTFRecommendation"
-* action[=].definitionCanonical = Canonical(BreastScreeningServiceRequest|1.0.0)
+* action[=].definitionCanonical = Canonical(BreastCancerScreeningServiceRequest|1.0.0)
 * action[=].dynamicValue[+].path = "%action.code[0].coding[0]"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "USPSTFRecommendationCode"
@@ -218,22 +224,3 @@ RuleSet: USPSTFRecommendation
 * action[=].dynamicValue[+].path = "occurrenceDateTime"
 * action[=].dynamicValue[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
 * action[=].dynamicValue[=].expression.expression = "USPSTFRecommendationTimingEvent"
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-Instance: CommunicateRiskAssessment
-InstanceOf: http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity
-Title: "Communicate recommendation for risk assessment"
-Usage: #definition
-
-* insert CPGKnowledgeExtensions
-* insert CommonMetadata
-* meta.profile[+] = "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableactivity"
-* url = Canonical(CommunicateRiskAssessment)
-* name = "CommunicateRiskAssessment"
-* description = "This ActivityDefinition generates a CommunicationRequest recommending risk assessment."
-* kind = $RRTYPE#CommunicationRequest "CommunicationRequest"
-* intent = $RINTENT#proposal "Proposal"
-* priority = $RPRIOR#routine "Routine"
-* code = $PDACS#lifetimeriskassessment "Perform lifetime risk assessment"
-* code.text = "Perform lifetime risk assessment"
