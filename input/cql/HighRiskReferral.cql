@@ -63,7 +63,7 @@ define Excluded:
   "exc-hxbrca"
 
 define "exc-hxbrca": //Previous diagnosis of breast cancer
-  DataElements."de-breastca" or exists DataElements."de-hxbreastca"
+  exists DataElements."de-breastca" or exists DataElements."de-hxbreastca"
 
 //------------------------------------------------------------------------------
 // RECOMMENDATIONS

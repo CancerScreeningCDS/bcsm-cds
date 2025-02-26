@@ -179,7 +179,7 @@ Refer to patient's Oncologic treatment team or Survivorship Care Plan for patien
 RuleSet: ACSMammoAfterBrca
 * action[+].id = "ACSMammoAfterBrca"
 * action[=].title = "Annual screening mammogram"
-* action[=].description = "Annual screening mammogram after 5 years in remission from breast cancer is recomended."
+* action[=].description = "Annual screening mammogram after 5 years from breast cancer onset is recomended."
 * action[=] insert ACSHighRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"

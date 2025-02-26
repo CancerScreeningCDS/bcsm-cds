@@ -31,7 +31,7 @@ code "Other genetic marker or syndrome associated with breast cancer": 'othergen
 code "Genetic risk exclusion": 'geneticriskexclusion' from "LOCAL" display 'Genetic risk exclusion'
 code "History of chest radiation ages 10-30 y": 'chestxrt' from "LOCAL" display 'History of chest radiation ages 10-30 y'
 code "Previous breast cancer": 'hxbreastca' from "LOCAL" display 'Previous breast cancer'
-code "Breast cancer in remission < 5 years": 'hxbreastcawithin5y' from "LOCAL" display 'Breast cancer in remission < 5 years'
+code "Breast cancer within 5 years": 'hxbreastcawithin5y' from "LOCAL" display 'Breast cancer within 5 years'
 code "Atypical biopsy": 'atypicalbx' from "LOCAL" display 'Atypical biopsy'
 code "Atypical biopsy high lifetime risk": 'atypicalbxhighlifetimerisk' from "LOCAL" display 'Atypical biopsy high lifetime risk'
 
@@ -102,7 +102,7 @@ define "act-acsmammoafterbrca":
 define "act-hxbreastcawithin5y":
   {
 		code: "Refer to specialist recommendations",
-    reason: "Breast cancer in remission < 5 years",
+    reason: "Breast cancer within 5 years",
     documentation: BCSMCommon.SourceDocumentationOther
 	}
 

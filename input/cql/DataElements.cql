@@ -90,6 +90,7 @@ code "Patient currently pregnant": '77386006' from "SNOMED-CT" display 'Patient 
 code "Pregnancy Episode Of Care": '424525001' from "SNOMED-CT" display 'Antenatal care (regime/therapy)'
 
 // Non-standard codes
+code "Breast cancer within 5 years": 'hxbreastcawithin5y' from "LOCAL" display 'Breast cancer within 5 years'
 code "New or worsening breast symptoms": 'BreastSymptoms' from "LOCAL" display 'New or worsening breast symptoms'
 code "New or worsening breast exam findings": 'BreastFindings' from "LOCAL" display 'New or worsening breast exam findings'
 code "Reduced life expectancy indicator": 'lifeexp' from "LOCAL" display 'Reduced life expectancy indicator'
@@ -216,7 +217,7 @@ define FemaleorTransgenderMale:
 //------------------------------------------------------------------------------
 
 define "de-breastca":
-  exists BreastCancerDiagnoses C
+  BreastCancerDiagnoses C
     where C.clinicalStatus !~ "Condition inactive"
       and C.clinicalStatus !~ "Condition remission"
       and C.clinicalStatus !~ "Condition resolved"
@@ -492,6 +493,32 @@ define "de-hxbreastca":
   
 define HistoryBreastCancerDiagnoses:
   Common.ValidCondition([Condition: "History of Breast Cancer or Breast Cancer in Remission"])
+
+//------------------------------------------------------------------------------
+// Breast cancer onset within 5 years
+//------------------------------------------------------------------------------
+
+define "de-hxbreastcawithin5y":
+  Coalesce(
+    BreastCancerWithin5YEncounter.value as boolean,
+    BreastCancerWithin5YLookback.value as boolean,
+    (exists "de-breastca" C where Today() before (C.onset as FHIR.dateTime) + 5 years) or
+    (exists "de-hxbreastca" P where Today() before (P.onset as FHIR.dateTime) + 5 years)
+  ) 
+
+define BreastCancerWithin5YEncounter:
+  C3F.MostRecent(BreastCancerWithin5YObservations O where O.encounter.reference = encounter)
+
+define BreastCancerWithin5YLookback:
+  C3F.MostRecent(
+    C3F.ObservationLookBack(
+      BreastCancerWithin5YObservations,
+      ObservationLookbackPeriod
+    ) 
+  )
+
+define BreastCancerWithin5YObservations:
+  [Observation: "Breast cancer within 5 years"]    
 
 //------------------------------------------------------------------------------
 // Atypical biopsy

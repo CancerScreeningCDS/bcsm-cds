@@ -24,7 +24,9 @@ define "eve-female":
   DataElements."de-female"
 
 define "eve-breastca":
-  DataElements."de-breastca"
+  DataElements."de-hxbreastcawithin5y" is true
+    or exists DataElements."de-breastca" C where C.onset.value is null
+    or exists DataElements."de-hxbreastca" P where P.onset.value is null
 
 define "eve-mastectomy":
   DataElements."de-mastectomy"  

@@ -62,8 +62,8 @@ RuleSet: NotEligibleNotAssignedFemaleAtBirth
   """
 * action[=] insert USPSTFScreeningCitationDocumentationArtifact
 * action[=] insert ScreeningEligibleDocumentationArtifact
-* action[=] insert ACRTransgenderCitationDocumentationArtifact
-* action[=] insert UCSFTransgenderCitationDocumentationArtifact
+* action[=] insert ACRTransgenderDocumentationArtifact
+* action[=] insert UCSFTransgenderDocumentationArtifact
 * action[=].code = $PDACS#noteligible "Not eligible for screening"
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
 * action[=].condition[=].expression.language = $EXLANG|4.0.1#text/cql-identifier "CQL Identifier"
@@ -78,11 +78,11 @@ RuleSet: NotEligibleNotAssignedFemaleAtBirth
 
 RuleSet: NotEligibleCurrentBreastCancer
 * action[+].id = "NotEligibleCurrentBreastCancer"
-* action[=].title = "Not eligible for screening"
+* action[=].title = "Refer to Oncologic care plan"
 * action[=].description = """
-  This patient is not eligible for screening and should be referred to a specialist for management.
+  This patient is not eligible for routine screening and should be referred to a specialist for management.
 
-  This patient has an active condition of breast cancer and does not meet the eligibility requirements for routine breast cancer screening.
+  Breast cancer within 5 years may require enhanced surveillance including diagnostic mammogram. Refer to patient's Oncologic treatment team or Survivorship Care Plan for patient specific guidance.
   """
 * action[=] insert USPSTFScreeningCitationDocumentationArtifact
 * action[=] insert ScreeningEligibleDocumentationArtifact
