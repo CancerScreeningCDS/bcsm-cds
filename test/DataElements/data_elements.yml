@@ -899,6 +899,20 @@ de-fhxgeneinherited:
             - system: http://snomed.info/sct
               code: 412734009
               display: BRCA1 gene mutation detected (finding)
+  - &FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`BRCA-2_MUTATION_CONDITION`
+    resourceType: FamilyMemberHistory
+    status: completed
+    relationship:
+      coding:
+        - system: "http://hl7.org/fhir/v3/RoleCode"
+          code: "MTH"
+          display: "Mother"
+    condition:
+      - code:
+          coding:
+            - system: http://snomed.info/sct
+              code: 412738007
+              display: BRCA2 gene mutation detected (finding)
 
 de-fhxbreastca:
   - &FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`BREAST_CANCER`
@@ -932,9 +946,35 @@ de-fhxovca:
             code: "93934004"
             display: "Primary malignant neoplasm of ovary (disorder)"    
 de-fhxtubalca:
-  - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`TUBAL_CANCER`"
+  - &FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`TUBAL_CANCER`
+    resourceType: FamilyMemberHistory
+    status: completed
+    relationship:
+      coding:
+        - system: "http://hl7.org/fhir/v3/RoleCode"
+          code: MTH
+          display: mother
+    condition:
+      - code:
+          coding:
+            - system: "http://snomed.info/sct"
+              code: "276870001"
+              display: "Carcinoma of fallopian tube (disorder)"     
 de-fhxperitonealca:
-  - "&FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`PERITONEAL_CANCER`"
+  - &FAMILY_HISTORY_includes_family_member_with_DIAGNOSIS_`PERITONEAL_CANCER`
+    resourceType: FamilyMemberHistory
+    status: completed
+    relationship:
+      coding:
+        - system: "http://hl7.org/fhir/v3/RoleCode"
+          code: MTH
+          display: mother
+    condition:
+      - code:
+          coding:
+            - system: "http://snomed.info/sct"
+              code: "372016004"
+              display: "Primary malignant neoplasm of the peritoneum (disorder)"   
 
 de-fhxbreastcarisk:
   - &OBSERVATIONS_include_familial_risk_assessment
