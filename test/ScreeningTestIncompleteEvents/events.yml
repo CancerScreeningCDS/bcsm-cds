@@ -284,8 +284,17 @@ eve-pendingbiopsy:
   - "&is_before_date_'Pending_biopsy'_order_or_referral_was_placed"
 eve-pendingoncreferral:
   - "&REFERRAL_where_service_type_is_`BREAST_SURGERY`_OR_`MEDICAL_ONCOLOGY`_exists_and_status_is_active_AND_There_does_not_exist_a_CLINICAL_NOTE_of_service_type_`BREAST_SURGERY`_OR_`_MEDICAL_ONCOLOGY`_with_date_after_referral"
-  - "&REFERRAL_where_service_type_is_`BREAST_SURGERY`"
+  - &REFERRAL_where_service_type_is_`BREAST_SURGERY`_OR_`MEDICAL_ONCOLOGY`_exists_and_status_is_active
+    resourceType: ServiceRequest
+    status: active
+    intent: order
+    occurrenceDateTime: 2024-10-02
+    code:
+      coding:
+        - code: 'oncreferral'
+          system: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'
+          display: 'Oncologic referral'   
   - "&`MEDICAL_ONCOLOGY`_exists_and_status_is_active_AND_There_does_not_exist_a_CLINICAL_NOTE_of_service_type_`BREAST_SURGERY`"
-  - "&`MEDICAL_ONCOLOGY`_exists_and_status_is_active"
+  - "&`MEDICAL_ONCOLOGY`_exists_and_status_is_active" 
   - "&There_does_not_exist_a_CLINICAL_NOTE_of_service_type_`BREAST_SURGERY`"
   - "&`_MEDICAL_ONCOLOGY`_with_date_after_referral"

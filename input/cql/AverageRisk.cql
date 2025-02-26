@@ -21,6 +21,9 @@ include AverageRiskActions version '1.0.0' called Actions
 include DataElements version '1.0.0' called DataElements
 include BCSMCommonFunctions version '1.0.0' called BCSMCommon
 
+parameter ACS System.Boolean default true
+parameter USPSTF System.Boolean default true
+
 context Patient
 
 //------------------------------------------------------------------------------
@@ -37,19 +40,20 @@ define "flow-AverageRisk":
   except { null }
 
 define ACSMammoAvgRiskAgeUnder45:
-  if Events."eve-ageUnder40" or Events."eve-age40to44" is true
+  if ACS and Events."eve-ageUnder40" or Events."eve-age40to44" is true
   then Actions."act-acsavgrecs40" else null 
 
 define ACSMammoAvgRiskAge45to54:
-  if Events."eve-Age45to54" is true
+  if ACS and Events."eve-Age45to54" is true
   then Actions."act-acsavgrecs45" else null    
 
 define ACSMammoAvgRiskAgeOver54:
-  if Events."eve-AgeOver54" is true
+  if ACS and Events."eve-AgeOver54" is true
   then Actions."act-acsavgrecs55" else null  
 
 define USPSTFAvgRisk:
-  Actions."act-uspstfavgrecs"  
+  if USPSTF 
+  then Actions."act-uspstfavgrecs" else null  
 
 //------------------------------------------------------------------------------
 // DYNAMIC VALUES

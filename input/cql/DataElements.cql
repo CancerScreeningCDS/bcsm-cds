@@ -61,7 +61,7 @@ valueset "History of Breast Cancer or Breast Cancer in Remission": 'http://cts.n
 valueset "Biopsy Atypical Results": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.392' // TODO clinical validation: Keep "generic" ICD-10-CM codes under which atypical hyperplasia is classified (but which are not specific to atypical hyperplasia)? Decided against it for similar situations in CRC.
 valueset "Ovarian Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.232'
 valueset "Tubal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1116.539'
-valueset "Peritoneal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.233' // TODO clinical validation: ok to be just primary cancers?
+valueset "Peritoneal Cancer": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113883.3.1444.5.233'
 valueset "Breast Cancer Signs and Symptoms": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.374' // TODO clinical validation: check for overall accuracy.
 valueset "First Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.92'
 valueset "Second Degree Family Member": 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.401' // TODO clinical validation: keep cousins (could be second cousins according to definition)?
@@ -90,6 +90,7 @@ code "Patient currently pregnant": '77386006' from "SNOMED-CT" display 'Patient 
 code "Pregnancy Episode Of Care": '424525001' from "SNOMED-CT" display 'Antenatal care (regime/therapy)'
 
 // Non-standard codes
+code "Breast cancer within 5 years": 'hxbreastcawithin5y' from "LOCAL" display 'Breast cancer within 5 years'
 code "New or worsening breast symptoms": 'BreastSymptoms' from "LOCAL" display 'New or worsening breast symptoms'
 code "New or worsening breast exam findings": 'BreastFindings' from "LOCAL" display 'New or worsening breast exam findings'
 code "Reduced life expectancy indicator": 'lifeexp' from "LOCAL" display 'Reduced life expectancy indicator'
@@ -216,7 +217,7 @@ define FemaleorTransgenderMale:
 //------------------------------------------------------------------------------
 
 define "de-breastca":
-  exists BreastCancerDiagnoses C
+  BreastCancerDiagnoses C
     where C.clinicalStatus !~ "Condition inactive"
       and C.clinicalStatus !~ "Condition remission"
       and C.clinicalStatus !~ "Condition resolved"
@@ -492,6 +493,32 @@ define "de-hxbreastca":
   
 define HistoryBreastCancerDiagnoses:
   Common.ValidCondition([Condition: "History of Breast Cancer or Breast Cancer in Remission"])
+
+//------------------------------------------------------------------------------
+// Breast cancer onset within 5 years
+//------------------------------------------------------------------------------
+
+define "de-hxbreastcawithin5y":
+  Coalesce(
+    BreastCancerWithin5YEncounter.value as boolean,
+    BreastCancerWithin5YLookback.value as boolean,
+    (exists "de-breastca" C where Today() before (C.onset as FHIR.dateTime) + 5 years) or
+    (exists "de-hxbreastca" P where Today() before (P.onset as FHIR.dateTime) + 5 years)
+  ) 
+
+define BreastCancerWithin5YEncounter:
+  C3F.MostRecent(BreastCancerWithin5YObservations O where O.encounter.reference = encounter)
+
+define BreastCancerWithin5YLookback:
+  C3F.MostRecent(
+    C3F.ObservationLookBack(
+      BreastCancerWithin5YObservations,
+      ObservationLookbackPeriod
+    ) 
+  )
+
+define BreastCancerWithin5YObservations:
+  [Observation: "Breast cancer within 5 years"]    
 
 //------------------------------------------------------------------------------
 // Atypical biopsy
