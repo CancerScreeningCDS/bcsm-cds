@@ -18,6 +18,8 @@ RuleSet: CommonMetadata
 * reviewer[+].name = "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"
 * endorser[+].name = "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"
 
+//CITATIONS
+
 RuleSet: ACSAvgRiskCitationDocumentationArtifact
 * documentation[+].type = $RATYPE#citation "Citation"
 * documentation[=].label = "ACS"
@@ -71,44 +73,48 @@ RuleSet: ASBrSRiskCitationDocumentationArtifact
 * documentation[=].display = "The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)"
 * documentation[=].url = "https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"
 
-RuleSet: ACRTransgenderCitationDocumentationArtifact
-* documentation[+].type = $RATYPE#documentation "Documentation"
-* documentation[=].label = "ACR"
-* documentation[=].display = "ACR Appropriateness Criteria® Transgender Breast Cancer Screening"
-* documentation[=].citation = "Brown, Ann, et al. \"ACR appropriateness criteria® transgender breast cancer screening.\" Journal of the American College of Radiology 18.11 (2021): S502-S515."
-* documentation[=].url = "https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext"
-
 RuleSet: ACRMammographyReportingCitationDocumentationArtifact
-* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[+].type = $RATYPE#documentation "Citation"
 * documentation[=].label = "ACR"
 * documentation[=].display = "ACR BI-RADS Atlas Excerpt: Mammography Reporting System"
 * documentation[=].citation = "American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."
 * documentation[=].url = "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"
 
 RuleSet: ACRMriReportingCitationDocumentationArtifact
-* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[+].type = $RATYPE#documentation "Citation"
 * documentation[=].label = "ACR"
 * documentation[=].display = "ACR BI-RADS Atlas Excerpt: MRI Reporting System"
 * documentation[=].citation = "American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."
 * documentation[=].url = "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"
 
 RuleSet: ACRUltrasoundReportingCitationDocumentationArtifact
-* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[+].type = $RATYPE#documentation "Citation"
 * documentation[=].label = "ACR"
 * documentation[=].display = "ACR BI-RADS Atlas Excerpt: Ultrasound Reporting System"
 * documentation[=].citation = "American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."
 * documentation[=].url = "https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"
 
-RuleSet: UCSFTransgenderCitationDocumentationArtifact
-* documentation[+].type = $RATYPE#documentation "Documentation"
-* documentation[=].label = "UCSF"
-* documentation[=].display = "UCSF Transgender Care & Treatment Guidelines: Screening for breast cancer in transgender women"
-* documentation[=].url = "https://transcare.ucsf.edu/guidelines/breast-cancer-women"
+//DERIVED FROM
 
 RuleSet: ScreeningEligibleDocumentationArtifact
 * documentation[+].type = $RATYPE#derived-from "Derived From"
 * documentation[=].label = "Screening Eligible"
 * documentation[=].display = "Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed."
+
+// DOCUMENTATION
+
+RuleSet: ACRTransgenderDocumentationArtifact
+* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[=].label = "ACR"
+* documentation[=].display = "ACR Appropriateness Criteria® Transgender Breast Cancer Screening"
+* documentation[=].citation = "Brown, Ann, et al. \"ACR appropriateness criteria® transgender breast cancer screening.\" Journal of the American College of Radiology 18.11 (2021): S502-S515."
+* documentation[=].url = "https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext"
+
+RuleSet: UCSFTransgenderDocumentationArtifact
+* documentation[+].type = $RATYPE#documentation "Documentation"
+* documentation[=].label = "UCSF"
+* documentation[=].display = "UCSF Transgender Care & Treatment Guidelines: Screening for breast cancer in transgender women"
+* documentation[=].url = "https://transcare.ucsf.edu/guidelines/breast-cancer-women"
 
 RuleSet: NCIBCRATDocumentationArtifact
 * documentation[+].type = $RATYPE#documentation "Documentation"

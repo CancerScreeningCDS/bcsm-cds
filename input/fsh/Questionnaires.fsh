@@ -1,4 +1,5 @@
 Alias: $EnableBehaviorCS = http://hl7.org/fhir/questionnaire-enable-behavior
+Alias: $EnableOperatorCS = http://hl7.org/fhir/questionnaire-enable-operator
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -80,23 +81,23 @@ Description: "A questionnaire to assess factors related to breast cancer routine
 * item[=].type = $ITEMTYPE#boolean
 * item[=].code = $SOCS#GeneticMarkerOrSyndrome
 
-* item[+].linkId = "geneticriskexclusion"
-* item[=].text = "Genetic risk exclusion"
-* item[=].type = $ITEMTYPE#boolean
-* item[=].code = $SOCS#geneticriskexclusion
-* item[=].enableWhen[+].question = "GeneticMarkerOrSyndrome"
-* item[=].enableWhen[=].operator = http://hl7.org/fhir/questionnaire-enable-operator#=
-* item[=].enableWhen[=].answerBoolean = true
-* item[=].enableBehavior = $EnableBehaviorCS#all
+* item[=].item[+].linkId = "geneticriskexclusion"
+* item[=].item[=].text = "BRCA1/2, Li-Fraumeni, Cowden, or Bannayan-Riley-Ruvalcaba"
+* item[=].item[=].type = $ITEMTYPE#boolean
+* item[=].item[=].code = $SOCS#geneticriskexclusion
+* item[=].item[=].enableWhen[+].question = "GeneticMarkerOrSyndrome"
+* item[=].item[=].enableWhen[=].operator = $EnableOperatorCS#=
+* item[=].item[=].enableWhen[=].answerBoolean = true
+* item[=].item[=].enableBehavior = $EnableBehaviorCS#all
 
-* item[+].linkId = "othergeneticrisk"
-* item[=].text = "Other genetic marker or syndrome associated with breast cancer"
-* item[=].type = $ITEMTYPE#boolean
-* item[=].code = $SOCS#othergeneticrisk
-* item[=].enableWhen[+].question = "GeneticMarkerOrSyndrome"
-* item[=].enableWhen[=].operator = http://hl7.org/fhir/questionnaire-enable-operator#=
-* item[=].enableWhen[=].answerBoolean = true
-* item[=].enableBehavior = $EnableBehaviorCS#all
+* item[=].item[+].linkId = "othergeneticrisk"
+* item[=].item[=].text = "Other genetic marker or syndrome associated with breast cancer"
+* item[=].item[=].type = $ITEMTYPE#boolean
+* item[=].item[=].code = $SOCS#othergeneticrisk
+* item[=].item[=].enableWhen[+].question = "GeneticMarkerOrSyndrome"
+* item[=].item[=].enableWhen[=].operator = $EnableOperatorCS#=
+* item[=].item[=].enableWhen[=].answerBoolean = true
+* item[=].item[=].enableBehavior = $EnableBehaviorCS#all
 
 * item[+].linkId = "chestxrt"
 * item[=].text = "History of chest radiation ages 10-30 y"
@@ -112,11 +113,11 @@ Description: "A questionnaire to assess factors related to breast cancer routine
 */
 
 * item[+].linkId = "hxbreastcawithin5y"
-* item[=].text = "Breast cancer in remission < 5 years"
+* item[=].text = "Breast cancer onset < 5 years"
 * item[=].type = $ITEMTYPE#boolean
 * item[=].code = $SOCS#hxbreastcawithin5y
 * item[=].enableWhen[+].question = "hxbreastca"
-* item[=].enableWhen[=].operator = http://hl7.org/fhir/questionnaire-enable-operator#=
+* item[=].enableWhen[=].operator = $EnableOperatorCS#=
 * item[=].enableWhen[=].answerBoolean = true
 * item[=].enableBehavior = $EnableBehaviorCS#all
 
@@ -173,14 +174,14 @@ Description: "A questionnaire to assess familial risk factors related to breast 
 * item[=].type = $ITEMTYPE#boolean
 * item[=].code = $SOCS#fhxgenetic
 
-* item[+].linkId = "KnownVariantStatus"
-* item[=].text = "Known breast cancer variant status"
-* item[=].type = $ITEMTYPE#boolean
-* item[=].code = $SOCS#KnownVariantStatus
-* item[=].enableWhen[+].question = "fhxgenetic"
-* item[=].enableWhen[=].operator = http://hl7.org/fhir/questionnaire-enable-operator#=
-* item[=].enableWhen[=].answerBoolean = true
-* item[=].enableBehavior = $EnableBehaviorCS#all
+* item[=].item[+].linkId = "KnownVariantStatus"
+* item[=].item[=].text = "Known personal variant status"
+* item[=].item[=].type = $ITEMTYPE#boolean
+* item[=].item[=].code = $SOCS#KnownVariantStatus
+* item[=].item[=].enableWhen[+].question = "fhxgenetic"
+* item[=].item[=].enableWhen[=].operator = $EnableOperatorCS#=
+* item[=].item[=].enableWhen[=].answerBoolean = true
+* item[=].item[=].enableBehavior = $EnableBehaviorCS#all
 
 * item[+].linkId = "brcageneancestry"
 * item[=].text = "Ancestry associated with BRCA1/2 gene mutations"
@@ -199,7 +200,7 @@ Description: "A questionnaire to assess familial risk factors related to breast 
 
 * item[+].linkId = "fhxrisktool"
 * item[=].text = "Brief familial risk assessment tool"
-* item[=].type = $ITEMTYPE#boolean
+* item[=].type = $ITEMTYPE#choice
 * item[=].code = $PDACS#fhxrisktool
 * item[=].answerOption[+].valueCoding = $SOCS#highfamilialrisk "High familial risk"
 
