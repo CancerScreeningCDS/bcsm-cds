@@ -21,9 +21,9 @@ Women who are at increased risk for breast cancer without current or previous di
 * action[+].id = "HighRiskReferralGenetic"
 * action[=].title = "Referral for high risk breast specialty evaluation"
 * action[=].description = """
-Consider referral to breast specialist to discuss primary risk reduction interventions such as chemoprevention.
+Consider referral to breast specialist to discuss primary risk reduction interventions.
 
-Women at greater risk, such as those with a genetic marker or syndrome associated with increased risk of breast cancer, may derive more benefit than harm from risk-reducing medications.
+These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a genetic marker or syndrome associated with increased risk of breast cancer, may derive more benefit than harm from risk-reducing medications.
 """
 * action[=] insert USPSTFRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
@@ -45,9 +45,9 @@ Women at greater risk, such as those with a genetic marker or syndrome associate
 * action[+].id = "HighRiskReferralChestXRT"
 * action[=].title = "Referral for high risk breast specialty evaluation"
 * action[=].description = """
-Consider referral to breast specialist to discuss primary risk reduction interventions such as chemoprevention.
+Consider referral to breast specialist to discuss primary risk reduction interventions.
 
-Women at greater risk, such as those with a history of chest radiotherapy, may derive more benefit than harm from risk-reducing medications.
+These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of chest radiotherapy, may derive more benefit than harm from risk-reducing medications.
 """
 //TODO: source NCCN
 * action[=] insert USPSTFRiskCitationDocumentationArtifact
@@ -70,9 +70,9 @@ Women at greater risk, such as those with a history of chest radiotherapy, may d
 * action[+].id = "HighRiskReferralAtypicalBiopsy"
 * action[=].title = "Referral for high risk breast specialty evaluation"
 * action[=].description = """
-Consider referral to breast specialist to discuss primary risk reduction interventions such as chemoprevention.
+Consider referral to breast specialist to discuss primary risk reduction interventions.
 
-Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications.
+These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications.
 """
 * action[=] insert USPSTFRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
@@ -94,9 +94,9 @@ Women at greater risk, such as those with a history of past atypical biopsy resu
 * action[+].id = "HighRiskReferral5YRiskHigh"
 * action[=].title = "Referral for high risk breast specialty evaluation"
 * action[=].description = """
-Refer to high risk breast specialist to discuss primary risk reduction interventions such as chemoprevention.
+Refer to high risk breast specialist to discuss primary risk reduction interventions.
 
-Women at greater risk, such as those with at least a 3% risk for breast cancer in the next 5 years, are likely to derive more benefit than harm from risk-reducing medications.
+These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with at least a 3% risk for breast cancer in the next 5 years, are likely to derive more benefit than harm from risk-reducing medications.
 """
 * action[=] insert USPSTFRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
@@ -118,7 +118,9 @@ Women at greater risk, such as those with at least a 3% risk for breast cancer i
 * action[+].id = "HighRiskReferral5YRiskHigherThanAverage"
 * action[=].title = "Consider referral for high risk breast specialty evaluation"
 * action[=].description = """
-Consider referral to breast specialist to discuss primary risk reduction interventions such as chemoprevention.
+Consider referral to breast specialist to discuss primary risk reduction interventions.
+
+These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance.
 """
 * action[=] insert USPSTFRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
@@ -166,7 +168,7 @@ Factors that may impact this estimation should be considered prior to referral. 
 * action[=].description = """
 A 5 year risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for high risk breast specialty evaluation.
 
-Women at higher than average 5 year risk may be candidates for referral to breast specialist to discuss primary risk reduction interventions such as chemoprevention.
+Women at higher than average 5 year risk may be candidates for referral to breast specialist to discuss primary risk reduction interventions. These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance.
 """
 * action[=] insert USPSTFRiskCitationDocumentationArtifact
 * action[=].condition[+].kind = $ACKIND#applicability "Applicability"
