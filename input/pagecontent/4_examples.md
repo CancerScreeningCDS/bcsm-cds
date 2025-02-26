@@ -27,6 +27,7 @@ Reference HL7 Clinical Practice Guidelines (CPG) on FHIR implementation guide fo
 | [eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs](Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html) |
 | [eve-AgeOver54_act-acsavgrecs55-uspstfavgrecs](Bundle-eve-AgeOver54_act-acsavgrecs55-uspstfavgrecs.html) |
 | [eve-age40to44_act-acsavgrecs40_act-uspstfavgrecs](Bundle-eve-age40to44_act-acsavgrecs40_act-uspstfavgrecs.html) |
+| [eve-age40to44_act-acsavgrecs40_only](Bundle-eve-age40to44_act-acsavgrecs40_only.html) |
 | [eve-ageUnder40_act-acsavgrecs40_act-uspstfavgrecs](Bundle-eve-ageUnder40_act-acsavgrecs40_act-uspstfavgrecs.html) |
 
 #### flow-DecisionToScreen
@@ -40,7 +41,7 @@ Reference HL7 Clinical Practice Guidelines (CPG) on FHIR implementation guide fo
 | [eve-AgeOver74_yes_eve-LifeExp_yes](Bundle-eve-AgeOver74_yes_eve-LifeExp_yes.html) |
 | [eve-highriskexclusions__end-decisionhighrisk](Bundle-eve-highriskexclusions__end-decisionhighrisk.html) |
 | [act-sdmcontinuelifexp__eve-highriskexclusions__end-decisionhighrisk](Bundle-act-sdmcontinuelifexp__eve-highriskexclusions__end-decisionhighrisk.html) |
-| [eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_no_eve-highriskexclusions_yes_end-decisionhighrisk](Bundle-eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_no_eve-highriskexclusions_yes_end-decisionhighrisk.html) |
+| [eve-AgeOver74__act-sdmcontinueage__eve-highriskexclusions__end-decisionhighrisk](Bundle-eve-AgeOver74__act-sdmcontinueage__eve-highriskexclusions__end-decisionhighrisk.html) |
 | [act-sdmcontinueage_act-sdmcontinuelifexp_end-decisionhighrisk](Bundle-act-sdmcontinueage_act-sdmcontinuelifexp_end-decisionhighrisk.html) |
 | [act-avgrisk](Bundle-act-avgrisk.html) |
 | [act-sdmcontinuelifexp__act-avgrisk](Bundle-act-sdmcontinuelifexp__act-avgrisk.html) |
@@ -48,8 +49,6 @@ Reference HL7 Clinical Practice Guidelines (CPG) on FHIR implementation guide fo
 | [act-sdmcontinueage__act-sdmcontinuelifexp__act-avgrisk](Bundle-act-sdmcontinueage__act-sdmcontinuelifexp__act-avgrisk.html) |
 | [eve-specialpop_yes_end-decisionspecialpop](Bundle-eve-specialpop_yes_end-decisionspecialpop.html) |
 | [act-sdmcontinuelifexp__end-decisionspecialpop](Bundle-act-sdmcontinuelifexp__end-decisionspecialpop.html) |
-| [eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_no_eve-highriskexclusions_no_eve-specialpop_yes_end-decisionspecialpop](Bundle-eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_no_eve-highriskexclusions_no_eve-specialpop_yes_end-decisionspecialpop.html) |
-| [eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_yes_end-decisionspecialpop](Bundle-eve-AgeOver74_yes_act-sdmcontinueage__eve-LifeExp10_yes_act-sdmcontinuelifexp__eve-highriskexclusions_no_eve-specialpop_yes_end-decisionspecialpop.html) |
 
 #### flow-FollowupScreeningResult
 
@@ -103,15 +102,10 @@ Reference HL7 Clinical Practice Guidelines (CPG) on FHIR implementation guide fo
 | Name |
 |------|
 | [eve-atypicalbx__eve-highlifetimerisk__act-acshighriskmammo__act-acshighriskmri](Bundle-eve-atypicalbx__eve-highlifetimerisk__act-acshighriskmammo__act-acshighriskmri.html) |
-| [eve-geneticrisk_no_eve-chestxrt_yes_eve-ageatleast25and8yafterRT_yes_act-acshighriskmammo__act-acshighriskmri](Bundle-eve-geneticrisk_no_eve-chestxrt_yes_eve-ageatleast25and8yafterRT_yes_act-acshighriskmammo__act-acshighriskmri.html) |
 | [eve-acsgeneticrisk__act-acshighriskmammo__act-acshighriskmri](Bundle-eve-acsgeneticrisk__act-acshighriskmammo__act-acshighriskmri.html) |
 | [act-acsmammoatypicalbx_act-acsatypicalbx_warning_missing](Bundle-act-acsmammoatypicalbx_act-acsatypicalbx_warning_missing.html) |
 | [eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk](Bundle-eve-geneticrisk_yes_eve-acsgeneticrisk_no_act-othergeneticrisk.html) |
 | [act-startat25yand8yafterRT](Bundle-act-startat25yand8yafterRT.html) |
-| [eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_yes_eve-ageatleast30high_no_act-startdateacsrisk](Bundle-eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_yes_eve-ageatleast30high_no_act-startdateacsrisk.html) |
-| [eve-geneticrisk_yes_eve-acsgeneticrisk_yes_eve-ageatleast30high_no_act-startdateacsrisk](Bundle-eve-geneticrisk_yes_eve-acsgeneticrisk_yes_eve-ageatleast30high_no_act-startdateacsrisk.html) |
-| [eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_no_eve-ageatleast30int_no_act-startdateacsrisk](Bundle-eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_no_eve-ageatleast30int_no_act-startdateacsrisk.html) |
-| [eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_no_eve-ageatleast30int_yes_act-acsintriskmammo](Bundle-eve-geneticrisk_no_eve-chestxrt_no_eve-hxbreastca_no_eve-atypicalbx_yes_eve-highlifetimerisk_no_eve-ageatleast30int_yes_act-acsintriskmammo.html) |
 | [act-noexclusions](Bundle-act-noexclusions.html) |
 | [eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo](Bundle-eve-hxbreastca_yes_eve-hxbreastcawithin5y_no_act-acsintriskmammo.html) |
 | [act-hxbreastcawithin5y](Bundle-act-hxbreastcawithin5y.html) |
@@ -175,11 +169,9 @@ Reference HL7 Clinical Practice Guidelines (CPG) on FHIR implementation guide fo
 
 | Name |
 |------|
-| [eve-birads0_act-testpending](Bundle-eve-birads0_act-testpending.html) |
 | [eve-pendingbiopsy_act-testpending](Bundle-eve-pendingbiopsy_act-testpending.html) |
 | [eve-pendingmammo_act-testpending](Bundle-eve-pendingmammo_act-testpending.html) |
 | [eve-pendingmri_act-testpending](Bundle-eve-pendingmri_act-testpending.html) |
-| [eve-pendingoncreferral_act-testpending](Bundle-eve-pendingoncreferral_act-testpending.html) |
 
 #### flow-SpecialPopulations
 
@@ -189,3 +181,5 @@ Reference HL7 Clinical Practice Guidelines (CPG) on FHIR implementation guide fo
 | [eve-firstdeggenetic_eve-acs_act-firstdeggeneticmammo-firstdeggeneticmri](Bundle-eve-firstdeggenetic_eve-acs_act-firstdeggeneticmammo-firstdeggeneticmri.html) |
 | [eve-breastdensitycord_act-performriskassessment](Bundle-eve-breastdensitycord_act-performriskassessment.html) |
 | [eve-fhxbrcarisk_eve-acs_act-performriskassessment](Bundle-eve-fhxbrcarisk_eve-acs_act-performriskassessment.html) |
+| [eve-fhxbrcarisk_uspstf_only](Bundle-eve-fhxbrcarisk_uspstf_only.html) |
+
