@@ -98,7 +98,7 @@ decision support (CDS) artifacts. It includes:
  The CDS L2 documentation for breast cancer guidelines can be found at this location: [Introduction \| CDC Breast Cancer Screening CDS L2](https://cancerscreeningcds.github.io/CDC-Breast-Cancer-Screening-CDS-L2/)
 
 <div style="text-align: center;">
-  <img src="highlevelbreast.png" alt="Alt text" style="width:9in; display: block; margin: 0 auto;">
+  <img src="highlevelbreast.png" alt="High-level Flow Diagram" style="width:9in; display: block; margin: 0 auto;">
   <p><strong>Figure 1:</strong> High-Level Flow Diagram.</p>
 </div>
 
@@ -322,7 +322,7 @@ the BCSM CDS application.
 
 
 <div style="text-align: center;">
-  <img src="image4.png" alt="Alt text" style="width:6.5in; height:2.663157261592301in; display: block; margin: 0 auto;">
+  <img src="image4.png" alt="Illustration of test-driven approach for developing the BCSM CDS" style="width:6.5in; height:2.663157261592301in; display: block; margin: 0 auto;">
   <p><strong>Figure 3:</strong> Illustration of test-driven approach for developing the BCSM CDS.</p>
 </div>
 
