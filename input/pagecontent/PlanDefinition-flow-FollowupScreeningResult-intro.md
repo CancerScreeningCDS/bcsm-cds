@@ -1,0 +1,1 @@
+See [here](https://cancerscreeningcds.github.io/CDC-Breast-Cancer-Screening-CDS-L2/pagecontent/Follow-up%20Screening%20Result){:target="_blank"} for logic path L2 representation. 
