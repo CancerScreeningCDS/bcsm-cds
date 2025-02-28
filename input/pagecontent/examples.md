@@ -171,7 +171,6 @@ Reference HL7 Clinical Practice Guidelines (CPG) on FHIR implementation guide fo
 |------|
 | [eve-pendingbiopsy_act-testpending](Bundle-eve-pendingbiopsy_act-testpending.html) |
 | [eve-pendingmammo_act-testpending](Bundle-eve-pendingmammo_act-testpending.html) |
-| [eve-pendingmri_act-testpending](Bundle-eve-pendingmri_act-testpending.html) |
 
 #### flow-SpecialPopulations
 
