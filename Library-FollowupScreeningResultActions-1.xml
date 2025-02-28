@@ -1,0 +1,887 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="340">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library FollowupScreeningResultActions version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="FollowupScreeningResultActions" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="18:1-18:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:61" localIdentifier="BCSMCommon" path="http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>BCSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called BCSMCommon</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="21:1-21:67" localIdentifier="Events" path="http://cancerscreeningcds.github.io/bcsm-cds/FollowupScreeningResultEvents" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FollowupScreeningResultEvents</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Events</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="211" locator="23:1-23:114" name="ActCode" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>codesystem &quot;ActCode&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="212" locator="24:1-24:111" name="LOCAL" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>codesystem &quot;LOCAL&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="213" locator="25:1-25:48" name="SNOMED-CT" id="http://snomed.info/sct" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>codesystem &quot;SNOMED-CT&quot;: 'http://snomed.info/sct'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="214" locator="26:1-26:124" name="BiopsyResultCS" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="214">
+               <a:s>codesystem &quot;BiopsyResultCS&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="215" locator="29:1-29:99" name="Determine next due date" id="determinenextdue" display="Determine next due date" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="215">
+               <a:s>// Act Codes
+code &quot;Determine next due date&quot;: 'determinenextdue' from </a:s>
+               <a:s r="216">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+               <a:s> display 'Determine next due date'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="216" locator="29:57-29:65" name="ActCode"/>
+      </def>
+      <def localId="217" locator="30:1-30:124" name="Follow-up radiologist recommendations" id="radiologyrecs" display="Follow-up radiologist recommendations" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="217">
+               <a:s>code &quot;Follow-up radiologist recommendations&quot;: 'radiologyrecs' from </a:s>
+               <a:s r="218">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+               <a:s> display 'Follow-up radiologist recommendations'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="218" locator="30:68-30:76" name="ActCode"/>
+      </def>
+      <def localId="219" locator="31:1-31:95" name="Order interval imaging" id="intervalscreen" display="Order interval imaging" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="219">
+               <a:s>code &quot;Order interval imaging&quot;: 'intervalscreen' from </a:s>
+               <a:s r="220">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+               <a:s> display 'Order interval imaging'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="220" locator="31:54-31:62" name="ActCode"/>
+      </def>
+      <def localId="221" locator="32:1-32:76" name="Breast biopsy" id="breastbiopsy" display="Breast biopsy" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="221">
+               <a:s>code &quot;Breast biopsy&quot;: 'breastbiopsy' from  </a:s>
+               <a:s r="222">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+               <a:s> display 'Breast biopsy'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="222" locator="32:44-32:52" name="ActCode"/>
+      </def>
+      <def localId="223" locator="33:1-33:100" name="Breast surgeon referral" id="surgicalreferral" display="Breast surgeon referral" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="223">
+               <a:s>code &quot;Breast surgeon referral&quot;: 'surgicalreferral' from  </a:s>
+               <a:s r="224">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+               <a:s> display 'Breast surgeon referral'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="224" locator="33:58-33:66" name="ActCode"/>
+      </def>
+      <def localId="225" locator="34:1-34:85" name="Oncologic referral" id="oncreferral" display="Oncologic referral" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="225">
+               <a:s>code &quot;Oncologic referral&quot;: 'oncreferral' from  </a:s>
+               <a:s r="226">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+               <a:s> display 'Oncologic referral'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="226" locator="34:48-34:56" name="ActCode"/>
+      </def>
+      <def localId="227" locator="36:1-36:139" name="Category0" id="397138000" display="Mammography assessment (Category 0) - Need additional imaging evaluation (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="227">
+               <a:s>// Reason Codes
+code &quot;Category0&quot;: '397138000' from </a:s>
+               <a:s r="228">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 0) - Need additional imaging evaluation (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="228" locator="36:36-36:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="229" locator="37:1-37:154" name="Category3" id="397143007" display="Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="229">
+               <a:s>code &quot;Category3&quot;: '397143007' from </a:s>
+               <a:s r="230">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="230" locator="37:36-37:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="231" locator="38:1-38:156" name="Category4" id="397144001" display="Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="231">
+               <a:s>code &quot;Category4&quot;: '397144001' from </a:s>
+               <a:s r="232">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="232" locator="38:36-38:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="233" locator="39:1-39:136" name="Category5" id="397145000" display="Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="233">
+               <a:s>code &quot;Category5&quot;: '397145000' from </a:s>
+               <a:s r="234">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="234" locator="39:36-39:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="235" locator="40:1-40:78" name="Negative" id="Negative" display="Normal breast tissue" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="235">
+               <a:s>code &quot;Negative&quot;: 'Negative' from </a:s>
+               <a:s r="236">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Normal breast tissue'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="236" locator="40:34-40:47" name="BiopsyResultCS"/>
+      </def>
+      <def localId="237" locator="41:1-41:75" name="Benign" id="Benign" display="Benign breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="237">
+               <a:s>code &quot;Benign&quot;: 'Benign' from </a:s>
+               <a:s r="238">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Benign breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="238" locator="41:30-41:43" name="BiopsyResultCS"/>
+      </def>
+      <def localId="239" locator="42:1-42:81" name="Atypical" id="Atypical" display="Atypical breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="239">
+               <a:s>code &quot;Atypical&quot;: 'Atypical' from </a:s>
+               <a:s r="240">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Atypical breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="240" locator="42:34-42:47" name="BiopsyResultCS"/>
+      </def>
+      <def localId="241" locator="43:1-43:84" name="Malignant" id="Malignant" display="Malignant breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="241">
+               <a:s>code &quot;Malignant&quot;: 'Malignant' from </a:s>
+               <a:s r="242">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Malignant breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="242" locator="43:36-43:49" name="BiopsyResultCS"/>
+      </def>
+      <def localId="243" locator="44:1-44:96" name="Indeterminate" id="Indeterminate" display="Indeterminate breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="243">
+               <a:s>code &quot;Indeterminate&quot;: 'Indeterminate' from </a:s>
+               <a:s r="244">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Indeterminate breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="244" locator="44:44-44:57" name="BiopsyResultCS"/>
+      </def>
+      <def localId="245" locator="45:1-45:87" name="Discordant" id="Discordant" display="Discordant breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="245">
+               <a:s>code &quot;Discordant&quot;: 'Discordant' from </a:s>
+               <a:s r="246">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Discordant breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="246" locator="45:38-45:51" name="BiopsyResultCS"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="250" locator="47:1-47:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="248" locator="47:1-47:15" name="Patient" context="Patient">
+         <expression localId="249" xsi:type="SingletonFrom">
+            <operand localId="247" locator="47:1-47:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="252" locator="49:1-54:27" name="act-incompletescreen" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="252">
+               <a:s>define &quot;act-incompletescreen&quot;:
+  </a:s>
+               <a:s r="261">
+                  <a:s r="253">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="261">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="254">
+                        <a:s>&quot;Follow-up radiologist recommendations&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="255">
+                        <a:s>&quot;Category0&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="257">
+                        <a:s r="256">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="257">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="260">
+                        <a:s r="259">
+                           <a:s r="258">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="259">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="260">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="261" locator="50:3-54:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="254" locator="51:5-51:43" name="Follow-up radiologist recommendations" xsi:type="CodeRef"/>
+            <operand localId="255" locator="52:5-52:15" name="Category0" xsi:type="CodeRef"/>
+            <operand localId="257" locator="53:5-53:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="260" locator="54:5-54:26" path="date" xsi:type="Property">
+               <source localId="259" locator="54:5-54:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="263" locator="56:1-61:27" name="act-intervalscreen" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="263">
+               <a:s>define &quot;act-intervalscreen&quot;:
+  </a:s>
+               <a:s r="272">
+                  <a:s r="264">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="272">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="265">
+                        <a:s>&quot;Order interval imaging&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="266">
+                        <a:s>&quot;Category3&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="268">
+                        <a:s r="267">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="268">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="271">
+                        <a:s r="270">
+                           <a:s r="269">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="270">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="271">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="272" locator="57:3-61:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="265" locator="58:5-58:28" name="Order interval imaging" xsi:type="CodeRef"/>
+            <operand localId="266" locator="59:5-59:15" name="Category3" xsi:type="CodeRef"/>
+            <operand localId="268" locator="60:5-60:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="271" locator="61:5-61:26" path="date" xsi:type="Property">
+               <source localId="270" locator="61:5-61:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="274" locator="63:1-68:27" name="act-biopsy4" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="274">
+               <a:s>define &quot;act-biopsy4&quot;: 
+  </a:s>
+               <a:s r="283">
+                  <a:s r="275">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="283">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="276">
+                        <a:s>&quot;Breast biopsy&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="277">
+                        <a:s>&quot;Category4&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="279">
+                        <a:s r="278">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="279">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="282">
+                        <a:s r="281">
+                           <a:s r="280">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="281">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="282">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="283" locator="64:3-68:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="276" locator="65:5-65:19" name="Breast biopsy" xsi:type="CodeRef"/>
+            <operand localId="277" locator="66:5-66:15" name="Category4" xsi:type="CodeRef"/>
+            <operand localId="279" locator="67:5-67:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="282" locator="68:5-68:26" path="date" xsi:type="Property">
+               <source localId="281" locator="68:5-68:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="285" locator="70:1-75:27" name="act-biopsy5" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="285">
+               <a:s>define &quot;act-biopsy5&quot;:
+  </a:s>
+               <a:s r="294">
+                  <a:s r="286">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="294">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="287">
+                        <a:s>&quot;Breast biopsy&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="288">
+                        <a:s>&quot;Category5&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="290">
+                        <a:s r="289">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="290">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="293">
+                        <a:s r="292">
+                           <a:s r="291">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="292">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="293">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="294" locator="71:3-75:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="287" locator="72:5-72:19" name="Breast biopsy" xsi:type="CodeRef"/>
+            <operand localId="288" locator="73:5-73:15" name="Category5" xsi:type="CodeRef"/>
+            <operand localId="290" locator="74:5-74:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="293" locator="75:5-75:26" path="date" xsi:type="Property">
+               <source localId="292" locator="75:5-75:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="296" locator="77:1-82:27" name="act-benignbiopsy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="296">
+               <a:s>define &quot;act-benignbiopsy&quot;:
+  </a:s>
+               <a:s r="305">
+                  <a:s r="297">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="305">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="298">
+                        <a:s>&quot;Determine next due date&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="299">
+                        <a:s>&quot;Benign&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="301">
+                        <a:s r="300">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="301">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="304">
+                        <a:s r="303">
+                           <a:s r="302">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="303">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="304">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="305" locator="78:3-82:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="298" locator="79:5-79:29" name="Determine next due date" xsi:type="CodeRef"/>
+            <operand localId="299" locator="80:5-80:12" name="Benign" xsi:type="CodeRef"/>
+            <operand localId="301" locator="81:5-81:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="304" locator="82:5-82:26" path="date" xsi:type="Property">
+               <source localId="303" locator="82:5-82:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="307" locator="84:1-89:27" name="act-highriskreferral" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="307">
+               <a:s>define &quot;act-highriskreferral&quot;:
+  </a:s>
+               <a:s r="316">
+                  <a:s r="308">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="316">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="309">
+                        <a:s>&quot;Breast surgeon referral&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="310">
+                        <a:s>&quot;Atypical&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="312">
+                        <a:s r="311">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="312">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="315">
+                        <a:s r="314">
+                           <a:s r="313">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="314">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="315">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="316" locator="85:3-89:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="309" locator="86:5-86:29" name="Breast surgeon referral" xsi:type="CodeRef"/>
+            <operand localId="310" locator="87:5-87:14" name="Atypical" xsi:type="CodeRef"/>
+            <operand localId="312" locator="88:5-88:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="315" locator="89:5-89:26" path="date" xsi:type="Property">
+               <source localId="314" locator="89:5-89:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="318" locator="91:1-96:27" name="act-indeterminatebiopsy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="318">
+               <a:s>define &quot;act-indeterminatebiopsy&quot;:
+  </a:s>
+               <a:s r="327">
+                  <a:s r="319">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="327">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="320">
+                        <a:s>&quot;Breast surgeon referral&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="321">
+                        <a:s>&quot;Indeterminate&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="323">
+                        <a:s r="322">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="323">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="326">
+                        <a:s r="325">
+                           <a:s r="324">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="325">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="326">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="327" locator="92:3-96:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="320" locator="93:5-93:29" name="Breast surgeon referral" xsi:type="CodeRef"/>
+            <operand localId="321" locator="94:5-94:19" name="Indeterminate" xsi:type="CodeRef"/>
+            <operand localId="323" locator="95:5-95:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="326" locator="96:5-96:26" path="date" xsi:type="Property">
+               <source localId="325" locator="96:5-96:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="329" locator="98:1-103:27" name="act-discordantbiopsy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="329">
+               <a:s>define &quot;act-discordantbiopsy&quot;:
+  </a:s>
+               <a:s r="338">
+                  <a:s r="330">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="338">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="331">
+                        <a:s>&quot;Breast surgeon referral&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="332">
+                        <a:s>&quot;Discordant&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="334">
+                        <a:s r="333">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="334">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="337">
+                        <a:s r="336">
+                           <a:s r="335">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="336">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="337">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="338" locator="99:3-103:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="331" locator="100:5-100:29" name="Breast surgeon referral" xsi:type="CodeRef"/>
+            <operand localId="332" locator="101:5-101:16" name="Discordant" xsi:type="CodeRef"/>
+            <operand localId="334" locator="102:5-102:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="337" locator="103:5-103:26" path="date" xsi:type="Property">
+               <source localId="336" locator="103:5-103:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="340" locator="105:1-110:27" name="act-oncreferral" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="340">
+               <a:s>define &quot;act-oncreferral&quot;: 
+  </a:s>
+               <a:s r="349">
+                  <a:s r="341">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="349">
+                     <a:s>SetFollowupRecommendation(
+    </a:s>
+                     <a:s r="342">
+                        <a:s>&quot;Oncologic referral&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="343">
+                        <a:s>&quot;Malignant&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="345">
+                        <a:s r="344">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="345">
+                           <a:s>SourceDocumentationOther</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="348">
+                        <a:s r="347">
+                           <a:s r="346">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="347">
+                              <a:s>LatestTest</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="348">
+                           <a:s>date</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="349" locator="106:3-110:27" name="SetFollowupRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="342" locator="107:5-107:24" name="Oncologic referral" xsi:type="CodeRef"/>
+            <operand localId="343" locator="108:5-108:15" name="Malignant" xsi:type="CodeRef"/>
+            <operand localId="345" locator="109:5-109:39" name="SourceDocumentationOther" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="348" locator="110:5-110:26" path="date" xsi:type="Property">
+               <source localId="347" locator="110:5-110:21" name="LatestTest" libraryName="Events" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>

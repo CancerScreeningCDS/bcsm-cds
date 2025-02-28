@@ -1,0 +1,76 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "eve-biopsyresult_discordant_act-discordantbiopsy",
+  "type" : "collection",
+  "entry" : [{
+    "resource" : {
+      "resourceType" : "Patient",
+      "id" : "defaultPatient",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"
+      },
+      "name" : [{
+        "family" : "Doe",
+        "given" : ["Jane"]
+      }],
+      "gender" : "female",
+      "birthDate" : "1981-01-01"
+    }
+  },
+  {
+    "resource" : {
+      "resourceType" : "DiagnosticReport",
+      "id" : "99f46548-69bf-4b66-a562-fc97ece38435",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_99f46548-69bf-4b66-a562-fc97ece38435\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport 99f46548-69bf-4b66-a562-fc97ece38435</b></p><a name=\"99f46548-69bf-4b66-a562-fc97ece38435\"> </a><a name=\"hc99f46548-69bf-4b66-a562-fc97ece38435\"> </a><a name=\"99f46548-69bf-4b66-a562-fc97ece38435-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 66110-8}\">Biopsy Report</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2024-10-01 10:00:00+0000</td></tr></table><p><b>Report Details</b></p></div>"
+      },
+      "basedOn" : [{
+        "reference" : "ServiceRequest/order-1"
+      }],
+      "status" : "final",
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "66110-8",
+          "display" : "Biopsy Report"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/defaultPatient"
+      },
+      "effectiveDateTime" : "2024-10-01T10:00:00.000Z"
+    }
+  },
+  {
+    "resource" : {
+      "resourceType" : "Observation",
+      "id" : "0ce552c7-ceff-4c12-b81c-40e9474dbed8",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_0ce552c7-ceff-4c12-b81c-40e9474dbed8\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 0ce552c7-ceff-4c12-b81c-40e9474dbed8</b></p><a name=\"0ce552c7-ceff-4c12-b81c-40e9474dbed8\"> </a><a name=\"hc0ce552c7-ceff-4c12-b81c-40e9474dbed8\"> </a><a name=\"0ce552c7-ceff-4c12-b81c-40e9474dbed8-en-US\"> </a><p><b>basedOn</b>: <a href=\"ServiceRequest/order-1\">ServiceRequest/order-1</a></p><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 66110-8}\">Biopsy Report</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><p><b>value</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system Discordant}\">Discordant breast finding</span></p></div>"
+      },
+      "basedOn" : [{
+        "reference" : "ServiceRequest/order-1"
+      }],
+      "status" : "final",
+      "code" : {
+        "coding" : [{
+          "system" : "http://loinc.org",
+          "code" : "66110-8",
+          "display" : "Biopsy Report"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/defaultPatient"
+      },
+      "valueCodeableConcept" : {
+        "coding" : [{
+          "system" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+          "code" : "Discordant"
+        }]
+      }
+    }
+  }]
+}

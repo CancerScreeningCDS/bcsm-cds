@@ -1,0 +1,117 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferralAtypicalBiopsy_warning_missing",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/455",
+    "resource" : {
+      "resourceType" : "CarePlan",
+      "id" : "455",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_455\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 455</b></p><a name=\"455\"> </a><a name=\"hc455\"> </a><a name=\"455-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferralAtypicalBiopsy_warning_missing.html#RequestGroup_456\">Bundle: type = collection</a></td></tr></table></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "created" : "2024-12-10T00:00:00.0Z",
+      "activity" : [{
+        "reference" : {
+          "reference" : "RequestGroup/456"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/456",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "456",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_456\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 456</b></p><a name=\"456\"> </a><a name=\"hc456\"> </a><a name=\"456-en-US\"> </a><p><b>Messages</b>: <a href=\"#hc456/contained-1\">OperationOutcome</a></p><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>HighRiskReferralAtypicalBiopsy</blockquote><p><b>title</b>: Referral for high risk breast specialty evaluation</p><p><b>description</b>: Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications.</p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Citation</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>USPSTF</td><td>Breast Cancer: Medication Use to Reduce Risk</td><td><div><p>US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.</p>\n</div></td><td><a href=\"https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction\">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction</a></td></tr></table><p><b>resource</b>: <a href=\"Bundle-HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferralAtypicalBiopsy_warning_missing.html#ServiceRequest_457\">Bundle: type = collection</a></p></blockquote><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: OperationOutcome #contained-1</b></p><a name=\"456/contained-1\"> </a><a name=\"hc456/contained-1\"> </a><a name=\"456/contained-1-en-US\"> </a><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>Warning</td><td/><td>Processing Failure</td><td/><td>A laboratory test was found without a result. Please review patient record to resolve.</td></tr></table></blockquote></div>"
+      },
+      "contained" : [{
+        "resourceType" : "OperationOutcome",
+        "id" : "contained-1",
+        "issue" : [{
+          "severity" : "warning",
+          "code" : "processing",
+          "details" : {
+            "coding" : [{
+              "system" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+              "code" : "missingresultcode"
+            }]
+          },
+          "diagnostics" : "A laboratory test was found without a result. Please review patient record to resolve."
+        }]
+      }],
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-messages",
+        "valueReference" : {
+          "reference" : "#contained-1"
+        }
+      }],
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "action" : [{
+        "id" : "HighRiskReferralAtypicalBiopsy",
+        "title" : "Referral for high risk breast specialty evaluation",
+        "description" : "Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications.",
+        "documentation" : [{
+          "type" : "citation",
+          "label" : "USPSTF",
+          "display" : "Breast Cancer: Medication Use to Reduce Risk",
+          "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+          "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+        }],
+        "resource" : {
+          "reference" : "ServiceRequest/457"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/457",
+    "resource" : {
+      "resourceType" : "ServiceRequest",
+      "id" : "457",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_457\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 457</b></p><a name=\"457\"> </a><a name=\"hc457\"> </a><a name=\"457-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-HighRiskSpecialtyReferralRequest.html\">High Risk Specialty Referral Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system highriskreferral}\">High risk referral</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system Atypical}\">Atypical breast finding</span></p></div>"
+      },
+      "basedOn" : [{
+        "reference" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest"
+      }],
+      "status" : "option",
+      "intent" : "proposal",
+      "code" : {
+        "coding" : [{
+          "system" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+          "code" : "highriskreferral",
+          "display" : "High risk referral"
+        }]
+      },
+      "subject" : {
+        "reference" : "Patient/defaultPatient",
+        "display" : "Jane Doe"
+      },
+      "reasonCode" : [{
+        "coding" : [{
+          "system" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+          "code" : "Atypical",
+          "display" : "Atypical breast finding"
+        }]
+      }]
+    }
+  }]
+}

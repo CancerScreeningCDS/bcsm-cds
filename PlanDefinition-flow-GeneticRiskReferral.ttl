@@ -1,0 +1,287 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-GeneticRiskReferral> a fhir:PlanDefinition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "flow-GeneticRiskReferral"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"^^xsd:anyURI ;
+       fhir:link <http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n<div>\n    <table class=\"grid dict\">\n        \n        <tr>\n            <th scope=\"row\"><b>Id: </b></th>\n            <td style=\"padding-left: 4px;\">flow-GeneticRiskReferral</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Url: </b></th>\n            <td style=\"padding-left: 4px;\"><a href=\"PlanDefinition-flow-GeneticRiskReferral.html\">Genetic Risk Referral</a></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Version: </b></th>\n            <td style=\"padding-left: 4px;\">1.0.0</td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Title: </b></th>\n            <td style=\"padding-left: 4px;\">Genetic Risk Referral</td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Status: </b></th>\n            <td style=\"padding-left: 4px;\">draft</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Experimental: </b></th>\n            <td style=\"padding-left: 4px;\">true</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Type: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                    \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>system: </b> <span><a href=\"http://terminology.hl7.org/6.2.0/CodeSystem-plan-definition-type.html\">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>\n                        </p>\n                        \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>code: </b> <span>eca-rule</span>\n                        </p>\n                        \n                        \n                    \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Date: </b></th>\n            <td style=\"padding-left: 4px;\">2024-10-22</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Publisher: </b></th>\n            <td style=\"padding-left: 4px;\">MITRE</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Description: </b></th>\n            <td style=\"padding-left: 4px;\"><div><p>Risk assessment for women who have family history that may be associated with an increased risk for potentially harmful mutations in breast cancer susceptibility genes to determine who should receive referral for genetic counseling and, if indicated after counseling, testing.</p>\n</div></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Knowledge Capability: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                executable \n            </td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Knowledge Representation Level: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                structured\n            </td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Copyright: </b></th>\n            <td style=\"padding-left: 4px;\"><div><p>(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.</p>\n</div></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Approval Date: </b></th>\n            <td style=\"padding-left: 4px;\">2024-10-22</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Libraries: </b></th>\n            <td style=\"padding-left: 4px;\">\n                <table class=\"grid-dict\">\n                    \n                    <tr>\n                        <td><code>Library/GeneticRiskReferral|1.0.0</code></td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Actions: </b></th>\n            <td style=\"padding-left: 4px;\">\n                <table class=\"grid-dict\">\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Referral for genetic risk counseling:</b> Referral for genetic counseling if not previously evaluated for variant of concern based on known family history.\n\nAny blood relative with known BRCA1/BRCA2 variants, Li-Fraumeni syndrome (TP53 variant), Cowden or Bannayan-Riley-Ruvalcaba syndromes (PTEN variants), and other variants known to be associated with increased risk of development of breast cancer. Variants may include ATM, BARD1, CDH1, CHEK2, NF1, PALB2, RAD51C, RAD51D, STK11.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsGeneticReferralVariant)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(GeneticRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(GeneticRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Referral for genetic risk counseling:</b> Referral for genetic counseling if not previously consulted, or if limited panel was done and additional testing may be warranted.\n\nCan offer referral to individuals who have one grandparent identified as of Ashkenazi Jewish ancestry, irrespective of cancer history in the family and without additional risk factors.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsGeneticReferralAncestry)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(GeneticRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(GeneticRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Referral for genetic risk counseling:</b> Referral for genetic counseling if not previously consulted, or if limited panel was done and additional testing may be warranted.\n\nWomen with a positive result on family history based risk assessment should receive genetic counseling and, if indicated after counseling, genetic testing.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsGeneticReferralRisk)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(GeneticRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(GeneticRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Perform genetic risk assessment:</b> A genetic risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for genetic risk counseling and testing.\n\nWomen with a positive result on the risk assessment tool should receive genetic counseling and, if indicated after counseling, genetic testing.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsGeneticRiskAssessment)</i>\n                            <br/>\n                            \n                            \n                            \n                            <b>Then:</b>\n                            <table class=\"grid-dict\">\n                                \n                                <tr>\n                                    <td>\n                                        \n                                        <b> Informal genetic risk assessment:</b>\n                                        Perform assessment based on criteria in first- or second-degree blood relatives known to be associated with increased risk of inherited breast cancer susceptibility variant.\n                                        \n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                        <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticRiskAssessmentRequest|1.0.0</code><br/>\n                                        \n                                        <i>Dynamic Values:</i><br/>\n                                        \n                                        code.coding[0]: <i>(GeneticRiskAssessmentCode)</i>\n                                        <br/>\n                                        \n                                        reasonCode[0].coding[0]: <i>(GeneticRiskAssessmentReason)</i>\n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                    </td>\n                                </tr>\n                                \n                                <tr>\n                                    <td>\n                                        \n                                        <b> Genetic risk assessment instrument:</b>\n                                        Tools evaluated by the USPSTF include the Ontario Family History Assessment Tool, Manchester Scoring System, Referral Screening Tool, Pedigree Assessment Tool, 7-Question Family History Screening Tool, International Breast Cancer Intervention Study instrument (Tyrer-Cuzick), and brief versions of BRCAPRO. \n                                        \n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                        <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticRiskAssessmentRequest|1.0.0</code><br/>\n                                        \n                                        <i>Dynamic Values:</i><br/>\n                                        \n                                        code.coding[0]: <i>(GeneticRiskAssessmentToolCode)</i>\n                                        <br/>\n                                        \n                                        reasonCode[0].coding[0]: <i>(GeneticRiskAssessmentToolReason)</i>\n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                    </td>\n                                </tr>\n                                \n                            </table>\n                            \n                        </td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n        \n    </table>\n</div>\n</div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:code ;
+       fhir:v "executable"
+     ]
+  ] [
+     fhir:url [ fhir:v "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:code ;
+       fhir:v "structured"
+     ]
+  ] ) ; # 
+  fhir:url [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-GeneticRiskReferral"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "1.0.0"] ; # 
+  fhir:name [ fhir:v "flow-GeneticRiskReferral"] ; # 
+  fhir:title [ fhir:v "Genetic Risk Referral"] ; # 
+  fhir:type [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/plan-definition-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "eca-rule" ]
+     ] )
+  ] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:experimental [ fhir:v "true"^^xsd:boolean] ; # 
+  fhir:date [ fhir:v "2024-10-22"^^xsd:date] ; # 
+  fhir:publisher [ fhir:v "MITRE"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "MITRE" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://www.mitre.org/" ]
+     ] )
+  ] ) ; # 
+  fhir:description [ fhir:v "Risk assessment for women who have family history that may be associated with an increased risk for potentially harmful mutations in breast cancer susceptibility genes to determine who should receive referral for genetic counseling and, if indicated after counseling, testing."] ; # 
+  fhir:copyright [ fhir:v "(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931."] ; # 
+  fhir:approvalDate [ fhir:v "2024-10-22"^^xsd:date] ; # 
+  fhir:lastReviewDate [ fhir:v "2024-10-22"^^xsd:date] ; # 
+  fhir:author ( [
+     fhir:name [ fhir:v "The Health FFRDC, operated by The MITRE Corporation, in support of the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention." ]
+  ] ) ; # 
+  fhir:editor ( [
+     fhir:name [ fhir:v "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention" ]
+  ] ) ; # 
+  fhir:reviewer ( [
+     fhir:name [ fhir:v "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention" ]
+  ] ) ; # 
+  fhir:endorser ( [
+     fhir:name [ fhir:v "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention" ]
+  ] ) ; # 
+  fhir:library ( [
+     fhir:v "Library/GeneticRiskReferral|1.0.0"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Library/GeneticRiskReferral|1.0.0>
+  ] ) ; # 
+  fhir:action ( [
+     fhir:id [ fhir:v "GeneticReferralVariant" ] ;
+     fhir:title [ fhir:v "Referral for genetic risk counseling" ] ;
+     fhir:description [ fhir:v "Referral for genetic counseling if not previously evaluated for variant of concern based on known family history.\n\nAny blood relative with known BRCA1/BRCA2 variants, Li-Fraumeni syndrome (TP53 variant), Cowden or Bannayan-Riley-Ruvalcaba syndromes (PTEN variants), and other variants known to be associated with increased risk of development of breast cancer. Variants may include ATM, BARD1, CDH1, CHEK2, NF1, PALB2, RAD51C, RAD51D, STK11." ] ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "BRCA-Related Cancer: Risk Assessment, Genetic Counseling, and Genetic Testing" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Risk Assessment, Genetic Counseling, and Genetic Testing for BRCA-Related Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(7):652–665." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ] ;
+       fhir:document [
+         fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ]
+       ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "CheckIsIncludedAndNotExcluded" ]
+       ]
+     ] [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "ExistsGeneticReferralVariant" ]
+       ]
+     ] ) ;
+     fhir:definition [
+       a fhir:canonical ;
+       fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0"^^xsd:anyURI ;
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0>
+     ] ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "code.coding[0]" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "GeneticRiskReferralCode" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "reasonCode[0].coding[0]" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "GeneticRiskReferralReason" ]
+       ]
+     ] )
+  ] [
+     fhir:id [ fhir:v "GeneticReferralAncestry" ] ;
+     fhir:title [ fhir:v "Referral for genetic risk counseling" ] ;
+     fhir:description [ fhir:v "Referral for genetic counseling if not previously consulted, or if limited panel was done and additional testing may be warranted.\n\nCan offer referral to individuals who have one grandparent identified as of Ashkenazi Jewish ancestry, irrespective of cancer history in the family and without additional risk factors." ] ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "BRCA-Related Cancer: Risk Assessment, Genetic Counseling, and Genetic Testing" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Risk Assessment, Genetic Counseling, and Genetic Testing for BRCA-Related Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(7):652–665." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ] ;
+       fhir:document [
+         fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ]
+       ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "CheckIsIncludedAndNotExcluded" ]
+       ]
+     ] [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "ExistsGeneticReferralAncestry" ]
+       ]
+     ] ) ;
+     fhir:definition [
+       a fhir:canonical ;
+       fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0"^^xsd:anyURI ;
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0>
+     ] ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "code.coding[0]" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "GeneticRiskReferralCode" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "reasonCode[0].coding[0]" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "GeneticRiskReferralReason" ]
+       ]
+     ] )
+  ] [
+     fhir:id [ fhir:v "GeneticReferralRisk" ] ;
+     fhir:title [ fhir:v "Referral for genetic risk counseling" ] ;
+     fhir:description [ fhir:v "Referral for genetic counseling if not previously consulted, or if limited panel was done and additional testing may be warranted.\n\nWomen with a positive result on family history based risk assessment should receive genetic counseling and, if indicated after counseling, genetic testing." ] ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "BRCA-Related Cancer: Risk Assessment, Genetic Counseling, and Genetic Testing" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Risk Assessment, Genetic Counseling, and Genetic Testing for BRCA-Related Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(7):652–665." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ] ;
+       fhir:document [
+         fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ]
+       ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "CheckIsIncludedAndNotExcluded" ]
+       ]
+     ] [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "ExistsGeneticReferralRisk" ]
+       ]
+     ] ) ;
+     fhir:definition [
+       a fhir:canonical ;
+       fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0"^^xsd:anyURI ;
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticCounselingReferralRequest|1.0.0>
+     ] ;
+     fhir:dynamicValue ( [
+       fhir:path [ fhir:v "code.coding[0]" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "GeneticRiskReferralCode" ]
+       ]
+     ] [
+       fhir:path [ fhir:v "reasonCode[0].coding[0]" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "GeneticRiskReferralReason" ]
+       ]
+     ] )
+  ] [
+     fhir:id [ fhir:v "GeneticRiskAssessment" ] ;
+     fhir:title [ fhir:v "Perform genetic risk assessment" ] ;
+     fhir:description [ fhir:v "A genetic risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for genetic risk counseling and testing.\n\nWomen with a positive result on the risk assessment tool should receive genetic counseling and, if indicated after counseling, genetic testing." ] ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "BRCA-Related Cancer: Risk Assessment, Genetic Counseling, and Genetic Testing" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Risk Assessment, Genetic Counseling, and Genetic Testing for BRCA-Related Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(7):652–665." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ] ;
+       fhir:document [
+         fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/brca-related-cancer-risk-assessment-genetic-counseling-and-genetic-testing"^^xsd:anyURI ]
+       ]
+     ] ) ;
+     fhir:condition ( [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "CheckIsIncludedAndNotExcluded" ]
+       ]
+     ] [
+       fhir:kind [ fhir:v "applicability" ] ;
+       fhir:expression [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "ExistsGeneticRiskAssessment" ]
+       ]
+     ] ) ;
+     fhir:selectionBehavior [ fhir:v "any" ] ;
+     fhir:action ( [
+       fhir:id [ fhir:v "FhxGeneticRiskAssessment" ] ;
+       fhir:title [ fhir:v "Informal genetic risk assessment" ] ;
+       fhir:description [ fhir:v "Perform assessment based on criteria in first- or second-degree blood relatives known to be associated with increased risk of inherited breast cancer susceptibility variant." ] ;
+       fhir:definition [
+         a fhir:canonical ;
+         fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticRiskAssessmentRequest|1.0.0"^^xsd:anyURI ;
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticRiskAssessmentRequest|1.0.0>
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "code.coding[0]" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "GeneticRiskAssessmentCode" ]
+         ]
+       ] [
+         fhir:path [ fhir:v "reasonCode[0].coding[0]" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "GeneticRiskAssessmentReason" ]
+         ]
+       ] )
+     ] [
+       fhir:id [ fhir:v "FhxGeneticRiskAssessmentTool" ] ;
+       fhir:title [ fhir:v "Genetic risk assessment instrument" ] ;
+       fhir:description [ fhir:v "Tools evaluated by the USPSTF include the Ontario Family History Assessment Tool, Manchester Scoring System, Referral Screening Tool, Pedigree Assessment Tool, 7-Question Family History Screening Tool, International Breast Cancer Intervention Study instrument (Tyrer-Cuzick), and brief versions of BRCAPRO. " ] ;
+       fhir:definition [
+         a fhir:canonical ;
+         fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticRiskAssessmentRequest|1.0.0"^^xsd:anyURI ;
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/GeneticRiskAssessmentRequest|1.0.0>
+       ] ;
+       fhir:dynamicValue ( [
+         fhir:path [ fhir:v "code.coding[0]" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "GeneticRiskAssessmentToolCode" ]
+         ]
+       ] [
+         fhir:path [ fhir:v "reasonCode[0].coding[0]" ] ;
+         fhir:expression [
+           fhir:language [ fhir:v "text/cql-identifier" ] ;
+           fhir:expression [ fhir:v "GeneticRiskAssessmentToolReason" ]
+         ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,61 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/eve-specialpop_yes_end-decisionspecialpop> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "eve-specialpop_yes_end-decisionspecialpop"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "defaultPatient" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Doe" ] ;
+         fhir:given ( [ fhir:v "Jane" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1981-01-01"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:Observation ;
+       fhir:id [ fhir:v "4f0346f8-19dd-4169-a0f8-182b977d2151" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_4f0346f8-19dd-4169-a0f8-182b977d2151\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 4f0346f8-19dd-4169-a0f8-182b977d2151</b></p><a name=\"4f0346f8-19dd-4169-a0f8-182b977d2151\"> </a><a name=\"hc4f0346f8-19dd-4169-a0f8-182b977d2151\"> </a><a name=\"4f0346f8-19dd-4169-a0f8-182b977d2151-en-US\"> </a><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system lifetimeriskassessment}\">Lifetime risk assessment</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><p><b>effective</b>: 2024-11-10 00:00:00+0000</p><p><b>value</b>: 21<span style=\"background: LightGoldenRodYellow\"> (Details: [not stated]  code% = '%')</span></p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "lifetimeriskassessment" ] ;
+           fhir:display [ fhir:v "Lifetime risk assessment" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-11-10T00:00:00.0Z"^^xsd:dateTime
+       ] ;
+       fhir:value [
+         a fhir:Quantity ;
+         fhir:value [ fhir:v "21"^^xsd:decimal ] ;
+         fhir:code [ fhir:v "%" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

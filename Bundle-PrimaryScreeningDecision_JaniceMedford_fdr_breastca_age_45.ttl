@@ -1,0 +1,210 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/PrimaryScreeningDecision_JaniceMedford_fdr_breastca_age_45> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "PrimaryScreeningDecision_JaniceMedford_fdr_breastca_age_45"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/10"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/10> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/11"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/11> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/12"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/12> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/13"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/13> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/10> a fhir:CarePlan ;
+  fhir:id [ fhir:v "10"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_10\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 10</b></p><a name=\"10\"> </a><a name=\"hc10\"> </a><a name=\"10-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-PrimaryScreeningDecision.html\">Primary Screening Decision</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford\">Janice32 Medford87</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-PrimaryScreeningDecision_JaniceMedford_fdr_breastca_age_45.html#RequestGroup_11\">Bundle: type = collection</a></td></tr></table></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JaniceMedford> ;
+     fhir:reference [ fhir:v "Patient/JaniceMedford" ] ;
+     fhir:display [ fhir:v "Janice32 Medford87" ]
+  ] ; # 
+  fhir:created [ fhir:v "2024-12-10T00:00:00.0Z"^^xsd:dateTime] ; # 
+  fhir:activity ( [
+     fhir:reference [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/11> ;
+       fhir:reference [ fhir:v "RequestGroup/11" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/11> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "11"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_11\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 11</b></p><a name=\"11\"> </a><a name=\"hc11\"> </a><a name=\"11-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-PrimaryScreeningDecision.html\">Primary Screening Decision</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford\">Janice32 Medford87</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>CompellingFamilyHistory</blockquote><p><b>title</b>: Perform lifetime risk assessment</p><p><b>description</b>: Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.\n\nIf estimated lifetime risk is &gt;20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.\n\nValidated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick.</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system lifetimeriskassessment}\">Perform lifetime risk assessment</span></p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>ACS</td><td>American Cancer Society Recommendations for the Early Detection of Breast Cancer</td><td><a href=\"https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html\">https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html</a></td></tr></table><p><b>resource</b>: <a href=\"Bundle-PrimaryScreeningDecision_JaniceMedford_fdr_breastca_age_45.html#ServiceRequest_12\">Bundle: type = collection</a></p></blockquote><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>USPSTFRecommendation</blockquote><p><b>Recommendation Flag Extension</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system not-due}\">Not due</span></p><p><b>title</b>: Biennial screening mammo starting age 40</p><p><b>description</b>: Biennial screening mammogram starting at age 40</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 24606-6}\">MG Breast Screening</span></p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Citation</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>USPSTF</td><td>Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement</td><td><div><p>US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.</p>\n</div></td><td><a href=\"https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening\">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening</a></td></tr></table><p><b>timing</b>: Events: 2029-03-09 , Once per 2 years</p><p><b>resource</b>: <a href=\"Bundle-PrimaryScreeningDecision_JaniceMedford_fdr_breastca_age_45.html#ServiceRequest_13\">Bundle: type = collection</a></p></blockquote></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/PrimaryScreeningDecision>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JaniceMedford> ;
+     fhir:reference [ fhir:v "Patient/JaniceMedford" ] ;
+     fhir:display [ fhir:v "Janice32 Medford87" ]
+  ] ; # 
+  fhir:action ( [
+     fhir:id [ fhir:v "CompellingFamilyHistory" ] ;
+     fhir:title [ fhir:v "Perform lifetime risk assessment" ] ;
+     fhir:description [ fhir:v "Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.\n\nIf estimated lifetime risk is >20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.\n\nValidated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick." ] ;
+     fhir:code ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "lifetimeriskassessment" ] ;
+         fhir:display [ fhir:v "Perform lifetime risk assessment" ]
+       ] )
+     ] ) ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "ACS" ] ;
+       fhir:display [ fhir:v "American Cancer Society Recommendations for the Early Detection of Breast Cancer" ] ;
+       fhir:url [ fhir:v "https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"^^xsd:anyURI ]
+     ] ) ;
+     fhir:resource [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/12> ;
+       fhir:reference [ fhir:v "ServiceRequest/12" ]
+     ]
+  ] [
+     fhir:id [ fhir:v "USPSTFRecommendation" ] ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "not-due" ] ;
+           fhir:display [ fhir:v "Not due" ]
+         ] )
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Biennial screening mammo starting age 40" ] ;
+     fhir:description [ fhir:v "Biennial screening mammogram starting at age 40" ] ;
+     fhir:code ( [
+       fhir:coding ( [
+         a loinc:24606-6 ;
+         fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "24606-6" ] ;
+         fhir:display [ fhir:v "MG Breast Screening" ]
+       ] )
+     ] ) ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"^^xsd:anyURI ]
+     ] ) ;
+     fhir:timing [
+       a fhir:Timing ;
+       fhir:event ( [ fhir:v "2029-03-09"^^xsd:date ] ) ;
+       fhir:repeat [
+         fhir:bounds [
+           a fhir:Period ;
+           fhir:start [ fhir:v "2029-03-09"^^xsd:date ]
+         ] ;
+         fhir:frequency [ fhir:v "1"^^xsd:positiveInteger ] ;
+         fhir:period [ fhir:v "2"^^xsd:decimal ] ;
+         fhir:periodUnit [ fhir:v "a" ]
+       ]
+     ] ;
+     fhir:resource [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/13> ;
+       fhir:reference [ fhir:v "ServiceRequest/13" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/12> a fhir:ServiceRequest ;
+  fhir:id [ fhir:v "12"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_12\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 12</b></p><a name=\"12\"> </a><a name=\"hc12\"> </a><a name=\"12-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-BreastCancerScreeningServiceRequest.html\">Breast Cancer Screening Service Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system lifetimeriskassessment}\">Perform lifetime risk assessment</span></p><p><b>subject</b>: <a href=\"Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford\">Janice32 Medford87</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system fhxbreastcarisk}\">Compelling family history of breast cancer</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "lifetimeriskassessment" ] ;
+       fhir:display [ fhir:v "Perform lifetime risk assessment" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JaniceMedford> ;
+     fhir:reference [ fhir:v "Patient/JaniceMedford" ] ;
+     fhir:display [ fhir:v "Janice32 Medford87" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "fhxbreastcarisk" ] ;
+       fhir:display [ fhir:v "Compelling family history of breast cancer" ]
+     ] )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/13> a fhir:ServiceRequest ;
+  fhir:id [ fhir:v "13"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_13\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 13</b></p><a name=\"13\"> </a><a name=\"hc13\"> </a><a name=\"13-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-BreastCancerScreeningServiceRequest.html\">Breast Cancer Screening Service Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 24606-6}\">MG Breast Screening</span></p><p><b>subject</b>: <a href=\"Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford\">Janice32 Medford87</a></p><p><b>occurrence</b>: 2029-03-09</p><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system USPSTFaveragerisk}\">USPSTF average risk</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a loinc:24606-6 ;
+       fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "24606-6" ] ;
+       fhir:display [ fhir:v "MG Breast Screening" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JaniceMedford> ;
+     fhir:reference [ fhir:v "Patient/JaniceMedford" ] ;
+     fhir:display [ fhir:v "Janice32 Medford87" ]
+  ] ; # 
+  fhir:occurrence [
+     a fhir:dateTime ;
+     fhir:v "2029-03-09"^^xsd:date
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "USPSTFaveragerisk" ] ;
+       fhir:display [ fhir:v "USPSTF average risk" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

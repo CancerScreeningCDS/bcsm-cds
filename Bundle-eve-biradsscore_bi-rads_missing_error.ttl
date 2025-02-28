@@ -1,0 +1,58 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/eve-biradsscore_bi-rads_missing_error> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "eve-biradsscore_bi-rads_missing_error"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "defaultPatient" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Doe" ] ;
+         fhir:given ( [ fhir:v "Jane" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1981-01-01"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:DiagnosticReport ;
+       fhir:id [ fhir:v "65b02be9-8bc7-4cd0-851a-a347833affa3" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_65b02be9-8bc7-4cd0-851a-a347833affa3\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport 65b02be9-8bc7-4cd0-851a-a347833affa3</b></p><a name=\"65b02be9-8bc7-4cd0-851a-a347833affa3\"> </a><a name=\"hc65b02be9-8bc7-4cd0-851a-a347833affa3\"> </a><a name=\"65b02be9-8bc7-4cd0-851a-a347833affa3-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 24606-6}\">MG Breast Screening</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2024-10-01 10:00:00+0000</td></tr></table><p><b>Report Details</b></p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:24606-6 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "24606-6" ] ;
+           fhir:display [ fhir:v "MG Breast Screening" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-10-01T10:00:00.000Z"^^xsd:dateTime
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

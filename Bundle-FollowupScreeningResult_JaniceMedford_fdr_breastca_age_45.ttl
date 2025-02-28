@@ -1,0 +1,87 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/FollowupScreeningResult_JaniceMedford_fdr_breastca_age_45> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "FollowupScreeningResult_JaniceMedford_fdr_breastca_age_45"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/319"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/319> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/320"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/320> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/319> a fhir:CarePlan ;
+  fhir:id [ fhir:v "319"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_319\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 319</b></p><a name=\"319\"> </a><a name=\"hc319\"> </a><a name=\"319-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford\">Janice32 Medford87</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-FollowupScreeningResult_JaniceMedford_fdr_breastca_age_45.html#RequestGroup_320\">Bundle: type = collection</a></td></tr></table></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JaniceMedford> ;
+     fhir:reference [ fhir:v "Patient/JaniceMedford" ] ;
+     fhir:display [ fhir:v "Janice32 Medford87" ]
+  ] ; # 
+  fhir:created [ fhir:v "2024-12-10T00:00:00.0Z"^^xsd:dateTime] ; # 
+  fhir:activity ( [
+     fhir:reference [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/320> ;
+       fhir:reference [ fhir:v "RequestGroup/320" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/320> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "320"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_320\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 320</b></p><a name=\"320\"> </a><a name=\"hc320\"> </a><a name=\"320-en-US\"> </a><p><b>Messages</b>: <a href=\"#hc320/contained-1\">OperationOutcome</a></p><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford\">Janice32 Medford87</a></p><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: OperationOutcome #contained-1</b></p><a name=\"320/contained-1\"> </a><a name=\"hc320/contained-1\"> </a><a name=\"320/contained-1-en-US\"> </a><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>Warning</td><td/><td>Processing Failure</td><td/><td>A laboratory test was found with an unexpected result code. Please review patient record to resolve.</td></tr></table></blockquote></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:contained ( [
+     a fhir:OperationOutcome ;
+     fhir:id [ fhir:v "contained-1" ] ;
+     fhir:issue ( [
+       fhir:severity [ fhir:v "warning" ] ;
+       fhir:code [ fhir:v "processing" ] ;
+       fhir:details [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://example.org/CodeSystem/plan-definition-action-reason-code-system"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "unknownresultcode" ]
+         ] )
+       ] ;
+       fhir:diagnostics [ fhir:v "A laboratory test was found with an unexpected result code. Please review patient record to resolve." ]
+     ] )
+  ] ) ; # 
+  fhir:extension ( [
+     fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/cqf-messages"^^xsd:anyURI ] ;
+     fhir:value [
+       a fhir:Reference ;
+       fhir:reference [ fhir:v "#contained-1" ]
+     ]
+  ] ) ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JaniceMedford> ;
+     fhir:reference [ fhir:v "Patient/JaniceMedford" ] ;
+     fhir:display [ fhir:v "Janice32 Medford87" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

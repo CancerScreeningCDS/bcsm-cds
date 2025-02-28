@@ -1,0 +1,141 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/FollowupScreeningResult_JosephineGreene-past-breast-pain-adh-biopsy> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "FollowupScreeningResult_JosephineGreene-past-breast-pain-adh-biopsy"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/321"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/321> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/322"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/322> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/323"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/323> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/321> a fhir:CarePlan ;
+  fhir:id [ fhir:v "321"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_321\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 321</b></p><a name=\"321\"> </a><a name=\"hc321\"> </a><a name=\"321-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-JosephineGreene-past-breast-pain-adh-biopsy.html#Patient_JosephineGreene\">Josephine38 Greene57</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-FollowupScreeningResult_JosephineGreene-past-breast-pain-adh-biopsy.html#RequestGroup_322\">Bundle: type = collection</a></td></tr></table></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JosephineGreene> ;
+     fhir:reference [ fhir:v "Patient/JosephineGreene" ] ;
+     fhir:display [ fhir:v "Josephine38 Greene57" ]
+  ] ; # 
+  fhir:created [ fhir:v "2024-12-10T00:00:00.0Z"^^xsd:dateTime] ; # 
+  fhir:activity ( [
+     fhir:reference [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/322> ;
+       fhir:reference [ fhir:v "RequestGroup/322" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/322> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "322"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_322\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 322</b></p><a name=\"322\"> </a><a name=\"hc322\"> </a><a name=\"322-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-JosephineGreene-past-breast-pain-adh-biopsy.html#Patient_JosephineGreene\">Josephine38 Greene57</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>FollowupAtypicalBiopsyResult</blockquote><p><b>Recommendation Flag Extension</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system due}\">Due</span></p><p><b>title</b>: Refer to breast surgeon</p><p><b>description</b>: Atypical fndings, including ADH and non-classic LCIS, should be referred for potential excision.\n\nAtypical ductal hyperplasia (ADH) and non-classic lobular carcinoma in situ (LCIS), including pleomorphic or florid LCIS, should be referred to breast surgeon for potential excision.\n\nClassic LCIS and atypical lobular hyperplasia (ALH) are typically candidates for observation with clinical and imaging follow-up but may benefit from excision in certain circumstances.</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system surgicalreferral}\">Breast surgeon referral</span></p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>ASBrS</td><td>The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)</td><td><a href=\"https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf\">https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf</a></td></tr></table><p><b>timing</b>: Events: 2024-11-20 </p><p><b>resource</b>: <a href=\"Bundle-FollowupScreeningResult_JosephineGreene-past-breast-pain-adh-biopsy.html#ServiceRequest_323\">Bundle: type = collection</a></p></blockquote></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JosephineGreene> ;
+     fhir:reference [ fhir:v "Patient/JosephineGreene" ] ;
+     fhir:display [ fhir:v "Josephine38 Greene57" ]
+  ] ; # 
+  fhir:action ( [
+     fhir:id [ fhir:v "FollowupAtypicalBiopsyResult" ] ;
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/StructureDefinition/csm-recommendation-flag"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/recommendation-flag-code-system"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "due" ] ;
+           fhir:display [ fhir:v "Due" ]
+         ] )
+       ]
+     ] ) ;
+     fhir:title [ fhir:v "Refer to breast surgeon" ] ;
+     fhir:description [ fhir:v "Atypical fndings, including ADH and non-classic LCIS, should be referred for potential excision.\n\nAtypical ductal hyperplasia (ADH) and non-classic lobular carcinoma in situ (LCIS), including pleomorphic or florid LCIS, should be referred to breast surgeon for potential excision.\n\nClassic LCIS and atypical lobular hyperplasia (ALH) are typically candidates for observation with clinical and imaging follow-up but may benefit from excision in certain circumstances." ] ;
+     fhir:code ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "surgicalreferral" ] ;
+         fhir:display [ fhir:v "Breast surgeon referral" ]
+       ] )
+     ] ) ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "ASBrS" ] ;
+       fhir:display [ fhir:v "The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)" ] ;
+       fhir:url [ fhir:v "https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"^^xsd:anyURI ]
+     ] ) ;
+     fhir:timing [
+       a fhir:Timing ;
+       fhir:event ( [ fhir:v "2024-11-20"^^xsd:date ] )
+     ] ;
+     fhir:resource [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/323> ;
+       fhir:reference [ fhir:v "ServiceRequest/323" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/323> a fhir:ServiceRequest ;
+  fhir:id [ fhir:v "323"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_323\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 323</b></p><a name=\"323\"> </a><a name=\"hc323\"> </a><a name=\"323-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-BreastCancerScreeningServiceRequest.html\">Breast Cancer Screening Service Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system surgicalreferral}\">Breast surgeon referral</span></p><p><b>subject</b>: <a href=\"Bundle-JosephineGreene-past-breast-pain-adh-biopsy.html#Patient_JosephineGreene\">Josephine38 Greene57</a></p><p><b>occurrence</b>: 2024-11-20</p><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system Atypical}\">Atypical breast finding</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "surgicalreferral" ] ;
+       fhir:display [ fhir:v "Breast surgeon referral" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JosephineGreene> ;
+     fhir:reference [ fhir:v "Patient/JosephineGreene" ] ;
+     fhir:display [ fhir:v "Josephine38 Greene57" ]
+  ] ; # 
+  fhir:occurrence [
+     a fhir:dateTime ;
+     fhir:v "2024-11-20"^^xsd:date
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "Atypical" ] ;
+       fhir:display [ fhir:v "Atypical breast finding" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,1220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="457">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library HighRiskReferralEvents version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="HighRiskReferralEvents" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="18:1-18:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:63" localIdentifier="C3F" path="http://cancerscreeningcds.github.io/bcsm-cds/CDSConnectCommonsforFHIRv401" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>CDSConnectCommonsforFHIRv401</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called C3F</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="21:1-21:61" localIdentifier="BCSMCommon" path="http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>BCSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called BCSMCommon</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="211" locator="22:1-22:56" localIdentifier="Common" path="http://cancerscreeningcds.github.io/bcsm-cds/CSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>CSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Common</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="212" locator="24:1-24:111" name="LOCAL" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>codesystem &quot;LOCAL&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="213" locator="25:1-25:114" name="ActCode" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>codesystem &quot;ActCode&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="214" locator="27:1-27:77" name="High 5 year risk" id="high5yrisk" display="High 5 year risk" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="214">
+               <a:s>code &quot;High 5 year risk&quot;: 'high5yrisk' from </a:s>
+               <a:s r="215">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'High 5 year risk'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="215" locator="27:44-27:50" name="LOCAL"/>
+      </def>
+      <def localId="216" locator="28:1-28:110" name="5 year risk at least 1.67%" id="higherthanaverage5yrisk" display="5 year risk at least 1.67%" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="216">
+               <a:s>code &quot;5 year risk at least 1.67%&quot;: 'higherthanaverage5yrisk' from </a:s>
+               <a:s r="217">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display '5 year risk at least 1.67%'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="217" locator="28:67-28:73" name="LOCAL"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="221" locator="30:1-30:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="219" locator="30:1-30:15" name="Patient" context="Patient">
+         <expression localId="220" xsi:type="SingletonFrom">
+            <operand localId="218" locator="30:1-30:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="223" locator="32:1-33:6" name="eve-ageAny" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="223">
+               <a:s r="224">define &quot;eve-ageAny&quot;:
+  true</a:s>
+            </a:s>
+         </annotation>
+         <expression localId="224" locator="33:3-33:6" valueType="t:Boolean" value="true" xsi:type="Literal"/>
+      </def>
+      <def localId="226" locator="35:1-36:20" name="eve-ageAtLeast35" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="226">
+               <a:s>define &quot;eve-ageAtLeast35&quot;:
+  </a:s>
+               <a:s r="227">
+                  <a:s r="232">
+                     <a:s>AgeInYears()</a:s>
+                  </a:s>
+                  <a:s r="234"> >= 35</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="227" locator="36:3-36:20" xsi:type="GreaterOrEqual">
+            <signature localId="235" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+            <signature localId="236" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+            <operand localId="232" locator="36:3-36:14" precision="Year" xsi:type="CalculateAge">
+               <signature localId="233" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+               <operand localId="231" path="birthDate.value" xsi:type="Property">
+                  <source localId="230" name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="234" locator="36:19-36:20" valueType="t:Integer" value="35" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="238" locator="38:1-39:31" name="eve-geneticriskpop" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="238">
+               <a:s>define &quot;eve-geneticriskpop&quot;:
+  </a:s>
+               <a:s r="240">
+                  <a:s r="239">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="240">
+                     <a:s>&quot;de-geneticrisk&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="240" locator="39:3-39:31" name="de-geneticrisk" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="242" locator="41:1-42:37" name="eve-chestxrtpop" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="242">
+               <a:s>define &quot;eve-chestxrtpop&quot;:
+  </a:s>
+               <a:s r="244">
+                  <a:s r="243">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="244">
+                     <a:s>&quot;de-chestxrtage10to30&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="244" locator="42:3-42:37" name="de-chestxrtage10to30" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="246" locator="44:1-45:30" name="eve-atypicalbxpop" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="246">
+               <a:s>define &quot;eve-atypicalbxpop&quot;:
+  </a:s>
+               <a:s r="248">
+                  <a:s r="247">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="248">
+                     <a:s>&quot;de-atypicalbx&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="248" locator="45:3-45:30" name="de-atypicalbx" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="250" locator="47:1-48:27" name="eve-LifeExp" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="250">
+               <a:s>define &quot;eve-LifeExp&quot;:
+  </a:s>
+               <a:s r="252">
+                  <a:s r="251">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="252">
+                     <a:s>&quot;de-lifeexp&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="252" locator="48:3-48:27" name="de-lifeexp" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="256" locator="65:1-68:92" name="MostRecent5YrRiskAssessmentResultHigh" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="256">
+               <a:s>define MostRecent5YrRiskAssessmentResultHigh:
+  </a:s>
+               <a:s r="296">
+                  <a:s>
+                     <a:s r="257">
+                        <a:s r="259">
+                           <a:s>
+                              <a:s>DataElements.MostRecent5YrRiskAssessment</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="260">
+                     <a:s>where 
+    </a:s>
+                     <a:s r="260">
+                        <a:s r="261">
+                           <a:s r="267">
+                              <a:s r="262">
+                                 <a:s r="264">
+                                    <a:s r="263">
+                                       <a:s>R</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="264">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> as </a:s>
+                                 <a:s r="265">
+                                    <a:s>FHIR.Quantity</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> is not null</a:s>
+                           </a:s>
+                           <a:s> and </a:s>
+                           <a:s r="268">
+                              <a:s r="272">
+                                 <a:s r="271">
+                                    <a:s r="269">
+                                       <a:s>C3F</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="271">
+                                       <a:s>QuantityValue(</a:s>
+                                       <a:s r="270">
+                                          <a:s>R</a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="272">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s r="273"> >=3</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> or
+    </a:s>
+                        <a:s r="279">
+                           <a:s r="285">
+                              <a:s r="280">
+                                 <a:s r="282">
+                                    <a:s r="281">
+                                       <a:s>R</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="282">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> as </a:s>
+                                 <a:s r="283">
+                                    <a:s>FHIR.CodeableConcept</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> is not null</a:s>
+                           </a:s>
+                           <a:s> and </a:s>
+                           <a:s r="286">
+                              <a:s r="289">
+                                 <a:s r="287">
+                                    <a:s>C3F</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="289">
+                                    <a:s>ConceptValue(</a:s>
+                                    <a:s r="288">
+                                       <a:s>R</a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> ~ </a:s>
+                              <a:s r="290">
+                                 <a:s>&quot;High 5 year risk&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="296" locator="66:3-68:92" xsi:type="Query">
+            <source localId="257" locator="66:3-66:44" alias="R">
+               <expression localId="259" locator="66:3-66:42" name="MostRecent5YrRiskAssessment" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="260" locator="66:46-68:92" xsi:type="Or">
+               <operand localId="261" locator="67:5-67:75" xsi:type="And">
+                  <operand localId="267" locator="67:5-67:40" xsi:type="Not">
+                     <operand localId="266" locator="67:5-67:40" xsi:type="IsNull">
+                        <operand localId="262" locator="67:5-67:28" strict="false" xsi:type="As">
+                           <operand localId="264" locator="67:5-67:11" path="value" scope="R" xsi:type="Property"/>
+                           <asTypeSpecifier localId="265" locator="67:16-67:28" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="268" locator="67:46-67:75" xsi:type="GreaterOrEqual">
+                     <signature localId="277" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                     <signature localId="278" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="272" locator="67:46-67:71" path="value" xsi:type="Property">
+                        <source localId="271" locator="67:46-67:65" name="QuantityValue" libraryName="C3F" xsi:type="FunctionRef">
+                           <operand localId="270" locator="67:64" name="R" xsi:type="AliasRef"/>
+                        </source>
+                     </operand>
+                     <operand localId="275" xsi:type="ToDecimal">
+                        <signature localId="276" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="273" locator="67:75" valueType="t:Integer" value="3" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="279" locator="68:5-68:92" xsi:type="And">
+                  <operand localId="285" locator="68:5-68:47" xsi:type="Not">
+                     <operand localId="284" locator="68:5-68:47" xsi:type="IsNull">
+                        <operand localId="280" locator="68:5-68:35" strict="false" xsi:type="As">
+                           <operand localId="282" locator="68:5-68:11" path="value" scope="R" xsi:type="Property"/>
+                           <asTypeSpecifier localId="283" locator="68:16-68:35" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="286" locator="68:53-68:92" xsi:type="Equivalent">
+                     <signature localId="294" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                     <signature localId="295" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="289" locator="68:53-68:71" name="ConceptValue" libraryName="C3F" xsi:type="FunctionRef">
+                        <operand localId="288" locator="68:70" name="R" xsi:type="AliasRef"/>
+                     </operand>
+                     <operand localId="292" xsi:type="ToConcept">
+                        <signature localId="293" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="290" locator="68:75-68:92" name="High 5 year risk" xsi:type="CodeRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="254" locator="50:1-51:51" name="eve-fiveyrriskpop" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="254">
+               <a:s>define &quot;eve-fiveyrriskpop&quot;:
+  </a:s>
+               <a:s r="299">
+                  <a:s r="297">
+                     <a:s>MostRecent5YrRiskAssessmentResultHigh</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="299" locator="51:3-51:51" xsi:type="Not">
+            <operand localId="298" locator="51:3-51:51" xsi:type="IsNull">
+               <operand localId="297" locator="51:3-51:39" name="MostRecent5YrRiskAssessmentResultHigh" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="303" locator="70:1-73:105" name="MostRecent5YrRiskAssessmentResultHigherThanAverage" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="303">
+               <a:s>define MostRecent5YrRiskAssessmentResultHigherThanAverage:
+  </a:s>
+               <a:s r="352">
+                  <a:s>
+                     <a:s r="304">
+                        <a:s r="306">
+                           <a:s>
+                              <a:s>DataElements.MostRecent5YrRiskAssessment</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> R</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> </a:s>
+                  <a:s r="307">
+                     <a:s>where 
+    </a:s>
+                     <a:s r="307">
+                        <a:s r="308">
+                           <a:s r="309">
+                              <a:s r="315">
+                                 <a:s r="310">
+                                    <a:s r="312">
+                                       <a:s r="311">
+                                          <a:s>R</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="312">
+                                          <a:s>value</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> as </a:s>
+                                    <a:s r="313">
+                                       <a:s>FHIR.Quantity</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> is not null</a:s>
+                              </a:s>
+                              <a:s> and </a:s>
+                              <a:s r="316">
+                                 <a:s r="320">
+                                    <a:s r="319">
+                                       <a:s r="317">
+                                          <a:s>C3F</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="319">
+                                          <a:s>QuantityValue(</a:s>
+                                          <a:s r="318">
+                                             <a:s>R</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="320">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s r="321"> >=1.67</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> and </a:s>
+                           <a:s r="324">
+                              <a:s r="328">
+                                 <a:s r="327">
+                                    <a:s r="325">
+                                       <a:s>C3F</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="327">
+                                       <a:s>QuantityValue(</a:s>
+                                       <a:s r="326">
+                                          <a:s>R</a:s>
+                                       </a:s>
+                                       <a:s>)</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="328">
+                                    <a:s>value</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s r="329"> &lt;3</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> 
+    or </a:s>
+                        <a:s r="335">
+                           <a:s r="341">
+                              <a:s r="336">
+                                 <a:s r="338">
+                                    <a:s r="337">
+                                       <a:s>R</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="338">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> as </a:s>
+                                 <a:s r="339">
+                                    <a:s>FHIR.CodeableConcept</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> is not null</a:s>
+                           </a:s>
+                           <a:s> and </a:s>
+                           <a:s r="342">
+                              <a:s r="345">
+                                 <a:s r="343">
+                                    <a:s>C3F</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="345">
+                                    <a:s>ConceptValue(</a:s>
+                                    <a:s r="344">
+                                       <a:s>R</a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> ~ </a:s>
+                              <a:s r="346">
+                                 <a:s>&quot;5 year risk at least 1.67%&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="352" locator="71:3-73:105" xsi:type="Query">
+            <source localId="304" locator="71:3-71:44" alias="R">
+               <expression localId="306" locator="71:3-71:42" name="MostRecent5YrRiskAssessment" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            </source>
+            <where localId="307" locator="71:46-73:105" xsi:type="Or">
+               <operand localId="308" locator="72:5-72:112" xsi:type="And">
+                  <operand localId="309" locator="72:5-72:78" xsi:type="And">
+                     <operand localId="315" locator="72:5-72:40" xsi:type="Not">
+                        <operand localId="314" locator="72:5-72:40" xsi:type="IsNull">
+                           <operand localId="310" locator="72:5-72:28" strict="false" xsi:type="As">
+                              <operand localId="312" locator="72:5-72:11" path="value" scope="R" xsi:type="Property"/>
+                              <asTypeSpecifier localId="313" locator="72:16-72:28" name="fhir:Quantity" xsi:type="NamedTypeSpecifier"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="316" locator="72:46-72:78" xsi:type="GreaterOrEqual">
+                        <signature localId="322" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        <signature localId="323" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="320" locator="72:46-72:71" path="value" xsi:type="Property">
+                           <source localId="319" locator="72:46-72:65" name="QuantityValue" libraryName="C3F" xsi:type="FunctionRef">
+                              <operand localId="318" locator="72:64" name="R" xsi:type="AliasRef"/>
+                           </source>
+                        </operand>
+                        <operand localId="321" locator="72:75-72:78" valueType="t:Decimal" value="1.67" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+                  <operand localId="324" locator="72:84-72:112" xsi:type="Less">
+                     <signature localId="333" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                     <signature localId="334" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="328" locator="72:84-72:109" path="value" xsi:type="Property">
+                        <source localId="327" locator="72:84-72:103" name="QuantityValue" libraryName="C3F" xsi:type="FunctionRef">
+                           <operand localId="326" locator="72:102" name="R" xsi:type="AliasRef"/>
+                        </source>
+                     </operand>
+                     <operand localId="331" xsi:type="ToDecimal">
+                        <signature localId="332" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="329" locator="72:112" valueType="t:Integer" value="3" xsi:type="Literal"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="335" locator="73:8-73:105" xsi:type="And">
+                  <operand localId="341" locator="73:8-73:50" xsi:type="Not">
+                     <operand localId="340" locator="73:8-73:50" xsi:type="IsNull">
+                        <operand localId="336" locator="73:8-73:38" strict="false" xsi:type="As">
+                           <operand localId="338" locator="73:8-73:14" path="value" scope="R" xsi:type="Property"/>
+                           <asTypeSpecifier localId="339" locator="73:19-73:38" name="fhir:CodeableConcept" xsi:type="NamedTypeSpecifier"/>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="342" locator="73:56-73:105" xsi:type="Equivalent">
+                     <signature localId="350" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                     <signature localId="351" name="t:Concept" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="345" locator="73:56-73:74" name="ConceptValue" libraryName="C3F" xsi:type="FunctionRef">
+                        <operand localId="344" locator="73:73" name="R" xsi:type="AliasRef"/>
+                     </operand>
+                     <operand localId="348" xsi:type="ToConcept">
+                        <signature localId="349" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="346" locator="73:78-73:105" name="5 year risk at least 1.67%" xsi:type="CodeRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+            </where>
+         </expression>
+      </def>
+      <def localId="301" locator="53:1-54:64" name="eve-fiveyrrisklowpop" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="301">
+               <a:s>define &quot;eve-fiveyrrisklowpop&quot;:
+  </a:s>
+               <a:s r="355">
+                  <a:s r="353">
+                     <a:s>MostRecent5YrRiskAssessmentResultHigherThanAverage</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="355" locator="54:3-54:64" xsi:type="Not">
+            <operand localId="354" locator="54:3-54:64" xsi:type="IsNull">
+               <operand localId="353" locator="54:3-54:52" name="MostRecent5YrRiskAssessmentResultHigherThanAverage" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="357" locator="56:1-57:64" name="eve-fhxbrca" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="357">
+               <a:s>define &quot;eve-fhxbrca&quot;:  
+  </a:s>
+               <a:s r="358">
+                  <a:s r="360">
+                     <a:s r="359">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="360">
+                        <a:s>&quot;de-fhxbreastcarisk&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="362">
+                     <a:s r="361">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="362">
+                        <a:s>&quot;de-fhxrisk&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="358" locator="57:3-57:64" xsi:type="Or">
+            <operand localId="360" locator="57:3-57:35" name="de-fhxbreastcarisk" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            <operand localId="362" locator="57:40-57:64" name="de-fhxrisk" libraryName="DataElements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="364" locator="59:1-63:39" name="eve-personalriskfactors" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="364">
+               <a:s>define &quot;eve-personalriskfactors&quot;:
+  </a:s>
+               <a:s r="365">
+                  <a:s>if </a:s>
+                  <a:s r="369">
+                     <a:s r="367">
+                        <a:s r="366">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="367">
+                           <a:s>MostRecentPersonalRiskFactorAssessment</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is not null</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="376">
+                     <a:s r="370">
+                        <a:s>FHIRHelpers</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="376">
+                        <a:s>ToBoolean(</a:s>
+                        <a:s r="371">
+                           <a:s r="374">
+                              <a:s r="373">
+                                 <a:s r="372">
+                                    <a:s>DataElements</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="373">
+                                    <a:s>MostRecentPersonalRiskFactorAssessment</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="374">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> as </a:s>
+                           <a:s r="375">
+                              <a:s>boolean</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> 
+  else </a:s>
+                  <a:s r="377">
+                     <a:s r="378">
+                        <a:s r="383">
+                           <a:s>Count(</a:s>
+                           <a:s r="380">
+                              <a:s r="379">
+                                 <a:s>DataElements</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="380">
+                                 <a:s>&quot;BiopsyDiagnosticReports&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                        <a:s r="384"> > 1</a:s>
+                     </a:s>
+                     <a:s> or
+    </a:s>
+                     <a:s r="388">
+                        <a:s r="387">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="388">
+                           <a:s>&quot;de-breastdensitycord&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="365" locator="60:3-63:39" xsi:type="If">
+            <condition localId="369" locator="60:6-60:68" xsi:type="Not">
+               <operand localId="368" locator="60:6-60:68" xsi:type="IsNull">
+                  <operand localId="367" locator="60:6-60:56" name="MostRecentPersonalRiskFactorAssessment" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="376" locator="61:10-61:100" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+               <operand localId="371" locator="61:32-61:99" strict="false" xsi:type="As">
+                  <operand localId="374" locator="61:32-61:88" path="value" xsi:type="Property">
+                     <source localId="373" locator="61:32-61:82" name="MostRecentPersonalRiskFactorAssessment" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <asTypeSpecifier localId="375" locator="61:93-61:99" name="fhir:boolean" xsi:type="NamedTypeSpecifier"/>
+               </operand>
+            </then>
+            <else localId="377" locator="62:8-63:39" xsi:type="Or">
+               <operand localId="378" locator="62:8-62:56" xsi:type="Greater">
+                  <signature localId="385" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="386" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="383" locator="62:8-62:52" xsi:type="Count">
+                     <source localId="380" locator="62:14-62:51" name="BiopsyDiagnosticReports" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="384" locator="62:56" valueType="t:Integer" value="1" xsi:type="Literal"/>
+               </operand>
+               <operand localId="388" locator="63:5-63:39" name="de-breastdensitycord" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            </else>
+         </expression>
+      </def>
+      <def localId="420" locator="95:1-98:12" name="LastFamilialRiskAssessmentObservationResult" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="420">
+               <a:s>define LastFamilialRiskAssessmentObservationResult:
+  </a:s>
+               <a:s r="430">
+                  <a:s r="421">
+                     <a:s r="425">
+                        <a:s r="422">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="425">
+                           <a:s>SortedObservations(
+    </a:s>
+                           <a:s r="424">
+                              <a:s r="423">
+                                 <a:s>DataElements</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="424">
+                                 <a:s>FamilialRiskAssessmentObservations</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+  )</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s r="426">[1]</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="430">
+                     <a:s>value</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="430" locator="96:3-98:12" path="value" xsi:type="Property">
+            <source localId="421" locator="96:3-98:6" xsi:type="Indexer">
+               <signature localId="427" xsi:type="ListTypeSpecifier">
+                  <elementType localId="428" name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <signature localId="429" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               <operand localId="425" locator="96:3-98:3" name="SortedObservations" libraryName="BCSMCommon" xsi:type="FunctionRef">
+                  <operand localId="424" locator="97:5-97:51" name="FamilialRiskAssessmentObservations" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="426" locator="98:5" valueType="t:Integer" value="1" xsi:type="Literal"/>
+            </source>
+         </expression>
+      </def>
+      <def localId="457" locator="100:1-103:12" name="LastPersonalRiskFactorObservationResult" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="457">
+               <a:s>define LastPersonalRiskFactorObservationResult:
+  </a:s>
+               <a:s r="467">
+                  <a:s r="458">
+                     <a:s r="462">
+                        <a:s r="459">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="462">
+                           <a:s>SortedObservations(
+    </a:s>
+                           <a:s r="461">
+                              <a:s r="460">
+                                 <a:s>DataElements</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="461">
+                                 <a:s>PersonalRiskFactorAssessments</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+  )</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s r="463">[1]</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="467">
+                     <a:s>value</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="467" locator="101:3-103:12" path="value" xsi:type="Property">
+            <source localId="458" locator="101:3-103:6" xsi:type="Indexer">
+               <signature localId="464" xsi:type="ListTypeSpecifier">
+                  <elementType localId="465" name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <signature localId="466" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               <operand localId="462" locator="101:3-103:3" name="SortedObservations" libraryName="BCSMCommon" xsi:type="FunctionRef">
+                  <operand localId="461" locator="102:5-102:46" name="PersonalRiskFactorAssessments" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="463" locator="103:5" valueType="t:Integer" value="1" xsi:type="Literal"/>
+            </source>
+         </expression>
+      </def>
+      <def localId="413" locator="82:1-93:12" name="RiskFactorModifiedAfterRiskAssessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="413">
+               <a:s>define RiskFactorModifiedAfterRiskAssessment:
+  </a:s>
+               <a:s r="414">
+                  <a:s>if </a:s>
+                  <a:s r="415">
+                     <a:s r="416">
+                        <a:s r="417">
+                           <a:s r="418">
+                              <a:s>&quot;eve-fhxbrca&quot;</a:s>
+                           </a:s>
+                           <a:s> and </a:s>
+                           <a:s r="432">
+                              <a:s r="431">
+                                 <a:s>LastFamilialRiskAssessmentObservationResult</a:s>
+                              </a:s>
+                              <a:s> is false</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      and </a:s>
+                        <a:s r="440">
+                           <a:s r="438">
+                              <a:s r="435">
+                                 <a:s>Common</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="438">
+                                 <a:s>ObservationDate(</a:s>
+                                 <a:s r="437">
+                                    <a:s r="436">
+                                       <a:s>DataElements</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="437">
+                                       <a:s>MostRecentFamilialRiskAssessmentObservation</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> is not null</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+      and </a:s>
+                     <a:s r="441">
+                        <a:s r="445">
+                           <a:s r="442">
+                              <a:s>Common</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="445">
+                              <a:s>ObservationDate(</a:s>
+                              <a:s r="444">
+                                 <a:s r="443">
+                                    <a:s>DataElements</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="444">
+                                    <a:s>MostRecentFamilialRiskAssessmentObservation</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> 
+        > </a:s>
+                        <a:s r="447">
+                           <a:s r="446">
+                              <a:s>DataElements</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="447">
+                              <a:s>&quot;MostRecent5YrRiskAssessmentDate&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="450">
+    then true
+  else </a:s>
+                  <a:s r="451">
+                     <a:s>if </a:s>
+                     <a:s r="452">
+                        <a:s r="453">
+                           <a:s r="454">
+                              <a:s r="455">
+                                 <a:s>&quot;eve-personalriskfactors&quot;</a:s>
+                              </a:s>
+                              <a:s> and </a:s>
+                              <a:s r="469">
+                                 <a:s r="468">
+                                    <a:s>LastPersonalRiskFactorObservationResult</a:s>
+                                 </a:s>
+                                 <a:s> is false</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+      and </a:s>
+                           <a:s r="477">
+                              <a:s r="475">
+                                 <a:s r="472">
+                                    <a:s>Common</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="475">
+                                    <a:s>ObservationDate(</a:s>
+                                    <a:s r="474">
+                                       <a:s r="473">
+                                          <a:s>DataElements</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="474">
+                                          <a:s>MostRecentPersonalRiskFactorAssessment</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>)</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> is not null</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      and </a:s>
+                        <a:s r="478">
+                           <a:s r="482">
+                              <a:s r="479">
+                                 <a:s>Common</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="482">
+                                 <a:s>ObservationDate(</a:s>
+                                 <a:s r="481">
+                                    <a:s r="480">
+                                       <a:s>DataElements</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="481">
+                                       <a:s>MostRecentPersonalRiskFactorAssessment</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> 
+        > </a:s>
+                           <a:s r="484">
+                              <a:s r="483">
+                                 <a:s>DataElements</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="484">
+                                 <a:s>&quot;MostRecent5YrRiskAssessmentDate&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s r="487">  
+    then true
+  else false</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="414" locator="83:3-93:12" xsi:type="If">
+            <condition localId="415" locator="83:6-86:56" xsi:type="And">
+               <operand localId="416" locator="83:6-84:102" xsi:type="And">
+                  <operand localId="417" locator="83:6-83:75" xsi:type="And">
+                     <operand localId="418" locator="83:6-83:18" name="eve-fhxbrca" xsi:type="ExpressionRef"/>
+                     <operand localId="432" locator="83:24-83:75" xsi:type="IsFalse">
+                        <operand localId="434" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand localId="433" asType="fhir:boolean" xsi:type="As">
+                              <operand localId="431" locator="83:24-83:66" name="LastFamilialRiskAssessmentObservationResult" xsi:type="ExpressionRef"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="440" locator="84:11-84:102" xsi:type="Not">
+                     <operand localId="439" locator="84:11-84:102" xsi:type="IsNull">
+                        <operand localId="438" locator="84:11-84:90" name="ObservationDate" libraryName="Common" xsi:type="FunctionRef">
+                           <operand localId="437" locator="84:34-84:89" name="MostRecentFamilialRiskAssessmentObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="441" locator="85:11-86:56" xsi:type="Greater">
+                  <signature localId="448" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="449" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="445" locator="85:11-85:90" name="ObservationDate" libraryName="Common" xsi:type="FunctionRef">
+                     <operand localId="444" locator="85:34-85:89" name="MostRecentFamilialRiskAssessmentObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="447" locator="86:11-86:56" name="MostRecent5YrRiskAssessmentDate" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="450" locator="87:10-87:13" valueType="t:Boolean" value="true" xsi:type="Literal"/>
+            <else localId="451" locator="88:8-93:12" xsi:type="If">
+               <condition localId="452" locator="88:11-91:56" xsi:type="And">
+                  <operand localId="453" locator="88:11-89:97" xsi:type="And">
+                     <operand localId="454" locator="88:11-88:88" xsi:type="And">
+                        <operand localId="455" locator="88:11-88:35" name="eve-personalriskfactors" xsi:type="ExpressionRef"/>
+                        <operand localId="469" locator="88:41-88:88" xsi:type="IsFalse">
+                           <operand localId="471" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <operand localId="470" asType="fhir:boolean" xsi:type="As">
+                                 <operand localId="468" locator="88:41-88:79" name="LastPersonalRiskFactorObservationResult" xsi:type="ExpressionRef"/>
+                              </operand>
+                           </operand>
+                        </operand>
+                     </operand>
+                     <operand localId="477" locator="89:11-89:97" xsi:type="Not">
+                        <operand localId="476" locator="89:11-89:97" xsi:type="IsNull">
+                           <operand localId="475" locator="89:11-89:85" name="ObservationDate" libraryName="Common" xsi:type="FunctionRef">
+                              <operand localId="474" locator="89:34-89:84" name="MostRecentPersonalRiskFactorAssessment" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="478" locator="90:11-91:56" xsi:type="Greater">
+                     <signature localId="485" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     <signature localId="486" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="482" locator="90:11-90:85" name="ObservationDate" libraryName="Common" xsi:type="FunctionRef">
+                        <operand localId="481" locator="90:34-90:84" name="MostRecentPersonalRiskFactorAssessment" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                     </operand>
+                     <operand localId="484" locator="91:11-91:56" name="MostRecent5YrRiskAssessmentDate" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+               </condition>
+               <then localId="487" locator="92:10-92:13" valueType="t:Boolean" value="true" xsi:type="Literal"/>
+               <else localId="488" locator="93:8-93:12" valueType="t:Boolean" value="false" xsi:type="Literal"/>
+            </else>
+         </expression>
+      </def>
+      <def localId="390" locator="77:1-80:54" name="ValidMostRecent5YrRiskAssessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="390">
+               <a:s>// 5 year assessment is valid if done within past 5 years
+// and risk factor observation not changed from false to true after risk assessment
+define ValidMostRecent5YrRiskAssessment:
+  </a:s>
+               <a:s r="391">
+                  <a:s r="392">
+                     <a:s r="396">
+                        <a:s r="394">
+                           <a:s r="393">
+                              <a:s>DataElements</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="394">
+                              <a:s>&quot;MostRecent5YrRiskAssessment&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is not null</a:s>
+                     </a:s>
+                     <a:s>
+    and </a:s>
+                     <a:s r="397">
+                        <a:s r="399">
+                           <a:s r="398">
+                              <a:s>DataElements</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="399">
+                              <a:s>&quot;MostRecent5YrRiskAssessmentDate&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> >= </a:s>
+                        <a:s r="400">
+                           <a:s>(</a:s>
+                           <a:s r="400">
+                              <a:s r="403">
+                                 <a:s>Today()</a:s>
+                              </a:s>
+                              <a:s> - </a:s>
+                              <a:s r="404">
+                                 <a:s>5 years</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    and </a:s>
+                  <a:s r="490">
+                     <a:s r="489">
+                        <a:s>RiskFactorModifiedAfterRiskAssessment</a:s>
+                     </a:s>
+                     <a:s> is false</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="391" locator="78:3-80:54" xsi:type="And">
+            <operand localId="392" locator="78:3-79:77" xsi:type="And">
+               <operand localId="396" locator="78:3-78:56" xsi:type="Not">
+                  <operand localId="395" locator="78:3-78:56" xsi:type="IsNull">
+                     <operand localId="394" locator="78:3-78:44" name="MostRecent5YrRiskAssessment" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="397" locator="79:9-79:77" xsi:type="GreaterOrEqual">
+                  <signature localId="410" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="411" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="399" locator="79:9-79:54" name="MostRecent5YrRiskAssessmentDate" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  <operand localId="408" xsi:type="ToDateTime">
+                     <signature localId="409" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="400" locator="79:59-79:77" xsi:type="Subtract">
+                        <signature localId="405" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                        <signature localId="406" name="t:Quantity" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="403" locator="79:60-79:66" xsi:type="Today"/>
+                        <operand localId="404" locator="79:70-79:76" value="5" unit="years" xsi:type="Quantity"/>
+                     </operand>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="490" locator="80:9-80:54" xsi:type="IsFalse">
+               <operand localId="489" locator="80:9-80:45" name="RiskFactorModifiedAfterRiskAssessment" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>

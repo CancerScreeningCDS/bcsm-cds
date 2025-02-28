@@ -1,0 +1,152 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferral_act-estlifexpectancy> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferral_act-estlifexpectancy"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/458"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/458> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/459"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/459> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/460"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/460> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/461"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/461> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/458> a fhir:CarePlan ;
+  fhir:id [ fhir:v "458"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_458\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 458</b></p><a name=\"458\"> </a><a name=\"hc458\"> </a><a name=\"458-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferral_act-estlifexpectancy.html#RequestGroup_459\">Bundle: type = collection</a></td></tr></table></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+     fhir:reference [ fhir:v "Patient/defaultPatient" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:created [ fhir:v "2024-12-10T00:00:00.0Z"^^xsd:dateTime] ; # 
+  fhir:activity ( [
+     fhir:reference [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/459> ;
+       fhir:reference [ fhir:v "RequestGroup/459" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/459> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "459"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_459\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 459</b></p><a name=\"459\"> </a><a name=\"hc459\"> </a><a name=\"459-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>HighRiskReferralAtypicalBiopsy</blockquote><p><b>title</b>: Referral for high risk breast specialty evaluation</p><p><b>description</b>: Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications.</p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Citation</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>USPSTF</td><td>Breast Cancer: Medication Use to Reduce Risk</td><td><div><p>US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.</p>\n</div></td><td><a href=\"https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction\">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction</a></td></tr></table><p><b>resource</b>: <a href=\"Bundle-HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferral_act-estlifexpectancy.html#ServiceRequest_460\">Bundle: type = collection</a></p></blockquote><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>ConsiderLifeExpectancy</blockquote><p><b>title</b>: Shared decision making for high risk specialty referral based on life expectancy</p><p><b>description</b>: Patient may not be a candidate for chemoprevention if estimated life expectancy is &lt; 10 years.\n\nFactors that may impact this estimation should be considered prior to referral. A validated tool such as www.eprognosis.com can help guide decision making.</p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Citation</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>USPSTF</td><td>Breast Cancer: Medication Use to Reduce Risk</td><td><div><p>US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.</p>\n</div></td><td><a href=\"https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction\">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction</a></td></tr></table><p><b>resource</b>: <a href=\"Bundle-HighRiskReferral_eve-atypicalbxpop__act-HighRiskReferral_act-estlifexpectancy.html#CommunicationRequest_461\">Bundle: type = collection</a></p></blockquote></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+     fhir:reference [ fhir:v "Patient/defaultPatient" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:action ( [
+     fhir:id [ fhir:v "HighRiskReferralAtypicalBiopsy" ] ;
+     fhir:title [ fhir:v "Referral for high risk breast specialty evaluation" ] ;
+     fhir:description [ fhir:v "Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications." ] ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "Breast Cancer: Medication Use to Reduce Risk" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"^^xsd:anyURI ]
+     ] ) ;
+     fhir:resource [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/460> ;
+       fhir:reference [ fhir:v "ServiceRequest/460" ]
+     ]
+  ] [
+     fhir:id [ fhir:v "ConsiderLifeExpectancy" ] ;
+     fhir:title [ fhir:v "Shared decision making for high risk specialty referral based on life expectancy" ] ;
+     fhir:description [ fhir:v "Patient may not be a candidate for chemoprevention if estimated life expectancy is < 10 years.\n\nFactors that may impact this estimation should be considered prior to referral. A validated tool such as www.eprognosis.com can help guide decision making." ] ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "Breast Cancer: Medication Use to Reduce Risk" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"^^xsd:anyURI ]
+     ] ) ;
+     fhir:resource [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/461> ;
+       fhir:reference [ fhir:v "CommunicationRequest/461" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/460> a fhir:ServiceRequest ;
+  fhir:id [ fhir:v "460"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_460\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 460</b></p><a name=\"460\"> </a><a name=\"hc460\"> </a><a name=\"460-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-HighRiskSpecialtyReferralRequest.html\">High Risk Specialty Referral Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system highriskreferral}\">High risk referral</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system Atypical}\">Atypical breast finding</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "highriskreferral" ] ;
+       fhir:display [ fhir:v "High risk referral" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+     fhir:reference [ fhir:v "Patient/defaultPatient" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "Atypical" ] ;
+       fhir:display [ fhir:v "Atypical breast finding" ]
+     ] )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/461> a fhir:CommunicationRequest ;
+  fhir:id [ fhir:v "461"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CommunicationRequest_461\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CommunicationRequest 461</b></p><a name=\"461\"> </a><a name=\"hc461\"> </a><a name=\"461-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-CommunicateSDMConsiderLifeExpectancy.html\">Communicate Shared Decision Making to Continue Screening</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Jane Doe</a></p><p><b>reasonCode</b>: </p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMConsiderLifeExpectancy> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMConsiderLifeExpectancy" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+     fhir:reference [ fhir:v "Patient/defaultPatient" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:reasonCode ( [] ) . # 
+
+# -------------------------------------------------------------------------------------
+

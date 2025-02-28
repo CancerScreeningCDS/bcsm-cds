@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="FollowupScreeningResult_JaniceMedford_fdr_breastca_age_45"/>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/319"/>
+    <resource>
+      <CarePlan>
+        <id value="319"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CarePlan_319"> </a><p class="res-header-id"><b>Generated Narrative: CarePlan 319</b></p><a name="319"> </a><a name="hc319"> </a><a name="319-en-US"> </a><p><b>instantiatesCanonical</b>: <a href="PlanDefinition-flow-FollowupScreeningResult.html">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford">Janice32 Medford87</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Reference</b></td></tr><tr><td style="display: none">*</td><td><a href="Bundle-FollowupScreeningResult_JaniceMedford_fdr_breastca_age_45.html#RequestGroup_320">Bundle: type = collection</a></td></tr></table></div>
+        </text>
+        <instantiatesCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"/>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/JaniceMedford"/>
+          <display value="Janice32 Medford87"/>
+        </subject>
+        <created value="2024-12-10T00:00:00.0Z"/>
+        <activity>
+          <reference>
+            <reference value="RequestGroup/320"/>
+          </reference>
+        </activity>
+      </CarePlan>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/320"/>
+    <resource>
+      <RequestGroup>
+        <id value="320"/>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="RequestGroup_320"> </a><p class="res-header-id"><b>Generated Narrative: RequestGroup 320</b></p><a name="320"> </a><a name="hc320"> </a><a name="320-en-US"> </a><p><b>Messages</b>: <a href="#hc320/contained-1">OperationOutcome</a></p><p><b>instantiatesCanonical</b>: <a href="PlanDefinition-flow-FollowupScreeningResult.html">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Bundle-JaniceMedford_fdr_breastca_age_45.html#Patient_JaniceMedford">Janice32 Medford87</a></p><hr/><blockquote><p class="res-header-id"><b>Generated Narrative: OperationOutcome #contained-1</b></p><a name="320/contained-1"> </a><a name="hc320/contained-1"> </a><a name="320/contained-1-en-US"> </a><table class="grid"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>Warning</td><td/><td>Processing Failure</td><td/><td>A laboratory test was found with an unexpected result code. Please review patient record to resolve.</td></tr></table></blockquote></div>
+        </text>
+        <contained>
+          <OperationOutcome>
+            <id value="contained-1"/>
+            <issue>
+              <severity value="warning"/>
+              <code value="processing"/>
+              <details>
+                <coding>
+                  <system value="http://example.org/CodeSystem/plan-definition-action-reason-code-system"/>
+                  <code value="unknownresultcode"/>
+                </coding>
+              </details>
+              <diagnostics value="A laboratory test was found with an unexpected result code. Please review patient record to resolve."/>
+            </issue>
+          </OperationOutcome>
+        </contained>
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-messages">
+          <valueReference>
+            <reference value="#contained-1"/>
+          </valueReference>
+        </extension>
+        <instantiatesCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"/>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/JaniceMedford"/>
+          <display value="Janice32 Medford87"/>
+        </subject>
+      </RequestGroup>
+    </resource>
+  </entry>
+</Bundle>

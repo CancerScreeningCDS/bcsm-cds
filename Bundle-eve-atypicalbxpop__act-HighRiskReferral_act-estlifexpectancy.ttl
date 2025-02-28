@@ -1,0 +1,97 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/eve-atypicalbxpop__act-HighRiskReferral_act-estlifexpectancy> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "eve-atypicalbxpop__act-HighRiskReferral_act-estlifexpectancy"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "defaultPatient" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Doe" ] ;
+         fhir:given ( [ fhir:v "Jane" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1981-01-01"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:Condition ;
+       fhir:id [ fhir:v "46132e84-40ee-4a42-b1d7-79e1989ff48f" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_46132e84-40ee-4a42-b1d7-79e1989ff48f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition 46132e84-40ee-4a42-b1d7-79e1989ff48f</b></p><a name=\"46132e84-40ee-4a42-b1d7-79e1989ff48f\"> </a><a name=\"hc46132e84-40ee-4a42-b1d7-79e1989ff48f\"> </a><a name=\"46132e84-40ee-4a42-b1d7-79e1989ff48f-en-US\"> </a><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 109888004}\">Lobular carcinoma in situ of breast (disorder)</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><p><b>recordedDate</b>: 2024-11-11 00:00:00+0000</p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:clinicalStatus [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/condition-clinical"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "active" ] ;
+           fhir:display [ fhir:v "Active" ]
+         ] )
+       ] ;
+       fhir:verificationStatus [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/condition-ver-status"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "confirmed" ] ;
+           fhir:display [ fhir:v "Confirmed" ]
+         ] )
+       ] ;
+       fhir:code [
+         fhir:coding ( [
+           a sct:109888004 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "109888004" ] ;
+           fhir:display [ fhir:v "Lobular carcinoma in situ of breast (disorder)" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:recordedDate [ fhir:v "2024-11-11T00:00:00.0Z"^^xsd:dateTime ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:Observation ;
+       fhir:id [ fhir:v "4ecbc31a-7538-4daa-ac2d-4a1c6c05ec1b" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_4ecbc31a-7538-4daa-ac2d-4a1c6c05ec1b\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 4ecbc31a-7538-4daa-ac2d-4a1c6c05ec1b</b></p><a name=\"4ecbc31a-7538-4daa-ac2d-4a1c6c05ec1b\"> </a><a name=\"hc4ecbc31a-7538-4daa-ac2d-4a1c6c05ec1b\"> </a><a name=\"4ecbc31a-7538-4daa-ac2d-4a1c6c05ec1b-en-US\"> </a><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system lifeexp}\">Reduced life expectancy indicator</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><p><b>effective</b>: 2024-12-10 00:00:00+0000</p><p><b>value</b>: true</p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "lifeexp" ] ;
+           fhir:display [ fhir:v "Reduced life expectancy indicator" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-12-10T00:00:00.0Z"^^xsd:dateTime
+       ] ;
+       fhir:value [
+         a fhir:boolean ;
+         fhir:v "true"^^xsd:boolean
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

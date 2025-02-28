@@ -1,0 +1,97 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/eve-atypicalbxpop__act-HighRiskReferralAtypicalBiopsy_warning_missing> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "eve-atypicalbxpop__act-HighRiskReferralAtypicalBiopsy_warning_missing"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "defaultPatient" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Doe" ] ;
+         fhir:given ( [ fhir:v "Jane" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1981-01-01"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:DiagnosticReport ;
+       fhir:id [ fhir:v "biopsy-report-1" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_biopsy-report-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport biopsy-report-1</b></p><a name=\"biopsy-report-1\"> </a><a name=\"hcbiopsy-report-1\"> </a><a name=\"biopsy-report-1-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 66110-8}\">Biopsy Report</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2024-11-10 00:00:00+0000</td></tr></table><p><b>Report Details</b></p><p><b>Coded Conclusions:</b></p><ul><li><span title=\"Codes:{http://snomed.info/sct 109888004}\">Lobular carcinoma in situ of breast (disorder)</span></li></ul></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:66110-8 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "66110-8" ] ;
+           fhir:display [ fhir:v "Biopsy Report" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-11-10T00:00:00.0Z"^^xsd:dateTime
+       ] ;
+       fhir:conclusionCode ( [
+         fhir:coding ( [
+           a sct:109888004 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "109888004" ] ;
+           fhir:display [ fhir:v "Lobular carcinoma in situ of breast (disorder)" ]
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:DiagnosticReport ;
+       fhir:id [ fhir:v "469e3380-e857-43e6-8d8d-e4941eae70fa" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_469e3380-e857-43e6-8d8d-e4941eae70fa\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport 469e3380-e857-43e6-8d8d-e4941eae70fa</b></p><a name=\"469e3380-e857-43e6-8d8d-e4941eae70fa\"> </a><a name=\"hc469e3380-e857-43e6-8d8d-e4941eae70fa\"> </a><a name=\"469e3380-e857-43e6-8d8d-e4941eae70fa-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 66110-8}\">Biopsy Report</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2024-10-01 10:00:00+0000</td></tr></table><p><b>Report Details</b></p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:basedOn ( [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/order-1> ;
+         fhir:reference [ fhir:v "ServiceRequest/order-1" ]
+       ] ) ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:66110-8 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "66110-8" ] ;
+           fhir:display [ fhir:v "Biopsy Report" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-10-01T10:00:00.000Z"^^xsd:dateTime
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

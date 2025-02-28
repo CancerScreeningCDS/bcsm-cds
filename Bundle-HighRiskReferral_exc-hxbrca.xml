@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="HighRiskReferral_exc-hxbrca"/>
+  <type value="collection"/>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/486"/>
+    <resource>
+      <CarePlan>
+        <id value="486"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CarePlan_486"> </a><p class="res-header-id"><b>Generated Narrative: CarePlan 486</b></p><a name="486"> </a><a name="hc486"> </a><a name="486-en-US"> </a><p><b>instantiatesCanonical</b>: <a href="PlanDefinition-flow-HighRiskReferral.html">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Bundle-exc-hxbrca.html#Patient_abb17029-d87b-49b0-a5cb-724b4b4705b9">Jane Doe</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Reference</b></td></tr><tr><td style="display: none">*</td><td><a href="Bundle-HighRiskReferral_exc-hxbrca.html#RequestGroup_487">Bundle: type = collection</a></td></tr></table></div>
+        </text>
+        <instantiatesCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"/>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/abb17029-d87b-49b0-a5cb-724b4b4705b9"/>
+          <display value="Jane Doe"/>
+        </subject>
+        <created value="2024-12-10T00:00:00.0Z"/>
+        <activity>
+          <reference>
+            <reference value="RequestGroup/487"/>
+          </reference>
+        </activity>
+      </CarePlan>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/487"/>
+    <resource>
+      <RequestGroup>
+        <id value="487"/>
+        <text>
+          <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="RequestGroup_487"> </a><p class="res-header-id"><b>Generated Narrative: RequestGroup 487</b></p><a name="487"> </a><a name="hc487"> </a><a name="487-en-US"> </a><p><b>Messages</b>: <a href="#hc487/contained-1">OperationOutcome</a></p><p><b>instantiatesCanonical</b>: <a href="PlanDefinition-flow-HighRiskReferral.html">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href="Bundle-exc-hxbrca.html#Patient_abb17029-d87b-49b0-a5cb-724b4b4705b9">Jane Doe</a></p><hr/><blockquote><p class="res-header-id"><b>Generated Narrative: OperationOutcome #contained-1</b></p><a name="487/contained-1"> </a><a name="hc487/contained-1"> </a><a name="487/contained-1-en-US"> </a><table class="grid"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>Error</td><td/><td>Processing Failure</td><td/><td>Excluded or not included</td></tr></table></blockquote></div>
+        </text>
+        <contained>
+          <OperationOutcome>
+            <id value="contained-1"/>
+            <issue>
+              <severity value="error"/>
+              <code value="processing"/>
+              <details>
+                <coding>
+                  <system value="http://example.org/CodeSystem/plan-definition-action-reason-code-system"/>
+                  <code value="excludedornotincluded"/>
+                </coding>
+              </details>
+              <diagnostics value="Excluded or not included"/>
+            </issue>
+          </OperationOutcome>
+        </contained>
+        <extension url="http://hl7.org/fhir/StructureDefinition/cqf-messages">
+          <valueReference>
+            <reference value="#contained-1"/>
+          </valueReference>
+        </extension>
+        <instantiatesCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"/>
+        <status value="draft"/>
+        <intent value="proposal"/>
+        <subject>
+          <reference value="Patient/abb17029-d87b-49b0-a5cb-724b4b4705b9"/>
+          <display value="Jane Doe"/>
+        </subject>
+      </RequestGroup>
+    </resource>
+  </entry>
+</Bundle>

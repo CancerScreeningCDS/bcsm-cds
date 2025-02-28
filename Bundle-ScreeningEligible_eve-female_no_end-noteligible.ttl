@@ -1,0 +1,136 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/ScreeningEligible_eve-female_no_end-noteligible> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "ScreeningEligible_eve-female_no_end-noteligible"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/500"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/500> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/501"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/501> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/503"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/503> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/500> a fhir:CarePlan ;
+  fhir:id [ fhir:v "500"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_500\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 500</b></p><a name=\"500\"> </a><a name=\"hc500\"> </a><a name=\"500-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-ScreeningEligible.html\">Screening Eligible</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-female_no_end-noteligible.html#Patient_556042f4-db42-4f41-ad05-d82041db53b0\">Joanne Smith</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-ScreeningEligible_eve-female_no_end-noteligible.html#RequestGroup_501\">Bundle: type = collection</a></td></tr></table></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-ScreeningEligible"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-ScreeningEligible>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/556042f4-db42-4f41-ad05-d82041db53b0> ;
+     fhir:reference [ fhir:v "Patient/556042f4-db42-4f41-ad05-d82041db53b0" ] ;
+     fhir:display [ fhir:v "Joanne Smith" ]
+  ] ; # 
+  fhir:created [ fhir:v "2024-12-10T00:00:00.0Z"^^xsd:dateTime] ; # 
+  fhir:activity ( [
+     fhir:reference [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/501> ;
+       fhir:reference [ fhir:v "RequestGroup/501" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/501> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "501"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_501\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 501</b></p><a name=\"501\"> </a><a name=\"hc501\"> </a><a name=\"501-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-ScreeningEligible.html\">Screening Eligible</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-female_no_end-noteligible.html#Patient_556042f4-db42-4f41-ad05-d82041db53b0\">Joanne Smith</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>NotEligibleCurrentBreastCancer</blockquote><p><b>title</b>: Not eligible for screening</p><p><b>description</b>: This patient is not eligible for screening.\n\nReferenced guidelines apply to individuals assigned female at birth. Routine screening of cis-gender individuals assigned male at birth is not recommended. For transgender women, consider specialist referral.\n\nAdditional resources: ACR Appropriateness Criteria® Transgender Breast Cancer Screening; UCSF guidelines 'Screening for breast cancer in transgender women'</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system noteligible}\">Not eligible for screening</span></p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Citation</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>USPSTF</td><td>Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement</td><td><div><p>US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024.</p>\n</div></td><td><a href=\"https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening\">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening</a></td></tr><tr><td style=\"display: none\">*</td><td>Derived From</td><td>Screening Eligible</td><td>Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed.</td><td> </td><td> </td></tr><tr><td style=\"display: none\">*</td><td>Documentation</td><td>ACR</td><td>ACR Appropriateness Criteria® Transgender Breast Cancer Screening</td><td><div><p>Brown, Ann, et al. &quot;ACR appropriateness criteria® transgender breast cancer screening.&quot; Journal of the American College of Radiology 18.11 (2021): S502-S515.</p>\n</div></td><td><a href=\"https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext\">https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext</a></td></tr><tr><td style=\"display: none\">*</td><td>Documentation</td><td>UCSF</td><td>UCSF Transgender Care &amp; Treatment Guidelines: Screening for breast cancer in transgender women</td><td> </td><td><a href=\"https://transcare.ucsf.edu/guidelines/breast-cancer-women\">https://transcare.ucsf.edu/guidelines/breast-cancer-women</a></td></tr></table><p><b>resource</b>: <a href=\"Bundle-ScreeningEligible_eve-female_no_end-noteligible.html#CommunicationRequest_503\">Bundle: type = collection</a></p></blockquote></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-ScreeningEligible"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-ScreeningEligible>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/556042f4-db42-4f41-ad05-d82041db53b0> ;
+     fhir:reference [ fhir:v "Patient/556042f4-db42-4f41-ad05-d82041db53b0" ] ;
+     fhir:display [ fhir:v "Joanne Smith" ]
+  ] ; # 
+  fhir:action ( [
+     fhir:id [ fhir:v "NotEligibleCurrentBreastCancer" ] ;
+     fhir:title [ fhir:v "Not eligible for screening" ] ;
+     fhir:description [ fhir:v "This patient is not eligible for screening.\n\nReferenced guidelines apply to individuals assigned female at birth. Routine screening of cis-gender individuals assigned male at birth is not recommended. For transgender women, consider specialist referral.\n\nAdditional resources: ACR Appropriateness Criteria® Transgender Breast Cancer Screening; UCSF guidelines 'Screening for breast cancer in transgender women'" ] ;
+     fhir:code ( [
+       fhir:coding ( [
+         fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+         fhir:code [ fhir:v "noteligible" ] ;
+         fhir:display [ fhir:v "Not eligible for screening" ]
+       ] )
+     ] ) ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"^^xsd:anyURI ]
+     ] [
+       fhir:type [ fhir:v "derived-from" ] ;
+       fhir:label [ fhir:v "Screening Eligible" ] ;
+       fhir:display [ fhir:v "Individuals who have certain signs or symptoms concerning for breast cancer or other breast diseases are excluded from routine screening pathways and should have diagnostic testing performed." ]
+     ] [
+       fhir:type [ fhir:v "documentation" ] ;
+       fhir:label [ fhir:v "ACR" ] ;
+       fhir:display [ fhir:v "ACR Appropriateness Criteria® Transgender Breast Cancer Screening" ] ;
+       fhir:citation [ fhir:v "Brown, Ann, et al. \"ACR appropriateness criteria® transgender breast cancer screening.\" Journal of the American College of Radiology 18.11 (2021): S502-S515." ] ;
+       fhir:url [ fhir:v "https://www.jacr.org/article/S1546-1440(21)00730-4/fulltext"^^xsd:anyURI ]
+     ] [
+       fhir:type [ fhir:v "documentation" ] ;
+       fhir:label [ fhir:v "UCSF" ] ;
+       fhir:display [ fhir:v "UCSF Transgender Care & Treatment Guidelines: Screening for breast cancer in transgender women" ] ;
+       fhir:url [ fhir:v "https://transcare.ucsf.edu/guidelines/breast-cancer-women"^^xsd:anyURI ]
+     ] ) ;
+     fhir:resource [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/503> ;
+       fhir:reference [ fhir:v "CommunicationRequest/503" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CommunicationRequest/503> a fhir:CommunicationRequest ;
+  fhir:id [ fhir:v "503"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CommunicationRequest_503\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CommunicationRequest 503</b></p><a name=\"503\"> </a><a name=\"hc503\"> </a><a name=\"503-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-CommunicateNotEligible.html\">Communicate Not Eligible</a></p><p><b>status</b>: option</p><p><b>subject</b>: <a href=\"Bundle-eve-female_no_end-noteligible.html#Patient_556042f4-db42-4f41-ad05-d82041db53b0\">Joanne Smith</a></p><h3>Payloads</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Content[x]</b></td></tr><tr><td style=\"display: none\">*</td><td>Not eligible for screening</td></tr></table><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system notassignedfemaleatbirth}\">Not assigned female at birth</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateNotEligible> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateNotEligible" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/556042f4-db42-4f41-ad05-d82041db53b0> ;
+     fhir:reference [ fhir:v "Patient/556042f4-db42-4f41-ad05-d82041db53b0" ] ;
+     fhir:display [ fhir:v "Joanne Smith" ]
+  ] ; # 
+  fhir:payload ( [
+     fhir:content [
+       a fhir:string ;
+       fhir:v "Not eligible for screening"
+     ]
+  ] ) ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "notassignedfemaleatbirth" ] ;
+       fhir:display [ fhir:v "Not assigned female at birth" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

@@ -1,0 +1,68 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "FollowupScreeningResult_MarionHenderson_avg_45_to_54",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/328",
+    "resource" : {
+      "resourceType" : "CarePlan",
+      "id" : "328",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_328\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 328</b></p><a name=\"328\"> </a><a name=\"hc328\"> </a><a name=\"328-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-MarionHenderson_avg_45_to_54.html#Patient_MarionHenderson\">Marion77 Henderson15</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-FollowupScreeningResult_MarionHenderson_avg_45_to_54.html#RequestGroup_329\">Bundle: type = collection</a></td></tr></table></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/MarionHenderson",
+        "display" : "Marion77 Henderson15"
+      },
+      "created" : "2024-12-10T00:00:00.0Z",
+      "activity" : [{
+        "reference" : {
+          "reference" : "RequestGroup/329"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/329",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "329",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_329\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 329</b></p><a name=\"329\"> </a><a name=\"hc329\"> </a><a name=\"329-en-US\"> </a><p><b>Messages</b>: <a href=\"#hc329/contained-1\">OperationOutcome</a></p><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-MarionHenderson_avg_45_to_54.html#Patient_MarionHenderson\">Marion77 Henderson15</a></p><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: OperationOutcome #contained-1</b></p><a name=\"329/contained-1\"> </a><a name=\"hc329/contained-1\"> </a><a name=\"329/contained-1-en-US\"> </a><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>Warning</td><td/><td>Processing Failure</td><td/><td>A laboratory test was found with an unexpected result code. Please review patient record to resolve.</td></tr></table></blockquote></div>"
+      },
+      "contained" : [{
+        "resourceType" : "OperationOutcome",
+        "id" : "contained-1",
+        "issue" : [{
+          "severity" : "warning",
+          "code" : "processing",
+          "details" : {
+            "coding" : [{
+              "system" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+              "code" : "unknownresultcode"
+            }]
+          },
+          "diagnostics" : "A laboratory test was found with an unexpected result code. Please review patient record to resolve."
+        }]
+      }],
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-messages",
+        "valueReference" : {
+          "reference" : "#contained-1"
+        }
+      }],
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/MarionHenderson",
+        "display" : "Marion77 Henderson15"
+      }
+    }
+  }]
+}

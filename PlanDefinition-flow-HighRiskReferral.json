@@ -1,0 +1,409 @@
+{
+  "resourceType" : "PlanDefinition",
+  "id" : "flow-HighRiskReferral",
+  "meta" : {
+    "profile" : ["http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"]
+  },
+  "text" : {
+    "status" : "extensions",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n<div>\n    <table class=\"grid dict\">\n        \n        <tr>\n            <th scope=\"row\"><b>Id: </b></th>\n            <td style=\"padding-left: 4px;\">flow-HighRiskReferral</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Url: </b></th>\n            <td style=\"padding-left: 4px;\"><a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Version: </b></th>\n            <td style=\"padding-left: 4px;\">1.0.0</td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Title: </b></th>\n            <td style=\"padding-left: 4px;\">High Risk Referral</td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Status: </b></th>\n            <td style=\"padding-left: 4px;\">draft</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Experimental: </b></th>\n            <td style=\"padding-left: 4px;\">true</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Type: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                    \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>system: </b> <span><a href=\"http://terminology.hl7.org/6.2.0/CodeSystem-plan-definition-type.html\">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>\n                        </p>\n                        \n                        \n                        <p style=\"margin-bottom: 5px;\">\n                            <b>code: </b> <span>eca-rule</span>\n                        </p>\n                        \n                        \n                    \n                \n                \n            </td>\n        </tr>\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Date: </b></th>\n            <td style=\"padding-left: 4px;\">2024-10-22</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Publisher: </b></th>\n            <td style=\"padding-left: 4px;\">MITRE</td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Description: </b></th>\n            <td style=\"padding-left: 4px;\"><div><p>Women who are at increased risk for breast cancer without current or previous diagnosis of breast cancer or ductal carcinoma in situ (DCIS) can be referred to a breast specialty clinic to consider risk reduction interventions.</p>\n</div></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Knowledge Capability: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                executable \n            </td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Knowledge Representation Level: </b></th>\n            <td style=\"padding-left: 4px;\">\n                \n                structured\n            </td>\n        </tr>\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Copyright: </b></th>\n            <td style=\"padding-left: 4px;\"><div><p>(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.</p>\n</div></td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Approval Date: </b></th>\n            <td style=\"padding-left: 4px;\">2024-10-22</td>\n        </tr>\n        \n\n        \n\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Libraries: </b></th>\n            <td style=\"padding-left: 4px;\">\n                <table class=\"grid-dict\">\n                    \n                    <tr>\n                        <td><code>Library/HighRiskReferral|1.0.0</code></td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n        \n\n        \n        <tr>\n            <th scope=\"row\"><b>Actions: </b></th>\n            <td style=\"padding-left: 4px;\">\n                <table class=\"grid-dict\">\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Referral for high risk breast specialty evaluation:</b> Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a genetic marker or syndrome associated with increased risk of breast cancer, may derive more benefit than harm from risk-reducing medications.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsHighRiskReferralGenetic)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(HighRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(HighRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Referral for high risk breast specialty evaluation:</b> Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of chest radiotherapy, may derive more benefit than harm from risk-reducing medications.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsHighRiskReferralChestXRT)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(HighRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(HighRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Referral for high risk breast specialty evaluation:</b> Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsHighRiskReferralAtypicalBiopsy)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(HighRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(HighRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Referral for high risk breast specialty evaluation:</b> Refer to high risk breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with at least a 3% risk for breast cancer in the next 5 years, are likely to derive more benefit than harm from risk-reducing medications.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsHighRiskReferral5YRiskHigh)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(HighRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(HighRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Consider referral for high risk breast specialty evaluation:</b> Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsHighRiskReferral5YRiskHigherThanAverage)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(HighRiskReferralCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(HighRiskReferralReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Shared decision making for high risk specialty referral based on life expectancy:</b> Patient may not be a candidate for chemoprevention if estimated life expectancy is &lt; 10 years.\n\nFactors that may impact this estimation should be considered prior to referral. A validated tool such as www.eprognosis.com can help guide decision making.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsConsiderLifeExpectancy)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMConsiderLifeExpectancy|1.0.0</code><br/>\n                            \n                            <i>Dynamic Values:</i><br/>\n                            \n                            code.coding[0]: <i>(ConsiderLifeExpectancyCode)</i>\n                            <br/>\n                            \n                            reasonCode[0].coding[0]: <i>(ConsiderLifeExpectancyReason)</i>\n                            <br/>\n                            \n                            \n                            \n                            \n                        </td>\n                    </tr>\n                    \n                    <tr>\n                        <td>\n                            \n                            <b> Perform 5 year risk assessment:</b> A 5 year risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for high risk breast specialty evaluation.\n\nWomen at higher than average 5 year risk may be candidates for referral to breast specialist to discuss primary risk reduction interventions. These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance.\n                            \n                            <br/>\n                            \n                            \n                            <b>If:</b>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(CheckIsIncludedAndNotExcluded)</i>\n                            <br/>\n                            \n                            <i>Applicability:</i>\n                            \n                            <i>(ExistsHighRiskAssessment)</i>\n                            <br/>\n                            \n                            \n                            \n                            <b>Then:</b>\n                            <table class=\"grid-dict\">\n                                \n                                <tr>\n                                    <td>\n                                        \n                                        <b> Informal 5 year risk assessment:</b>\n                                        Perform assessment based on personal risk factors conferring increased risk of breast cancer.\n\nThese may include: increasing age, younger age at menarche, older age at first live birth, nulliparity/lower parity, number of prior breast biopsies, heterogeneously and/or extremely dense breasts.\n                                        \n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                        <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest|1.0.0</code><br/>\n                                        \n                                        <i>Dynamic Values:</i><br/>\n                                        \n                                        code.coding[0]: <i>(HighRiskAssessmentCode)</i>\n                                        <br/>\n                                        \n                                        reasonCode[0].coding[0]: <i>(HighRiskAssessmentReason)</i>\n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                    </td>\n                                </tr>\n                                \n                                <tr>\n                                    <td>\n                                        \n                                        <b> 5 year risk assessment instrument:</b>\n                                        The NCI Breast Cancer Risk Assessment Tool and the Breast Cancer Surveillance Consortium Risk Calculator are based on models tested in US populations and are publicly available for clinicians and patients to use.\n                                        \n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                        <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest|1.0.0</code><br/>\n                                        \n                                        <i>Dynamic Values:</i><br/>\n                                        \n                                        code.coding[0]: <i>(HighRiskAssessmentToolCode)</i>\n                                        <br/>\n                                        \n                                        reasonCode[0].coding[0]: <i>(HighRiskAssessmentToolReason)</i>\n                                        <br/>\n                                        \n                                        \n                                        \n                                        \n                                    </td>\n                                </tr>\n                                \n                            </table>\n                            \n                        </td>\n                    </tr>\n                    \n                </table>\n            </td>\n        </tr>\n        \n    </table>\n</div>\n</div>"
+  },
+  "extension" : [{
+    "url" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability",
+    "valueCode" : "executable"
+  },
+  {
+    "url" : "http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel",
+    "valueCode" : "structured"
+  }],
+  "url" : "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral",
+  "version" : "1.0.0",
+  "name" : "flow-HighRiskReferral",
+  "title" : "High Risk Referral",
+  "type" : {
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/plan-definition-type",
+      "code" : "eca-rule"
+    }]
+  },
+  "status" : "draft",
+  "experimental" : true,
+  "date" : "2024-10-22",
+  "publisher" : "MITRE",
+  "contact" : [{
+    "name" : "MITRE",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://www.mitre.org/"
+    }]
+  }],
+  "description" : "Women who are at increased risk for breast cancer without current or previous diagnosis of breast cancer or ductal carcinoma in situ (DCIS) can be referred to a breast specialty clinic to consider risk reduction interventions.",
+  "copyright" : "(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.",
+  "approvalDate" : "2024-10-22",
+  "lastReviewDate" : "2024-10-22",
+  "author" : [{
+    "name" : "The Health FFRDC, operated by The MITRE Corporation, in support of the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention."
+  }],
+  "editor" : [{
+    "name" : "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"
+  }],
+  "reviewer" : [{
+    "name" : "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"
+  }],
+  "endorser" : [{
+    "name" : "Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"
+  }],
+  "library" : ["Library/HighRiskReferral|1.0.0"],
+  "action" : [{
+    "id" : "HighRiskReferralGenetic",
+    "title" : "Referral for high risk breast specialty evaluation",
+    "description" : "Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a genetic marker or syndrome associated with increased risk of breast cancer, may derive more benefit than harm from risk-reducing medications.",
+    "documentation" : [{
+      "type" : "citation",
+      "label" : "USPSTF",
+      "display" : "Breast Cancer: Medication Use to Reduce Risk",
+      "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+      "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction",
+      "document" : {
+        "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+      }
+    }],
+    "condition" : [{
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "CheckIsIncludedAndNotExcluded"
+      }
+    },
+    {
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ExistsHighRiskReferralGenetic"
+      }
+    }],
+    "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0",
+    "dynamicValue" : [{
+      "path" : "code.coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralCode"
+      }
+    },
+    {
+      "path" : "reasonCode[0].coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralReason"
+      }
+    }]
+  },
+  {
+    "id" : "HighRiskReferralChestXRT",
+    "title" : "Referral for high risk breast specialty evaluation",
+    "description" : "Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of chest radiotherapy, may derive more benefit than harm from risk-reducing medications.",
+    "documentation" : [{
+      "type" : "citation",
+      "label" : "USPSTF",
+      "display" : "Breast Cancer: Medication Use to Reduce Risk",
+      "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+      "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction",
+      "document" : {
+        "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+      }
+    }],
+    "condition" : [{
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "CheckIsIncludedAndNotExcluded"
+      }
+    },
+    {
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ExistsHighRiskReferralChestXRT"
+      }
+    }],
+    "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0",
+    "dynamicValue" : [{
+      "path" : "code.coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralCode"
+      }
+    },
+    {
+      "path" : "reasonCode[0].coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralReason"
+      }
+    }]
+  },
+  {
+    "id" : "HighRiskReferralAtypicalBiopsy",
+    "title" : "Referral for high risk breast specialty evaluation",
+    "description" : "Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with a history of past atypical biopsy results, may derive more benefit than harm from risk-reducing medications.",
+    "documentation" : [{
+      "type" : "citation",
+      "label" : "USPSTF",
+      "display" : "Breast Cancer: Medication Use to Reduce Risk",
+      "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+      "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction",
+      "document" : {
+        "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+      }
+    }],
+    "condition" : [{
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "CheckIsIncludedAndNotExcluded"
+      }
+    },
+    {
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ExistsHighRiskReferralAtypicalBiopsy"
+      }
+    }],
+    "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0",
+    "dynamicValue" : [{
+      "path" : "code.coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralCode"
+      }
+    },
+    {
+      "path" : "reasonCode[0].coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralReason"
+      }
+    }]
+  },
+  {
+    "id" : "HighRiskReferral5YRiskHigh",
+    "title" : "Referral for high risk breast specialty evaluation",
+    "description" : "Refer to high risk breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance. Women at greater risk, such as those with at least a 3% risk for breast cancer in the next 5 years, are likely to derive more benefit than harm from risk-reducing medications.",
+    "documentation" : [{
+      "type" : "citation",
+      "label" : "USPSTF",
+      "display" : "Breast Cancer: Medication Use to Reduce Risk",
+      "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+      "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction",
+      "document" : {
+        "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+      }
+    }],
+    "condition" : [{
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "CheckIsIncludedAndNotExcluded"
+      }
+    },
+    {
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ExistsHighRiskReferral5YRiskHigh"
+      }
+    }],
+    "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0",
+    "dynamicValue" : [{
+      "path" : "code.coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralCode"
+      }
+    },
+    {
+      "path" : "reasonCode[0].coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralReason"
+      }
+    }]
+  },
+  {
+    "id" : "HighRiskReferral5YRiskHigherThanAverage",
+    "title" : "Consider referral for high risk breast specialty evaluation",
+    "description" : "Consider referral to breast specialist to discuss primary risk reduction interventions.\n\nThese may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance.",
+    "documentation" : [{
+      "type" : "citation",
+      "label" : "USPSTF",
+      "display" : "Breast Cancer: Medication Use to Reduce Risk",
+      "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+      "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction",
+      "document" : {
+        "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+      }
+    }],
+    "condition" : [{
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "CheckIsIncludedAndNotExcluded"
+      }
+    },
+    {
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ExistsHighRiskReferral5YRiskHigherThanAverage"
+      }
+    }],
+    "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/HighRiskSpecialtyReferralRequest|1.0.0",
+    "dynamicValue" : [{
+      "path" : "code.coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralCode"
+      }
+    },
+    {
+      "path" : "reasonCode[0].coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "HighRiskReferralReason"
+      }
+    }]
+  },
+  {
+    "id" : "ConsiderLifeExpectancy",
+    "title" : "Shared decision making for high risk specialty referral based on life expectancy",
+    "description" : "Patient may not be a candidate for chemoprevention if estimated life expectancy is < 10 years.\n\nFactors that may impact this estimation should be considered prior to referral. A validated tool such as www.eprognosis.com can help guide decision making.",
+    "documentation" : [{
+      "type" : "citation",
+      "label" : "USPSTF",
+      "display" : "Breast Cancer: Medication Use to Reduce Risk",
+      "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+      "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction",
+      "document" : {
+        "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+      }
+    }],
+    "condition" : [{
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "CheckIsIncludedAndNotExcluded"
+      }
+    },
+    {
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ExistsConsiderLifeExpectancy"
+      }
+    }],
+    "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/CommunicateSDMConsiderLifeExpectancy|1.0.0",
+    "dynamicValue" : [{
+      "path" : "code.coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ConsiderLifeExpectancyCode"
+      }
+    },
+    {
+      "path" : "reasonCode[0].coding[0]",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ConsiderLifeExpectancyReason"
+      }
+    }]
+  },
+  {
+    "id" : "HighRiskAssessment",
+    "title" : "Perform 5 year risk assessment",
+    "description" : "A 5 year risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for high risk breast specialty evaluation.\n\nWomen at higher than average 5 year risk may be candidates for referral to breast specialist to discuss primary risk reduction interventions. These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance.",
+    "documentation" : [{
+      "type" : "citation",
+      "label" : "USPSTF",
+      "display" : "Breast Cancer: Medication Use to Reduce Risk",
+      "citation" : "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.",
+      "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction",
+      "document" : {
+        "url" : "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"
+      }
+    }],
+    "condition" : [{
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "CheckIsIncludedAndNotExcluded"
+      }
+    },
+    {
+      "kind" : "applicability",
+      "expression" : {
+        "language" : "text/cql-identifier",
+        "expression" : "ExistsHighRiskAssessment"
+      }
+    }],
+    "selectionBehavior" : "any",
+    "action" : [{
+      "id" : "5YRiskAssessment",
+      "title" : "Informal 5 year risk assessment",
+      "description" : "Perform assessment based on personal risk factors conferring increased risk of breast cancer.\n\nThese may include: increasing age, younger age at menarche, older age at first live birth, nulliparity/lower parity, number of prior breast biopsies, heterogeneously and/or extremely dense breasts.",
+      "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest|1.0.0",
+      "dynamicValue" : [{
+        "path" : "code.coding[0]",
+        "expression" : {
+          "language" : "text/cql-identifier",
+          "expression" : "HighRiskAssessmentCode"
+        }
+      },
+      {
+        "path" : "reasonCode[0].coding[0]",
+        "expression" : {
+          "language" : "text/cql-identifier",
+          "expression" : "HighRiskAssessmentReason"
+        }
+      }]
+    },
+    {
+      "id" : "5YRiskAssessmentTool",
+      "title" : "5 year risk assessment instrument",
+      "description" : "The NCI Breast Cancer Risk Assessment Tool and the Breast Cancer Surveillance Consortium Risk Calculator are based on models tested in US populations and are publicly available for clinicians and patients to use.",
+      "documentation" : [{
+        "type" : "documentation",
+        "label" : "NCI Breast Cancer Risk Assessment Tool",
+        "display" : "National Cancer Institute (NCI) Breast Cancer Risk Assessment Tool",
+        "url" : "https://bcrisktool.cancer.gov/",
+        "document" : {
+          "url" : "https://bcrisktool.cancer.gov/"
+        }
+      },
+      {
+        "type" : "documentation",
+        "label" : "BCSC Risk Calculator",
+        "display" : "Breast Cancer Surveillance Consortium (BCSC) Risk Calculator",
+        "url" : "https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk",
+        "document" : {
+          "url" : "https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk"
+        }
+      }],
+      "definitionCanonical" : "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest|1.0.0",
+      "dynamicValue" : [{
+        "path" : "code.coding[0]",
+        "expression" : {
+          "language" : "text/cql-identifier",
+          "expression" : "HighRiskAssessmentToolCode"
+        }
+      },
+      {
+        "path" : "reasonCode[0].coding[0]",
+        "expression" : {
+          "language" : "text/cql-identifier",
+          "expression" : "HighRiskAssessmentToolReason"
+        }
+      }]
+    }]
+  }]
+}

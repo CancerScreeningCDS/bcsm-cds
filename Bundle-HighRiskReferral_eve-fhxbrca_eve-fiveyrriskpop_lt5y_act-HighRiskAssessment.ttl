@@ -1,0 +1,176 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/HighRiskReferral_eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "HighRiskReferral_eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/469"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/469> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/470"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/470> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/471"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/471> )
+  ] [
+     fhir:fullUrl [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/472"^^xsd:anyURI ] ;
+     fhir:resource ( <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/472> )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/469> a fhir:CarePlan ;
+  fhir:id [ fhir:v "469"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_469\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 469</b></p><a name=\"469\"> </a><a name=\"hc469\"> </a><a name=\"469-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment.html#Patient_849fe469-d011-4154-bf3d-38030ce5e99c\">Jane Doe</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-HighRiskReferral_eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment.html#RequestGroup_470\">Bundle: type = collection</a></td></tr></table></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/849fe469-d011-4154-bf3d-38030ce5e99c> ;
+     fhir:reference [ fhir:v "Patient/849fe469-d011-4154-bf3d-38030ce5e99c" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:created [ fhir:v "2024-12-10T00:00:00.0Z"^^xsd:dateTime] ; # 
+  fhir:activity ( [
+     fhir:reference [
+       fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/470> ;
+       fhir:reference [ fhir:v "RequestGroup/470" ]
+     ]
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/470> a fhir:RequestGroup ;
+  fhir:id [ fhir:v "470"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_470\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 470</b></p><a name=\"470\"> </a><a name=\"hc470\"> </a><a name=\"470-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment.html#Patient_849fe469-d011-4154-bf3d-38030ce5e99c\">Jane Doe</a></p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>HighRiskAssessment</blockquote><p><b>title</b>: Perform 5 year risk assessment</p><p><b>description</b>: A 5 year risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for high risk breast specialty evaluation.\n\nWomen at higher than average 5 year risk may be candidates for referral to breast specialist to discuss primary risk reduction interventions. These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance.</p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Citation</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Citation</td><td>USPSTF</td><td>Breast Cancer: Medication Use to Reduce Risk</td><td><div><p>US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867.</p>\n</div></td><td><a href=\"https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction\">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction</a></td></tr></table><p><b>selectionBehavior</b>: Any</p><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>5YRiskAssessment</blockquote><p><b>title</b>: Informal 5 year risk assessment</p><p><b>description</b>: Perform assessment based on personal risk factors conferring increased risk of breast cancer.\n\nThese may include: increasing age, younger age at menarche, older age at first live birth, nulliparity/lower parity, number of prior breast biopsies, heterogeneously and/or extremely dense breasts.</p><p><b>resource</b>: <a href=\"Bundle-HighRiskReferral_eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment.html#ServiceRequest_471\">Bundle: type = collection</a></p></blockquote><blockquote><p><b>action</b></p><blockquote><p><b>id</b></p>5YRiskAssessmentTool</blockquote><p><b>title</b>: 5 year risk assessment instrument</p><p><b>description</b>: The NCI Breast Cancer Risk Assessment Tool and the Breast Cancer Surveillance Consortium Risk Calculator are based on models tested in US populations and are publicly available for clinicians and patients to use.</p><h3>Documentations</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Type</b></td><td><b>Label</b></td><td><b>Display</b></td><td><b>Url</b></td></tr><tr><td style=\"display: none\">*</td><td>Documentation</td><td>NCI Breast Cancer Risk Assessment Tool</td><td>National Cancer Institute (NCI) Breast Cancer Risk Assessment Tool</td><td><a href=\"https://bcrisktool.cancer.gov/\">https://bcrisktool.cancer.gov/</a></td></tr><tr><td style=\"display: none\">*</td><td>Documentation</td><td>BCSC Risk Calculator</td><td>Breast Cancer Surveillance Consortium (BCSC) Risk Calculator</td><td><a href=\"https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk\">https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk</a></td></tr></table><p><b>resource</b>: <a href=\"Bundle-HighRiskReferral_eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment.html#ServiceRequest_472\">Bundle: type = collection</a></p></blockquote></blockquote></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:instantiatesCanonical ( [
+     fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"^^xsd:anyURI ;
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral>
+  ] ) ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/849fe469-d011-4154-bf3d-38030ce5e99c> ;
+     fhir:reference [ fhir:v "Patient/849fe469-d011-4154-bf3d-38030ce5e99c" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:action ( [
+     fhir:id [ fhir:v "HighRiskAssessment" ] ;
+     fhir:title [ fhir:v "Perform 5 year risk assessment" ] ;
+     fhir:description [ fhir:v "A 5 year risk assessment, either informal or formal using a validated instrument, will help determine if the patient may benefit from referral for high risk breast specialty evaluation.\n\nWomen at higher than average 5 year risk may be candidates for referral to breast specialist to discuss primary risk reduction interventions. These may include medications to reduce risk (chemoprevention), risk reducing surgery or enhanced surveillance." ] ;
+     fhir:documentation ( [
+       fhir:type [ fhir:v "citation" ] ;
+       fhir:label [ fhir:v "USPSTF" ] ;
+       fhir:display [ fhir:v "Breast Cancer: Medication Use to Reduce Risk" ] ;
+       fhir:citation [ fhir:v "US Preventive Services Task Force. Medication Use to Reduce Risk of Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. 2019;322(9):857–867." ] ;
+       fhir:url [ fhir:v "https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-medications-for-risk-reduction"^^xsd:anyURI ]
+     ] ) ;
+     fhir:selectionBehavior [ fhir:v "any" ] ;
+     fhir:action ( [
+       fhir:id [ fhir:v "5YRiskAssessment" ] ;
+       fhir:title [ fhir:v "Informal 5 year risk assessment" ] ;
+       fhir:description [ fhir:v "Perform assessment based on personal risk factors conferring increased risk of breast cancer.\n\nThese may include: increasing age, younger age at menarche, older age at first live birth, nulliparity/lower parity, number of prior breast biopsies, heterogeneously and/or extremely dense breasts." ] ;
+       fhir:resource [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/471> ;
+         fhir:reference [ fhir:v "ServiceRequest/471" ]
+       ]
+     ] [
+       fhir:id [ fhir:v "5YRiskAssessmentTool" ] ;
+       fhir:title [ fhir:v "5 year risk assessment instrument" ] ;
+       fhir:description [ fhir:v "The NCI Breast Cancer Risk Assessment Tool and the Breast Cancer Surveillance Consortium Risk Calculator are based on models tested in US populations and are publicly available for clinicians and patients to use." ] ;
+       fhir:documentation ( [
+         fhir:type [ fhir:v "documentation" ] ;
+         fhir:label [ fhir:v "NCI Breast Cancer Risk Assessment Tool" ] ;
+         fhir:display [ fhir:v "National Cancer Institute (NCI) Breast Cancer Risk Assessment Tool" ] ;
+         fhir:url [ fhir:v "https://bcrisktool.cancer.gov/"^^xsd:anyURI ]
+       ] [
+         fhir:type [ fhir:v "documentation" ] ;
+         fhir:label [ fhir:v "BCSC Risk Calculator" ] ;
+         fhir:display [ fhir:v "Breast Cancer Surveillance Consortium (BCSC) Risk Calculator" ] ;
+         fhir:url [ fhir:v "https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk"^^xsd:anyURI ]
+       ] ) ;
+       fhir:resource [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/472> ;
+         fhir:reference [ fhir:v "ServiceRequest/472" ]
+       ]
+     ] )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/471> a fhir:ServiceRequest ;
+  fhir:id [ fhir:v "471"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_471\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 471</b></p><a name=\"471\"> </a><a name=\"hc471\"> </a><a name=\"471-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-5YearRiskAssessmentRequest.html\">5 Year Risk Assessment Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system 5YRiskAssess}\">Perform informal 5 year risk assessment</span></p><p><b>subject</b>: <a href=\"Bundle-eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment.html#Patient_849fe469-d011-4154-bf3d-38030ce5e99c\">Jane Doe</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system riskfactors}\">Personal or family history risk factors</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "5YRiskAssess" ] ;
+       fhir:display [ fhir:v "Perform informal 5 year risk assessment" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/849fe469-d011-4154-bf3d-38030ce5e99c> ;
+     fhir:reference [ fhir:v "Patient/849fe469-d011-4154-bf3d-38030ce5e99c" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "riskfactors" ] ;
+       fhir:display [ fhir:v "Personal or family history risk factors" ]
+     ] )
+  ] ) . # 
+
+<http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/472> a fhir:ServiceRequest ;
+  fhir:id [ fhir:v "472"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_472\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest 472</b></p><a name=\"472\"> </a><a name=\"hc472\"> </a><a name=\"472-en-US\"> </a><p><b>basedOn</b>: <a href=\"ActivityDefinition-5YearRiskAssessmentRequest.html\">5 Year Risk Assessment Request</a></p><p><b>status</b>: option</p><p><b>intent</b>: Proposal</p><p><b>code</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system 5yrisktool}\">5 year risk assessment tool</span></p><p><b>subject</b>: <a href=\"Bundle-eve-fhxbrca_eve-fiveyrriskpop_lt5y_act-HighRiskAssessment.html#Patient_849fe469-d011-4154-bf3d-38030ce5e99c\">Jane Doe</a></p><p><b>reasonCode</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system riskfactors}\">Personal or family history risk factors</span></p></div>"^^rdf:XMLLiteral
+  ] ; # 
+  fhir:basedOn ( [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest> ;
+     fhir:reference [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/5YearRiskAssessmentRequest" ]
+  ] ) ; # 
+  fhir:status [ fhir:v "option"] ; # 
+  fhir:intent [ fhir:v "proposal"] ; # 
+  fhir:code [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "5yrisktool" ] ;
+       fhir:display [ fhir:v "5 year risk assessment tool" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/849fe469-d011-4154-bf3d-38030ce5e99c> ;
+     fhir:reference [ fhir:v "Patient/849fe469-d011-4154-bf3d-38030ce5e99c" ] ;
+     fhir:display [ fhir:v "Jane Doe" ]
+  ] ; # 
+  fhir:reasonCode ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "riskfactors" ] ;
+       fhir:display [ fhir:v "Personal or family history risk factors" ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

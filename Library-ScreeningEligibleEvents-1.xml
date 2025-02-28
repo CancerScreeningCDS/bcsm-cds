@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="251">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library ScreeningEligibleEvents version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="ScreeningEligibleEvents" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="17:1-17:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <contexts>
+      <def localId="212" locator="21:1-21:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="210" locator="21:1-21:15" name="Patient" context="Patient">
+         <expression localId="211" xsi:type="SingletonFrom">
+            <operand localId="209" locator="21:1-21:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="214" locator="23:1-24:26" name="eve-female" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="214">
+               <a:s>define &quot;eve-female&quot;:
+  </a:s>
+               <a:s r="216">
+                  <a:s r="215">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="216">
+                     <a:s>&quot;de-female&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="216" locator="24:3-24:26" name="de-female" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="218" locator="26:1-29:72" name="eve-breastca" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="218">
+               <a:s>define &quot;eve-breastca&quot;:
+  </a:s>
+               <a:s r="219">
+                  <a:s r="222">
+                     <a:s r="221">
+                        <a:s r="220">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="221">
+                           <a:s>&quot;de-hxbreastcawithin5y&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+    or </a:s>
+                  <a:s r="223">
+                     <a:s>exists </a:s>
+                     <a:s r="241">
+                        <a:s>
+                           <a:s r="224">
+                              <a:s r="226">
+                                 <a:s>
+                                    <a:s>DataElements.&quot;de-breastca&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> C</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> </a:s>
+                        <a:s r="227">
+                           <a:s>where </a:s>
+                           <a:s r="227">
+                              <a:s r="231">
+                                 <a:s r="230">
+                                    <a:s r="229">
+                                       <a:s r="228">
+                                          <a:s>C</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="229">
+                                          <a:s>onset</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="230">
+                                       <a:s>value</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s> is null</a:s>
+                              </a:s>
+                              <a:s>
+    or </a:s>
+                              <a:s r="232">
+                                 <a:s>exists </a:s>
+                                 <a:s r="240">
+                                    <a:s>
+                                       <a:s r="233">
+                                          <a:s r="235">
+                                             <a:s>
+                                                <a:s>DataElements.&quot;de-hxbreastca&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> P</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> </a:s>
+                                    <a:s r="239">
+                                       <a:s>where </a:s>
+                                       <a:s r="239">
+                                          <a:s r="238">
+                                             <a:s r="237">
+                                                <a:s r="236">
+                                                   <a:s>P</a:s>
+                                                </a:s>
+                                                <a:s>.</a:s>
+                                                <a:s r="237">
+                                                   <a:s>onset</a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>.</a:s>
+                                             <a:s r="238">
+                                                <a:s>value</a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s> is null</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="219" locator="27:3-29:72" xsi:type="Or">
+            <operand localId="222" locator="27:3-27:46" xsi:type="IsTrue">
+               <operand localId="221" locator="27:3-27:38" name="de-hxbreastcawithin5y" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="223" locator="28:8-29:72" xsi:type="Exists">
+               <operand localId="241" locator="28:15-29:72" xsi:type="Query">
+                  <source localId="224" locator="28:15-28:42" alias="C">
+                     <expression localId="226" locator="28:15-28:40" name="de-breastca" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </source>
+                  <where localId="227" locator="28:44-29:72" xsi:type="Or">
+                     <operand localId="231" locator="28:50-28:70" xsi:type="IsNull">
+                        <operand localId="230" locator="28:50-28:62" path="value" xsi:type="Property">
+                           <source localId="229" locator="28:50-28:56" path="onset" scope="C" xsi:type="Property"/>
+                        </operand>
+                     </operand>
+                     <operand localId="232" locator="29:8-29:72" xsi:type="Exists">
+                        <operand localId="240" locator="29:15-29:72" xsi:type="Query">
+                           <source localId="233" locator="29:15-29:44" alias="P">
+                              <expression localId="235" locator="29:15-29:42" name="de-hxbreastca" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                           </source>
+                           <where localId="239" locator="29:46-29:72" xsi:type="IsNull">
+                              <operand localId="238" locator="29:52-29:64" path="value" xsi:type="Property">
+                                 <source localId="237" locator="29:52-29:58" path="onset" scope="P" xsi:type="Property"/>
+                              </operand>
+                           </where>
+                        </operand>
+                     </operand>
+                  </where>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="243" locator="31:1-32:30" name="eve-mastectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="243">
+               <a:s>define &quot;eve-mastectomy&quot;:
+  </a:s>
+               <a:s r="245">
+                  <a:s r="244">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="245">
+                     <a:s>&quot;de-mastectomy&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="245" locator="32:3-32:30" name="de-mastectomy" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="247" locator="34:1-35:34" name="eve-breastsymptoms" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="247">
+               <a:s>define &quot;eve-breastsymptoms&quot;:
+  </a:s>
+               <a:s r="249">
+                  <a:s r="248">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="249">
+                     <a:s>&quot;de-breastsymptoms&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="249" locator="35:3-35:34" name="de-breastsymptoms" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="251" locator="37:1-38:34" name="eve-breastfindings" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="251">
+               <a:s>define &quot;eve-breastfindings&quot;:
+  </a:s>
+               <a:s r="253">
+                  <a:s r="252">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="253">
+                     <a:s>&quot;de-breastfindings&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="253" locator="38:3-38:34" name="de-breastfindings" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+   </statements>
+</library>

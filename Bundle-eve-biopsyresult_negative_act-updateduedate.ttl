@@ -1,0 +1,95 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/eve-biopsyresult_negative_act-updateduedate> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "eve-biopsyresult_negative_act-updateduedate"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "defaultPatient" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Doe" ] ;
+         fhir:given ( [ fhir:v "Jane" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1981-01-01"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:DiagnosticReport ;
+       fhir:id [ fhir:v "d70c985a-aa39-4cab-8f61-b03616f0ec6f" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_d70c985a-aa39-4cab-8f61-b03616f0ec6f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport d70c985a-aa39-4cab-8f61-b03616f0ec6f</b></p><a name=\"d70c985a-aa39-4cab-8f61-b03616f0ec6f\"> </a><a name=\"hcd70c985a-aa39-4cab-8f61-b03616f0ec6f\"> </a><a name=\"d70c985a-aa39-4cab-8f61-b03616f0ec6f-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 66110-8}\">Biopsy Report</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2024-10-01 10:00:00+0000</td></tr></table><p><b>Report Details</b></p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:basedOn ( [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/order-1> ;
+         fhir:reference [ fhir:v "ServiceRequest/order-1" ]
+       ] ) ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:66110-8 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "66110-8" ] ;
+           fhir:display [ fhir:v "Biopsy Report" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-10-01T10:00:00.000Z"^^xsd:dateTime
+       ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:Observation ;
+       fhir:id [ fhir:v "973890e5-945a-452b-8b5e-853c3889c54f" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Observation_973890e5-945a-452b-8b5e-853c3889c54f\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Observation 973890e5-945a-452b-8b5e-853c3889c54f</b></p><a name=\"973890e5-945a-452b-8b5e-853c3889c54f\"> </a><a name=\"hc973890e5-945a-452b-8b5e-853c3889c54f\"> </a><a name=\"973890e5-945a-452b-8b5e-853c3889c54f-en-US\"> </a><p><b>basedOn</b>: <a href=\"ServiceRequest/order-1\">ServiceRequest/order-1</a></p><p><b>status</b>: Final</p><p><b>code</b>: <span title=\"Codes:{http://loinc.org 66110-8}\">Biopsy Report</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><p><b>value</b>: <span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system Negative}\">Normal breast tissue</span></p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:basedOn ( [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/ServiceRequest/order-1> ;
+         fhir:reference [ fhir:v "ServiceRequest/order-1" ]
+       ] ) ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:66110-8 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "66110-8" ] ;
+           fhir:display [ fhir:v "Biopsy Report" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "Negative" ]
+         ] )
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

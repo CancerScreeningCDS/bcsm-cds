@@ -1,0 +1,80 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "eve-nextdueexists_yes_eve-screeninginterval_annual_eve-dueannual_due",
+  "type" : "collection",
+  "entry" : [{
+    "resource" : {
+      "resourceType" : "Patient",
+      "id" : "defaultPatient",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"
+      },
+      "name" : [{
+        "family" : "Doe",
+        "given" : ["Jane"]
+      }],
+      "gender" : "female",
+      "birthDate" : "1981-01-01"
+    }
+  },
+  {
+    "resource" : {
+      "resourceType" : "CarePlan",
+      "id" : "dcff0ad5-cd2f-4fdf-8756-b29d653a38b1",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_dcff0ad5-cd2f-4fdf-8756-b29d653a38b1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan dcff0ad5-cd2f-4fdf-8756-b29d653a38b1</b></p><a name=\"dcff0ad5-cd2f-4fdf-8756-b29d653a38b1\"> </a><a name=\"hcdcff0ad5-cd2f-4fdf-8756-b29d653a38b1\"> </a><a name=\"dcff0ad5-cd2f-4fdf-8756-b29d653a38b1-en-US\"> </a><p><b>status</b>: Active</p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 268547008}\">Breast cancer screening</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><p><b>created</b>: 2024-06-01</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-eve-nextdueexists_yes_eve-screeninginterval_annual_eve-dueannual_due.html#RequestGroup_RequestGroup-1\">Bundle: type = collection</a></td></tr></table></div>"
+      },
+      "status" : "active",
+      "category" : [{
+        "coding" : [{
+          "system" : "http://snomed.info/sct",
+          "code" : "268547008",
+          "display" : "Breast cancer screening"
+        }]
+      }],
+      "subject" : {
+        "reference" : "Patient/defaultPatient"
+      },
+      "created" : "2024-06-01",
+      "activity" : [{
+        "reference" : {
+          "reference" : "RequestGroup/RequestGroup-1"
+        }
+      }]
+    }
+  },
+  {
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "RequestGroup-1",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_RequestGroup-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup RequestGroup-1</b></p><a name=\"RequestGroup-1\"> </a><a name=\"hcRequestGroup-1\"> </a><a name=\"RequestGroup-1-en-US\"> </a><p><b>status</b>: Active</p><p><b>intent</b>: Order</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><h3>Actions</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td><td><b>Timing[x]</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://loinc.org 24606-6}\">MG Breast Screening</span></td><td>Events: 2025-01-01 , Once per 1 year</td></tr></table></div>"
+      },
+      "status" : "active",
+      "intent" : "order",
+      "subject" : {
+        "reference" : "Patient/defaultPatient"
+      },
+      "action" : [{
+        "code" : [{
+          "coding" : [{
+            "system" : "http://loinc.org",
+            "code" : "24606-6",
+            "display" : "MG Breast Screening"
+          }]
+        }],
+        "timingTiming" : {
+          "event" : ["2025-01-01"],
+          "repeat" : {
+            "frequency" : 1,
+            "period" : 1,
+            "periodUnit" : "a"
+          }
+        }
+      }]
+    }
+  }]
+}

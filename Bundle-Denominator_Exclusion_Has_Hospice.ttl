@@ -1,0 +1,53 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/Denominator_Exclusion_Has_Hospice> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "Denominator_Exclusion_Has_Hospice"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "defaultPatient" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Doe" ] ;
+         fhir:given ( [ fhir:v "Jane" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1981-01-01"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:ServiceRequest ;
+       fhir:id [ fhir:v "bb20c8a8-26dd-42e6-93ef-cceceec14c07" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"ServiceRequest_bb20c8a8-26dd-42e6-93ef-cceceec14c07\"> </a><p class=\"res-header-id\"><b>Generated Narrative: ServiceRequest bb20c8a8-26dd-42e6-93ef-cceceec14c07</b></p><a name=\"bb20c8a8-26dd-42e6-93ef-cceceec14c07\"> </a><a name=\"hcbb20c8a8-26dd-42e6-93ef-cceceec14c07\"> </a><a name=\"bb20c8a8-26dd-42e6-93ef-cceceec14c07-en-US\"> </a><p><b>status</b>: Completed</p><p><b>intent</b>: Order</p><p><b>doNotPerform</b>: false</p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 385763009}\">Hospice care (regime/therapy)</span></p><p><b>authoredOn</b>: 2024-10-01 00:00:00+0000</p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "completed" ] ;
+       fhir:intent [ fhir:v "order" ] ;
+       fhir:doNotPerform [ fhir:v "false"^^xsd:boolean ] ;
+       fhir:code [
+         fhir:coding ( [
+           a sct:385763009 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "385763009" ] ;
+           fhir:display [ fhir:v "Hospice care (regime/therapy)" ]
+         ] )
+       ] ;
+       fhir:authoredOn [ fhir:v "2024-10-01T00:00:00.000Z"^^xsd:dateTime ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

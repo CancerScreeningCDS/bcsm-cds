@@ -1,0 +1,1210 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "s" : {
+            "r" : "286",
+            "s" : [ {
+               "value" : [ "/*  \n  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.\n\n  (C) 2024 The MITRE Corporation. All Rights Reserved. \n  Approved for Public Release: 24-2711. \n  Distribution Unlimited.\n\n  Unless otherwise noted, this work is available under an Apache 2.0 license. \n  It was produced by the MITRE Corporation for the Division of Cancer Prevention \n  and Control, Centers for Disease Control and Prevention in accordance with the \n  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.\n*/\n\n","library HighRiskReferralActions version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "HighRiskReferralActions",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "16:1-16:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "18:1-18:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "19:1-19:61",
+            "localIdentifier" : "BCSMCommon",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "BCSMCommonFunctions" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","BCSMCommon" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "209",
+            "locator" : "21:1-21:114",
+            "name" : "ActCode",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ActCode\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "210",
+            "locator" : "22:1-22:111",
+            "name" : "LOCAL",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"LOCAL\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "211",
+            "locator" : "23:1-23:124",
+            "name" : "BiopsyResultCS",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "211",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"BiopsyResultCS\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "212",
+            "locator" : "26:1-26:101",
+            "name" : "5 year risk assessment tool",
+            "id" : "5yrisktool",
+            "display" : "5 year risk assessment tool",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "212",
+                  "s" : [ {
+                     "value" : [ "// Act Codes\n","code ","\"5 year risk assessment tool\"",": ","'5yrisktool'"," from " ]
+                  }, {
+                     "r" : "213",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'5 year risk assessment tool'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "213",
+               "locator" : "26:55-26:63",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "214",
+            "locator" : "27:1-27:127",
+            "name" : "Perform informal 5 year risk assessment",
+            "id" : "5YRiskAssess",
+            "display" : "Perform informal 5 year risk assessment",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "214",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Perform informal 5 year risk assessment\"",": ","'5YRiskAssess'"," from " ]
+                  }, {
+                     "r" : "215",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Perform informal 5 year risk assessment'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "215",
+               "locator" : "27:69-27:77",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "216",
+            "locator" : "28:1-28:90",
+            "name" : "High risk referral",
+            "id" : "highriskreferral",
+            "display" : "High risk referral",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "216",
+                  "s" : [ {
+                     "value" : [ "","code ","\"High risk referral\"",": ","'highriskreferral'"," from  " ]
+                  }, {
+                     "r" : "217",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'High risk referral'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "217",
+               "locator" : "28:53-28:61",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "218",
+            "locator" : "29:1-29:102",
+            "name" : "Consider life expectancy",
+            "id" : "estlifexpectancy",
+            "display" : "Consider life expectancy",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "218",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Consider life expectancy\"",": ","'estlifexpectancy'"," from  " ]
+                  }, {
+                     "r" : "219",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Consider life expectancy'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "219",
+               "locator" : "29:59-29:67",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "220",
+            "locator" : "31:1-31:87",
+            "name" : "High familial risk",
+            "id" : "highfamilialrisk",
+            "display" : "High familial risk",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "220",
+                  "s" : [ {
+                     "value" : [ "// Reason Codes\n","code ","\"High familial risk\"",": ","'highfamilialrisk'"," from " ]
+                  }, {
+                     "r" : "221",
+                     "s" : [ {
+                        "value" : [ "\"LOCAL\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'High familial risk'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "221",
+               "locator" : "31:52-31:58",
+               "name" : "LOCAL"
+            }
+         }, {
+            "localId" : "222",
+            "locator" : "32:1-32:121",
+            "name" : "History of chest radiation ages 10-30 y",
+            "id" : "chestxrt",
+            "display" : "History of chest radiation ages 10-30 y",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "222",
+                  "s" : [ {
+                     "value" : [ "","code ","\"History of chest radiation ages 10-30 y\"",": ","'chestxrt'"," from " ]
+                  }, {
+                     "r" : "223",
+                     "s" : [ {
+                        "value" : [ "\"LOCAL\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'History of chest radiation ages 10-30 y'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "223",
+               "locator" : "32:65-32:71",
+               "name" : "LOCAL"
+            }
+         }, {
+            "localId" : "224",
+            "locator" : "33:1-33:96",
+            "name" : "Atypical breast finding",
+            "id" : "Atypical",
+            "display" : "Atypical breast finding",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "224",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Atypical breast finding\"",": ","'Atypical'"," from " ]
+                  }, {
+                     "r" : "225",
+                     "s" : [ {
+                        "value" : [ "BiopsyResultCS" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Atypical breast finding'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "225",
+               "locator" : "33:49-33:62",
+               "name" : "BiopsyResultCS"
+            }
+         }, {
+            "localId" : "226",
+            "locator" : "34:1-34:77",
+            "name" : "High 5 year risk",
+            "id" : "high5yrisk",
+            "display" : "High 5 year risk",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "226",
+                  "s" : [ {
+                     "value" : [ "","code ","\"High 5 year risk\"",": ","'high5yrisk'"," from " ]
+                  }, {
+                     "r" : "227",
+                     "s" : [ {
+                        "value" : [ "\"LOCAL\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'High 5 year risk'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "227",
+               "locator" : "34:44-34:50",
+               "name" : "LOCAL"
+            }
+         }, {
+            "localId" : "228",
+            "locator" : "35:1-35:110",
+            "name" : "5 year risk at least 1.67%",
+            "id" : "higherthanaverage5yrisk",
+            "display" : "5 year risk at least 1.67%",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "228",
+                  "s" : [ {
+                     "value" : [ "","code ","\"5 year risk at least 1.67%\"",": ","'higherthanaverage5yrisk'"," from " ]
+                  }, {
+                     "r" : "229",
+                     "s" : [ {
+                        "value" : [ "\"LOCAL\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'5 year risk at least 1.67%'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "229",
+               "locator" : "35:67-35:73",
+               "name" : "LOCAL"
+            }
+         }, {
+            "localId" : "230",
+            "locator" : "36:1-36:124",
+            "name" : "Personal or family history risk factors",
+            "id" : "riskfactors",
+            "display" : "Personal or family history risk factors",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "230",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Personal or family history risk factors\"",": ","'riskfactors'"," from " ]
+                  }, {
+                     "r" : "231",
+                     "s" : [ {
+                        "value" : [ "\"LOCAL\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Personal or family history risk factors'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "231",
+               "locator" : "36:68-36:74",
+               "name" : "LOCAL"
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "235",
+            "locator" : "38:1-38:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "233",
+            "locator" : "38:1-38:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "234",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "232",
+                  "locator" : "38:1-38:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "237",
+            "locator" : "40:1-45:2",
+            "name" : "act-estlifexpectancy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "237",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-estlifexpectancy\"",":\n  " ]
+                  }, {
+                     "r" : "238",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "239",
+                           "s" : [ {
+                              "value" : [ "\"Consider life expectancy\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "r" : "240",
+                           "value" : [ "reason",": ","null" ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "242",
+                           "s" : [ {
+                              "r" : "241",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "242",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "238",
+               "locator" : "41:3-45:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "239",
+                     "locator" : "42:9-42:34",
+                     "name" : "Consider life expectancy",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "240",
+                     "locator" : "43:13-43:16",
+                     "type" : "Null"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "242",
+                     "locator" : "44:20-44:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "244",
+            "locator" : "47:1-52:2",
+            "name" : "act-HighRiskReferralGenetic",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "244",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-HighRiskReferralGenetic\"",":\n  " ]
+                  }, {
+                     "r" : "245",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "246",
+                           "s" : [ {
+                              "value" : [ "\"High risk referral\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "247",
+                           "s" : [ {
+                              "value" : [ "\"High familial risk\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "249",
+                           "s" : [ {
+                              "r" : "248",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "249",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "245",
+               "locator" : "48:3-52:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "246",
+                     "locator" : "49:9-49:28",
+                     "name" : "High risk referral",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "247",
+                     "locator" : "50:13-50:32",
+                     "name" : "High familial risk",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "249",
+                     "locator" : "51:20-51:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "251",
+            "locator" : "54:1-59:2",
+            "name" : "act-HighRiskReferralChestXRT",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "251",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-HighRiskReferralChestXRT\"",":\n  " ]
+                  }, {
+                     "r" : "252",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "253",
+                           "s" : [ {
+                              "value" : [ "\"High risk referral\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "254",
+                           "s" : [ {
+                              "value" : [ "\"History of chest radiation ages 10-30 y\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "256",
+                           "s" : [ {
+                              "r" : "255",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "256",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "252",
+               "locator" : "55:3-59:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "253",
+                     "locator" : "56:9-56:28",
+                     "name" : "High risk referral",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "254",
+                     "locator" : "57:13-57:53",
+                     "name" : "History of chest radiation ages 10-30 y",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "256",
+                     "locator" : "58:20-58:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "258",
+            "locator" : "62:1-67:2",
+            "name" : "act-HighRiskReferralAtypicalBiopsy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "258",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-HighRiskReferralAtypicalBiopsy\"",":\n  " ]
+                  }, {
+                     "r" : "259",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "260",
+                           "s" : [ {
+                              "value" : [ "\"High risk referral\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "261",
+                           "s" : [ {
+                              "value" : [ "\"Atypical breast finding\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "263",
+                           "s" : [ {
+                              "r" : "262",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "263",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "259",
+               "locator" : "63:3-67:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "260",
+                     "locator" : "64:9-64:28",
+                     "name" : "High risk referral",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "261",
+                     "locator" : "65:13-65:37",
+                     "name" : "Atypical breast finding",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "263",
+                     "locator" : "66:20-66:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "265",
+            "locator" : "69:1-74:2",
+            "name" : "act-HighRiskReferral",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "265",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-HighRiskReferral\"",":\n  " ]
+                  }, {
+                     "r" : "266",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "267",
+                           "s" : [ {
+                              "value" : [ "\"High risk referral\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "268",
+                           "s" : [ {
+                              "value" : [ "\"High 5 year risk\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "270",
+                           "s" : [ {
+                              "r" : "269",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "270",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "266",
+               "locator" : "70:3-74:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "267",
+                     "locator" : "71:9-71:28",
+                     "name" : "High risk referral",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "268",
+                     "locator" : "72:13-72:30",
+                     "name" : "High 5 year risk",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "270",
+                     "locator" : "73:20-73:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "272",
+            "locator" : "76:1-81:2",
+            "name" : "act-ConsiderHighRiskReferral",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "272",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-ConsiderHighRiskReferral\"",":\n  " ]
+                  }, {
+                     "r" : "273",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "274",
+                           "s" : [ {
+                              "value" : [ "\"High risk referral\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "275",
+                           "s" : [ {
+                              "value" : [ "\"5 year risk at least 1.67%\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "277",
+                           "s" : [ {
+                              "r" : "276",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "277",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "273",
+               "locator" : "77:3-81:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "274",
+                     "locator" : "78:9-78:28",
+                     "name" : "High risk referral",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "275",
+                     "locator" : "79:13-79:40",
+                     "name" : "5 year risk at least 1.67%",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "277",
+                     "locator" : "80:20-80:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "279",
+            "locator" : "83:1-88:2",
+            "name" : "act-5YRiskAssessment",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "279",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-5YRiskAssessment\"",":\n  " ]
+                  }, {
+                     "r" : "280",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "281",
+                           "s" : [ {
+                              "value" : [ "\"Perform informal 5 year risk assessment\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "282",
+                           "s" : [ {
+                              "value" : [ "\"Personal or family history risk factors\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "284",
+                           "s" : [ {
+                              "r" : "283",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "284",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "280",
+               "locator" : "84:3-88:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "281",
+                     "locator" : "85:9-85:49",
+                     "name" : "Perform informal 5 year risk assessment",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "282",
+                     "locator" : "86:13-86:53",
+                     "name" : "Personal or family history risk factors",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "284",
+                     "locator" : "87:20-87:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "286",
+            "locator" : "90:1-95:2",
+            "name" : "act-5YRiskAssessmentTool",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "286",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-5YRiskAssessmentTool\"",":\n  " ]
+                  }, {
+                     "r" : "287",
+                     "s" : [ {
+                        "value" : [ "{\n\t\t" ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "code",": " ]
+                        }, {
+                           "r" : "288",
+                           "s" : [ {
+                              "value" : [ "\"5 year risk assessment tool\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "reason",": " ]
+                        }, {
+                           "r" : "289",
+                           "s" : [ {
+                              "value" : [ "\"Personal or family history risk factors\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ ",\n    " ]
+                     }, {
+                        "s" : [ {
+                           "value" : [ "documentation",": " ]
+                        }, {
+                           "r" : "291",
+                           "s" : [ {
+                              "r" : "290",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "291",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationUSPSTF" ]
+                              } ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n\t}" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "287",
+               "locator" : "91:3-95:2",
+               "type" : "Tuple",
+               "element" : [ {
+                  "name" : "code",
+                  "value" : {
+                     "localId" : "288",
+                     "locator" : "92:9-92:37",
+                     "name" : "5 year risk assessment tool",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "reason",
+                  "value" : {
+                     "localId" : "289",
+                     "locator" : "93:13-93:53",
+                     "name" : "Personal or family history risk factors",
+                     "type" : "CodeRef"
+                  }
+               }, {
+                  "name" : "documentation",
+                  "value" : {
+                     "localId" : "291",
+                     "locator" : "94:20-94:55",
+                     "name" : "SourceDocumentationUSPSTF",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}

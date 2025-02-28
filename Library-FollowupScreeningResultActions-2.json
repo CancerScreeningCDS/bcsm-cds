@@ -1,0 +1,1813 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "s" : {
+            "r" : "340",
+            "s" : [ {
+               "value" : [ "/*  \n  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.\n\n  (C) 2024 The MITRE Corporation. All Rights Reserved. \n  Approved for Public Release: 24-2711. \n  Distribution Unlimited.\n\n  Unless otherwise noted, this work is available under an Apache 2.0 license. \n  It was produced by the MITRE Corporation for the Division of Cancer Prevention \n  and Control, Centers for Disease Control and Prevention in accordance with the \n  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.\n*/\n\n","library FollowupScreeningResultActions version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "FollowupScreeningResultActions",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "16:1-16:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "18:1-18:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "19:1-19:56",
+            "localIdentifier" : "DataElements",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/DataElements",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "DataElements" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","DataElements" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "209",
+            "locator" : "20:1-20:61",
+            "localIdentifier" : "BCSMCommon",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "BCSMCommonFunctions" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","BCSMCommon" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "210",
+            "locator" : "21:1-21:67",
+            "localIdentifier" : "Events",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FollowupScreeningResultEvents",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FollowupScreeningResultEvents" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","Events" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "211",
+            "locator" : "23:1-23:114",
+            "name" : "ActCode",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "211",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"ActCode\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "212",
+            "locator" : "24:1-24:111",
+            "name" : "LOCAL",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "212",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"LOCAL\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "213",
+            "locator" : "25:1-25:48",
+            "name" : "SNOMED-CT",
+            "id" : "http://snomed.info/sct",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "213",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"SNOMED-CT\"",": ","'http://snomed.info/sct'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "214",
+            "locator" : "26:1-26:124",
+            "name" : "BiopsyResultCS",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "214",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"BiopsyResultCS\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codes" : {
+         "def" : [ {
+            "localId" : "215",
+            "locator" : "29:1-29:99",
+            "name" : "Determine next due date",
+            "id" : "determinenextdue",
+            "display" : "Determine next due date",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "215",
+                  "s" : [ {
+                     "value" : [ "// Act Codes\n","code ","\"Determine next due date\"",": ","'determinenextdue'"," from " ]
+                  }, {
+                     "r" : "216",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Determine next due date'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "216",
+               "locator" : "29:57-29:65",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "217",
+            "locator" : "30:1-30:124",
+            "name" : "Follow-up radiologist recommendations",
+            "id" : "radiologyrecs",
+            "display" : "Follow-up radiologist recommendations",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "217",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Follow-up radiologist recommendations\"",": ","'radiologyrecs'"," from " ]
+                  }, {
+                     "r" : "218",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Follow-up radiologist recommendations'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "218",
+               "locator" : "30:68-30:76",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "219",
+            "locator" : "31:1-31:95",
+            "name" : "Order interval imaging",
+            "id" : "intervalscreen",
+            "display" : "Order interval imaging",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "219",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Order interval imaging\"",": ","'intervalscreen'"," from " ]
+                  }, {
+                     "r" : "220",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Order interval imaging'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "220",
+               "locator" : "31:54-31:62",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "221",
+            "locator" : "32:1-32:76",
+            "name" : "Breast biopsy",
+            "id" : "breastbiopsy",
+            "display" : "Breast biopsy",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "221",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Breast biopsy\"",": ","'breastbiopsy'"," from  " ]
+                  }, {
+                     "r" : "222",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Breast biopsy'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "222",
+               "locator" : "32:44-32:52",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "223",
+            "locator" : "33:1-33:100",
+            "name" : "Breast surgeon referral",
+            "id" : "surgicalreferral",
+            "display" : "Breast surgeon referral",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "223",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Breast surgeon referral\"",": ","'surgicalreferral'"," from  " ]
+                  }, {
+                     "r" : "224",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Breast surgeon referral'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "224",
+               "locator" : "33:58-33:66",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "225",
+            "locator" : "34:1-34:85",
+            "name" : "Oncologic referral",
+            "id" : "oncreferral",
+            "display" : "Oncologic referral",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "225",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Oncologic referral\"",": ","'oncreferral'"," from  " ]
+                  }, {
+                     "r" : "226",
+                     "s" : [ {
+                        "value" : [ "\"ActCode\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Oncologic referral'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "226",
+               "locator" : "34:48-34:56",
+               "name" : "ActCode"
+            }
+         }, {
+            "localId" : "227",
+            "locator" : "36:1-36:139",
+            "name" : "Category0",
+            "id" : "397138000",
+            "display" : "Mammography assessment (Category 0) - Need additional imaging evaluation (finding)",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "227",
+                  "s" : [ {
+                     "value" : [ "// Reason Codes\n","code ","\"Category0\"",": ","'397138000'"," from " ]
+                  }, {
+                     "r" : "228",
+                     "s" : [ {
+                        "value" : [ "\"SNOMED-CT\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Mammography assessment (Category 0) - Need additional imaging evaluation (finding)'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "228",
+               "locator" : "36:36-36:46",
+               "name" : "SNOMED-CT"
+            }
+         }, {
+            "localId" : "229",
+            "locator" : "37:1-37:154",
+            "name" : "Category3",
+            "id" : "397143007",
+            "display" : "Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "229",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Category3\"",": ","'397143007'"," from " ]
+                  }, {
+                     "r" : "230",
+                     "s" : [ {
+                        "value" : [ "\"SNOMED-CT\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "230",
+               "locator" : "37:36-37:46",
+               "name" : "SNOMED-CT"
+            }
+         }, {
+            "localId" : "231",
+            "locator" : "38:1-38:156",
+            "name" : "Category4",
+            "id" : "397144001",
+            "display" : "Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "231",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Category4\"",": ","'397144001'"," from " ]
+                  }, {
+                     "r" : "232",
+                     "s" : [ {
+                        "value" : [ "\"SNOMED-CT\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "232",
+               "locator" : "38:36-38:46",
+               "name" : "SNOMED-CT"
+            }
+         }, {
+            "localId" : "233",
+            "locator" : "39:1-39:136",
+            "name" : "Category5",
+            "id" : "397145000",
+            "display" : "Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "233",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Category5\"",": ","'397145000'"," from " ]
+                  }, {
+                     "r" : "234",
+                     "s" : [ {
+                        "value" : [ "\"SNOMED-CT\"" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "234",
+               "locator" : "39:36-39:46",
+               "name" : "SNOMED-CT"
+            }
+         }, {
+            "localId" : "235",
+            "locator" : "40:1-40:78",
+            "name" : "Negative",
+            "id" : "Negative",
+            "display" : "Normal breast tissue",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "235",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Negative\"",": ","'Negative'"," from " ]
+                  }, {
+                     "r" : "236",
+                     "s" : [ {
+                        "value" : [ "BiopsyResultCS" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Normal breast tissue'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "236",
+               "locator" : "40:34-40:47",
+               "name" : "BiopsyResultCS"
+            }
+         }, {
+            "localId" : "237",
+            "locator" : "41:1-41:75",
+            "name" : "Benign",
+            "id" : "Benign",
+            "display" : "Benign breast finding",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "237",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Benign\"",": ","'Benign'"," from " ]
+                  }, {
+                     "r" : "238",
+                     "s" : [ {
+                        "value" : [ "BiopsyResultCS" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Benign breast finding'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "238",
+               "locator" : "41:30-41:43",
+               "name" : "BiopsyResultCS"
+            }
+         }, {
+            "localId" : "239",
+            "locator" : "42:1-42:81",
+            "name" : "Atypical",
+            "id" : "Atypical",
+            "display" : "Atypical breast finding",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "239",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Atypical\"",": ","'Atypical'"," from " ]
+                  }, {
+                     "r" : "240",
+                     "s" : [ {
+                        "value" : [ "BiopsyResultCS" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Atypical breast finding'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "240",
+               "locator" : "42:34-42:47",
+               "name" : "BiopsyResultCS"
+            }
+         }, {
+            "localId" : "241",
+            "locator" : "43:1-43:84",
+            "name" : "Malignant",
+            "id" : "Malignant",
+            "display" : "Malignant breast finding",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "241",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Malignant\"",": ","'Malignant'"," from " ]
+                  }, {
+                     "r" : "242",
+                     "s" : [ {
+                        "value" : [ "BiopsyResultCS" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Malignant breast finding'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "242",
+               "locator" : "43:36-43:49",
+               "name" : "BiopsyResultCS"
+            }
+         }, {
+            "localId" : "243",
+            "locator" : "44:1-44:96",
+            "name" : "Indeterminate",
+            "id" : "Indeterminate",
+            "display" : "Indeterminate breast finding",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "243",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Indeterminate\"",": ","'Indeterminate'"," from " ]
+                  }, {
+                     "r" : "244",
+                     "s" : [ {
+                        "value" : [ "BiopsyResultCS" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Indeterminate breast finding'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "244",
+               "locator" : "44:44-44:57",
+               "name" : "BiopsyResultCS"
+            }
+         }, {
+            "localId" : "245",
+            "locator" : "45:1-45:87",
+            "name" : "Discordant",
+            "id" : "Discordant",
+            "display" : "Discordant breast finding",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "245",
+                  "s" : [ {
+                     "value" : [ "","code ","\"Discordant\"",": ","'Discordant'"," from " ]
+                  }, {
+                     "r" : "246",
+                     "s" : [ {
+                        "value" : [ "BiopsyResultCS" ]
+                     } ]
+                  }, {
+                     "value" : [ " display ","'Discordant breast finding'" ]
+                  } ]
+               }
+            } ],
+            "codeSystem" : {
+               "localId" : "246",
+               "locator" : "45:38-45:51",
+               "name" : "BiopsyResultCS"
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "250",
+            "locator" : "47:1-47:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "248",
+            "locator" : "47:1-47:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "249",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "247",
+                  "locator" : "47:1-47:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "252",
+            "locator" : "49:1-54:27",
+            "name" : "act-incompletescreen",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "252",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-incompletescreen\"",":\n  " ]
+                  }, {
+                     "r" : "261",
+                     "s" : [ {
+                        "r" : "253",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "261",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "254",
+                           "s" : [ {
+                              "value" : [ "\"Follow-up radiologist recommendations\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "255",
+                           "s" : [ {
+                              "value" : [ "\"Category0\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "257",
+                           "s" : [ {
+                              "r" : "256",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "257",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "260",
+                           "s" : [ {
+                              "r" : "259",
+                              "s" : [ {
+                                 "r" : "258",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "259",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "260",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "261",
+               "locator" : "50:3-54:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "254",
+                  "locator" : "51:5-51:43",
+                  "name" : "Follow-up radiologist recommendations",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "255",
+                  "locator" : "52:5-52:15",
+                  "name" : "Category0",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "257",
+                  "locator" : "53:5-53:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "260",
+                  "locator" : "54:5-54:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "259",
+                     "locator" : "54:5-54:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "263",
+            "locator" : "56:1-61:27",
+            "name" : "act-intervalscreen",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "263",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-intervalscreen\"",":\n  " ]
+                  }, {
+                     "r" : "272",
+                     "s" : [ {
+                        "r" : "264",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "272",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "265",
+                           "s" : [ {
+                              "value" : [ "\"Order interval imaging\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "266",
+                           "s" : [ {
+                              "value" : [ "\"Category3\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "268",
+                           "s" : [ {
+                              "r" : "267",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "268",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "271",
+                           "s" : [ {
+                              "r" : "270",
+                              "s" : [ {
+                                 "r" : "269",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "270",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "271",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "272",
+               "locator" : "57:3-61:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "265",
+                  "locator" : "58:5-58:28",
+                  "name" : "Order interval imaging",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "266",
+                  "locator" : "59:5-59:15",
+                  "name" : "Category3",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "268",
+                  "locator" : "60:5-60:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "271",
+                  "locator" : "61:5-61:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "270",
+                     "locator" : "61:5-61:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "274",
+            "locator" : "63:1-68:27",
+            "name" : "act-biopsy4",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "274",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-biopsy4\"",": \n  " ]
+                  }, {
+                     "r" : "283",
+                     "s" : [ {
+                        "r" : "275",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "283",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "276",
+                           "s" : [ {
+                              "value" : [ "\"Breast biopsy\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "277",
+                           "s" : [ {
+                              "value" : [ "\"Category4\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "279",
+                           "s" : [ {
+                              "r" : "278",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "279",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "282",
+                           "s" : [ {
+                              "r" : "281",
+                              "s" : [ {
+                                 "r" : "280",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "281",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "282",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "283",
+               "locator" : "64:3-68:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "276",
+                  "locator" : "65:5-65:19",
+                  "name" : "Breast biopsy",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "277",
+                  "locator" : "66:5-66:15",
+                  "name" : "Category4",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "279",
+                  "locator" : "67:5-67:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "282",
+                  "locator" : "68:5-68:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "281",
+                     "locator" : "68:5-68:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "285",
+            "locator" : "70:1-75:27",
+            "name" : "act-biopsy5",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "285",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-biopsy5\"",":\n  " ]
+                  }, {
+                     "r" : "294",
+                     "s" : [ {
+                        "r" : "286",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "294",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "287",
+                           "s" : [ {
+                              "value" : [ "\"Breast biopsy\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "288",
+                           "s" : [ {
+                              "value" : [ "\"Category5\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "290",
+                           "s" : [ {
+                              "r" : "289",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "290",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "293",
+                           "s" : [ {
+                              "r" : "292",
+                              "s" : [ {
+                                 "r" : "291",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "292",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "293",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "294",
+               "locator" : "71:3-75:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "287",
+                  "locator" : "72:5-72:19",
+                  "name" : "Breast biopsy",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "288",
+                  "locator" : "73:5-73:15",
+                  "name" : "Category5",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "290",
+                  "locator" : "74:5-74:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "293",
+                  "locator" : "75:5-75:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "292",
+                     "locator" : "75:5-75:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "296",
+            "locator" : "77:1-82:27",
+            "name" : "act-benignbiopsy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "296",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-benignbiopsy\"",":\n  " ]
+                  }, {
+                     "r" : "305",
+                     "s" : [ {
+                        "r" : "297",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "305",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "298",
+                           "s" : [ {
+                              "value" : [ "\"Determine next due date\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "299",
+                           "s" : [ {
+                              "value" : [ "\"Benign\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "301",
+                           "s" : [ {
+                              "r" : "300",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "301",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "304",
+                           "s" : [ {
+                              "r" : "303",
+                              "s" : [ {
+                                 "r" : "302",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "303",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "304",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "305",
+               "locator" : "78:3-82:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "298",
+                  "locator" : "79:5-79:29",
+                  "name" : "Determine next due date",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "299",
+                  "locator" : "80:5-80:12",
+                  "name" : "Benign",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "301",
+                  "locator" : "81:5-81:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "304",
+                  "locator" : "82:5-82:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "303",
+                     "locator" : "82:5-82:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "307",
+            "locator" : "84:1-89:27",
+            "name" : "act-highriskreferral",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "307",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-highriskreferral\"",":\n  " ]
+                  }, {
+                     "r" : "316",
+                     "s" : [ {
+                        "r" : "308",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "316",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "309",
+                           "s" : [ {
+                              "value" : [ "\"Breast surgeon referral\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "310",
+                           "s" : [ {
+                              "value" : [ "\"Atypical\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "312",
+                           "s" : [ {
+                              "r" : "311",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "312",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "315",
+                           "s" : [ {
+                              "r" : "314",
+                              "s" : [ {
+                                 "r" : "313",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "314",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "315",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "316",
+               "locator" : "85:3-89:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "309",
+                  "locator" : "86:5-86:29",
+                  "name" : "Breast surgeon referral",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "310",
+                  "locator" : "87:5-87:14",
+                  "name" : "Atypical",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "312",
+                  "locator" : "88:5-88:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "315",
+                  "locator" : "89:5-89:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "314",
+                     "locator" : "89:5-89:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "318",
+            "locator" : "91:1-96:27",
+            "name" : "act-indeterminatebiopsy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "318",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-indeterminatebiopsy\"",":\n  " ]
+                  }, {
+                     "r" : "327",
+                     "s" : [ {
+                        "r" : "319",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "327",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "320",
+                           "s" : [ {
+                              "value" : [ "\"Breast surgeon referral\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "321",
+                           "s" : [ {
+                              "value" : [ "\"Indeterminate\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "323",
+                           "s" : [ {
+                              "r" : "322",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "323",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "326",
+                           "s" : [ {
+                              "r" : "325",
+                              "s" : [ {
+                                 "r" : "324",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "325",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "326",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "327",
+               "locator" : "92:3-96:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "320",
+                  "locator" : "93:5-93:29",
+                  "name" : "Breast surgeon referral",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "321",
+                  "locator" : "94:5-94:19",
+                  "name" : "Indeterminate",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "323",
+                  "locator" : "95:5-95:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "326",
+                  "locator" : "96:5-96:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "325",
+                     "locator" : "96:5-96:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "329",
+            "locator" : "98:1-103:27",
+            "name" : "act-discordantbiopsy",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "329",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-discordantbiopsy\"",":\n  " ]
+                  }, {
+                     "r" : "338",
+                     "s" : [ {
+                        "r" : "330",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "338",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "331",
+                           "s" : [ {
+                              "value" : [ "\"Breast surgeon referral\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "332",
+                           "s" : [ {
+                              "value" : [ "\"Discordant\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "334",
+                           "s" : [ {
+                              "r" : "333",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "334",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "337",
+                           "s" : [ {
+                              "r" : "336",
+                              "s" : [ {
+                                 "r" : "335",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "336",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "337",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "338",
+               "locator" : "99:3-103:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "331",
+                  "locator" : "100:5-100:29",
+                  "name" : "Breast surgeon referral",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "332",
+                  "locator" : "101:5-101:16",
+                  "name" : "Discordant",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "334",
+                  "locator" : "102:5-102:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "337",
+                  "locator" : "103:5-103:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "336",
+                     "locator" : "103:5-103:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "340",
+            "locator" : "105:1-110:27",
+            "name" : "act-oncreferral",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "340",
+                  "s" : [ {
+                     "value" : [ "","define ","\"act-oncreferral\"",": \n  " ]
+                  }, {
+                     "r" : "349",
+                     "s" : [ {
+                        "r" : "341",
+                        "s" : [ {
+                           "value" : [ "BCSMCommon" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "349",
+                        "s" : [ {
+                           "value" : [ "SetFollowupRecommendation","(\n    " ]
+                        }, {
+                           "r" : "342",
+                           "s" : [ {
+                              "value" : [ "\"Oncologic referral\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "343",
+                           "s" : [ {
+                              "value" : [ "\"Malignant\"" ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "345",
+                           "s" : [ {
+                              "r" : "344",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "345",
+                              "s" : [ {
+                                 "value" : [ "SourceDocumentationOther" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ", \n    " ]
+                        }, {
+                           "r" : "348",
+                           "s" : [ {
+                              "r" : "347",
+                              "s" : [ {
+                                 "r" : "346",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "347",
+                                 "s" : [ {
+                                    "value" : [ "LatestTest" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "348",
+                              "s" : [ {
+                                 "value" : [ "date" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ ")" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "349",
+               "locator" : "106:3-110:27",
+               "name" : "SetFollowupRecommendation",
+               "libraryName" : "BCSMCommon",
+               "type" : "FunctionRef",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "342",
+                  "locator" : "107:5-107:24",
+                  "name" : "Oncologic referral",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "343",
+                  "locator" : "108:5-108:15",
+                  "name" : "Malignant",
+                  "type" : "CodeRef"
+               }, {
+                  "localId" : "345",
+                  "locator" : "109:5-109:39",
+                  "name" : "SourceDocumentationOther",
+                  "libraryName" : "BCSMCommon",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "348",
+                  "locator" : "110:5-110:26",
+                  "path" : "date",
+                  "type" : "Property",
+                  "source" : {
+                     "localId" : "347",
+                     "locator" : "110:5-110:21",
+                     "name" : "LatestTest",
+                     "libraryName" : "Events",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         } ]
+      }
+   }
+}

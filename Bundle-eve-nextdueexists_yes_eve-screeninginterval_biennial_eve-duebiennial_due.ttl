@@ -1,0 +1,96 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/eve-nextdueexists_yes_eve-screeninginterval_biennial_eve-duebiennial_due> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "eve-nextdueexists_yes_eve-screeninginterval_biennial_eve-duebiennial_due"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "defaultPatient" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_defaultPatient\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient defaultPatient</b></p><a name=\"defaultPatient\"> </a><a name=\"hcdefaultPatient\"> </a><a name=\"defaultPatient-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Doe" ] ;
+         fhir:given ( [ fhir:v "Jane" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1981-01-01"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:CarePlan ;
+       fhir:id [ fhir:v "3292bad0-4fd0-42f5-ad72-1bcf41fee5f1" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_3292bad0-4fd0-42f5-ad72-1bcf41fee5f1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 3292bad0-4fd0-42f5-ad72-1bcf41fee5f1</b></p><a name=\"3292bad0-4fd0-42f5-ad72-1bcf41fee5f1\"> </a><a name=\"hc3292bad0-4fd0-42f5-ad72-1bcf41fee5f1\"> </a><a name=\"3292bad0-4fd0-42f5-ad72-1bcf41fee5f1-en-US\"> </a><p><b>status</b>: Active</p><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 268547008}\">Breast cancer screening</span></p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><p><b>created</b>: 2024-06-01</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-eve-nextdueexists_yes_eve-screeninginterval_annual_eve-dueannual_due.html#RequestGroup_RequestGroup-1\">Bundle: type = collection</a></td></tr></table></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "active" ] ;
+       fhir:category ( [
+         fhir:coding ( [
+           a sct:268547008 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "268547008" ] ;
+           fhir:display [ fhir:v "Breast cancer screening" ]
+         ] )
+       ] ) ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:created [ fhir:v "2024-06-01"^^xsd:date ] ;
+       fhir:activity ( [
+         fhir:reference [
+           fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/RequestGroup-1> ;
+           fhir:reference [ fhir:v "RequestGroup/RequestGroup-1" ]
+         ]
+       ] )
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:RequestGroup ;
+       fhir:id [ fhir:v "RequestGroup-1" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_RequestGroup-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup RequestGroup-1</b></p><a name=\"RequestGroup-1\"> </a><a name=\"hcRequestGroup-1\"> </a><a name=\"RequestGroup-1-en-US\"> </a><p><b>status</b>: Active</p><p><b>intent</b>: Order</p><p><b>subject</b>: <a href=\"Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient\">Bundle: type = collection</a></p><h3>Actions</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Code</b></td><td><b>Timing[x]</b></td></tr><tr><td style=\"display: none\">*</td><td><span title=\"Codes:{http://loinc.org 24606-6}\">MG Breast Screening</span></td><td>Events: 2025-01-01 , Once per 2 years</td></tr></table></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "active" ] ;
+       fhir:intent [ fhir:v "order" ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/defaultPatient> ;
+         fhir:reference [ fhir:v "Patient/defaultPatient" ]
+       ] ;
+       fhir:action ( [
+         fhir:code ( [
+           fhir:coding ( [
+             a loinc:24606-6 ;
+             fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+             fhir:code [ fhir:v "24606-6" ] ;
+             fhir:display [ fhir:v "MG Breast Screening" ]
+           ] )
+         ] ) ;
+         fhir:timing [
+           a fhir:Timing ;
+           fhir:event ( [ fhir:v "2025-01-01"^^xsd:date ] ) ;
+           fhir:repeat [
+             fhir:frequency [ fhir:v "1"^^xsd:positiveInteger ] ;
+             fhir:period [ fhir:v "2"^^xsd:decimal ] ;
+             fhir:periodUnit [ fhir:v "a" ]
+           ]
+         ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

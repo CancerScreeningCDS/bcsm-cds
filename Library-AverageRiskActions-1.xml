@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="295">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library AverageRiskActions version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="AverageRiskActions" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="18:1-18:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:61" localIdentifier="BCSMCommon" path="http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>BCSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called BCSMCommon</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="210" locator="22:1-22:114" name="ActCode" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>codesystem &quot;ActCode&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="211" locator="23:1-23:111" name="LOCAL" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>codesystem &quot;LOCAL&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="212" locator="24:1-24:38" name="LOINC" id="http://loinc.org" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>codesystem &quot;LOINC&quot;: 'http://loinc.org'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="213" locator="27:1-27:81" name="ACS average risk" id="ACSaveragerisk" display="ACS average risk" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>// Reason Codes
+code &quot;ACS average risk&quot;: 'ACSaveragerisk' from </a:s>
+               <a:s r="214">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'ACS average risk'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="214" locator="27:48-27:54" name="LOCAL"/>
+      </def>
+      <def localId="215" locator="28:1-28:90" name="USPSTF average risk" id="USPSTFaveragerisk" display="USPSTF average risk" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="215">
+               <a:s>code &quot;USPSTF average risk&quot;: 'USPSTFaveragerisk' from </a:s>
+               <a:s r="216">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'USPSTF average risk'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="216" locator="28:54-28:60" name="LOCAL"/>
+      </def>
+      <def localId="217" locator="31:1-31:80" name="MG Breast Screening" id="24606-6" display="MG Breast Screening" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="217">
+               <a:s>// Standard codes
+code &quot;MG Breast Screening&quot;: '24606-6' from </a:s>
+               <a:s r="218">
+                  <a:s>&quot;LOINC&quot;</a:s>
+               </a:s>
+               <a:s> display 'MG Breast Screening'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="218" locator="31:44-31:50" name="LOINC"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="222" locator="33:1-33:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="220" locator="33:1-33:15" name="Patient" context="Patient">
+         <expression localId="221" xsi:type="SingletonFrom">
+            <operand localId="219" locator="33:1-33:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="224" locator="35:1-46:2" name="mammo_annual" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="224">
+               <a:s>define mammo_annual:
+  </a:s>
+               <a:s r="225">
+                  <a:s>{
+		</a:s>
+                  <a:s>
+                     <a:s>code: </a:s>
+                     <a:s r="226">
+                        <a:s>&quot;MG Breast Screening&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s>
+                     <a:s>timingTiming: </a:s>
+                     <a:s r="227">
+                        <a:s>{
+      </a:s>
+                        <a:s>
+                           <a:s r="228">event: {}</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s>
+                           <a:s>repeat: </a:s>
+                           <a:s r="229">
+                              <a:s>{
+        </a:s>
+                              <a:s>
+                                 <a:s r="230">frequency: 1</a:s>
+                              </a:s>
+                              <a:s>,
+        </a:s>
+                              <a:s>
+                                 <a:s r="231">period: 1.0</a:s>
+                              </a:s>
+                              <a:s>,
+        </a:s>
+                              <a:s>
+                                 <a:s>periodUnit: </a:s>
+                                 <a:s r="232">
+                                    <a:s>'a'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      }</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    }</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+	}</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="225" locator="36:3-46:2" xsi:type="Tuple">
+            <element name="code">
+               <value localId="226" locator="37:9-37:29" name="MG Breast Screening" xsi:type="CodeRef"/>
+            </element>
+            <element name="timingTiming">
+               <value localId="227" locator="38:19-45:5" xsi:type="Tuple">
+                  <element name="event">
+                     <value localId="228" locator="39:14-39:15" xsi:type="List"/>
+                  </element>
+                  <element name="repeat">
+                     <value localId="229" locator="40:15-44:7" xsi:type="Tuple">
+                        <element name="frequency">
+                           <value localId="230" locator="41:20" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                        </element>
+                        <element name="period">
+                           <value localId="231" locator="42:17-42:19" valueType="t:Decimal" value="1.0" xsi:type="Literal"/>
+                        </element>
+                        <element name="periodUnit">
+                           <value localId="232" locator="43:21-43:23" valueType="t:String" value="a" xsi:type="Literal"/>
+                        </element>
+                     </value>
+                  </element>
+               </value>
+            </element>
+         </expression>
+      </def>
+      <def localId="234" locator="48:1-59:2" name="mammo_biennial" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="234">
+               <a:s>define mammo_biennial:
+  </a:s>
+               <a:s r="235">
+                  <a:s>{
+		</a:s>
+                  <a:s>
+                     <a:s>code: </a:s>
+                     <a:s r="236">
+                        <a:s>&quot;MG Breast Screening&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s>
+                     <a:s>timingTiming: </a:s>
+                     <a:s r="237">
+                        <a:s>{
+      </a:s>
+                        <a:s>
+                           <a:s r="238">event: {}</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s>
+                           <a:s>repeat: </a:s>
+                           <a:s r="239">
+                              <a:s>{
+        </a:s>
+                              <a:s>
+                                 <a:s r="240">frequency: 1</a:s>
+                              </a:s>
+                              <a:s>,
+        </a:s>
+                              <a:s>
+                                 <a:s r="241">period: 2.0</a:s>
+                              </a:s>
+                              <a:s>,
+        </a:s>
+                              <a:s>
+                                 <a:s>periodUnit: </a:s>
+                                 <a:s r="242">
+                                    <a:s>'a'</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      }</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    }</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+	}</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="235" locator="49:3-59:2" xsi:type="Tuple">
+            <element name="code">
+               <value localId="236" locator="50:9-50:29" name="MG Breast Screening" xsi:type="CodeRef"/>
+            </element>
+            <element name="timingTiming">
+               <value localId="237" locator="51:19-58:5" xsi:type="Tuple">
+                  <element name="event">
+                     <value localId="238" locator="52:14-52:15" xsi:type="List"/>
+                  </element>
+                  <element name="repeat">
+                     <value localId="239" locator="53:15-57:7" xsi:type="Tuple">
+                        <element name="frequency">
+                           <value localId="240" locator="54:20" valueType="t:Integer" value="1" xsi:type="Literal"/>
+                        </element>
+                        <element name="period">
+                           <value localId="241" locator="55:17-55:19" valueType="t:Decimal" value="2.0" xsi:type="Literal"/>
+                        </element>
+                        <element name="periodUnit">
+                           <value localId="242" locator="56:21-56:23" valueType="t:String" value="a" xsi:type="Literal"/>
+                        </element>
+                     </value>
+                  </element>
+               </value>
+            </element>
+         </expression>
+      </def>
+      <def localId="244" locator="61:1-63:104" name="act-acsavgrecs40" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="244">
+               <a:s>define &quot;act-acsavgrecs40&quot;:
+  </a:s>
+               <a:s r="258">
+                  <a:s r="245">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="258">
+                     <a:s>SetRecommendation(</a:s>
+                     <a:s r="247">
+                        <a:s r="246">
+                           <a:s>mammo_annual</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="247">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="248">
+                        <a:s>&quot;ACS average risk&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="250">
+                        <a:s r="249">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="250">
+                           <a:s>SourceDocumentationACS</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="251">
+                        <a:s>{</a:s>
+                        <a:s>
+                           <a:s r="252">value: 40.0</a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="253">
+                              <a:s>'a'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>}</a:s>
+                     </a:s>
+                     <a:s r="254">, null, </a:s>
+                     <a:s r="257">
+                        <a:s r="256">
+                           <a:s r="255">
+                              <a:s>mammo_annual</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="256">
+                              <a:s>timingTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="257">
+                           <a:s>repeat</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="258" locator="62:3-63:104" name="SetRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="247" locator="62:32-62:48" path="code" xsi:type="Property">
+               <source localId="246" locator="62:32-62:43" name="mammo_annual" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="248" locator="62:51-62:68" name="ACS average risk" xsi:type="CodeRef"/>
+            <operand localId="250" locator="63:5-63:37" name="SourceDocumentationACS" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="251" locator="63:40-63:63" xsi:type="Tuple">
+               <element name="value">
+                  <value localId="252" locator="63:48-63:51" valueType="t:Decimal" value="40.0" xsi:type="Literal"/>
+               </element>
+               <element name="code">
+                  <value localId="253" locator="63:60-63:62" valueType="t:String" value="a" xsi:type="Literal"/>
+               </element>
+            </operand>
+            <operand localId="259" asType="t:DateTime" xsi:type="As">
+               <operand localId="254" locator="63:66-63:69" xsi:type="Null"/>
+            </operand>
+            <operand localId="257" locator="63:72-63:103" path="repeat" xsi:type="Property">
+               <source localId="256" locator="63:72-63:96" path="timingTiming" xsi:type="Property">
+                  <source localId="255" locator="63:72-63:83" name="mammo_annual" xsi:type="ExpressionRef"/>
+               </source>
+            </operand>
+         </expression>
+      </def>
+      <def localId="261" locator="65:1-67:104" name="act-acsavgrecs45" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="261">
+               <a:s>define &quot;act-acsavgrecs45&quot;:
+  </a:s>
+               <a:s r="275">
+                  <a:s r="262">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="275">
+                     <a:s>SetRecommendation(</a:s>
+                     <a:s r="264">
+                        <a:s r="263">
+                           <a:s>mammo_annual</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="264">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="265">
+                        <a:s>&quot;ACS average risk&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="267">
+                        <a:s r="266">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="267">
+                           <a:s>SourceDocumentationACS</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="268">
+                        <a:s>{</a:s>
+                        <a:s>
+                           <a:s r="269">value: 40.0</a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="270">
+                              <a:s>'a'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>}</a:s>
+                     </a:s>
+                     <a:s r="271">, null, </a:s>
+                     <a:s r="274">
+                        <a:s r="273">
+                           <a:s r="272">
+                              <a:s>mammo_annual</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="273">
+                              <a:s>timingTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="274">
+                           <a:s>repeat</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="275" locator="66:3-67:104" name="SetRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="264" locator="66:32-66:48" path="code" xsi:type="Property">
+               <source localId="263" locator="66:32-66:43" name="mammo_annual" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="265" locator="66:51-66:68" name="ACS average risk" xsi:type="CodeRef"/>
+            <operand localId="267" locator="67:5-67:37" name="SourceDocumentationACS" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="268" locator="67:40-67:63" xsi:type="Tuple">
+               <element name="value">
+                  <value localId="269" locator="67:48-67:51" valueType="t:Decimal" value="40.0" xsi:type="Literal"/>
+               </element>
+               <element name="code">
+                  <value localId="270" locator="67:60-67:62" valueType="t:String" value="a" xsi:type="Literal"/>
+               </element>
+            </operand>
+            <operand localId="276" asType="t:DateTime" xsi:type="As">
+               <operand localId="271" locator="67:66-67:69" xsi:type="Null"/>
+            </operand>
+            <operand localId="274" locator="67:72-67:103" path="repeat" xsi:type="Property">
+               <source localId="273" locator="67:72-67:96" path="timingTiming" xsi:type="Property">
+                  <source localId="272" locator="67:72-67:83" name="mammo_annual" xsi:type="ExpressionRef"/>
+               </source>
+            </operand>
+         </expression>
+      </def>
+      <def localId="278" locator="69:1-71:106" name="act-acsavgrecs55" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="278">
+               <a:s>define &quot;act-acsavgrecs55&quot;:
+  </a:s>
+               <a:s r="292">
+                  <a:s r="279">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="292">
+                     <a:s>SetRecommendation(</a:s>
+                     <a:s r="281">
+                        <a:s r="280">
+                           <a:s>mammo_biennial</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="281">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="282">
+                        <a:s>&quot;ACS average risk&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="284">
+                        <a:s r="283">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="284">
+                           <a:s>SourceDocumentationACS</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="285">
+                        <a:s>{</a:s>
+                        <a:s>
+                           <a:s r="286">value: 40.0</a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="287">
+                              <a:s>'a'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>}</a:s>
+                     </a:s>
+                     <a:s r="288">, null, </a:s>
+                     <a:s r="291">
+                        <a:s r="290">
+                           <a:s r="289">
+                              <a:s>mammo_biennial</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="290">
+                              <a:s>timingTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="291">
+                           <a:s>repeat</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="292" locator="70:3-71:106" name="SetRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="281" locator="70:32-70:50" path="code" xsi:type="Property">
+               <source localId="280" locator="70:32-70:45" name="mammo_biennial" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="282" locator="70:53-70:70" name="ACS average risk" xsi:type="CodeRef"/>
+            <operand localId="284" locator="71:5-71:37" name="SourceDocumentationACS" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="285" locator="71:40-71:63" xsi:type="Tuple">
+               <element name="value">
+                  <value localId="286" locator="71:48-71:51" valueType="t:Decimal" value="40.0" xsi:type="Literal"/>
+               </element>
+               <element name="code">
+                  <value localId="287" locator="71:60-71:62" valueType="t:String" value="a" xsi:type="Literal"/>
+               </element>
+            </operand>
+            <operand localId="293" asType="t:DateTime" xsi:type="As">
+               <operand localId="288" locator="71:66-71:69" xsi:type="Null"/>
+            </operand>
+            <operand localId="291" locator="71:72-71:105" path="repeat" xsi:type="Property">
+               <source localId="290" locator="71:72-71:98" path="timingTiming" xsi:type="Property">
+                  <source localId="289" locator="71:72-71:85" name="mammo_biennial" xsi:type="ExpressionRef"/>
+               </source>
+            </operand>
+         </expression>
+      </def>
+      <def localId="295" locator="73:1-75:109" name="act-uspstfavgrecs" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="295">
+               <a:s>define &quot;act-uspstfavgrecs&quot;:
+  </a:s>
+               <a:s r="309">
+                  <a:s r="296">
+                     <a:s>BCSMCommon</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="309">
+                     <a:s>SetRecommendation(</a:s>
+                     <a:s r="298">
+                        <a:s r="297">
+                           <a:s>mammo_biennial</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="298">
+                           <a:s>code</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="299">
+                        <a:s>&quot;USPSTF average risk&quot;</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="301">
+                        <a:s r="300">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="301">
+                           <a:s>SourceDocumentationUSPSTF</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="302">
+                        <a:s>{</a:s>
+                        <a:s>
+                           <a:s r="303">value: 40.0</a:s>
+                        </a:s>
+                        <a:s>, </a:s>
+                        <a:s>
+                           <a:s>code: </a:s>
+                           <a:s r="304">
+                              <a:s>'a'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>}</a:s>
+                     </a:s>
+                     <a:s r="305">, null, </a:s>
+                     <a:s r="308">
+                        <a:s r="307">
+                           <a:s r="306">
+                              <a:s>mammo_biennial</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="307">
+                              <a:s>timingTiming</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="308">
+                           <a:s>repeat</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="309" locator="74:3-75:109" name="SetRecommendation" libraryName="BCSMCommon" xsi:type="FunctionRef">
+            <operand localId="298" locator="74:32-74:50" path="code" xsi:type="Property">
+               <source localId="297" locator="74:32-74:45" name="mammo_biennial" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="299" locator="74:53-74:73" name="USPSTF average risk" xsi:type="CodeRef"/>
+            <operand localId="301" locator="75:5-75:40" name="SourceDocumentationUSPSTF" libraryName="BCSMCommon" xsi:type="ExpressionRef"/>
+            <operand localId="302" locator="75:43-75:66" xsi:type="Tuple">
+               <element name="value">
+                  <value localId="303" locator="75:51-75:54" valueType="t:Decimal" value="40.0" xsi:type="Literal"/>
+               </element>
+               <element name="code">
+                  <value localId="304" locator="75:63-75:65" valueType="t:String" value="a" xsi:type="Literal"/>
+               </element>
+            </operand>
+            <operand localId="310" asType="t:DateTime" xsi:type="As">
+               <operand localId="305" locator="75:69-75:72" xsi:type="Null"/>
+            </operand>
+            <operand localId="308" locator="75:75-75:108" path="repeat" xsi:type="Property">
+               <source localId="307" locator="75:75-75:101" path="timingTiming" xsi:type="Property">
+                  <source localId="306" locator="75:75-75:88" name="mammo_biennial" xsi:type="ExpressionRef"/>
+               </source>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>

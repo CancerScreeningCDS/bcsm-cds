@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="508">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library GeneticRiskReferral version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="GeneticRiskReferral" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="17:1-17:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:63" localIdentifier="Events" path="http://cancerscreeningcds.github.io/bcsm-cds/GeneticRiskReferralEvents" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>GeneticRiskReferralEvents</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Events</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:65" localIdentifier="Actions" path="http://cancerscreeningcds.github.io/bcsm-cds/GeneticRiskReferralActions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>GeneticRiskReferralActions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Actions</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="21:1-21:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="211" locator="23:1-23:38" name="LOINC" id="http://loinc.org" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>codesystem &quot;LOINC&quot;: 'http://loinc.org'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="212" locator="26:1-26:48" name="Age" id="30525-0" display="Age" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>// Standard codes
+code &quot;Age&quot;: '30525-0' from </a:s>
+               <a:s r="213">
+                  <a:s>&quot;LOINC&quot;</a:s>
+               </a:s>
+               <a:s> display 'Age'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="213" locator="26:28-26:34" name="LOINC"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="217" locator="28:1-28:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="215" locator="28:1-28:15" name="Patient" context="Patient">
+         <expression localId="216" xsi:type="SingletonFrom">
+            <operand localId="214" locator="28:1-28:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="258" locator="51:1-56:21" name="MostRecentAgeValue" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="258">
+               <a:s>define MostRecentAgeValue:
+  </a:s>
+               <a:s r="318">
+                  <a:s r="317">
+                     <a:s r="316">
+                        <a:s r="315">
+                           <a:s>First(
+    </a:s>
+                           <a:s r="312">
+                              <a:s>
+                                 <a:s r="259">
+                                    <a:s r="262">
+                                       <a:s r="262">
+                                          <a:s>[Observation: </a:s>
+                                          <a:s>
+                                             <a:s>&quot;Age&quot;</a:s>
+                                          </a:s>
+                                          <a:s>]</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> O</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      </a:s>
+                              <a:s r="271">
+                                 <a:s>where </a:s>
+                                 <a:s r="271">
+                                    <a:s r="274">
+                                       <a:s r="273">
+                                          <a:s r="272">
+                                             <a:s>O</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="273">
+                                             <a:s>value</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="274">
+                                          <a:s>unit</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> = </a:s>
+                                    <a:s r="275">
+                                       <a:s>'years'</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      </a:s>
+                              <a:s r="282">
+                                 <a:s>sort by </a:s>
+                                 <a:s r="281">
+                                    <a:s r="280">
+                                       <a:s>effective</a:s>
+                                    </a:s>
+                                    <a:s> desc</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+  )</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="316">
+                           <a:s>value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="317">
+                        <a:s>value</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="318">
+                     <a:s>value</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="318" locator="52:3-56:21" path="value" xsi:type="Property">
+            <source localId="317" locator="52:3-56:15" path="value" xsi:type="Property">
+               <source localId="316" locator="52:3-56:9" path="value" xsi:type="Property">
+                  <source localId="315" locator="52:3-56:3" xsi:type="First">
+                     <source localId="312" locator="53:5-55:28" xsi:type="Query">
+                        <source localId="259" locator="53:5-53:26" alias="O">
+                           <expression localId="262" locator="53:5-53:24" dataType="fhir:Observation" templateId="http://hl7.org/fhir/StructureDefinition/Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+                              <codes localId="270" xsi:type="ToList">
+                                 <operand localId="261" locator="53:19-53:23" name="Age" xsi:type="CodeRef"/>
+                              </codes>
+                           </expression>
+                        </source>
+                        <where localId="271" locator="54:7-54:34" xsi:type="Equal">
+                           <signature localId="278" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           <signature localId="279" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="276" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="277" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="274" locator="54:13-54:24" path="unit" xsi:type="Property">
+                                 <source localId="273" locator="54:13-54:19" path="value" scope="O" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="275" locator="54:28-54:34" valueType="t:String" value="years" xsi:type="Literal"/>
+                        </where>
+                        <sort localId="282" locator="55:7-55:28">
+                           <by localId="281" locator="55:15-55:28" direction="desc" path="effective" xsi:type="ByColumn"/>
+                        </sort>
+                     </source>
+                  </source>
+               </source>
+            </source>
+         </expression>
+      </def>
+      <def localId="227" locator="48:1-49:106" name="inc-AgeAtLeast18" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="227">
+               <a:s>// Age 18 years and older, only use MostRecentAgeValue if no birthdate  
+define &quot;inc-AgeAtLeast18&quot;:
+  </a:s>
+               <a:s r="228">
+                  <a:s r="229">
+                     <a:s>(</a:s>
+                     <a:s r="229">
+                        <a:s r="237">
+                           <a:s r="234">
+                              <a:s>AgeInYears()</a:s>
+                           </a:s>
+                           <a:s> is not null</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="238">
+                           <a:s r="243">
+                              <a:s>AgeInYears()</a:s>
+                           </a:s>
+                           <a:s r="245"> >= 18</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="248">
+                     <a:s>(</a:s>
+                     <a:s r="248">
+                        <a:s r="255">
+                           <a:s r="253">
+                              <a:s>AgeInYears()</a:s>
+                           </a:s>
+                           <a:s> is null</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="256">
+                           <a:s r="319">
+                              <a:s>MostRecentAgeValue</a:s>
+                           </a:s>
+                           <a:s r="320"> >= 18</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="228" locator="49:3-49:106" xsi:type="Or">
+            <operand localId="229" locator="49:3-49:51" xsi:type="And">
+               <operand localId="237" locator="49:4-49:27" xsi:type="Not">
+                  <operand localId="236" locator="49:4-49:27" xsi:type="IsNull">
+                     <operand localId="234" locator="49:4-49:15" precision="Year" xsi:type="CalculateAge">
+                        <signature localId="235" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="233" path="birthDate.value" xsi:type="Property">
+                           <source localId="232" name="Patient" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="238" locator="49:33-49:50" xsi:type="GreaterOrEqual">
+                  <signature localId="246" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="247" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="243" locator="49:33-49:44" precision="Year" xsi:type="CalculateAge">
+                     <signature localId="244" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="242" path="birthDate.value" xsi:type="Property">
+                        <source localId="241" name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="245" locator="49:49-49:50" valueType="t:Integer" value="18" xsi:type="Literal"/>
+               </operand>
+            </operand>
+            <operand localId="248" locator="49:56-49:106" xsi:type="And">
+               <operand localId="255" locator="49:57-49:76" xsi:type="IsNull">
+                  <operand localId="253" locator="49:57-49:68" precision="Year" xsi:type="CalculateAge">
+                     <signature localId="254" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="252" path="birthDate.value" xsi:type="Property">
+                        <source localId="251" name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="256" locator="49:82-49:105" xsi:type="GreaterOrEqual">
+                  <signature localId="324" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="325" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="319" locator="49:82-49:99" name="MostRecentAgeValue" xsi:type="ExpressionRef"/>
+                  <operand localId="322" xsi:type="ToDecimal">
+                     <signature localId="323" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="320" locator="49:104-49:105" valueType="t:Integer" value="18" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="328" locator="58:1-59:62" name="inc-assignedfemaleatbirthortransfemale" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="328">
+               <a:s>define &quot;inc-assignedfemaleatbirthortransfemale&quot;:
+  </a:s>
+               <a:s r="329">
+                  <a:s r="331">
+                     <a:s r="330">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="331">
+                        <a:s>&quot;de-female&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="333">
+                     <a:s r="332">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="333">
+                        <a:s>&quot;TransgenderFemale&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="329" locator="59:3-59:62" xsi:type="Or">
+            <operand localId="331" locator="59:3-59:26" name="de-female" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            <operand localId="333" locator="59:31-59:62" name="TransgenderFemale" libraryName="DataElements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="224" locator="44:1-45:65" name="IsIncluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="224">
+               <a:s>// INCLUSIONS
+define IsIncluded:
+  </a:s>
+               <a:s r="225">
+                  <a:s r="326">
+                     <a:s>&quot;inc-AgeAtLeast18&quot;</a:s>
+                  </a:s>
+                  <a:s> and </a:s>
+                  <a:s r="334">
+                     <a:s>&quot;inc-assignedfemaleatbirthortransfemale&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="225" locator="45:3-45:65" xsi:type="And">
+            <operand localId="326" locator="45:3-45:20" name="inc-AgeAtLeast18" xsi:type="ExpressionRef"/>
+            <operand localId="334" locator="45:26-45:65" name="inc-assignedfemaleatbirthortransfemale" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="338" locator="62:1-63:7" name="Excluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="338">
+               <a:s r="339">// EXCLUSIONS
+define Excluded:
+  false</a:s>
+            </a:s>
+         </annotation>
+         <expression localId="339" locator="63:3-63:7" valueType="t:Boolean" value="false" xsi:type="Literal"/>
+      </def>
+      <def localId="221" locator="40:1-41:29" name="IsIncludedAndNotExcluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="221">
+               <a:s>define IsIncludedAndNotExcluded:
+  </a:s>
+               <a:s r="222">
+                  <a:s r="335">
+                     <a:s>IsIncluded</a:s>
+                  </a:s>
+                  <a:s> and </a:s>
+                  <a:s r="336">
+                     <a:s>not </a:s>
+                     <a:s r="340">
+                        <a:s>Excluded</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="222" locator="41:3-41:29" xsi:type="And">
+            <operand localId="335" locator="41:3-41:12" name="IsIncluded" xsi:type="ExpressionRef"/>
+            <operand localId="336" locator="41:18-41:29" xsi:type="Not">
+               <operand localId="340" locator="41:22-41:29" name="Excluded" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="219" locator="34:1-38:31" name="CheckIsIncludedAndNotExcluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="219">
+               <a:s>//------------------------------------------------------------------------------
+// INCLUSIONS/EXCLUSIONS
+//------------------------------------------------------------------------------
+
+define CheckIsIncludedAndNotExcluded:
+  </a:s>
+               <a:s r="349">
+                  <a:s>Message(</a:s>
+                  <a:s r="341">
+                     <a:s>IsIncludedAndNotExcluded</a:s>
+                  </a:s>
+                  <a:s>, </a:s>
+                  <a:s r="343">
+                     <a:s r="342">
+                        <a:s>IsIncludedAndNotExcluded</a:s>
+                     </a:s>
+                     <a:s> is false</a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s r="344">
+                     <a:s>'http://example.org/CodeSystem/plan-definition-action-reason-code-system/excludedornotincluded'</a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s r="345">
+                     <a:s>'Error'</a:s>
+                  </a:s>
+                  <a:s>, 
+    </a:s>
+                  <a:s r="346">
+                     <a:s>'Excluded or not included'</a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="349" locator="35:3-38:31" xsi:type="Message">
+            <source localId="341" locator="35:11-35:34" name="IsIncludedAndNotExcluded" xsi:type="ExpressionRef"/>
+            <condition localId="343" locator="35:37-35:69" xsi:type="IsFalse">
+               <operand localId="342" locator="35:37-35:60" name="IsIncludedAndNotExcluded" xsi:type="ExpressionRef"/>
+            </condition>
+            <code localId="344" locator="36:5-36:99" valueType="t:String" value="http://example.org/CodeSystem/plan-definition-action-reason-code-system/excludedornotincluded" xsi:type="Literal"/>
+            <severity localId="345" locator="37:5-37:11" valueType="t:String" value="Error" xsi:type="Literal"/>
+            <message localId="346" locator="38:5-38:30" valueType="t:String" value="Excluded or not included" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="356" locator="83:1-85:53" name="GeneticReferralVariant" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="356">
+               <a:s>define GeneticReferralVariant:
+  </a:s>
+               <a:s r="357">
+                  <a:s>if </a:s>
+                  <a:s r="358">
+                     <a:s r="361">
+                        <a:s r="360">
+                           <a:s r="359">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="360">
+                              <a:s>&quot;eve-fhxgeneinherited&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is true</a:s>
+                     </a:s>
+                     <a:s> and </a:s>
+                     <a:s r="364">
+                        <a:s r="363">
+                           <a:s r="362">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="363">
+                              <a:s>&quot;eve-knownvariantstatus&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is false</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="366">
+                     <a:s r="365">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="366">
+                        <a:s>&quot;act-geneticreferralvariant&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="367"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="357" locator="84:3-85:53" xsi:type="If">
+            <condition localId="358" locator="84:6-84:87" xsi:type="And">
+               <operand localId="361" locator="84:6-84:42" xsi:type="IsTrue">
+                  <operand localId="360" locator="84:6-84:34" name="eve-fhxgeneinherited" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="364" locator="84:48-84:87" xsi:type="IsFalse">
+                  <operand localId="363" locator="84:48-84:78" name="eve-knownvariantstatus" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="366" locator="85:8-85:43" name="act-geneticreferralvariant" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="368" xsi:type="As">
+               <operand localId="367" locator="85:50-85:53" xsi:type="Null"/>
+               <asTypeSpecifier localId="369" xsi:type="TupleTypeSpecifier">
+                  <element localId="370" name="code">
+                     <elementType localId="371" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="372" name="reason">
+                     <elementType localId="373" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="374" name="documentation">
+                     <elementType localId="375" xsi:type="TupleTypeSpecifier">
+                        <element localId="376" name="label">
+                           <elementType localId="377" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="380" locator="87:1-89:54" name="GeneticReferralAncestry" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="380">
+               <a:s>define GeneticReferralAncestry:
+  </a:s>
+               <a:s r="381">
+                  <a:s>if </a:s>
+                  <a:s r="384">
+                     <a:s r="383">
+                        <a:s r="382">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="383">
+                           <a:s>&quot;eve-brcageneancestry&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="386">
+                     <a:s r="385">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="386">
+                        <a:s>&quot;act-geneticreferralancestry&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="387"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="381" locator="88:3-89:54" xsi:type="If">
+            <condition localId="384" locator="88:6-88:42" xsi:type="IsTrue">
+               <operand localId="383" locator="88:6-88:34" name="eve-brcageneancestry" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="386" locator="89:8-89:44" name="act-geneticreferralancestry" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="388" xsi:type="As">
+               <operand localId="387" locator="89:51-89:54" xsi:type="Null"/>
+               <asTypeSpecifier localId="389" xsi:type="TupleTypeSpecifier">
+                  <element localId="390" name="code">
+                     <elementType localId="391" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="392" name="reason">
+                     <elementType localId="393" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="394" name="documentation">
+                     <elementType localId="395" xsi:type="TupleTypeSpecifier">
+                        <element localId="396" name="label">
+                           <elementType localId="397" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="400" locator="96:1-99:50" name="GeneticReferralRisk" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="400">
+               <a:s>define GeneticReferralRisk:
+  </a:s>
+               <a:s r="401">
+                  <a:s>if </a:s>
+                  <a:s r="402">
+                     <a:s r="405">
+                        <a:s r="404">
+                           <a:s r="403">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="404">
+                              <a:s>&quot;eve-fhxriskresult&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is true</a:s>
+                     </a:s>
+                     <a:s>
+    and </a:s>
+                     <a:s r="407">
+                        <a:s r="406">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="407">
+                           <a:s>ValidMostRecentFamilialRiskAssessment</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="409">
+                     <a:s r="408">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="409">
+                        <a:s>&quot;act-geneticreferralrisk&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="410"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="401" locator="97:3-99:50" xsi:type="If">
+            <condition localId="402" locator="97:6-98:52" xsi:type="And">
+               <operand localId="405" locator="97:6-97:39" xsi:type="IsTrue">
+                  <operand localId="404" locator="97:6-97:31" name="eve-fhxriskresult" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="407" locator="98:9-98:52" name="ValidMostRecentFamilialRiskAssessment" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="409" locator="99:8-99:40" name="act-geneticreferralrisk" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="411" xsi:type="As">
+               <operand localId="410" locator="99:47-99:50" xsi:type="Null"/>
+               <asTypeSpecifier localId="412" xsi:type="TupleTypeSpecifier">
+                  <element localId="413" name="code">
+                     <elementType localId="414" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="415" name="reason">
+                     <elementType localId="416" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="417" name="documentation">
+                     <elementType localId="418" xsi:type="TupleTypeSpecifier">
+                        <element localId="419" name="label">
+                           <elementType localId="420" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="354" locator="76:1-81:3" name="GeneticRiskReferral" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="354">
+               <a:s>define GeneticRiskReferral:
+  </a:s>
+               <a:s r="424">
+                  <a:s>Coalesce(
+    </a:s>
+                  <a:s r="378">
+                     <a:s>GeneticReferralVariant</a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s r="398">
+                     <a:s>GeneticReferralAncestry</a:s>
+                  </a:s>
+                  <a:s>,
+    </a:s>
+                  <a:s r="421">
+                     <a:s>GeneticReferralRisk</a:s>
+                  </a:s>
+                  <a:s>
+  )</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="424" locator="77:3-81:3" xsi:type="Coalesce">
+            <operand localId="378" locator="78:5-78:26" name="GeneticReferralVariant" xsi:type="ExpressionRef"/>
+            <operand localId="398" locator="79:5-79:27" name="GeneticReferralAncestry" xsi:type="ExpressionRef"/>
+            <operand localId="421" locator="80:5-80:23" name="GeneticReferralRisk" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="427" locator="91:1-94:73" name="GeneticRiskAssessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="427">
+               <a:s>define GeneticRiskAssessment:
+  </a:s>
+               <a:s r="428">
+                  <a:s>if </a:s>
+                  <a:s r="429">
+                     <a:s r="430">
+                        <a:s r="432">
+                           <a:s r="431">
+                              <a:s>GeneticRiskReferral</a:s>
+                           </a:s>
+                           <a:s> is null</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="435">
+                           <a:s r="434">
+                              <a:s r="433">
+                                 <a:s>Events</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="434">
+                                 <a:s>&quot;eve-fhxbrcaovcatubalperit&quot;</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> is true</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> 
+    and </a:s>
+                     <a:s r="438">
+                        <a:s r="437">
+                           <a:s r="436">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="437">
+                              <a:s>ValidMostRecentFamilialRiskAssessment</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is false</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="439">
+                     <a:s>{</a:s>
+                     <a:s r="441">
+                        <a:s r="440">
+                           <a:s>Actions</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="441">
+                           <a:s>&quot;act-fhxrisktool&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="443">
+                        <a:s r="442">
+                           <a:s>Actions</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="443">
+                           <a:s>&quot;act-fhxriskassess&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>}</a:s>
+                  </a:s>
+                  <a:s r="444"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="428" locator="92:3-94:73" xsi:type="If">
+            <condition localId="429" locator="92:6-93:61" xsi:type="And">
+               <operand localId="430" locator="92:6-92:79" xsi:type="And">
+                  <operand localId="432" locator="92:6-92:32" xsi:type="IsNull">
+                     <operand localId="431" locator="92:6-92:24" name="GeneticRiskReferral" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="435" locator="92:38-92:79" xsi:type="IsTrue">
+                     <operand localId="434" locator="92:38-92:71" name="eve-fhxbrcaovcatubalperit" libraryName="Events" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+               <operand localId="438" locator="93:9-93:61" xsi:type="IsFalse">
+                  <operand localId="437" locator="93:9-93:52" name="ValidMostRecentFamilialRiskAssessment" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="439" locator="94:8-94:63" xsi:type="List">
+               <element localId="441" locator="94:9-94:33" name="act-fhxrisktool" libraryName="Actions" xsi:type="ExpressionRef"/>
+               <element localId="443" locator="94:36-94:62" name="act-fhxriskassess" libraryName="Actions" xsi:type="ExpressionRef"/>
+            </then>
+            <else localId="445" xsi:type="As">
+               <operand localId="444" locator="94:70-94:73" xsi:type="Null"/>
+               <asTypeSpecifier localId="446" xsi:type="ListTypeSpecifier">
+                  <elementType localId="447" xsi:type="TupleTypeSpecifier">
+                     <element localId="448" name="code">
+                        <elementType localId="449" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="450" name="reason">
+                        <elementType localId="451" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="452" name="documentation">
+                        <elementType localId="453" xsi:type="TupleTypeSpecifier">
+                           <element localId="454" name="label">
+                              <elementType localId="455" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                  </elementType>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="351" locator="69:1-74:21" name="flow-GeneticRiskReferral" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="351">
+               <a:s>//------------------------------------------------------------------------------
+// RECOMMENDATIONS
+//------------------------------------------------------------------------------
+
+define &quot;flow-GeneticRiskReferral&quot;:
+  </a:s>
+               <a:s r="463">
+                  <a:s r="352">
+                     <a:s>{
+    </a:s>
+                     <a:s r="425">
+                        <a:s>GeneticRiskReferral</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="456">
+                        <a:s>GeneticRiskAssessment</a:s>
+                     </a:s>
+                     <a:s>
+  }</a:s>
+                  </a:s>
+                  <a:s>
+  except </a:s>
+                  <a:s r="457">
+                     <a:s r="458">{ null, {} }</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="463" locator="70:3-74:21" xsi:type="Except">
+            <operand localId="352" locator="70:3-73:3" xsi:type="List">
+               <element localId="425" locator="71:5-71:23" name="GeneticRiskReferral" xsi:type="ExpressionRef"/>
+               <element localId="456" locator="72:5-72:25" name="GeneticRiskAssessment" xsi:type="ExpressionRef"/>
+            </operand>
+            <operand localId="457" locator="74:10-74:21" xsi:type="List">
+               <element localId="460" xsi:type="As">
+                  <operand localId="458" locator="74:12-74:15" xsi:type="Null"/>
+                  <asTypeSpecifier localId="461" xsi:type="ListTypeSpecifier">
+                     <elementType localId="462" name="t:Any" xsi:type="NamedTypeSpecifier"/>
+                  </asTypeSpecifier>
+               </element>
+               <element localId="459" locator="74:18-74:19" xsi:type="List"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="465" locator="105:1-106:36" name="ExistsGeneticReferralVariant" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="465">
+               <a:s>//------------------------------------------------------------------------------
+// DYNAMIC VALUES
+//------------------------------------------------------------------------------    
+
+define ExistsGeneticReferralVariant:
+  </a:s>
+               <a:s r="468">
+                  <a:s r="466">
+                     <a:s>GeneticReferralVariant</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="468" locator="106:3-106:36" xsi:type="Not">
+            <operand localId="467" locator="106:3-106:36" xsi:type="IsNull">
+               <operand localId="466" locator="106:3-106:24" name="GeneticReferralVariant" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="470" locator="108:1-109:37" name="ExistsGeneticReferralAncestry" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="470">
+               <a:s>define ExistsGeneticReferralAncestry:
+  </a:s>
+               <a:s r="473">
+                  <a:s r="471">
+                     <a:s>GeneticReferralAncestry</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="473" locator="109:3-109:37" xsi:type="Not">
+            <operand localId="472" locator="109:3-109:37" xsi:type="IsNull">
+               <operand localId="471" locator="109:3-109:25" name="GeneticReferralAncestry" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="475" locator="111:1-112:33" name="ExistsGeneticReferralRisk" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="475">
+               <a:s>define ExistsGeneticReferralRisk:
+  </a:s>
+               <a:s r="478">
+                  <a:s r="476">
+                     <a:s>GeneticReferralRisk</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="478" locator="112:3-112:33" xsi:type="Not">
+            <operand localId="477" locator="112:3-112:33" xsi:type="IsNull">
+               <operand localId="476" locator="112:3-112:21" name="GeneticReferralRisk" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="480" locator="114:1-115:26" name="GeneticRiskReferralCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="480">
+               <a:s>define GeneticRiskReferralCode:
+  </a:s>
+               <a:s r="482">
+                  <a:s r="481">
+                     <a:s>GeneticRiskReferral</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="482">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="482" locator="115:3-115:26" path="code" xsi:type="Property">
+            <source localId="481" locator="115:3-115:21" name="GeneticRiskReferral" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="484" locator="117:1-118:28" name="GeneticRiskReferralReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="484">
+               <a:s>define GeneticRiskReferralReason:
+  </a:s>
+               <a:s r="486">
+                  <a:s r="485">
+                     <a:s>GeneticRiskReferral</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="486">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="486" locator="118:3-118:28" path="reason" xsi:type="Property">
+            <source localId="485" locator="118:3-118:21" name="GeneticRiskReferral" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="488" locator="120:1-121:35" name="ExistsGeneticRiskAssessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="488">
+               <a:s>define ExistsGeneticRiskAssessment:
+  </a:s>
+               <a:s r="491">
+                  <a:s r="489">
+                     <a:s>GeneticRiskAssessment</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="491" locator="121:3-121:35" xsi:type="Not">
+            <operand localId="490" locator="121:3-121:35" xsi:type="IsNull">
+               <operand localId="489" locator="121:3-121:23" name="GeneticRiskAssessment" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="493" locator="123:1-124:34" name="GeneticRiskAssessmentToolCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="493">
+               <a:s>define GeneticRiskAssessmentToolCode:
+  </a:s>
+               <a:s r="496">
+                  <a:s r="495">
+                     <a:s>(</a:s>
+                     <a:s r="495">
+                        <a:s r="494">
+                           <a:s>Actions</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="495">
+                           <a:s>&quot;act-fhxrisktool&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="496">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="496" locator="124:3-124:34" path="code" xsi:type="Property">
+            <source localId="495" locator="124:3-124:29" name="act-fhxrisktool" libraryName="Actions" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="498" locator="126:1-127:36" name="GeneticRiskAssessmentToolReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="498">
+               <a:s>define GeneticRiskAssessmentToolReason:
+  </a:s>
+               <a:s r="501">
+                  <a:s r="500">
+                     <a:s>(</a:s>
+                     <a:s r="500">
+                        <a:s r="499">
+                           <a:s>Actions</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="500">
+                           <a:s>&quot;act-fhxrisktool&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="501">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="501" locator="127:3-127:36" path="reason" xsi:type="Property">
+            <source localId="500" locator="127:3-127:29" name="act-fhxrisktool" libraryName="Actions" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="503" locator="129:1-130:36" name="GeneticRiskAssessmentCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="503">
+               <a:s>define GeneticRiskAssessmentCode:
+  </a:s>
+               <a:s r="506">
+                  <a:s r="505">
+                     <a:s>(</a:s>
+                     <a:s r="505">
+                        <a:s r="504">
+                           <a:s>Actions</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="505">
+                           <a:s>&quot;act-fhxriskassess&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="506">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="506" locator="130:3-130:36" path="code" xsi:type="Property">
+            <source localId="505" locator="130:3-130:31" name="act-fhxriskassess" libraryName="Actions" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="508" locator="132:1-133:38" name="GeneticRiskAssessmentReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="508">
+               <a:s>define GeneticRiskAssessmentReason:
+  </a:s>
+               <a:s r="511">
+                  <a:s r="510">
+                     <a:s>(</a:s>
+                     <a:s r="510">
+                        <a:s r="509">
+                           <a:s>Actions</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="510">
+                           <a:s>&quot;act-fhxriskassess&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="511">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="511" locator="133:3-133:38" path="reason" xsi:type="Property">
+            <source localId="510" locator="133:3-133:31" name="act-fhxriskassess" libraryName="Actions" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+   </statements>
+</library>

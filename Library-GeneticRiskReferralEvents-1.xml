@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="282">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library GeneticRiskReferralEvents version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="GeneticRiskReferralEvents" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="18:1-18:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:61" localIdentifier="BCSMCommon" path="http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>BCSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called BCSMCommon</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="21:1-21:56" localIdentifier="Common" path="http://cancerscreeningcds.github.io/bcsm-cds/CSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>CSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Common</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="211" locator="23:1-23:111" name="LOCAL" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>codesystem &quot;LOCAL&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="212" locator="24:1-24:114" name="ActCode" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>codesystem &quot;ActCode&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/plan-definition-action-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="213" locator="26:1-26:143" name="Family history of inherited cancer susceptibility" id="fhxgenetic" display="Family history of inherited cancer susceptibility" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>code &quot;Family history of inherited cancer susceptibility&quot;: 'fhxgenetic' from </a:s>
+               <a:s r="214">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'Family history of inherited cancer susceptibility'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="214" locator="26:77-26:83" name="LOCAL"/>
+      </def>
+      <def localId="215" locator="27:1-27:145" name="Ancestry associated with BRCA1/2 gene mutations" id="brcageneancestry" display="Ancestry associated with BRCA1/2 gene mutations" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="215">
+               <a:s>code &quot;Ancestry associated with BRCA1/2 gene mutations&quot;: 'brcageneancestry' from </a:s>
+               <a:s r="216">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'Ancestry associated with BRCA1/2 gene mutations'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="216" locator="27:81-27:87" name="LOCAL"/>
+      </def>
+      <def localId="217" locator="28:1-28:107" name="Familial risk assessment" id="familialriskassessment" display="Familial risk assessment" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="217">
+               <a:s>code &quot;Familial risk assessment&quot;: 'familialriskassessment' from </a:s>
+               <a:s r="218">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+               <a:s> display 'Familial risk assessment'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="218" locator="28:64-28:72" name="ActCode"/>
+      </def>
+      <def localId="219" locator="29:1-29:84" name="High genetic risk" id="highgeneticrisk" display="High genetic risk" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="219">
+               <a:s>code &quot;High genetic risk&quot;: 'highgeneticrisk' from </a:s>
+               <a:s r="220">
+                  <a:s>&quot;LOCAL&quot;</a:s>
+               </a:s>
+               <a:s> display 'High genetic risk'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="220" locator="29:50-29:56" name="LOCAL"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="224" locator="31:1-31:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="222" locator="31:1-31:15" name="Patient" context="Patient">
+         <expression localId="223" xsi:type="SingletonFrom">
+            <operand localId="221" locator="31:1-31:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="226" locator="33:1-34:36" name="eve-fhxgeneinherited" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="226">
+               <a:s>define &quot;eve-fhxgeneinherited&quot;:
+  </a:s>
+               <a:s r="228">
+                  <a:s r="227">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="228">
+                     <a:s>&quot;de-fhxgeneinherited&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="228" locator="34:3-34:36" name="de-fhxgeneinherited" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="230" locator="36:1-37:38" name="eve-knownvariantstatus" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="230">
+               <a:s>define &quot;eve-knownvariantstatus&quot;:
+  </a:s>
+               <a:s r="232">
+                  <a:s r="231">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="232">
+                     <a:s>&quot;de-knownvariantstatus&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="232" locator="37:3-37:38" name="de-knownvariantstatus" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="234" locator="39:1-42:73" name="eve-fhxbrcaovcatubalperit" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="234">
+               <a:s>define &quot;eve-fhxbrcaovcatubalperit&quot;:
+  </a:s>
+               <a:s r="235">
+                  <a:s>if </a:s>
+                  <a:s r="239">
+                     <a:s r="237">
+                        <a:s r="236">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="237">
+                           <a:s>FamilyHistoryBreastOvarianTubalPeritonealCancerObservation</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is not null</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="246">
+                     <a:s r="240">
+                        <a:s>FHIRHelpers</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="246">
+                        <a:s>ToBoolean(</a:s>
+                        <a:s r="241">
+                           <a:s r="244">
+                              <a:s r="243">
+                                 <a:s r="242">
+                                    <a:s>DataElements</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="243">
+                                    <a:s>FamilyHistoryBreastOvarianTubalPeritonealCancerObservation</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="244">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> as </a:s>
+                           <a:s r="245">
+                              <a:s>boolean</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> 
+  else </a:s>
+                  <a:s r="247">
+                     <a:s>exists </a:s>
+                     <a:s r="249">
+                        <a:s r="248">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="249">
+                           <a:s>FamilyMemberBreastOvarianTubalPeritonealCancer</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="235" locator="40:3-42:73" xsi:type="If">
+            <condition localId="239" locator="40:6-40:88" xsi:type="Not">
+               <operand localId="238" locator="40:6-40:88" xsi:type="IsNull">
+                  <operand localId="237" locator="40:6-40:76" name="FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="246" locator="41:10-41:120" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+               <operand localId="241" locator="41:32-41:119" strict="false" xsi:type="As">
+                  <operand localId="244" locator="41:32-41:108" path="value" xsi:type="Property">
+                     <source localId="243" locator="41:32-41:102" name="FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <asTypeSpecifier localId="245" locator="41:113-41:119" name="fhir:boolean" xsi:type="NamedTypeSpecifier"/>
+               </operand>
+            </then>
+            <else localId="247" locator="42:8-42:73" xsi:type="Exists">
+               <operand localId="249" locator="42:15-42:73" name="FamilyMemberBreastOvarianTubalPeritonealCancer" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            </else>
+         </expression>
+      </def>
+      <def localId="251" locator="44:1-47:12" name="eve-brcageneancestry" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="251">
+               <a:s>define &quot;eve-brcageneancestry&quot;:
+  </a:s>
+               <a:s r="252">
+                  <a:s>if </a:s>
+                  <a:s r="256">
+                     <a:s r="254">
+                        <a:s r="253">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="254">
+                           <a:s>MostRecentBRCAGeneAncestryObservation</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is not null</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="263">
+                     <a:s r="257">
+                        <a:s>FHIRHelpers</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="263">
+                        <a:s>ToBoolean(</a:s>
+                        <a:s r="258">
+                           <a:s r="261">
+                              <a:s r="260">
+                                 <a:s r="259">
+                                    <a:s>DataElements</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="260">
+                                    <a:s>MostRecentBRCAGeneAncestryObservation</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="261">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> as </a:s>
+                           <a:s r="262">
+                              <a:s>boolean</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="264"> 
+  else false</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="252" locator="45:3-47:12" xsi:type="If">
+            <condition localId="256" locator="45:6-45:67" xsi:type="Not">
+               <operand localId="255" locator="45:6-45:67" xsi:type="IsNull">
+                  <operand localId="254" locator="45:6-45:55" name="MostRecentBRCAGeneAncestryObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="263" locator="46:10-46:99" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+               <operand localId="258" locator="46:32-46:98" strict="false" xsi:type="As">
+                  <operand localId="261" locator="46:32-46:87" path="value" xsi:type="Property">
+                     <source localId="260" locator="46:32-46:81" name="MostRecentBRCAGeneAncestryObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <asTypeSpecifier localId="262" locator="46:92-46:98" name="fhir:boolean" xsi:type="NamedTypeSpecifier"/>
+               </operand>
+            </then>
+            <else localId="264" locator="47:8-47:12" valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="266" locator="49:1-50:35" name="eve-fhxriskresult" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="266">
+               <a:s>define &quot;eve-fhxriskresult&quot;:
+  </a:s>
+               <a:s r="268">
+                  <a:s r="267">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="268">
+                     <a:s>&quot;de-fhxbreastcarisk&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="268" locator="50:3-50:35" name="de-fhxbreastcarisk" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="282" locator="66:1-69:12" name="LastFhxBreastOvarianTubalPeritonealCancerObservationResult" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="282">
+               <a:s>define LastFhxBreastOvarianTubalPeritonealCancerObservationResult:
+  </a:s>
+               <a:s r="292">
+                  <a:s r="283">
+                     <a:s r="287">
+                        <a:s r="284">
+                           <a:s>BCSMCommon</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="287">
+                           <a:s>SortedObservations(
+    </a:s>
+                           <a:s r="286">
+                              <a:s r="285">
+                                 <a:s>DataElements</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="286">
+                                 <a:s>FamilyHistoryBreastOvarianTubalPeritonealCancerObservations</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+  )</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s r="288">[1]</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="292">
+                     <a:s>value</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="292" locator="67:3-69:12" path="value" xsi:type="Property">
+            <source localId="283" locator="67:3-69:6" xsi:type="Indexer">
+               <signature localId="289" xsi:type="ListTypeSpecifier">
+                  <elementType localId="290" name="fhir:Observation" xsi:type="NamedTypeSpecifier"/>
+               </signature>
+               <signature localId="291" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+               <operand localId="287" locator="67:3-69:3" name="SortedObservations" libraryName="BCSMCommon" xsi:type="FunctionRef">
+                  <operand localId="286" locator="68:5-68:76" name="FamilyHistoryBreastOvarianTubalPeritonealCancerObservations" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="288" locator="69:5" valueType="t:Integer" value="1" xsi:type="Literal"/>
+            </source>
+         </expression>
+      </def>
+      <def localId="275" locator="58:1-64:12" name="RiskFactorModifiedAfterRiskAssessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="275">
+               <a:s>define RiskFactorModifiedAfterRiskAssessment:
+  </a:s>
+               <a:s r="276">
+                  <a:s>if </a:s>
+                  <a:s r="277">
+                     <a:s r="278">
+                        <a:s r="279">
+                           <a:s r="280">
+                              <a:s>&quot;eve-fhxbrcaovcatubalperit&quot;</a:s>
+                           </a:s>
+                           <a:s> and </a:s>
+                           <a:s r="294">
+                              <a:s r="293">
+                                 <a:s>LastFhxBreastOvarianTubalPeritonealCancerObservationResult</a:s>
+                              </a:s>
+                              <a:s> is false</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+    and </a:s>
+                        <a:s r="302">
+                           <a:s r="300">
+                              <a:s r="297">
+                                 <a:s>Common</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="300">
+                                 <a:s>ObservationDate(</a:s>
+                                 <a:s r="299">
+                                    <a:s r="298">
+                                       <a:s>DataElements</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="299">
+                                       <a:s>FamilyHistoryBreastOvarianTubalPeritonealCancerObservation</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> is not null</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    and </a:s>
+                     <a:s r="303">
+                        <a:s r="307">
+                           <a:s r="304">
+                              <a:s>Common</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="307">
+                              <a:s>ObservationDate(</a:s>
+                              <a:s r="306">
+                                 <a:s r="305">
+                                    <a:s>DataElements</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="306">
+                                    <a:s>FamilyHistoryBreastOvarianTubalPeritonealCancerObservation</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> 
+      > </a:s>
+                        <a:s r="311">
+                           <a:s r="308">
+                              <a:s>Common</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="311">
+                              <a:s>ObservationDate(</a:s>
+                              <a:s r="310">
+                                 <a:s r="309">
+                                    <a:s>DataElements</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="310">
+                                    <a:s>&quot;MostRecentFamilialRiskAssessmentObservation&quot;</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>)</a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="314">
+    then true
+  else false</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="276" locator="59:3-64:12" xsi:type="If">
+            <condition localId="277" locator="59:6-62:90" xsi:type="And">
+               <operand localId="278" locator="59:6-60:115" xsi:type="And">
+                  <operand localId="279" locator="59:6-59:104" xsi:type="And">
+                     <operand localId="280" locator="59:6-59:32" name="eve-fhxbrcaovcatubalperit" xsi:type="ExpressionRef"/>
+                     <operand localId="294" locator="59:38-59:104" xsi:type="IsFalse">
+                        <operand localId="296" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand localId="295" asType="fhir:boolean" xsi:type="As">
+                              <operand localId="293" locator="59:38-59:95" name="LastFhxBreastOvarianTubalPeritonealCancerObservationResult" xsi:type="ExpressionRef"/>
+                           </operand>
+                        </operand>
+                     </operand>
+                  </operand>
+                  <operand localId="302" locator="60:9-60:115" xsi:type="Not">
+                     <operand localId="301" locator="60:9-60:115" xsi:type="IsNull">
+                        <operand localId="300" locator="60:9-60:103" name="ObservationDate" libraryName="Common" xsi:type="FunctionRef">
+                           <operand localId="299" locator="60:32-60:102" name="FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="303" locator="61:9-62:90" xsi:type="Greater">
+                  <signature localId="312" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="313" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="307" locator="61:9-61:103" name="ObservationDate" libraryName="Common" xsi:type="FunctionRef">
+                     <operand localId="306" locator="61:32-61:102" name="FamilyHistoryBreastOvarianTubalPeritonealCancerObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="311" locator="62:9-62:90" name="ObservationDate" libraryName="Common" xsi:type="FunctionRef">
+                     <operand localId="310" locator="62:32-62:89" name="MostRecentFamilialRiskAssessmentObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+            </condition>
+            <then localId="314" locator="63:10-63:13" valueType="t:Boolean" value="true" xsi:type="Literal"/>
+            <else localId="315" locator="64:8-64:12" valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="270" locator="54:1-56:54" name="ValidMostRecentFamilialRiskAssessment" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="270">
+               <a:s>// Familial risk assessment is valid if exists
+// and risk factor observation not changed from false to true  after risk assessment
+define ValidMostRecentFamilialRiskAssessment:
+  </a:s>
+               <a:s r="271">
+                  <a:s r="273">
+                     <a:s r="272">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="273">
+                        <a:s>FamilialRiskAssessmentExists</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    and </a:s>
+                  <a:s r="317">
+                     <a:s r="316">
+                        <a:s>RiskFactorModifiedAfterRiskAssessment</a:s>
+                     </a:s>
+                     <a:s> is false</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="271" locator="55:3-56:54" xsi:type="And">
+            <operand localId="273" locator="55:3-55:43" name="FamilialRiskAssessmentExists" libraryName="DataElements" xsi:type="ExpressionRef"/>
+            <operand localId="317" locator="56:9-56:54" xsi:type="IsFalse">
+               <operand localId="316" locator="56:9-56:45" name="RiskFactorModifiedAfterRiskAssessment" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+   </statements>
+</library>

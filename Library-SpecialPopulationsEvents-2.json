@@ -1,0 +1,586 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "s" : {
+            "r" : "250",
+            "s" : [ {
+               "value" : [ "/*  \n  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.\n\n  (C) 2024 The MITRE Corporation. All Rights Reserved. \n  Approved for Public Release: 24-2711. \n  Distribution Unlimited.\n\n  Unless otherwise noted, this work is available under an Apache 2.0 license. \n  It was produced by the MITRE Corporation for the Division of Cancer Prevention \n  and Control, Centers for Disease Control and Prevention in accordance with the \n  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.\n*/\n\n","library SpecialPopulationsEvents version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "SpecialPopulationsEvents",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "16:1-16:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "18:1-18:63",
+            "localIdentifier" : "C3F",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/CDSConnectCommonsforFHIRv401",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "CDSConnectCommonsforFHIRv401" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","C3F" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "19:1-19:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "209",
+            "locator" : "20:1-20:56",
+            "localIdentifier" : "DataElements",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/DataElements",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "DataElements" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","DataElements" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "codeSystems" : {
+         "def" : [ {
+            "localId" : "210",
+            "locator" : "22:1-22:111",
+            "name" : "LOCAL",
+            "id" : "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"LOCAL\"",": ","'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "211",
+            "locator" : "23:1-23:77",
+            "name" : "v3-RoleCode",
+            "id" : "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "211",
+                  "s" : [ {
+                     "value" : [ "","codesystem ","\"v3-RoleCode\"",": ","'http://terminology.hl7.org/CodeSystem/v3-RoleCode'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "215",
+            "locator" : "25:1-25:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "213",
+            "locator" : "25:1-25:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "214",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "212",
+                  "locator" : "25:1-25:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "217",
+            "locator" : "27:1-28:36",
+            "name" : "eve-highlifetimerisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "217",
+                  "s" : [ {
+                     "value" : [ "","define ","\"eve-highlifetimerisk\"",":\n  " ]
+                  }, {
+                     "r" : "219",
+                     "s" : [ {
+                        "r" : "218",
+                        "s" : [ {
+                           "value" : [ "DataElements" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "219",
+                        "s" : [ {
+                           "value" : [ "\"de-highlifetimerisk\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "219",
+               "locator" : "28:3-28:36",
+               "name" : "de-highlifetimerisk",
+               "libraryName" : "DataElements",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "224",
+            "locator" : "33:1-36:12",
+            "name" : "FirstDegRelativeGeneticMarkerOrSyndromeObservation",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "224",
+                  "s" : [ {
+                     "value" : [ "","define ","\"FirstDegRelativeGeneticMarkerOrSyndromeObservation\"",":\n  " ]
+                  }, {
+                     "r" : "225",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "229",
+                        "s" : [ {
+                           "r" : "227",
+                           "s" : [ {
+                              "r" : "226",
+                              "s" : [ {
+                                 "value" : [ "DataElements" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "227",
+                              "s" : [ {
+                                 "value" : [ "MostRecentFirstDegRelativeGeneticObservation" ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " is not null" ]
+                        } ]
+                     }, {
+                        "value" : [ "\n    then " ]
+                     }, {
+                        "r" : "236",
+                        "s" : [ {
+                           "r" : "230",
+                           "s" : [ {
+                              "value" : [ "FHIRHelpers" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "236",
+                           "s" : [ {
+                              "value" : [ "ToBoolean","(" ]
+                           }, {
+                              "r" : "231",
+                              "s" : [ {
+                                 "r" : "234",
+                                 "s" : [ {
+                                    "r" : "233",
+                                    "s" : [ {
+                                       "r" : "232",
+                                       "s" : [ {
+                                          "value" : [ "DataElements" ]
+                                       } ]
+                                    }, {
+                                       "value" : [ "." ]
+                                    }, {
+                                       "r" : "233",
+                                       "s" : [ {
+                                          "value" : [ "MostRecentFirstDegRelativeGeneticObservation" ]
+                                       } ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "234",
+                                    "s" : [ {
+                                       "value" : [ "value" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ " as " ]
+                              }, {
+                                 "r" : "235",
+                                 "s" : [ {
+                                    "value" : [ "boolean" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "237",
+                        "value" : [ " \n  else ","false" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "225",
+               "locator" : "34:3-36:12",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "229",
+                  "locator" : "34:6-34:74",
+                  "type" : "Not",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "228",
+                     "locator" : "34:6-34:74",
+                     "type" : "IsNull",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "227",
+                        "locator" : "34:6-34:62",
+                        "name" : "MostRecentFirstDegRelativeGeneticObservation",
+                        "libraryName" : "DataElements",
+                        "type" : "ExpressionRef"
+                     }
+                  }
+               },
+               "then" : {
+                  "localId" : "236",
+                  "locator" : "35:10-35:106",
+                  "name" : "ToBoolean",
+                  "libraryName" : "FHIRHelpers",
+                  "type" : "FunctionRef",
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "localId" : "231",
+                     "locator" : "35:32-35:105",
+                     "strict" : false,
+                     "type" : "As",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "234",
+                        "locator" : "35:32-35:94",
+                        "path" : "value",
+                        "type" : "Property",
+                        "source" : {
+                           "localId" : "233",
+                           "locator" : "35:32-35:88",
+                           "name" : "MostRecentFirstDegRelativeGeneticObservation",
+                           "libraryName" : "DataElements",
+                           "type" : "ExpressionRef"
+                        }
+                     },
+                     "asTypeSpecifier" : {
+                        "localId" : "235",
+                        "locator" : "35:99-35:105",
+                        "name" : "{http://hl7.org/fhir}boolean",
+                        "type" : "NamedTypeSpecifier"
+                     }
+                  } ]
+               },
+               "else" : {
+                  "localId" : "237",
+                  "locator" : "36:8-36:12",
+                  "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+                  "value" : "false",
+                  "type" : "Literal"
+               }
+            }
+         }, {
+            "localId" : "241",
+            "locator" : "38:1-39:56",
+            "name" : "FirstDegRelativeGeneticMarkerOrSyndrome",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "241",
+                  "s" : [ {
+                     "value" : [ "","define ","\"FirstDegRelativeGeneticMarkerOrSyndrome\"",":\n  " ]
+                  }, {
+                     "r" : "243",
+                     "s" : [ {
+                        "r" : "242",
+                        "s" : [ {
+                           "value" : [ "DataElements" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "243",
+                        "s" : [ {
+                           "value" : [ "\"FirstDegRelativeGeneticMarkerOrSyndrome\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "243",
+               "locator" : "39:3-39:56",
+               "name" : "FirstDegRelativeGeneticMarkerOrSyndrome",
+               "libraryName" : "DataElements",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "221",
+            "locator" : "30:1-31:102",
+            "name" : "eve-firstdeggenetic",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "221",
+                  "s" : [ {
+                     "value" : [ "","define ","\"eve-firstdeggenetic\"",":\n  " ]
+                  }, {
+                     "r" : "222",
+                     "s" : [ {
+                        "r" : "238",
+                        "s" : [ {
+                           "value" : [ "FirstDegRelativeGeneticMarkerOrSyndromeObservation" ]
+                        } ]
+                     }, {
+                        "value" : [ " or " ]
+                     }, {
+                        "r" : "239",
+                        "s" : [ {
+                           "value" : [ "exists " ]
+                        }, {
+                           "r" : "244",
+                           "s" : [ {
+                              "value" : [ "FirstDegRelativeGeneticMarkerOrSyndrome" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "222",
+               "locator" : "31:3-31:102",
+               "type" : "Or",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "238",
+                  "locator" : "31:3-31:52",
+                  "name" : "FirstDegRelativeGeneticMarkerOrSyndromeObservation",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "239",
+                  "locator" : "31:57-31:102",
+                  "type" : "Exists",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "244",
+                     "locator" : "31:64-31:102",
+                     "name" : "FirstDegRelativeGeneticMarkerOrSyndrome",
+                     "type" : "ExpressionRef"
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "246",
+            "locator" : "41:1-42:37",
+            "name" : "eve-breastdensitycord",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "246",
+                  "s" : [ {
+                     "value" : [ "","define ","\"eve-breastdensitycord\"",":\n  " ]
+                  }, {
+                     "r" : "248",
+                     "s" : [ {
+                        "r" : "247",
+                        "s" : [ {
+                           "value" : [ "DataElements" ]
+                        } ]
+                     }, {
+                        "value" : [ "." ]
+                     }, {
+                        "r" : "248",
+                        "s" : [ {
+                           "value" : [ "\"de-breastdensitycord\"" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "248",
+               "locator" : "42:3-42:37",
+               "name" : "de-breastdensitycord",
+               "libraryName" : "DataElements",
+               "type" : "ExpressionRef"
+            }
+         }, {
+            "localId" : "250",
+            "locator" : "44:1-45:64",
+            "name" : "eve-fhxbreastcarisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "250",
+                  "s" : [ {
+                     "value" : [ "","define ","\"eve-fhxbreastcarisk\"",":\n  " ]
+                  }, {
+                     "r" : "251",
+                     "s" : [ {
+                        "r" : "253",
+                        "s" : [ {
+                           "r" : "252",
+                           "s" : [ {
+                              "value" : [ "DataElements" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "253",
+                           "s" : [ {
+                              "value" : [ "\"de-fhxbreastcarisk\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " or " ]
+                     }, {
+                        "r" : "255",
+                        "s" : [ {
+                           "r" : "254",
+                           "s" : [ {
+                              "value" : [ "DataElements" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "255",
+                           "s" : [ {
+                              "value" : [ "\"de-fhxrisk\"" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "251",
+               "locator" : "45:3-45:64",
+               "type" : "Or",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "253",
+                  "locator" : "45:3-45:35",
+                  "name" : "de-fhxbreastcarisk",
+                  "libraryName" : "DataElements",
+                  "type" : "ExpressionRef"
+               }, {
+                  "localId" : "255",
+                  "locator" : "45:40-45:64",
+                  "name" : "de-fhxrisk",
+                  "libraryName" : "DataElements",
+                  "type" : "ExpressionRef"
+               } ]
+            }
+         } ]
+      }
+   }
+}

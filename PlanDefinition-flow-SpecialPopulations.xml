@@ -1,0 +1,931 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PlanDefinition xmlns="http://hl7.org/fhir">
+  <id value="flow-SpecialPopulations"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"/>
+  </meta>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">flow-SpecialPopulations</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="PlanDefinition-flow-SpecialPopulations.html">Special Populations</a></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">1.0.0</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Special Populations</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/6.2.0/CodeSystem-plan-definition-type.html">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>eca-rule</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2024-10-22</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">MITRE</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Description: </b></th>
+            <td style="padding-left: 4px;"><div><p>Patient population that have been identified as higher than average risk or otherwise requiring specific consideration within a particular guideline.</p>
+<p>Provides criteria to determine age to start, screening modality, and screening interval for these populations of patients.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Capability: </b></th>
+            <td style="padding-left: 4px;">
+                
+                executable 
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Representation Level: </b></th>
+            <td style="padding-left: 4px;">
+                
+                structured
+            </td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Copyright: </b></th>
+            <td style="padding-left: 4px;"><div><p>(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Approval Date: </b></th>
+            <td style="padding-left: 4px;">2024-10-22</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Libraries: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td><code>Library/SpecialPopulations|1.0.0</code></td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Actions: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screening mammogram starting age 30:</b> An annual screening mammogram starting at age 30 is recommended.
+
+Women who are at higher than average risk for breast cancer based on certain risk factors should get a mammogram every year, typically starting at age 30.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSMammoHighRisk)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSMammoHighRiskCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSMammoHighRiskTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(ACSMammoHighRiskFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSMammoHighRiskCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(ACSMammoHighRiskReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSMammoHighRiskTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screening MRI starting age 30:</b> An annual screening MRI starting at age 30 is recommended.
+
+Women who are at higher than average risk for breast cancer based on certain risk factors should get a breast MRI every year, typically starting at age 30.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSMriHighRisk)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSMriHighRiskCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSMriHighRiskTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(ACSMriHighRiskFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSMriHighRiskCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(ACSMriHighRiskReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSMriHighRiskTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screening mammo starting age 30:</b> An annual screening mammogram starting at age 30 is recommended.
+
+Women who are at higher than average risk for breast cancer based on certain risk factors should get a mammogram every year, typically starting at age 30.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSFirstDegGeneticMammo)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSFirstDegGeneticMammoCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSFirstDegGeneticMammoTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(ACSFirstDegGeneticMammoFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSFirstDegGeneticMammoCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(ACSFirstDegGeneticMammoReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSFirstDegGeneticMammoTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Annual screening MRI starting age 30:</b> An annual screening MRI starting at age 30 is recommended.
+
+Women who are at higher than average risk for breast cancer based on certain risk factors should get a breast MRI every year, typically starting at age 30.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsACSFirstDegGeneticMri)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(ACSFirstDegGeneticMriCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(ACSFirstDegGeneticMriTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(ACSFirstDegGeneticMriFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(ACSFirstDegGeneticMriCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(ACSFirstDegGeneticMriReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(ACSFirstDegGeneticMriTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Perform lifetime risk assessment:</b> Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.
+
+If estimated lifetime risk is &gt;20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.
+
+Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsBreastImagingHeterogenouslyOrExtremelyDense)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            reasonCode[0].coding[0]: <i>(BreastImagingHeterogenouslyOrExtremelyDenseReason)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Perform lifetime risk assessment:</b> Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.
+
+If estimated lifetime risk is &gt;20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.
+
+Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsCompellingFamilyHistory)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(CompellingFamilyHistoryCode)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(CompellingFamilyHistoryCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(CompellingFamilyHistoryReason)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Biennial screening mammo starting age 40:</b> Biennial screening mammogram starting at age 40
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsUSPSTFRecommendation)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(USPSTFRecommendationCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(USPSTFRecommendationTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(USPSTFRecommendationFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(USPSTFRecommendationCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(USPSTFRecommendationReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(USPSTFRecommendationTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+</div>
+  </text>
+  <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
+    <valueCode value="executable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <url value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-SpecialPopulations"/>
+  <version value="1.0.0"/>
+  <name value="flow-SpecialPopulations"/>
+  <title value="Special Populations"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+      <code value="eca-rule"/>
+    </coding>
+  </type>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2024-10-22"/>
+  <publisher value="MITRE"/>
+  <contact>
+    <name value="MITRE"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.mitre.org/"/>
+    </telecom>
+  </contact>
+  <description value="Patient population that have been identified as higher than average risk or otherwise requiring specific consideration within a particular guideline. &#xA;&#xA;Provides criteria to determine age to start, screening modality, and screening interval for these populations of patients."/>
+  <copyright value="(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931."/>
+  <approvalDate value="2024-10-22"/>
+  <lastReviewDate value="2024-10-22"/>
+  <author>
+    <name value="The Health FFRDC, operated by The MITRE Corporation, in support of the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention."/>
+  </author>
+  <editor>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </editor>
+  <reviewer>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </reviewer>
+  <endorser>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </endorser>
+  <library value="Library/SpecialPopulations|1.0.0"/>
+  <action id="ACSMammoHighRisk">
+    <title value="Annual screening mammogram starting age 30"/>
+    <description value="An annual screening mammogram starting at age 30 is recommended.&#xA;&#xA;Women who are at higher than average risk for breast cancer based on certain risk factors should get a mammogram every year, typically starting at age 30."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ACS"/>
+      <display value="American Cancer Society Recommendations for the Early Detection of Breast Cancer"/>
+      <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      <document>
+        <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsACSMammoHighRisk"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMammoHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMammoHighRiskTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMammoHighRiskFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMammoHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMammoHighRiskReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMammoHighRiskTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="ACSMriHighRisk">
+    <title value="Annual screening MRI starting age 30"/>
+    <description value="An annual screening MRI starting at age 30 is recommended.&#xA;&#xA;Women who are at higher than average risk for breast cancer based on certain risk factors should get a breast MRI every year, typically starting at age 30."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ACS"/>
+      <display value="American Cancer Society Guidelines for Breast Screening with MRI as an Adjunct to Mammography"/>
+      <citation value="Oeffinger KC, Fontham ETH, Etzioni R, et al. Breast Cancer Screening for Women at Average Risk: 2015 Guideline Update From the American Cancer Society. JAMA. 2015;314(15):1599–1614."/>
+      <url value="https://acsjournals.onlinelibrary.wiley.com/doi/full/10.3322/canjclin.57.2.75"/>
+      <document>
+        <url value="https://acsjournals.onlinelibrary.wiley.com/doi/full/10.3322/canjclin.57.2.75"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsACSMriHighRisk"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMriHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMriHighRiskTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMriHighRiskFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMriHighRiskCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMriHighRiskReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSMriHighRiskTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="ACSFirstDegGeneticMammo">
+    <title value="Annual screening mammo starting age 30"/>
+    <description value="An annual screening mammogram starting at age 30 is recommended.&#xA;&#xA;Women who are at higher than average risk for breast cancer based on certain risk factors should get a mammogram every year, typically starting at age 30."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ACS"/>
+      <display value="American Cancer Society Recommendations for the Early Detection of Breast Cancer"/>
+      <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      <document>
+        <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsACSFirstDegGeneticMammo"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMammoCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMammoTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMammoFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMammoCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMammoReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMammoTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="ACSFirstDegGeneticMri">
+    <title value="Annual screening MRI starting age 30"/>
+    <description value="An annual screening MRI starting at age 30 is recommended.&#xA;&#xA;Women who are at higher than average risk for breast cancer based on certain risk factors should get a breast MRI every year, typically starting at age 30."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ACS"/>
+      <display value="American Cancer Society Guidelines for Breast Screening with MRI as an Adjunct to Mammography"/>
+      <citation value="Oeffinger KC, Fontham ETH, Etzioni R, et al. Breast Cancer Screening for Women at Average Risk: 2015 Guideline Update From the American Cancer Society. JAMA. 2015;314(15):1599–1614."/>
+      <url value="https://acsjournals.onlinelibrary.wiley.com/doi/full/10.3322/canjclin.57.2.75"/>
+      <document>
+        <url value="https://acsjournals.onlinelibrary.wiley.com/doi/full/10.3322/canjclin.57.2.75"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsACSFirstDegGeneticMri"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMriCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMriTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMriFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMriCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMriReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ACSFirstDegGeneticMriTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="BreastImagingHeterogenouslyOrExtremelyDense">
+    <title value="Perform lifetime risk assessment"/>
+    <description value="Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.&#xA;&#xA;If estimated lifetime risk is &gt;20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.&#xA;&#xA;Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ACS"/>
+      <display value="American Cancer Society Recommendations for the Early Detection of Breast Cancer"/>
+      <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      <document>
+        <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsBreastImagingHeterogenouslyOrExtremelyDense"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="BreastImagingHeterogenouslyOrExtremelyDenseReason"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="CompellingFamilyHistory">
+    <title value="Perform lifetime risk assessment"/>
+    <description value="Consider performing assessment of lifetime risk, as defined by models largely dependent on family history.&#xA;&#xA;If estimated lifetime risk is &gt;20%, based on informal assessment or assessment using validated risk model, then patient is eligible for annual screening mammogram starting at age 30 and supplemental screening with annual screening MRI. Otherwise, patient can be offered annual screening mammogram starting at age 40.&#xA;&#xA;Validated tools include BRCAPRO, Claus, BOADICEA [Breast and Ovarian Analysis of Disease Incidence and Carrier Estimation Algorithm], and Tyrer-Cuzick."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ACS"/>
+      <display value="American Cancer Society Recommendations for the Early Detection of Breast Cancer"/>
+      <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      <document>
+        <url value="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection/american-cancer-society-recommendations-for-the-early-detection-of-breast-cancer.html"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsCompellingFamilyHistory"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="CompellingFamilyHistoryCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="CompellingFamilyHistoryCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="CompellingFamilyHistoryReason"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="USPSTFRecommendation">
+    <title value="Biennial screening mammo starting age 40"/>
+    <description value="Biennial screening mammogram starting at age 40"/>
+    <documentation>
+      <type value="citation"/>
+      <label value="USPSTF"/>
+      <display value="Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement"/>
+      <citation value="US Preventive Services Task Force. Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. JAMA. Published online April 30, 2024."/>
+      <url value="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"/>
+      <document>
+        <url value="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsUSPSTFRecommendation"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="USPSTFRecommendationCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="USPSTFRecommendationTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="USPSTFRecommendationFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="USPSTFRecommendationCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="USPSTFRecommendationReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="USPSTFRecommendationTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+</PlanDefinition>

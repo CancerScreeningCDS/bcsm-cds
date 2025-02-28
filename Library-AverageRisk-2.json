@@ -1,0 +1,3514 @@
+{
+   "library" : {
+      "localId" : "0",
+      "annotation" : [ {
+         "translatorVersion" : "3.11.0",
+         "translatorOptions" : "EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion",
+         "signatureLevel" : "Overloads",
+         "type" : "CqlToElmInfo"
+      }, {
+         "type" : "Annotation",
+         "s" : {
+            "r" : "645",
+            "s" : [ {
+               "value" : [ "/*  \n  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.\n\n  (C) 2024 The MITRE Corporation. All Rights Reserved. \n  Approved for Public Release: 24-2711. \n  Distribution Unlimited.\n\n  Unless otherwise noted, this work is available under an Apache 2.0 license. \n  It was produced by the MITRE Corporation for the Division of Cancer Prevention \n  and Control, Centers for Disease Control and Prevention in accordance with the \n  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.\n*/\n\n","library AverageRisk version '1.0.0'" ]
+            } ]
+         }
+      } ],
+      "identifier" : {
+         "id" : "AverageRisk",
+         "system" : "http://cancerscreeningcds.github.io/bcsm-cds",
+         "version" : "1.0.0"
+      },
+      "schemaIdentifier" : {
+         "id" : "urn:hl7-org:elm",
+         "version" : "r1"
+      },
+      "usings" : {
+         "def" : [ {
+            "localId" : "1",
+            "localIdentifier" : "System",
+            "uri" : "urn:hl7-org:elm-types:r1"
+         }, {
+            "localId" : "206",
+            "locator" : "16:1-16:26",
+            "localIdentifier" : "FHIR",
+            "uri" : "http://hl7.org/fhir",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "206",
+                  "s" : [ {
+                     "value" : [ "","using " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIR" ]
+                     } ]
+                  }, {
+                     "value" : [ " version '4.0.1'" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "includes" : {
+         "def" : [ {
+            "localId" : "207",
+            "locator" : "17:1-17:55",
+            "localIdentifier" : "FHIRHelpers",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers",
+            "version" : "4.0.1",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "207",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "FHIRHelpers" ]
+                     } ]
+                  }, {
+                     "value" : [ "  version ","'4.0.1'"," called ","FHIRHelpers" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "208",
+            "locator" : "19:1-19:55",
+            "localIdentifier" : "Events",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/AverageRiskEvents",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "208",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "AverageRiskEvents" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","Events" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "209",
+            "locator" : "20:1-20:57",
+            "localIdentifier" : "Actions",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/AverageRiskActions",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "209",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "AverageRiskActions" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","Actions" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "210",
+            "locator" : "21:1-21:56",
+            "localIdentifier" : "DataElements",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/DataElements",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "210",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "DataElements" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","DataElements" ]
+                  } ]
+               }
+            } ]
+         }, {
+            "localId" : "211",
+            "locator" : "22:1-22:61",
+            "localIdentifier" : "BCSMCommon",
+            "path" : "http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions",
+            "version" : "1.0.0",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "211",
+                  "s" : [ {
+                     "value" : [ "","include " ]
+                  }, {
+                     "s" : [ {
+                        "value" : [ "BCSMCommonFunctions" ]
+                     } ]
+                  }, {
+                     "value" : [ " version ","'1.0.0'"," called ","BCSMCommon" ]
+                  } ]
+               }
+            } ]
+         } ]
+      },
+      "parameters" : {
+         "def" : [ {
+            "localId" : "212",
+            "locator" : "24:1-24:41",
+            "name" : "ACS",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "212",
+                  "s" : [ {
+                     "value" : [ "","parameter ","ACS"," " ]
+                  }, {
+                     "r" : "214",
+                     "s" : [ {
+                        "value" : [ "System",".","Boolean" ]
+                     } ]
+                  }, {
+                     "r" : "213",
+                     "value" : [ " default ","true" ]
+                  } ]
+               }
+            } ],
+            "default" : {
+               "localId" : "213",
+               "locator" : "24:38-24:41",
+               "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "value" : "true",
+               "type" : "Literal"
+            },
+            "parameterTypeSpecifier" : {
+               "localId" : "214",
+               "locator" : "24:15-24:28",
+               "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "type" : "NamedTypeSpecifier"
+            }
+         }, {
+            "localId" : "215",
+            "locator" : "25:1-25:44",
+            "name" : "USPSTF",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "215",
+                  "s" : [ {
+                     "value" : [ "","parameter ","USPSTF"," " ]
+                  }, {
+                     "r" : "217",
+                     "s" : [ {
+                        "value" : [ "System",".","Boolean" ]
+                     } ]
+                  }, {
+                     "r" : "216",
+                     "value" : [ " default ","true" ]
+                  } ]
+               }
+            } ],
+            "default" : {
+               "localId" : "216",
+               "locator" : "25:41-25:44",
+               "valueType" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "value" : "true",
+               "type" : "Literal"
+            },
+            "parameterTypeSpecifier" : {
+               "localId" : "217",
+               "locator" : "25:18-25:31",
+               "name" : "{urn:hl7-org:elm-types:r1}Boolean",
+               "type" : "NamedTypeSpecifier"
+            }
+         } ]
+      },
+      "contexts" : {
+         "def" : [ {
+            "localId" : "221",
+            "locator" : "27:1-27:15",
+            "name" : "Patient"
+         } ]
+      },
+      "statements" : {
+         "def" : [ {
+            "localId" : "219",
+            "locator" : "27:1-27:15",
+            "name" : "Patient",
+            "context" : "Patient",
+            "expression" : {
+               "localId" : "220",
+               "type" : "SingletonFrom",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "218",
+                  "locator" : "27:1-27:15",
+                  "dataType" : "{http://hl7.org/fhir}Patient",
+                  "templateId" : "http://hl7.org/fhir/StructureDefinition/Patient",
+                  "type" : "Retrieve",
+                  "include" : [ ],
+                  "codeFilter" : [ ],
+                  "dateFilter" : [ ],
+                  "otherFilter" : [ ]
+               }
+            }
+         }, {
+            "localId" : "226",
+            "locator" : "42:1-44:43",
+            "name" : "ACSMammoAvgRiskAgeUnder45",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "226",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeUnder45",":\n  " ]
+                  }, {
+                     "r" : "227",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "228",
+                        "s" : [ {
+                           "r" : "229",
+                           "s" : [ {
+                              "r" : "230",
+                              "s" : [ {
+                                 "value" : [ "ACS" ]
+                              } ]
+                           }, {
+                              "value" : [ " and " ]
+                           }, {
+                              "r" : "232",
+                              "s" : [ {
+                                 "r" : "231",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "232",
+                                 "s" : [ {
+                                    "value" : [ "\"eve-ageUnder40\"" ]
+                                 } ]
+                              } ]
+                           } ]
+                        }, {
+                           "value" : [ " or " ]
+                        }, {
+                           "r" : "235",
+                           "s" : [ {
+                              "r" : "234",
+                              "s" : [ {
+                                 "r" : "233",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "234",
+                                 "s" : [ {
+                                    "value" : [ "\"eve-age40to44\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " is true" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "237",
+                        "s" : [ {
+                           "r" : "236",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "237",
+                           "s" : [ {
+                              "value" : [ "\"act-acsavgrecs40\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "238",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "227",
+               "locator" : "43:3-44:43",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "228",
+                  "locator" : "43:6-43:70",
+                  "type" : "Or",
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "localId" : "229",
+                     "locator" : "43:6-43:36",
+                     "type" : "And",
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "localId" : "230",
+                        "locator" : "43:6-43:8",
+                        "name" : "ACS",
+                        "type" : "ParameterRef"
+                     }, {
+                        "localId" : "232",
+                        "locator" : "43:14-43:36",
+                        "name" : "eve-ageUnder40",
+                        "libraryName" : "Events",
+                        "type" : "ExpressionRef"
+                     } ]
+                  }, {
+                     "localId" : "235",
+                     "locator" : "43:41-43:70",
+                     "type" : "IsTrue",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "234",
+                        "locator" : "43:41-43:62",
+                        "name" : "eve-age40to44",
+                        "libraryName" : "Events",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               },
+               "then" : {
+                  "localId" : "237",
+                  "locator" : "44:8-44:33",
+                  "name" : "act-acsavgrecs40",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "239",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "238",
+                     "locator" : "44:40-44:43",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "240",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "241",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "242",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "243",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "244",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "245",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "246",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "247",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "248",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "249",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "250",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "251",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "252",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "253",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "254",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "255",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "256",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "257",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "258",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "259",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "260",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "261",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "262",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "263",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "264",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "265",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "266",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "267",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "268",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "269",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "270",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "271",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "272",
+                        "name" : "flag",
+                        "elementType" : {
+                           "localId" : "273",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "276",
+            "locator" : "46:1-48:43",
+            "name" : "ACSMammoAvgRiskAge45to54",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "276",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAge45to54",":\n  " ]
+                  }, {
+                     "r" : "277",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "278",
+                        "s" : [ {
+                           "r" : "279",
+                           "s" : [ {
+                              "value" : [ "ACS" ]
+                           } ]
+                        }, {
+                           "value" : [ " and " ]
+                        }, {
+                           "r" : "282",
+                           "s" : [ {
+                              "r" : "281",
+                              "s" : [ {
+                                 "r" : "280",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "281",
+                                 "s" : [ {
+                                    "value" : [ "\"eve-Age45to54\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " is true" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "284",
+                        "s" : [ {
+                           "r" : "283",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "284",
+                           "s" : [ {
+                              "value" : [ "\"act-acsavgrecs45\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "285",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "277",
+               "locator" : "47:3-48:43",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "278",
+                  "locator" : "47:6-47:43",
+                  "type" : "And",
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "localId" : "279",
+                     "locator" : "47:6-47:8",
+                     "name" : "ACS",
+                     "type" : "ParameterRef"
+                  }, {
+                     "localId" : "282",
+                     "locator" : "47:14-47:43",
+                     "type" : "IsTrue",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "281",
+                        "locator" : "47:14-47:35",
+                        "name" : "eve-Age45to54",
+                        "libraryName" : "Events",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               },
+               "then" : {
+                  "localId" : "284",
+                  "locator" : "48:8-48:33",
+                  "name" : "act-acsavgrecs45",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "286",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "285",
+                     "locator" : "48:40-48:43",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "287",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "288",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "289",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "290",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "291",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "292",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "293",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "294",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "295",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "296",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "297",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "298",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "299",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "300",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "301",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "302",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "303",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "304",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "305",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "306",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "307",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "308",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "309",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "310",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "311",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "312",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "313",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "314",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "315",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "316",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "317",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "318",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "319",
+                        "name" : "flag",
+                        "elementType" : {
+                           "localId" : "320",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "323",
+            "locator" : "50:1-52:43",
+            "name" : "ACSMammoAvgRiskAgeOver54",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "323",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeOver54",":\n  " ]
+                  }, {
+                     "r" : "324",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "325",
+                        "s" : [ {
+                           "r" : "326",
+                           "s" : [ {
+                              "value" : [ "ACS" ]
+                           } ]
+                        }, {
+                           "value" : [ " and " ]
+                        }, {
+                           "r" : "329",
+                           "s" : [ {
+                              "r" : "328",
+                              "s" : [ {
+                                 "r" : "327",
+                                 "s" : [ {
+                                    "value" : [ "Events" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "328",
+                                 "s" : [ {
+                                    "value" : [ "\"eve-AgeOver54\"" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " is true" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ "\n  then " ]
+                     }, {
+                        "r" : "331",
+                        "s" : [ {
+                           "r" : "330",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "331",
+                           "s" : [ {
+                              "value" : [ "\"act-acsavgrecs55\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "332",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "324",
+               "locator" : "51:3-52:43",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "325",
+                  "locator" : "51:6-51:43",
+                  "type" : "And",
+                  "signature" : [ ],
+                  "operand" : [ {
+                     "localId" : "326",
+                     "locator" : "51:6-51:8",
+                     "name" : "ACS",
+                     "type" : "ParameterRef"
+                  }, {
+                     "localId" : "329",
+                     "locator" : "51:14-51:43",
+                     "type" : "IsTrue",
+                     "signature" : [ ],
+                     "operand" : {
+                        "localId" : "328",
+                        "locator" : "51:14-51:35",
+                        "name" : "eve-AgeOver54",
+                        "libraryName" : "Events",
+                        "type" : "ExpressionRef"
+                     }
+                  } ]
+               },
+               "then" : {
+                  "localId" : "331",
+                  "locator" : "52:8-52:33",
+                  "name" : "act-acsavgrecs55",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "333",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "332",
+                     "locator" : "52:40-52:43",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "334",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "335",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "336",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "337",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "338",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "339",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "340",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "341",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "342",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "343",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "344",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "345",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "346",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "347",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "348",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "349",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "350",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "351",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "352",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "353",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "354",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "355",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "356",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "357",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "358",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "359",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "360",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "361",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "362",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "363",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "364",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "365",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "366",
+                        "name" : "flag",
+                        "elementType" : {
+                           "localId" : "367",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "370",
+            "locator" : "54:1-56:44",
+            "name" : "USPSTFAvgRisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "370",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFAvgRisk",":\n  " ]
+                  }, {
+                     "r" : "371",
+                     "s" : [ {
+                        "value" : [ "if " ]
+                     }, {
+                        "r" : "372",
+                        "s" : [ {
+                           "value" : [ "USPSTF" ]
+                        } ]
+                     }, {
+                        "value" : [ " \n  then " ]
+                     }, {
+                        "r" : "374",
+                        "s" : [ {
+                           "r" : "373",
+                           "s" : [ {
+                              "value" : [ "Actions" ]
+                           } ]
+                        }, {
+                           "value" : [ "." ]
+                        }, {
+                           "r" : "374",
+                           "s" : [ {
+                              "value" : [ "\"act-uspstfavgrecs\"" ]
+                           } ]
+                        } ]
+                     }, {
+                        "r" : "375",
+                        "value" : [ " else ","null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "371",
+               "locator" : "55:3-56:44",
+               "type" : "If",
+               "condition" : {
+                  "localId" : "372",
+                  "locator" : "55:6-55:11",
+                  "name" : "USPSTF",
+                  "type" : "ParameterRef"
+               },
+               "then" : {
+                  "localId" : "374",
+                  "locator" : "56:8-56:34",
+                  "name" : "act-uspstfavgrecs",
+                  "libraryName" : "Actions",
+                  "type" : "ExpressionRef"
+               },
+               "else" : {
+                  "localId" : "376",
+                  "type" : "As",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "375",
+                     "locator" : "56:41-56:44",
+                     "type" : "Null"
+                  },
+                  "asTypeSpecifier" : {
+                     "localId" : "377",
+                     "type" : "TupleTypeSpecifier",
+                     "element" : [ {
+                        "localId" : "378",
+                        "name" : "code",
+                        "elementType" : {
+                           "localId" : "379",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "380",
+                        "name" : "reason",
+                        "elementType" : {
+                           "localId" : "381",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     }, {
+                        "localId" : "382",
+                        "name" : "documentation",
+                        "elementType" : {
+                           "localId" : "383",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "384",
+                              "name" : "label",
+                              "elementType" : {
+                                 "localId" : "385",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "386",
+                        "name" : "timingAge",
+                        "elementType" : {
+                           "localId" : "387",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "388",
+                              "name" : "value",
+                              "elementType" : {
+                                 "localId" : "389",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "390",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "391",
+                                 "name" : "{urn:hl7-org:elm-types:r1}String",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "392",
+                        "name" : "timingTiming",
+                        "elementType" : {
+                           "localId" : "393",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "394",
+                              "name" : "event",
+                              "elementType" : {
+                                 "localId" : "395",
+                                 "type" : "ListTypeSpecifier",
+                                 "elementType" : {
+                                    "localId" : "396",
+                                    "name" : "{urn:hl7-org:elm-types:r1}String",
+                                    "type" : "NamedTypeSpecifier"
+                                 }
+                              }
+                           }, {
+                              "localId" : "397",
+                              "name" : "repeat",
+                              "elementType" : {
+                                 "localId" : "398",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "399",
+                                    "name" : "boundsPeriod",
+                                    "elementType" : {
+                                       "localId" : "400",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "401",
+                                          "name" : "start",
+                                          "elementType" : {
+                                             "localId" : "402",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 }, {
+                                    "localId" : "403",
+                                    "name" : "frequency",
+                                    "elementType" : {
+                                       "localId" : "404",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "405",
+                                    "name" : "period",
+                                    "elementType" : {
+                                       "localId" : "406",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "407",
+                                    "name" : "periodUnit",
+                                    "elementType" : {
+                                       "localId" : "408",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           } ]
+                        }
+                     }, {
+                        "localId" : "409",
+                        "name" : "flag",
+                        "elementType" : {
+                           "localId" : "410",
+                           "name" : "{urn:hl7-org:elm-types:r1}Code",
+                           "type" : "NamedTypeSpecifier"
+                        }
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "223",
+            "locator" : "33:1-40:17",
+            "name" : "flow-AverageRisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "223",
+                  "s" : [ {
+                     "value" : [ "//------------------------------------------------------------------------------\n// RECOMMENDATIONS\n//------------------------------------------------------------------------------\n\n","define ","\"flow-AverageRisk\"",":\n  " ]
+                  }, {
+                     "r" : "414",
+                     "s" : [ {
+                        "r" : "224",
+                        "s" : [ {
+                           "value" : [ "{    \n    " ]
+                        }, {
+                           "r" : "274",
+                           "s" : [ {
+                              "value" : [ "ACSMammoAvgRiskAgeUnder45" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "321",
+                           "s" : [ {
+                              "value" : [ "ACSMammoAvgRiskAge45to54" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "368",
+                           "s" : [ {
+                              "value" : [ "ACSMammoAvgRiskAgeOver54" ]
+                           } ]
+                        }, {
+                           "value" : [ ",\n    " ]
+                        }, {
+                           "r" : "411",
+                           "s" : [ {
+                              "value" : [ "USPSTFAvgRisk" ]
+                           } ]
+                        }, {
+                           "value" : [ "\n  }" ]
+                        } ]
+                     }, {
+                        "value" : [ "   \n  except " ]
+                     }, {
+                        "r" : "412",
+                        "s" : [ {
+                           "r" : "413",
+                           "value" : [ "{ ","null"," }" ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "414",
+               "locator" : "34:3-40:17",
+               "type" : "Except",
+               "signature" : [ ],
+               "operand" : [ {
+                  "localId" : "224",
+                  "locator" : "34:3-39:3",
+                  "type" : "List",
+                  "element" : [ {
+                     "localId" : "274",
+                     "locator" : "35:5-35:29",
+                     "name" : "ACSMammoAvgRiskAgeUnder45",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "321",
+                     "locator" : "36:5-36:28",
+                     "name" : "ACSMammoAvgRiskAge45to54",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "368",
+                     "locator" : "37:5-37:28",
+                     "name" : "ACSMammoAvgRiskAgeOver54",
+                     "type" : "ExpressionRef"
+                  }, {
+                     "localId" : "411",
+                     "locator" : "38:5-38:17",
+                     "name" : "USPSTFAvgRisk",
+                     "type" : "ExpressionRef"
+                  } ]
+               }, {
+                  "localId" : "415",
+                  "type" : "Query",
+                  "source" : [ {
+                     "localId" : "416",
+                     "alias" : "X",
+                     "expression" : {
+                        "localId" : "412",
+                        "locator" : "40:10-40:17",
+                        "type" : "List",
+                        "element" : [ {
+                           "localId" : "413",
+                           "locator" : "40:12-40:15",
+                           "type" : "Null"
+                        } ]
+                     }
+                  } ],
+                  "let" : [ ],
+                  "relationship" : [ ],
+                  "return" : {
+                     "localId" : "417",
+                     "distinct" : false,
+                     "expression" : {
+                        "localId" : "419",
+                        "type" : "As",
+                        "signature" : [ ],
+                        "operand" : {
+                           "localId" : "418",
+                           "name" : "X",
+                           "type" : "AliasRef"
+                        },
+                        "asTypeSpecifier" : {
+                           "localId" : "420",
+                           "type" : "TupleTypeSpecifier",
+                           "element" : [ {
+                              "localId" : "421",
+                              "name" : "code",
+                              "elementType" : {
+                                 "localId" : "422",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "423",
+                              "name" : "reason",
+                              "elementType" : {
+                                 "localId" : "424",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           }, {
+                              "localId" : "425",
+                              "name" : "documentation",
+                              "elementType" : {
+                                 "localId" : "426",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "427",
+                                    "name" : "label",
+                                    "elementType" : {
+                                       "localId" : "428",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           }, {
+                              "localId" : "429",
+                              "name" : "timingAge",
+                              "elementType" : {
+                                 "localId" : "430",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "431",
+                                    "name" : "value",
+                                    "elementType" : {
+                                       "localId" : "432",
+                                       "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 }, {
+                                    "localId" : "433",
+                                    "name" : "code",
+                                    "elementType" : {
+                                       "localId" : "434",
+                                       "name" : "{urn:hl7-org:elm-types:r1}String",
+                                       "type" : "NamedTypeSpecifier"
+                                    }
+                                 } ]
+                              }
+                           }, {
+                              "localId" : "435",
+                              "name" : "timingTiming",
+                              "elementType" : {
+                                 "localId" : "436",
+                                 "type" : "TupleTypeSpecifier",
+                                 "element" : [ {
+                                    "localId" : "437",
+                                    "name" : "event",
+                                    "elementType" : {
+                                       "localId" : "438",
+                                       "type" : "ListTypeSpecifier",
+                                       "elementType" : {
+                                          "localId" : "439",
+                                          "name" : "{urn:hl7-org:elm-types:r1}String",
+                                          "type" : "NamedTypeSpecifier"
+                                       }
+                                    }
+                                 }, {
+                                    "localId" : "440",
+                                    "name" : "repeat",
+                                    "elementType" : {
+                                       "localId" : "441",
+                                       "type" : "TupleTypeSpecifier",
+                                       "element" : [ {
+                                          "localId" : "442",
+                                          "name" : "boundsPeriod",
+                                          "elementType" : {
+                                             "localId" : "443",
+                                             "type" : "TupleTypeSpecifier",
+                                             "element" : [ {
+                                                "localId" : "444",
+                                                "name" : "start",
+                                                "elementType" : {
+                                                   "localId" : "445",
+                                                   "name" : "{urn:hl7-org:elm-types:r1}String",
+                                                   "type" : "NamedTypeSpecifier"
+                                                }
+                                             } ]
+                                          }
+                                       }, {
+                                          "localId" : "446",
+                                          "name" : "frequency",
+                                          "elementType" : {
+                                             "localId" : "447",
+                                             "name" : "{urn:hl7-org:elm-types:r1}Integer",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }, {
+                                          "localId" : "448",
+                                          "name" : "period",
+                                          "elementType" : {
+                                             "localId" : "449",
+                                             "name" : "{urn:hl7-org:elm-types:r1}Decimal",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       }, {
+                                          "localId" : "450",
+                                          "name" : "periodUnit",
+                                          "elementType" : {
+                                             "localId" : "451",
+                                             "name" : "{urn:hl7-org:elm-types:r1}String",
+                                             "type" : "NamedTypeSpecifier"
+                                          }
+                                       } ]
+                                    }
+                                 } ]
+                              }
+                           }, {
+                              "localId" : "452",
+                              "name" : "flag",
+                              "elementType" : {
+                                 "localId" : "453",
+                                 "name" : "{urn:hl7-org:elm-types:r1}Code",
+                                 "type" : "NamedTypeSpecifier"
+                              }
+                           } ]
+                        }
+                     }
+                  }
+               } ]
+            }
+         }, {
+            "localId" : "455",
+            "locator" : "62:1-63:39",
+            "name" : "ExistsACSMammoAvgRiskAgeUnder45",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "455",
+                  "s" : [ {
+                     "value" : [ "//------------------------------------------------------------------------------\n// DYNAMIC VALUES\n//------------------------------------------------------------------------------    \n\n","define ","ExistsACSMammoAvgRiskAgeUnder45",":\n  " ]
+                  }, {
+                     "r" : "458",
+                     "s" : [ {
+                        "r" : "456",
+                        "s" : [ {
+                           "value" : [ "ACSMammoAvgRiskAgeUnder45" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "458",
+               "locator" : "63:3-63:39",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "457",
+                  "locator" : "63:3-63:39",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "456",
+                     "locator" : "63:3-63:27",
+                     "name" : "ACSMammoAvgRiskAgeUnder45",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "460",
+            "locator" : "65:1-66:43",
+            "name" : "ACSMammoAvgRiskAgeUnder45Code",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "460",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeUnder45Code",":    \n  " ]
+                  }, {
+                     "r" : "466",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "461",
+                           "s" : [ {
+                              "r" : "462",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeUnder45" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "463",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "465",
+                           "s" : [ {
+                              "r" : "464",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "465",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "466",
+               "locator" : "66:3-66:43",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "461",
+                  "locator" : "66:3-66:29",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "462",
+                     "locator" : "66:3-66:27",
+                     "name" : "ACSMammoAvgRiskAgeUnder45",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "463",
+                  "locator" : "66:31-66:43",
+                  "expression" : {
+                     "localId" : "465",
+                     "locator" : "66:38-66:43",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "468",
+            "locator" : "68:1-69:45",
+            "name" : "ACSMammoAvgRiskAgeUnder45Reason",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "468",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeUnder45Reason",":\n  " ]
+                  }, {
+                     "r" : "474",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "469",
+                           "s" : [ {
+                              "r" : "470",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeUnder45" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "471",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "473",
+                           "s" : [ {
+                              "r" : "472",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "473",
+                              "s" : [ {
+                                 "value" : [ "reason" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "474",
+               "locator" : "69:3-69:45",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "469",
+                  "locator" : "69:3-69:29",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "470",
+                     "locator" : "69:3-69:27",
+                     "name" : "ACSMammoAvgRiskAgeUnder45",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "471",
+                  "locator" : "69:31-69:45",
+                  "expression" : {
+                     "localId" : "473",
+                     "locator" : "69:38-69:45",
+                     "path" : "reason",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "476",
+            "locator" : "71:1-72:51",
+            "name" : "ACSMammoAvgRiskAgeUnder45Timing",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "476",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeUnder45Timing",":    \n  " ]
+                  }, {
+                     "r" : "482",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "477",
+                           "s" : [ {
+                              "r" : "478",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeUnder45" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "479",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "481",
+                           "s" : [ {
+                              "r" : "480",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "481",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "482",
+               "locator" : "72:3-72:51",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "477",
+                  "locator" : "72:3-72:29",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "478",
+                     "locator" : "72:3-72:27",
+                     "name" : "ACSMammoAvgRiskAgeUnder45",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "479",
+                  "locator" : "72:31-72:51",
+                  "expression" : {
+                     "localId" : "481",
+                     "locator" : "72:38-72:51",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "484",
+            "locator" : "74:1-75:57",
+            "name" : "ACSMammoAvgRiskAgeUnder45TimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "484",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeUnder45TimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "493",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "485",
+                           "s" : [ {
+                              "r" : "486",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeUnder45Timing" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "487",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "492",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "489",
+                              "s" : [ {
+                                 "r" : "488",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "489",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "493",
+               "locator" : "75:3-75:57",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "485",
+                  "locator" : "75:3-75:35",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "486",
+                     "locator" : "75:3-75:33",
+                     "name" : "ACSMammoAvgRiskAgeUnder45Timing",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "487",
+                  "locator" : "75:37-75:57",
+                  "expression" : {
+                     "localId" : "492",
+                     "locator" : "75:44-75:57",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "489",
+                        "locator" : "75:50-75:56",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "495",
+            "locator" : "77:1-78:89",
+            "name" : "ACSMammoAvgRiskAgeUnder45Flag",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "495",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeUnder45Flag",":\n  " ]
+                  }, {
+                     "r" : "503",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "496",
+                           "s" : [ {
+                              "r" : "497",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeUnder45" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "498",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "502",
+                           "s" : [ {
+                              "r" : "499",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "502",
+                              "s" : [ {
+                                 "value" : [ "CreateRecommendationFlagExtension","(" ]
+                              }, {
+                                 "r" : "501",
+                                 "s" : [ {
+                                    "r" : "500",
+                                    "s" : [ {
+                                       "value" : [ "R" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "501",
+                                    "s" : [ {
+                                       "value" : [ "flag" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "503",
+               "locator" : "78:3-78:89",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "496",
+                  "locator" : "78:3-78:29",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "497",
+                     "locator" : "78:3-78:27",
+                     "name" : "ACSMammoAvgRiskAgeUnder45",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "498",
+                  "locator" : "78:31-78:89",
+                  "expression" : {
+                     "localId" : "502",
+                     "locator" : "78:38-78:89",
+                     "name" : "CreateRecommendationFlagExtension",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "FunctionRef",
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "localId" : "501",
+                        "locator" : "78:83-78:88",
+                        "path" : "flag",
+                        "scope" : "R",
+                        "type" : "Property"
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "505",
+            "locator" : "80:1-81:38",
+            "name" : "ExistsACSMammoAvgRiskAge45to54",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "505",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsACSMammoAvgRiskAge45to54",":\n  " ]
+                  }, {
+                     "r" : "508",
+                     "s" : [ {
+                        "r" : "506",
+                        "s" : [ {
+                           "value" : [ "ACSMammoAvgRiskAge45to54" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "508",
+               "locator" : "81:3-81:38",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "507",
+                  "locator" : "81:3-81:38",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "506",
+                     "locator" : "81:3-81:26",
+                     "name" : "ACSMammoAvgRiskAge45to54",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "510",
+            "locator" : "83:1-84:42",
+            "name" : "ACSMammoAvgRiskAge45to54Code",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "510",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAge45to54Code",":    \n  " ]
+                  }, {
+                     "r" : "516",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "511",
+                           "s" : [ {
+                              "r" : "512",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAge45to54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "513",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "515",
+                           "s" : [ {
+                              "r" : "514",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "515",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "516",
+               "locator" : "84:3-84:42",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "511",
+                  "locator" : "84:3-84:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "512",
+                     "locator" : "84:3-84:26",
+                     "name" : "ACSMammoAvgRiskAge45to54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "513",
+                  "locator" : "84:30-84:42",
+                  "expression" : {
+                     "localId" : "515",
+                     "locator" : "84:37-84:42",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "518",
+            "locator" : "86:1-87:44",
+            "name" : "ACSMammoAvgRiskAge45to54Reason",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "518",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAge45to54Reason",":\n  " ]
+                  }, {
+                     "r" : "524",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "519",
+                           "s" : [ {
+                              "r" : "520",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAge45to54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "521",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "523",
+                           "s" : [ {
+                              "r" : "522",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "523",
+                              "s" : [ {
+                                 "value" : [ "reason" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "524",
+               "locator" : "87:3-87:44",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "519",
+                  "locator" : "87:3-87:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "520",
+                     "locator" : "87:3-87:26",
+                     "name" : "ACSMammoAvgRiskAge45to54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "521",
+                  "locator" : "87:30-87:44",
+                  "expression" : {
+                     "localId" : "523",
+                     "locator" : "87:37-87:44",
+                     "path" : "reason",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "526",
+            "locator" : "89:1-90:50",
+            "name" : "ACSMammoAvgRiskAge45to54Timing",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "526",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAge45to54Timing",":    \n  " ]
+                  }, {
+                     "r" : "532",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "527",
+                           "s" : [ {
+                              "r" : "528",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAge45to54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "529",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "531",
+                           "s" : [ {
+                              "r" : "530",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "531",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "532",
+               "locator" : "90:3-90:50",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "527",
+                  "locator" : "90:3-90:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "528",
+                     "locator" : "90:3-90:26",
+                     "name" : "ACSMammoAvgRiskAge45to54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "529",
+                  "locator" : "90:30-90:50",
+                  "expression" : {
+                     "localId" : "531",
+                     "locator" : "90:37-90:50",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "534",
+            "locator" : "92:1-93:56",
+            "name" : "ACSMammoAvgRiskAge45to54TimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "534",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAge45to54TimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "543",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "535",
+                           "s" : [ {
+                              "r" : "536",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAge45to54Timing" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "537",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "542",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "539",
+                              "s" : [ {
+                                 "r" : "538",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "539",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "543",
+               "locator" : "93:3-93:56",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "535",
+                  "locator" : "93:3-93:34",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "536",
+                     "locator" : "93:3-93:32",
+                     "name" : "ACSMammoAvgRiskAge45to54Timing",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "537",
+                  "locator" : "93:36-93:56",
+                  "expression" : {
+                     "localId" : "542",
+                     "locator" : "93:43-93:56",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "539",
+                        "locator" : "93:49-93:55",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "545",
+            "locator" : "95:1-96:88",
+            "name" : "ACSMammoAvgRiskAge45to54Flag",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "545",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAge45to54Flag",":\n  " ]
+                  }, {
+                     "r" : "553",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "546",
+                           "s" : [ {
+                              "r" : "547",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAge45to54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "548",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "552",
+                           "s" : [ {
+                              "r" : "549",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "552",
+                              "s" : [ {
+                                 "value" : [ "CreateRecommendationFlagExtension","(" ]
+                              }, {
+                                 "r" : "551",
+                                 "s" : [ {
+                                    "r" : "550",
+                                    "s" : [ {
+                                       "value" : [ "R" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "551",
+                                    "s" : [ {
+                                       "value" : [ "flag" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "553",
+               "locator" : "96:3-96:88",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "546",
+                  "locator" : "96:3-96:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "547",
+                     "locator" : "96:3-96:26",
+                     "name" : "ACSMammoAvgRiskAge45to54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "548",
+                  "locator" : "96:30-96:88",
+                  "expression" : {
+                     "localId" : "552",
+                     "locator" : "96:37-96:88",
+                     "name" : "CreateRecommendationFlagExtension",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "FunctionRef",
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "localId" : "551",
+                        "locator" : "96:82-96:87",
+                        "path" : "flag",
+                        "scope" : "R",
+                        "type" : "Property"
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "555",
+            "locator" : "98:1-99:38",
+            "name" : "ExistsACSMammoAvgRiskAgeOver54",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "555",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsACSMammoAvgRiskAgeOver54",":\n  " ]
+                  }, {
+                     "r" : "558",
+                     "s" : [ {
+                        "r" : "556",
+                        "s" : [ {
+                           "value" : [ "ACSMammoAvgRiskAgeOver54" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "558",
+               "locator" : "99:3-99:38",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "557",
+                  "locator" : "99:3-99:38",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "556",
+                     "locator" : "99:3-99:26",
+                     "name" : "ACSMammoAvgRiskAgeOver54",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "560",
+            "locator" : "101:1-102:42",
+            "name" : "ACSMammoAvgRiskAgeOver54Code",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "560",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeOver54Code",":    \n  " ]
+                  }, {
+                     "r" : "566",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "561",
+                           "s" : [ {
+                              "r" : "562",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeOver54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "563",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "565",
+                           "s" : [ {
+                              "r" : "564",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "565",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "566",
+               "locator" : "102:3-102:42",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "561",
+                  "locator" : "102:3-102:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "562",
+                     "locator" : "102:3-102:26",
+                     "name" : "ACSMammoAvgRiskAgeOver54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "563",
+                  "locator" : "102:30-102:42",
+                  "expression" : {
+                     "localId" : "565",
+                     "locator" : "102:37-102:42",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "568",
+            "locator" : "104:1-105:44",
+            "name" : "ACSMammoAvgRiskAgeOver54Reason",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "568",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeOver54Reason",":\n  " ]
+                  }, {
+                     "r" : "574",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "569",
+                           "s" : [ {
+                              "r" : "570",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeOver54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "571",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "573",
+                           "s" : [ {
+                              "r" : "572",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "573",
+                              "s" : [ {
+                                 "value" : [ "reason" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "574",
+               "locator" : "105:3-105:44",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "569",
+                  "locator" : "105:3-105:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "570",
+                     "locator" : "105:3-105:26",
+                     "name" : "ACSMammoAvgRiskAgeOver54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "571",
+                  "locator" : "105:30-105:44",
+                  "expression" : {
+                     "localId" : "573",
+                     "locator" : "105:37-105:44",
+                     "path" : "reason",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "576",
+            "locator" : "107:1-108:50",
+            "name" : "ACSMammoAvgRiskAgeOver54Timing",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "576",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeOver54Timing",":    \n  " ]
+                  }, {
+                     "r" : "582",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "577",
+                           "s" : [ {
+                              "r" : "578",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeOver54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "579",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "581",
+                           "s" : [ {
+                              "r" : "580",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "581",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "582",
+               "locator" : "108:3-108:50",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "577",
+                  "locator" : "108:3-108:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "578",
+                     "locator" : "108:3-108:26",
+                     "name" : "ACSMammoAvgRiskAgeOver54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "579",
+                  "locator" : "108:30-108:50",
+                  "expression" : {
+                     "localId" : "581",
+                     "locator" : "108:37-108:50",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "584",
+            "locator" : "110:1-111:56",
+            "name" : "ACSMammoAvgRiskAgeOver54TimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "584",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeOver54TimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "593",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "585",
+                           "s" : [ {
+                              "r" : "586",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeOver54Timing" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "587",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "592",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "589",
+                              "s" : [ {
+                                 "r" : "588",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "589",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "593",
+               "locator" : "111:3-111:56",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "585",
+                  "locator" : "111:3-111:34",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "586",
+                     "locator" : "111:3-111:32",
+                     "name" : "ACSMammoAvgRiskAgeOver54Timing",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "587",
+                  "locator" : "111:36-111:56",
+                  "expression" : {
+                     "localId" : "592",
+                     "locator" : "111:43-111:56",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "589",
+                        "locator" : "111:49-111:55",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "595",
+            "locator" : "113:1-114:88",
+            "name" : "ACSMammoAvgRiskAgeOver54Flag",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "595",
+                  "s" : [ {
+                     "value" : [ "","define ","ACSMammoAvgRiskAgeOver54Flag",":\n  " ]
+                  }, {
+                     "r" : "603",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "596",
+                           "s" : [ {
+                              "r" : "597",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "ACSMammoAvgRiskAgeOver54" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "598",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "602",
+                           "s" : [ {
+                              "r" : "599",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "602",
+                              "s" : [ {
+                                 "value" : [ "CreateRecommendationFlagExtension","(" ]
+                              }, {
+                                 "r" : "601",
+                                 "s" : [ {
+                                    "r" : "600",
+                                    "s" : [ {
+                                       "value" : [ "R" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "601",
+                                    "s" : [ {
+                                       "value" : [ "flag" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "603",
+               "locator" : "114:3-114:88",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "596",
+                  "locator" : "114:3-114:28",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "597",
+                     "locator" : "114:3-114:26",
+                     "name" : "ACSMammoAvgRiskAgeOver54",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "598",
+                  "locator" : "114:30-114:88",
+                  "expression" : {
+                     "localId" : "602",
+                     "locator" : "114:37-114:88",
+                     "name" : "CreateRecommendationFlagExtension",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "FunctionRef",
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "localId" : "601",
+                        "locator" : "114:82-114:87",
+                        "path" : "flag",
+                        "scope" : "R",
+                        "type" : "Property"
+                     } ]
+                  }
+               }
+            }
+         }, {
+            "localId" : "605",
+            "locator" : "116:1-117:27",
+            "name" : "ExistsUSPSTFAvgRisk",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "605",
+                  "s" : [ {
+                     "value" : [ "","define ","ExistsUSPSTFAvgRisk",":\n  " ]
+                  }, {
+                     "r" : "608",
+                     "s" : [ {
+                        "r" : "606",
+                        "s" : [ {
+                           "value" : [ "USPSTFAvgRisk" ]
+                        } ]
+                     }, {
+                        "value" : [ " is not null" ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "608",
+               "locator" : "117:3-117:27",
+               "type" : "Not",
+               "signature" : [ ],
+               "operand" : {
+                  "localId" : "607",
+                  "locator" : "117:3-117:27",
+                  "type" : "IsNull",
+                  "signature" : [ ],
+                  "operand" : {
+                     "localId" : "606",
+                     "locator" : "117:3-117:15",
+                     "name" : "USPSTFAvgRisk",
+                     "type" : "ExpressionRef"
+                  }
+               }
+            }
+         }, {
+            "localId" : "610",
+            "locator" : "119:1-120:31",
+            "name" : "USPSTFAvgRiskCode",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "610",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFAvgRiskCode",":    \n  " ]
+                  }, {
+                     "r" : "616",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "611",
+                           "s" : [ {
+                              "r" : "612",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFAvgRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "613",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "615",
+                           "s" : [ {
+                              "r" : "614",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "615",
+                              "s" : [ {
+                                 "value" : [ "code" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "616",
+               "locator" : "120:3-120:31",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "611",
+                  "locator" : "120:3-120:17",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "612",
+                     "locator" : "120:3-120:15",
+                     "name" : "USPSTFAvgRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "613",
+                  "locator" : "120:19-120:31",
+                  "expression" : {
+                     "localId" : "615",
+                     "locator" : "120:26-120:31",
+                     "path" : "code",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "618",
+            "locator" : "122:1-123:33",
+            "name" : "USPSTFAvgRiskReason",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "618",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFAvgRiskReason",":\n  " ]
+                  }, {
+                     "r" : "624",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "619",
+                           "s" : [ {
+                              "r" : "620",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFAvgRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "621",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "623",
+                           "s" : [ {
+                              "r" : "622",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "623",
+                              "s" : [ {
+                                 "value" : [ "reason" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "624",
+               "locator" : "123:3-123:33",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "619",
+                  "locator" : "123:3-123:17",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "620",
+                     "locator" : "123:3-123:15",
+                     "name" : "USPSTFAvgRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "621",
+                  "locator" : "123:19-123:33",
+                  "expression" : {
+                     "localId" : "623",
+                     "locator" : "123:26-123:33",
+                     "path" : "reason",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "626",
+            "locator" : "125:1-126:39",
+            "name" : "USPSTFAvgRiskTiming",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "626",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFAvgRiskTiming",":    \n  " ]
+                  }, {
+                     "r" : "632",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "627",
+                           "s" : [ {
+                              "r" : "628",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFAvgRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "629",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "631",
+                           "s" : [ {
+                              "r" : "630",
+                              "s" : [ {
+                                 "value" : [ "R" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "631",
+                              "s" : [ {
+                                 "value" : [ "timingTiming" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "632",
+               "locator" : "126:3-126:39",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "627",
+                  "locator" : "126:3-126:17",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "628",
+                     "locator" : "126:3-126:15",
+                     "name" : "USPSTFAvgRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "629",
+                  "locator" : "126:19-126:39",
+                  "expression" : {
+                     "localId" : "631",
+                     "locator" : "126:26-126:39",
+                     "path" : "timingTiming",
+                     "scope" : "R",
+                     "type" : "Property"
+                  }
+               }
+            }
+         }, {
+            "localId" : "634",
+            "locator" : "128:1-129:45",
+            "name" : "USPSTFAvgRiskTimingEvent",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "634",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFAvgRiskTimingEvent",":    \n  " ]
+                  }, {
+                     "r" : "643",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "635",
+                           "s" : [ {
+                              "r" : "636",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFAvgRiskTiming" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "637",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "642",
+                           "s" : [ {
+                              "value" : [ "First","(" ]
+                           }, {
+                              "r" : "639",
+                              "s" : [ {
+                                 "r" : "638",
+                                 "s" : [ {
+                                    "value" : [ "R" ]
+                                 } ]
+                              }, {
+                                 "value" : [ "." ]
+                              }, {
+                                 "r" : "639",
+                                 "s" : [ {
+                                    "value" : [ "event" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ ")" ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "643",
+               "locator" : "129:3-129:45",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "635",
+                  "locator" : "129:3-129:23",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "636",
+                     "locator" : "129:3-129:21",
+                     "name" : "USPSTFAvgRiskTiming",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "637",
+                  "locator" : "129:25-129:45",
+                  "expression" : {
+                     "localId" : "642",
+                     "locator" : "129:32-129:45",
+                     "type" : "First",
+                     "signature" : [ ],
+                     "source" : {
+                        "localId" : "639",
+                        "locator" : "129:38-129:44",
+                        "path" : "event",
+                        "scope" : "R",
+                        "type" : "Property"
+                     }
+                  }
+               }
+            }
+         }, {
+            "localId" : "645",
+            "locator" : "131:1-132:77",
+            "name" : "USPSTFAvgRiskFlag",
+            "context" : "Patient",
+            "accessLevel" : "Public",
+            "annotation" : [ {
+               "type" : "Annotation",
+               "s" : {
+                  "r" : "645",
+                  "s" : [ {
+                     "value" : [ "","define ","USPSTFAvgRiskFlag",":\n  " ]
+                  }, {
+                     "r" : "653",
+                     "s" : [ {
+                        "s" : [ {
+                           "r" : "646",
+                           "s" : [ {
+                              "r" : "647",
+                              "s" : [ {
+                                 "s" : [ {
+                                    "value" : [ "USPSTFAvgRisk" ]
+                                 } ]
+                              } ]
+                           }, {
+                              "value" : [ " ","R" ]
+                           } ]
+                        } ]
+                     }, {
+                        "value" : [ " " ]
+                     }, {
+                        "r" : "648",
+                        "s" : [ {
+                           "value" : [ "return " ]
+                        }, {
+                           "r" : "652",
+                           "s" : [ {
+                              "r" : "649",
+                              "s" : [ {
+                                 "value" : [ "BCSMCommon" ]
+                              } ]
+                           }, {
+                              "value" : [ "." ]
+                           }, {
+                              "r" : "652",
+                              "s" : [ {
+                                 "value" : [ "CreateRecommendationFlagExtension","(" ]
+                              }, {
+                                 "r" : "651",
+                                 "s" : [ {
+                                    "r" : "650",
+                                    "s" : [ {
+                                       "value" : [ "R" ]
+                                    } ]
+                                 }, {
+                                    "value" : [ "." ]
+                                 }, {
+                                    "r" : "651",
+                                    "s" : [ {
+                                       "value" : [ "flag" ]
+                                    } ]
+                                 } ]
+                              }, {
+                                 "value" : [ ")" ]
+                              } ]
+                           } ]
+                        } ]
+                     } ]
+                  } ]
+               }
+            } ],
+            "expression" : {
+               "localId" : "653",
+               "locator" : "132:3-132:77",
+               "type" : "Query",
+               "source" : [ {
+                  "localId" : "646",
+                  "locator" : "132:3-132:17",
+                  "alias" : "R",
+                  "expression" : {
+                     "localId" : "647",
+                     "locator" : "132:3-132:15",
+                     "name" : "USPSTFAvgRisk",
+                     "type" : "ExpressionRef"
+                  }
+               } ],
+               "let" : [ ],
+               "relationship" : [ ],
+               "return" : {
+                  "localId" : "648",
+                  "locator" : "132:19-132:77",
+                  "expression" : {
+                     "localId" : "652",
+                     "locator" : "132:26-132:77",
+                     "name" : "CreateRecommendationFlagExtension",
+                     "libraryName" : "BCSMCommon",
+                     "type" : "FunctionRef",
+                     "signature" : [ ],
+                     "operand" : [ {
+                        "localId" : "651",
+                        "locator" : "132:71-132:76",
+                        "path" : "flag",
+                        "scope" : "R",
+                        "type" : "Property"
+                     } ]
+                  }
+               }
+            }
+         } ]
+      }
+   }
+}

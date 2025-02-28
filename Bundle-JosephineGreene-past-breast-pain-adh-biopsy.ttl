@@ -1,0 +1,200 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix loinc: <https://loinc.org/rdf/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://cancerscreeningcds.github.io/bcsm-cds/Bundle/JosephineGreene-past-breast-pain-adh-biopsy> a fhir:Bundle ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "JosephineGreene-past-breast-pain-adh-biopsy"] ; # 
+  fhir:type [ fhir:v "collection"] ; # 
+  fhir:entry ( [
+     fhir:resource ( [
+       a fhir:Patient ;
+       fhir:id [ fhir:v "JosephineGreene" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Patient_JosephineGreene\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Patient JosephineGreene</b></p><a name=\"JosephineGreene\"> </a><a name=\"hcJosephineGreene\"> </a><a name=\"JosephineGreene-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Josephine38 Greene57  Female, DoB: 1978-10-10 ( Medical Record Number: 123-345-567)</p><hr/><table class=\"grid\"><tr><td style=\"background-color: #f3f5da\" title=\"Concepts classifying the person into a named category of humans sharing common history, traits, geographical origin or nationality.  The ethnicity codes used to represent these concepts are based upon the [CDC ethnicity and Ethnicity Code Set Version 1.0](http://www.cdc.gov/phin/resources/vocabulary/index.html) which includes over 900 concepts for representing race and ethnicity of which 43 reference ethnicity.  The ethnicity concepts are grouped by and pre-mapped to the 2 OMB ethnicity categories: - Hispanic or Latino - Not Hispanic or Latino.\">US Core Ethnicity Extension:</td><td colspan=\"3\"><ul><li>text: Not Hispanic or Latino</li></ul></td></tr><tr><td style=\"background-color: #f3f5da\" title=\"Concepts classifying the person into a named category of humans sharing common history, traits, geographical origin or nationality.  The race codes used to represent these concepts are based upon the [CDC Race and Ethnicity Code Set Version 1.0](http://www.cdc.gov/phin/resources/vocabulary/index.html) which includes over 900 concepts for representing race and ethnicity of which 921 reference race.  The race concepts are grouped by and pre-mapped to the 5 OMB race categories:\n\n - American Indian or Alaska Native\n - Asian\n - Black or African American\n - Native Hawaiian or Other Pacific Islander\n - White.\">US Core Race Extension:</td><td colspan=\"3\"><ul><li>text: Black or African American</li></ul></td></tr></table></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:extension ( [
+         fhir:extension ( [
+           fhir:url [ fhir:v "text"^^xsd:anyURI ] ;
+           fhir:value [
+             a fhir:string ;
+             fhir:v "Black or African American"
+           ]
+         ] ) ;
+         fhir:url [ fhir:v "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"^^xsd:anyURI ]
+       ] [
+         fhir:extension ( [
+           fhir:url [ fhir:v "text"^^xsd:anyURI ] ;
+           fhir:value [
+             a fhir:string ;
+             fhir:v "Not Hispanic or Latino"
+           ]
+         ] ) ;
+         fhir:url [ fhir:v "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"^^xsd:anyURI ]
+       ] ) ;
+       fhir:identifier ( [
+         fhir:type [
+           fhir:coding ( [
+             fhir:code [ fhir:v "MR" ] ;
+             fhir:display [ fhir:v "Medical Record Number" ]
+           ] )
+         ] ;
+         fhir:value [ fhir:v "123-345-567" ]
+       ] ) ;
+       fhir:name ( [
+         fhir:family [ fhir:v "Greene57" ] ;
+         fhir:given ( [ fhir:v "Josephine38" ] )
+       ] ) ;
+       fhir:gender [ fhir:v "female" ] ;
+       fhir:birthDate [ fhir:v "1978-10-10"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:Condition ;
+       fhir:id [ fhir:v "8fbdda45-a3a0-4397-80b2-c877b48dcde4" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"Condition_8fbdda45-a3a0-4397-80b2-c877b48dcde4\"> </a><p class=\"res-header-id\"><b>Generated Narrative: Condition 8fbdda45-a3a0-4397-80b2-c877b48dcde4</b></p><a name=\"8fbdda45-a3a0-4397-80b2-c877b48dcde4\"> </a><a name=\"hc8fbdda45-a3a0-4397-80b2-c877b48dcde4\"> </a><a name=\"8fbdda45-a3a0-4397-80b2-c877b48dcde4-en-US\"> </a><p><b>clinicalStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-clinical active}\">Active</span></p><p><b>verificationStatus</b>: <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/condition-ver-status confirmed}\">Confirmed</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 53430007}\">Pain of breast (finding)</span></p><p><b>subject</b>: <a href=\"Bundle-JosephineGreene-past-breast-pain-adh-biopsy.html#Patient_JosephineGreene\">Bundle: type = collection</a></p><p><b>encounter</b>: <a href=\"Encounter/2\">Encounter/2</a></p><p><b>recordedDate</b>: 2023-07-28</p></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:clinicalStatus [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/condition-clinical"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "active" ]
+         ] )
+       ] ;
+       fhir:verificationStatus [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/condition-ver-status"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "confirmed" ]
+         ] )
+       ] ;
+       fhir:code [
+         fhir:coding ( [
+           a sct:53430007 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "53430007" ] ;
+           fhir:display [ fhir:v "Pain of breast (finding)" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JosephineGreene> ;
+         fhir:reference [ fhir:v "Patient/JosephineGreene" ]
+       ] ;
+       fhir:encounter [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Encounter/2> ;
+         fhir:reference [ fhir:v "Encounter/2" ]
+       ] ;
+       fhir:recordedDate [ fhir:v "2023-07-28"^^xsd:date ]
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:DiagnosticReport ;
+       fhir:id [ fhir:v "biopsy-report-1" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_biopsy-report-1\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport biopsy-report-1</b></p><a name=\"biopsy-report-1\"> </a><a name=\"hcbiopsy-report-1\"> </a><a name=\"biopsy-report-1-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 66110-8}\">Core needle biopsy</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2024-11-20</td></tr></table><p><b>Report Details</b></p><p><b>Coded Conclusions:</b></p><ul><li><span title=\"Codes:{http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system Atypical}\">Atypical ductal hyperplasia</span></li></ul></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:66110-8 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "66110-8" ] ;
+           fhir:display [ fhir:v "Core needle biopsy" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JosephineGreene> ;
+         fhir:reference [ fhir:v "Patient/JosephineGreene" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-11-20"^^xsd:date
+       ] ;
+       fhir:conclusionCode ( [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "Atypical" ] ;
+           fhir:display [ fhir:v "Atypical ductal hyperplasia" ]
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:DiagnosticReport ;
+       fhir:id [ fhir:v "mammogram-2024-birads-4" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_mammogram-2024-birads-4\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport mammogram-2024-birads-4</b></p><a name=\"mammogram-2024-birads-4\"> </a><a name=\"hcmammogram-2024-birads-4\"> </a><a name=\"mammogram-2024-birads-4-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 24606-6}\">Screening mammogram</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2024-11-15 10:00:00+0000</td></tr></table><p><b>Report Details</b></p><p><b>Coded Conclusions:</b></p><ul><li><span title=\"Codes:{http://snomed.info/sct 397144001}\">Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)</span></li></ul></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:24606-6 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "24606-6" ] ;
+           fhir:display [ fhir:v "Screening mammogram" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JosephineGreene> ;
+         fhir:reference [ fhir:v "Patient/JosephineGreene" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2024-11-15T10:00:00.000Z"^^xsd:dateTime
+       ] ;
+       fhir:conclusionCode ( [
+         fhir:coding ( [
+           a sct:397144001 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "397144001" ] ;
+           fhir:display [ fhir:v "Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)" ]
+         ] )
+       ] )
+     ] )
+  ] [
+     fhir:resource ( [
+       a fhir:DiagnosticReport ;
+       fhir:id [ fhir:v "mammogram-2022-birads-2" ] ;
+       fhir:text [
+         fhir:status [ fhir:v "generated" ] ;
+         fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"DiagnosticReport_mammogram-2022-birads-2\"> </a><p class=\"res-header-id\"><b>Generated Narrative: DiagnosticReport mammogram-2022-birads-2</b></p><a name=\"mammogram-2022-birads-2\"> </a><a name=\"hcmammogram-2022-birads-2\"> </a><a name=\"mammogram-2022-birads-2-en-US\"> </a><h2><span title=\"Codes:{http://loinc.org 24606-6}\">Screening mammogram</span> </h2><table class=\"grid\"><tr><td>Subject</td><td>Not done yet</td></tr><tr><td>When For</td><td>2022-12-02 10:00:00+0000</td></tr></table><p><b>Report Details</b></p><p><b>Coded Conclusions:</b></p><ul><li><span title=\"Codes:{http://snomed.info/sct 397140005}\">Mammography assessment (Category 1) - Negative (finding)</span></li></ul></div>"^^rdf:XMLLiteral
+       ] ;
+       fhir:status [ fhir:v "final" ] ;
+       fhir:code [
+         fhir:coding ( [
+           a loinc:24606-6 ;
+           fhir:system [ fhir:v "http://loinc.org"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "24606-6" ] ;
+           fhir:display [ fhir:v "Screening mammogram" ]
+         ] )
+       ] ;
+       fhir:subject [
+         fhir:link <http://cancerscreeningcds.github.io/bcsm-cds/Patient/JosephineGreene> ;
+         fhir:reference [ fhir:v "Patient/JosephineGreene" ]
+       ] ;
+       fhir:effective [
+         a fhir:dateTime ;
+         fhir:v "2022-12-02T10:00:00.000Z"^^xsd:dateTime
+       ] ;
+       fhir:conclusionCode ( [
+         fhir:coding ( [
+           a sct:397140005 ;
+           fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "397140005" ] ;
+           fhir:display [ fhir:v "Mammography assessment (Category 1) - Negative (finding)" ]
+         ] )
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

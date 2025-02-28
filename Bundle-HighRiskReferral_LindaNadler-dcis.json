@@ -1,0 +1,68 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "HighRiskReferral_LindaNadler-dcis",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/447",
+    "resource" : {
+      "resourceType" : "CarePlan",
+      "id" : "447",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_447\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 447</b></p><a name=\"447\"> </a><a name=\"hc447\"> </a><a name=\"447-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-LindaNadler-dcis.html#Patient_LindaNadler\">Linda48 Nadler92</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-HighRiskReferral_LindaNadler-dcis.html#RequestGroup_448\">Bundle: type = collection</a></td></tr></table></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/LindaNadler",
+        "display" : "Linda48 Nadler92"
+      },
+      "created" : "2024-12-10T00:00:00.0Z",
+      "activity" : [{
+        "reference" : {
+          "reference" : "RequestGroup/448"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/448",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "448",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_448\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 448</b></p><a name=\"448\"> </a><a name=\"hc448\"> </a><a name=\"448-en-US\"> </a><p><b>Messages</b>: <a href=\"#hc448/contained-1\">OperationOutcome</a></p><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-HighRiskReferral.html\">High Risk Referral</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-LindaNadler-dcis.html#Patient_LindaNadler\">Linda48 Nadler92</a></p><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: OperationOutcome #contained-1</b></p><a name=\"448/contained-1\"> </a><a name=\"hc448/contained-1\"> </a><a name=\"448/contained-1-en-US\"> </a><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>Error</td><td/><td>Processing Failure</td><td/><td>Excluded or not included</td></tr></table></blockquote></div>"
+      },
+      "contained" : [{
+        "resourceType" : "OperationOutcome",
+        "id" : "contained-1",
+        "issue" : [{
+          "severity" : "error",
+          "code" : "processing",
+          "details" : {
+            "coding" : [{
+              "system" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+              "code" : "excludedornotincluded"
+            }]
+          },
+          "diagnostics" : "Excluded or not included"
+        }]
+      }],
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-messages",
+        "valueReference" : {
+          "reference" : "#contained-1"
+        }
+      }],
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-HighRiskReferral"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/LindaNadler",
+        "display" : "Linda48 Nadler92"
+      }
+    }
+  }]
+}

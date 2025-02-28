@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="238">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library DecisionToScreenEvents version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="DecisionToScreenEvents" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="18:1-18:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:63" localIdentifier="C3F" path="http://cancerscreeningcds.github.io/bcsm-cds/CDSConnectCommonsforFHIRv401" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>CDSConnectCommonsforFHIRv401</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called C3F</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <parameters>
+      <def localId="211" locator="32:1-32:51" name="ObservationLookbackPeriod" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>//------------------------------------------------------------------------------
+// PARAMETERS
+//------------------------------------------------------------------------------
+
+parameter ObservationLookbackPeriod default </a:s>
+               <a:s r="212">
+                  <a:s>14 days</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <default localId="212" locator="32:45-32:51" value="14" unit="days" xsi:type="Quantity"/>
+      </def>
+      <def localId="213" locator="33:1-33:45" name="SymptomaticLookBack" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>parameter SymptomaticLookBack default </a:s>
+               <a:s r="214">
+                  <a:s>14 days</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <default localId="214" locator="33:39-33:45" value="14" unit="days" xsi:type="Quantity"/>
+      </def>
+   </parameters>
+   <codeSystems>
+      <def localId="210" locator="26:1-26:111" name="LOCAL" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>//------------------------------------------------------------------------------
+// CODE SYSTEMS, VALUE SETS, AND CODES
+//------------------------------------------------------------------------------
+
+codesystem &quot;LOCAL&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/screening-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <contexts>
+      <def localId="218" locator="35:1-35:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="216" locator="35:1-35:15" name="Patient" context="Patient">
+         <expression localId="217" xsi:type="SingletonFrom">
+            <operand localId="215" locator="35:1-35:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="220" locator="37:1-38:19" name="eve-AgeOver74" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="220">
+               <a:s>define &quot;eve-AgeOver74&quot;:
+  </a:s>
+               <a:s r="221">
+                  <a:s r="226">
+                     <a:s>AgeInYears()</a:s>
+                  </a:s>
+                  <a:s r="228"> > 74</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="221" locator="38:3-38:19" xsi:type="Greater">
+            <signature localId="229" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+            <signature localId="230" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+            <operand localId="226" locator="38:3-38:14" precision="Year" xsi:type="CalculateAge">
+               <signature localId="227" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+               <operand localId="225" path="birthDate.value" xsi:type="Property">
+                  <source localId="224" name="Patient" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="228" locator="38:18-38:19" valueType="t:Integer" value="74" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="232" locator="40:1-41:27" name="eve-LifeExp" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="232">
+               <a:s>define &quot;eve-LifeExp&quot;:
+  </a:s>
+               <a:s r="234">
+                  <a:s r="233">
+                     <a:s>DataElements</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="234">
+                     <a:s>&quot;de-lifeexp&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="234" locator="41:3-41:27" name="de-lifeexp" libraryName="DataElements" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="238" locator="46:1-49:12" name="Lactating" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="238">
+               <a:s>define Lactating:
+  </a:s>
+               <a:s r="239">
+                  <a:s>if </a:s>
+                  <a:s r="243">
+                     <a:s r="241">
+                        <a:s r="240">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="241">
+                           <a:s>MostRecentLactatingObservation</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is not null</a:s>
+                  </a:s>
+                  <a:s>
+    then </a:s>
+                  <a:s r="250">
+                     <a:s r="244">
+                        <a:s>FHIRHelpers</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="250">
+                        <a:s>ToBoolean(</a:s>
+                        <a:s r="245">
+                           <a:s r="248">
+                              <a:s r="247">
+                                 <a:s r="246">
+                                    <a:s>DataElements</a:s>
+                                 </a:s>
+                                 <a:s>.</a:s>
+                                 <a:s r="247">
+                                    <a:s>MostRecentLactatingObservation</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="248">
+                                 <a:s>value</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> as </a:s>
+                           <a:s r="249">
+                              <a:s>boolean</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="251"> 
+  else false</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="239" locator="47:3-49:12" xsi:type="If">
+            <condition localId="243" locator="47:6-47:60" xsi:type="Not">
+               <operand localId="242" locator="47:6-47:60" xsi:type="IsNull">
+                  <operand localId="241" locator="47:6-47:48" name="MostRecentLactatingObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="250" locator="48:10-48:92" name="ToBoolean" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+               <operand localId="245" locator="48:32-48:91" strict="false" xsi:type="As">
+                  <operand localId="248" locator="48:32-48:80" path="value" xsi:type="Property">
+                     <source localId="247" locator="48:32-48:74" name="MostRecentLactatingObservation" libraryName="DataElements" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <asTypeSpecifier localId="249" locator="48:85-48:91" name="fhir:boolean" xsi:type="NamedTypeSpecifier"/>
+               </operand>
+            </then>
+            <else localId="251" locator="49:8-49:12" valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="236" locator="43:1-44:12" name="eve-lactating" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="236">
+               <a:s>define &quot;eve-lactating&quot;:
+   </a:s>
+               <a:s r="252">
+                  <a:s>Lactating</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="252" locator="44:4-44:12" name="Lactating" xsi:type="ExpressionRef"/>
+      </def>
+   </statements>
+</library>

@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="230">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library ScreeningEligible version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="ScreeningEligible" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="17:1-17:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:61" localIdentifier="Events" path="http://cancerscreeningcds.github.io/bcsm-cds/ScreeningEligibleEvents" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>ScreeningEligibleEvents</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Events</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:63" localIdentifier="Actions" path="http://cancerscreeningcds.github.io/bcsm-cds/ScreeningEligibleActions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>ScreeningEligibleActions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called Actions</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="21:1-21:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="211" locator="27:1-27:38" name="LOINC" id="http://loinc.org" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>//------------------------------------------------------------------------------
+// CODE SYSTEMS, VALUE SETS, AND CODES
+//------------------------------------------------------------------------------
+
+codesystem &quot;LOINC&quot;: 'http://loinc.org'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="212" locator="29:1-29:88" name="ActCode" id="http://example.org/CodeSystem/plan-definition-action-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>codesystem &quot;ActCode&quot;: 'http://example.org/CodeSystem/plan-definition-action-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="213" locator="30:1-30:98" name="ReasonCode" id="http://example.org/CodeSystem/plan-definition-action-reason-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>codesystem &quot;ReasonCode&quot;: 'http://example.org/CodeSystem/plan-definition-action-reason-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="214" locator="33:1-33:36" name="Error" id="error" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="214">
+               <a:s>// Act Codes
+code &quot;Error&quot;: 'error' from </a:s>
+               <a:s r="215">
+                  <a:s>&quot;ActCode&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="215" locator="33:28-33:36" name="ActCode"/>
+      </def>
+      <def localId="216" locator="35:1-35:75" name="Missing age or birth date" id="missingageorbirthdate" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="216">
+               <a:s>// Reason Codes
+code &quot;Missing age or birth date&quot;: 'missingageorbirthdate' from </a:s>
+               <a:s r="217">
+                  <a:s>&quot;ReasonCode&quot;</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="217" locator="35:64-35:75" name="ReasonCode"/>
+      </def>
+      <def localId="218" locator="38:1-38:48" name="Age" id="30525-0" display="Age" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="218">
+               <a:s>// Standard codes
+code &quot;Age&quot;: '30525-0' from </a:s>
+               <a:s r="219">
+                  <a:s>&quot;LOINC&quot;</a:s>
+               </a:s>
+               <a:s> display 'Age'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="219" locator="38:28-38:34" name="LOINC"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="223" locator="40:1-40:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="221" locator="40:1-40:15" name="Patient" context="Patient">
+         <expression localId="222" xsi:type="SingletonFrom">
+            <operand localId="220" locator="40:1-40:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="243" locator="64:1-69:21" name="MostRecentAgeValue" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="243">
+               <a:s>define MostRecentAgeValue:
+  </a:s>
+               <a:s r="303">
+                  <a:s r="302">
+                     <a:s r="301">
+                        <a:s r="300">
+                           <a:s>First(
+    </a:s>
+                           <a:s r="297">
+                              <a:s>
+                                 <a:s r="244">
+                                    <a:s r="247">
+                                       <a:s r="247">
+                                          <a:s>[Observation: </a:s>
+                                          <a:s>
+                                             <a:s>&quot;Age&quot;</a:s>
+                                          </a:s>
+                                          <a:s>]</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> O</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      </a:s>
+                              <a:s r="256">
+                                 <a:s>where </a:s>
+                                 <a:s r="256">
+                                    <a:s r="259">
+                                       <a:s r="258">
+                                          <a:s r="257">
+                                             <a:s>O</a:s>
+                                          </a:s>
+                                          <a:s>.</a:s>
+                                          <a:s r="258">
+                                             <a:s>value</a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="259">
+                                          <a:s>unit</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> = </a:s>
+                                    <a:s r="260">
+                                       <a:s>'years'</a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+      </a:s>
+                              <a:s r="267">
+                                 <a:s>sort by </a:s>
+                                 <a:s r="266">
+                                    <a:s r="265">
+                                       <a:s>effective</a:s>
+                                    </a:s>
+                                    <a:s> desc</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>
+  )</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="301">
+                           <a:s>value</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="302">
+                        <a:s>value</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="303">
+                     <a:s>value</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="303" locator="65:3-69:21" path="value" xsi:type="Property">
+            <source localId="302" locator="65:3-69:15" path="value" xsi:type="Property">
+               <source localId="301" locator="65:3-69:9" path="value" xsi:type="Property">
+                  <source localId="300" locator="65:3-69:3" xsi:type="First">
+                     <source localId="297" locator="66:5-68:28" xsi:type="Query">
+                        <source localId="244" locator="66:5-66:26" alias="O">
+                           <expression localId="247" locator="66:5-66:24" dataType="fhir:Observation" templateId="http://hl7.org/fhir/StructureDefinition/Observation" codeProperty="code" codeComparator="~" xsi:type="Retrieve">
+                              <codes localId="255" xsi:type="ToList">
+                                 <operand localId="246" locator="66:19-66:23" name="Age" xsi:type="CodeRef"/>
+                              </codes>
+                           </expression>
+                        </source>
+                        <where localId="256" locator="67:7-67:34" xsi:type="Equal">
+                           <signature localId="263" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           <signature localId="264" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="261" name="ToString" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                              <signature localId="262" name="fhir:string" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="259" locator="67:13-67:24" path="unit" xsi:type="Property">
+                                 <source localId="258" locator="67:13-67:19" path="value" scope="O" xsi:type="Property"/>
+                              </operand>
+                           </operand>
+                           <operand localId="260" locator="67:28-67:34" valueType="t:String" value="years" xsi:type="Literal"/>
+                        </where>
+                        <sort localId="267" locator="68:7-68:28">
+                           <by localId="266" locator="68:15-68:28" direction="desc" path="effective" xsi:type="ByColumn"/>
+                        </sort>
+                     </source>
+                  </source>
+               </source>
+            </source>
+         </expression>
+      </def>
+      <def localId="233" locator="153:1-154:53" name="MissingAgeOrBirthdate" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="233">
+               <a:s>define MissingAgeOrBirthdate:
+  </a:s>
+               <a:s r="234">
+                  <a:s r="241">
+                     <a:s r="239">
+                        <a:s>AgeInYears()</a:s>
+                     </a:s>
+                     <a:s> is null</a:s>
+                  </a:s>
+                  <a:s> and </a:s>
+                  <a:s r="305">
+                     <a:s r="304">
+                        <a:s>MostRecentAgeValue</a:s>
+                     </a:s>
+                     <a:s> is null</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="234" locator="154:3-154:53" xsi:type="And">
+            <operand localId="241" locator="154:3-154:22" xsi:type="IsNull">
+               <operand localId="239" locator="154:3-154:14" precision="Year" xsi:type="CalculateAge">
+                  <signature localId="240" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="238" path="birthDate.value" xsi:type="Property">
+                     <source localId="237" name="Patient" xsi:type="ExpressionRef"/>
+                  </operand>
+               </operand>
+            </operand>
+            <operand localId="305" locator="154:28-154:53" xsi:type="IsNull">
+               <operand localId="304" locator="154:28-154:45" name="MostRecentAgeValue" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="230" locator="156:1-162:12" name="ErrorMissingAgeOrBirthdate" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="230">
+               <a:s>define ErrorMissingAgeOrBirthdate:
+  </a:s>
+               <a:s r="231">
+                  <a:s>if </a:s>
+                  <a:s r="306">
+                     <a:s>MissingAgeOrBirthdate</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="314">
+                     <a:s r="307">Message(true, true,
+    </a:s>
+                     <a:s r="309">
+                        <a:s>'http://example.org/CodeSystem/plan-definition-action-reason-code-system/missingageorbirthdate'</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="310">
+                        <a:s>'Warning'</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="311">
+                        <a:s>'Missing age or birth date'</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s r="315">
+  else false</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="231" locator="157:3-162:12" xsi:type="If">
+            <condition localId="306" locator="157:6-157:26" name="MissingAgeOrBirthdate" xsi:type="ExpressionRef"/>
+            <then localId="314" locator="158:8-161:32" xsi:type="Message">
+               <source localId="307" locator="158:16-158:19" valueType="t:Boolean" value="true" xsi:type="Literal"/>
+               <condition localId="308" locator="158:22-158:25" valueType="t:Boolean" value="true" xsi:type="Literal"/>
+               <code localId="309" locator="159:5-159:99" valueType="t:String" value="http://example.org/CodeSystem/plan-definition-action-reason-code-system/missingageorbirthdate" xsi:type="Literal"/>
+               <severity localId="310" locator="160:5-160:13" valueType="t:String" value="Warning" xsi:type="Literal"/>
+               <message localId="311" locator="161:5-161:31" valueType="t:String" value="Missing age or birth date" xsi:type="Literal"/>
+            </then>
+            <else localId="315" locator="162:8-162:12" valueType="t:Boolean" value="false" xsi:type="Literal"/>
+         </expression>
+      </def>
+      <def localId="228" locator="150:1-151:28" name="IsIncludedAndNotExcludedErrorsHaveOccurred" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="228">
+               <a:s>//------------------------------------------------------------------------------
+// ERRORS
+//------------------------------------------------------------------------------
+
+define IsIncludedAndNotExcludedErrorsHaveOccurred:
+  </a:s>
+               <a:s r="316">
+                  <a:s>ErrorMissingAgeOrBirthdate</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="316" locator="151:3-151:28" name="ErrorMissingAgeOrBirthdate" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="327" locator="61:1-62:106" name="inc-AgeAtLeast18" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="327">
+               <a:s>// Age 18 years and older, only use MostRecentAgeValue if no birthdate  
+define &quot;inc-AgeAtLeast18&quot;:
+  </a:s>
+               <a:s r="328">
+                  <a:s r="329">
+                     <a:s>(</a:s>
+                     <a:s r="329">
+                        <a:s r="337">
+                           <a:s r="334">
+                              <a:s>AgeInYears()</a:s>
+                           </a:s>
+                           <a:s> is not null</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="338">
+                           <a:s r="343">
+                              <a:s>AgeInYears()</a:s>
+                           </a:s>
+                           <a:s r="345"> >= 18</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="348">
+                     <a:s>(</a:s>
+                     <a:s r="348">
+                        <a:s r="355">
+                           <a:s r="353">
+                              <a:s>AgeInYears()</a:s>
+                           </a:s>
+                           <a:s> is null</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="356">
+                           <a:s r="357">
+                              <a:s>MostRecentAgeValue</a:s>
+                           </a:s>
+                           <a:s r="358"> >= 18</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="328" locator="62:3-62:106" xsi:type="Or">
+            <operand localId="329" locator="62:3-62:51" xsi:type="And">
+               <operand localId="337" locator="62:4-62:27" xsi:type="Not">
+                  <operand localId="336" locator="62:4-62:27" xsi:type="IsNull">
+                     <operand localId="334" locator="62:4-62:15" precision="Year" xsi:type="CalculateAge">
+                        <signature localId="335" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="333" path="birthDate.value" xsi:type="Property">
+                           <source localId="332" name="Patient" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="338" locator="62:33-62:50" xsi:type="GreaterOrEqual">
+                  <signature localId="346" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="347" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="343" locator="62:33-62:44" precision="Year" xsi:type="CalculateAge">
+                     <signature localId="344" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="342" path="birthDate.value" xsi:type="Property">
+                        <source localId="341" name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+                  <operand localId="345" locator="62:49-62:50" valueType="t:Integer" value="18" xsi:type="Literal"/>
+               </operand>
+            </operand>
+            <operand localId="348" locator="62:56-62:106" xsi:type="And">
+               <operand localId="355" locator="62:57-62:76" xsi:type="IsNull">
+                  <operand localId="353" locator="62:57-62:68" precision="Year" xsi:type="CalculateAge">
+                     <signature localId="354" name="t:Date" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="352" path="birthDate.value" xsi:type="Property">
+                        <source localId="351" name="Patient" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+               </operand>
+               <operand localId="356" locator="62:82-62:105" xsi:type="GreaterOrEqual">
+                  <signature localId="362" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="363" name="t:Decimal" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="357" locator="62:82-62:99" name="MostRecentAgeValue" xsi:type="ExpressionRef"/>
+                  <operand localId="360" xsi:type="ToDecimal">
+                     <signature localId="361" name="t:Integer" xsi:type="NamedTypeSpecifier"/>
+                     <operand localId="358" locator="62:104-62:105" valueType="t:Integer" value="18" xsi:type="Literal"/>
+                  </operand>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="366" locator="71:1-72:57" name="inc-assignedfemaleatbirthortransfemale" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="366">
+               <a:s>define &quot;inc-assignedfemaleatbirthortransfemale&quot;:
+  </a:s>
+               <a:s r="367">
+                  <a:s r="369">
+                     <a:s r="368">
+                        <a:s>Events</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="369">
+                        <a:s>&quot;eve-female&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> or </a:s>
+                  <a:s r="371">
+                     <a:s r="370">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="371">
+                        <a:s>&quot;TransgenderFemale&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="367" locator="72:3-72:57" xsi:type="Or">
+            <operand localId="369" locator="72:3-72:21" name="eve-female" libraryName="Events" xsi:type="ExpressionRef"/>
+            <operand localId="371" locator="72:26-72:57" name="TransgenderFemale" libraryName="DataElements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="324" locator="57:1-58:65" name="IsIncluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="324">
+               <a:s>// INCLUSIONS
+define IsIncluded:
+  </a:s>
+               <a:s r="325">
+                  <a:s r="364">
+                     <a:s>&quot;inc-AgeAtLeast18&quot;</a:s>
+                  </a:s>
+                  <a:s> and </a:s>
+                  <a:s r="372">
+                     <a:s>&quot;inc-assignedfemaleatbirthortransfemale&quot;</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="325" locator="58:3-58:65" xsi:type="And">
+            <operand localId="364" locator="58:3-58:20" name="inc-AgeAtLeast18" xsi:type="ExpressionRef"/>
+            <operand localId="372" locator="58:26-58:65" name="inc-assignedfemaleatbirthortransfemale" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="376" locator="75:1-76:7" name="Excluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="376">
+               <a:s r="377">// EXCLUSIONS
+define Excluded:
+  false</a:s>
+            </a:s>
+         </annotation>
+         <expression localId="377" locator="76:3-76:7" valueType="t:Boolean" value="false" xsi:type="Literal"/>
+      </def>
+      <def localId="321" locator="53:1-54:29" name="IsIncludedAndNotExcluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="321">
+               <a:s>define IsIncludedAndNotExcluded:
+  </a:s>
+               <a:s r="322">
+                  <a:s r="373">
+                     <a:s>IsIncluded</a:s>
+                  </a:s>
+                  <a:s> and </a:s>
+                  <a:s r="374">
+                     <a:s>not </a:s>
+                     <a:s r="378">
+                        <a:s>Excluded</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="322" locator="54:3-54:29" xsi:type="And">
+            <operand localId="373" locator="54:3-54:12" name="IsIncluded" xsi:type="ExpressionRef"/>
+            <operand localId="374" locator="54:18-54:29" xsi:type="Not">
+               <operand localId="378" locator="54:22-54:29" name="Excluded" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="225" locator="46:1-51:31" name="CheckIsIncludedAndNotExcluded" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="225">
+               <a:s>//------------------------------------------------------------------------------
+// INCLUSIONS/EXCLUSIONS
+//------------------------------------------------------------------------------
+
+define CheckIsIncludedAndNotExcluded:
+  </a:s>
+               <a:s r="226">
+                  <a:s r="319">
+                     <a:s r="317">
+                        <a:s>IsIncludedAndNotExcludedErrorsHaveOccurred</a:s>
+                     </a:s>
+                     <a:s> is not true</a:s>
+                  </a:s>
+                  <a:s> 
+    and </a:s>
+                  <a:s r="387">
+                     <a:s>Message(</a:s>
+                     <a:s r="379">
+                        <a:s>IsIncludedAndNotExcluded</a:s>
+                     </a:s>
+                     <a:s>, </a:s>
+                     <a:s r="381">
+                        <a:s r="380">
+                           <a:s>IsIncludedAndNotExcluded</a:s>
+                        </a:s>
+                        <a:s> is false</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="382">
+                        <a:s>'http://example.org/CodeSystem/plan-definition-action-reason-code-system/excludedornotincluded'</a:s>
+                     </a:s>
+                     <a:s>,
+    </a:s>
+                     <a:s r="383">
+                        <a:s>'Error'</a:s>
+                     </a:s>
+                     <a:s>, 
+    </a:s>
+                     <a:s r="384">
+                        <a:s>'Excluded or not included'</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="226" locator="47:3-51:31" xsi:type="And">
+            <operand localId="319" locator="47:3-47:56" xsi:type="Not">
+               <operand localId="318" locator="47:3-47:56" xsi:type="IsTrue">
+                  <operand localId="317" locator="47:3-47:44" name="IsIncludedAndNotExcludedErrorsHaveOccurred" xsi:type="ExpressionRef"/>
+               </operand>
+            </operand>
+            <operand localId="387" locator="48:9-51:31" xsi:type="Message">
+               <source localId="379" locator="48:17-48:40" name="IsIncludedAndNotExcluded" xsi:type="ExpressionRef"/>
+               <condition localId="381" locator="48:43-48:75" xsi:type="IsFalse">
+                  <operand localId="380" locator="48:43-48:66" name="IsIncludedAndNotExcluded" xsi:type="ExpressionRef"/>
+               </condition>
+               <code localId="382" locator="49:5-49:99" valueType="t:String" value="http://example.org/CodeSystem/plan-definition-action-reason-code-system/excludedornotincluded" xsi:type="Literal"/>
+               <severity localId="383" locator="50:5-50:11" valueType="t:String" value="Error" xsi:type="Literal"/>
+               <message localId="384" locator="51:5-51:30" valueType="t:String" value="Excluded or not included" xsi:type="Literal"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="392" locator="94:1-96:67" name="NotEligibleNotAssignedFemaleAtBirth" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="392">
+               <a:s>define NotEligibleNotAssignedFemaleAtBirth:
+  </a:s>
+               <a:s r="393">
+                  <a:s>if </a:s>
+                  <a:s r="397">
+                     <a:s r="395">
+                        <a:s r="394">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="395">
+                           <a:s>&quot;eve-female&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is not true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="399">
+                     <a:s r="398">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="399">
+                        <a:s>&quot;end-noteligible-notassignedfemaleatbirth&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="400"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="393" locator="95:3-96:67" xsi:type="If">
+            <condition localId="397" locator="95:6-95:36" xsi:type="Not">
+               <operand localId="396" locator="95:6-95:36" xsi:type="IsTrue">
+                  <operand localId="395" locator="95:6-95:24" name="eve-female" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="399" locator="96:8-96:57" name="end-noteligible-notassignedfemaleatbirth" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="401" xsi:type="As">
+               <operand localId="400" locator="96:64-96:67" xsi:type="Null"/>
+               <asTypeSpecifier localId="402" xsi:type="TupleTypeSpecifier">
+                  <element localId="403" name="code">
+                     <elementType localId="404" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="405" name="reason">
+                     <elementType localId="406" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="407" name="documentation">
+                     <elementType localId="408" xsi:type="TupleTypeSpecifier">
+                        <element localId="409" name="label">
+                           <elementType localId="410" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="413" locator="98:1-100:62" name="NotEligibleCurrentBreastCancer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="413">
+               <a:s>define NotEligibleCurrentBreastCancer:
+  </a:s>
+               <a:s r="414">
+                  <a:s>if </a:s>
+                  <a:s r="417">
+                     <a:s r="416">
+                        <a:s r="415">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="416">
+                           <a:s>&quot;eve-breastca&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="419">
+                     <a:s r="418">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="419">
+                        <a:s>&quot;end-noteligible-currentbreastcancer&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="420"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="414" locator="99:3-100:62" xsi:type="If">
+            <condition localId="417" locator="99:6-99:34" xsi:type="IsTrue">
+               <operand localId="416" locator="99:6-99:26" name="eve-breastca" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="419" locator="100:8-100:52" name="end-noteligible-currentbreastcancer" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="421" xsi:type="As">
+               <operand localId="420" locator="100:59-100:62" xsi:type="Null"/>
+               <asTypeSpecifier localId="422" xsi:type="TupleTypeSpecifier">
+                  <element localId="423" name="code">
+                     <elementType localId="424" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="425" name="reason">
+                     <elementType localId="426" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="427" name="documentation">
+                     <elementType localId="428" xsi:type="TupleTypeSpecifier">
+                        <element localId="429" name="label">
+                           <elementType localId="430" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="433" locator="102:1-104:58" name="NotEligibleBilateralMastectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="433">
+               <a:s>define NotEligibleBilateralMastectomy:
+  </a:s>
+               <a:s r="434">
+                  <a:s>if </a:s>
+                  <a:s r="437">
+                     <a:s r="436">
+                        <a:s r="435">
+                           <a:s>Events</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="436">
+                           <a:s>&quot;eve-mastectomy&quot;</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> is true</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="439">
+                     <a:s r="438">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="439">
+                        <a:s>&quot;end-noteligible-bilatmastectomy&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="440"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="434" locator="103:3-104:58" xsi:type="If">
+            <condition localId="437" locator="103:6-103:36" xsi:type="IsTrue">
+               <operand localId="436" locator="103:6-103:28" name="eve-mastectomy" libraryName="Events" xsi:type="ExpressionRef"/>
+            </condition>
+            <then localId="439" locator="104:8-104:48" name="end-noteligible-bilatmastectomy" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="441" xsi:type="As">
+               <operand localId="440" locator="104:55-104:58" xsi:type="Null"/>
+               <asTypeSpecifier localId="442" xsi:type="TupleTypeSpecifier">
+                  <element localId="443" name="code">
+                     <elementType localId="444" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="445" name="reason">
+                     <elementType localId="446" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="447" name="documentation">
+                     <elementType localId="448" xsi:type="TupleTypeSpecifier">
+                        <element localId="449" name="label">
+                           <elementType localId="450" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="453" locator="106:1-108:40" name="NotEligibleBreastSymptomsOrFindings" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="453">
+               <a:s>define NotEligibleBreastSymptomsOrFindings:
+  </a:s>
+               <a:s r="454">
+                  <a:s>if </a:s>
+                  <a:s r="455">
+                     <a:s r="458">
+                        <a:s r="457">
+                           <a:s r="456">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="457">
+                              <a:s>&quot;eve-breastsymptoms&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is true</a:s>
+                     </a:s>
+                     <a:s> or </a:s>
+                     <a:s r="461">
+                        <a:s r="460">
+                           <a:s r="459">
+                              <a:s>Events</a:s>
+                           </a:s>
+                           <a:s>.</a:s>
+                           <a:s r="460">
+                              <a:s>&quot;eve-breastfindings&quot;</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s> is true</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="463">
+                     <a:s r="462">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="463">
+                        <a:s>&quot;act-dxtesting&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="464"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="454" locator="107:3-108:40" xsi:type="If">
+            <condition localId="455" locator="107:6-107:79" xsi:type="Or">
+               <operand localId="458" locator="107:6-107:40" xsi:type="IsTrue">
+                  <operand localId="457" locator="107:6-107:32" name="eve-breastsymptoms" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+               <operand localId="461" locator="107:45-107:79" xsi:type="IsTrue">
+                  <operand localId="460" locator="107:45-107:71" name="eve-breastfindings" libraryName="Events" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="463" locator="108:8-108:30" name="act-dxtesting" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="465" xsi:type="As">
+               <operand localId="464" locator="108:37-108:40" xsi:type="Null"/>
+               <asTypeSpecifier localId="466" xsi:type="TupleTypeSpecifier">
+                  <element localId="467" name="code">
+                     <elementType localId="468" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="469" name="reason">
+                     <elementType localId="470" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="471" name="documentation">
+                     <elementType localId="472" xsi:type="TupleTypeSpecifier">
+                        <element localId="473" name="label">
+                           <elementType localId="474" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="477" locator="110:1-116:39" name="Eligible" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="477">
+               <a:s>define Eligible:
+  </a:s>
+               <a:s r="478">
+                  <a:s>if </a:s>
+                  <a:s r="486">
+                     <a:s r="485">
+                        <a:s>Coalesce(
+      </a:s>
+                        <a:s r="479">
+                           <a:s>NotEligibleNotAssignedFemaleAtBirth</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s r="480">
+                           <a:s>NotEligibleCurrentBreastCancer</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s r="481">
+                           <a:s>NotEligibleBilateralMastectomy</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s r="482">
+                           <a:s>NotEligibleBreastSymptomsOrFindings</a:s>
+                        </a:s>
+                        <a:s>)</a:s>
+                     </a:s>
+                     <a:s> is null</a:s>
+                  </a:s>
+                  <a:s>
+  then </a:s>
+                  <a:s r="488">
+                     <a:s r="487">
+                        <a:s>Actions</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="488">
+                        <a:s>&quot;act-eligible&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s r="489"> else null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="478" locator="111:3-116:39" xsi:type="If">
+            <condition localId="486" locator="111:6-115:50" xsi:type="IsNull">
+               <operand localId="485" locator="111:6-115:42" xsi:type="Coalesce">
+                  <operand localId="479" locator="112:7-112:41" name="NotEligibleNotAssignedFemaleAtBirth" xsi:type="ExpressionRef"/>
+                  <operand localId="480" locator="113:7-113:36" name="NotEligibleCurrentBreastCancer" xsi:type="ExpressionRef"/>
+                  <operand localId="481" locator="114:7-114:36" name="NotEligibleBilateralMastectomy" xsi:type="ExpressionRef"/>
+                  <operand localId="482" locator="115:7-115:41" name="NotEligibleBreastSymptomsOrFindings" xsi:type="ExpressionRef"/>
+               </operand>
+            </condition>
+            <then localId="488" locator="116:8-116:29" name="act-eligible" libraryName="Actions" xsi:type="ExpressionRef"/>
+            <else localId="490" xsi:type="As">
+               <operand localId="489" locator="116:36-116:39" xsi:type="Null"/>
+               <asTypeSpecifier localId="491" xsi:type="TupleTypeSpecifier">
+                  <element localId="492" name="code">
+                     <elementType localId="493" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="494" name="reason">
+                     <elementType localId="495" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  </element>
+                  <element localId="496" name="documentation">
+                     <elementType localId="497" xsi:type="TupleTypeSpecifier">
+                        <element localId="498" name="label">
+                           <elementType localId="499" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                     </elementType>
+                  </element>
+               </asTypeSpecifier>
+            </else>
+         </expression>
+      </def>
+      <def localId="389" locator="82:1-92:17" name="flow-ScreeningEligible" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="389">
+               <a:s>//------------------------------------------------------------------------------
+// RECOMMENDATIONS
+//------------------------------------------------------------------------------
+
+define &quot;flow-ScreeningEligible&quot;:
+  </a:s>
+               <a:s r="506">
+                  <a:s r="390">
+                     <a:s>{ 
+    </a:s>
+                     <a:s r="503">
+                        <a:s>Coalesce(
+      </a:s>
+                        <a:s r="411">
+                           <a:s>NotEligibleNotAssignedFemaleAtBirth</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s r="431">
+                           <a:s>NotEligibleCurrentBreastCancer</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s r="451">
+                           <a:s>NotEligibleBilateralMastectomy</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s r="475">
+                           <a:s>NotEligibleBreastSymptomsOrFindings</a:s>
+                        </a:s>
+                        <a:s>,
+      </a:s>
+                        <a:s r="500">
+                           <a:s>Eligible</a:s>
+                        </a:s>
+                        <a:s>
+    )</a:s>
+                     </a:s>
+                     <a:s>
+  }</a:s>
+                  </a:s>
+                  <a:s>
+  except </a:s>
+                  <a:s r="504">
+                     <a:s r="505">{ null }</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="506" locator="83:3-92:17" xsi:type="Except">
+            <operand localId="390" locator="83:3-91:3" xsi:type="List">
+               <element localId="503" locator="84:5-90:5" xsi:type="Coalesce">
+                  <operand localId="411" locator="85:7-85:41" name="NotEligibleNotAssignedFemaleAtBirth" xsi:type="ExpressionRef"/>
+                  <operand localId="431" locator="86:7-86:36" name="NotEligibleCurrentBreastCancer" xsi:type="ExpressionRef"/>
+                  <operand localId="451" locator="87:7-87:36" name="NotEligibleBilateralMastectomy" xsi:type="ExpressionRef"/>
+                  <operand localId="475" locator="88:7-88:41" name="NotEligibleBreastSymptomsOrFindings" xsi:type="ExpressionRef"/>
+                  <operand localId="500" locator="89:7-89:14" name="Eligible" xsi:type="ExpressionRef"/>
+               </element>
+            </operand>
+            <operand localId="507" xsi:type="Query">
+               <source localId="508" alias="X">
+                  <expression localId="504" locator="92:10-92:17" xsi:type="List">
+                     <element localId="505" locator="92:12-92:15" xsi:type="Null"/>
+                  </expression>
+               </source>
+               <return localId="509" distinct="false">
+                  <expression localId="511" xsi:type="As">
+                     <operand localId="510" name="X" xsi:type="AliasRef"/>
+                     <asTypeSpecifier localId="512" xsi:type="TupleTypeSpecifier">
+                        <element localId="513" name="code">
+                           <elementType localId="514" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="515" name="reason">
+                           <elementType localId="516" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                        </element>
+                        <element localId="517" name="documentation">
+                           <elementType localId="518" xsi:type="TupleTypeSpecifier">
+                              <element localId="519" name="label">
+                                 <elementType localId="520" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                              </element>
+                           </elementType>
+                        </element>
+                     </asTypeSpecifier>
+                  </expression>
+               </return>
+            </operand>
+         </expression>
+      </def>
+      <def localId="522" locator="122:1-123:22" name="IsScreeningEligible" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="522">
+               <a:s>//------------------------------------------------------------------------------
+// DYNAMIC VALUES
+//------------------------------------------------------------------------------
+
+define IsScreeningEligible:
+  </a:s>
+               <a:s r="525">
+                  <a:s r="523">
+                     <a:s>Eligible</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="525" locator="123:3-123:22" xsi:type="Not">
+            <operand localId="524" locator="123:3-123:22" xsi:type="IsNull">
+               <operand localId="523" locator="123:3-123:10" name="Eligible" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="527" locator="125:1-126:18" name="IsNotScreeningEligible" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="527">
+               <a:s>define IsNotScreeningEligible:
+  </a:s>
+               <a:s r="529">
+                  <a:s r="528">
+                     <a:s>Eligible</a:s>
+                  </a:s>
+                  <a:s> is null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="529" locator="126:3-126:18" xsi:type="IsNull">
+            <operand localId="528" locator="126:3-126:10" name="Eligible" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="531" locator="128:1-129:49" name="ExistsNotEligibleNotAssignedFemaleAtBirth" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="531">
+               <a:s>define ExistsNotEligibleNotAssignedFemaleAtBirth:
+  </a:s>
+               <a:s r="534">
+                  <a:s r="532">
+                     <a:s>NotEligibleNotAssignedFemaleAtBirth</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="534" locator="129:3-129:49" xsi:type="Not">
+            <operand localId="533" locator="129:3-129:49" xsi:type="IsNull">
+               <operand localId="532" locator="129:3-129:37" name="NotEligibleNotAssignedFemaleAtBirth" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="536" locator="131:1-132:44" name="ExistsNotEligibleCurrentBreastCancer" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="536">
+               <a:s>define ExistsNotEligibleCurrentBreastCancer:
+  </a:s>
+               <a:s r="539">
+                  <a:s r="537">
+                     <a:s>NotEligibleCurrentBreastCancer</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="539" locator="132:3-132:44" xsi:type="Not">
+            <operand localId="538" locator="132:3-132:44" xsi:type="IsNull">
+               <operand localId="537" locator="132:3-132:32" name="NotEligibleCurrentBreastCancer" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="541" locator="134:1-135:44" name="ExistsNotEligibleBilateralMastectomy" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="541">
+               <a:s>define ExistsNotEligibleBilateralMastectomy:
+  </a:s>
+               <a:s r="544">
+                  <a:s r="542">
+                     <a:s>NotEligibleBilateralMastectomy</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="544" locator="135:3-135:44" xsi:type="Not">
+            <operand localId="543" locator="135:3-135:44" xsi:type="IsNull">
+               <operand localId="542" locator="135:3-135:32" name="NotEligibleBilateralMastectomy" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="546" locator="137:1-138:49" name="ExistsNotEligibleBreastSymptomsOrFindings" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="546">
+               <a:s>define ExistsNotEligibleBreastSymptomsOrFindings:
+  </a:s>
+               <a:s r="549">
+                  <a:s r="547">
+                     <a:s>NotEligibleBreastSymptomsOrFindings</a:s>
+                  </a:s>
+                  <a:s> is not null</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="549" locator="138:3-138:49" xsi:type="Not">
+            <operand localId="548" locator="138:3-138:49" xsi:type="IsNull">
+               <operand localId="547" locator="138:3-138:37" name="NotEligibleBreastSymptomsOrFindings" xsi:type="ExpressionRef"/>
+            </operand>
+         </expression>
+      </def>
+      <def localId="551" locator="140:1-141:38" name="ScreeningEligibleCode" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="551">
+               <a:s>define ScreeningEligibleCode:
+  </a:s>
+               <a:s r="576">
+                  <a:s r="565">
+                     <a:s>First(</a:s>
+                     <a:s r="552">
+                        <a:s>&quot;flow-ScreeningEligible&quot;</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="576">
+                     <a:s>code</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="576" locator="141:3-141:38" path="code" xsi:type="Property">
+            <source localId="565" locator="141:3-141:33" xsi:type="First">
+               <signature localId="566" xsi:type="ListTypeSpecifier">
+                  <elementType localId="567" xsi:type="TupleTypeSpecifier">
+                     <element localId="568" name="code">
+                        <elementType localId="569" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="570" name="reason">
+                        <elementType localId="571" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="572" name="documentation">
+                        <elementType localId="573" xsi:type="TupleTypeSpecifier">
+                           <element localId="574" name="label">
+                              <elementType localId="575" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                  </elementType>
+               </signature>
+               <source localId="552" locator="141:9-141:32" name="flow-ScreeningEligible" xsi:type="ExpressionRef"/>
+            </source>
+         </expression>
+      </def>
+      <def localId="578" locator="143:1-144:40" name="ScreeningEligibleReason" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="578">
+               <a:s>define ScreeningEligibleReason:
+  </a:s>
+               <a:s r="603">
+                  <a:s r="592">
+                     <a:s>First(</a:s>
+                     <a:s r="579">
+                        <a:s>&quot;flow-ScreeningEligible&quot;</a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="603">
+                     <a:s>reason</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="603" locator="144:3-144:40" path="reason" xsi:type="Property">
+            <source localId="592" locator="144:3-144:33" xsi:type="First">
+               <signature localId="593" xsi:type="ListTypeSpecifier">
+                  <elementType localId="594" xsi:type="TupleTypeSpecifier">
+                     <element localId="595" name="code">
+                        <elementType localId="596" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="597" name="reason">
+                        <elementType localId="598" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="599" name="documentation">
+                        <elementType localId="600" xsi:type="TupleTypeSpecifier">
+                           <element localId="601" name="label">
+                              <elementType localId="602" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                           </element>
+                        </elementType>
+                     </element>
+                  </elementType>
+               </signature>
+               <source localId="579" locator="144:9-144:32" name="flow-ScreeningEligible" xsi:type="ExpressionRef"/>
+            </source>
+         </expression>
+      </def>
+   </statements>
+</library>

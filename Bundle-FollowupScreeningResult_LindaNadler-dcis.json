@@ -1,0 +1,68 @@
+{
+  "resourceType" : "Bundle",
+  "id" : "FollowupScreeningResult_LindaNadler-dcis",
+  "type" : "collection",
+  "entry" : [{
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/CarePlan/326",
+    "resource" : {
+      "resourceType" : "CarePlan",
+      "id" : "326",
+      "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"CarePlan_326\"> </a><p class=\"res-header-id\"><b>Generated Narrative: CarePlan 326</b></p><a name=\"326\"> </a><a name=\"hc326\"> </a><a name=\"326-en-US\"> </a><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-LindaNadler-dcis.html#Patient_LindaNadler\">Linda48 Nadler92</a></p><p><b>created</b>: 2024-12-10 00:00:00+0000</p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"Bundle-FollowupScreeningResult_LindaNadler-dcis.html#RequestGroup_327\">Bundle: type = collection</a></td></tr></table></div>"
+      },
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/LindaNadler",
+        "display" : "Linda48 Nadler92"
+      },
+      "created" : "2024-12-10T00:00:00.0Z",
+      "activity" : [{
+        "reference" : {
+          "reference" : "RequestGroup/327"
+        }
+      }]
+    }
+  },
+  {
+    "fullUrl" : "http://cancerscreeningcds.github.io/bcsm-cds/RequestGroup/327",
+    "resource" : {
+      "resourceType" : "RequestGroup",
+      "id" : "327",
+      "text" : {
+        "status" : "extensions",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><a name=\"RequestGroup_327\"> </a><p class=\"res-header-id\"><b>Generated Narrative: RequestGroup 327</b></p><a name=\"327\"> </a><a name=\"hc327\"> </a><a name=\"327-en-US\"> </a><p><b>Messages</b>: <a href=\"#hc327/contained-1\">OperationOutcome</a></p><p><b>instantiatesCanonical</b>: <a href=\"PlanDefinition-flow-FollowupScreeningResult.html\">Followup Screening Result</a></p><p><b>status</b>: Draft</p><p><b>intent</b>: Proposal</p><p><b>subject</b>: <a href=\"Bundle-LindaNadler-dcis.html#Patient_LindaNadler\">Linda48 Nadler92</a></p><hr/><blockquote><p class=\"res-header-id\"><b>Generated Narrative: OperationOutcome #contained-1</b></p><a name=\"327/contained-1\"> </a><a name=\"hc327/contained-1\"> </a><a name=\"327/contained-1-en-US\"> </a><table class=\"grid\"><tr><td><b>Severity</b></td><td><b>Location</b></td><td><b>Code</b></td><td><b>Details</b></td><td><b>Diagnostics</b></td></tr><tr><td>Warning</td><td/><td>Processing Failure</td><td/><td>A laboratory test was found with an unexpected result code. Please review patient record to resolve.</td></tr></table></blockquote></div>"
+      },
+      "contained" : [{
+        "resourceType" : "OperationOutcome",
+        "id" : "contained-1",
+        "issue" : [{
+          "severity" : "warning",
+          "code" : "processing",
+          "details" : {
+            "coding" : [{
+              "system" : "http://example.org/CodeSystem/plan-definition-action-reason-code-system",
+              "code" : "unknownresultcode"
+            }]
+          },
+          "diagnostics" : "A laboratory test was found with an unexpected result code. Please review patient record to resolve."
+        }]
+      }],
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/cqf-messages",
+        "valueReference" : {
+          "reference" : "#contained-1"
+        }
+      }],
+      "instantiatesCanonical" : ["http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"],
+      "status" : "draft",
+      "intent" : "proposal",
+      "subject" : {
+        "reference" : "Patient/LindaNadler",
+        "display" : "Linda48 Nadler92"
+      }
+    }
+  }]
+}

@@ -1,0 +1,1281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PlanDefinition xmlns="http://hl7.org/fhir">
+  <id value="flow-FollowupScreeningResult"/>
+  <meta>
+    <profile value="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-computableplandefinition"/>
+  </meta>
+  <text>
+    <status value="extensions"/><div xmlns="http://www.w3.org/1999/xhtml">
+<div>
+    <table class="grid dict">
+        
+        <tr>
+            <th scope="row"><b>Id: </b></th>
+            <td style="padding-left: 4px;">flow-FollowupScreeningResult</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Url: </b></th>
+            <td style="padding-left: 4px;"><a href="PlanDefinition-flow-FollowupScreeningResult.html">Followup Screening Result</a></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Version: </b></th>
+            <td style="padding-left: 4px;">1.0.0</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Title: </b></th>
+            <td style="padding-left: 4px;">Followup Screening Result</td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Status: </b></th>
+            <td style="padding-left: 4px;">draft</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Experimental: </b></th>
+            <td style="padding-left: 4px;">true</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Type: </b></th>
+            <td style="padding-left: 4px;">
+                
+                    
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>system: </b> <span><a href="http://terminology.hl7.org/6.2.0/CodeSystem-plan-definition-type.html">http://terminology.hl7.org/CodeSystem/plan-definition-type</a></span>
+                        </p>
+                        
+                        
+                        <p style="margin-bottom: 5px;">
+                            <b>code: </b> <span>eca-rule</span>
+                        </p>
+                        
+                        
+                    
+                
+                
+            </td>
+        </tr>
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Date: </b></th>
+            <td style="padding-left: 4px;">2024-10-22</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Publisher: </b></th>
+            <td style="padding-left: 4px;">MITRE</td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Description: </b></th>
+            <td style="padding-left: 4px;"><div><p>Determines next steps, if any, based on result of screening imaging or biopsy. This may be triggered by a diagnostic report being received by the system or an imaging BI-RADS result being documented in a structured manner.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Capability: </b></th>
+            <td style="padding-left: 4px;">
+                
+                executable 
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Knowledge Representation Level: </b></th>
+            <td style="padding-left: 4px;">
+                
+                structured
+            </td>
+        </tr>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Copyright: </b></th>
+            <td style="padding-left: 4px;"><div><p>(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.</p>
+</div></td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Approval Date: </b></th>
+            <td style="padding-left: 4px;">2024-10-22</td>
+        </tr>
+        
+
+        
+
+        
+
+        
+        <tr>
+            <th scope="row"><b>Libraries: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td><code>Library/FollowupScreeningResult|1.0.0</code></td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+
+        
+        <tr>
+            <th scope="row"><b>Actions: </b></th>
+            <td style="padding-left: 4px;">
+                <table class="grid-dict">
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Refer to Radiologist recommendations:</b> Refer to Radiologist recommendations for further evaluation in BI-RADS 0 screening results.
+
+Additional work-up including comparison to prior mammograms or diagnostic imaging may be indicated.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupBirads0Result)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupBirads0ResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupBirads0ResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupBirads0ResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupBirads0ResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupBirads0ResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupBirads0ResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Refer to Radiologist recommendations:</b> Probably benign finding. Refer to Radiologist recommendations for interval imaging in BI-RADS 3 screening results.
+
+Periodic monitoring, including diagnostic mammogram or ultrasound, is warranted to assess for changes. Monitoring may be recommended at 6, 12 and 24 months until the finding is felt to be stable or resolving or is transitioned to a higher BI-RADS categorization.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupBirads3Result)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupBirads3ResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupBirads3ResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupBirads3ResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupBirads3ResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupBirads3ResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupBirads3ResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Refer for breast biopsy:</b> Refer for breast biopsy.
+
+Initial modality will typically be image-guided core needle biopsy (guided by mammography, ultrasound, or MRI). In certain conditions, an initial excisional biopsy may be preferable. These may include lesions anatomically unsuitable for needle biopsy or patient anatomic considerations. Refer to resulting Radiologist for recommendations.
+
+In imaging findings that have previously been biopsied and found to be benign, consider referral for excisional biopsy if there have been suspicious interval changes in the lesion.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupBirads4Or5Result)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupBirads4Or5ResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupBirads4Or5ResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupBirads4Or5ResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupBirads4Or5ResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupBirads4Or5ResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupBirads4Or5ResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Continue routine screening:</b> Benign lesions without atypia or discordance with imaging can return to routine screening.
+
+Certain specific benign histologies may require additional tissue, including mucin-producing lesions, potential phyllodes tumor, papillary lesions, or radial scars. Refer to pathologist for further recommendations.
+
+Other specific histologies may be considered for excisional biopsy and can be referred to a breast surgeon for evaluation. These may include flat epithelial atypia [FEA], papillary and/or sclerosing lesion, and fibroepithelial lesions (fibroadenoma vs benign phyllodes tumor).
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupBenignBiopsyResult)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupBenignBiopsyResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupBenignBiopsyResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupBenignBiopsyResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupBenignBiopsyResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupBenignBiopsyResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupBenignBiopsyResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Refer to breast surgeon:</b> Atypical fndings, including ADH and non-classic LCIS, should be referred for potential excision.
+
+Atypical ductal hyperplasia (ADH) and non-classic lobular carcinoma in situ (LCIS), including pleomorphic or florid LCIS, should be referred to breast surgeon for potential excision.
+
+Classic LCIS and atypical lobular hyperplasia (ALH) are typically candidates for observation with clinical and imaging follow-up but may benefit from excision in certain circumstances.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupAtypicalBiopsyResult)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupAtypicalBiopsyResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupAtypicalBiopsyResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupAtypicalBiopsyResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupAtypicalBiopsyResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupAtypicalBiopsyResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupAtypicalBiopsyResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Refer to breast cancer specialist:</b> Referral to breast surgery or medical oncology as appropriate.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupMalignantBiopsyResult)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupMalignantBiopsyResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupMalignantBiopsyResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupMalignantBiopsyResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupMalignantBiopsyResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupMalignantBiopsyResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupMalignantBiopsyResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Refer to breast surgeon:</b> Indeterminate fndings should be referred for potential excisional biopsy.
+
+A core needle biopsy specimen may be non-diagnostic for a number of reasons (insufficient material, lack of calcifications, hemorrhage).
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupIndeterminateBiopsyResult)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupIndeterminateBiopsyResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupIndeterminateBiopsyResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupIndeterminateBiopsyResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupIndeterminateBiopsyResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupIndeterminateBiopsyResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupIndeterminateBiopsyResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            <b> Refer to breast surgeon:</b> Benign histology findings on core needle biopsy that are discordant with imaging findings should be referred for potential excisional biopsy.
+
+A histologic result may be discordant if the pathology result does not account for imaging findings that are suspicious for malignancy. The designation of discordance may require input from radiologist, breast surgeon, and breast pathologist. 
+
+A repeat needle biopsy may be considered if the initial biopsy procedure was felt to be inadequate. Refer to radiologist recommendations for guidance.
+                            
+                            <br/>
+                            
+                            
+                            <b>If:</b>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(NoErrorsHaveOccurred)</i>
+                            <br/>
+                            
+                            <i>Applicability:</i>
+                            
+                            <i>(ExistsFollowupDiscordantBiopsyResult)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                            <b>Then:</b> <i>Definition:</i> <code>http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0</code><br/>
+                            
+                            <i>Dynamic Values:</i><br/>
+                            
+                            %action.code[0].coding[0]: <i>(FollowupDiscordantBiopsyResultCode)</i>
+                            <br/>
+                            
+                            %action.timingTiming: <i>(FollowupDiscordantBiopsyResultTiming)</i>
+                            <br/>
+                            
+                            %action.extension: <i>(FollowupDiscordantBiopsyResultFlag)</i>
+                            <br/>
+                            
+                            code.coding[0]: <i>(FollowupDiscordantBiopsyResultCode)</i>
+                            <br/>
+                            
+                            reasonCode[0].coding[0]: <i>(FollowupDiscordantBiopsyResultReason)</i>
+                            <br/>
+                            
+                            occurrenceDateTime: <i>(FollowupDiscordantBiopsyResultTimingEvent)</i>
+                            <br/>
+                            
+                            
+                            
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+</div>
+  </text>
+  <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeCapability">
+    <valueCode value="executable"/>
+  </extension>
+  <extension url="http://hl7.org/fhir/uv/cpg/StructureDefinition/cpg-knowledgeRepresentationLevel">
+    <valueCode value="structured"/>
+  </extension>
+  <url value="http://cancerscreeningcds.github.io/bcsm-cds/PlanDefinition/flow-FollowupScreeningResult"/>
+  <version value="1.0.0"/>
+  <name value="flow-FollowupScreeningResult"/>
+  <title value="Followup Screening Result"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/plan-definition-type"/>
+      <code value="eca-rule"/>
+    </coding>
+  </type>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2024-10-22"/>
+  <publisher value="MITRE"/>
+  <contact>
+    <name value="MITRE"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://www.mitre.org/"/>
+    </telecom>
+  </contact>
+  <description value="Determines next steps, if any, based on result of screening imaging or biopsy. This may be triggered by a diagnostic report being received by the system or an imaging BI-RADS result being documented in a structured manner."/>
+  <copyright value="(C) 2024 The MITRE Corporation. All Rights Reserved. Approved for Public Release: 24-2711. Distribution Unlimited. Unless otherwise noted, this work is available under an Apache 2.0 license. It was produced by the MITRE Corporation for the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention in accordance with the Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931."/>
+  <approvalDate value="2024-10-22"/>
+  <lastReviewDate value="2024-10-22"/>
+  <author>
+    <name value="The Health FFRDC, operated by The MITRE Corporation, in support of the Division of Cancer Prevention and Control, Centers for Disease Control and Prevention."/>
+  </author>
+  <editor>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </editor>
+  <reviewer>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </reviewer>
+  <endorser>
+    <name value="Division of Cancer Prevention and Control, Centers for Disease Control and Prevention"/>
+  </endorser>
+  <library value="Library/FollowupScreeningResult|1.0.0"/>
+  <action id="FollowupBirads0Result">
+    <title value="Refer to Radiologist recommendations"/>
+    <description value="Refer to Radiologist recommendations for further evaluation in BI-RADS 0 screening results.&#xA;&#xA;Additional work-up including comparison to prior mammograms or diagnostic imaging may be indicated."/>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: Mammography Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: MRI Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: Ultrasound Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupBirads0Result"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads0ResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads0ResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads0ResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads0ResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads0ResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads0ResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="FollowupBirads3Result">
+    <title value="Refer to Radiologist recommendations"/>
+    <description value="Probably benign finding. Refer to Radiologist recommendations for interval imaging in BI-RADS 3 screening results.&#xA;&#xA;Periodic monitoring, including diagnostic mammogram or ultrasound, is warranted to assess for changes. Monitoring may be recommended at 6, 12 and 24 months until the finding is felt to be stable or resolving or is transitioned to a higher BI-RADS categorization."/>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: Mammography Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: MRI Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: Ultrasound Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupBirads3Result"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads3ResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads3ResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads3ResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads3ResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads3ResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads3ResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="FollowupBirads4Or5Result">
+    <title value="Refer for breast biopsy"/>
+    <description value="Refer for breast biopsy.&#xA;&#xA;Initial modality will typically be image-guided core needle biopsy (guided by mammography, ultrasound, or MRI). In certain conditions, an initial excisional biopsy may be preferable. These may include lesions anatomically unsuitable for needle biopsy or patient anatomic considerations. Refer to resulting Radiologist for recommendations.&#xA;&#xA;In imaging findings that have previously been biopsied and found to be benign, consider referral for excisional biopsy if there have been suspicious interval changes in the lesion."/>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: Mammography Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Mammography-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: MRI Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-MRI-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <documentation>
+      <type value="documentation"/>
+      <label value="ACR"/>
+      <display value="ACR BI-RADS Atlas Excerpt: Ultrasound Reporting System"/>
+      <citation value="American College of Radiology. ACR BI-RADS Atlas: Breast Imaging Reporting and Data System. 5th ed., American College of Radiology, 2013."/>
+      <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"/>
+      <document>
+        <url value="https://edge.sitecorecloud.io/americancoldf5f-acrorgf92a-productioncb02-3650/media/ACR/Files/RADS/BI-RADS/Breast-Ultrasound-Reporting.pdf"/>
+      </document>
+    </documentation>
+    <documentation>
+      <type value="citation"/>
+      <label value="ASBrS"/>
+      <display value="The American Society of Breast Surgeons Resource Guide: Excisional Breast Biopsy (Nov 2014)"/>
+      <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-excisional-breast-biopsy.pdf"/>
+      <document>
+        <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-excisional-breast-biopsy.pdf"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupBirads4Or5Result"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads4Or5ResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads4Or5ResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads4Or5ResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads4Or5ResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads4Or5ResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBirads4Or5ResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="FollowupBenignBiopsyResult">
+    <title value="Continue routine screening"/>
+    <description value="Benign lesions without atypia or discordance with imaging can return to routine screening.&#xA;&#xA;Certain specific benign histologies may require additional tissue, including mucin-producing lesions, potential phyllodes tumor, papillary lesions, or radial scars. Refer to pathologist for further recommendations.&#xA;&#xA;Other specific histologies may be considered for excisional biopsy and can be referred to a breast surgeon for evaluation. These may include flat epithelial atypia [FEA], papillary and/or sclerosing lesion, and fibroepithelial lesions (fibroadenoma vs benign phyllodes tumor)."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ASBrS"/>
+      <display value="The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)"/>
+      <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"/>
+      <document>
+        <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupBenignBiopsyResult"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBenignBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBenignBiopsyResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBenignBiopsyResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBenignBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBenignBiopsyResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupBenignBiopsyResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="FollowupAtypicalBiopsyResult">
+    <title value="Refer to breast surgeon"/>
+    <description value="Atypical fndings, including ADH and non-classic LCIS, should be referred for potential excision.&#xA;&#xA;Atypical ductal hyperplasia (ADH) and non-classic lobular carcinoma in situ (LCIS), including pleomorphic or florid LCIS, should be referred to breast surgeon for potential excision.&#xA;&#xA;Classic LCIS and atypical lobular hyperplasia (ALH) are typically candidates for observation with clinical and imaging follow-up but may benefit from excision in certain circumstances."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ASBrS"/>
+      <display value="The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)"/>
+      <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"/>
+      <document>
+        <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupAtypicalBiopsyResult"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupAtypicalBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupAtypicalBiopsyResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupAtypicalBiopsyResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupAtypicalBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupAtypicalBiopsyResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupAtypicalBiopsyResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="FollowupMalignantBiopsyResult">
+    <title value="Refer to breast cancer specialist"/>
+    <description value="Referral to breast surgery or medical oncology as appropriate."/>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupMalignantBiopsyResult"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupMalignantBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupMalignantBiopsyResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupMalignantBiopsyResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupMalignantBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupMalignantBiopsyResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupMalignantBiopsyResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="FollowupIndeterminateBiopsyResult">
+    <title value="Refer to breast surgeon"/>
+    <description value="Indeterminate fndings should be referred for potential excisional biopsy.&#xA;&#xA;A core needle biopsy specimen may be non-diagnostic for a number of reasons (insufficient material, lack of calcifications, hemorrhage)."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ASBrS"/>
+      <display value="The American Society of Breast Surgeons Resource Guide: Excisional Breast Biopsy (Nov 2014)"/>
+      <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-excisional-breast-biopsy.pdf"/>
+      <document>
+        <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-excisional-breast-biopsy.pdf"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupIndeterminateBiopsyResult"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupIndeterminateBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupIndeterminateBiopsyResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupIndeterminateBiopsyResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupIndeterminateBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupIndeterminateBiopsyResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupIndeterminateBiopsyResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+  <action id="FollowupDiscordantBiopsyResult">
+    <title value="Refer to breast surgeon"/>
+    <description value="Benign histology findings on core needle biopsy that are discordant with imaging findings should be referred for potential excisional biopsy.&#xA;&#xA;A histologic result may be discordant if the pathology result does not account for imaging findings that are suspicious for malignancy. The designation of discordance may require input from radiologist, breast surgeon, and breast pathologist. &#xA;&#xA;A repeat needle biopsy may be considered if the initial biopsy procedure was felt to be inadequate. Refer to radiologist recommendations for guidance."/>
+    <documentation>
+      <type value="citation"/>
+      <label value="ASBrS"/>
+      <display value="The American Society of Breast Surgeons Resource Guide: Surgical Management of Benign or High-Risk Lesions (Feb 2025)"/>
+      <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"/>
+      <document>
+        <url value="https://www.breastsurgeons.org/docs/statements/asbrs-rg-high-risk-lesions.pdf"/>
+      </document>
+    </documentation>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="NoErrorsHaveOccurred"/>
+      </expression>
+    </condition>
+    <condition>
+      <kind value="applicability"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="ExistsFollowupDiscordantBiopsyResult"/>
+      </expression>
+    </condition>
+    <definitionCanonical value="http://cancerscreeningcds.github.io/bcsm-cds/ActivityDefinition/BreastCancerScreeningServiceRequest|1.0.0"/>
+    <dynamicValue>
+      <path value="%action.code[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupDiscordantBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.timingTiming"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupDiscordantBiopsyResultTiming"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="%action.extension"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupDiscordantBiopsyResultFlag"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="code.coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupDiscordantBiopsyResultCode"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="reasonCode[0].coding[0]"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupDiscordantBiopsyResultReason"/>
+      </expression>
+    </dynamicValue>
+    <dynamicValue>
+      <path value="occurrenceDateTime"/>
+      <expression>
+        <language value="text/cql-identifier"/>
+        <expression value="FollowupDiscordantBiopsyResultTimingEvent"/>
+      </expression>
+    </dynamicValue>
+  </action>
+</PlanDefinition>

@@ -1,0 +1,1399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="urn:hl7-org:elm:r1" xmlns:t="urn:hl7-org:elm-types:r1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fhir="http://hl7.org/fhir" xmlns:qdm43="urn:healthit-gov:qdm:v4_3" xmlns:qdm53="urn:healthit-gov:qdm:v5_3" xmlns:a="urn:hl7-org:cql-annotations:r1" localId="0">
+   <annotation translatorVersion="3.11.0" translatorOptions="EnableAnnotations,EnableLocators,DisableListDemotion,DisableListPromotion" signatureLevel="Overloads" xsi:type="a:CqlToElmInfo"/>
+   <annotation xsi:type="a:Annotation">
+      <a:s r="398">
+         <a:s>/*  
+  Author: CMS Alliance to Modernize Healthcare, operated by THE MITRE Corporation.
+
+  (C) 2024 The MITRE Corporation. All Rights Reserved. 
+  Approved for Public Release: 24-2711. 
+  Distribution Unlimited.
+
+  Unless otherwise noted, this work is available under an Apache 2.0 license. 
+  It was produced by the MITRE Corporation for the Division of Cancer Prevention 
+  and Control, Centers for Disease Control and Prevention in accordance with the 
+  Statement of Work, contract number 75FCMC18D0047, task order number 75D30123F17931.
+*/
+
+library FollowupScreeningResultEvents version '1.0.0'</a:s>
+      </a:s>
+   </annotation>
+   <identifier id="FollowupScreeningResultEvents" system="http://cancerscreeningcds.github.io/bcsm-cds" version="1.0.0"/>
+   <schemaIdentifier id="urn:hl7-org:elm" version="r1"/>
+   <usings>
+      <def localId="1" localIdentifier="System" uri="urn:hl7-org:elm-types:r1"/>
+      <def localId="206" locator="16:1-16:26" localIdentifier="FHIR" uri="http://hl7.org/fhir" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="206">
+               <a:s>using </a:s>
+               <a:s>
+                  <a:s>FHIR</a:s>
+               </a:s>
+               <a:s> version '4.0.1'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </usings>
+   <includes>
+      <def localId="207" locator="17:1-17:55" localIdentifier="FHIRHelpers" path="http://cancerscreeningcds.github.io/bcsm-cds/FHIRHelpers" version="4.0.1">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="207">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>FHIRHelpers</a:s>
+               </a:s>
+               <a:s>  version '4.0.1' called FHIRHelpers</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="208" locator="19:1-19:56" localIdentifier="DataElements" path="http://cancerscreeningcds.github.io/bcsm-cds/DataElements" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="208">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>DataElements</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called DataElements</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="209" locator="20:1-20:68" localIdentifier="CSMCommonFunctions" path="http://cancerscreeningcds.github.io/bcsm-cds/CSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="209">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>CSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called CSMCommonFunctions</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="210" locator="21:1-21:61" localIdentifier="BCSMCommon" path="http://cancerscreeningcds.github.io/bcsm-cds/BCSMCommonFunctions" version="1.0.0">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="210">
+               <a:s>include </a:s>
+               <a:s>
+                  <a:s>BCSMCommonFunctions</a:s>
+               </a:s>
+               <a:s> version '1.0.0' called BCSMCommon</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </includes>
+   <codeSystems>
+      <def localId="211" locator="23:1-23:48" name="SNOMED-CT" id="http://snomed.info/sct" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="211">
+               <a:s>codesystem &quot;SNOMED-CT&quot;: 'http://snomed.info/sct'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+      <def localId="212" locator="24:1-24:124" name="BiopsyResultCS" id="http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="212">
+               <a:s>codesystem &quot;BiopsyResultCS&quot;: 'http://cancerscreeningcds.github.io/bcsm-cds/CodeSystem/biopsy-result-observation-code-system'</a:s>
+            </a:s>
+         </annotation>
+      </def>
+   </codeSystems>
+   <codes>
+      <def localId="213" locator="27:1-27:139" name="Category0" id="397138000" display="Mammography assessment (Category 0) - Need additional imaging evaluation (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="213">
+               <a:s>// TODO: replace with valueset: &quot;BIRADS Assessment Category&quot;: 'http://cts.nlm.nih.gov/fhir/ValueSet/2.16.840.1.113762.1.4.1032.402'. Will require some refactoring of FollowUpScreeningResult.cql
+code &quot;Category0&quot;: '397138000' from </a:s>
+               <a:s r="214">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 0) - Need additional imaging evaluation (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="214" locator="27:36-27:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="215" locator="28:1-28:113" name="Category1" id="397140005" display="Mammography assessment (Category 1) - Negative (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="215">
+               <a:s>code &quot;Category1&quot;: '397140005' from </a:s>
+               <a:s r="216">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 1) - Negative (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="216" locator="28:36-28:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="217" locator="29:1-29:119" name="Category2" id="397141009" display="Mammography assessment (Category 2) - Benign finding (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="217">
+               <a:s>code &quot;Category2&quot;: '397141009' from </a:s>
+               <a:s r="218">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 2) - Benign finding (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="218" locator="29:36-29:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="219" locator="30:1-30:154" name="Category3" id="397143007" display="Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="219">
+               <a:s>code &quot;Category3&quot;: '397143007' from </a:s>
+               <a:s r="220">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 3) - Probably benign finding, short interval follow-up (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="220" locator="30:36-30:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="221" locator="31:1-31:156" name="Category4" id="397144001" display="Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="221">
+               <a:s>code &quot;Category4&quot;: '397144001' from </a:s>
+               <a:s r="222">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 4) - Suspicious abnormality, biopsy should be considered (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="222" locator="31:36-31:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="223" locator="32:1-32:191" name="Category4A" id="6121000179106" display="Mammography assessment (Category 4A) - Suspicious abnormality, biopsy should be considered, low suspicion of malignancy (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="223">
+               <a:s>code &quot;Category4A&quot;: '6121000179106' from </a:s>
+               <a:s r="224">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 4A) - Suspicious abnormality, biopsy should be considered, low suspicion of malignancy (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="224" locator="32:41-32:51" name="SNOMED-CT"/>
+      </def>
+      <def localId="225" locator="33:1-33:196" name="Category4B" id="6131000179108" display="Mammography assessment (Category 4B) - Suspicious abnormality, biopsy should be considered, moderate suspicion of malignancy (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="225">
+               <a:s>code &quot;Category4B&quot;: '6131000179108' from </a:s>
+               <a:s r="226">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 4B) - Suspicious abnormality, biopsy should be considered, moderate suspicion of malignancy (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="226" locator="33:41-33:51" name="SNOMED-CT"/>
+      </def>
+      <def localId="227" locator="34:1-34:192" name="Category4C" id="6141000179100" display="Mammography assessment (Category 4C) - Suspicious abnormality, biopsy should be considered, high suspicion of malignancy (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="227">
+               <a:s>code &quot;Category4C&quot;: '6141000179100' from </a:s>
+               <a:s r="228">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 4C) - Suspicious abnormality, biopsy should be considered, high suspicion of malignancy (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="228" locator="34:41-34:51" name="SNOMED-CT"/>
+      </def>
+      <def localId="229" locator="35:1-35:136" name="Category5" id="397145000" display="Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="229">
+               <a:s>code &quot;Category5&quot;: '397145000' from </a:s>
+               <a:s r="230">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 5) - Highly suggestive of malignancy (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="230" locator="35:36-35:46" name="SNOMED-CT"/>
+      </def>
+      <def localId="231" locator="36:1-36:140" name="Category6" id="6111000179101" display="Mammography assessment (Category 6) - known biopsy, proven malignancy (finding)" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="231">
+               <a:s>code &quot;Category6&quot;: '6111000179101' from </a:s>
+               <a:s r="232">
+                  <a:s>&quot;SNOMED-CT&quot;</a:s>
+               </a:s>
+               <a:s> display 'Mammography assessment (Category 6) - known biopsy, proven malignancy (finding)'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="232" locator="36:40-36:50" name="SNOMED-CT"/>
+      </def>
+      <def localId="233" locator="38:1-38:78" name="Negative" id="Negative" display="Normal breast tissue" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="233">
+               <a:s>code &quot;Negative&quot;: 'Negative' from </a:s>
+               <a:s r="234">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Normal breast tissue'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="234" locator="38:34-38:47" name="BiopsyResultCS"/>
+      </def>
+      <def localId="235" locator="39:1-39:75" name="Benign" id="Benign" display="Benign breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="235">
+               <a:s>// '260385009' from &quot;SNOMED-CT&quot; display &quot;Negative (qualifier value)&quot;
+code &quot;Benign&quot;: 'Benign' from </a:s>
+               <a:s r="236">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Benign breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="236" locator="39:30-39:43" name="BiopsyResultCS"/>
+      </def>
+      <def localId="237" locator="40:1-40:81" name="Atypical" id="Atypical" display="Atypical breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="237">
+               <a:s>// '30807003' from &quot;SNOMED-CT&quot; display 'Benign (qualifier value)'
+code &quot;Atypical&quot;: 'Atypical' from </a:s>
+               <a:s r="238">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Atypical breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="238" locator="40:34-40:47" name="BiopsyResultCS"/>
+      </def>
+      <def localId="239" locator="41:1-41:84" name="Malignant" id="Malignant" display="Malignant breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="239">
+               <a:s>// '112231000' from &quot;SNOMED-CT&quot; display 'Atypical (qualifier value)'
+code &quot;Malignant&quot;: 'Malignant' from </a:s>
+               <a:s r="240">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Malignant breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="240" locator="41:36-41:49" name="BiopsyResultCS"/>
+      </def>
+      <def localId="241" locator="42:1-42:96" name="Indeterminate" id="Indeterminate" display="Indeterminate breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="241">
+               <a:s>// '21594007' from &quot;SNOMED-CT&quot; display 'Malignant (qualifier value)'
+code &quot;Indeterminate&quot;: 'Indeterminate' from </a:s>
+               <a:s r="242">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Indeterminate breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="242" locator="42:44-42:57" name="BiopsyResultCS"/>
+      </def>
+      <def localId="243" locator="43:1-43:87" name="Discordant" id="Discordant" display="Discordant breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="243">
+               <a:s>// '82334004' from &quot;SNOMED-CT&quot; display ' Indeterminate (qualifier value)'
+code &quot;Discordant&quot;: 'Discordant' from </a:s>
+               <a:s r="244">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Discordant breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="244" locator="43:38-43:51" name="BiopsyResultCS"/>
+      </def>
+      <def localId="245" locator="44:1-44:72" name="Other" id="Other" display="Other breast finding" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="245">
+               <a:s>// closest match is '40885006' from &quot;SNOMED-CT&quot; display 'Variant (qualifier value)'
+code &quot;Other&quot;: 'Other' from </a:s>
+               <a:s r="246">
+                  <a:s>BiopsyResultCS</a:s>
+               </a:s>
+               <a:s> display 'Other breast finding'</a:s>
+            </a:s>
+         </annotation>
+         <codeSystem localId="246" locator="44:28-44:41" name="BiopsyResultCS"/>
+      </def>
+   </codes>
+   <contexts>
+      <def localId="250" locator="46:1-46:15" name="Patient"/>
+   </contexts>
+   <statements>
+      <def localId="248" locator="46:1-46:15" name="Patient" context="Patient">
+         <expression localId="249" xsi:type="SingletonFrom">
+            <operand localId="247" locator="46:1-46:15" dataType="fhir:Patient" templateId="http://hl7.org/fhir/StructureDefinition/Patient" xsi:type="Retrieve"/>
+         </expression>
+      </def>
+      <def localId="259" locator="79:1-80:95" name="MostRecentBreastImagingDate" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="259">
+               <a:s>define MostRecentBreastImagingDate:
+  </a:s>
+               <a:s r="263">
+                  <a:s r="260">
+                     <a:s>CSMCommonFunctions</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="263">
+                     <a:s>DiagnosticReportDate(</a:s>
+                     <a:s r="262">
+                        <a:s r="261">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="262">
+                           <a:s>MostRecentBreastImagingDiagnosticReport</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="263" locator="80:3-80:95" name="DiagnosticReportDate" libraryName="CSMCommonFunctions" xsi:type="FunctionRef">
+            <operand localId="262" locator="80:43-80:94" name="MostRecentBreastImagingDiagnosticReport" libraryName="DataElements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="267" locator="82:1-83:94" name="MostRecentBreastBiopsyDate" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="267">
+               <a:s>define MostRecentBreastBiopsyDate:
+  </a:s>
+               <a:s r="271">
+                  <a:s r="268">
+                     <a:s>CSMCommonFunctions</a:s>
+                  </a:s>
+                  <a:s>.</a:s>
+                  <a:s r="271">
+                     <a:s>DiagnosticReportDate(</a:s>
+                     <a:s r="270">
+                        <a:s r="269">
+                           <a:s>DataElements</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="270">
+                           <a:s>MostRecentBreastBiopsyDiagnosticReport</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>)</a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="271" locator="83:3-83:94" name="DiagnosticReportDate" libraryName="CSMCommonFunctions" xsi:type="FunctionRef">
+            <operand localId="270" locator="83:43-83:93" name="MostRecentBreastBiopsyDiagnosticReport" libraryName="DataElements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="295" locator="95:1-113:5" name="BreastImagingBiradsResult" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="295">
+               <a:s>//------------------------------------------------------------------------------
+// Functions
+//------------------------------------------------------------------------------ 
+
+define function BreastImagingBiradsResult(report DiagnosticReport):
+  </a:s>
+               <a:s r="598">
+                  <a:s r="598">
+                     <a:s>
+                        <a:s r="508">
+                           <a:s r="509">
+                              <a:s>
+                                 <a:s>report</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> D</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    </a:s>
+                     <a:s>
+                        <a:s>let </a:s>
+                        <a:s r="510">
+                           <a:s>cC: </a:s>
+                           <a:s r="515">
+                              <a:s r="511">
+                                 <a:s>BCSMCommon</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="515">
+                                 <a:s>CollateConclusionCodes(</a:s>
+                                 <a:s r="512">
+                                    <a:s>D</a:s>
+                                 </a:s>
+                                 <a:s>,</a:s>
+                                 <a:s r="514">
+                                    <a:s r="513">
+                                       <a:s>DataElements</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="514">
+                                       <a:s>BreastImagingObservations</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    </a:s>
+                     <a:s r="516">
+                        <a:s>return </a:s>
+                        <a:s r="597">
+                           <a:s>First(
+      </a:s>
+                           <a:s r="594">
+                              <a:s>
+                                 <a:s r="517">
+                                    <a:s r="528">
+                                       <a:s>
+                                          <a:s>cC.coding</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> C</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        </a:s>
+                              <a:s>
+                                 <a:s>let </a:s>
+                                 <a:s r="529">
+                                    <a:s>c: </a:s>
+                                    <a:s r="532">
+                                       <a:s r="530">
+                                          <a:s>FHIRHelpers</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="532">
+                                          <a:s>ToCode(</a:s>
+                                          <a:s r="531">
+                                             <a:s>C</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        </a:s>
+                              <a:s r="533">
+                                 <a:s>where 
+          </a:s>
+                                 <a:s r="533">
+                                    <a:s r="534">
+                                       <a:s r="535">
+                                          <a:s r="536">
+                                             <a:s r="537">
+                                                <a:s r="538">
+                                                   <a:s r="539">
+                                                      <a:s r="540">
+                                                         <a:s r="541">
+                                                            <a:s r="542">
+                                                               <a:s r="543">
+                                                                  <a:s>c</a:s>
+                                                               </a:s>
+                                                               <a:s> ~ </a:s>
+                                                               <a:s r="544">
+                                                                  <a:s>&quot;Category0&quot;</a:s>
+                                                               </a:s>
+                                                            </a:s>
+                                                            <a:s>
+          or </a:s>
+                                                            <a:s r="547">
+                                                               <a:s r="548">
+                                                                  <a:s>c</a:s>
+                                                               </a:s>
+                                                               <a:s> ~</a:s>
+                                                               <a:s r="549">
+                                                                  <a:s>&quot;Category1&quot;</a:s>
+                                                               </a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                         <a:s>
+          or </a:s>
+                                                         <a:s r="552">
+                                                            <a:s r="553">
+                                                               <a:s>c</a:s>
+                                                            </a:s>
+                                                            <a:s> ~ </a:s>
+                                                            <a:s r="554">
+                                                               <a:s>&quot;Category2&quot;</a:s>
+                                                            </a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                      <a:s>
+          or </a:s>
+                                                      <a:s r="557">
+                                                         <a:s r="558">
+                                                            <a:s>c</a:s>
+                                                         </a:s>
+                                                         <a:s> ~ </a:s>
+                                                         <a:s r="559">
+                                                            <a:s>&quot;Category3&quot;</a:s>
+                                                         </a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                   <a:s>
+          or </a:s>
+                                                   <a:s r="562">
+                                                      <a:s r="563">
+                                                         <a:s>c</a:s>
+                                                      </a:s>
+                                                      <a:s> ~ </a:s>
+                                                      <a:s r="564">
+                                                         <a:s>&quot;Category4&quot;</a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>     
+          or </a:s>
+                                                <a:s r="567">
+                                                   <a:s r="568">
+                                                      <a:s>c</a:s>
+                                                   </a:s>
+                                                   <a:s> ~ </a:s>
+                                                   <a:s r="569">
+                                                      <a:s>&quot;Category4A&quot;</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>
+          or </a:s>
+                                             <a:s r="572">
+                                                <a:s r="573">
+                                                   <a:s>c</a:s>
+                                                </a:s>
+                                                <a:s> ~ </a:s>
+                                                <a:s r="574">
+                                                   <a:s>&quot;Category4B&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>
+          or </a:s>
+                                          <a:s r="577">
+                                             <a:s r="578">
+                                                <a:s>c</a:s>
+                                             </a:s>
+                                             <a:s> ~ </a:s>
+                                             <a:s r="579">
+                                                <a:s>&quot;Category4C&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+          or </a:s>
+                                       <a:s r="582">
+                                          <a:s r="583">
+                                             <a:s>c</a:s>
+                                          </a:s>
+                                          <a:s> ~ </a:s>
+                                          <a:s r="584">
+                                             <a:s>&quot;Category5&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+          or </a:s>
+                                    <a:s r="587">
+                                       <a:s r="588">
+                                          <a:s>c</a:s>
+                                       </a:s>
+                                       <a:s> ~ </a:s>
+                                       <a:s r="589">
+                                          <a:s>&quot;Category6&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        </a:s>
+                              <a:s r="592">
+                                 <a:s>return </a:s>
+                                 <a:s r="593">
+                                    <a:s>c</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>  
+    )</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="598" locator="96:3-113:5" xsi:type="Query">
+            <source localId="508" locator="96:3-96:10" alias="D">
+               <expression localId="509" locator="96:3-96:8" name="report" xsi:type="OperandRef"/>
+            </source>
+            <let localId="510" locator="97:9-97:87" identifier="cC">
+               <expression localId="515" locator="97:13-97:87" name="CollateConclusionCodes" libraryName="BCSMCommon" xsi:type="FunctionRef">
+                  <operand localId="512" locator="97:47" name="D" xsi:type="AliasRef"/>
+                  <operand localId="514" locator="97:49-97:86" name="BreastImagingObservations" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </expression>
+            </let>
+            <return localId="516" locator="98:5-113:5">
+               <expression localId="597" locator="98:12-113:5" xsi:type="First">
+                  <source localId="594" locator="99:7-112:16" xsi:type="Query">
+                     <source localId="517" locator="99:7-99:17" alias="C">
+                        <expression localId="528" locator="99:7-99:15" xsi:type="Flatten">
+                           <operand localId="526" xsi:type="Query">
+                              <source localId="525" alias="$this">
+                                 <expression localId="518" name="cC" xsi:type="QueryLetRef"/>
+                              </source>
+                              <where localId="522" xsi:type="Not">
+                                 <operand localId="521" xsi:type="IsNull">
+                                    <operand localId="520" path="coding" xsi:type="Property">
+                                       <source localId="519" name="$this" xsi:type="AliasRef"/>
+                                    </operand>
+                                 </operand>
+                              </where>
+                              <return localId="527" distinct="false">
+                                 <expression localId="524" path="coding" xsi:type="Property">
+                                    <source localId="523" name="$this" xsi:type="AliasRef"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </expression>
+                     </source>
+                     <let localId="529" locator="100:13-100:36" identifier="c">
+                        <expression localId="532" locator="100:16-100:36" name="ToCode" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand localId="531" locator="100:35" name="C" xsi:type="AliasRef"/>
+                        </expression>
+                     </let>
+                     <where localId="533" locator="101:9-111:28" xsi:type="Or">
+                        <operand localId="534" locator="102:11-110:28" xsi:type="Or">
+                           <operand localId="535" locator="102:11-109:29" xsi:type="Or">
+                              <operand localId="536" locator="102:11-108:29" xsi:type="Or">
+                                 <operand localId="537" locator="102:11-107:29" xsi:type="Or">
+                                    <operand localId="538" locator="102:11-106:28" xsi:type="Or">
+                                       <operand localId="539" locator="102:11-105:28" xsi:type="Or">
+                                          <operand localId="540" locator="102:11-104:28" xsi:type="Or">
+                                             <operand localId="541" locator="102:11-103:27" xsi:type="Or">
+                                                <operand localId="542" locator="102:11-102:25" xsi:type="Equivalent">
+                                                   <signature localId="545" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                                   <signature localId="546" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                                   <operand localId="543" locator="102:11" name="c" xsi:type="QueryLetRef"/>
+                                                   <operand localId="544" locator="102:15-102:25" name="Category0" xsi:type="CodeRef"/>
+                                                </operand>
+                                                <operand localId="547" locator="103:14-103:27" xsi:type="Equivalent">
+                                                   <signature localId="550" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                                   <signature localId="551" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                                   <operand localId="548" locator="103:14" name="c" xsi:type="QueryLetRef"/>
+                                                   <operand localId="549" locator="103:17-103:27" name="Category1" xsi:type="CodeRef"/>
+                                                </operand>
+                                             </operand>
+                                             <operand localId="552" locator="104:14-104:28" xsi:type="Equivalent">
+                                                <signature localId="555" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                                <signature localId="556" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                                <operand localId="553" locator="104:14" name="c" xsi:type="QueryLetRef"/>
+                                                <operand localId="554" locator="104:18-104:28" name="Category2" xsi:type="CodeRef"/>
+                                             </operand>
+                                          </operand>
+                                          <operand localId="557" locator="105:14-105:28" xsi:type="Equivalent">
+                                             <signature localId="560" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                             <signature localId="561" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                             <operand localId="558" locator="105:14" name="c" xsi:type="QueryLetRef"/>
+                                             <operand localId="559" locator="105:18-105:28" name="Category3" xsi:type="CodeRef"/>
+                                          </operand>
+                                       </operand>
+                                       <operand localId="562" locator="106:14-106:28" xsi:type="Equivalent">
+                                          <signature localId="565" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <signature localId="566" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <operand localId="563" locator="106:14" name="c" xsi:type="QueryLetRef"/>
+                                          <operand localId="564" locator="106:18-106:28" name="Category4" xsi:type="CodeRef"/>
+                                       </operand>
+                                    </operand>
+                                    <operand localId="567" locator="107:14-107:29" xsi:type="Equivalent">
+                                       <signature localId="570" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       <signature localId="571" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       <operand localId="568" locator="107:14" name="c" xsi:type="QueryLetRef"/>
+                                       <operand localId="569" locator="107:18-107:29" name="Category4A" xsi:type="CodeRef"/>
+                                    </operand>
+                                 </operand>
+                                 <operand localId="572" locator="108:14-108:29" xsi:type="Equivalent">
+                                    <signature localId="575" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    <signature localId="576" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    <operand localId="573" locator="108:14" name="c" xsi:type="QueryLetRef"/>
+                                    <operand localId="574" locator="108:18-108:29" name="Category4B" xsi:type="CodeRef"/>
+                                 </operand>
+                              </operand>
+                              <operand localId="577" locator="109:14-109:29" xsi:type="Equivalent">
+                                 <signature localId="580" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <signature localId="581" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="578" locator="109:14" name="c" xsi:type="QueryLetRef"/>
+                                 <operand localId="579" locator="109:18-109:29" name="Category4C" xsi:type="CodeRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="582" locator="110:14-110:28" xsi:type="Equivalent">
+                              <signature localId="585" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              <signature localId="586" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="583" locator="110:14" name="c" xsi:type="QueryLetRef"/>
+                              <operand localId="584" locator="110:18-110:28" name="Category5" xsi:type="CodeRef"/>
+                           </operand>
+                        </operand>
+                        <operand localId="587" locator="111:14-111:28" xsi:type="Equivalent">
+                           <signature localId="590" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           <signature localId="591" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="588" locator="111:14" name="c" xsi:type="QueryLetRef"/>
+                           <operand localId="589" locator="111:18-111:28" name="Category6" xsi:type="CodeRef"/>
+                        </operand>
+                     </where>
+                     <return localId="592" locator="112:9-112:16">
+                        <expression localId="593" locator="112:16" name="c" xsi:type="QueryLetRef"/>
+                     </return>
+                  </source>
+               </expression>
+            </return>
+         </expression>
+         <operand localId="297" name="report">
+            <operandTypeSpecifier localId="296" locator="95:50-95:65" name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="292" locator="85:1-86:81" name="MostRecentBreastImagingBiradsResult" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="292">
+               <a:s>define MostRecentBreastImagingBiradsResult:
+  </a:s>
+               <a:s r="298">
+                  <a:s>BreastImagingBiradsResult(</a:s>
+                  <a:s r="294">
+                     <a:s r="293">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="294">
+                        <a:s>MostRecentBreastImagingDiagnosticReport</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="298" locator="86:3-86:81" name="BreastImagingBiradsResult" xsi:type="FunctionRef">
+            <operand localId="294" locator="86:29-86:80" name="MostRecentBreastImagingDiagnosticReport" libraryName="DataElements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="398" locator="115:1-130:5" name="BreastBiopsyResult" context="Patient" accessLevel="Public" xsi:type="FunctionDef">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="398">
+               <a:s>define function BreastBiopsyResult(report DiagnosticReport):
+  </a:s>
+               <a:s r="671">
+                  <a:s r="671">
+                     <a:s>
+                        <a:s r="599">
+                           <a:s r="600">
+                              <a:s>
+                                 <a:s>report</a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s> D</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    </a:s>
+                     <a:s>
+                        <a:s>let </a:s>
+                        <a:s r="601">
+                           <a:s>cC: </a:s>
+                           <a:s r="606">
+                              <a:s r="602">
+                                 <a:s>BCSMCommon</a:s>
+                              </a:s>
+                              <a:s>.</a:s>
+                              <a:s r="606">
+                                 <a:s>CollateConclusionCodes(</a:s>
+                                 <a:s r="603">
+                                    <a:s>D</a:s>
+                                 </a:s>
+                                 <a:s>,</a:s>
+                                 <a:s r="605">
+                                    <a:s r="604">
+                                       <a:s>DataElements</a:s>
+                                    </a:s>
+                                    <a:s>.</a:s>
+                                    <a:s r="605">
+                                       <a:s>BiopsyObservations</a:s>
+                                    </a:s>
+                                 </a:s>
+                                 <a:s>)</a:s>
+                              </a:s>
+                           </a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    </a:s>
+                     <a:s r="607">
+                        <a:s>return </a:s>
+                        <a:s r="670">
+                           <a:s>First(
+      </a:s>
+                           <a:s r="667">
+                              <a:s>
+                                 <a:s r="608">
+                                    <a:s r="619">
+                                       <a:s>
+                                          <a:s>cC.coding</a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s> C</a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        </a:s>
+                              <a:s>
+                                 <a:s>let </a:s>
+                                 <a:s r="620">
+                                    <a:s>c: </a:s>
+                                    <a:s r="623">
+                                       <a:s r="621">
+                                          <a:s>FHIRHelpers</a:s>
+                                       </a:s>
+                                       <a:s>.</a:s>
+                                       <a:s r="623">
+                                          <a:s>ToCode(</a:s>
+                                          <a:s r="622">
+                                             <a:s>C</a:s>
+                                          </a:s>
+                                          <a:s>)</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s>
+        </a:s>
+                              <a:s r="624">
+                                 <a:s>where //order by risk
+          </a:s>
+                                 <a:s r="624">
+                                    <a:s r="625">
+                                       <a:s r="626">
+                                          <a:s r="627">
+                                             <a:s r="628">
+                                                <a:s r="629">
+                                                   <a:s r="630">
+                                                      <a:s r="631">
+                                                         <a:s>c</a:s>
+                                                      </a:s>
+                                                      <a:s> ~ </a:s>
+                                                      <a:s r="632">
+                                                         <a:s>&quot;Malignant&quot;</a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                   <a:s>     
+          or </a:s>
+                                                   <a:s r="635">
+                                                      <a:s r="636">
+                                                         <a:s>c</a:s>
+                                                      </a:s>
+                                                      <a:s> ~ </a:s>
+                                                      <a:s r="637">
+                                                         <a:s>&quot;Indeterminate&quot;</a:s>
+                                                      </a:s>
+                                                   </a:s>
+                                                </a:s>
+                                                <a:s>
+          or </a:s>
+                                                <a:s r="640">
+                                                   <a:s r="641">
+                                                      <a:s>c</a:s>
+                                                   </a:s>
+                                                   <a:s> ~ </a:s>
+                                                   <a:s r="642">
+                                                      <a:s>&quot;Discordant&quot;</a:s>
+                                                   </a:s>
+                                                </a:s>
+                                             </a:s>
+                                             <a:s>                  
+          or </a:s>
+                                             <a:s r="645">
+                                                <a:s r="646">
+                                                   <a:s>c</a:s>
+                                                </a:s>
+                                                <a:s> ~ </a:s>
+                                                <a:s r="647">
+                                                   <a:s>&quot;Atypical&quot;</a:s>
+                                                </a:s>
+                                             </a:s>
+                                          </a:s>
+                                          <a:s>        
+          or </a:s>
+                                          <a:s r="650">
+                                             <a:s r="651">
+                                                <a:s>c</a:s>
+                                             </a:s>
+                                             <a:s> ~ </a:s>
+                                             <a:s r="652">
+                                                <a:s>&quot;Benign&quot;</a:s>
+                                             </a:s>
+                                          </a:s>
+                                       </a:s>
+                                       <a:s>
+          or </a:s>
+                                       <a:s r="655">
+                                          <a:s r="656">
+                                             <a:s>c</a:s>
+                                          </a:s>
+                                          <a:s> ~ </a:s>
+                                          <a:s r="657">
+                                             <a:s>&quot;Negative&quot;</a:s>
+                                          </a:s>
+                                       </a:s>
+                                    </a:s>
+                                    <a:s>
+          or </a:s>
+                                    <a:s r="660">
+                                       <a:s r="661">
+                                          <a:s>c</a:s>
+                                       </a:s>
+                                       <a:s> ~ </a:s>
+                                       <a:s r="662">
+                                          <a:s>&quot;Other&quot;</a:s>
+                                       </a:s>
+                                    </a:s>
+                                 </a:s>
+                              </a:s>
+                              <a:s> 
+        </a:s>
+                              <a:s r="665">
+                                 <a:s>return </a:s>
+                                 <a:s r="666">
+                                    <a:s>c</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>  
+    )</a:s>
+                        </a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="671" locator="116:3-130:5" xsi:type="Query">
+            <source localId="599" locator="116:3-116:10" alias="D">
+               <expression localId="600" locator="116:3-116:8" name="report" xsi:type="OperandRef"/>
+            </source>
+            <let localId="601" locator="117:9-117:80" identifier="cC">
+               <expression localId="606" locator="117:13-117:80" name="CollateConclusionCodes" libraryName="BCSMCommon" xsi:type="FunctionRef">
+                  <operand localId="603" locator="117:47" name="D" xsi:type="AliasRef"/>
+                  <operand localId="605" locator="117:49-117:79" name="BiopsyObservations" libraryName="DataElements" xsi:type="ExpressionRef"/>
+               </expression>
+            </let>
+            <return localId="607" locator="118:5-130:5">
+               <expression localId="670" locator="118:12-130:5" xsi:type="First">
+                  <source localId="667" locator="119:7-129:16" xsi:type="Query">
+                     <source localId="608" locator="119:7-119:17" alias="C">
+                        <expression localId="619" locator="119:7-119:15" xsi:type="Flatten">
+                           <operand localId="617" xsi:type="Query">
+                              <source localId="616" alias="$this">
+                                 <expression localId="609" name="cC" xsi:type="QueryLetRef"/>
+                              </source>
+                              <where localId="613" xsi:type="Not">
+                                 <operand localId="612" xsi:type="IsNull">
+                                    <operand localId="611" path="coding" xsi:type="Property">
+                                       <source localId="610" name="$this" xsi:type="AliasRef"/>
+                                    </operand>
+                                 </operand>
+                              </where>
+                              <return localId="618" distinct="false">
+                                 <expression localId="615" path="coding" xsi:type="Property">
+                                    <source localId="614" name="$this" xsi:type="AliasRef"/>
+                                 </expression>
+                              </return>
+                           </operand>
+                        </expression>
+                     </source>
+                     <let localId="620" locator="120:13-120:36" identifier="c">
+                        <expression localId="623" locator="120:16-120:36" name="ToCode" libraryName="FHIRHelpers" xsi:type="FunctionRef">
+                           <operand localId="622" locator="120:35" name="C" xsi:type="AliasRef"/>
+                        </expression>
+                     </let>
+                     <where localId="624" locator="121:9-128:24" xsi:type="Or">
+                        <operand localId="625" locator="122:11-127:27" xsi:type="Or">
+                           <operand localId="626" locator="122:11-126:25" xsi:type="Or">
+                              <operand localId="627" locator="122:11-125:27" xsi:type="Or">
+                                 <operand localId="628" locator="122:11-124:29" xsi:type="Or">
+                                    <operand localId="629" locator="122:11-123:32" xsi:type="Or">
+                                       <operand localId="630" locator="122:11-122:25" xsi:type="Equivalent">
+                                          <signature localId="633" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <signature localId="634" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <operand localId="631" locator="122:11" name="c" xsi:type="QueryLetRef"/>
+                                          <operand localId="632" locator="122:15-122:25" name="Malignant" xsi:type="CodeRef"/>
+                                       </operand>
+                                       <operand localId="635" locator="123:14-123:32" xsi:type="Equivalent">
+                                          <signature localId="638" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <signature localId="639" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                          <operand localId="636" locator="123:14" name="c" xsi:type="QueryLetRef"/>
+                                          <operand localId="637" locator="123:18-123:32" name="Indeterminate" xsi:type="CodeRef"/>
+                                       </operand>
+                                    </operand>
+                                    <operand localId="640" locator="124:14-124:29" xsi:type="Equivalent">
+                                       <signature localId="643" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       <signature localId="644" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                       <operand localId="641" locator="124:14" name="c" xsi:type="QueryLetRef"/>
+                                       <operand localId="642" locator="124:18-124:29" name="Discordant" xsi:type="CodeRef"/>
+                                    </operand>
+                                 </operand>
+                                 <operand localId="645" locator="125:14-125:27" xsi:type="Equivalent">
+                                    <signature localId="648" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    <signature localId="649" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                    <operand localId="646" locator="125:14" name="c" xsi:type="QueryLetRef"/>
+                                    <operand localId="647" locator="125:18-125:27" name="Atypical" xsi:type="CodeRef"/>
+                                 </operand>
+                              </operand>
+                              <operand localId="650" locator="126:14-126:25" xsi:type="Equivalent">
+                                 <signature localId="653" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <signature localId="654" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                                 <operand localId="651" locator="126:14" name="c" xsi:type="QueryLetRef"/>
+                                 <operand localId="652" locator="126:18-126:25" name="Benign" xsi:type="CodeRef"/>
+                              </operand>
+                           </operand>
+                           <operand localId="655" locator="127:14-127:27" xsi:type="Equivalent">
+                              <signature localId="658" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              <signature localId="659" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                              <operand localId="656" locator="127:14" name="c" xsi:type="QueryLetRef"/>
+                              <operand localId="657" locator="127:18-127:27" name="Negative" xsi:type="CodeRef"/>
+                           </operand>
+                        </operand>
+                        <operand localId="660" locator="128:14-128:24" xsi:type="Equivalent">
+                           <signature localId="663" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           <signature localId="664" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                           <operand localId="661" locator="128:14" name="c" xsi:type="QueryLetRef"/>
+                           <operand localId="662" locator="128:18-128:24" name="Other" xsi:type="CodeRef"/>
+                        </operand>
+                     </where>
+                     <return localId="665" locator="129:9-129:16">
+                        <expression localId="666" locator="129:16" name="c" xsi:type="QueryLetRef"/>
+                     </return>
+                  </source>
+               </expression>
+            </return>
+         </expression>
+         <operand localId="400" name="report">
+            <operandTypeSpecifier localId="399" locator="115:43-115:58" name="fhir:DiagnosticReport" xsi:type="NamedTypeSpecifier"/>
+         </operand>
+      </def>
+      <def localId="395" locator="88:1-89:73" name="MostRecentBreastBiopsyResult" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="395">
+               <a:s>define MostRecentBreastBiopsyResult:
+  </a:s>
+               <a:s r="401">
+                  <a:s>BreastBiopsyResult(</a:s>
+                  <a:s r="397">
+                     <a:s r="396">
+                        <a:s>DataElements</a:s>
+                     </a:s>
+                     <a:s>.</a:s>
+                     <a:s r="397">
+                        <a:s>MostRecentBreastBiopsyDiagnosticReport</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>)</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="401" locator="89:3-89:73" name="BreastBiopsyResult" xsi:type="FunctionRef">
+            <operand localId="397" locator="89:22-89:72" name="MostRecentBreastBiopsyDiagnosticReport" libraryName="DataElements" xsi:type="ExpressionRef"/>
+         </expression>
+      </def>
+      <def localId="254" locator="61:1-77:5" name="LatestTest" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="254">
+               <a:s>define LatestTest:
+  </a:s>
+               <a:s r="255">
+                  <a:s>case
+    </a:s>
+                  <a:s r="256">
+                     <a:s>when </a:s>
+                     <a:s r="257">
+                        <a:s r="265">
+                           <a:s r="264">
+                              <a:s>MostRecentBreastImagingDate</a:s>
+                           </a:s>
+                           <a:s> is null</a:s>
+                        </a:s>
+                        <a:s> and </a:s>
+                        <a:s r="273">
+                           <a:s r="272">
+                              <a:s>MostRecentBreastBiopsyDate</a:s>
+                           </a:s>
+                           <a:s> is null</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s r="274"> 
+      then null</a:s>
+                  </a:s>
+                  <a:s>
+    </a:s>
+                  <a:s r="275">
+                     <a:s>when </a:s>
+                     <a:s r="276">
+                        <a:s r="278">
+                           <a:s r="277">
+                              <a:s>MostRecentBreastBiopsyDate</a:s>
+                           </a:s>
+                           <a:s> is null</a:s>
+                        </a:s>
+                        <a:s> 
+        or </a:s>
+                        <a:s r="279">
+                           <a:s>(</a:s>
+                           <a:s r="279">
+                              <a:s r="282">
+                                 <a:s r="280">
+                                    <a:s>MostRecentBreastImagingDate</a:s>
+                                 </a:s>
+                                 <a:s> is not null</a:s>
+                              </a:s>
+                              <a:s> and </a:s>
+                              <a:s r="285">
+                                 <a:s r="283">
+                                    <a:s>MostRecentBreastImagingDate</a:s>
+                                 </a:s>
+                                 <a:s r="285"> after </a:s>
+                                 <a:s r="284">
+                                    <a:s>MostRecentBreastBiopsyDate</a:s>
+                                 </a:s>
+                              </a:s>
+                           </a:s>
+                           <a:s>)</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> 
+      then </a:s>
+                     <a:s r="288">
+                        <a:s>{
+        </a:s>
+                        <a:s>
+                           <a:s>type: </a:s>
+                           <a:s r="289">
+                              <a:s>'imaging'</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>,
+        </a:s>
+                        <a:s>
+                           <a:s>date: </a:s>
+                           <a:s r="290">
+                              <a:s>MostRecentBreastImagingDate</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>,
+        </a:s>
+                        <a:s>
+                           <a:s>result: </a:s>
+                           <a:s r="390">
+                              <a:s>MostRecentBreastImagingBiradsResult</a:s>
+                           </a:s>
+                        </a:s>
+                        <a:s>
+      }</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s>
+    else </a:s>
+                  <a:s r="391">
+                     <a:s>{
+      </a:s>
+                     <a:s>
+                        <a:s>type: </a:s>
+                        <a:s r="392">
+                           <a:s>'biopsy'</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,
+      </a:s>
+                     <a:s>
+                        <a:s>date: </a:s>
+                        <a:s r="393">
+                           <a:s>MostRecentBreastBiopsyDate</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>,
+      </a:s>
+                     <a:s>
+                        <a:s>result: </a:s>
+                        <a:s r="475">
+                           <a:s>MostRecentBreastBiopsyResult</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s>
+    }</a:s>
+                  </a:s>
+                  <a:s>
+  end</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="255" locator="62:3-77:5" xsi:type="Case">
+            <caseItem localId="256" locator="63:5-64:15">
+               <when localId="257" locator="63:10-63:83" xsi:type="And">
+                  <operand localId="265" locator="63:10-63:44" xsi:type="IsNull">
+                     <operand localId="264" locator="63:10-63:36" name="MostRecentBreastImagingDate" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="273" locator="63:50-63:83" xsi:type="IsNull">
+                     <operand localId="272" locator="63:50-63:75" name="MostRecentBreastBiopsyDate" xsi:type="ExpressionRef"/>
+                  </operand>
+               </when>
+               <then localId="476" xsi:type="As">
+                  <operand localId="274" locator="64:12-64:15" xsi:type="Null"/>
+                  <asTypeSpecifier localId="477" xsi:type="TupleTypeSpecifier">
+                     <element localId="478" name="type">
+                        <elementType localId="479" name="t:String" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="480" name="date">
+                        <elementType localId="481" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                     <element localId="482" name="result">
+                        <elementType localId="483" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                     </element>
+                  </asTypeSpecifier>
+               </then>
+            </caseItem>
+            <caseItem localId="275" locator="65:5-71:7">
+               <when localId="276" locator="65:10-66:117" xsi:type="Or">
+                  <operand localId="278" locator="65:10-65:43" xsi:type="IsNull">
+                     <operand localId="277" locator="65:10-65:35" name="MostRecentBreastBiopsyDate" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="279" locator="66:12-66:117" xsi:type="And">
+                     <operand localId="282" locator="66:13-66:51" xsi:type="Not">
+                        <operand localId="281" locator="66:13-66:51" xsi:type="IsNull">
+                           <operand localId="280" locator="66:13-66:39" name="MostRecentBreastImagingDate" xsi:type="ExpressionRef"/>
+                        </operand>
+                     </operand>
+                     <operand localId="285" locator="66:57-66:116" xsi:type="After">
+                        <signature localId="286" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        <signature localId="287" name="t:DateTime" xsi:type="NamedTypeSpecifier"/>
+                        <operand localId="283" locator="66:57-66:83" name="MostRecentBreastImagingDate" xsi:type="ExpressionRef"/>
+                        <operand localId="284" locator="66:91-66:116" name="MostRecentBreastBiopsyDate" xsi:type="ExpressionRef"/>
+                     </operand>
+                  </operand>
+               </when>
+               <then localId="288" locator="67:12-71:7" xsi:type="Tuple">
+                  <element name="type">
+                     <value localId="289" locator="68:15-68:23" valueType="t:String" value="imaging" xsi:type="Literal"/>
+                  </element>
+                  <element name="date">
+                     <value localId="290" locator="69:15-69:41" name="MostRecentBreastImagingDate" xsi:type="ExpressionRef"/>
+                  </element>
+                  <element name="result">
+                     <value localId="390" locator="70:17-70:51" name="MostRecentBreastImagingBiradsResult" xsi:type="ExpressionRef"/>
+                  </element>
+               </then>
+            </caseItem>
+            <else localId="391" locator="72:10-76:5" xsi:type="Tuple">
+               <element name="type">
+                  <value localId="392" locator="73:13-73:20" valueType="t:String" value="biopsy" xsi:type="Literal"/>
+               </element>
+               <element name="date">
+                  <value localId="393" locator="74:13-74:38" name="MostRecentBreastBiopsyDate" xsi:type="ExpressionRef"/>
+               </element>
+               <element name="result">
+                  <value localId="475" locator="75:15-75:42" name="MostRecentBreastBiopsyResult" xsi:type="ExpressionRef"/>
+               </element>
+            </else>
+         </expression>
+      </def>
+      <def localId="252" locator="48:1-49:12" name="eve-latesttest" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="252">
+               <a:s>define &quot;eve-latesttest&quot;:
+  </a:s>
+               <a:s r="484">
+                  <a:s>LatestTest</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="484" locator="49:3-49:12" name="LatestTest" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="486" locator="51:1-53:36" name="eve-actionablebirads" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="486">
+               <a:s>define &quot;eve-actionablebirads&quot;:
+  </a:s>
+               <a:s r="487">
+                  <a:s r="494">
+                     <a:s r="490">
+                        <a:s r="489">
+                           <a:s>LatestTest</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="490">
+                           <a:s>result</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> !~ </a:s>
+                     <a:s r="491">
+                        <a:s>&quot;Category1&quot;</a:s>
+                     </a:s>
+                  </a:s>
+                  <a:s> and 
+    </a:s>
+                  <a:s r="501">
+                     <a:s r="497">
+                        <a:s r="496">
+                           <a:s>LatestTest</a:s>
+                        </a:s>
+                        <a:s>.</a:s>
+                        <a:s r="497">
+                           <a:s>result</a:s>
+                        </a:s>
+                     </a:s>
+                     <a:s> !~ </a:s>
+                     <a:s r="498">
+                        <a:s>&quot;Category2&quot;</a:s>
+                     </a:s>
+                  </a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="487" locator="52:3-53:36" xsi:type="And">
+            <operand localId="494" locator="52:3-52:34" xsi:type="Not">
+               <operand localId="488" locator="52:3-52:34" xsi:type="Equivalent">
+                  <signature localId="492" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="493" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="490" locator="52:3-52:19" path="result" xsi:type="Property">
+                     <source localId="489" locator="52:3-52:12" name="LatestTest" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="491" locator="52:24-52:34" name="Category1" xsi:type="CodeRef"/>
+               </operand>
+            </operand>
+            <operand localId="501" locator="53:5-53:36" xsi:type="Not">
+               <operand localId="495" locator="53:5-53:36" xsi:type="Equivalent">
+                  <signature localId="499" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <signature localId="500" name="t:Code" xsi:type="NamedTypeSpecifier"/>
+                  <operand localId="497" locator="53:5-53:21" path="result" xsi:type="Property">
+                     <source localId="496" locator="53:5-53:14" name="LatestTest" xsi:type="ExpressionRef"/>
+                  </operand>
+                  <operand localId="498" locator="53:26-53:36" name="Category2" xsi:type="CodeRef"/>
+               </operand>
+            </operand>
+         </expression>
+      </def>
+      <def localId="503" locator="55:1-56:37" name="eve-biradsscore" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="503">
+               <a:s>define &quot;eve-biradsscore&quot;:
+  </a:s>
+               <a:s r="504">
+                  <a:s>MostRecentBreastImagingBiradsResult</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="504" locator="56:3-56:37" name="MostRecentBreastImagingBiradsResult" xsi:type="ExpressionRef"/>
+      </def>
+      <def localId="506" locator="58:1-59:30" name="eve-biopsyresult" context="Patient" accessLevel="Public">
+         <annotation xsi:type="a:Annotation">
+            <a:s r="506">
+               <a:s>define &quot;eve-biopsyresult&quot;:
+  </a:s>
+               <a:s r="507">
+                  <a:s>MostRecentBreastBiopsyResult</a:s>
+               </a:s>
+            </a:s>
+         </annotation>
+         <expression localId="507" locator="59:3-59:30" name="MostRecentBreastBiopsyResult" xsi:type="ExpressionRef"/>
+      </def>
+   </statements>
+</library>

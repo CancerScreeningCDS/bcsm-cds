@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="eve-nextdueexists_yes_eve-screeninginterval_unknown_eve-due_due"/>
+  <type value="collection"/>
+  <entry>
+    <resource>
+      <Patient>
+        <id value="defaultPatient"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Patient_defaultPatient"> </a><p class="res-header-id"><b>Generated Narrative: Patient defaultPatient</b></p><a name="defaultPatient"> </a><a name="hcdefaultPatient"> </a><a name="defaultPatient-en-US"> </a><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Jane Doe  Female, DoB: 1981-01-01</p><hr/></div>
+        </text>
+        <name>
+          <family value="Doe"/>
+          <given value="Jane"/>
+        </name>
+        <gender value="female"/>
+        <birthDate value="1981-01-01"/>
+      </Patient>
+    </resource>
+  </entry>
+  <entry>
+    <resource>
+      <CarePlan>
+        <id value="d4144910-a2bf-4cc0-9797-74eab311e1c1"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CarePlan_d4144910-a2bf-4cc0-9797-74eab311e1c1"> </a><p class="res-header-id"><b>Generated Narrative: CarePlan d4144910-a2bf-4cc0-9797-74eab311e1c1</b></p><a name="d4144910-a2bf-4cc0-9797-74eab311e1c1"> </a><a name="hcd4144910-a2bf-4cc0-9797-74eab311e1c1"> </a><a name="d4144910-a2bf-4cc0-9797-74eab311e1c1-en-US"> </a><p><b>status</b>: Active</p><p><b>category</b>: <span title="Codes:{http://snomed.info/sct 268547008}">Breast cancer screening</span></p><p><b>subject</b>: <a href="Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient">Bundle: type = collection</a></p><p><b>created</b>: 2024-06-01</p><h3>Activities</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Reference</b></td></tr><tr><td style="display: none">*</td><td><a href="Bundle-eve-nextdueexists_yes_eve-screeninginterval_annual_eve-dueannual_due.html#RequestGroup_RequestGroup-1">Bundle: type = collection</a></td></tr></table></div>
+        </text>
+        <status value="active"/>
+        <category>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="268547008"/>
+            <display value="Breast cancer screening"/>
+          </coding>
+        </category>
+        <subject>
+          <reference value="Patient/defaultPatient"/>
+        </subject>
+        <created value="2024-06-01"/>
+        <activity>
+          <reference>
+            <reference value="RequestGroup/RequestGroup-1"/>
+          </reference>
+        </activity>
+      </CarePlan>
+    </resource>
+  </entry>
+  <entry>
+    <resource>
+      <RequestGroup>
+        <id value="RequestGroup-1"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="RequestGroup_RequestGroup-1"> </a><p class="res-header-id"><b>Generated Narrative: RequestGroup RequestGroup-1</b></p><a name="RequestGroup-1"> </a><a name="hcRequestGroup-1"> </a><a name="RequestGroup-1-en-US"> </a><p><b>status</b>: Active</p><p><b>intent</b>: Order</p><p><b>subject</b>: <a href="Bundle-eve-Age45to54_act-acsavgrecs45_act-uspstfavgrecs.html#Patient_defaultPatient">Bundle: type = collection</a></p><h3>Actions</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Code</b></td><td><b>Timing[x]</b></td></tr><tr><td style="display: none">*</td><td><span title="Codes:{http://loinc.org 24606-6}">MG Breast Screening</span></td><td>Events: 2025-01-01 </td></tr></table></div>
+        </text>
+        <status value="active"/>
+        <intent value="order"/>
+        <subject>
+          <reference value="Patient/defaultPatient"/>
+        </subject>
+        <action>
+          <code>
+            <coding>
+              <system value="http://loinc.org"/>
+              <code value="24606-6"/>
+              <display value="MG Breast Screening"/>
+            </coding>
+          </code>
+          <timingTiming>
+            <event value="2025-01-01"/>
+          </timingTiming>
+        </action>
+      </RequestGroup>
+    </resource>
+  </entry>
+</Bundle>
