@@ -1,1 +1,1 @@
-![Image](flow-GeneticRiskReferral.png)
+See [here](https://cancerscreeningcds.github.io/CDC-Breast-Cancer-Screening-CDS-L2/pagecontent/Genetic%20Risk){:target="_blank"} for logic path L2 representation. 

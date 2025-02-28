@@ -1,1 +1,1 @@
-![Image](flow-ScreeningEligible.png)
+See [here](https://cancerscreeningcds.github.io/CDC-Breast-Cancer-Screening-CDS-L2/pagecontent/Screening%20Eligible){:target="_blank"} for logic path L2 representation. 

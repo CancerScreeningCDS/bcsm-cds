@@ -1,1 +1,1 @@
-![Image](flow-HighRiskExclusions.png)
+See [here](https://cancerscreeningcds.github.io/CDC-Breast-Cancer-Screening-CDS-L2/pagecontent/High%20Risk%20Exclusions){:target="_blank"} for logic path L2 representation. 

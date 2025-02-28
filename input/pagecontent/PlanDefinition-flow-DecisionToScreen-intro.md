@@ -1,1 +1,1 @@
-![Image](flow-DecisionToScreen.png)
+See [here](https://cancerscreeningcds.github.io/CDC-Breast-Cancer-Screening-CDS-L2/pagecontent/Decision%20to%20Screen){:target="_blank"} for logic path L2 representation. 
